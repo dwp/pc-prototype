@@ -1,0 +1,79 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-check" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      {% set dynamicH1 %}
+ {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you or your partner get a private pension, a pension from a place where you used to work or any other pension?</h1>
+ {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you get a private pension, a pension from a place where you used to work or any other pension?</h1>{% endif %}
+ {% endset %}
+      <!------------Legend--------------->
+
+      {% set pensionDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "For each pension you get, tell us who pays it, how much it is and how often it is paid. you do not need to tell us about your State Pension."
+          },
+          hint: {
+            text: ""
+          },
+          id: "pension-check-details",
+          name: "pension-check-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "pension-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pension-check"] == "Yes"),
+                  conditional: {
+                    html: pensionDetails
+           }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["pension-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

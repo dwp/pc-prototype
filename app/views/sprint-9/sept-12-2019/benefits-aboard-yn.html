@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefits-aboard-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-aboard-yn-router" method="post" class="form">
+
+      <input type="hidden" name="employment-complete" value="in-progress"/>
+
+      {% set tamDate = (data['claim-date-day'] or 11) + " " +
+        (data['claim-date-month'] or 11 | getMonth) + " " +
+        (data['claim-date-year'] or 2018) %}
+
+
+<h1 class="govuk-heading-xl">Do you get any benefit payments from an foreign government?</h1>
+
+
+      {{ govukRadios({
+        idPrefix: "benefits-aboard-yn",
+        name: "benefits-aboard-yn",
+        fieldset: {
+          legend: {
+            html: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefits-aboard-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefits-aboard-yn"] == "No")
+          }
+        ]
+      }) }}
+<!--            text: "Were you self-employed between Monday, 15 April 2019 and Today? " + tamDate,-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

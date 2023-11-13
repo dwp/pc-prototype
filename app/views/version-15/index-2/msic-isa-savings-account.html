@@ -1,0 +1,74 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Add a ISAs (including TESSA, TOISA & PEP) - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-isa-savings-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        ISA details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of ISA"
+        },
+        id: "msic-isa-savings-account-name",
+        name: "msic-isa-savings-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      <!--------------- DATE ONE (CLAIM START) ----------------------------------------------------------------------------------------->
+            {% if data["claim-filter"] == "Backdating" %}
+
+              {{ govukInput({
+                label: {
+                  html: "How much money did you have in this ISA on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>?"
+                },
+                id: "msic-isa-savings-account-amount-EED",
+                name: "msic-isa-savings-account-amount-EED",
+                classes: "govuk-input--width-20"
+              }) }}
+              {% endif %}
+
+{% if data["claim-filter"] == "Advanced or Today" or data["claim-filter"] == "Backdating" %}
+              {{ govukInput({
+                label: {
+                  html: "How much money do you have in this ISA <strong>today</strong>?"
+                },
+                id: "msic-isa-savings-account-amount-TODAY",
+                name: "msic-isa-savings-account-amount-TODAY",
+                classes: "govuk-input--width-20"
+              }) }}
+            {% endif %}
+
+      <!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+    </div>
+{% endblock %}

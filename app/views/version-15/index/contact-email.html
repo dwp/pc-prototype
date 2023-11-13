@@ -1,0 +1,81 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="address-correspondence-yn" method="post" class="form">
+
+      <input type="hidden" name="contact-formats-complete" value="in-progress"/>
+
+          <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you accept the risk of us sending your personal information by email?</h2>
+          <p class="govuk-body govuk-!-margin-bottom-2">The letters we send you will contain the personal information we discuss as part of this claim.</p>
+          <p class="govuk-body govuk-!-margin-bottom-2">Information sent by email is not secure. By agreeing to receive letters by email, you accept this risk.</p>
+
+
+      {% set hasEmail %}
+      {{ govukInput({
+    label: {
+      html: "Email address"
+    },
+    id: "contact-formats-email-yes",
+    name: "contact-formats-email-yes",
+    classes: "govuk-input--width-20"
+  }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-formats-email-yn",
+        name: "contact-formats-email-yn",
+        fieldset: {
+          legend: {
+            html: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["contact-formats-email-yn"] == "Yes"),
+          conditional: {
+            html: hasEmail
+          }
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["contact-formats-email-yn"] == "No")
+        }
+
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+
+</div>
+{% endblock %}

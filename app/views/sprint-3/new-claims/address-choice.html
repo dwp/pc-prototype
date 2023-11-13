@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      What is your address?
+    </h1>
+
+    <form action="home-ownership" method="post" class="form">
+      {{ govukSelect({
+        id: "address",
+        name: "address",
+        label: {
+          text: "Select an address"
+        },
+        items: [
+          {
+            value: "address-count",
+            text: "3 addresses found",
+            selected: (data["address"] == "address-count")
+          },
+          {
+            value: "221a",
+            text: "221A Baker Street",
+            selected: (data["address"] == "221a")
+          },
+          {
+            value: "221b",
+            text: "221B Baker Street",
+            selected: (data["address"] == "221b")
+          },
+          {
+            value: "222",
+            text: "222 Baker Street",
+            selected: (data["address"] == "222")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

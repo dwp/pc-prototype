@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you in paid employment? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-income-employment-type-router" method="post" class="form">
+
+      <input type="hidden" name="employment-complete" value="in-progress"/>
+
+
+        <div class="govuk-panel--agent">
+          <h1 class="govuk-heading-m"><span class="agent-action">Agent: Check in Searchlight and discuss the earnings and income shown. Establish whether Searchlight shows the correct position between {{data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year']}} and today.</h1>
+
+
+      {{ govukRadios({
+        idPrefix: "other-income-employment-type-yn",
+        name: "other-income-employment-type-yn",
+        fieldset: {
+          legend: {
+            html: "Do you need to make any changes to the income shown on Searchlight?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+            value: "All employment visible SeachLight & other systems",
+            text: "No - Searchlight matches the claimant's understanding",
+            checked: (data["other-income-employment-type-yn"] == "All employment visible SeachLight & other systems")
+          },
+          {
+            value: "Self-employed",
+            text: "Add income from self-employment or royalties",
+            checked: (data["other-income-employment-type-yn"] == "Self-employed")
+          },
+          {
+            value: "Both Other paid work and self-employed",
+            text: "Add income from both employment and self-employment",
+            checked: (data["other-income-employment-type-yn"] == "Both Other paid work and self-employed")
+          },
+          {
+            value: "Other paid work",
+            text: "Add income from employment",
+            checked: (data["other-income-employment-type-yn"] == "Other paid work")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "SearchLight doesnt match",
+            text: "Income shown in Searchlight is incorrect",
+            checked: (data["other-income-employment-type-yn"] == "SearchLight doesnt match")
+          }
+        ]
+      }) }}
+
+                </div>
+<!--            text: "Were you self-employed between Monday, 15 April 2019 and Today? " + tamDate,-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

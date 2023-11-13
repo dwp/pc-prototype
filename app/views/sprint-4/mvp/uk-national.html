@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="partner-under-spa" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "uk-national",
+          name: "uk-national",
+          fieldset: {
+            legend: {
+              text: "Are you a UK national?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

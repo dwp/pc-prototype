@@ -1,0 +1,64 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="g4s-partner-check-router" method="post" class="form">
+
+    {{ govukRadios({
+      idPrefix: "g4s-partner-check",
+      name: "g4s-partner-check",
+      fieldset: {
+        legend: {
+          text: "Do you live with a partner?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+        }
+      },
+      classes: "govuk-radios",
+      hint: {
+        html: "If you live with a partner, their details must be included as part of your application. A partner is a husband, wife, civil partner or someone that you are in a relationship with."
+      },
+      items: [
+      {
+        value: "Claim with partner",
+          text: "Yes",
+          checked: (data["g4s-partner-check"] == "Claim with partner")
+
+        },
+        {
+          value: "Single",
+          text: "No",
+          checked: (data["g4s-partner-check"] == "Single")
+        }
+      ]
+    }) }}
+
+<!--
+    {
+      value: "A",
+      text: "A",
+      checked: (data["ab-check"] == "A")
+    },
+-->
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-bottom-8"
+     }) }}
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

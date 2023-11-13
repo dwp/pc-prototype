@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yn" method="post">
+
+
+<!--
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check if there is an initial date of claim (IDOC) in PTP CAM.
+          </strong>
+        </div>
+
+-->
+
+<div class="govuk-panel--agent">
+
+        {{ govukDateInput({
+          id: "claim-date-manual-eed-date",
+          namePrefix: "claim-date-manual-eed-date",
+          fieldset: {
+            legend: {
+              html: "<span class=\"agent-action\">Agent: </span>Use IDOC (xx July 2019) and check PTP CAM for a previous Pension Credit claim to work out the date to consider this claim from",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2019"
+          }
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Shared Ownership: Details</h1>
+
+<br>
+
+{{ govukRadios({
+  idPrefix: "notepad-shared-ownership",
+  name: "notepad-shared-ownership",
+  fieldset: {
+    legend: {
+      text: "Do you part own and rent the property?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "XXXX"
+  },
+  items: [
+    {
+      value: "Part own",
+      text: "Part own",
+      checked: (data["notepad-shared-ownership"] == "Part own")
+    },
+    {
+      value: "Rent",
+      text: "Rent",
+      checked: (data["notepad-shared-ownership"] == "Rent")
+    }
+  ]
+}) }}
+
+<br>
+
+{{ govukRadios({
+  idPrefix: "notepad-shared-ownership-property",
+  name: "notepad-shared-ownership-property",
+  fieldset: {
+    legend: {
+      text: "Is there equity release scheme?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "XXX"
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["notepad-shared-ownership-property"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["notepad-shared-ownership-property"] == "No")
+    }
+  ]
+}) }}
+
+<br>
+
+{{ govukRadios({
+  idPrefix: "notepad-shared-ownership-loan",
+  name: "notepad-shared-ownership-loan",
+  fieldset: {
+    legend: {
+      text: "Is there a loan?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "XXX"
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["notepad-shared-ownership-loan"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["notepad-shared-ownership-loan"] == "No")
+    }
+  ]
+}) }}
+
+<br>
+
+<ul class="govuk-list">
+  <li>
+    Notes
+  </li>
+</ul>
+
+
+        {{ govukTextarea({
+          name: "notepad-care-nursing-home-more-detail",
+          id: "carehome-more-detail",
+
+          value: data["notepad-care-nursing-home-more-detail"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}
+
+<!--
+
+<p class="govuk-body govuk-!-font-size-19">Collect all the information you need, including:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    whether they part own and rent the property
+  </li>
+  <li>
+    Is there equity release scheme?
+  </li>
+  <li>
+    Is there a loan?
+  </li>
+  <li>
+    Anything else? (nick)
+  </li>
+</ul>
+-->

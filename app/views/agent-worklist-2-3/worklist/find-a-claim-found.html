@@ -1,0 +1,96 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+
+
+
+                <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-4"><strong>Claims found for: </strong>{{ data ["search"]}}</p>
+                <!-- <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claims found for: <strong>NA112233c</strong></p> -->
+
+                <p class="govuk-body">Downloaded claims will be cleared from this list after 56 days.</p>
+
+
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-full">
+
+                                <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+                                  <thead class="govuk-table__head">
+                                    <tr class="govuk-table__row">
+                                      <td class="govuk-table__cell govuk-20-percent">NI number</td>
+                                      <td class="govuk-table__cell govuk-20-percent">Claim ID</td>
+                                      <td class="govuk-table__cell govuk-20-percent">Name</td>
+                                      <td class="govuk-table__cell govuk-20-percent">Status</td>
+                                      <td class="govuk-table__cell govuk-20-percent">Received</td>
+                                    </tr>
+                                    </thead>
+
+                                    <tr class="govuk-table__row">
+                                      <th scope="row" class="govuk-table__cell table-spacer">NI 11 22 33 c</th>
+                                      <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                      <td class="govuk-table__cell table-spacer"><a href="find-a-claim-review">Jeff Bridges</a></td>
+                                      <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--grey govuk-phase-banner__content__tag">To do</strong></td>
+                                      <td class="govuk-table__cell table-spacer">DD Feb 2021</td>
+                                    </tr>
+
+                                    <tr class="govuk-table__row">
+                                      <th scope="row" class="govuk-table__cell table-spacer">NI 11 22 33 c</th>
+                                      <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                      <td class="govuk-table__cell table-spacer">Jeff Bridges</td>
+                                      <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">Downloaded</strong></td>
+                                      <td class="govuk-table__cell table-spacer">DD Nov 2020</td>
+                                    </tr>
+
+                                    <tr class="govuk-table__row">
+                                      <th scope="row" class="govuk-table__cell table-spacer">NI 11 22 33 c</th>
+                                      <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                      <td class="govuk-table__cell table-spacer">Jeff Bridges</td>
+                                      <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">Downloaded</strong></td>
+                                      <td class="govuk-table__cell table-spacer">DD Oct 2020</td>
+                                    </tr>
+
+
+                                    </table>
+
+                                    <nav role="navigation" aria-label="Pagination">
+                                      <div class="pagination__summary">Showing 1 - 3 of 3 results</div>
+                                      <ul class="pagination">
+                                        <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Previous page"><span aria-hidden="true" role="presentation">&laquo;</span> Previous</a></li>
+                                        <li class="pagination__item"><a class="pagination__link current" href="#0" aria-current="true" aria-label="Page 1, current page">1</a></li>
+                                        <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Page 2">2</a></li>
+                                        <!-- <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Page 3">3</a></li> -->
+                                        <!-- <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Page 4">4</a></li> -->
+                                        <!-- <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Page 5">5</a></li> -->
+                                        <li class="pagination__item"><a class="pagination__link" href="#0" aria-label="Next page">Next <span aria-hidden="true" role="presentation">&raquo;</span></a></li>
+                                      </ul>
+                                    </nav>
+
+                      </div>
+                    </div>
+
+                    {{ govukButton({
+                      text: "Find another claim",
+                      classes: "govuk-!-margin-right-1 govuk-!-margin-top-4"
+                    }) }}
+
+
+
+
+{% endblock %}

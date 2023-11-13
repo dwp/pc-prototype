@@ -1,0 +1,61 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      {% if data["ur-search"] == "P2" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Julianne Moore</h1>
+      {% else %}                        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% endif %}
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["ur-search"]}}</p>
+      {% include "includes/js-back-link.html" %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Award-0001</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Applied for Pension Credit on DD MM YYYY, the outcome was a nil because their State Pension of £180.55 exceeded the Pension Credit threshold.
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-2">What the citizen gave us</h1>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="">Open submitted claim [opens in new tab]</a></p>
+
+<h1 class="govuk-heading-m govuk-!-margin-bottom-2">What data we used from other benefits</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Data A</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Data B</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Data C</p>
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Letter sent to the citizen</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8"><a href="">Show letter conetent for [Award-0001]</a></p>
+
+
+
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+  <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Header #1</h3> -->
+  <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Processing</h3> -->
+
+  </div>
+
+
+
+
+
+  </div>
+    </form>
+{% endblock %}

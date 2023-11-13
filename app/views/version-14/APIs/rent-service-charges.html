@@ -1,0 +1,128 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="rent-council-tax-yn" method="post" class="form">
+
+
+      {{ govukRadios({
+        idPrefix: "rent-service-charges",
+        name: "rent-service-charges",
+        fieldset: {
+          legend: {
+            text: "Do you pay any additional service charges on top of your rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                <br><strong>Service charges can include:
+                </strong>
+                <ul class=\"govuk-list hint govuk-list--bullet\">
+                  <li>warden services</li>
+                  <li>caretaker services like gardening, maintenance and cleaning of communal areas</li>
+                  <li>use of a laundry room</li>
+                  <li>use of communal areas like a lounge or TV area</li>
+                </ul></hint>"
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["rent-service-charges"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["rent-service-charges"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+<!-- Old with dropdown
+
+      {% set serviceCharges %}
+        {{ govukInput({
+          label: {
+            text: "How much do you pay each year?"
+          },
+          id: "rent-service-charges",
+          name: "rent-service-charges",
+          classes: "govuk-input--width-20",
+          value: data["rentServiceChargesdata"]
+        }) }}
+      {% endset %}
+
+      {% set radioHint %}
+
+      <p class= "govuk-body">Service charges can include:</p>
+        <ul class= "govuk-list govuk-list--bullet">
+          <li>warden services</li>
+          <li>caretaker services like gardening, maintenance and cleaning of communal areas</li>
+          <li>use of a laundry room </li>
+          <li>use of communal areas like a lounge or TV area </li>
+        </ul>
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "rent-service-charges",
+        name: "rent-service-charges",
+        fieldset: {
+          legend: {
+            text: "Do you pay any additional service charges on top of your rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: radioHint
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: serviceCharges
+            },
+            checked: (data["rentServiceChargesYN"] == "Yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["rentServiceChargesYN"] == "No")
+          }
+        ]
+      }) }}
+
+-->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

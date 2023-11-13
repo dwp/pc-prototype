@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Establish eligibility - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa-router" method="post">
+        <h1 class="govuk-heading-xl">
+          What is your date of birth?
+        </h1>
+
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1948"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

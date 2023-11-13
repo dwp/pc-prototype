@@ -1,0 +1,64 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="start" method="post" class="form">
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+
+           {{ govukRadios({
+             idPrefix: "g4s-claim-filter",
+             name: "g4s-claim-filter",
+             fieldset: {
+               legend: {
+                 html: "Claim type?",
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--xl"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "S1",
+                 text: "S1",
+                 checked: (data["g4s-claim-filter"] == "S1")
+               },
+               {
+                 value: "S2",
+                 text: "S2",
+                 checked: (data["g4s-claim-filter"] == "S2")
+               },
+               {
+                 value: "S3",
+                 text: "S3",
+                 checked: (data["g4s-claim-filter"] == "S3")
+               }
+             ]
+           }) }}
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

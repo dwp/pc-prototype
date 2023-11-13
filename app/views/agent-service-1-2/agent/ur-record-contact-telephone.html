@@ -1,0 +1,98 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="ur-record-contact" method="post" class="form">
+
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Telephone numbers</h2>
+
+      {% set legendName1 %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Landline telephone</h3>
+      {% endset %}
+
+      {% set legendName2 %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Mobile telephone</h3>
+      {% endset %}
+
+        {% if data["ur-search"] == "P1" %}
+
+            {{ govukInput({
+              label: {
+                html: legendName1
+              },
+              hint: {
+                text: "Current: 0191 488 3188"
+              },
+              id: "ur-p1-record-contact-telephone-LL",
+              name: "ur-p1-record-contact-telephone-LL",
+              classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+              value: data["ur-p1-record-contact-telephone-LL"]
+            }) }}
+
+            {{ govukInput({
+              label: {
+                html: legendName2
+              },
+              hint: {
+                text: "Current: 07960 093 599"
+              },
+              id: "ur-p1-record-contact-telephone-M",
+              name: "ur-p1-record-contact-telephone-M",
+              classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+              value: data["ur-p1-record-contact-telephone-M"]
+            }) }}
+
+
+        {% else %}
+
+        {{ govukInput({
+          label: {
+            html: legendName1
+          },
+          hint: {
+            text: "Current: 01207 270 969"
+          },
+          id: "ur-p2-record-contact-telephone-LL",
+          name: "ur-p2-record-contact-telephone-LL",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          value: data["ur-p2-record-contact-telephone-LL"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            html: legendName2
+          },
+          hint: {
+            text: "Current: 07706 014 012"
+          },
+          id: "ur-p2-record-contact-telephone-M",
+          name: "ur-p2-record-contact-telephone-M",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          value: data["ur-p2-record-contact-telephone-M"]
+        }) }}
+
+        {% endif %}
+
+
+
+      {{ govukButton({
+        text: "Save"
+      }) }}
+    </div>
+  </div>
+
+    </form>
+{% endblock %}

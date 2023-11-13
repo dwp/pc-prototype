@@ -1,0 +1,687 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Pension Credit / Beta index
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <span class="govuk-caption-l">Private beta<br>and MVP</span>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+          <h1 class="govuk-heading-xl">Pension Credit: New claims<br>Design development</h1>
+          <p class="govuk-body-l"><strong>Current status: Passed assessment.</strong> <br>Awaiting approval to continue into private beta. <br><br>Index's show prototype and design index, iteration notes and module shortcuts within each version.<br>
+            <br>Data fields have been to the prototype have different needs, from a business or a CAM point of view but also for our own learning. <br><br>A log of that has been added to MVP:  <a class="link" href="https://confluence.service.dwpcloud.uk/display/MYPC/User+research+and+usability+findings+and+outcomes" aria-describedby="contact-details-completed">User research and usability findings and outcomes</a></p>
+        </div>
+      </div> <!--GRID ROW END-->
+
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V13 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/version-13/mvp/start">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--untested app-task-list__task-completed" id="company-information-completed">Merged / In build</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong> XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Moved: Contact preferences</li>
+                    <li>Added: Date of claim</li>
+                    <li>Added: Shared account test</li>
+                    <li>Added: ID bar</li>
+                    <li>Added: MSIC / Capital backdating, Current, Savings, ISA</li>
+                    <li>Added: MSIC / Full updated for new tickets, update of content and design</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/version-13/mvp/start" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/version-13/mvp/task-list" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/version-13/mvp/claim-date-cam-idoc-yn" aria-describedby="contact-details-completed">Add date of claim before claim-filter</a></li>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V11 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-11/mvp/start">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--tested app-task-list__task-completed" id="company-information-completed">Merged / In build</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong> Backdating: Two date balances. Based on the testing of A.2.10 in Tyne View Park and Seaham. (Tested in Tyne View Park: 7 November 2019 and Seaham 21 November 2019.)
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Added: Two dates, two balances per acccount type</li>
+                    <li>Added: Pension Credit payment account post MSIC</li>
+                    <li>Added: New 10k filter to take into account two balances</li>
+                    <li>Added: New wording for UK national</li>
+                    <li>Added: New shared ownership journey added</li>
+                    <li>Added: Various other content changes (Text only)</li>
+                    <li>Added: Page breaks in PDF (Build only)</li>
+                    <li>Added: Updated declaration (Shorter)</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-11/mvp/start" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-11/mvp/task-list" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-11/mvp/claim-date-cam-idoc-yn" aria-describedby="contact-details-completed">Add date of claim before claim-filter</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-11/mvp/claim-filter" aria-describedby="contact-details-completed">claim-filter</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V10 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-10/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--tested app-task-list__task-completed" id="company-information-completed">Merged / In build</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>Changes made due the Private Beta testing and Outcome from Seaham 30 October 2019
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>A global update of how we illustrate an AGENT action vs USER question, also the structure of the pages.</li>
+                    <li>Agent prompts: Updates to agent prompts to addd more information about the action.</li>
+                    <li>Total capital: We took out a threory to test in Seaham regarding to total capital.</li>
+                    <li>Total capital: Next steps on AB testing. XXX date tested.</li>
+                    <li>MSIC: PC payment acccount updated to reflect where it's getting paid into.</li>
+                    <li>MSIC: "What is this money" > "Description of this money"</li>
+                    <li>Privacy Policy and decraration refined</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/claim-date-options.html" aria-describedby="contact-details-completed">Date of Claim</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/hospital-yn" aria-describedby="contact-details-completed">Hospital admissions</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/benefit-overview" aria-describedby="contact-details-completed">Benefits overview</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/other-income-overview" aria-describedby="contact-details-completed">Other income</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/msic-has-current-account-yn" aria-describedby="contact-details-completed">Money, Savings, investments & Capital</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/msic-check-your-answers-total-options" aria-describedby="contact-details-completed">Total options</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/disregards-capital-total-yn" aria-describedby="contact-details-completed">Disregard total router based on total capital</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/housing-benefit/start.html" aria-describedby="contact-details-completed">Housing Benefit / Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/housing-benefit/housing-benefit-summary" aria-describedby="contact-details-completed">Housing Benefit / Summary</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/msic-sp-payment-choose" aria-describedby="contact-details-completed">msic-sp-payment-choose</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/own-council-tax-yn" aria-describedby="contact-details-completed">(JIRA 573) Ask a more detailed CTR question</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/contact-post-code-lookup" aria-describedby="contact-details-completed">(JIRA 574) Change correspondence address question to postcode</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-10/mvp/disregards-monolith-2" aria-describedby="contact-details-completed">(JIRA 575) Refine disregards question</a></li>
+                    <!------------ ---- ------------>
+
+
+
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V13 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-9/mvp/start">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--tested app-task-list__task-completed" id="company-information-completed">Merged / In build</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>A global update of how we illustrate an AGENT action vs USER question, also the structure of the pages.</li>
+                    <li><a href="/mvp/done-privacy-policy">/mvp/done-privacy-policy</a></li>
+                    <li><a href="/sprint-9/mvp/pre-declaration">/sprint-9/mvp/pre-declaration</a></li>
+                    <li><a href="/sprint-9/mvp/done-declaration">/sprint-9/mvp/done-declaration</a></li>
+                    <li><a href="/sprint-9/mvp/done-too-young">/sprint-9/mvp/done-too-young</a></li>
+                    <li><a href="/sprint-9/mvp/done-none-uk">/done-none-uk</a></li>
+                    <li><a href="/sprint-9/mvp/done-lived-abroad-hrt">/sprint-9/mvp/done-lived-abroad-hrt</a></li>
+                    <li><a href="/sprint-9/mvp/done-has-someone-else-living-with-them">/sprint-9/mvp/done-has-someone-else-living-with-them</a></li>
+                    <li><a href="/sprint-9/mvp/mvp-eligibility-summary">/sprint-9/mvp/mvp-eligibility-summary</a></li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/claim-date-options.html" aria-describedby="contact-details-completed">Date of Claim</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/task-list-light" aria-describedby="contact-details-completed">Task list (light)</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/contact-text-yn.html" aria-describedby="contact-details-completed">Contact</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/hospital-check-yn" aria-describedby="contact-details-completed">Hospital admissions</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/pensions-overview" aria-describedby="contact-details-completed">Pension overview</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/benefit-overview" aria-describedby="contact-details-completed">Benefits overview</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/other-income-overview" aria-describedby="contact-details-completed">Other income</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/msic-pc-payment" aria-describedby="contact-details-completed">How your Pension Credit is to be paid</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/msic-has-current-account-yn" aria-describedby="contact-details-completed">Money, Savings, investments & Capital</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/disregards-capital-total-yn" aria-describedby="contact-details-completed">Capital disregards</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/other-income-overview" aria-describedby="contact-details-completed">Earnings</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/pension-credit-summary" aria-describedby="contact-details-completed">Final CYA (PC summary)</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/post-pension-credit" aria-describedby="contact-details-completed">Post Pension Credit index page</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/contact-text-yn.html" aria-describedby="contact-details-completed">Eject journey</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/eject-database.html" aria-describedby="contact-details-completed">Eject database</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-9/mvp/housing-benefit-summary" aria-describedby="contact-details-completed">Housing Benefit Summary</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V8 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-8/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--tested app-task-list__task-completed" id="company-information-completed">Merged / In build</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Outcome of MSIC (A)(C) testing was added to this version.</li>
+                    <li>MSIC / Investigation into backdating input</li>
+                    <li>XXXXX</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/claim-date-options.html" aria-describedby="contact-details-completed">Date of Claim</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/post-code-lookup" aria-describedby="contact-details-completed">About where you live</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/msic-pc-payment" aria-describedby="contact-details-completed">How your Pension Credit is to be paid</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/msic-has-current-account-yn" aria-describedby="contact-details-completed">Money, Savings, investments & Capital</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-8/mvp/msic-bank-current-account-backdating" aria-describedby="contact-details-completed">Back dating investigation</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V7 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-7/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--hold app-task-list__task-completed" id="company-information-completed">Part tested</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Eligibility / Overview: All pages have been through the design process, more UR is needed in the future.</li>
+                    <li>Eligibility / Who is calling has become a single page: This is due to the removal of the PC1 radio and the 'other' for someonese. (This is a team decision due to the removal of items)</li>
+                    <li>Eligibility / Number you are calling from: Unsure if this will be removed.</li>
+                    <li>Eligibility / Negative done pages: These have been combined as a summary and done in some cases, added and (!) for agent notes. (Team disision; thought it was over kill for pages.)</li>
+                    <li>MSIC / Awaiting A&C testing outcome</li>
+                    <li>About where you live / Added a page for missing or manaual address entry</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-7/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-7/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-7/mvp/post-code-lookup" aria-describedby="contact-details-completed">About where you live</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-7/mvp/msic-has-bank-current-account-yn" aria-describedby="contact-details-completed">Money, saving, investment & capital</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V6 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-6/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--hold app-task-list__task-completed" id="company-information-completed">Part tested</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Removal of the 10,000 question</li>
+                    <li>Money Savings and investments: added 'A-Single' based on user testing</li>
+                    <li>XXXXX</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-6/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-6/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V5 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-5/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--hold app-task-list__task-completed" id="company-information-completed">Untested</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Investigating how we add multiple date and value entries for bank accounts.</li>
+                    <li>General fixes.</li>
+                    <li>Added missing summaries and done pages in eligibility section.</li>
+                    <li>Added in services charges within the rent journey.</li>
+                    <li>Added (Pre privacy policy and declaration) in more information about keep up to date with their changes.</li>
+                    <li>Updated content for private and workplace pensions.</li>
+                    <li>Reduced start page information.</li>
+                    <li>(PDF download) Indicators to show 'further action' is needed for HRT and mortage.</li>
+                    <li>If Pension Credit text is clicked got to 'clear-data-yn'.</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-5/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-5/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">V4 / MVP</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/sprint-4/mvp/start.html">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--tested app-task-list__task-completed" id="company-information-completed">Tested with PC1s</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>Prototype of the first release for MVP. An initial eligibility gather, which would then dictate which tool would be used to complete the claim.</li>
+                    <li><strong>Claim via our tool</strong> Our tool would then gather all the information, minus the items we already know within the DWP. Following the completion of the claim a PDF will be generated and then entered into PTP Cam, all other internal data will be sourced and entered to enable the ability to calculate and pay.</li>
+                    <li><strong>PTP Cam / BAU</strong> Based on what was answered within our tool, an agent would only use PTP Cam to make the the full claim if the failed our initial screening.</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-4/mvp/start.html" aria-describedby="contact-details-completed">Start</a></li>
+                    <!------------ ---- ------------>
+                    <li class="app-task-list__item"><a class="app-task-list__task-name" href="/sprint-4/mvp/task-list.html" aria-describedby="contact-details-completed">Task list</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+          <h2 class="govuk-heading-m">Template</h2>
+        </div>
+
+        <div class="govuk-grid-column-three-quarters">
+
+          <ul class="app-task-list__items pc-index">
+
+            <a class="govuk-body govuk-!-font-size-24 app-task-list__task-name" href="/XXX">Start prototype</a>
+            <strong class="govuk-tag govuk-tag--current app-task-list__task-completed" id="company-information-completed">Testing 00.00.00</strong><br><br>
+            <li class="app-task-list__item app-task-list-pc">
+
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+            Version notes and shortcuts
+            </span>
+          </summary>
+
+          <br><strong>Introduction: </strong>XXXX
+              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Changes, About the testing & What we tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                    <li>XXXXX</li>
+                    <li>XXXXX</li>
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold">Assumptions tested:</p>
+                  <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                    <li>XXXXX</li>
+                  </ul>
+
+              <p class="govuk-body govuk-!-font-weight-bold ">ShortCuts:</p>
+                  <ul class="govuk-list govuk-!-margin-bottom-6">
+                    <!------------ ---- ------------>
+                    <li><a href="/sprint-10/XXXX" aria-describedby="contact-details-completed">XXX</a></li>
+                    <!------------ ---- ------------>
+                    <li><a href="/sprint-10/XXXX" aria-describedby="contact-details-completed">XXX</a></li>
+                    <!------------ ---- ------------>
+                  </ul>
+
+                  <p class="govuk-body govuk-!-font-weight-bold">Outcome:</p>
+                      <ul class="govuk-list--bullet govuk-!-margin-bottom-6">
+                        <li>XXXXX</li>
+                      </ul>
+
+        </div> <!--DETAILS END-->
+      </div> <!--GRID ROW END-->
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+
+
+{% endblock %}

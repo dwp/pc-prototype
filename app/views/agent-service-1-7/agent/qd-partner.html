@@ -1,0 +1,102 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-changes-changed" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-7/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Relationship status</h1>
+
+            {{ govukInsetText({
+              text: "Ask the customer if they're still single."
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: "partner",
+              name: "partner",
+              fieldset: {
+                legend: {
+                  text: "Do they now have a partner?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "Backdating period: 10 January 2022 to 28 February 2022 "
+              },
+              items: [
+                {
+                  value: "no",
+                  text: "No",
+                  checked: (data["partner"] == "no")
+                },
+                {
+                  value: "changed",
+                  text: "Yes, within the backdating period",
+                  checked: (data["partner"] == "changed")
+                },
+                {
+                  value: "changed-out",
+                  text: "Yes, outside of the backdating period",
+                  checked: (data["partner"] == "changed-out")
+                }
+              ]
+            }) }}
+
+            {{ govukTextarea({
+              name: "partner-notes",
+              id: "partner-notes",
+              rows: "3",
+              label: {
+                text: "Record any changes and date of when it happened",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: "For example, lived with partner from 10 Jan 22 to 15 Feb 22."
+              }
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

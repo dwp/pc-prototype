@@ -1,0 +1,97 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-mortgage-home-loan" method="post" class="form">
+
+
+      <!------------CR------------>
+
+      {% set housingBenefitApply %}
+      {{ govukRadios({
+        idPrefix: "home-shared-housing-benefit-apply",
+        name: "home-shared-housing-benefit-apply",
+        fieldset: {
+          legend: {
+            text: "Do you want to apply for Housing Benefit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-shared-housing-benefit-apply"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-shared-housing-benefit-apply"] == "No")
+          }
+        ]
+      }) }}
+    {% endset -%}
+
+    <!------------CR------------>
+
+
+      {{ govukRadios({
+        idPrefix: "home-shared-housing-benefit",
+        name: "home-shared-housing-benefit",
+        fieldset: {
+          legend: {
+            text: "Do you get Housing Benefit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-shared-housing-benefit"] == "Yes")
+
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-shared-housing-benefit"] == "No"),
+            conditional: {
+              html: housingBenefitApply
+            }
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

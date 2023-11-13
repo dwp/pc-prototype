@@ -1,0 +1,461 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-c-nil-task-4-c-edit-review" method="post" class="form">
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+
+        <!-- <p class="govuk-heading-xl govuk-!-margin-bottom-6">What pension payments from <br> Metroland LTD do you want to use?</p> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">What pension payments from MetroLand LTD do you want to use to work out the applicant's current income?</p>
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"> You can select one or more payments.</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-0">This application was submitted on Saturday 29 May 2022.</p>
+
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-25-percent"><strong>Select</strong></td>
+              <td class="govuk-table__cell govuk-25-percent"><strong>Payment date (monthly)</strong></td>
+              <td class="govuk-table__cell govuk-25-percent"><strong>Payment cycle</strong></td>
+              <td class="govuk-table__cell govuk-25-percent"><strong>Net pay</strong></td>
+
+            </tr>
+            </thead>
+
+            <tr class="govuk-table__row">
+
+              <td class="govuk-table__cell table-spacer">
+
+                {{ govukCheckboxes({
+                  idPrefix: "",
+                  name: "",
+                  classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                  fieldset: {
+                    legend: {
+                      text: "",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  items: [
+                    {
+                      value: " ",
+                      text: " "
+                    }
+                  ]
+                }) }}
+
+              </td>
+
+              <td class="govuk-table__cell table-spacer">1 June 2022</td>
+              <td class="govuk-table__cell table-spacer">3 of 12</td>
+              <td class="govuk-table__cell table-spacer">£1,100.00</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell table-spacer">
+
+                  {{ govukCheckboxes({
+                    idPrefix: "",
+                    name: "",
+                    classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                    fieldset: {
+                      legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                      }
+                    },
+                    items: [
+                      {
+                        value: " ",
+                        text: " "
+                      }
+                    ]
+                  }) }}
+
+                </td>
+
+                <td class="govuk-table__cell table-spacer">1 May 2022</td>
+                <td class="govuk-table__cell table-spacer">2 of 12</td>
+                <td class="govuk-table__cell table-spacer">£1,100.00</td>
+
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer">
+
+                    {{ govukCheckboxes({
+                      idPrefix: "",
+                      name: "",
+                      classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                      fieldset: {
+                        legend: {
+                          text: "",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      items: [
+                        {
+                          value: " ",
+                          text: " "
+                        }
+                      ]
+                    }) }}
+
+                  </td>
+
+                  <td class="govuk-table__cell table-spacer">1 April 2022</td>
+                  <td class="govuk-table__cell table-spacer">1 of 12</td>
+                  <td class="govuk-table__cell table-spacer">£1,100.00</td>
+                  </tr>
+
+                  <tr class="govuk-table__row">
+
+                    <td class="govuk-table__cell table-spacer">
+
+                      {{ govukCheckboxes({
+                        idPrefix: "",
+                        name: "",
+                        classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                        fieldset: {
+                          legend: {
+                            text: "",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                          }
+                        },
+                        items: [
+                          {
+                            value: " ",
+                            text: " "
+                          }
+                        ]
+                      }) }}
+
+                    </td>
+
+                    <td class="govuk-table__cell table-spacer">1 March 2022</td>
+                    <td class="govuk-table__cell table-spacer">12 of 12</td>
+                    <td class="govuk-table__cell table-spacer">£880.00</td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">1 February 2022</td>
+                      <td class="govuk-table__cell table-spacer">11 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+
+                  <tr class="govuk-table__row">
+
+                    <td class="govuk-table__cell table-spacer">
+
+                      {{ govukCheckboxes({
+                        idPrefix: "",
+                        name: "",
+                        classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                        fieldset: {
+                          legend: {
+                            text: "",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                          }
+                        },
+                        items: [
+                          {
+                            value: " ",
+                            text: " "
+                          }
+                        ]
+                      }) }}
+
+                    </td>
+
+                    <td class="govuk-table__cell table-spacer">1 January 2022</td>
+                    <td class="govuk-table__cell table-spacer">1 of 1</td>
+                    <td class="govuk-table__cell table-spacer">£5,000.00</td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">1 December 2021</td>
+                      <td class="govuk-table__cell table-spacer">10 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">1 November 2021</td>
+                      <td class="govuk-table__cell table-spacer">9 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">1 October 2021</td>
+                      <td class="govuk-table__cell table-spacer">8 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+
+                      </tr>
+
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">1 September 2021</td>
+                      <td class="govuk-table__cell table-spacer">7 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">August 2021</td>
+                      <td class="govuk-table__cell table-spacer">6 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+
+                    <tr class="govuk-table__row">
+
+                      <td class="govuk-table__cell table-spacer">
+
+                        {{ govukCheckboxes({
+                          idPrefix: "",
+                          name: "",
+                          classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                          fieldset: {
+                            legend: {
+                              text: "",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--m"
+                            }
+                          },
+                          items: [
+                            {
+                              value: " ",
+                              text: " "
+                            }
+                          ]
+                        }) }}
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">July 2021</td>
+                      <td class="govuk-table__cell table-spacer">5 of 12</td>
+                      <td class="govuk-table__cell table-spacer">£880.00</td>
+                      </tr>
+
+
+            </table>
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

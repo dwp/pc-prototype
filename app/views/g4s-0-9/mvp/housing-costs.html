@@ -1,0 +1,78 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="housing-costs-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">[@pete we had bullets inside hint text] I might be able to help you with money you pay for housing</h1>
+
+        <p class="govuk-body"><strong>Service charges can include:</strong></p>
+        <ul class="govuk-body govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li>
+            warden services
+          </li>
+          <li>
+            caretaker services like gardening, maintenance and cleaning of communal areas
+          </li>
+          <li>
+            use of a laundry room
+          </li>
+          <li>
+            use of communal areas like a lounge or TV area
+          </li>
+        </ul>
+
+        <p class="govuk-body govuk-!-padding-bottom-4"><strong>Ground rent: </strong>You might pay ground rent if you are the leaseholder of your home.</p>
+
+      {{ govukRadios({
+        idPrefix: "housing-costs",
+        name: "housing-costs",
+        fieldset: {
+          legend: {
+            text: "Do you pay any service charges or ground rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["housing-costs"] == "Yes")
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["housing-costs"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

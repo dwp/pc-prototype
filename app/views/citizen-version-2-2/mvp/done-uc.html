@@ -1,0 +1,55 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply for Pension Credit yet</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You need to talk to UC</p>
+
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">You might be able to apply for Universal Credit.</h2>
+
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0800 328 5644</li>
+        <li>Textphone: 0800 328 1344</li>
+      </ul>
+      <div class="govuk-!-margin-bottom-8"><p>Monday to Friday, 8am to 6pm (closed on bank holidays). <br>Calls to 0800 numbers are free from landlines and mobiles.</p></div>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">If you need to speak to us, call the<br>Pension Credit claim line.</h2>
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0800 99 1234</li>
+        <li>Textphone: 0800 169 0133</li>
+      </ul>
+
+      <p>Monday to Friday, 9:30am to 3:30pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+      {% include "citizen-version-2-2/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+
+
+    </div>
+  </div>
+{% endblock %}

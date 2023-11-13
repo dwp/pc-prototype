@@ -1,0 +1,283 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Nil award statistics</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p> -->
+
+    </div>
+  </div>
+
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+          <div class="govuk-grid-column-one-quarter">
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-0">1,000 claims processed</h3>
+          </div>
+
+          <div class="govuk-grid-column-one-quarter">
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-0">Passed</h3>
+            <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">800 claims</h3>
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2 ">80%</h3>
+          </div>
+
+          <div class="govuk-grid-column-one-quarter">
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-0">Failed</h3>
+            <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">200 claims</h3>
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2 ">20%</h3>
+          </div>
+
+          <div class="govuk-grid-column-one-quarter">
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-0">Unfinished</h3>
+            <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">0 claims</h3>
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2 ">0%</h3>
+
+
+          </div>
+
+  </div>
+  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible ">
+
+  <!---------------------------------------->
+
+
+
+  <div class="govuk-grid-row">
+
+  <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">Identity</h3>
+
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">Failure summary</h3>
+
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Top five identity failures from 200 claims</h3>
+
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+        text: "Rule"
+      },
+      value: {
+        html: "<strong>Number of failures</strong>"
+      }
+    },
+    {
+      key: {
+        text: "Applicant name"
+      },
+      value: {
+        text: "50"
+      }
+    },
+    {
+      key: {
+        text: "Applicant date of birth"
+      },
+      value: {
+        html: "50"
+      }
+    },
+    {
+      key: {
+        text: "Bank details"
+      },
+      value: {
+        html: "50"
+      }
+    },
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "50"
+      }
+    }
+  ]
+}) }}
+
+    </div>
+
+    </div>
+  </div>
+  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible  govuk-!-padding-top-8"">
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row">
+
+  <div class=" govuk-!-margin-bottom-8">
+
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">Previous applications</h3>
+
+
+    </div>
+
+    <div class="govuk-grid-column-three-quarters">
+      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">Summary</h3>
+
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>5</strong> out of <strong>200</strong> claims had an located an IDOC<br>or AfPC claim when processing</h3>
+    </div>
+  </div>
+</div>
+<hr class="govuk-section-break govuk-section-break govuk-section-break--visible ">
+
+<!---------------------------------------->
+
+<div class="govuk-grid-row">
+
+<div class=" govuk-!-margin-bottom-8">
+
+  <div class="govuk-grid-column-one-quarter">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">Rules checked</h3>
+  </div>
+
+  <div class="govuk-grid-column-three-quarters">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">Summary</h3>
+
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Top five identity failures from 200 claims</h3>
+
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+      text: "Rule"
+    },
+    value: {
+      html: "<strong>Number of failures</strong>"
+    }
+  },
+  {
+    key: {
+      text: "Applicant had died"
+    },
+    value: {
+      text: "2"
+    }
+  },
+  {
+    key: {
+      text: "Applicant not single"
+    },
+    value: {
+      html: "1"
+    }
+  },
+  {
+    key: {
+      text: "Change to benefit in payment"
+    },
+    value: {
+      html: "1"
+    }
+  },
+  {
+    key: {
+      text: "Open interest for Pension Credit"
+    },
+    value: {
+      html: "1"
+    }
+  },
+  {
+    key: {
+      text: "Open interest for Pension Credit [Backdating]"
+    },
+    value: {
+      html: "1"
+    }
+  }
+]
+}) }}
+
+  </div>
+</div>
+</div>
+<hr class="govuk-section-break govuk-section-break govuk-section-break--visible  govuk-!-padding-top-8"">
+
+<!---------------------------------------->
+
+<div class="govuk-grid-row">
+
+<div class=" govuk-!-margin-bottom-8">
+
+  <div class="govuk-grid-column-one-quarter">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">Changes to contacting the applicant</h3>
+  </div>
+
+  <div class="govuk-grid-column-three-quarters">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">Summary</h3>
+
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Top five identity failures from 200 claims</h3>
+
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+      text: "Rule"
+    },
+    value: {
+      html: "<strong>Number of failures</strong>"
+    }
+  },
+  {
+    key: {
+      text: "Registered blind or severely sight impaired"
+    },
+    value: {
+      text: "2"
+    }
+  },
+  {
+    key: {
+      text: "Changes to commnication needs"
+    },
+    value: {
+      html: "1"
+    }
+  },
+  {
+    key: {
+      text: "Delegated authorities was not declaired"
+    },
+    value: {
+      html: "1"
+    }
+  }
+]
+}) }}
+  </div>
+</div>
+</div>
+
+<br><br><br><br><br>
+
+
+
+{% endblock %}

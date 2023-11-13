@@ -1,0 +1,103 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="employment-add-another-router" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Employers you have told us about</h1>
+
+
+         {{ govukSummaryList({
+           classes: 'govuk-!-padding-top-6 govuk-!-padding-bottom-8',
+           rows: [
+           {
+             key: {
+               text: "Your employer [Your partner's employer]"
+             },
+             value: {
+               text: "Name of employer"
+             },
+             actions: {
+               items: [
+               {
+                 href: "employment-you-or-partner",
+                 html: "Change",
+                 visuallyHiddenText: "this employer"
+               },
+               {
+                 href: "employment-remove",
+                 html: "Remove",
+                 visuallyHiddenText: "this employer"
+               }
+               ]
+             }
+           }
+           ]
+         }) }}
+
+
+
+
+
+         {% if data["single-joint-check"] == "Joint" %}<h2 class="govuk-heading-xm govuk-!-margin-bottom-2">Do you or your partner have any more income from employment?</h2>
+         {% else %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Do you have any more income from employment?</h2>{% endif %}
+
+
+             {{ govukRadios({
+               idPrefix: "employment-add-another-check",
+               name: "employment-add-another-check",
+               fieldset: {
+                 legend: {
+                   text: "",
+                   isPageHeading: true,
+                   classes: "govuk-fieldset__legend--m"
+                 }
+                   },
+                   hint: {
+                     html: ""
+                   },
+
+               classes: "govuk-radios",
+               items: [
+                 {
+                   value: "Yes",
+                   text: "Yes",
+                   checked: (data["employment-add-another-check"] == "Yes")
+                 },
+                 {
+                   value: "No",
+                   text: "No",
+                   checked: (data["employment-add-another-check"] == "No")
+                 }
+               ]
+             }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p class="govuk-body govuk-!-padding-top-6"><a href="employment-limit">You've hit your limit</a></p>
+
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

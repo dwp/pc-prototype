@@ -1,0 +1,49 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="it-did-what-i-asked" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-remove-yn",
+        name: "msic-remove-yn",
+        fieldset: {
+          legend: {
+            text: "Are you sure you wish to remove the (Bank) (type) account with the balance of (£)?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-remove-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-remove-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

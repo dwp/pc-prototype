@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-you-have-router" method="post" class="form">
+      {% set cashAmount %}
+        {{ govukInput({
+          id: "total-amount",
+          name: "total-amount",
+          classes: "govuk-input--width-10",
+          label: {
+            text: "How much money do you have?"
+          },
+          value: data["total-amount"]
+        }) }}
+      {% endset %}
+
+
+      <div class="govuk-grid-row">
+          <h1 class="govuk-heading-xl">Do you have a total of more than £10,000 in money, savings or investments?</h1>
+
+          <p class="govuk-body">This includes:</p>
+
+          <ul class="govuk-list govuk-list--bullet">
+                  <li>money in current, saving or deposit accounts</li>
+                  <li>money invested in ISAs, shares or unit trusts</li>
+                  <li>capital bonds, premium bonds</li>
+                  <li>any other National Savings and Investment products</li>
+                  <li>property or Land other than your home</li>
+                  <li>any other money held in this country or abroad</li>
+                  <li>sums of money you keep at home in cash</li>
+                  <li>lump sums, such as insurance payouts, that you expect in the near future</li>
+                </ul>
+
+<br>
+
+
+
+      {{ govukRadios({
+        idPrefix: "over-10k",
+        name: "over-10k",
+        fieldset: {
+        },
+
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["over-10k"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: cashAmount
+            },
+            checked: (data["over-10k"] == "no")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

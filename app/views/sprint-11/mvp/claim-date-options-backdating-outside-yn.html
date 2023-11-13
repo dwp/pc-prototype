@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Backdating: Outside of UK - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yn-router" method="post" class="form">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-options-backdating-outside-yn",
+          name: "claim-date-options-backdating-outside-yn",
+          fieldset: {
+            legend: {
+              html: "Have you spent longer than 4 weeks outside the UK since " + data['claim-date-idoc-yn-date-day'] + ' ' + (data['claim-date-idoc-yn-date-month'] | getMonth) + ' ' + data['claim-date-idoc-yn-date-year'],
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["alt-backdated-date-yn"] == "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["alt-backdated-date-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

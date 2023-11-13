@@ -1,0 +1,233 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-c-nil-task-4-y-edit-router" method="post" class="form">
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <span class="govuk-caption-m">Once a year</span>
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Select pension payments form<br>PeterBates Marquees Limited to use</p>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-12-percent"><strong>Select</strong></td>
+              <td class="govuk-table__cell govuk-22-percent"><strong>Payment date</strong></td>
+              <td class="govuk-table__cell govuk-22-percent"><strong>Payment frequency (Days)</strong></td>
+              <td class="govuk-table__cell govuk-22-percent"><strong>Net payment amount</strong></td>
+              <td class="govuk-table__cell govuk-22-percent"><strong>Tax (20%)</strong></td>
+
+            </tr>
+            </thead>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell table-spacer">
+
+                {{ govukCheckboxes({
+                  idPrefix: "",
+                  name: "",
+                  classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                  fieldset: {
+                    legend: {
+                      text: "",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  items: [
+                    {
+                      value: " ",
+                      text: " "
+                    }
+                  ]
+                }) }}
+
+              </td>
+              <td class="govuk-table__cell table-spacer">1 June 2022</td>
+              <td class="govuk-table__cell table-spacer">Once a year (365)</td>
+              <td class="govuk-table__cell table-spacer">£13,199.68</td>
+              <td class="govuk-table__cell table-spacer">£2,639.94</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell table-spacer">
+
+                  {{ govukCheckboxes({
+                    idPrefix: "",
+                    name: "",
+                    classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                    fieldset: {
+                      legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                      }
+                    },
+                    items: [
+                      {
+                        value: " ",
+                        text: " "
+                      }
+                    ]
+                  }) }}
+
+                </td>
+                <td class="govuk-table__cell table-spacer">1 June 2021</td>
+                <td class="govuk-table__cell table-spacer">Once a year (365)</td>
+                <td class="govuk-table__cell table-spacer">£10,559.74</td>
+                <td class="govuk-table__cell table-spacer">£2,111.95</td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer">
+
+                    {{ govukCheckboxes({
+                      idPrefix: "",
+                      name: "",
+                      classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                      fieldset: {
+                        legend: {
+                          text: "",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      items: [
+                        {
+                          value: " ",
+                          text: " "
+                        }
+                      ]
+                    }) }}
+
+                  </td>
+                  <td class="govuk-table__cell table-spacer">1 June 2020</td>
+                  <td class="govuk-table__cell table-spacer">Once a year (365)</td>
+                  <td class="govuk-table__cell table-spacer">£8,447.79</td>
+                  <td class="govuk-table__cell table-spacer">£1,689.56</td>
+                  </tr>
+
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell table-spacer">
+
+                      {{ govukCheckboxes({
+                        idPrefix: "",
+                        name: "",
+                        classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                        fieldset: {
+                          legend: {
+                            text: "",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                          }
+                        },
+                        items: [
+                          {
+                            value: " ",
+                            text: " "
+                          }
+                        ]
+                      }) }}
+
+                    </td>
+                    <td class="govuk-table__cell table-spacer">1 June 2019</td>
+                    <td class="govuk-table__cell table-spacer">Once a year (365)</td>
+                    <td class="govuk-table__cell table-spacer">£6,758.232</td>
+                    <td class="govuk-table__cell table-spacer">£1,351.64</td>
+                    </tr>
+
+
+
+            </table>
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-y-edit",
+          name: "process-c-nil-task-4-y-edit",
+          fieldset: {
+            legend: {
+              text: "Confim selection",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "By selecting you will be using this figure to work out an average weekly amount"
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-y-edit"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-y-edit"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

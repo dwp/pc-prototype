@@ -1,0 +1,97 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Email confirmation? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post" class="form">
+
+      {% set legendHint %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" or data["del-auth-who-made-claim"] == "Power of attorney"
+      %}
+        <h1 class="govuk-body govuk-!-margin-bottom-2">Email address</h1>
+      {% else %}
+        <h1 class="govuk-body govuk-!-margin-bottom-2">Applicant's email address</h1>
+      {% endif %}
+      <!------------Legend--------------->
+      {% endset %}
+
+      {% set emailAddress %}
+      {{ govukInput({
+        label: {
+          html: legendHint
+        },
+        hint: {
+          text: ""
+        },
+        id: "email-address",
+        name: "email-address",
+        type: "email-address",
+        autocomplete: "email",
+        spellcheck: false
+      }) }}
+      {% endset %}
+
+
+
+      <!------------H1 LEGEND------------>
+
+      {% set legendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" or data["del-auth-who-made-claim"] == "Power of attorney"
+      %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you want us to send you an email confirmation that we have received the application?</h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you want us to send the applicant an email confirmation that we have received their application?</h1>
+      {% endif %}
+      <!------------Legend--------------->
+      {% endset %}
+
+
+      {{ govukRadios({
+        name: "del-auth-email-confirmation",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["del-auth-email-confirmation"] == "Yes"),
+                  conditional: {
+                    html: emailAddress
+        }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["del-auth-email-confirmation"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

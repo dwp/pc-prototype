@@ -1,0 +1,73 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="non-deps-living-with-you" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+
+      {% set ownership %}
+        {% if data["home-ownership"] == "You own it" %}
+          mortgage
+        {% elseif data["home-ownership"] == "You rent it" %}
+          rent
+        {% else %}
+          rent or mortgage
+        {% endif %}
+      {% endset %}
+
+      {% set dynamicH1 %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        {% if data["single-joint-check"] == "Joint" %} Do you share the {{ownership}} for the place where you live with anyone other than your partner?   <!--What this is doing is: depending on what answer they say for home-ownership the h1 will change depending on what they say, EG, OWN, rent and if its a joint claim -->
+        {% else %} Do you share the {{ownership}} for the place where you live with anyone?{% endif %}
+      </h1>
+      {% endset %}
+
+
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        name: "home-shared-payments",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-shared-payments"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-shared-payments"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

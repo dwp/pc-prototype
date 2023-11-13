@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you get a private, workplace or any other pension? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-private-pension-router" method="post" class="form">
+
+      <input type="hidden" name="has-private-pension-complete" value="in-progress"/>
+
+      {{ govukRadios({
+        idPrefix: "has-private-pension",
+        name: "has-private-pension",
+        fieldset: {
+          legend: {
+            text: "Have you paid into a private pension scheme which you are yet to receive any money from?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Agent action: possibly have NIRS open and eyeball what the user is saying"
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["otherPensions"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["otherPensions"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

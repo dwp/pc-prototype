@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="process-1-nil-task-list" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Process a nil award [v1]</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">What you are doing this...This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. </p>
+
+    </div>
+  </div>
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">There are <strong>13</strong> claims to download.</p> -->
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-0",
+          text: "Start"
+        }) }}
+
+        </form>
+
+
+
+<!------------H1 LEGEND------------>
+  {% set extraRoutes %}
+  <p class="govuk-body govuk-!-margin-bottom-2"><a href="case-load-error">Case load error</a></p>
+  <p class="govuk-body"><a href="case-load-clear">IF 0 claims are in the queue</a></p>
+  <p class="govuk-body"><a href="no-access">IF User has no access</a></p>
+  {% endset %}
+<!------------Legend--------------->
+
+<!-- {{ govukDetails({
+  summaryText: "If journeys",
+  html: extraRoutes,
+  classes: "govuk-!-margin-top-8 govuk-!-margin-bottom-0"
+}) }} -->
+
+
+
+
+{% endblock %}

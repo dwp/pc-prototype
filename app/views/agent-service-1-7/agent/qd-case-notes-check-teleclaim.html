@@ -1,0 +1,216 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Record what has happened on the call</h1>
+
+
+
+      {% if (data['teleclaim'] === 'pass' and data['teleclaim'] === 'no' and data['help-teleclaim'] === 'yes') %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>security passed</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen did not want to do a teleclaim</li>
+          <li>citizen signposted to other help</li>
+        </ul>
+      </div>
+
+
+
+      {% elif (data['teleclaim'] === 'pass' and data['teleclaim'] === 'no' and data['help-teleclaim'] === 'no') %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>security passed</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen did not want to do a teleclaim</li>
+          <li>citizen did not want to know about other help</li>
+        </ul>
+      </div>
+
+
+
+
+      {% elif (data['teleclaim'] === 'pass' and data['teleclaim'] === 'yes' and data['help-teleclaim'] === 'yes') %}
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>security passed</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen accepted to do a teleclaim</li>
+          <li>citizen signposted to other help</li>
+        </ul>
+      </div>
+
+
+
+
+      {% elif (data['qd-security'] === "pass" and data['teleclaim'] === 'yes' and data['help-teleclaim'] === 'no') %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>security passed</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen accepted to do a teleclaim</li>
+          <li>citizen did not want to know about other help</li>
+        </ul>
+      </div>
+
+
+
+
+
+      {% elif (data['qd-security'] === "fail1" and data['teleclaim'] === 'yes' and data['help-teleclaim'] === 'yes') %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>Failed security question: {{ data["security-fail-q1"] }}</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen accepted to do a teleclaim</li>
+          <li>citizen signposted to other help</li>
+        </ul>
+      </div>
+
+      {% elif (data['qd-security'] === "fail1" and data['teleclaim'] === 'yes' and data['help-teleclaim'] === 'no') %}
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>Failed security question: {{ data["security-fail-q1"] }}</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen accepted to do a teleclaim</li>
+          <li>citizen did not want to know about other help</li>
+        </ul>
+      </div>
+
+      {% elif (data['qd-security'] === "fail1" and data['teleclaim'] === 'no' and data['help-teleclaim'] === 'yes') %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>Failed security question: {{ data["security-fail-q1"] }}</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen did not want to do a teleclaim</li>
+          <li>citizen signposted to other help</li>
+        </ul>
+      </div>
+
+
+
+
+
+      {% else %}
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list--bullet">
+          <li>inbound call from customer on 16 June 2022</li>
+          <li>Failed security question: {{ data["security-fail-q1"] }}</li>
+          <li>called asking for an explanation about why they are not entitled</li>
+          <li>change identified outside backdating period - teleclaim offered </li>
+          <li>citizen did not want to do a teleclaim</li>
+          <li>citizen did not want to know about other help</li>
+        </ul>
+      </div>
+
+      {% endif %}
+
+
+      {% set notesCheckTeleclaim %}
+      {{ govukTextarea({
+        label: {
+          text: "Add notes"
+        },
+        hint: {
+          text: "For example, Automated Processing explanation provided and accepted"
+        },
+        id: "notes-check-teleclaim",
+        name: "notes-check-teleclaim",
+        classes: "",
+        value: data["notes-check-teleclaim"]
+
+      }) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+        classes: "",
+        idPrefix: "call-summary",
+        name: "call-summary",
+        fieldset: {
+          legend: {
+            text: "Do you need to add any more information?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: notesCheckTeleclaim
+            }
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Exit claim"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

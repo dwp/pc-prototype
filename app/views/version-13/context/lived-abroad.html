@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Have you lived outside of the UK in the last 2 years? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="lived-abroad-router" method="post">
+
+        <!------------HEADLINE------------>
+        {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Have you lived permanently in the UK for the last 2 years?</h1>{% endif %}
+        {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Has {{ data["full-name"] }} lived permanently in the UK for the last 2 years?</h1>{% endif %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "lived-abroad",
+          name: "lived-abroad",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: data['lived-abroad'] == "Yes"
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: data['lived-abroad'] == "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+{% include "global-nav-full-width.html" %}
+<div class="moj-primary-navigation">
+
+  <div class="moj-primary-navigation__container">
+
+    <div class="moj-primary-navigation__nav">
+
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item" >
+            <a class="moj-primary-navigation__link" href="home-user-0">My homepage</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link"  href="new-process-c-nil-task-list">Processing</a>
+          </li>
+
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link"  aria-current="page" href="qd-new-summary">Queries and disputes</a>
+          </li>
+
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="ur-mi">Overview</a>
+          </li>
+
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </div>
+
+</div>
+<section class="dwp-key-details-bar" aria-label="Key details">
+<div class="dwp-key-details-bar__key-details">
+<dl class="dwp-key-details-bar__top-block">
+    <dt class="govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-key-details-bar__primary">Phil Collins</dd>
+    <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+    <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
+
+</dl>
+<dl class="dwp-key-details-bar__bottom-block">
+    <dt>Entitlement status:</dt>
+    <dd>Not entitled</dd>
+
+
+</dl>
+</div>
+</section>
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "qd-securityG"
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-security-fail" method="post" class="form">
+
+
+
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Enter the questions they answered incorrectly</h1>
+
+
+      {{ govukInput({
+        label: {
+          text: "Enter the first failed question"
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        },
+        id: "security-fail-2",
+        name: "security-fail-2",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+        value: data["security-fail-2"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Enter the second failed question"
+        },
+        hint: {
+          text: "For example, what was your previous address?"
+        },
+        id: "security-fail-2b",
+        name: "security-fail-2b",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+        value: data["security-fail-1"]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

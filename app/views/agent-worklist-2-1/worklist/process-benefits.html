@@ -1,0 +1,99 @@
+{% extends "layout-work-list-id-bar.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-private-pensions-pension" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          What Benefits does Mel Gibson have?
+        </h1>
+
+        {{ govukCheckboxes({
+          idPrefix: "waste",
+          name: "waste",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "Attendance Allowance",
+              text: "Attendance Allowance: Higher"
+            },
+            {
+              value: "Attendance Allowance",
+              text: "Attendance Allowance: Lower"
+            },
+            {
+              value: "Benefit B",
+              text: "Benefit B"
+            },
+            {
+              value: "Benefit C",
+              text: "Benefit B"
+            },
+            {
+              value: "Disability Living Allowance",
+              text: "Disability Living Allowance"
+            },
+            {
+              value: "Personal Independence Payment",
+              text: "Personal Independence Payment"
+            },
+            {
+              value: "Other",
+              text: "Other"
+            }
+          ]
+        }) }}
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          Four benefits were found for Mel Gibson
+        </h1>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Attendance Allowance (Higher): <strong>£100.00 a week</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Disability Living Allowance (Higher): <strong>£80.00 a week</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Personal Independence Payment (Standard): <strong>£450.00 a week</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Other (Lower): <strong>£90.00 a week</strong></p>
+
+            <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Add a missing benefits that are not shown in Searchlight</a></p>
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-6",
+        text: "Continue"
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Back to start</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-clear">...</a></p> -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

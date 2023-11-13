@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-current-account-yn" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        <h1 class="govuk-heading-xl">For internal use only, backdating set up</h1>
+
+
+      {{ govukRadios({
+        idPrefix: "claim-filter",
+        name: "claim-filter",
+        fieldset: {
+          legend: {
+            html: "Type of claim",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">"
+            },
+        items: [
+          {
+            value: "Advanced or Today",
+            text: "Advanced or Today",
+            checked: (data["claim-filter"] == "Advanced or Today")
+          },
+          {
+            value: "Backdating",
+            text: "Backdating",
+            checked: (data["claim-filter"] == "Backdating")
+          }
+        ]
+      }) }}
+
+<!--
+      {{ govukDateInput({
+        id: "claim-date-idoc-yn-date",
+        namePrefix: "claim-date-idoc-yn-date",
+        fieldset: {
+          legend: {
+            html: "<strong>IDOC</strong>"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["claim-date-idoc-yn-date-year"]
+          }
+        ]
+      }) }}
+
+      -->
+
+      {{ govukDateInput({
+        id: "claim-date-cam-date-entry",
+        namePrefix: "claim-date-cam-date-entry",
+        fieldset: {
+          legend: {
+            html: "Earliest entitlement date / Date of claim",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

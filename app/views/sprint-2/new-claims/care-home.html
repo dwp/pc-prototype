@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you live in a care home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "benefits"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="care-home-router" method="post" class="form">
+      {% set careHomeDate %}
+        {{ govukDateInput({
+          id: "care-home-date",
+          namePrefix: "care-home-date",
+          fieldset: {
+            legend: {
+              text: "What date did you go into the care home?"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2015"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["care-home-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["care-home-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["care-home-date-year"]
+            }
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "care-home",
+        name: "care-home",
+        fieldset: {
+          legend: {
+            text: "Are you in a care home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: careHomeDate
+            },
+            checked: (data["care-home"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["care-home"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

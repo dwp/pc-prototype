@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Application nearly complete",
+        html: ""
+      }) }}
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">
+        We are doing some final checks on your application. We will write to you
+        by <strong>DD / Month / Year (two weeks) </strong> either to confirm your award or ask you for more information.
+      </p>
+
+      <h3 class="govuk-heading-m">If anything changes</h3>
+
+      <p class="govuk-body">
+        You should tell us straight away if anything changes that affects how
+        much Pension Credit you are entitled to. This includes:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>if you go abroad for longer than 4 weeks</li>
+        <li>your address changes, or anyone moves in or out of your home</li>
+        <li>your income changes, including any changes to employment or self employment</li>
+        <li>changes to the value of your savings, investments or property</li>
+        <li>if you go into hospital or a care home for more than 4 weeks</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Agent: Next steps</h3>
+
+      <p class="govuk-body">
+        Once the call is ended and you have downloaded a copy of the PDF you can exit this page via the link below.
+      </p>
+
+      {{ govukButton({
+        text: "Finish and close",
+        href: "start"
+      }) }}
+
+
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+
+    </div>
+  </div>
+{% endblock %}

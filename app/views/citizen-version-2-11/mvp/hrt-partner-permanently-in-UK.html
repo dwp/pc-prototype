@@ -1,0 +1,59 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% set ResideHint %}
+{% endset %}
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="hrt-partner-permanently-in-UK-router" method="post">
+
+        {% set legendLivedAbroadHeadline %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Has your partner lived permanently in the UK for the last 2 years?</h1>
+
+        {% endset -%}
+
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "hrt-partner-permanently-in-UK",
+          name: "hrt-partner-permanently-in-UK",
+          fieldset: {
+            legend: {
+              html: legendLivedAbroadHeadline,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: data['hrt-partner-permanently-in-UK'] == "Yes"
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: data['hrt-partner-permanently-in-UK'] == "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

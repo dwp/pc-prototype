@@ -1,0 +1,212 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  other-income-employment-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-m"></span>
+        <h1 class="govuk-heading-xl">Income from employment</h1>
+
+      {% set formAction = '' %}
+
+      {% if data["other-income-employment-type"] == "Both employed and self-employment" %}
+        {% set formAction = 'other-income-self-employment-yes' %}
+      {% else %}
+        {% set formAction = 'other-income-equity-release-yn' %}
+      {% endif %}
+
+<form method="post" action="{{ formAction }}">
+
+        {{ govukInput({
+        label: {
+          html: "<strong>What is this income?</strong>"
+        },
+        id: "other-income-employment-what-is-this-money",
+        name: "other-income-employment-what-is-this-money",
+        classes: "govuk-input--width-20"
+      }) }}
+
+                      <!------------------------->
+                      {% set otherPaymentFrequency %}
+                      {{ govukInput({
+                      label: {
+                        html: "<strong>How often is this paid?</strong>"
+                      },
+                      id: "other-income-employment-frequency-yes-other",
+                      name: "other-income-employment-frequency-yes-other",
+                      classes: "govuk-input--width-20"
+                      }) }}
+                      {% endset -%}
+
+
+
+                      {{ govukRadios({
+                        idPrefix: "other-income-employment-frequency-yes",
+                        name: "other-income-employment-frequency-yes",
+                        fieldset: {
+                          legend: {
+                            html: "<strong>How often is this paid?</strong>",
+                            isPageHeading: true,
+                            classes: "<!--govuk-fieldset__legend--s-->"
+                            }
+                            },
+
+                        items: [
+                          {
+                            value: "Every week",
+                            text: "Every week",
+                            checked: (data["other-income-employment-frequency-yes"] == "Every week")
+                          },
+                          {
+                            value: "Every two weeks",
+                            text: "Every two weeks",
+                            checked: (data["other-income-employment-frequency-yes"] == "Every two weeks")
+                          },
+                          {
+                            value: "Monthly",
+                            text: "Every month",
+                            checked: (data["other-income-employment-frequency-yes"] == "Monthly")
+                          },
+                          {
+                            value: "Other payment frequency",
+                            text: "Other",
+                            checked: (data["other-income-employment-frequency-yes"] == "Other payment frequency")                      ,
+                                  conditional: {
+                                    html: otherPaymentFrequency
+                                  }
+                                }
+                              ]
+                            }) }}
+
+
+                          <!------------------------->
+
+                        {{ govukInput({
+                        label: {
+                          html: "<strong>How much is this income?</strong>"
+                        },
+                        id: "other-income-employment-amount",
+                        name: "other-income-employment-amount",
+                        classes: "govuk-input--width-20"
+                      }) }}
+
+                      <!------------------------->
+
+                      {% set otherPaymentCurrency %}
+                      {{ govukInput({
+                      label: {
+                        html: "<strong>What currency is it?</strong>"
+                      },
+                      id: "other-income-employment-currency-yes",
+                      name: "other-income-employment-currency-yes",
+                      classes: "govuk-input--width-20"
+                      }) }}
+                      {% endset -%}
+
+
+                      {{ govukRadios({
+                        idPrefix: "other-income-employment-currency-yn",
+                        name: "other-income-employment-currency-yn",
+                        fieldset: {
+                          legend: {
+                            html: "<strong>What currency is this money in?</strong>",
+                            isPageHeading: true,
+                            classes: "<!--govuk-fieldset__legend--s-->"
+                            }
+                            },
+
+                        items: [
+                          {
+                            value: "Pounds sterling (£)",
+                            text: "Pounds sterling (£)",
+                            checked: (data["other-income-employment-currency-yn"] == "Pounds sterling (£)")
+                          },
+                          {
+                            value: "Another currency",
+                            text: "Another currency",
+                            checked: (data["other-income-employment-currency-yn"] == "Another currency")                      ,
+                                  conditional: {
+                                    html: otherPaymentCurrency
+                                  }
+                                }
+                              ]
+                            }) }}
+
+                      <!------------------------->
+
+                      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+                      {% set otherIncomeSpousalMaintenanceYes %}
+                      {{ govukTextarea({
+                        name: "other-income-employment-more-yes-detail",
+                        id: "other-income-employment-more-yes-detail",
+                        label: {
+                          text: "Description of income, how often it is paid, how much it is and what currency it is in"
+                        },
+                        hint: {
+                          text: ""
+                        }
+                      }) }}
+                      {% endset -%}
+
+                      {{ govukRadios({
+                        classes: "govuk-radios",
+                        idPrefix: "other-income-employment-more-yn",
+                        name: "other-income-employment-more-yn",
+                        fieldset: {
+                          legend: {
+                            html: "Do you have any other income from employment?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--s"
+                          }
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        items: [
+                        {
+                          value: "yes-date",
+                          text: "Yes",
+                          checked: (data["other-income-employment-more-yn"] == "Yes"),
+                          conditional: {
+                            html: otherIncomeSpousalMaintenanceYes
+                          }
+                        },
+                          {
+                            value: "no-date",
+                            text: "No",
+                            checked: (data["other-income-employment-more-yn"] == "No")
+                          }
+                          ]
+                        }) }}
+
+
+<br>
+
+    {{ govukButton({
+      text: "Continue",
+      classes: "govuk-!-margin-right-1"
+    }) }}
+
+</form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

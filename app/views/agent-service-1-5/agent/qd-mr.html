@@ -1,0 +1,78 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'mr' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-summary" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Request mandatory reconsideration</h1>
+
+                  {{ govukCheckboxes({
+                    idPrefix: "dr6",
+                    name: "dr6",
+                    fieldset: {
+                      legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                      text: "Check the following tasks once complete"
+                    },
+                    items: [
+                      {
+                        value: "dr6",
+                        text: "Record the customer's response on a DR6 form"
+                      },
+                      {
+                        value: "Submitted",
+                        text: "Mandatory reconsideration has been requested according to Standard Working Instructions"
+                      }
+                    ]
+                  }) }}
+                  <p class="govuk-body ">
+                    <a href="#"">Get DR6 from the intranet [opens in a new tab]</a><p>
+
+                      {{ govukButton({
+                        text: "Save"
+                      }) }}
+
+                </div>
+              </div>
+        </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Adviser: Check and discuss the pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="pensions-overview" method="post" class="form">
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Your State Pension is in payment</h1>
+
+    <!-- <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Start date: <strong>@MM date of birth + 68 years / 1 January 2020</strong></h1> -->
+    <!-- <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">End date: <strong>—</strong></h1> -->
+    <!-- <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Amount: <strong>£150.00</strong></h1> -->
+    <!-- <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Payment frequency: <strong>@tracey, maybe with part payment. Weekly</strong></h1> -->
+
+<br><br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+    <div class="govuk-panel--agent-alert govuk-!-margin-top-6">
+      {% set AddName %}
+
+      <p class="govuk-body"><a href="XXX">Citizen has not claimed SP but has entitlement (MYPC-1014)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen has not claimed SP and has no entitlement (MYPC-1014)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen has claimed (not been awarded yet so interest only) SP to be paid into an account (MYPC-1008 & MYPC-1013)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen gets SP paid into an account (MYPC-1005 & MYPC-1008)</a></p>
+      {% endset %}
+    </div>
+
+    {{ govukDetails({
+      classes: "PC-router",
+      summaryText: "Router",
+      html: AddName
+    }) }}
+
+
+  </div>
+</div>
+{% endblock %}

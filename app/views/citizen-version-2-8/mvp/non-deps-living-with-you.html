@@ -1,0 +1,68 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  non-deps-living-with-you - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="non-deps-living-with-you-router" method="post" class="form">
+
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}
+        <p class="govuk-heading-xl govuk-!-margin-bottom-4">Does anyone else who is over 18 live with you and your partner?</p>
+        {% else %}<p class="govuk-heading-xl govuk-!-margin-bottom-4">Does anyone else who is over 18 live with you?</p>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+
+      {{ govukRadios({
+        name: "non-deps-living-with-you",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Include anyone that normally lives with you. We do not need to know about anyone who is staying with you temporarily. "
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["non-deps-living-with-you"] == "Yes")
+          },
+
+          {
+            value: "No",
+            text: "No",
+            checked: (data["non-deps-living-with-you"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}
+
+<!-- Their employment status and income might affect how much Pension Credit you could get. -->

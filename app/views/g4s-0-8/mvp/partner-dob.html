@@ -1,0 +1,68 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Date of birth - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="children-check-yn" method="post">
+
+
+            {{ govukDateInput({
+              id: "partner-dob",
+              namePrefix: "partner-dob",
+              fieldset: {
+                legend: {
+                  text: "What is your partner's date of birth?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--xl"
+                }
+              },
+              hint: {
+                text: "For example, 31 3 1948"
+              },
+              items: [
+                {
+                  name: "day",
+                  classes: "govuk-input--width-2",
+                  value: data["partner-dob-day"]
+                },
+                {
+                  name: "month",
+                  classes: "govuk-input--width-2",
+                  value: data["partner-dob-month"]
+                },
+                {
+                  name: "year",
+                  classes: "govuk-input--width-4",
+                  value: data["partner-dob-year"]
+                }
+              ]
+            }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p class="govuk-body"><a href="partner-gender">DOB is between 1951 and 1953</a></p>
+        <p class="govuk-body"><a href="done-too-young">Out too young</a></p>
+        <p class="govuk-body govuk-!-margin-top-3"><a href="partner-mac-yn">Under SPA: MAC check</a></p>
+
+
+
+
+
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

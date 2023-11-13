@@ -1,0 +1,57 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-number" method="post" class="form">
+
+   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will need to contact you for more information</h1>
+
+    <!------------Legend--------------->
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">The quickest way to do this is to provide a contact number so we can contact you by phone.</p>
+
+    <p class="govuk-heading-m govuk-!-margin-bottom-4">We will contact you about:</p>
+    <ul class="govuk-list govuk-list--bullet">
+
+      {% if data["state-pension-status"] == "NoBank" %}
+      <li class="govuk-!-margin-bottom-4"><strong>your State Pension</strong></li>
+      {% endif %}
+
+      {% if data["scenario2"] == "Yes" %}
+      <li class="govuk-!-margin-bottom-4"><strong>your shares</strong><br> Please have your share certificates or details of your shares to hand</li>
+
+      <li class="govuk-!-margin-bottom-4"><strong>the money you have overseas</strong><br> Please have bank statements or details fo this to hand</li>
+      {% endif %}
+
+      {% if data["money-disregards-all"] == "Yes" %}
+      <li class="govuk-!-margin-bottom-4"><strong>the money that you plan to use to buy or carry out essential work on your main home</strong><br>Please have details of what you plan to use the money for to hand</li>
+      {% endif %}
+
+      {% if data["money-disregards-payments-options"] == "Option" %}
+      <li class="govuk-!-margin-bottom-4"><strong>the money you have from payouts or payments</strong><br>Please have details of this to hand</li>
+      {% endif %}
+    </ul>
+
+
+      {{ govukButton({
+        text: "Continue",
+          classes: "govuk-!-margin-top-6"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

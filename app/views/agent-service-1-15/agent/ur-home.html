@@ -1,0 +1,157 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur-home.html" %}
+{% endblock %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block content %}
+
+<script>
+  //specify random links
+  var randomlinks=new Array()
+  randomlinks[0]="process-c-nil-task-list"
+  randomlinks[1]="process-c-nil-task-4-manual"
+  randomlinks[2]="process-c-nil-task-list"
+  randomlinks[3]="process-c-nil-task-4-manual"
+  function randomlink(){
+  window.location=randomlinks[Math.floor(Math.random()*randomlinks.length)]
+  }
+  //-->
+</script>
+  {# <form method="post">
+  <p><input type="button" name="B1" value="Random Link >>" onclick="randomlink()"></p> </form> #}
+  <!--Uncomment below to use a regular text link instead
+  <a href="javascript:randomlink()">Random Link</a>
+  -->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      {% if data["process-c-nil-task-list"]  == "NIL"%}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">This has been successfully processed. The applicant has been notified by letter that they are not currently entitled for Pension Credit.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% elif data["process-c-nil-task-list"]  == "BAU"%}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">Application was sent back to business as usual</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% else %}
+      {% endif %}
+
+
+      {% if data["process-c-nil-task-4-manual"]  == "Yes"%}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">Applicant's telephone number has been updated with a CIS500.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% elif data["process-c-nil-task-4-manual"]  == "No"%}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">Unable to update applicant's telephone number.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% else %}
+
+      {% endif %}
+
+  <!----->
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">My home page</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">[UR] <br>This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. </p> -->
+
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Processing</h3>
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Group 1</h3> -->
+
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener" target="">Process an application - not entitled</a></p> #}
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="system-ur-corres-address-ab" class="govuk-link" rel="noreferrer noopener" target="">Process an application - not entitled</a></p>
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-1-5-b" class="govuk-link" rel="noreferrer noopener" target="">Correspondence address - <br>scenario B</a></p> #}
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-application-type" class="govuk-link" rel="noreferrer noopener" target="">Process an application</a></p> #}
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-cases" class="govuk-link" rel="noreferrer noopener" target=>My cases</a></p> -->
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-5"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Live proving</a></p> #}
+
+  </div>
+
+
+
+  <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Queries and disputes</h3>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Respond to an enquiry</a></p>
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target=>Find someone</a></p> #}
+    
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">All other claims</h3> -->
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Queries and disputes</h3> -->
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Process AfPC claim</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-5"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Find a downloaded claim</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Disributor statistics</a></p> -->
+
+  </div>
+
+  {# <div class="govuk-grid-column-one-third govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Overview</h3> #}
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-mi" class="govuk-link" rel="noreferrer noopener" target="">Service statistics</a></p> -->
+    {# <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="system-ur-process-ab" class="govuk-link" rel="noreferrer noopener" target="">Service statistics [AB]</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="/agent-service-1-9/agent/processing-screens.pdf" target="_blank">UR PDF</a></p>
+
+
+  </div> #}
+
+<!-- <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+<h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Group 4</h3>
+<h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Help</h3>
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="">Request access</a></p>
+
+</div> -->
+
+
+
+  </div>
+  <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="claim-timed-out" class="govuk-link" rel="noreferrer noopener" target="">[TimeOut]</a></p>
+
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="error" class="govuk-link" rel="noreferrer noopener" target="">[Error]</a></p>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="no-claims" class="govuk-link" rel="noreferrer noopener" target="">[No claims to process]</a></p>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="no-access" class="govuk-link" rel="noreferrer noopener" target="">[No access to a feature]</a></p> -->
+
+    </form>
+{% endblock %}

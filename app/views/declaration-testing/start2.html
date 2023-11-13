@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body govuk--version-control">declaration.0.3</p>
+
+
+    <h1 class="govuk-heading-xl">Apply for Pension Credit</h1>
+
+    <h2 class="govuk-heading-m">Use this service to start a Pension Credit application</h2>
+
+    <p class="govuk-body-m">This part of your application should take around <strong>20 minutes</strong> depending on your circumstances.</p>
+
+
+<h3 class="govuk-heading-m">Personal information</h3>
+      <p class="govuk-body">We will only use your information as allowed by data protection laws.</p>
+
+      <p class="govuk-body">To find out more about how we use information and your information rights, read our Personal Information Charter. You can get a copy of this at a jobcentre or by searching on GOV.UK.</p>
+
+      <h3 class="govuk-heading-m">Declaration</h3>
+
+      <p class="govuk-body">While you are receiving Pension Credit, you must report changes to your circumstances straight away by calling
+        0800&nbsp;731&nbsp;7898. </p>
+      <p>If you give wrong or incomplete information we might pay you too much Pension Credit and you will have to pay the money back.</p>
+      <p>If you do not report any changes to your circumstances, we might reduce or stop your Pension Credit.</p>
+      <p>You could be prosecuted or have to pay a financial penalty if you deliberately give the wrong or incomplete information or don’t report changes.</p>
+
+        <h3 class="govuk-heading-m">Confirm that you have read the personal information and declaration statements to the claimant</h3>
+        {{ govukCheckboxes({
+          idPrefix: "citizenship-conditional",
+          name: "confirm",
+
+          items: [
+            {
+              value: "confirm",
+              text: "I have read this to the claimant"
+
+            }
+
+          ]
+        }) }}
+
+
+    {{ govukButton({
+      text: "Start now",
+      href: "uk-account2",
+      classes: "govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+    }) }}
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+
+</div>
+{% endblock %}

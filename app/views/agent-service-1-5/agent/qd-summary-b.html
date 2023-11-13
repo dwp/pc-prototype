@@ -1,0 +1,180 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'summary' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% if data["create-claim-c"]  == "notes"%}
+          <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Saved
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <h3 class="govuk-notification-banner__heading">
+                You have recorded on this system that the claim has been created on CAM according to SWI.
+              </h3>
+            </div>
+          </div>
+    {% else %}
+
+    {% endif %}
+
+
+
+
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+
+          {% include "agent-service-1-5/agent/side-nav.html" %}
+        </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Summary</h1>
+
+            <div class="govuk-inset-text govuk-!-margin-bottom-0">
+              Check the information we have on the customer is correct. Make a change if something is wrong.
+            </div>
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Date of claim",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "28 February 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                  {
+                    text: "Date processed",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "1 March 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Backdating period",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "10 January 2022 to 28 February 2022",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Entitlement status",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "Not entitled",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Weekly State Pension amount",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "£182",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Benefits",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "No",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Single",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "Yes",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Housing costs",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "No",
+                  classes: 'govuk-table--no-border'
+                }
+                ]
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Exit record",
+              href: "qd-call-reason"
+            }) }}
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

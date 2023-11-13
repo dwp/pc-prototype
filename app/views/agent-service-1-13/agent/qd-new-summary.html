@@ -1,0 +1,185 @@
+{% extends "layout-full-width.html" %}
+
+{% block pageTitle %}
+  PC: Phil Collins
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-full-width.html" %}
+ <div class="moj-primary-navigation">
+
+   <div class="moj-primary-navigation__container">
+
+     <div class="moj-primary-navigation__nav">
+
+       <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+         <ul class="moj-primary-navigation__list">
+           <li class="moj-primary-navigation__item" >
+             <a class="moj-primary-navigation__link" href="home-user-0">My homepage</a>
+           </li>
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  href="new-process-c-nil-task-list">Processing</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  aria-current="page" href="qd-start">Queries and disputes</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link" href="ur-mi">Overview</a>
+           </li>
+
+
+         </ul>
+
+       </nav>
+
+     </div>
+
+   </div>
+
+ </div>
+ <section class="dwp-key-details-bar" aria-label="Key details">
+ <div class="dwp-key-details-bar__key-details">
+ <dl class="dwp-key-details-bar__top-block">
+     <dt class="govuk-visually-hidden">Name:</dt>
+     <dd class="dwp-key-details-bar__primary">Phil Collins</dd>
+     <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+     <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
+
+ </dl>
+ <dl class="dwp-key-details-bar__bottom-block">
+     <dt>Entitlement status:</dt>
+     <dd>Not entitled</dd>
+
+ </dl>
+ </div>
+ </section>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <nav class="moj-side-navigation" aria-label="Side navigation">
+        <ul class="moj-side-navigation__list">
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="qd-new-summary" aria-current="location">Claim summary</a>
+          </li>
+
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-state-pension">State Pension</a>
+          </li>
+
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-non-sate-pension">Non-State Pension</a>
+          </li>
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-income">Income</a>
+          </li>
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-benefits">Qualifying benefits</a>
+          </li>
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-claim-notes">Claim notes</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Claim summary</h1>
+
+
+
+
+
+
+        <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date claim submitted
+            </dt>
+            <dd class="govuk-summary-list__value">
+        28 February 2022
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+    Backdating period start date
+            </dt>
+            <dd class="govuk-summary-list__value">
+        28 November 2021
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Non-State Pension
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Yes
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          Income
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Yes</p>
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+      Qualifying benefits
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Yes</p>
+            </dd>
+
+          </div>
+        </dl>
+
+
+
+          </div>
+
+
+
+        </div>
+<br>
+
+    <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+              <p class="govuk-body govuk-!-margin-bottom-7"><a href="/agent-service-1-10/agent/jennifer-claim.pdf" target="_blank">View full application (PDF)</a></p>
+           </div>
+</div>
+
+
+
+  </div>
+</div>
+
+
+{% endblock %}

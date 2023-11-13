@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you get a private, workplace or any other pension? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-private-pension-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-private-pensions",
+        name: "has-private-pensions",
+        fieldset: {
+          legend: {
+            text: "Do you get a private, workplace or any other pension?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This does not include your State Pension"
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-private-pensions"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-private-pensions"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

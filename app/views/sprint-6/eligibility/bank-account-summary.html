@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Bank account detials
+    </h1>
+
+    {% if data["account-type"] == "UK bank account" %}
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type of account"
+            },
+            value: {
+              text: data["account-type"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "account-type",
+                  text: "Change",
+                  visuallyHiddenText: "type of account"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Name on account"
+            },
+            value: {
+              text: data["name-on-account"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name on account"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Sort code"
+            },
+            value: {
+              text: data["sort-code"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "sort code"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Account number"
+            },
+            value: {
+              text: data["account-number"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "account number"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    {% if data["account-type"] == "State Pension account (Via PTPCam)" %}
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type of account"
+            },
+            value: {
+              text: data["account-type"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "account-type",
+                  text: "Change",
+                  visuallyHiddenText: "type of account"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    {% if data["account-type"] == "International bank account" %}
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type of account"
+            },
+            value: {
+              text: data["account-type"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "account-type",
+                  text: "Change",
+                  visuallyHiddenText: "type of account"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Name on account"
+            },
+            value: {
+              text: data["name-on-int-account"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name on account"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Swift code"
+            },
+            value: {
+              text: data["swift-code"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Swift code"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "IBAN"
+            },
+            value: {
+              text: data["iban-number"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "iban"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="bank-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

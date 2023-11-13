@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Habitual residency test - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Mortgage yes. This page goes to Standard mortgage interest team (SMI).
+      </h1>
+      <form action="address-summary" method="post">
+        <p>
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

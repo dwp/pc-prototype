@@ -1,0 +1,45 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="start-check" method="post" class="form">
+
+    <p class="govuk-body govuk--version-control">Citizen version 2.7 / MVP</p>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You must have the right information ready</h1>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">If you do not enter anything for more than 30 minutes, your application will time out and you will have to start again. This is to keep your details secure.</p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">So you need to make sure you have certain information to hand while you make your application.</p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You will need this information for you and your partner (if you have one).</p>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">The information you will need:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>National Insurance number</li>
+      <li>bank statements, usually for the last three months</li>
+      <li>details of any income, pensions, savings or investments</li>
+    </ul>
+
+
+
+     {{ govukButton({
+       text: "Return to Apply for Pension Credit",
+       classes: "govuk-!-margin-top-4"
+     }) }}
+
+
+
+</form>
+</div>
+{% endblock %}

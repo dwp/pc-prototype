@@ -1,0 +1,16 @@
+.adviser-notice {
+  border-left: 8px solid $govuk-brand-colour;
+  margin-bottom: 2.5rem;
+  padding-left: 1rem;
+}
+
+.adviser-notice .adviser-notice__heading {
+  @include govuk-font($size: 16, $weight: bold);
+
+  background: $govuk-brand-colour;
+  color: govuk-colour("white");
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  margin-left: -1rem;
+  padding: 0.2rem;
+}

@@ -1,0 +1,111 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-risk-check-router" method="post" class="form">
+
+    <!--[We might need to contact you if you have money in these accounts to confirm their value.]-->
+
+{{ govukCheckboxes({
+  idPrefix: "money-total-risk-check",
+  name: "money-total-risk-check",
+  fieldset: {
+    legend: {
+      text: "Tell us what accounts or investments you have",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: "Select any that apply.",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "Low",
+      text: "Current, savings or deposit accounts with a bank, building society, credit union or the Post Office",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Investment ISAs or cash ISAs",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "National Savings and Investments products, such as Premium Bonds or Savings Certificates",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Shares",
+      checked: (data["money-total-risk-check"] == "Shares")
+    },
+    {
+      value: "Low",
+      text: "Money invested in unit trusts",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Income or capital bonds",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Money at home in cash",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Money overseas",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Other accounts or investments",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "High",
+      text: "None of these",
+      checked: (data["money-total-risk-check"] == "Savings Accounts"),
+      behaviour: "exclusive"
+    }
+    ]
+  }) }}
+
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

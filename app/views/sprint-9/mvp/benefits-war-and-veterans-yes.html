@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefits-war-and-veterans-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="benefit-IIDB-yn" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+
+
+
+
+
+
+
+
+
+{% set benefitsAdultDependentPensionHint %}
+<p class=govuk-hint>Include:</p>
+<ul class="govuk-hint govuk-list govuk-list--bullet">
+  <li>whether it is in payment (If claiming it (not yet awarded) or getting it (in payment))</li>
+  <li>the amount being paid</li>
+  <li>the date the benefit was awarded</li>
+  <li>how often it is paid</li>
+  <li>then it is paid (Payday)</li>
+</ul>
+{% endset %}
+
+        {% set benefitsAdultDependentPensionYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "1"
+            },
+            hint: {
+              html: benefitsAdultDependentPensionHint},
+            id: "benefits-adult-dependent-pension-yes",
+            name: "benefits-adult-dependent-pension-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+
+        {% set benefitsWarParentHint %}
+        <p class=govuk-hint>Include:</p>
+        <ul class="govuk-hint govuk-list govuk-list--bullet">
+          <li>whether it is in payment (If claiming it (not yet awarded) or getting it (in payment))</li>
+          <li>the amount being paid</li>
+          <li>the date the benefit was awarded</li>
+          <li>how often it is paid</li>
+          <li>then it is paid (Payday)</li>
+        </ul>
+        {% endset %}
+
+        {% set benefitsWarParentYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "2"
+            },
+            hint:{
+              html: benefitsWarParentHint
+            },
+            id: "benefits-war-parent-yes",
+            name: "benefits-war-parent-yes",
+            classes: "govuk-input--width-1}00",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set benefitsWarOrphansPensionHint %}
+        <p class=govuk-hint>Include:</p>
+        <ul class="govuk-hint govuk-list govuk-list--bullet">
+          <li>whether it is in payment (If claiming it (not yet awarded) or getting it (in payment))</li>
+          <li>the amount being paid</li>
+          <li>the date the benefit was awarded</li>
+          <li>how often it is paid</li>
+          <li>then it is paid (Payday)</li>
+        </ul>
+        {% endset %}
+
+        {% set benefitsWarOrphansPensionYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "3"
+            },
+            hint:{
+              html: benefitsWarOrphansPensionHint
+            },
+            id: "benefits-war-orphans-pension-yes",
+            name: "benefits-war-orphans-pension-yes",
+            classes: "govuk-input--width-1}00",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set benefitsGuaranteedIncomePaymentsHint %}
+        <p class=govuk-hint>Include:</p>
+        <ul class="govuk-hint govuk-list govuk-list--bullet">
+          <li>whether it is in payment (If claiming it (not yet awarded) or getting it (in payment))</li>
+          <li>the amount being paid</li>
+          <li>the date the benefit was awarded</li>
+          <li>how often it is paid</li>
+          <li>then it is paid (Payday)</li>
+        </ul>
+        {% endset %}
+
+        {% set benefitsGuaranteedIncomePaymentsYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "4"
+            },
+            hint:{
+              html: benefitsGuaranteedIncomePaymentsHint
+            },
+            id: "benefits-guaranteed-income-payments-yes",
+            name: "benefits-guaranteed-income-payments-yes",
+            classes: "govuk-input--width-1}00",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+
+        <!----------------------------------------------------- CHECKBOXES z------------------------------------------------------------------------>
+
+        {{ govukCheckboxes({
+          name: "benefits-war-and-veterans-yes",
+          fieldset: {
+            legend: {
+              text: "Benefits related  to war or service in the armed forces",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: [
+          {
+              name: 'benefits-adult-dependent-pension-yn',
+              value: "benefits-adult-dependent-pension-yn",
+              html: "Adult Dependent Pension (Veterans Agency)",
+              conditional: {
+                html: benefitsAdultDependentPensionYes
+              }
+            },
+            {
+                name: 'benefits-war-parent-yn',
+                value: "benefits-war-parent-yn",
+                html: "War Parent’s Pension (Veterans Agency)",
+                conditional: {
+                  html: benefitsWarParentYes
+                }
+              },
+              {
+                  name: 'benefits-war-orphans-pension-yn',
+                  value: "benefits-war-orphans-pension-yn",
+                  html: "War Orphan's Pension (Veterans Agency)",
+                  conditional: {
+                    html: benefitsWarOrphansPensionYes
+                  }
+                },
+                {
+                  name: 'benefits-guaranteed-income-payments-yn',
+                  value: "benefits-guaranteed-income-payments-yn",
+                  html: "Guaranteed Income Payments from the Armed Forces Comp Scheme (Veterans Agency)",
+                  conditional: {
+                    html: benefitsGuaranteedIncomePaymentsYes
+                  }
+                }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}

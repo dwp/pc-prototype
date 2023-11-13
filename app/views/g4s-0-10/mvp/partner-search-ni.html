@@ -1,0 +1,102 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  claimant-national-insurance - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="housing-service-charge" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">I'm going to see if I can find your partner's details on our system using their name and date of birth </h1>
+
+      <p class="govuk-!-margin-bottom-2">Partner name: <strong>{{ data['partner-full-name'] }}</strong></p>
+      <p class="govuk-!-margin-bottom-4">Partner date of birth: <strong>{{ data['partner-dob-day'] + ' ' + (data['partner-dob-month'] | getMonth) + ' ' + data['partner-dob-year']}}</strong></p>
+
+
+
+      {% set dynamicH1 %}
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Did you find the partner's National Insurance number?</h2>
+      {% endset -%}
+
+
+
+      {% set pensionHowMuch %}
+
+
+      {% set dynamicH2 %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+        Enter partner's National Insurance number
+      </h2>
+
+      {% endset -%}
+
+
+      {{ govukInput({
+        label: {
+          html: dynamicH2
+        },
+          hint: {
+            html: "For example, ‘QQ 12 34 56 C’. [USE ALL CAPS, NO SPACES]"
+          },
+        id: "nino",
+        name: "nino",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+        value: data["nino"]
+      }) }}
+
+
+      {% endset %}
+
+
+            {{ govukRadios({
+              idPrefix: "partner-national-insurance",
+              name: "partner-national-insurance",
+              fieldset: {
+                legend: {
+                  html: dynamicH1,
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              classes: "govuk-radios",
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (data["partner-national-insurance"] == "Yes"),
+                  conditional: {
+                    html: pensionHowMuch
+                  }
+                },
+                {
+                  value: "None",
+                  text: "No",
+                  checked: (data["partner-national-insurance"] == "None")
+                }
+              ]
+            }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

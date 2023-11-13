@@ -1,0 +1,61 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Do any children or qualifying young people live with you? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="children-check-yn-router" method="post" class="form">
+      
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {{ govukRadios({
+        idPrefix: "children-check-yn",
+        name: "children-check-yn",
+        fieldset: {
+          legend: {
+            text: "Do any children or qualifying young people live with you?",
+            hint: " ",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          html: "<p class=\"hint\">Children are under age 16. A qualifying young person is aged 16 to 19 and in non-advanced full-time education or training."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["children-check-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["children-check-yn"] == "No")
+          }
+        ]
+      }) }}
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

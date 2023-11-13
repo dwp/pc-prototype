@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any cash? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="savings" method="post" class="form">
+      {% set cashAmount %}
+        {{ govukInput({
+          id: "cash-amount",
+          name: "cash-amount",
+          classes: "govuk-input--width-10",
+          label: {
+            text: "How much cash do you have?"
+          },
+          value: data["cash-amount"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "has-cash",
+        name: "has-cash",
+        fieldset: {
+          legend: {
+            text: "Do you have any cash?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: cashAmount
+            },
+            checked: (data["has-cash"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-cash"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

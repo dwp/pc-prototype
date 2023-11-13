@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="who-is-caller-router" method="post">
+
+        {{ govukRadios({
+          idPrefix: "who-is-caller",
+          name: "who-is-caller",
+          fieldset: {
+            legend: {
+              text: "Who are you claiming Pension Credit for? ",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yourself",
+              text: "Yourself",
+              checked: data['who-is-caller'] == "Myself"
+            },
+            {
+              divider: "or"
+            },
+            {
+            value: "Power of attorney",
+            text: "Someone you have power of attorney for",
+            checked: data['who-is-caller'] == "Power of attorney"
+          },
+          {
+            value: "Appointee",
+            text: "Someone you act as an appointee for",
+            checked: data['who-is-caller'] == "Appointee"
+          },
+          {
+            value: "Charity",
+            text: "Someone who has asked your charity for help",
+            checked: data['who-is-caller'] == "Charity"
+          },
+          {
+            value: "Family member",
+            text: "A family member",
+            checked: data['who-is-caller'] == "Family member"
+          },
+          {
+            value: "Friend",
+            text: "A friend",
+            checked: data['who-is-caller'] == "Friend"
+          },
+          {
+            value: "SomeoneElse",
+            text: "Someone else",
+            checked: data['who-is-caller'] == "SomeoneElse"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

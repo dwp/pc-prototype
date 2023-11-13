@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="msic-missing-account" method="post">
+
+        {{ govukRadios({
+          idPrefix: "msic-missing-account",
+          name: "msic-missing-account",
+          fieldset: {
+            legend: {
+              text: "What would you like to add?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+          {
+            value: "Other type of account",
+            text: "Other type of account",
+            checked: data['msic-missing-account'] == "Other type of account"
+          },
+          {
+            divider: "or"
+          },
+          {
+              value: "Current account",
+              text: "Current account",
+              checked: data['msic-missing-account'] == "Current account"
+            },
+            {
+            value: "Savings account",
+            text: "Savings account",
+            checked: data['msic-missing-account'] == "Savings account"
+          },
+          {
+            value: "Post office",
+            text: "Post office",
+            checked: data['msic-missing-account'] == "Post office"
+          },
+          {
+            value: "Premium bonds",
+            text: "Premium bonds",
+            checked: data['msic-missing-account'] == "Premium bonds"
+          },
+          {
+            value: "ISAs, TESSA, TOISAs and PEPs",
+            text: "ISAs, TESSA, TOISAs and PEPs",
+            checked: data['msic-missing-account'] == "ISA"
+          },
+          {
+            value: "Capital bonds",
+            text: "Capital bonds",
+            checked: data['msic-missing-account'] == "Capital bonds"
+          },
+          {
+            value: "Shares",
+            text: "Shares",
+            checked: data['msic-missing-account'] == "Shares"
+          },
+          {
+            value: "Unit trust",
+            text: "Unit trust",
+            checked: data['msic-missing-account'] == "Unit trust"
+          },
+          {
+            value: "Cash held at home",
+            text: "Cash held at home",
+            checked: data['msic-missing-account'] == "Cash held at home"
+          },
+          {
+            value: "Cash held aboard",
+            text: "Cash held aboard",
+            checked: data['msic-missing-account'] == "Cash held aboard"
+          },
+          {
+            value: "Cash in a lump sum",
+            text: "Cash in a lump sum",
+            checked: data['msic-missing-account'] == "Cash in a lump sum"
+          },
+          {
+            value: "Property or land",
+            text: "Property or land",
+            checked: data['notepad-otherRes'] == "Property or land"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

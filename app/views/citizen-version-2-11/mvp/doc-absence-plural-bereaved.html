@@ -1,0 +1,71 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="doc-absence-plural-bereaved-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <!------------Hint LEGEND------------>
+        {% set hintLegend %}
+
+        {% endset %}
+      <!------------Legend--------------->
+
+
+      {{ govukRadios({
+        idPrefix: "doc-absence-plural-bereaved",
+        name: "doc-absence-plural-bereaved",
+        fieldset: {
+          legend: {
+            text: "How many periods of more than 4 weeks have you spent outside the UK since 23 July 2021?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          html: hintLegend
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "No",
+            text: "One",
+            checked: (data["doc-absence-plural-bereaved"] == "No")
+          },
+          {
+            value: "Yes",
+            text: "More than one",
+            checked: (data["doc-absence-plural-bereaved"] == "Yes")
+          }
+        ]
+      }) }}
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = 'Prove your identity to continue' %}
+
+{% set signInAndVerifyYourDetailsHint %}
+
+<p class="govuk-hint">
+    You'll have an account if you've already proved your identity online through any of the services below:
+</p>
+<ul class="govuk-list govuk-list--bullet govuk-hint">
+    <li>Access to work</li>
+    <li>Repay and manage the benefit money you owe</li>
+</ul>
+{% endset%}
+
+
+
+{% block pageTitle %}
+  {{pageHeading}} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+            <p class="govuk-body govuk-!-margin-bottom-6">
+                You'll need an account to prove your identity.
+            </p>
+
+
+            <form action="/pre-oidv/iteration-1/routes" method="post" novalidate>
+                {{ govukRadios({
+                name: "pre-oidv-iteration-1",
+                fieldset: {
+                    legend: {
+                        text: "What do you want to do?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--m"
+                    }
+                },
+                items: [
+                    {
+                        value: "create-an-account",
+                        text: "Create an account"
+                    },
+                    {
+                        value: "sign-in-and-verify-your-details",
+                        text: "Sign in and verify your details",
+                        hint: {
+                            html: signInAndVerifyYourDetailsHint
+                        }
+                    }
+                ]
+                }) }}
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

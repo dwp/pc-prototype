@@ -1,0 +1,50 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Post Pension Credit index - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+<!----------------------------------------------------------------------------------->
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="index-hb-cya" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+
+      <!----------------------------------------------------------------------------------->
+
+    <div class="govuk-!-margin-bottom-8">
+      <h1 class="govuk-heading-xl">Start a Housing Benefit claim</h1>
+      <p class="govuk-body">@james G: can we pull the questions for HB</p>
+      <!-- <p class="govuk-body">Complete the <a href="Pauls URL">Housing Benefit claim (opens in a new window or tab).<a/></p> -->
+    </div>
+
+      <!----------------------------------------------------------------------------------->
+
+
+
+</div> <!--Agent end-->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

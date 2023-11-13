@@ -1,0 +1,83 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="help-teleclaim-router" method="post" class="form">
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Would you like to know about other help?</h1>
+
+      <p class="govuk-body "> This could be more information about:</p>
+      <ul class="govuk-list govuk-list govuk-list--bullet govuk-!-margin-bottom-7">
+        <li>local tax discounts</li>
+        <li>heating your home</li>
+        <li>pensions</li>
+        <li>health</li>
+        <li>free bus passes</li>
+      </ul>
+
+
+      {{ govukRadios({
+        idPrefix: "help-teleclaim",
+        name: "help-teleclaim",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["help-teleclaim"] == "yes")
+
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["qd-changes-start"] == "no")
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

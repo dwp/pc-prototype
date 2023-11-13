@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-current-account-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-has-current-account-yn",
+        name: "msic-has-current-account-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have any current accounts with a bank or buildings society?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\">
+                      @pete, See Benwell insights, https://docs.google.com/document/d/1IeSQHte6HrsWN3ZN3naBPI56OyWQBCZQacSYviAtGT8/edit?usp=sharing <br><br>These are typically accounts you use everyday, Money goes in and out
+                      </p><br>"
+            },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-has-current-account"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-has-current-account"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

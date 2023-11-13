@@ -1,0 +1,51 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-state-pension" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>You are about to process a claim. Information will be pulled from the application to perform a calculation in the background</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Mel Gibson</strong></h1>
+
+
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National insurance number: <strong>NA 11 22 33 c</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Date of birth: <strong>01 May 1940</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Received: <strong>02 May 2020</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Total capital: <strong>£1,00.00</strong></p>
+
+
+            <p class="govuk-body govuk-!-margin-top-0"><a href="/citizen-version-2-4/mvp/final-cya">See full application submitted by Mel Gibson</a></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-6",
+        text: "Continue"
+      }) }}
+
+      <p class="govuk-body govuk-!-margin-top-4"><a href="process-miss-match">What if they didn't match our records</a></p>
+
+</form>
+    </div>
+  </div>
+{% endblock %}

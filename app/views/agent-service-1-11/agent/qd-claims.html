@@ -1,0 +1,96 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "qd-search"
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-summary" method="post" class="form">
+
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">More than one claim found</h1>
+
+
+
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "qd-claims",
+          name: "qd-claims",
+          fieldset: {
+            legend: {
+              text: "Select the claim you need to access",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "one",
+              text: "Application to be considered from 02 October 2021",
+              hint: {
+                html: "Submitted on 02 January 2022 at 2:11pm."
+              },
+              checked: (data["qd-claims"] == "record")
+            },
+            {
+              value: "two",
+              text: "Application to be considered from 02 October 2021",
+              hint: {
+                html: "Submitted on 02 January 2022 at 8:00am."
+              },
+              checked: (data["qd-claims"] == "record")
+            },
+            {
+              value: "three",
+              text: "Application to be considered from 05 September 2021",
+              hint: {
+                html: "Submitted on 05 September 2021 at 11:35am."
+              },
+              checked: (data["qd-claims"] == "exit")
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

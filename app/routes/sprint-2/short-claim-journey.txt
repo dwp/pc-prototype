@@ -1,0 +1,51 @@
+
+                          About you
+        Not self employed  /  |  \  self employed
+                          | NRTA* |
+                          |       |
+                          |     Notify CAS
+                       Postcode
+                          |
+                    Address Choice
+                          |
+                     Home ownership
+                          /\
+                     Own |  \ Rent, Care home, Neither
+                         |   \
+                 Ground Rent  \
+                         |     \
+              Service Charges   |
+                         |     /
+                    Has Partner
+                        /\
+                   Yes |  \ No
+                       |   \
+            About Partner   |
+    self employed /\ NSE†   /
+                 |  \      /
+         Notify CAS  \    /
+                      \  /
+                Non state pensions
+                   Yes /\ No
+                      /  \
+                     /    \
+            About Pension  |
+                     \    /
+                      \  /
+                  Money you have
+            Over £10k /\ Under £10k
+                     /  \
+                    /    \
+                 Capital  \
+                   |       |
+                    \     /
+                     \   /
+                      \ /
+             Second home other land
+                       |
+                Check your answers
+                       |
+                    Done! 🎉
+
+* No right to abode
+† Not self employed

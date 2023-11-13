@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hospital-yn-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% set today = '' | formatDate %}
+
+      {{ govukRadios({
+        idPrefix: "hospital-yn",
+        name: "hospital-yn",
+        fieldset: {
+          legend: {
+            text: "Have you spent any time in hospital since 30 July 2019?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["hospital-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["hospital-yn"] == "No")
+          }
+        ]
+      }) }}
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

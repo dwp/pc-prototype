@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-manual-eed-daf-yn-router" method="post">
+
+        {% set noDate %}
+          {{ govukDateInput({
+            id: "claim-date-manual-eed-daf-yn-alternate-date",
+            namePrefix: "claim-date-manual-eed-daf-yn-alternate-date",
+            fieldset: {
+              legend: {
+                text: "What is the new date?"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["alternate-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-manual-eed-daf-yn",
+          name: "claim-date-manual-eed-daf-yn",
+          fieldset: {
+            legend: {
+              text: "Are you happy to start claim from Monday, 16 April 2019",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option."
+          },
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["claim-date-manual-eed-daf-yn"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["claim-date-manual-eed-daf-yn"] == "No"),
+              conditional: {
+                html: noDate
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

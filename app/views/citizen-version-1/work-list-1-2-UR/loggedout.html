@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You signed out - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="case-load" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        You have been signed out
+      </h1>
+
+      <p class="govuk-body govuk-!-font-size-24  govuk-!-margin-top-4"><a href="login">Sign in</a></p>
+
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

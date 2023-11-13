@@ -1,0 +1,87 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  del-auth-who-made-claim-router? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-who-made-claim-router" method="post" class="form">
+
+
+      {{ govukRadios({
+        idPrefix: "del-auth-who-made-claim",
+        name: "del-auth-who-made-claim",
+        fieldset: {
+          legend: {
+            text: "Who are you claiming Pension Credit for?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+        {
+        value: "Yourself",
+        text: "Yourself",
+        checked: data['del-auth-who-made-claim'] == "Yourself"
+      },
+      {
+          value: "Power of attorney",
+          text: "Power of attorney",
+            hint: {
+              text: "You have power of attorney for the claimant"
+            },
+          checked: data['del-auth-who-made-claim'] == "Power of attorney"
+        },
+        {
+          value: "Appointee",
+          text: "Appointee",
+          checked: data['del-auth-who-made-claim'] == "Appointee"
+        },
+        {
+          value: "Personal acting body",
+          text: "Personal acting body",
+          checked: data['del-auth-who-made-claim'] == "Personal Acting Body"
+        },
+        {
+          value: "Corporate acting body",
+          text: "Corporate acting body",
+          checked: data['del-auth-who-made-claim'] == "Corporate Acting Body"
+        },
+        {
+            value: "Power of attorney",
+            text: "Charity",
+              hint: {
+                text: "You work for a charity or organisation that is helping  Mary Smith make their application"
+              },
+            checked: data['del-auth-who-made-claim'] == "Power of attorney"
+          }
+        ]
+      }) }}
+
+<!--
+      ,
+      checked: data['del-auth-who-made-claim'] == "Charity",
+      conditional: {
+        html: helpIDCharity
+      } -->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

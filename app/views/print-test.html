@@ -1,0 +1,140 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Print tests
+{% endblock %}
+
+{% block content %}
+  <style>
+    /* This is set to 0 globally for some reason, setting it back for this example */
+    .govuk-summary-list {
+      margin-bottom: 30px !important;
+    }
+
+    @media print {
+      .dont-print,
+      .govuk-header__logo,
+      .govuk-footer,
+      .govuk-summary-list__actions {
+        display: none;
+      }
+      .govuk-header__container {
+        border: 0;
+      }
+
+      /* Use desktop layout for summary list */
+      .govuk-summary-list {
+        display:table;
+        width:100%;
+        table-layout:fixed;
+        margin-bottom:30px
+      }
+      .govuk-summary-list__row {
+        display:table-row
+      }
+      .govuk-summary-list__key,
+      .govuk-summary-list__value {
+        display:table-cell;
+        padding-right:20px;
+        padding-top:10px;
+        padding-bottom:10px;
+        border-bottom:1px solid #b1b4b6
+      }
+      .govuk-summary-list__key {
+        width:30%
+      }
+      .govuk-summary-list__value {
+        width:50%
+      }
+      .govuk-summary-list__value:last-child {
+        width:70%
+      }
+    }
+  </style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 1978"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "date of birth"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact information"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact information"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "contact details"
+              }
+            ]
+          }
+        }
+      ]
+      }) }}
+
+      <div class="dont-print">
+        <h2 class="govuk-heading-m">Extra content</h2>
+        <p class="govuk-body">
+          This won't be printed.
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

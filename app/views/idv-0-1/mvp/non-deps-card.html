@@ -1,0 +1,94 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="xxx" method="post" class="form">
+
+      <section class="app-summary-card govuk-!-margin-bottom-6">
+
+        <header class="app-summary-card__header">
+
+          <h2 class="app-summary-card__title">
+            {{data['non-deps-member-full-name']}}
+          </h2>
+
+            <div class="app-summary-card__actions">
+
+                <ul class="app-summary-card__actions-list">
+
+                    <li class="app-summary-card__actions-list-item">
+                      <a class="govuk-link" href="#">
+                            Delete choice<span class="govuk-visually-hidden"> (The University of Bristol)</span>
+                            </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </header>
+
+
+        <div class="app-summary-card__body">
+
+
+      <dl class="govuk-summary-list">
+
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Course
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">English (3DMD)</a><br>PGCE with QTS full time
+              </dd>
+
+              <a class="govuk-summary-list__actions" href="#">
+                    Change<span class="govuk-visually-hidden"> </span>
+                    </a>
+
+            </div>
+
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Location
+              </dt>
+              <dd class="govuk-summary-list__value">
+                School name
+      Road, City, SW1 1AA
+              </dd>
+
+              <a class="govuk-summary-list__actions" href="#">
+                    Change<span class="govuk-visually-hidden"> </span>
+                    </a>
+            </div>
+      </dl>
+        </div>
+      </section>
+
+
+
+
+
+
+    </form>
+
+
+
+
+  </div>
+</div>
+{% endblock %}

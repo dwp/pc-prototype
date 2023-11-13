@@ -1,0 +1,57 @@
+{% extends "layout-assisted-digital-removed.html" %}
+
+{% block pageTitle %}
+  Error: What is your National Insurance number? -
+        {{ data['service-name']  }}
+    - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="date-of-birth" method="post">
+                {{ govukErrorSummary({
+                  "titleText": "There is a problem",
+                  "errorList": [
+                    {
+                      "text": "Enter your National Insurance number",
+                      "href": "#nino"
+                    }
+                  ]
+                }) }}
+                {{ govukFieldset({
+                    legend: {
+                        html: "What is your National Insurance number?",
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+                {{ govukInput({
+                label: {
+                    classes: "govuk-label--l"
+                },
+                hint: {
+                    text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+                },
+                errorMessage: {
+                  text: "Enter your National Insurance number"
+                },
+                classes: "govuk-input--width-10",
+                    id: "nino",
+                    name: "nino"
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

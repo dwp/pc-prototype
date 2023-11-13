@@ -1,0 +1,79 @@
+{% extends "layout-assisted-digital-removed.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['eu-filter'] === 'HO' %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You must apply to the EU Settlement Scheme before you apply for Pension Credit</h1>
+      <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-list govuk-!-margin-bottom-2">EEA and Swiss nationals need to have an EU Settlement Scheme status</h2>
+      <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">The United Kingdom (UK) has left the European Union (EU). If you are a European Economic Area or Swiss national, you and your family members need to get a UK immigration status to carry on living in the UK after 30 June 2021.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You and your family need a status even if you have already been issued with a permanent residence document by the Home Office, or have been living in the UK for a long time. You need to apply for an immigration status to be eligible for benefits. This includes new and existing claims to benefits.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"> It is free to apply for a UK immigration status. Irish nationals and those with indefinite leave to remain in the UK do not need to apply.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You can find more information and apply to the <a href="gov.uk/eusettlementscheme">EU Settlement Scheme</a> or call 0300 123 7379.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You will need to apply for Pension Credit after you have applied for an EU Settlement Scheme status.</p>
+
+
+      {% elif data['uk-residence-date'] === 'No' and data["partner-check-yn2"] == "No" %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You must apply to the EU Settlement Scheme before you apply for Pension Credit</h1>
+      <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-list govuk-!-margin-bottom-2">EEA and Swiss nationals need to have an EU Settlement Scheme status</h2>
+      <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">The United Kingdom (UK) has left the European Union (EU). If you are a European Economic Area or Swiss national, you and your family members need to get a UK immigration status to carry on living in the UK after 30 June 2021.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You and your family need a status even if you have already been issued with a permanent residence document by the Home Office, or have been living in the UK for a long time. You need to apply for an immigration status to be eligible for benefits. This includes new and existing claims to benefits.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"> It is free to apply for a UK immigration status. Irish nationals and those with indefinite leave to remain in the UK do not need to apply.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You can find more information and apply to the <a href="gov.uk/eusettlementscheme">EU Settlement Scheme</a> or call 0300 123 7379.</p>
+       <p class ="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You will need to apply for Pension Credit after you have applied for an EU Settlement Scheme status.</p>
+
+      {% else %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You will need to call us to apply for Pension Credit</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">We will need to ask you some more questions about your immigration status in the UK.</p>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">Pension Credit claim line</h2>
+
+      <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+      {% include "layout-assisted-digitalB-content.html" %}
+
+
+ 
+
+        <!---- UK ---->{% else %}
+        {% include "layout-assisted-digitalB-content.html" %}
+
+        <!---- COUNTRY END ---->{% endif %}
+      {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+      {% include "citizen-version-2-4/mvp/survey.html" %}
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

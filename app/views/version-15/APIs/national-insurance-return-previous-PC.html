@@ -1,0 +1,84 @@
+{% extends "layout-id-bar-temp.html" %}
+
+{% block pageTitle %}
+  PC relationship or in payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+        <form action="national-insurance-return-previous-PC-router" method="post" class="form">
+
+        <div class="govuk-panel--agent">
+
+        <!------------HEADLINE------------>
+        <!-- {% if data["nino"] == "NN 11 22 33 R" %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Adviser: The claimant has an existing Pension Credit claim</h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Discuss the reason that a claim already exists for the claimant. </p>
+        {% endif %} -->
+
+        {% if data["nino"] == "NN 11 22 33 T" %}
+        {% endif %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Adviser: The claimant is part of a partner's existing Pension Credit claim</h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Discuss the reason that the claimant is part of a partner's existing claim. </p>
+
+
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Decide if there is a valid reason to take a new claim. For example separation, bereavement or other changes in the claimant's circumstances.</p>
+
+<br>
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "national-insurance-return-previous-PC",
+          name: "national-insurance-return-previous-PC",
+          fieldset: {
+            legend: {
+              html: "Do you want to continue taking this claim?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            html: ""
+          },
+          items: [
+          {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["national-insurance-return-previous-PC"] == "Yes")
+            },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["national-insurance-return-previous-PC"] == "No")
+              }
+            ]
+          }) }}
+
+          </div>
+
+          {{ govukButton({
+            classes: "govuk-!-margin-bottom-0",
+            text: "Continue"
+          }) }}
+
+
+
+
+      </form>
+      <!-- <p class="govuk-body govuk-!-padding-top-8"><a href="eject-error-reason">Save claim and exit</a></p> -->
+
+
+    </div>
+  </div>
+{% endblock %}

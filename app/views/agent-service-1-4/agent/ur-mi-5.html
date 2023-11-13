@@ -1,0 +1,87 @@
+
+
+
+
+            {% extends "layout-ur-2022.html" %}
+
+            {% block pageTitle %}
+              PC: Name Name
+
+            {% endblock %}
+
+            {% block header %}
+             {% include "explore-header-ur.html" %}
+            {% endblock %}
+
+            {% block content %}
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-three-quarters">
+                <form action="login-router" method="post" class="form">
+
+                  <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Service statistics</h1>
+                  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p> -->
+
+                </div>
+              </div>
+
+
+              <!---------------------------------------->
+
+              <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+                <!-- {% include "agent-service-1-4/agent/mi-stats.html" %} -->
+
+              </div>
+
+
+
+              <!---------------------------------------->
+
+              <div class="govuk-grid-row govuk-!-margin-bottom-8">
+
+
+
+                <div class="govuk-grid-column-one-third">
+
+
+                  {% include "agent-service-1-4/agent/mi-menu.html" %}
+                </div>
+
+
+                  <div class="govuk-grid-column-two-thrids">
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-2">Combinations</h3>
+                    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Total number of claims pushed back to BAU by a combination of subtasks since 9 May 2022.</p>
+
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Combination 1</h3>
+                    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">Name, telephone and address</h3>
+                    <h3 class="govuk-body govuk-!-font-size-80 govuk-!-margin-bottom-0">200</h3>
+                  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Combination 2</h3>
+                      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">State Pension (most recent and backdated) and interest in benefits</h3>
+                      <h3 class="govuk-body govuk-!-font-size-80 govuk-!-margin-bottom-0">100</h3>
+                    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Combination 3</h3>
+                    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">Open or closed interest in benefits, most recent State Pension and backdated State Pension</h3>
+
+                    <h3 class="govuk-body govuk-!-font-size-80 govuk-!-margin-bottom-0">74</h3>
+                  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-1">Combination 4</h3>
+                  <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">Most recent State Pension and backdated State Pension</h3>
+                  <h3 class="govuk-body govuk-!-font-size-80 govuk-!-margin-bottom-0">20</h3>
+                <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+
+
+
+                    </div>
+
+
+                  </div>
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+            {% endblock %}

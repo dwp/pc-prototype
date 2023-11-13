@@ -1,0 +1,64 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="system-scenarios-what-happens-next-router" method="post" class="form">
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+
+           {{ govukRadios({
+             idPrefix: "system-scenarios-what-happens-next",
+             name: "system-scenarios-what-happens-next",
+             fieldset: {
+               legend: {
+                 html: "Why completed the claim?",
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--xl"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "applicant",
+                 text: "Applicant [You / Your",
+                 checked: (data["system-scenarios-what-happens-next"] == "applicant")
+               },
+               {
+                 value: "poa",
+                 text: "POA [You / The applicant]",
+                 checked: (data["system-scenarios-what-happens-next"] == "poa")
+               },
+               {
+                 value: "someone-else",
+                 text: "Someone else [The applicant]",
+                 checked: (data["system-scenarios-what-happens-next"] == "someone-else")
+               }
+             ]
+           }) }}
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

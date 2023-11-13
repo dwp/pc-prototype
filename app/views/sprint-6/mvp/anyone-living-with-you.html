@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% if data["has-partner"] == "yes" %}
+  {% set legend = "Other than you and your partner, does anyone else who is over 18 live in your home?" %}
+{% else %}
+  {% set legend = "Does anyone else live in your home?" %}
+{% endif %}
+
+{% block pageTitle %}
+  {{legend}} - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="anyone-living-with-you-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "people-in-home",
+        name: "people-in-home",
+        fieldset: {
+          legend: {
+            text: legend,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Do not include anyone who is in further education"
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["people-in-home"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["people-in-home"] == "No")
+          }
+        ]
+      }) }}
+
+      <input type="hidden" name="household-complete" value="in-progress"/>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

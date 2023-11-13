@@ -1,0 +1,36 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-11/mvp/introduction">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Continue with the call using your Standard Work Instructions</h1>
+
+
+      {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-button"
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

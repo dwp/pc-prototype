@@ -1,0 +1,66 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  claimant-sight-impaired - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-sight-impaired-doc-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% set legendH1 %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Was your partner registered blind or severely sight impaired on or before {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}?</h1>
+      {% endset -%}
+
+
+
+
+
+      {{ govukRadios({
+        idPrefix: "partner-sight-impaired-doc",
+        name: "partner-sight-impaired-doc",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["partner-sight-impaired-doc"] == "Yes"),
+            conditional: {
+              html: partnerBlindDate
+            }
+              },
+
+          {
+            value: "No",
+            text: "No",
+            checked: (data["partner-sight-impaired-doc"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      {% if data["ur-search"] == "P1" %}
+
+        {% if data["ur-p1-record-contact-telephone-LL"]  %}
+
+        {% set html %}
+          <p class="govuk-body">Contact telephone numbers have been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+      {% if data["ur-search"] == "P2" %}
+
+        {% if data["ur-p2-record-contact-telephone-LL"]  %}
+
+        {% set html %}
+          <p class="govuk-body">Contact telephone numbers have been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+
+
+      {% if data["ur-search"] == "P2" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Julianne Moore</h1>
+      {% else %}                        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% endif %}
+      
+      {% if data["search"] or data["ur-search"] %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search"] or data ["ur-search"]}}</p>
+      {% else %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+      {% endif %}
+    </div>
+  </div>
+
+
+  {% include "agent-service-1/agent/navigation-3.html" %}
+
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-6">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-2">Address</h3>
+
+  </div>
+
+      <div class="govuk-grid-column-one-half">
+
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Building number:</p>
+
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">30</p>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Street name:</p>
+
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Ender road</p>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Town/city:</p>
+
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">County</p>
+
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Postcode:</p>
+
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">SE1 1AA</p>
+          </div>
+        </div>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Change</a></p>
+
+
+      </div>
+
+    </form>
+{% endblock %}

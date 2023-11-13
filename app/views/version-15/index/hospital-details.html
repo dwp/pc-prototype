@@ -1,0 +1,235 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Hospital admission details
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="other-income-overview" method="post">
+        <h1 class="govuk-heading-xl">Details of hospital admissions since {{data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year']}}</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Details of periods spent in hospital, including:</p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            the dates they were admitted
+          </li>
+          <li>
+            the dates they were discharged
+          </li>
+          <li>
+            whether the stays were funded by the NHS or privately
+          </li>
+          <li>
+            the names of the hospitals
+          </li>
+          <li>
+            the cities or locations
+          </li>
+        </ul>
+
+{{ govukTextarea({
+  name: "hospital-details-detail",
+  id: "hospital-details-detail",
+  label: {
+    text: ""
+  },
+  hint: {
+    text: ""
+  }
+}) }}
+
+<!--
+
+        {{ govukDateInput({
+          id: "hospital-details-admission-date",
+          namePrefix: "hospital-details-admission-date",
+          fieldset: {
+            legend: {
+              text: "Date they were admitted?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 12 2018."
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["hospital-details-admission-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["hospital-details-admission-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["hospital-details-admission-date-year"]
+            }
+          ]
+        }) }}
+
+
+        {{ govukDateInput({
+          id: "hospital-details-discharge-date",
+          namePrefix: "hospital-details-discharge-date",
+          fieldset: {
+            legend: {
+              text: "date they were discharged?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 12 2018."
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["hospital-details-discharge-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["hospital-details-discharge-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["hospital-details-discharge-date-year"]
+            }
+          ]
+        }) }}
+
+        <br><br>
+
+        {% set dischargeDate %}
+          {{ govukDateInput({
+            id: "hospital-details-discharge-date",
+            namePrefix: "hospital-details-discharge-date",
+            fieldset: {
+              legend: {
+                text: "What date do you expect to be discharged?"
+              }
+            },
+            hint: {
+              text: "For example, 31 12 2018."
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["hospital-details-discharge-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["hospital-details-discharge-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["hospital-details-discharge-date-year"]
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {% set hospitalFunding %}
+        {{ govukTextarea({
+          name: "hospital-details-funding-more-detail",
+          id: "hospital-details-funding-more-detail",
+          label: {
+            text: "Method?"
+          },
+          hint: {
+            text: "XXX"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "hospital-details-funding",
+          name: "hospital-details-funding",
+          fieldset: {
+            legend: {
+              text: "How is your stay in the nursing home or care home paid for?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+
+          items: [
+          {
+            value: "NHS",
+            text: "NHS",
+            checked: (data["hospital-details-funding"] == "NHS")
+          },
+          {
+            value: "Private",
+            text: "Private",
+            checked: (data["hospital-details-funding"] == "Private")
+          },
+            {
+              value: "Other funding",
+              text: "Other funding",
+              checked: (data["hospital-details-funding"] == "Other funding"),
+              conditional: {
+                html: hospitalFunding
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Name of the hospital"
+          },
+          id: "hospital-name",
+          name: "hospital-name",
+          classes: "govuk-input--width-30"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "City or location"
+          },
+          id: "hospital-city",
+          name: "hospital-city",
+          classes: "govuk-input--width-30"
+        }) }}
+
+-->
+
+
+
+
+<!-- Hidden input to set task to complete on task-list -->
+<input type="hidden" name="notepad-hospital-dates" value="true"/>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

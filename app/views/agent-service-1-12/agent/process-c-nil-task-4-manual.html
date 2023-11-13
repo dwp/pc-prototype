@@ -1,0 +1,47 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="ur-home" method="post" class="form">
+        <input type="hidden" name="outcome-nil" value="false"/>
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">You must update this applicant’s information with a CIS500</p>
+
+        <p class="govuk-body-m govuk-!-margin-bottom-2">Before you confirm and notify the applicant that they're not currently entitled to Pension Credit, you must complete a CIS500 to update this applicant's:</p>
+        <ul class="govuk-body-m govuk-list govuk-list--bullet">
+          <li>address to [address applicant has provided] <strong></strong></li>
+          <li>telephone number to [telephone number applicant has provided]<strong></strong></li>
+        </ul>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="mr-cis-500" class="govuk-link" rel="noreferrer noopener">I am a CIS500</a></p>
+
+
+    </div>
+  </div>
+
+
+  
+
+    {{ govukButton({
+      text: "Confirm and notify",
+      classes: "govuk-!-margin-top-4"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

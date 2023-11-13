@@ -1,0 +1,90 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+{% block bodyStart %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+<form method="POST">
+  {{ govukCookieBanner({
+    ariaLabel: "Cookies on [name of service]",
+    messages: [
+      {
+        html: acceptHtml,
+        actions: [
+        {
+          text: "End call",
+          classes: "govuk-button--warning",
+          href: "#",
+          type: "button"
+        }
+        ]
+      }
+    ]
+  }) }}
+</form>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-phone-help" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search-query"]}}</p>
+
+
+    {{ govukCheckboxes({
+      idPrefix: "waste",
+      name: "waste",
+      fieldset: {
+        legend: {
+          text: "Select query types",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "Language",
+          text: "Query regarding language in letter in letter"
+        },
+        {
+          value: "Review",
+          text: "New information or customer error"
+        },
+        {
+          value: "Automated processing",
+          text: "Automated processing"
+        },
+        {
+          value: "Contest",
+          text: "Contest"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <br> <a href="query-phone-security">...</a>
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

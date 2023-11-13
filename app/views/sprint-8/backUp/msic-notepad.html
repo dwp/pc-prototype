@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Money, savings and capital
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="msic-all-money-accounts-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-l">Information about money the claimant has.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Nick and dave details:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+        <li>Nick and dave details</li>
+        <li>Nick and dave details</li>
+      </ul>
+
+
+      {{ govukTextarea({
+        name: "msic-all-money-detail",
+        id: "msic-all-money-detail",
+
+        value: data["msic-all-money-detail"]
+      }) }}
+
+
+
+
+
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

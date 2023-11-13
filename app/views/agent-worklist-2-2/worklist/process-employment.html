@@ -1,0 +1,158 @@
+{% extends "layout-work-list-id-bar.html" %}
+
+{% block pageTitle %}
+  Selected claim - empoloyment Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-outcome" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          How much does Mel get a week from employment?
+        </h1>
+
+
+        {% set empoloymentDetails %}
+
+        {% set LegendName %}
+        <strong>Empoloyment Name<strong>
+        {% endset -%}
+
+        {{ govukInput({
+          label: {
+            html: LegendName
+          },
+          hint: {
+            text: "For example, £100.00 or £1,000.00"
+          },
+          id: "money-total-then",
+          name: "money-total-then",
+          classes: "govuk-input--width-20",
+          value: data["money-total-then"]
+        }) }}
+
+        <br>
+
+        {% set LegendAmount %}
+        <strong>Empoloyment amount weekly<strong>
+        {% endset -%}
+
+              {{ govukInput({
+                label: {
+                  html: LegendAmount
+                },
+                hint: {
+                  text: "For example, £100.00 or £1,000.00"
+                },
+                id: "money-total-then",
+                name: "money-total-then",
+                classes: "govuk-input--width-20",
+                value: data["money-total-then"]
+              }) }}
+
+        {% endset %}
+
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment A",
+            html: "Empoloyment A",
+            conditional: {
+              html: empoloymentDetails
+            }
+          },
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment B",
+            html: "Empoloyment B",
+            conditional: {
+              html: empoloymentDetails
+            }
+          },
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment C",
+            html: "Empoloyment C",
+            conditional: {
+              html: empoloymentDetails
+            }
+          },
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment D",
+            html: "Empoloyment D",
+            conditional: {
+              html: empoloymentDetails
+            }
+          },
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment E",
+            html: "Empoloyment E",
+            conditional: {
+              html: empoloymentDetails
+            }
+          },
+          {
+            name: 'empoloyment-details-a',
+            value: "empoloyment F",
+            html: "Empoloyment F",
+            conditional: {
+              html: empoloymentDetails
+            }
+          }
+          ]
+        }) }}
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+  One empoloyment was found for Mel Gibson
+</h1>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Employment 1: <strong>BraveHeart souvenirs LTD / £0.10 a week</strong></p>
+
+    <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Add a missing empoloyment that are not shown in Searchlight</a></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Continue"
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Back to start</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-clear">...</a></p> -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  XXX - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="uk-residence-status-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "uk-residence-status",
+        name: "uk-residence-status",
+        fieldset: {
+          legend: {
+            text: "What best describes your status in the UK?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+
+        },
+        hint: {
+          text: ""
+
+
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Settled or pre-settled",
+            text: "I have settled or pre-settled settled status",
+            checked: (data["uk-residence-status"] == "Settled or pre-settled")
+          },
+          {
+            value: "Applied for settlement scheme",
+            text: "I have applied to the EU settlement scheme and am waiting for a status",
+            checked: (data["uk-residence-status"] == "Applied for settlement scheme")
+          },
+          {
+            value: "Indefinite leave to remain",
+            text: "I have indefinite leave to remain in the UK",
+            checked: (data["uk-residence-status"] == "Indefinite leave to remain")
+          },
+          {
+            value: "Something else",
+            text: "Something else",
+            checked: (data["uk-residence-status"] == "Something else")
+          },
+
+          {
+            value: "Dont know",
+            text: "I do not know",
+            checked: (data["uk-residence-status"] == "Dont know")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

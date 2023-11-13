@@ -1,0 +1,44 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <form action="home-care-home-check-router" method="post" class="form"> -->
+    <form action="home-care-home-funding" method="post" class="form">
+
+
+        {{ govukDateInput({
+          id: "home-care-home-entry-date",
+          namePrefix: "home-care-home-entry-date",
+          fieldset: {
+            legend: {
+              text: "What date did you start living in the care home?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2018"
+          }
+        }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

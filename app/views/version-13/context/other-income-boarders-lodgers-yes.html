@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  other-income-boarders-lodgers-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-income-working-tax-credits-yn" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Details</h1>
+
+
+        {% set benefitIndustrialDeathBenefitYes %}
+          {{ govukDateInput({
+            id: "benefit-industrial-death-benefit-yes-date",
+            namePrefix: "benefit-industrial-death-benefit-yes-date",
+            fieldset: {
+              legend: {
+                text: "Enter the received"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["benefit-industrial-death-benefit-yes-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["benefit-industrial-death-benefit-yes-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["benefit-industrial-death-benefit-yes-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+
+        {% set howOften %}
+
+        {{ govukRadios({
+          idPrefix: "benefit-industrial-death-benefit-payment-frequency",
+          name: "benefit-industrial-death-benefit-payment-frequency",
+          fieldset: {
+            legend: {
+              text: "How often do get this?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+              }
+              },
+
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data["benefit-industrial-death-benefit-payment-frequency"] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data["benefit-industrial-death-benefit-payment-frequency"] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (data["benefit-industrial-death-benefit-payment-frequency"] == "Every four weeks")
+            },
+            {
+              value: "Unsure",
+              text: "Unsure",
+              checked: (data["benefit-industrial-death-benefit-payment-frequency"] == "Unsure")
+            }
+          ]
+        }) }}
+        {% endset -%}
+
+
+
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "benefit-industrial-death-benefit-date-yn",
+          name: "benefit-industrial-death-benefit-date-yn",
+          fieldset: {
+            legend: {
+              html: "Date of payment",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes-date",
+            text: "Date of lump sum payment",
+            checked: (data["benefit-industrial-death-benefit-date-yn"] == "Yes"),
+            conditional: {
+              html: benefitIndustrialDeathBenefitYes
+            }
+          },
+            {
+              value: "no-date",
+              text: "Frequency payment",
+              checked: (data["benefit-industrial-death-benefit-date-yn"] == "No"),
+              conditional: {
+                html: howOften
+              }
+            },
+              {
+                value: "no-date",
+                text: "Unknown",
+                checked: (data["benefit-industrial-death-benefit-date-yn"] == "No")
+              }
+            ]
+          }) }}
+
+        <!------------------------->
+
+
+
+        {{ govukInput({
+        label: {
+          html: "<strong>How much money do you get?</strong>"
+        },
+        id: "benefit-industrial-death-benefit-amount",
+        name: "benefit-industrial-death-benefit-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      {{ govukRadios({
+        idPrefix: "other-income-benefits-aboard-yn",
+        name: "other-income-benefits-aboard-yn",
+        fieldset: {
+          legend: {
+          html: "Evidence Yes / No",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+            }
+            },
+            items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["other-income-benefits-aboard-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["other-income-benefits-aboard-yn"] == "no")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

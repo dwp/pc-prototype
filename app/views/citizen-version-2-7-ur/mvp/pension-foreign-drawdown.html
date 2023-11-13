@@ -1,0 +1,110 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pension-foreign-drawdown-router" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      {% set dynamicH1 %}
+ {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are these pensions in payment?</h1>
+ {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are these pensions in payment?</h1>{% endif %}
+ {% endset %}
+      <!------------Legend--------------->
+
+
+      {% set pensionForeignDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "For each pension, tell us who pays it and how much you get paid"
+          },
+          hint: {
+            text: ""
+          },
+          id: "pension-foreign-drawdown-details",
+          name: "pension-foreign-drawdown-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+      {% set pensionForeignDetailsNotPaid %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "For each pension, tell us who will pay it and how much you will get paid"
+          },
+          hint: {
+            text: ""
+          },
+          id: "pension-foreign-drawdown-details",
+          name: "pension-foreign-drawdown-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+
+      {{ govukRadios({
+        name: "pension-foreign-drawdown",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pension-foreign-drawdown"] == "Yes"),
+                  conditional: {
+                    html: pensionForeignDetails
+           }
+          },
+          {
+            value: "Yes",
+            text: "No, but I plan to put them into payment in the next 12 months",
+            checked: (data["pension-foreign-drawdown"] == "Yes"),
+            conditional: {
+              html: pensionForeignDetailsNotPaid
+          }
+          },
+          {
+            value: "No",
+            text: "No, and I do not intend to put them into payment in the next 12 months",
+            checked: (data["pension-foreign-drawdown"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

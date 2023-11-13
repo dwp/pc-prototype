@@ -1,0 +1,115 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Phil Collins
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-full-width.html" %}
+ <div class="moj-primary-navigation">
+
+   <div class="moj-primary-navigation__container">
+
+     <div class="moj-primary-navigation__nav">
+
+       <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+         <ul class="moj-primary-navigation__list">
+           <li class="moj-primary-navigation__item" >
+             <a class="moj-primary-navigation__link" href="home-user-0">My homepage</a>
+           </li>
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  href="new-process-c-nil-task-list">Processing</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  aria-current="page" href="qd-new-summary">Queries and disputes</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link" href="ur-mi">Overview</a>
+           </li>
+
+
+         </ul>
+
+       </nav>
+
+     </div>
+
+   </div>
+
+ </div>
+ <section class="dwp-key-details-bar" aria-label="Key details">
+ <div class="dwp-key-details-bar__key-details">
+ <dl class="dwp-key-details-bar__top-block">
+     <dt class="govuk-visually-hidden">Name:</dt>
+     <dd class="dwp-key-details-bar__primary">Phil Collins</dd>
+     <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+     <dd class="dwp-key-details-bar__secondary">QQ 12 33 56 X</dd>
+
+ </dl>
+ <dl class="dwp-key-details-bar__bottom-block">
+     <dt>Entitlement status:</dt>
+     <dd>Not entitled</dd>
+  
+
+ </dl>
+ </div>
+ </section>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <nav class="moj-side-navigation" aria-label="Side navigation">
+        <ul class="moj-side-navigation__list">
+          <li class="moj-side-navigation__item ">
+            <a href="qd-new-summary">Claim summary</a>
+          </li>
+
+          <li class="moj-side-navigation__item ">
+            <a href="qd-new-summary-state-pension" >State Pension</a>
+          </li>
+
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-non-sate-pension" >Non-State Pension</a>
+          </li>
+          <li class="moj-side-navigation__item ">
+            <a href="qd-new-summary-income"> Income</a>
+          </li>
+          <li class="moj-side-navigation__item moj-side-navigation__item--active">
+            <a href="qd-new-summary-benefits" aria-current="location">Qualifying benefits</a>
+          </li>
+          <li class="moj-side-navigation__item">
+            <a href="qd-new-summary-claim-notes">Claim notes</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+
+
+
+
+ <div class="govuk-grid-column-two-thirds">
+   <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Qualifying benefits</h1>
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout-assisted-digitalB.html" %}
+
+{% block pageTitle %}
+Are you responsible for any children or qualifying young people who live with you? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="children-live-with-someone-ctc-router" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["partner-check-yn2"] == "Yes" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Do you or your partner get Child Tax Credit for the children that live with you?</h1>
+        {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Do you get Child Tax Credit for the children that live with you?</h1>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        idPrefix: "children-live-with-someone-ctc",
+        name: "children-live-with-someone-ctc",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            hint: " ",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          html: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["children-live-with-someone-ctc"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["children-live-with-someone-ctc"] == "No")
+          },
+          {
+            value: "dont-know",
+            text: "I do not know",
+            checked: (data["children-live-with-someone-ctc"] == "dont-know")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}

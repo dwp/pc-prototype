@@ -1,0 +1,125 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-disability" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">How would you like to be contacted?</h1>
+      <p class="govuk-body">We will use any other contact details you give us if we need to ask you for more information. </p>
+      <p class="govuk-body">This is the number you are calling from <strong>{{ data["telephone-number"] }}</strong>.</p>
+
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      {% set emailHtml %}
+      {{ govukInput({
+        id: "email-address",
+        name: "email-address",
+        type: "email",
+        classes: "govuk-!-width-two-thirds",
+        value: data["email-address"],
+        label: {
+          text: "Address"
+        },
+        attributes: {
+          spellcheck: "false"
+        }
+      }) }}
+      {% endset -%}
+
+      {% set phoneHtml %}
+      {{ govukInput({
+        id: "contact-by-phone",
+        name: "contact-by-phone",
+        type: "tel",
+        classes: "govuk-!-width-one-third",
+        value: data["landline"],
+        label: {
+          text: "Number"
+        }
+      }) }}
+      {% endset -%}
+
+      {% set textHtml %}
+      {{ govukInput({
+        id: "contact-by-text",
+        name: "contact-by-text",
+        type: "tel",
+        classes: "govuk-!-width-one-third",
+        value: data["mobile"],
+        label: {
+          text: "Number"
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukCheckboxes({
+        idPrefix: "citizenship-conditional",
+        name: "citizen",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all options that are relevant to you."
+        },
+        items: [
+          {
+            value: "landline",
+            text: "Landline telephone",
+            conditional: {
+              html: phoneHtml
+            }
+          },
+          {
+            value: "text message",
+            text: "Mobile and Text (SMS)",
+            conditional: {
+              html: textHtml
+            }
+          },
+          {
+            value: "email-address",
+            text: "Email ",
+            conditional: {
+              html: emailHtml
+            }
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

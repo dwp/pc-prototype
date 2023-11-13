@@ -1,0 +1,28 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="name-and-nino" method="post">
+
+        <h1 class="govuk-heading-xl">All questions from this point on will be worded as if you were the claimant</h1>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

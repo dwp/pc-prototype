@@ -1,0 +1,240 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: Disregards
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+            {% if data["disregards-capital-total-yn"] %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      More than £X
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ data["disregards-capital-total-yn"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="home-ownership">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+
+                  <br>
+
+              {% if data["disregards-type-select"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Payment type
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["disregards-type-select"] or "None "}}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="service-charges">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+              {% endif %}
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Date received
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{data['disregards-entry-date-day'] + ' ' + (data['disregards-entry-date-month'] | getMonth) + ' ' + data['disregards-entry-date-year']}}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="rent-council-tax-yn">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Date allowable
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          52 or 26 weeks
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="ground-rent">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Set cam task for
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          Day Month Year
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="rent-council-tax-yn">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+
+
+              {% if data["disregards-entry-amount"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Amount
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["disregards-entry-amount"] or "None "}}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="ground-rent">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+              {% endif %}
+
+
+
+                              <br>
+
+
+                              {% if data["disregards-type-select"] %}
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Payment type
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          {{ data["disregards-type-select"] or "None "}}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="service-charges">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+                              {% endif %}
+
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Date received
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          {{data['disregards-entry-date-day'] + ' ' + (data['disregards-entry-date-month'] | getMonth) + ' ' + data['disregards-entry-date-year']}}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="rent-council-tax-yn">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Date allowable
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          52 or 26 weeks
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="ground-rent">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Set cam task for
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          Day Month Year
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="rent-council-tax-yn">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+
+
+
+                              {% if data["disregards-entry-amount"] %}
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Amount
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          {{ data["disregards-entry-amount"] or "None "}}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="ground-rent">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+                              {% endif %}
+
+
+                              {% if data["disregards-type-select"] == "No" %}
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          No disregards
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          {{ data["disregards-type-select"] or "None "}}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="ground-rent">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+                              {% endif %}
+
+
+                  </dl>
+
+</dl>
+
+<br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="disregards-summary-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

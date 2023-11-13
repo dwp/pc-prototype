@@ -1,0 +1,108 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      {% if data["ur-search"] == "P1" %}
+
+        {% if data["ur-p1-record-contact-telephone-LL"]  %}
+
+        {% set html %}
+          <p class="govuk-body">Contact telephone numbers have been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+      {% if data["ur-search"] == "P2" %}
+
+        {% if data["ur-p2-record-contact-telephone-LL"]  %}
+
+        {% set html %}
+          <p class="govuk-body">Contact telephone numbers have been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+
+
+      {% if data["ur-search"] == "P2" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Julianne Moore</h1>
+      {% else %}                        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% endif %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["ur-search"]}}</p>
+
+    </div>
+  </div>
+
+
+  {% include "agent-service-1/agent/ur-navigation.html" %}
+
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-6">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-2">Contact</h3>
+
+  </div>
+
+      <div class="govuk-grid-column-one-half">
+
+        {% if data["ur-search"] == "P1" %}
+
+            {% if data["ur-p1-record-contact-telephone-LL"] %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Landline: {{ data ["ur-p1-record-contact-telephone-LL"]}}</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Mobile: {{ data ["ur-p1-record-contact-telephone-M"]}}</p>
+
+            {% else %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Landline: 0191 488 3188</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Mobile: 07960 093 599</p>
+            {% endif %}
+
+        {% else %}
+
+            {% if data["ur-p2-record-contact-telephone-LL"] %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Landline: {{ data ["ur-p2-record-contact-telephone-LL"]}}</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Mobile: {{ data ["ur-p2-record-contact-telephone-M"]}}</p>
+
+            {% else %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Landline: 01207 270 969</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Mobile: 07706 014 012</p>
+            {% endif %}
+
+        {% endif %}
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-record-contact-telephone" class="govuk-link" rel="noreferrer noopener" target="">Change a telephone number</a></p>
+
+
+      </div>
+
+    </form>
+{% endblock %}

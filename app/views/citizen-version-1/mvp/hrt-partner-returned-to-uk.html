@@ -1,0 +1,68 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hrt-partner-returned-to-uk-router" method="post" class="form">
+
+      {% set dynamicH1 %}
+      {% if data["single-joint-check"] == "Joint" %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">At any time, have you or your partner come to live in the UK or returned to the UK to live from abroad?</h1>
+      {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">At any time, has your partner come to live in the UK or returned to the UK to live from abroad?</h1>{% endif %}
+      {% endset %}
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "hrt-partner-returned-to-uk",
+        name: "hrt-partner-returned-to-uk",
+        fieldset: {
+          legend: {
+          text: "At any time, has your partner come to live in the UK or returned to the UK to live from abroad?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["hrt-partner-returned-to-uk"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["hrt-partner-returned-to-uk"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

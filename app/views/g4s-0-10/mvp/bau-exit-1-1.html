@@ -1,0 +1,76 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="bau-exit-1-outcome-router">
+
+        <span class="govuk-caption-m">[1-1]</span>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Thanks for that, I am just going to take a look</h1>
+
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            idPrefix: "bau-exit-1-outcome",
+            name: "bau-exit-1-outcome",
+            fieldset: {
+              legend: {
+                text: "In CAM, how long ago was the application submitted?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "more-than-35",
+                text: "35 days or more",
+                checked: data['bau-exit-1-outcome'] == "more-than-35"
+              },
+              {
+                value: "less-than-35",
+                text: "Less than 35 days",
+                checked: data['bau-exit-1-outcome'] == "less-than-35"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+
+          <!-- <div class="govuk-button-group">
+
+
+            {{ govukButton({
+              name: "process-c-nil-task-1-6",
+              value: "Other enquiry",
+              checked: (data["process-c-nil-task-1-6"] == "Unfinished"),
+              classes: "govuk-button--secondary",
+              text: "Finish and close"
+            }) }}
+            </div> -->
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

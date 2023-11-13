@@ -1,0 +1,78 @@
+{% extends "layout-covid19.html" %}
+
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% set ResideHint %}
+{% endset %}
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="hrt-partner-permanently-in-UK" method="post">
+
+
+<!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+  {% set legendUKNationalHeadline %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Does your partner have the right to live or work in the UK without any immigration restrictions?</h1>
+  {% endset -%}
+
+
+
+  <!---- UK ---->{% else %}
+
+  {% set legendUKNationalHeadline %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Does your partner have the right to live or work in the UK without any immigration restrictions?</h1>
+  {% endset -%}
+
+  {% set legendUKNationalHint %}
+  <p class="govuk-hint">You have this right if you have a British passport or are a British citizen or British subject with right of abode.</p>
+  {% endset -%}
+
+  <!---- COUNTRY END ---->{% endif %}
+
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "partner-uk-national",
+          name: "partner-uk-national",
+          fieldset: {
+            legend: {
+              html: legendUKNationalHeadline,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            html: legendUKNationalHint
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

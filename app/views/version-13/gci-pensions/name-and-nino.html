@@ -1,0 +1,62 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa" method="post"><!--existing-claim-yn-->
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+          Your details
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: "What is your full name?"
+          },
+          hint: {
+            text: "Include any middle names."
+          },
+          id: "full-name",
+          name: "full-name",
+          classes: "govuk-input--width-20",
+          value: data["full-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is your National Insurance number?"
+          },
+          id: "nino",
+          name: "nino",
+          classes: "govuk-input--width-10",
+          value: data["nino"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the number you are calling from?"
+          },
+          id: "telephone-number",
+          name: "telephone-number",
+          classes: "govuk-input--width-20",
+          value: data["telephone-number"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

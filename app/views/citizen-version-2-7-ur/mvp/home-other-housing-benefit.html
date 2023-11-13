@@ -1,0 +1,76 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-other-housing-benefit-router" method="post" class="form">
+
+
+      {% set legendHint %}
+
+      {% if data["home-ownership"] == "You live in a caravan houseboat or mobile home"%}
+        <p class="govuk-hint">Housing Benefit can help you pay your site or mooring fees if you’re on a low income or claiming benefits.</p>
+      {% else %}
+        <p class="govuk-hint">Housing Benefit can help you pay your rent if you’re on a low income or claiming benefits.</p>
+      {% endif %}
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "home-other-housing-benefit",
+        name: "home-other-housing-benefit",
+        fieldset: {
+          legend: {
+            text: "Do you currently get Housing Benefit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: legendHint
+        },
+        items: [
+        {
+          value: "Yes HB",
+          text: "Yes - Housing Benefit",
+          checked: (data["home-other-housing-benefit"] == "Yes HB")
+
+          },
+          {
+            value: "Yes HeUC",
+            text: "Yes - a housing payment from Universal Credit",
+            checked: (data["home-other-housing-benefit"] == "Yes HeUC")
+
+            },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["home-other-housing-benefit"] == "No")
+        }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

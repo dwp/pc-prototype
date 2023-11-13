@@ -1,0 +1,73 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you have a savings account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-has-savings-account-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <!------------HEADLINE------------>
+      {% set legend %}
+      {% if data["claim-filter"] == "Advanced or Today" %} Do you have any savings accounts with a bank, building society or Post Office? {% endif %}
+      {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any savings accounts with a bank, building society or Post Office?{% endif %}
+      {% endset %}
+    <!------------HEADLINE------------>
+
+
+  {{ govukRadios({
+    idPrefix: "msic-has-savings-account-yn",
+    name: "msic-has-savings-account-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                  You might use savings accounts to save for a big purchase. You might earn interest from money in these accounts.
+                  </p>"
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-has-savings-account-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-has-savings-account-yn"] == "no")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+  {% include "version-15/index/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+  <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+{% endblock %}

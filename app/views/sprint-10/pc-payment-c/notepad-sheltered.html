@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+
+        <h1 class="govuk-heading-xl">Sheltered accommodation details</h1>
+
+<br>
+
+
+{% set textHtml %}
+{{ govukTextarea({
+  name: "notepad-sheltered-funding-more-detail",
+  id: "notepad-sheltered-funding-more-detail",
+  label: {
+    text: "Tell us how your stay in sheltered accomodation is paid for."
+  },
+  hint: {
+    text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "notepad-sheltered-funding",
+  name: "notepad-sheltered-funding",
+  fieldset: {
+    legend: {
+      text: "How is your stay in sheltered accommodation paid for?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+  items: [
+  {
+    value: "Local authority",
+    text: "Local authority",
+    checked: (data["notepad-sheltered-funding"] == "Local authority")
+  },
+  {
+    value: "Self-funded",
+    text: "Self-funded",
+    checked: (data["notepad-sheltered-funding"] == "Self-funded")
+  },
+  {
+    value: "Part Local authority and Self-funded",
+    text: "Part Local authority and part self-funded",
+    checked: (data["notepad-sheltered-funding"] == "Part local authority and part self-funded")
+  },
+    {
+      value: "Other funding",
+      text: "Other",
+      checked: (data["notepad-sheltered-funding"] == "Other funding"),
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+
+
+
+{% set textHtml %}
+{{ govukTextarea({
+  name: "notepad-sheltered-property-more-detail",
+  id: "notepad-sheltered-property-more-detail",
+  label: {
+    text: "Details of any residential property that you own."
+  },
+  hint: {
+    text: "For example, you might own part of a home in shared ownership scheme."
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "notepad-sheltered-property",
+  name: "notepad-sheltered-property",
+  fieldset: {
+    legend: {
+      text: "Do you own a residential property?
+",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+  items: [
+  {
+    value: "Yes",
+    text: "Yes",
+    checked: (data["notepad-sheltered-property"] == "Yes")
+  },
+  {
+    value: "No",
+    text: "No",
+    checked: (data["notepad-sheltered-property"] == "No")
+  },
+    {
+      value: "Other",
+      text: "Other",
+      checked: (data["notepad-sheltered-property"] == "Other"),
+      conditional: {
+        html: textHtml
+      }
+    }
+  ]
+}) }}
+<br>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}
+
+<!--
+
+<p class="govuk-body govuk-!-font-size-19">Collect all the information you need, including:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    whether they own another property
+  </li>
+  <li>
+    whether their stay is funded by the local authority, self-funded or both
+  </li>
+</ul>
+-->

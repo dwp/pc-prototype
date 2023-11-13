@@ -1,0 +1,50 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Post Pension Credit index - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+<!----------------------------------------------------------------------------------->
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="index-ctr-check" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+      Adviser: Send Support for Mortgage Interest (SMI) information pack
+    </h1>
+
+    <!----------------------------------------------------------------------------------->
+<p class="govuk-body govuk-!-margin-bottom-2">Tell (name) they will be sent an information pack and application form.</p>
+
+<p class="govuk-body govuk-!-margin-bottom-2">Issue a pack in CAM. There are additional instructions in the SWIs if you need them.</p>
+</div> <!--Agent end-->
+<br>
+
+@MM: Bin off page.
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+</div>
+{% endblock %}

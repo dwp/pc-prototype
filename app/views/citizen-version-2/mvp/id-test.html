@@ -1,0 +1,88 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  ID TEST - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="contact-text-yn-router" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action">Adviser: </span>The number the claimant is calling from is <strong>{{ data["telephone-number"] }}</strong></h2>
+      </div>
+
+
+      {% set yesMobile %}
+      {{ govukInput({
+        label: {
+          text: "Mobile number"
+        },
+        id: "contact-text-yn-number",
+        name: "contact-text-yn-number",
+        classes: "govuk-input--width-20",
+        attributes: {
+          maxlength: 20
+        }
+      }) }}
+      {% endset -%}
+
+<br>
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-text-yn",
+        name: "contact-text-yn",
+        fieldset: {
+          legend: {
+            html: "Can we send you text messages with updates about your claim or to ask you to contact us?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+            text: "This helps us process your claim as quickly as possible. We will also be able to update you on the progress of your claim."
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-text-yn"] == "Mobile"),
+            conditional: {
+              html: yesMobile
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-text-yn"] == "I don't have a mobile")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

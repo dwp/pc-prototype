@@ -1,0 +1,319 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-full">
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Claim summary</h1>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold"> Date claim submitted</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>28 February 2022</p>
+
+        </div>
+
+
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold"> Backdating period start date</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>28 November 2021</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Date processed</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>28 February 2022</p>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Entitlement status</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>Not entitled</p>
+
+        </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-full">
+
+      <p><a href="qd-claim-notes" class="govuk-link">View claim notes</a></p>
+
+    </div>
+
+
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-8">
+
+
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Information the claimant might ask you to check</h2>
+
+    <h3 class="govuk-heading-m govuk-!-margin-bottom-4">Qualifying benefit and State Pension details you can check in Searchlight</h3>
+
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold"> Qualifying benefits</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>No</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Weekly State Pension amount</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>£188</p>
+
+        </div>
+    </div>
+
+
+
+
+
+    <h3 class="govuk-heading-m govuk-!-margin-bottom-4">Details you can check with the claimant</h3>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Living with partner</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>No</p>
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Ground rent</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>None</p>
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          <p class="govuk-body govuk-!-font-weight-bold">Service charges</p>
+
+        </div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          <p>None</p>
+
+        </div>
+    </div>
+
+
+    <p class="govuk-body govuk-!-margin-bottom-2"><a href="/agent-service-1-10/agent/jennifer-claim.pdf" target="_blank">View full application (PDF)</a></p>
+
+
+
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-padding-top-6">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Other help</h2>
+    <p> <a href="qd-help-summary" class="govuk-link govuk-!-margin-bottom-4">Find out what other help is available</a></p>
+
+            <!--
+            {{ govukRadios({
+              classes: "",
+              idPrefix: "summary-help",
+              name: "summary-help",
+              fieldset: {
+                legend: {
+                  text: "Would you like to know aout other help you could get?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes",
+                  checked: (data["summary-help"] == "yes")
+                },
+                {
+                  value: "no",
+                  text: "No",
+                  checked: (data["summary-help"] == "no")
+                }
+              ]
+            }) }}  -->
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-padding-top-6">
+
+            {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set notesHtml %}
+{{ govukTextarea({
+  name: "summary-notes",
+  id: "summary-notes",
+  rows: 4,
+  label: {
+    text: "Notes about the claim",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: ""
+  }
+}) }}
+{% endset -%}
+
+<!--
+-->
+
+{{ govukRadios({
+  idPrefix: "notes",
+  name: "notes",
+  fieldset: {
+    legend: {
+      text: "Do you need to leave notes about the claim?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "For example, the call reason, any action you took and any other relevant information."
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: notesHtml
+      }
+    },
+    {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: phoneHtml
+      }
+    }
+  ]
+}) }}
+
+
+          {% if data['qd-start'] === 'admin' %}
+
+          <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Save and finish"
+          }) }}
+          <a class="govuk-link" href="qd-start">Take a claimant through security</a>
+          </div>
+
+          {% else %}
+
+          {{ govukButton({
+            text: "Save and finish"
+          }) }}
+
+          {% endif %}
+
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,221 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="api-claims" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+<style>
+#accordion-default > div.govuk-accordion__controls > button {display: none}
+/* #accordion-default-heading-1 > span {display: none} */
+</style>
+
+
+                <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-6"><strong>Check a claim outcome</strong></p>
+                <!-- <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claims found for: <strong>NA112233c</strong></p> -->
+
+              </div>
+
+                <div class="govuk-grid-column-one-quarter">
+                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Total automated<br>outcomes</p>
+                  <p class="govuk-!-font-weight-bold govuk-!-font-size-48">6,000</p>
+                </div>
+
+                <div class="govuk-grid-column-one-quarter">
+                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Nil award <br>outcomes found</p>
+                  <p class="govuk-!-font-weight-bold govuk-!-font-size-48">3</p>
+                </div>
+
+                <div class="govuk-grid-column-one-quarter">
+                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Correct outcomes<br>checked by advisers</p>
+                  <p class="govuk-!-font-weight-bold govuk-!-font-size-48">2</p>
+                </div>
+
+                <div class="govuk-grid-column-one-quarter">
+                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Incorrect outcomes<br>checked by advisers</p>
+                  <p class="govuk-!-font-weight-bold govuk-!-font-size-48">1</p>
+                </div>
+                </div>
+
+
+<div class="pc-accordion govuk-!-margin-top-4" data-module="pc-accordion" id="accordion-default">
+  <div class="govuk-accordion__section ">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          <a href>Filter claims by check outcome</a>
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {{ govukCheckboxes({
+          idPrefix: "organisation",
+          name: "organisation",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s "
+            }
+          },
+          items: [
+            {
+              value: "Correct",
+              text: "Correct"
+            },
+            {
+              value: "Incorrect",
+              text: "Incorrect"
+            },
+            {
+              value: "XX",
+              text: "To do"
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="govuk-grid-column-one-half">
+        {{ govukCheckboxes({
+          idPrefix: "organisation",
+          name: "organisation",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s "
+            }
+          },
+          items: [
+          {
+              value: "Future filter",
+              text: "Future filter: X [0]"
+            },
+            {
+              value: "Future filter",
+              text: "Future filter: X [0]"
+            },
+            {
+              value: "Future filter, Pensions",
+              text: "Future filter: X [0]"
+            }
+          ]
+        }) }}
+      </div>
+
+
+      </div>
+      {{ govukButton({
+  text: "Apply",
+  classes: "govuk-button--secondary govuk-!-margin-bottom-4"
+}) }}
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+                            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+                              <p class="govuk-heading-m govuk-!-padding-top-0">Nil award claims</p>
+
+                              <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell govuk-26-percent">Award ID</td>
+                                  <td class="govuk-table__cell govuk-50-percent">Adviser notes</td>
+                                  <td class="govuk-table__cell govuk-26-percent">Adviser check</td>
+                                </tr>
+                                </thead>
+
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell table-spacer"><a href="api-claim-review">0001</a></td>
+                                  <td class="govuk-table__cell table-spacer">{{data["api-claim-outcome-details"]}}</td>
+                                  <td class="govuk-table__cell table-spacer">
+                                    {% if data["api-claim-outcome"] == "Correct" %}
+                                    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">Correct</strong>
+                                    {% elif data["api-claim-outcome"] == "Incorrect" %}
+                                    <strong class="govuk-tag govuk-tag--pink govuk-phase-banner__content__tag">Incorrect</strong>
+                                    {% else %}
+                                    <strong class="govuk-tag govuk-tag--grey govuk-phase-banner__content__tag">To do</strong>
+
+                                    {% endif %}</td>
+                                  </tr>
+
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell table-spacer"><a href="#">0002</a></td>
+                                  <td class="govuk-table__cell table-spacer">.</td>
+                                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">Correct</strong> </tr>
+
+
+
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell table-spacer"><a href="#">0003</a></td>
+
+                                  <td class="govuk-table__cell table-spacer">.</td>
+                                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">Correct</strong> </tr>
+
+
+                                </table>
+
+
+                                <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                <nav class="moj-pagination" id="pagination-label">
+
+                                <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                <ul class="moj-pagination__list">
+                                <li class="moj-pagination__item  moj-pagination__item--prev">
+                                  <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+                                </li>
+
+                                <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+
+                                <li class="moj-pagination__item moj-pagination__item--active">2</li>
+
+                                <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+
+                                <li class="moj-pagination__item  moj-pagination__item--next">
+                                  <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+                                </li>
+                                </ul>
+                                <p class="moj-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
+                                </nav>
+
+
+                                <p class="govuk-heading-m govuk-!-padding-top-8">Nil award claims [Nothing selected or no outcomes]</p>
+                                <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">No outcomes [example]</p>
+
+
+                  </div>
+                </div>
+
+
+
+
+
+{% endblock %}

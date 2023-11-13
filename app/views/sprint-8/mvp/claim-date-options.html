@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  System: Date router - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-router" method="post">
+
+        {{ govukRadios({
+          idPrefix: "claim-date-options",
+          name: "claim-date-options",
+          fieldset: {
+            legend: {
+              text: "System: Based on calculation you will be taken to one of these routes automaticly ",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Backdating",
+              text: "Backdating (auto)",
+              checked: data['claim-date-options'] == "Backdating"
+            },
+            {
+              value: "BackdatingManual",
+              text: "Backdating (manual)",
+              checked: data['claim-date-options'] == "BackdatingManual"
+            },
+            {
+            value: "Today",
+            text: "Today",
+            checked: data['claim-date-options'] == "Today"
+          },
+          {
+            value: "Advanced",
+            text: "Advanced",
+            checked: data['claim-date-options'] == "Advanced"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

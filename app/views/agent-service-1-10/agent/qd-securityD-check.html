@@ -1,0 +1,235 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-securityD-router" method="post" class="form">
+
+
+      {% include "agent-service-1-10/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      {% if data['qd-search-nino'] === 'ZZ439386T' %}
+
+
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading">
+          In the past, this citizen failed certain security questions</p>
+        <p class="govuk-body govuk-!-font-weight-bold">
+          Do not ask these questions again:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>What is the name of your bank? </li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+      {% endif %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Did the citizen fail any questions?</h1>
+
+
+      {% set failedSecurityOne %}
+      {{ govukTextarea({
+        label: {
+          text: "Enter failed security question"
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        },
+        id: "kbv-fail-one",
+        rows: "2",
+        name: "security-failed",
+        classes: "",
+        value: data["kbv-fail-one"]
+
+      }) }}
+      {% endset -%}
+
+
+
+      {% set failedSecurityTwo %}
+      {{ govukTextarea({
+        label: {
+          text: "Enter failed security questions"
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        },
+        id: "kbv-fail-two",
+        rows: "2",
+        name: "kbv-fail-two",
+        classes: "",
+        value: data["kbv-fail-two"]
+
+      }) }}
+      {% endset -%}
+
+
+      {% set failedSecurityThree %}
+      {{ govukTextarea({
+        label: {
+          text: "Enter failed security questions"
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        },
+        id: "kbv-fail-three",
+        rows: "2",
+        name: "kbv-fail-three",
+        classes: "",
+        value: data["kbv-fail-three"]
+
+      }) }}
+      {% endset -%}
+
+      {% if data["kbv-fail-D"] == "two" %}
+
+      {{ govukCheckboxes({
+        classes: "",
+        idPrefix: "kbv-fail-D-check",
+        name: "kbv-fail-D-check",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "one",
+            text: "First question",
+            conditional: {
+              html: failedSecurityOne
+            },
+            checked: (data["kbv-fail-D-check"] == "one")
+
+          },
+          {
+            value: "two",
+            text: "Second question",
+            conditional: {
+              html: failedSecurityOne
+            },
+            checked: (data["kbv-fail-D-check"] == "two")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "pass",
+            text: "No, they answered all questions correctly",
+            checked: (data["kbv-fail-D-check"] == "pass")
+          }
+        ]
+      }) }}
+
+      {% else %}
+
+      {{ govukCheckboxes({
+        classes: "",
+        idPrefix: "kbv-fail-D-check",
+        name: "kbv-fail-D-check",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "one",
+            text: "First question",
+            conditional: {
+              html: failedSecurityOne
+            },
+            checked: (data["kbv-fail-D-check"] == "one")
+
+          },
+          {
+            value: "two",
+            text: "Second question",
+            conditional: {
+              html: failedSecurityOne
+            },
+            checked: (data["kbv-fail-D-check"] == "two")
+          },
+          {
+            value: "three",
+            text: "Third question",
+            conditional: {
+              html: failedSecurityOne
+            },
+            checked: (data["kbv-fail-D-check"] == "three")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "pass",
+            text: "No, they answered all questions correctly",
+            checked: (data["kbv-fail-D-check"] == "pass")
+          }
+        ]
+      }) }}
+
+
+      {% endif %}
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

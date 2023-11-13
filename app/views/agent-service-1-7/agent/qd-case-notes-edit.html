@@ -1,0 +1,65 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-application" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Add statement to 'case notes' in CAM</h1>
+
+      {{ govukInsetText({
+        text: "Edit, copy and paste the statement in CAM."
+      }) }}
+
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        value: data["benefits-notes"],
+        label: {
+          text: "",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

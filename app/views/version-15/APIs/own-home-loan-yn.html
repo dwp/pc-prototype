@@ -1,0 +1,54 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you live with a partner? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="own-home-loan-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "own-home-loan-yn",
+        name: "own-home-loan-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have a loan secured against your home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["own-home-loan-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["own-home-loan-yn"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

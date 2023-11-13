@@ -1,0 +1,78 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="exit" method="post" class="form">
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Other help with your living or housing costs</h1>
+
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">General help with benefits</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">There are a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work:</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">www.betteroffcalculator.co.uk</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">www.entitledto.co.uk</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">www.benefits-calculator.turn2us.org.uk</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">Help with your health</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>Attendance Allowance</strong> helps with extra costs if you have a disability severe enough that you need someone to help look after you.</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Go to GOV.UK and search for "attendance allowance".</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">Help with heating your home</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">If you were born on or before 5 October 1954 you could get between £100 and £300 to help you pay your heating bills. This is known as a <strong>Winter Fuel Payment</strong>.</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Go to GOV.UK and search for "winter fuel payment".</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">Help with public transport</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">In England you can get a <strong>bus pass for free travel</strong> when you reach the female State Pension age, whether you’re a man or a woman.</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Go to GOV.UK and search for "free bus pass".</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">Help with renting your house or flat</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>Housing Benefit</strong> can help you pay your rent if you’re unemployed, on a low income or claiming benefits. It’s being replaced by Universal Credit.</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Go to GOV.UK and search for "housing benefit".</p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-6">Help with your pensions</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>The Pensions Advisory Service</strong> offers free information and advice about your State Pension or your company, personal, stakeholder or occupational pension.</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Go to GOV.UK and search for "TPAS".</p>
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

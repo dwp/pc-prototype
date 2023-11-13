@@ -1,0 +1,65 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Nil award statistics (All)</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p> -->
+
+    </div>
+  </div>
+
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+    {% include "agent-service-1-1/agent/mi-stats.html" %}
+
+  </div>
+  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-8">
+
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+          <div class="govuk-grid-column-one-half">
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-4">Unmatched summary</h3>
+          </div>
+
+  </div>
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-8">
+
+    <div class="govuk-grid-column-one-quarter">
+
+
+      {% include "agent-service-1-1/agent/mi-menu.html" %}
+    </div>
+
+
+      <div class="govuk-grid-column-three-quarters">
+        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-4">Previous applications</h3>
+
+        <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>5</strong> out of <strong>200</strong> claims had an IDOC or a previous online<br>application for Pension Credit when processing</h3>
+
+
+      </div>
+      </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock %}

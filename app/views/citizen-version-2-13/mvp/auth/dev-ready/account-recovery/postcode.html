@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is your postcode? -
+        {{ data['service-name']  }}
+    - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="new-phone-number" method="post">
+                {{ govukFieldset({
+                    legend: {
+                        html: "What is your postcode?",
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+                {{ govukInput({
+                    label: {
+                        text: "Postcode"
+                    },
+                    id: "postcode",
+                    name: "postcode",
+                    classes: "govuk-input--width-10"
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

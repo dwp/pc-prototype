@@ -1,0 +1,108 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="admin-search" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find a claim</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-2">National Insurance number (NA112233c) and select the case from the list.<br>Downloaded claims will be cleared from this list after 30 days</p>
+
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "search",
+                  name: "search",
+                  classes: "govuk-input--width-30 govuk-!-margin-bottom-0",
+                  value: data["search"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Search",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+                {{ govukButton({
+                  text: "Clear",
+                  classes: "govuk-button--secondary"
+                }) }}
+
+
+                {% if data["search"] == "NA112233c" %}
+
+                <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claim found for: <strong>NA112233c</strong></p>
+
+
+                            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                              <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell govuk-20-percent">NI number</td>
+                                  <td class="govuk-table__cell govuk-39-percent">Name</td>
+                                  <td class="govuk-table__cell govuk-15-percent">Status</td>
+                                  <td class="govuk-table__cell govuk-16-percent">Received</td>
+                                  <td class="govuk-table__cell govuk-10-percent">Age (days)</td>
+                                </tr>
+                                </thead>
+
+
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                                  <td class="govuk-table__cell"><a href="XXX">Mellon Adamson</a></td>
+                                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">Downloaded</strong></td>
+
+                                  <td class="govuk-table__cell">DD Sept 2020</td>
+                                  <td class="govuk-table__cell"></td>
+                                </tr>
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                                  <td class="govuk-table__cell"><a href="XXX">Mellon Adamson</a></td>
+                                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey govuk-phase-banner__content__tag">To do</strong></td>
+
+                                  <td class="govuk-table__cell">DD Sept 2020</td>
+                                  <td class="govuk-table__cell">100</td>
+                                </tr>
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                                  <td class="govuk-table__cell"><a href="XXX">Mellon Adamson</a></td>
+                                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--pink govuk-phase-banner__content__tag">Assigned</strong></td>
+
+                                  <td class="govuk-table__cell">DD Sept 2020</td>
+                                  <td class="govuk-table__cell">100</td>
+                                </tr>
+
+
+
+                                </table>
+                                {% endif %}
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

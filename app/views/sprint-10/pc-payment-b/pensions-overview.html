@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent: Check and discuss the pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-monolith" method="post" class="form">
+
+      <input type="hidden" name="pensions-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-l"> Agent: Check and discuss the pensions {{ data["full-name"] }} has</h1>
+
+
+          <p class=govuk-body>Check the income tab in <strong>Searchlight</strong> for private and workplace pensions in payment and tell the claimant what you see.</p>
+          <p class=govuk-body>Check the benefits tab in <strong>Searchlight</strong> for State Pension and tell the claimant what you see.</p>
+          <p class=govuk-body>Check the schemes tab in <strong>OLE NIRS</strong> for pension contributions. If contributions indicate unclaimed pensions, send form PPR1.</p>
+
+
+        {{ govukDetails({
+  summaryText: "What to do if the claimant tells you their private or workplace pensions are wrong",
+  text: "Tell the claimant that you will use the figures you discussed for their claim. The information we have is from HMRC and they should contact HMRC to resolve any issues."
+}) }}
+    </div>
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

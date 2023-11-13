@@ -1,0 +1,97 @@
+{% extends "layout-oidv.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="oidv-driving" method="post" class="form">
+
+      <!-- <p class="govuk-body govuk--version-control">OIDV</p> -->
+
+    {{ govukRadios({
+      idPrefix: "oidv-who",
+      name: "oidv-who",
+      fieldset: {
+        legend: {
+          text: "Did you apply for Pension Credit for yourself or someone else?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+        }
+      },
+      hint: {
+        html: ""
+      },
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "Myself",
+          text: "I applied for myself",
+          checked: (data["oidv-who"] == "Myself")
+        },
+        {
+          value: "Someone else",
+          text: "I applied for someone else",
+          checked: (data["oidv-who"] == "Someone else")
+        }
+      ]
+    }) }}
+
+
+<!-- {{ govukCheckboxes({
+  idPrefix: "start-check",
+  name: "start-check",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+
+    {
+      value: "confirm",
+      text: "I confirm I have this information ready",
+      checked: (data["start-check"] == "confirm")
+
+    }
+  ]
+}) }} -->
+
+
+
+     <!--  {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8",
+       isStartButton: true
+     }) }} -->
+
+
+     <button class="govuk-button" data-module="govuk-button">
+      Continue
+    </button>
+
+
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

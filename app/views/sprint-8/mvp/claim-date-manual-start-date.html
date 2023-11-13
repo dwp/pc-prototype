@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add start date - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yn" method="post">
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check SeachLight or PTP CAM
+          </strong>
+        </div>
+
+
+        {{ govukDateInput({
+          id: "claim-date-manual-start-date",
+          namePrefix: "claim-date-manual-start-date",
+          fieldset: {
+            legend: {
+              text: "Add new start date",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2007"
+          }
+        }) }}
+
+
+<br><br>
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Why is this differnt? (CAM)",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "XXX"
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Customer stopped working"
+    },
+    {
+      value: "yes",
+      text: "Bereavement"
+    },
+    {
+      value: "yes",
+      text: "Living on own or separated"
+    },
+    {
+      value: "yes",
+      text: "Customer’s request"
+    },
+    {
+      value: "yes",
+      text: "Arriving/returning to UK"
+    },
+    {
+      value: "yes",
+      text: "Moved into care home"
+    },
+    {
+      value: "yes",
+      text: "Reduction of savings/income"
+    },
+    {
+      value: "yes",
+      text: "Carers Allowance awarded"
+    },
+    {
+      value: "yes",
+      text: "AA/DLA claimed/awarded"
+    },
+    {
+      value: "yes",
+      text: "Change of address"
+    },
+    {
+      value: "yes",
+      text: "Re-applying for Pension Credit"
+    },
+    {
+      value: "yes",
+      text: "Hospital admission/discharge"
+    },
+    {
+      value: "no",
+      text: "Backdated claim"
+    },
+    {
+      value: "no",
+      text: "Released from HMP"
+    },
+    {
+      value: "no",
+      text: "PIP claimed/awarded"
+    }
+  ]
+}) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-actions-router" method="post" class="form">
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">When did Jeff's State Pension amount change?</h1>
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">Open Searchlight and check the information on State Pension match.</p>
+      </div>
+
+      {{ govukDateInput({
+        id: "sp-change-date",
+        namePrefix: "sp-change-date",
+        fieldset: {
+          legend: {
+            text: "Enter date",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example 23 09 2021"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["sp-change-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["sp-change-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["sp-change-date-year"]
+          }
+        ]
+      }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

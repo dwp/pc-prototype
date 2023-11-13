@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a Premium Bond account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-has-premium-bond-account-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <!------------HEADLINE------------>
+      {% set legend %}
+      {% if data["claim-filter"] == "Advanced or Today" %} Do you have any Premium Bonds? {% endif %}
+      {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any Premium Bonds?{% endif %}
+      {% endset %}
+    <!------------HEADLINE------------>
+
+  {{ govukRadios({
+    idPrefix: "msic-has-premium-bond-account-yn",
+    name: "msic-has-premium-bond-account-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+            Premium Bonds are lottery bonds issued by National Savings and Investments (NS&I).
+The bonds are entered in a monthly prize draw and NS&I promises to buy them back, on request, for their original price. </p>"
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-has-premium-bond-account-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-has-premium-bond-account-yn"] == "no")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+  {% include "version-13/mvp/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+
+  <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+
+{% endblock %}

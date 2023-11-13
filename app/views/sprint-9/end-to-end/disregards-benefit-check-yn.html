@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="disregards-monolith-2" method="post" class="form">
+
+        <input type="hidden" name="disregards-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        {% set arrearsOver %}
+          {{ govukTextarea({
+            label: {
+              html: "<strong>Arrears of benefits up to £5,000
+</strong> Disregard for 52 weeks<br><br><strong>Arrears of benefits of £5,000 or over</strong> Disregard indefinitely<br><br><strong>Payments of £5,000 or more to correct or compensate for official errors or late payment of benefit
+</strong> Disregard for 52 weeks<br><br>"},
+            hint: {
+              text: "Enter a description of the payment, the date it was paid and the amount."
+            },
+            id: "disregards-benefit-check-yes",
+            name: "disregards-benefit-check-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          name: "disregards-benefit-check-yn",
+          fieldset: {
+            legend: {
+              html: "Agent: Has the claimant had any payments for arrears of benefits, or any payments to correct or compensate for an official error?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["disregards-benefit-check-yn"] == "Yes"),
+              conditional: {
+                html: arrearsOver
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["disregards-benefit-check-yn"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

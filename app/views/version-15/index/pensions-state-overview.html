@@ -1,0 +1,136 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Adviser: Check and discuss the State pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-overview" method="post" class="form">
+
+{% if data["nino"] == "NN 11 22 33 P" %}
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+        <h1 class="govuk-heading-m"><span class="agent-action">Adviser: Tell {{data["full-name"]}} the State Pension details shown on this page. These details will be used in the Pension Credit calculation.</h1>
+      </div>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Your State Pension is in payment</h1>
+
+    <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-1">Amount: <strong>£150.00</strong></p>
+
+    <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-8">Payment made: <strong>weekly</strong></p>
+
+{% endif %}
+
+
+{% if data["nino"] == "NN 11 22 33 E" %}
+
+
+    <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+      <h1 class="govuk-heading-m"><span class="agent-action">Adviser: Tell {{data["full-name"]}} the State Pension details shown on this page. These details will be used in the Pension Credit calculation.</h1>
+    </div>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Your State Pension is in payment</h1>
+
+  <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-1">Amount: <strong>£150.00</strong></p>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">This includes your Attendance Allowance which is paid at the same time as your State Pension.</p>
+
+  <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-8">Payment made: <strong>weekly</strong></p>
+
+{% endif %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+<!--
+
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+        <h1 class="govuk-heading-m"><span class="agent-action">Adviser: This is advanced claim</h1>
+      </div>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">So your first payment hasnt been made. Agent needs to check Payment details. See if they exist.</h1>
+
+      <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-1">XXX: <strong>XXX</strong></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">@this will effect the routing and following pages content. YN SP in payment or not</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+        <h1 class="govuk-heading-m"><span class="agent-action">Adviser: Entiled to nil</h1>
+      </div>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">This is you are entitled to State Pension but you don't get any money from it becasue of X</h1>
+
+      <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-1">XXX: <strong>XXX</strong></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">@this will effect the routing and following pages content. YN SP in payment or not</p>
+
+
+
+
+
+      {{ govukRadios({
+        idPrefix: "pensions-sp-check-yn",
+        name: "pensions-sp-check-yn",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pensions-sp-check-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["pensions-sp-check-yn"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+-->
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+    <div class="govuk-panel--agent-alert govuk-!-margin-top-6">
+      {% set AddName %}
+
+      <p class="govuk-body"><a href="XXX">Citizen has not claimed SP but has entitlement (MYPC-1014)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen has not claimed SP and has no entitlement (MYPC-1014)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen has claimed (not been awarded yet so interest only) SP to be paid into an account (MYPC-1008 & MYPC-1013)</a></p>
+      <p class="govuk-body"><a href="XXX">Citizen gets SP paid into an account (MYPC-1005 & MYPC-1008)</a></p>
+      {% endset %}
+    </div>
+
+    {{ govukDetails({
+      classes: "PC-router",
+      summaryText: "Router",
+      html: AddName
+    }) }}
+
+
+  </div>
+</div>
+{% endblock %}

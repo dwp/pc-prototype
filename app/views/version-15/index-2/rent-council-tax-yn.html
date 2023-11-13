@@ -1,0 +1,65 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you get council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="rent-council-tax-yn-router" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "rent-council-tax-yn",
+        name: "rent-council-tax-yn",
+        fieldset: {
+          legend: {
+            text: "Do you pay reduced Council Tax because you are on a low income?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This does not include a single person discount."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["rent-council-tax-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["rent-council-tax-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

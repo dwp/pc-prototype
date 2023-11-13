@@ -1,0 +1,57 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-contact-history" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Copy and paste into 'case notes' in CAM</h1>
+
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list">
+          <li>Claim submitted on 28 November 2021.</li>
+          <li>Claim processed 29 February 2022.</li>
+          <li>Changes identified - Attendance Allowance paid from 29 November 2021. 1 day after backdating period start date: 28 November 2021.</li>
+        </ul>
+      </div>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

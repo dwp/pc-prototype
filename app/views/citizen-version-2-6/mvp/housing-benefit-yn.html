@@ -1,0 +1,75 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="carers-allowance-yn" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action">Adviser: </span>XXX<strong>XXX</strong></h2>
+      </div>
+
+
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-other-number-yn",
+        name: "contact-other-number-yn",
+        fieldset: {
+          legend: {
+            html: "Do you look after someone for more than 35 hours a week and/or they get benefits?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "XXX"
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-other-number-yn"] == "Add number")
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-other-number-yn"] == "Opt out of telephone")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

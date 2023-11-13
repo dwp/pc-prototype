@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-router" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment",
+        name: "msic-pc-payment",
+        fieldset: {
+          legend: {
+            text: "Where do you want your Pension Credit paid?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">We know about the account your State Pension is paid into."
+            },
+        items: [
+          {
+            value: "Same account as State Pension",
+            text: "The same account as your State Pension",
+            checked: (data["msic-pc-payment"] == "Same account as State Pension")
+          },
+          {
+            value: "An alternative account",
+            text: "A different account",
+            checked: (data["msic-pc-payment"] == "An alternative account")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+    </div>
+{% endblock %}

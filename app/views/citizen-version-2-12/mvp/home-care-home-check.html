@@ -1,0 +1,60 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <form action="home-care-home-check-router" method="post" class="form"> -->
+    <form action="home-care-home-check-router" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        <p class="govuk-heading-xl govuk-!-margin-bottom-2">Do you live permanently in a care home?</p>
+        {% endset %}
+      <!------------Legend------------>
+
+
+{{ govukRadios({
+  idPrefix: "home-care-home-check",
+  name: "home-care-home-check",
+  fieldset: {
+    legend: {
+      html: dynamicH1,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["home-care-home-check"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["home-care-home-check"] == "No")
+    }
+  ]
+}) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

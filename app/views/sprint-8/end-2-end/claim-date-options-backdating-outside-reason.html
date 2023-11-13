@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Backdating: Outside of UK - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claim-date-options-backdating-Benefit-check" method="post" class="form">
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon app-warning-text--long-2" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          Agent: The maxium backdated point has changed from XX/XX/XXXX to XX/XX/XXXX. PTP needs an a reason.
+        </strong>
+      </div>
+
+
+
+      {{ govukRadios({
+        idPrefix: "where-do-you-live",
+        name: "where-do-you-live",
+        fieldset: {
+          legend: {
+            text: "What is the reason that the date is different?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "customer-stopped-working",
+            text: "Customer stopped working"
+          },
+          {
+            value: "scotland",
+            text: "Bereavement"
+          },
+          {
+            value: "living-on-own-or-separated",
+            text: "Living on own or separated"
+          },
+          {
+            value: "customers-request",
+            text: "Customer’s request"
+          },
+          {
+            value: "arriving-returning-to-uk",
+            text: "Arriving/returning to UK"
+          },
+          {
+            value: "moved-into-care-home",
+            text: "Moved into care home"
+          },
+          {
+            value: "reduction-of-savings-income",
+            text: "Reduction of savings/income"
+          },
+          {
+            value: "carers-allowance-awarded",
+            text: "Carers Allowance awarded"
+          },
+          {
+            value: "change-of-address",
+            text: "Change of address"
+          },
+          {
+            value: "ee-applying-for-pension-credit",
+            text: "Re-applying for Pension Credit"
+          },
+          {
+            value: "hospital-admission-discharge",
+            text: "Hospital admission/discharge"
+          },
+          {
+            value: "backdated-claim",
+            text: "Backdated claim"
+          },
+          {
+            value: "released-from-hmp",
+            text: "Released from HMP"
+          },
+          {
+            value: "pip-claimed-awarded",
+            text: "PIP claimed/awarded"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

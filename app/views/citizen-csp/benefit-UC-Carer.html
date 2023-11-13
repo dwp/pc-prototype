@@ -1,0 +1,63 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-check" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Does anyone get Carer Support Payment or the Carer’s Element of Universal Credit for looking after you?</h2>
+
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        name: "benefit-UC-Carer",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefit-UC-Carer"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefit-UC-Carer"] == "No")
+          },
+          {
+               divider: "or"
+             },
+                       {
+            value: "not sure",
+            text: "I'm not sure",
+            checked: (data["benefit-UC-Carer"] == "I'm not sure")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

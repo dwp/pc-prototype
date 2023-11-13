@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent: Check and discuss the pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-sp-check-yn" method="post" class="form">
+
+      <input type="hidden" name="pensions-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-l"> Agent: Check and discuss the State Pension {{ data["full-name"] }} has</h1>
+
+
+          <p class=govuk-body>Check the benefits tab in <strong>Searchlight</strong> for State Pension and tell the claimant what you see.</p>
+
+    </div>
+
+<br>
+
+
+<a href="pensions-sp-check-yn-5" type="submit" class="govuk-button">
+    Continue
+</a>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

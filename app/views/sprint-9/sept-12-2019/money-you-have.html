@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="msic-has-bank-current-account-yn" method="post" class="form">
+      <h1 class="govuk-heading-xl">About the money you have</h1>
+
+      <p class="govuk-body">@pete this needs to be a nice oveview, agents are using this as a prompt to start taking down data. So maybe not a list? I'll leave in the list so you have context. This includes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Money in the UK and aboard</li>
+        <li>money in current, saving or deposit accounts</li>
+        <li>money invested in ISAs, shares or unit trusts</li>
+        <li>capital bonds, premium bonds</li>
+        <li>any other National Savings and Investment products</li>
+        <li>property or Land other than your home</li>
+        <li>any other money held in this country or abroad</li>
+        <li>sums of money you keep at home in cash</li>
+        <li>lump sums, such as insurance payouts, that you expect in the near future</li>
+      </ul>
+
+      <br>
+
+      {{ govukButton({
+        text: "Money Call to action TBC"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

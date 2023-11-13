@@ -1,0 +1,77 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+
+{% if data['state-pension-status'] == 'sp-handover' or data['partner-state-pension-status'] == 'sp-handover' %}
+
+Issues with SP / Partner
+<form action="handover-early-sp" method="post" class="form">
+
+{% elif data['system-children-mac-check'] == 'mac'%}
+<form action="handover-early-mac" method="post" class="form">
+I am too youung
+
+{% elif data['system-children-mac-check'] == 'children-mac'%}
+I have children and too young
+<form action="done-children" method="post" class="form">
+{% else %}
+
+I am normal
+<form action="outcome" method="post" class="form">
+
+{% endif %}
+
+
+
+<br>
+handover-early-sp
+<br>
+checked: (data["partner-amount-not-known"] == "amount-not-known") handover-early-sp
+<br>
+(data["partner-state-pension-status"] == "NoSP" handover-early-sp
+
+
+
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+
+        {% include "g4s-0-7/mvp/claim-details.html" %}
+
+    </div></div>
+
+  </div>
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "dont-print govuk-!-margin-top-8"
+}) }}
+
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you get council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-state-overview" method="post" class="form">
+
+      <h2 class="govuk-heading-xl">
+          Contact your local authority to apply for a Council Tax Reduction
+      </h2>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

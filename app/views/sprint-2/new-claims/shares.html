@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any money in current, savings or investment accounts? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Shares
+    </h1>
+    <form action="/new-claims/shares-router" method="post" class="form">
+      {% set company = "share-company-" + shareNumber %}
+      {% set type = "share-type-" + shareNumber %}
+      {% set amount = "share-amount-" + shareNumber %}
+      {% set value = "share-value-" + shareNumber %}
+
+      {{ govukInput({
+        label: {
+          text: "Company name"
+        },
+        id: company,
+        name: company,
+        classes: "govuk-input--width-20",
+        value: data[company]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Type of shares"
+        },
+        id: type,
+        name: type,
+        classes: "govuk-input--width-20",
+        value: data[type]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Amount of shares"
+        },
+        id: amount,
+        name: amount,
+        classes: "govuk-input--width-10",
+        value: data[amount]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Value of shares"
+        },
+        id: value,
+        name: value,
+        classes: "govuk-input--width-10",
+        value: data[value]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

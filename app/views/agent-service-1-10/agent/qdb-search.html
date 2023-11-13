@@ -1,0 +1,60 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qdb-summary" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Enter the citizen's National Insurance number?</h1>
+
+
+
+
+                {{ govukInput({
+                  label: {
+                    text: ""
+                  },
+                  hint: {
+                    text: " For example, ‘QQ 12 34 56 C'"
+                  },
+                  id: "qd-search-nino",
+                  name: "qd-search-nino",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["qd-search-nino"]
+                }) }}
+
+
+                  {{ govukButton({
+                     text: "Continue"
+                   }) }}
+
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

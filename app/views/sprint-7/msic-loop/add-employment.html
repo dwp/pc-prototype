@@ -1,0 +1,237 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        About full time employment
+      </h1>
+
+      {% if data.employedAndSelfEmployed %}
+        {% set nextPage = "add-self-employment" %}
+      {% else %}
+        {% set nextPage = "earnings-summary" %}
+      {% endif %}
+
+      <form action="{{nextPage}}" method="post">
+        {{ govukInput({
+          label: {
+            text: "Employer's name"
+          },
+          id: "work-name",
+          name: "work-name",
+          classes: "govuk-input--width-20",
+          value: data["work-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Payroll number"
+          },
+          id: "work-payroll",
+          name: "work-payroll",
+          classes: "govuk-input--width-20",
+          value: data["work-payroll"]
+        }) }}
+
+        {{ govukDateInput({
+          id: "work-start",
+          namePrefix: "work-start",
+          fieldset: {
+            legend: {
+              text: "Start date"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["work-start-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["work-start-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["work-start-year"]
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "work-end",
+          namePrefix: "work-end",
+          fieldset: {
+            legend: {
+              text: "End date"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["work-end-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["work-end-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["work-end-year"]
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Earnings
+        </h2>
+
+        {{ govukInput({
+          label: {
+            text: "Taxable pay (gross)"
+          },
+          id: "work-gross",
+          name: "work-gross",
+          classes: "govuk-input--width-20",
+          value: data["work-gross"]
+        }) }}
+
+        {{ govukDateInput({
+          id: "work-end",
+          namePrefix: "work-end",
+          fieldset: {
+            legend: {
+              text: "Payment date"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["payment-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["payment-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["payment-date-year"]
+            }
+          ]
+        }) }}
+
+
+        {{ govukRadios({
+          idPrefix: "work-frequency",
+          name: "work-frequency",
+          fieldset: {
+            legend: {
+              text: "Payment frequency"
+            }
+          },
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data['work-frequency'] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data['work-frequency'] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (data['work-frequency'] == "Every four weeks")
+            },
+            {
+              value: "Every month",
+              text: "Every month",
+              checked: (data['work-frequency'] == "Every month")
+            },
+            {
+              value: "Every six months",
+              text: "Every six months",
+              checked: (data['work-frequency'] == "Every six months")
+            },
+            {
+              value: "Annually",
+              text: "Annually",
+              checked: (data['work-frequency'] == "Annually")
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Decuctions
+        </h2>
+
+        {{ govukInput({
+          label: {
+            text: "Tax"
+          },
+          id: "work-tax",
+          name: "work-tax",
+          classes: "govuk-input--width-20",
+          value: data["work-tax"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "National Insurance contributions"
+          },
+          id: "work-ni",
+          name: "work-ni",
+          classes: "govuk-input--width-20",
+          value: data["work-ni"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Pensions"
+          },
+          id: "work-pensions",
+          name: "work-pensions",
+          classes: "govuk-input--width-20",
+          value: data["work-pensions"]
+        }) }}
+        <p>
+          Value: <strong>£50%</strong> of above is added added to the calculation
+        </p>
+
+        <p>
+          Based on what was entered above, this part would show you 50% of what you entred above, this amount it what is taken into the calculation
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

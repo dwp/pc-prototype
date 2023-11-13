@@ -1,0 +1,72 @@
+Account with: {% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <form action="msic-all-money-accounts-summary-router" method="post" class="form">
+    <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+  <span class="govuk-caption-m"></span>
+
+  <!------------HEADLINE------------>
+    {% set legend %}
+    {% if data["claim-filter"] == "Advanced or Today" %} Do you had any other money, savings or investments that you have not told us about? {% endif %}
+    {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any other money, savings or investments that you have not told us about?{% endif %}
+    {% endset %}
+  <!------------HEADLINE------------>
+
+  {{ govukRadios({
+    idPrefix: "msic-has-missing-account-yn",
+    name: "msic-has-missing-account-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-has-missing-account-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-has-missing-account-yn"] == "no")
+      }
+    ]
+  }) }}
+
+
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+  </div></div><br><br>
+
+  {% include "version-15/APIs/msic-rolling-summary.html" %}
+
+</form>
+
+
+<!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+{% endblock %}

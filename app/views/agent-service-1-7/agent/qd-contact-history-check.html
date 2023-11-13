@@ -1,0 +1,83 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-contact-history" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Check system generate call reason</h1>
+
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list">
+          <li>Inbound call on 5 May 2022. Call taken by Deborah Gibson.</li>
+          <li>Asked for an explanation regarding their decision. </li>
+          <li>Changes within the backdating period were identified.</li>
+        </ul>
+      </div>
+
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline ",
+        idPrefix: "change-contact-history",
+        name: "change-contact-history",
+        fieldset: {
+          legend: {
+            text: "Is contact history accurate?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "The statement should refelect the reason for the call and key outocome of call"
+        },
+        items: [
+          {
+            value: "yes",
+            text: "yes"
+          },
+          {
+            value: "no",
+            text: "no"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

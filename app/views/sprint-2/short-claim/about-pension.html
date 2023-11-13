@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About the pension - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "non-state-pensions"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Pension details
+    </h1>
+
+    <form action="money-you-have" method="post" class="form">
+      {{ govukInput({
+        id: "pension-name",
+        name: "pension-name",
+        value: data["pension-name"],
+        classes: "govuk-input--width-20",
+        label: {
+          text: "Name"
+        }
+      }) }}
+
+      {{ govukInput({
+        id: "pension-value",
+        name: "pension-value",
+        value: data["pension-value"],
+        classes: "govuk-input--width-10",
+        label: {
+          text: "Pension value"
+        }
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "pension-frequency",
+        name: "pension-frequency",
+        fieldset: {
+          legend: {
+            text: "Payment frequency"
+          }
+        },
+        items: [
+          {
+            value: "Every week",
+            text: "Every week",
+            checked: (data["pension-frequency"] == "Every week")
+          },
+          {
+            value: "Every two weeks",
+            text: "Every two weeks",
+            checked: (data["pension-frequency"] == "Every two weeks")
+          },
+          {
+            value: "Every four weeks",
+            text: "Every four weeks",
+            checked: (data["pension-frequency"] == "Every four weeks")
+          },
+          {
+            value: "Every month",
+            text: "Every month",
+            checked: (data["pension-frequency"] == "Every month")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

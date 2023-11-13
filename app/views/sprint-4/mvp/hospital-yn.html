@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you live with a partner? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hospital-yn-router" method="post" class="form">
+      {% set today = '' | formatDate %}
+
+      {{ govukRadios({
+        idPrefix: "hospital-yn",
+        name: "hospital-yn",
+        fieldset: {
+          legend: {
+            text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["hospital-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["hospital-yn"] == "No")
+          }
+        ]
+      }) }}
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospital-yes-complete" value="true"/>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

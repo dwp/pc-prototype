@@ -1,0 +1,171 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-c-nil-task-4-q-router" method="post" class="form">
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        {% set USED %}
+        {{govukTag({
+          text: "System",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+    
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Check the pension payments from<br>Magaluf Ringo LTD</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">Make sure the selected payment represents the applicant's current <br> income from this pension.</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">This application was submitted on Saturday 29 May 2022.</p>
+
+
+        {{ govukTable({
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-6",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Payment date (quarterly)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Net pay",
+              classes: 'govuk-20-percent'
+            },
+            {
+              html: "Selection method",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 June 2022"
+              },
+              {
+                text: "£3,299.92"
+              },
+              {
+                html: USED
+              }
+              ],
+              [
+                {
+                  text: "2 March 2022"
+                },
+                {
+                  text: "£2,639.94"
+                },
+                {
+                  html: NOTUSED
+                }
+              ],
+            [
+              {
+                text: "1 December 2021"
+              },
+              {
+                text: "£2,639.94"
+              },
+              {
+                html: NOTUSED
+              }
+            ]
+          ]
+        }) }}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-q",
+          name: "process-c-nil-task-4-q",
+          fieldset: {
+            legend: {
+              text: "The payment selected converts to £253.85 a week. Do you agree with this?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-q"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-q"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+</form>
+
+{% endblock %}

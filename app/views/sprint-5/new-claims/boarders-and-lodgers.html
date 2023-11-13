@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About bodger - bodger Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      About the boarder and lodger
+    </h1>
+
+    <form action="household-summary" method="post" class="form">
+      <input type="hidden" name="boarder-in-home" value="true"/>
+
+      {{ govukInput({
+        label: {
+          text: "Full name"
+        },
+        id: "bodger-full-name",
+        name: "bodger-full-name",
+        classes: "govuk-input--width-20",
+        value: data["bodger-full-name"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "bodger-dob",
+        namePrefix: "bodger-dob",
+        fieldset: {
+          legend: {
+            text: "What is their date of birth?"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 1956"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["dob-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["dob-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["dob-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukDateInput({
+        id: "bodger-move-in-date",
+        namePrefix: "bodger-move-in-date",
+        fieldset: {
+          legend: {
+            text: "When did they move in?"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 1956"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["bodger-move-in-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["bodger-move-in-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["bodger-move-in-date-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "serve-dinner",
+        name: "serve-dinner",
+        fieldset: {
+          legend: {
+            text: "Do you provide them with prepared meals?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["serve-dinner"] == "yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["serve-dinner"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "is-bodger-blind",
+        name: "is-bodger-blind",
+        fieldset: {
+          legend: {
+            text: "Are they registered blind or severely sight impaired?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["is-bodger-blind"] == "yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["is-bodger-blind"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Income"
+        },
+        id: "income",
+        name: "income",
+        classes: "govuk-input--width-20",
+        value: bodger["income"]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "bodger-frequency",
+        name: "bodger-frequency",
+        fieldset: {
+          legend: {
+            text: "Payment frequency"
+          }
+        },
+        items: [
+          {
+            value: "Every week",
+            text: "Every week",
+            checked: (data['bodger-frequency'] == "Every week")
+          },
+          {
+            value: "Every two weeks",
+            text: "Every two weeks",
+            checked: (data['bodger-frequency'] == "Every two weeks")
+          },
+          {
+            value: "Every four weeks",
+            text: "Every four weeks",
+            checked: (data['bodger-frequency'] == "Every four weeks")
+          },
+          {
+            value: "Every month",
+            text: "Every month",
+            checked: (data['bodger-frequency'] == "Every month")
+          }
+        ]
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: "bodger-benefits",
+        name: "bodger-benefits",
+        fieldset: {
+          legend: {
+            text: "Benefits"
+          }
+        },
+        hint: {
+          text: "Please select any benefits:"
+        },
+        items: [
+          {
+            value: "Personal Independance Payment (PIP)",
+            text: "Personal Independance Payment (PIP)",
+            checked: ((data["bodger-benefits"] or []).includes("Personal Independance Payment (PIP)"))
+          },
+          {
+            value: "Disibility Living Allowance (DLA)",
+            text: "Disibility Living Allowance (DLA)",
+            checked: ((data["bodger-benefits"] or []).includes("Disibility Living Allowance (DLA)"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

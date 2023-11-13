@@ -1,0 +1,86 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-c-nil-task-3-3" method="post" class="form">
+
+        {% include "agent-service-1-1/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">Task 3-2</span> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Reached SPA on or after 6 April 2016 [Savings Credit not applicable]</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Given by applicant [AfPC]</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>2 February 1954 [68]</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Date reached State Pension Age [SPA]:</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>XX Month Year</strong></p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-3-2",
+          name: "process-c-nil-task-3-2",
+          fieldset: {
+            legend: {
+              text: "Does the information match?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-3-2"] == "Matched")
+          },
+            {
+              value: "Not matched",
+              text: "No",
+              checked: (data["process-c-nil-task-3-2"] == "Not matched")
+            },
+            {
+              value: "Unfinished",
+              text: "I cannot complete",
+              checked: (data["process-c-nil-task-3-2"] == "Unfinished")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  </form>
+
+{% endblock %}

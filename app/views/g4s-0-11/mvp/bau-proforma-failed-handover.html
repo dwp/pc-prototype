@@ -1,0 +1,40 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-11/mvp/introduction">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">The line is busy at the moment so I will need to take some details and ask a colleague to call you back</h1>
+
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Follow your Standard Work Instructions for a DWP call back.</p>
+
+      <!-- {% include "g4s-0-11/mvp/process-proforma-failed-handover.html" %} -->
+
+
+      {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-button dont-print "
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

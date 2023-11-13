@@ -1,0 +1,120 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">Service statistics</h1>
+    <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-9">Updated today at 11:30:00</p>
+
+
+    <div class="govuk-grid-row govuk-!-padding-top-2">
+      <div class="govuk-grid-column-one-third ">
+        {% include "agent-service-1-9/agent/mi-menu.html" %}
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+
+        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-3">Overview of call outcomes</h3>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Total number of calls received between 9 February 2022 and today<br>(15 July 2022) about the no entitlement letters.</p>
+
+
+
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                      <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-half">
+                          <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-3">Number of no entitlement<br>letters sent</h3>
+
+                        </div>
+                        <div class="govuk-grid-column-one-half">
+                          <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Total letters sent</h3>
+                          <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">10,000</h3>
+
+                        </div>
+
+                        </div>
+
+                        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+                        <div class="govuk-grid-row">
+                          <div class="govuk-grid-column-full">
+                            <div class="govuk-grid-row">
+                              <div class="govuk-grid-column-one-half">
+                                <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-2">Calls received about the<br>no entitlement letters</h3>
+                                <p class="govuk-hint govuk-!-margin-bottom-6">This number may include more than one call from the same person. </p>
+
+                              </div>
+                              <div class="govuk-grid-column-one-half">
+                                <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Total calls received</h3>
+                                <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">200</h3>
+
+
+                              </div>
+
+                              </div>
+
+                              <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-full">
+
+                    <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-one-half">
+                        <p class="govuk-body govuk-!-font-size-19 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Breakdown of the 200 <br> calls received about the <br> no entitlement letters</p>
+                      </div>
+                      <div class="govuk-grid-column-one-half">
+
+                      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Query was resolved on the call and no further action needed</h3>
+                      <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">170</h3>
+
+                      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Claims created in CAM due to caller saying they provided incorrect information on their application</h3>
+                      <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">19</h3>
+                      <!-- <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">14,000</h3> -->
+
+                      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Claims created in CAM due to incorrect DWP records</h3>
+                      <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">1</h3>
+                      <!-- <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">14,000</h3> -->
+
+                      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+                      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Caller requested a mandatory reconsideration</h3>
+                      <h3 class="govuk-body govuk-heading-st govuk-!-margin-bottom-0">10</h3>
+                      <!-- <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">14,000</h3> -->
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

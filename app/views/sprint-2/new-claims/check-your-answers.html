@@ -1,0 +1,491 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "correspondence-address"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      About you
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Alex Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+<!------------ ---- ------------>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          10 April 1950 / 65
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          National Insurance number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          QQ 11 22 33 C
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+    <!------------ -------------------- ------------>
+
+   <h2 class="govuk-heading-m">
+     Contact details
+   </h2>
+   <dl class="govuk-summary-list govuk-summary-list--long">
+     <!------------ ---- ------------>
+     <div class="govuk-summary-list__row">
+       <dt class="govuk-summary-list__key">
+         Blind
+       </dt>
+       <dd class="govuk-summary-list__value">
+         No
+       </dd>
+       <dd class="govuk-summary-list__actions">
+         <a href="about-you">
+           Change
+         </a>
+       </dd>
+     </div>
+     <!------------ ---- ------------>
+
+     <div class="govuk-summary-list__row">
+       <dt class="govuk-summary-list__key">
+         Telephone
+       </dt>
+       <dd class="govuk-summary-list__value">
+         01234 567890
+       </dd>
+       <dd class="govuk-summary-list__actions">
+         <a href="type-of-account">
+           Change
+         </a>
+       </dd>
+     </div>
+     <!------------ ---- ------------>
+     <div class="govuk-summary-list__row">
+       <dt class="govuk-summary-list__key">
+         SMS: Yes
+       </dt>
+       <dd class="govuk-summary-list__value">
+         07900 090 000
+       </dd>
+       <dd class="govuk-summary-list__actions">
+         <a href="uk-account">
+           Change
+         </a>
+       </dd>
+     </div>
+     <!------------ ---- ------------>
+     <div class="govuk-summary-list__row">
+       <dt class="govuk-summary-list__key">
+         Email
+       </dt>
+       <dd class="govuk-summary-list__value">
+         alex.smith@govmail.com
+       </dd>
+       <dd class="govuk-summary-list__actions">
+         <a href="uk-account">
+           Change
+         </a>
+       </dd>
+     </div>
+    <!------------ ---- ------------>
+
+   </dl>
+   <!------------ -------------------- ------------>
+
+  <h2 class="govuk-heading-m">
+    Benefits and premiums
+  </h2>
+  <dl class="govuk-summary-list govuk-summary-list--long">
+    <!------------ ---- ------------>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Benefits
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <ul class="govuk-list" style="margin-bottom: 0">
+          <li>State Pension</li>
+          <li>...</li>
+          <li>...</li>
+        </ul>
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="benefits">
+          Change
+        </a>
+      </dd>
+    </div>
+    <!------------ ---- ------------>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Benefits: Premiums
+      </dt>
+      <dd class="govuk-summary-list__value">
+        <ul class="govuk-list" style="margin-bottom: 0">
+          <li>EASD</li>
+          <li>...</li>
+          <li>...</li>
+        </ul>
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="benefits">
+          Change
+        </a>
+      </dd>
+    </div>
+  <!------------ ---- ------------>
+  </dl>
+   <!------------ -------------------- ------------>
+    <h2 class="govuk-heading-m">
+      Address
+    </h2>
+<!------------ ---- ------------>
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Current address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          221b Baker St<br/>
+          Marylebone<br/>
+          London
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="address-choice">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Postcode
+        </dt>
+        <dd class="govuk-summary-list__value">
+          NW1 6XE
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="postcode-lookup">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Carehome
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="postcode-lookup">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Rented or owned
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Owned
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="home-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Ground rent
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £0
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="ground-rent">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Service charges
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £0
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="service-charges">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Household composition
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Who else lives in your home?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list" style="margin-bottom: 0">
+            {% if data['relationship-children'] %}<li>Children</li>{% endif %}
+            {% if data['relationship-landlord'] %}<li>Landlord</li>{% endif %}
+            {% if data['relationship-joint-tenant'] %}<li>Joint tenant</li>{% endif %}
+            {% if data['relationship-sub-tenant'] %}<li>Sub-tenant</li>{% endif %}
+            {% if data['relationship-co-owner'] %}<li>Co-owner</li>{% endif %}
+            {% if data['relationship-boarder'] %}<li>Boarder</li>{% endif %}
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="address-choice">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Money
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Cash
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £500
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="cash">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Money in current, savings or investment accounts
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £500
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="savings">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Shares
+        </dt>
+        <dd class="govuk-summary-list__value">
+          £0
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="shares">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Property
+        </dt>
+        <dd class="govuk-summary-list__value">
+          None
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="property">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Income
+    </h2>
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Non-state / occupational pension
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="has-private-pension">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employed
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="has-work">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Self-employed
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="self-employed">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+     <!------------ ---- ------------>
+    <h2 class="govuk-heading-m">
+      Bank details
+    </h2>
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UK bank, building society or credit union account
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="type-of-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name on account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Alex Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          11 22 33
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          12345678
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+    <!------------ ---- ------------>
+    <h2 class="govuk-heading-m">
+      Claimant declaration
+    </h2>
+
+    <p class="govuk-body">
+      By submitting this claim you agree that the information you’ve given is
+      complete and correct. While you’re receiving Pension Credit,
+      you’ll report changes to your circumstances straight away by calling
+      0800&nbsp;731&nbsp;7898. If you give wrong or incomplete information, or
+      you don’t report changes, you may:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be prosecuted</li>
+      <li>need to pay a financial penalty</li>
+      <li>have your Pension Credit reduced or stopped</li>
+      <li>be paid too much Pension Credit and have to pay the money back</li>
+    </ul>
+
+    <form action="done" method="post">
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

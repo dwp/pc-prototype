@@ -1,0 +1,95 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-ownership-router" method="post" class="form">
+
+      {% set otherAccommodationDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "Description of where you live"
+          },
+          hint: {
+            text: "For example, you might live in shared accommodation, or in someone else's home as part of a Shared Lives scheme."
+          },
+          id: "home-ownership-other",
+          name: "home-ownership-other",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "home-ownership",
+        fieldset: {
+          legend: {
+            text: "Which best describes the place where you live?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "You own it",
+            text: "You own it",
+            checked: (data["home-ownership"] == "You own it")
+          },
+          {
+            value: "You rent it",
+            text: "You rent it",
+            checked: (data["home-ownership"] == "You rent it")
+          },
+          {
+            value: "Shared ownership",
+            text: "You rent it and own it (Shared ownership)",
+            checked: (data["home-ownership"] == "Shared ownership")
+          },
+          {
+            value: "You live in a caravan houseboat or mobile home",
+            text: "You live in a caravan, houseboat or mobile home",
+            checked: (data["home-ownership"] == "You live in a caravan houseboat or mobile home")
+          },
+          {
+            value: "Live in someone elses home",
+            text: "You live in someone else’s home without paying towards the rent or mortgage",
+            checked: (data["home-ownership"] == "Live in someone elses home")
+          },
+          {
+            value: "Other accommodation",
+            text: "Other",
+            checked: (data["home-ownership"] == "Other accommodation"),
+                  conditional: {
+                    html: otherAccommodationDetails
+        }
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

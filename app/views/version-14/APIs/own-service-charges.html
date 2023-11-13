@@ -1,0 +1,114 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="own-ground-rent" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "own-service-charges",
+        name: "own-service-charges",
+        fieldset: {
+          legend: {
+            text: "Do you pay any service charges?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                <br><strong>Service charges can include:
+                </strong>
+
+                <ul class=\"govuk-list hint govuk-list--bullet\">
+                  <li>warden services</li>
+                  <li>caretaker services like gardening, maintenance and cleaning of communal areas</li>
+                  <li>use of a laundry room</li>
+                  <li>use of communal areas like a lounge or TV area</li>
+                </ul></hint>"
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["own-service-charges"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["own-service-charges"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+<!-- old dropdown
+
+html: "<h1 class=\"govuk-heading-xl\"><span class=\"govuk-caption-l\">Own</span>Do you pay any service charges?</h1>",
+
+
+      {% set serviceCharges %}
+        {{ govukInput({
+          label: {
+            text: "How much do you pay each year?"
+          },
+          id: "own-service-charges",
+          name: "own-service-charges",
+          classes: "govuk-input--width-20",
+          value: data["service-charges"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "have-any-service-charges",
+        name: "have-any-service-charges",
+        fieldset: {
+          legend: {
+            text: "Do you pay any service charges?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: serviceCharges
+            },
+            checked: (data["have-any-service-charges"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["have-any-service-charges"] == "no")
+          }
+        ]
+      }) }}
+
+-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

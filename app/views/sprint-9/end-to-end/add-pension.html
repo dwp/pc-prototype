@@ -1,0 +1,184 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Pensions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What non-state or private pension is missing?
+      </h1>
+
+      <form action="pensions" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "Name of pension provider"
+          },
+          id: "pension-name",
+          name: "pension-name",
+          classes: "govuk-input--width-20",
+          value: data["pension-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Pension reference number (if has one)"
+          },
+          id: "pension-ref",
+          name: "pension-ref",
+          classes: "govuk-input--width-20",
+          value: data["pension-ref"]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Payment details
+        </h2>
+
+        {{ govukInput({
+          label: {
+            text: "Value"
+          },
+          id: "pension-value",
+          name: "pension-value",
+          classes: "govuk-input--width-20",
+          value: data["pension-value"]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "pension-status",
+          name: "pension-status",
+          fieldset: {
+            legend: {
+              text: "Status of pension"
+            }
+          },
+          items: [
+            {
+              value: "In receipt",
+              text: "In receipt",
+              checked: (data['pension-status'] == "In receipt")
+            },
+            {
+              value: "Not claimed",
+              text: "Not claimed",
+              checked: (data['pension-status'] == "Not claimed")
+            },
+            {
+              value: "Withdrawn / lump sum",
+              text: "Withdrawn / lump sum",
+              checked: (data['pension-status'] == "Withdrawn / lump sum")
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "pension-frequency",
+          name: "pension-frequency",
+          fieldset: {
+            legend: {
+              text: "Payment frequency"
+            }
+          },
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data['pension-frequency'] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data['pension-frequency'] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (data['pension-frequency'] == "Every four weeks")
+            },
+            {
+              value: "Every month",
+              text: "Every month",
+              checked: (data['pension-frequency'] == "Every month")
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Pension rate details
+        </h2>
+
+        {{ govukRadios({
+        idPrefix: "percent-change-type",
+        name: "percent-change-type",
+        fieldset: {
+          legend: {
+            text: "What is the percent change type?"
+          }
+        },
+          items: [
+            {
+              value: "Fixed",
+              text: "Fixed",
+              checked: (data['pension-frequency'] == "Fixed")
+            },
+            {
+              value: "CPI/RPI",
+              text: "CPI or RPI increase",
+              checked: (data['pension-frequency'] == "CPIorRPI")
+            },
+            {
+              value: "Unknown-change",
+              text: "Unknown % change",
+              checked: (data['pension-frequency'] == "Unknown-change")
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the percent change year-on-year?"
+          },
+          id: "pension-rate",
+          name: "pension-rate",
+          classes: "govuk-input--width-10",
+          value: data["pension-rate"]
+        }) }}
+
+
+        <h2 class="govuk-heading-m">
+          Contact details
+        </h2>
+
+        {{ govukInput({
+          label: {
+            text: "Telephone number"
+          },
+          id: "pension-telephone",
+          name: "pension-telephone",
+          classes: "govuk-input--width-20",
+          value: data["pension-telephone"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

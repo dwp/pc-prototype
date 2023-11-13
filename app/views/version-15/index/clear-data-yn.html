@@ -1,0 +1,40 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="clear-data-yn-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">You are about to delete the information entred</h1>
+      <p class="govuk-body-m">The information you entered about the caller will be deleted.<br>This is not saved anywhere.</p>
+      <br>
+
+
+      {{ govukButton({
+        text: "Clear session",
+        classes: "govuk-button--warning"
+      }) }}
+
+<br>
+
+<p class="govuk-body-m"><a href="#">Cancel</a></p>
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

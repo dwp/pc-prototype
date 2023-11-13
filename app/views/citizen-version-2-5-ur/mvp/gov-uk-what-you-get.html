@@ -1,0 +1,215 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+How to Claim - Pension Credit
+{% endblock %}
+
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Working, jobs and pensions</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">State Pension</a>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Pension Credit
+        </h1>
+
+
+        {% include "citizen-version-2-4/mvp/gov-uk-menu.html" %}
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l  class="govuk-heading-xl">What you could get</h2>
+
+        <p class="govuk-body">Guarantee Credit tops up your weekly income if it’s below £173.75 (for single people) or £265.20 (for couples). You may still be eligible if you have savings, a pension or your own home.</p>
+
+        <p class="govuk-body">Savings Credit is an extra payment for people who saved some money towards their retirement, for example a pension.</p>
+
+        <div class="govuk-inset-text">You may not be <a href="/pension-credit/eligibility">eligible for Savings Credit</a> if you reached <a href="/calculate-state-pension">State Pension age</a> on or after 6 April 2016.</div>
+
+        <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <th scope="col" class="govuk-table__header">Guarantee Credit per week</th>
+          <th  scope="col" class="govuk-table__header">Savings Credit per week</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Single people</th>
+          <td class="govuk-table__cell">Top up to £173.75</td>
+          <td class="govuk-table__cell">Up to £13.97</td>
+        </tr>
+        <tr>
+          <th scope="row" class="govuk-table__header">Couples</th>
+          <td class="govuk-table__cell">Top up to £265.20</td>
+          <td class="govuk-table__cell">Up to £15.62</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l id="savings-credit">Savings Credit</h2>
+
+    <p class="govuk-body">You can only start getting Savings Credit if you (and your partner, if you have one) reached  <a href="/calculate-state-pension">State Pension age</a> before 6 April 2016.</p>
+
+    <h3 class="govuk-heading-m id="if-your-partner-did-not-reach-state-pension-age-before-6-april-2016">If your partner did not reach State Pension age before 6 April 2016</h3>
+
+    <p class="govuk-body">If you’ve been getting Savings Credit since before 6 April 2016, you’ll continue to get it as long as there are no breaks in your entitlement.</p>
+
+    <p class="govuk-body">If you stop being eligible for Savings Credit for any reason, you will not be able to get it again.</p>
+
+
+    <p class="govuk-body">You might get more if you’re a carer, severely disabled, responsible for a child or young person, or have certain housing costs.</p>
+
+    <p class="govuk-body">Use the <a href="/pension-credit-calculator">Pension Credit calculator</a> to work out how much you might get.</p>
+
+    <p class="govuk-body">If you get Guarantee Credit you’ll also qualify for other benefits such as Housing Benefit, Council Tax Reduction, Cold Weather Payments and help with the costs of NHS services. <a href="/benefits-calculators">Check a benefits calculator</a> to see if you’re eligible for anything else.</p>
+
+    <h2 class="govuk-heading-l  id="if-youre-responsible-for-a-child-or-young-person">If you’re responsible for a child or young person</h2>
+
+    <p class="govuk-body">You might get more Pension Credit if you’re responsible for a child or young person. This is called the ‘child addition’.</p>
+
+    <p class="govuk-body">The child or young person must normally live with you and be under the age of 20.</p>
+
+    <p class="govuk-body">If they’re 16 or over and under 20, they must be in (or accepted for):</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>approved training, such as Foundation Apprenticeships</li>
+      <li>a course of non-advanced education (for example, they’re studying for GCSEs or A levels)</li>
+    </ul>
+
+    <p class="govuk-body">If they’re in education, it must be for more than 12 hours a week on average.</p>
+
+    <p class="govuk-body">You cannot get the child addition if you get Tax Credits.</p>
+
+    <div role="note" aria-label="Information" class="application-notice info-notice">
+    <p class="govuk-body">If you get Tax Credits, you could get support for the child or young person through <a href="/child-tax-credit">Child Tax Credits</a>.</p>
+    </div>
+
+    <p class="govuk-body">Contact the Pension Service helpline if you’re not sure whether you’re eligible for the child addition.</p>
+
+    <div class="contact">
+    <p class="govuk-body"><strong>Pension Service helpline</strong><br>
+    Telephone: 0800 731 0469<br>
+    Textphone: 0800 169 0133<br>
+    <a href="https://www.relayuk.bt.com">Relay UK</a> (if you cannot hear or speak on the phone): 18001 then 0800 731 0469<br>
+    Monday to Friday, 8am to 6pm<br>
+    <a href="/call-charges">Find out about call charges</a></p>
+    </div>
+
+    <p class="govuk-body">You’ll usually get either £54.32 or £64.82 per week for each child or young person you’re responsible for. If they’re disabled, you may get more.</p>
+
+    <h2 class="govuk-heading-l  id="how-youre-paid">How you’re paid</h2>
+
+    <p class="govuk-body">All benefits, pensions and allowances are <a href="/how-to-have-your-benefits-paid">paid into an account</a>, for example a bank account.</p>
+
+
+
+
+
+        <div class="pagination govuk-!-margin-top-8">
+            <a href="gov-uk-eligibility" class="gem-c-pagination__link" rel="prev">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Previous
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">Eligibility and entitlement</span>
+            </a>
+
+        </div>
+        <div class="pagination">
+            <a href="gov-uk-start" class="gem-c-pagination__link" rel="next">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Next
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">How to apply</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "citizen-version-2-4/mvp/gov-uk-side-menu.html" %}
+    </div>
+
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-contextual-footer">
+
+            <div class="gem-c-related-navigation">
+
+
+
+
+
+                <nav role="navigation" class="gem-c-related-navigation__nav-section"
+                    aria-labelledby="related-nav-topics-250e20b6" data-module="gem-toggle">
+
+                    <h2 class="govuk-heading-l  class="govuk-heading-s gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+
+                    <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+                        <li class="gem-c-related-navigation__link"><a
+                                class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer"
+                                data-track-category="relatedLinkClicked" href="../state_pension_browse">State
+                                Pension</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

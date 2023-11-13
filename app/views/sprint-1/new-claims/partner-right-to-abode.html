@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Personal details - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="about-partner" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Partner right to abode
+      </h1>
+    </form>
+  </div>
+</div>
+{% endblock %}

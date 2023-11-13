@@ -1,0 +1,42 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+
+{% block pageTitle %}
+  Date of claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="partner-check-yn" method="post">
+
+
+
+
+        <!---- SHARED ---->{% if data['claim-filter'] == 'Today' %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We will consider your application from today as you reach your State Pension age today</h1>
+
+
+
+        <!---- OWN ---->{% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from the day you reach your State Pension age</h1>
+
+        {% endif %}
+
+        <!-- <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from {{ data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']}} when you reach your State Pension age</h1> -->
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

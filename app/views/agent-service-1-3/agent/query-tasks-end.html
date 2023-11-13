@@ -1,0 +1,94 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% set nav = 'tasks' %}
+{% include "agent-service-1-3/agent/query-primary-nav.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-tasks-mr" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+
+          <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Is the caller happy with the explanation?</h3>
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  {{ govukRadios({
+                    idPrefix: "task-end",
+                    name: "task-end",
+                    fieldset: {
+                      legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--s"
+                      }
+                    },
+                    hint: {
+                      text: ""
+                    },
+                    items: [
+                      {
+                        value: "end-call",
+                        text: "Yes - end call"
+                      },
+                      {
+                        value: "ap",
+                        text: "Yes - mentioned automated processing"
+                      },
+                      {
+                        value: "change",
+                        text: "Yes - changes made"
+                      },
+                      {
+                        value: "end-call",
+                        text: "No - end call"
+                      },
+                      {
+                        value: "ap",
+                        text: "No - mentioned automated processing"
+                      },
+                      {
+                        value: "mr",
+                        text: "No - would like it looked at again"
+                      }
+                    ]
+                  }) }}
+
+
+
+            {{ govukButton({
+              text: "Continue",
+              href: ""
+            }) }}
+          </div>
+
+          </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+    </form>
+{% endblock %}

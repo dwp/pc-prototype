@@ -1,0 +1,73 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-b-nil-task-list" method="post" class="form">
+
+        {% include "agent-service-1-1/agent/record-id.html" %}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukRadios({
+          idPrefix: "process-b-nil-task-2-idoc",
+          name: "process-b-nil-task-2-idoc",
+          fieldset: {
+            legend: {
+              text: "Does CAM show an IDOC or a previous online application for Pension Credit?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-0"
+            }
+          },
+          hint: {
+            html: hintLegend
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "Found",
+              text: "Yes",
+              checked: (data["process-b-nil-task-2-idoc"] == "Found")
+            },
+            {
+              value: "Not found",
+              text: "No",
+              checked: (data["process-b-nil-task-2-idoc"] == "Not found")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  </form>
+
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-create-claim" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter ">
+          {% include "agent-service-1-7/agent/side-nav.html" %}
+        </div>
+
+
+
+{% set LegendBenefitNotes %}
+
+  {% if data["benefits"] %}
+  {{ data["benefits"] }}
+  {% else %}
+  No change
+  {% endif %}
+
+{% endset -%}
+
+{% set LegendStatePensionNotes %}
+
+  {% if data["sp-notes"] %}
+  {{ data["sp-notes"] }}
+  {% else %}
+  No change
+  {% endif %}
+
+{% endset -%}
+
+{% set LegendHousingNotes %}
+
+  {% if data["housing-notes"] %}
+  {{ data["housing-notes"] }}
+  {% else %}
+  No change
+  {% endif %}
+
+{% endset -%}
+
+{% set LegendPartnerNotes %}
+
+  {% if data["partner-notes"] %}
+  {{ data["partner-notes"] }}
+  {% else %}
+  No change
+  {% endif %}
+
+{% endset -%}
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Make a change</h1>
+
+            {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: [
+                      {
+                        key: {
+                          text: "No qualifying benefits"
+                        },
+                        value: {
+                          html: LegendBenefitNotes
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-benefits",
+                              text: "Change",
+                              visuallyHiddenText: "name"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Weekly State Pension is £182"
+                        },
+                        value: {
+                          html: LegendStatePensionNotes
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-sp",
+                              text: "Change",
+                              visuallyHiddenText: "date of birth"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Partner"
+
+                        },
+                        value: {
+                          html: LegendPartnerNotes
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-partner",
+                              text: "Change",
+                              visuallyHiddenText: "address"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "No housing costs"
+                        },
+                        value: {
+                          html: LegendHousingNotes
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-housing",
+                              text: "Change",
+                              visuallyHiddenText: "contact details"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }) }}
+
+                  <div class="govuk-!-margin-top-4">
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+                  </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+    </form>
+
+
+
+{% endblock %}

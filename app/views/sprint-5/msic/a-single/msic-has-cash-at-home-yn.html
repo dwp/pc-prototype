@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any Unit trusts? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-cash-at-home-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-has-cash-at-home-yn",
+        name: "msic-has-cash-at-home-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have any cash held at home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\">
+In a cookie jar, matress, Money for funeral fund etc.</p><br>"
+            },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-has-cash-at-home-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-has-cash-at-home-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

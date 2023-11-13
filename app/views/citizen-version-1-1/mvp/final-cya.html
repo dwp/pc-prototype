@@ -1,0 +1,42 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="index-claim-help" method="post" class="form">
+
+
+
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">By applying you agree that:</h2>
+           <ul class="govuk-list govuk-list--bullet">
+             <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">the information is correct and complete as far as you know</p></li>
+             <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">you&rsquo;ll pay back any money you&rsquo;re overpaid if you&rsquo;re asked to</p></li>
+           </ul>
+
+           <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>You could be prosecuted or have to pay a financial penalty if you deliberately give the wrong or incomplete information or do&nbsp;not report changes.</strong></p>
+
+      </div>
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
+{% endblock %}

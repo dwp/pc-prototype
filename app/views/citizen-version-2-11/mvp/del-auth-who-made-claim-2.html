@@ -1,0 +1,70 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  del-auth-who-made-claim-router? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-who-made-claim-2-router" method="post" class="form">
+
+
+      {{ govukRadios({
+        idPrefix: "del-auth-who-made-claim-2",
+        name: "del-auth-who-made-claim-2",
+        fieldset: {
+          legend: {
+            text: "Are you a formal representative of the applicant?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+      {
+          value: "Power of attorney",
+          html: "Yes, I have power of attorney for the applicant",
+          checked: data['del-auth-who-made-claim-2'] == "Power of attorney"
+        },
+        {
+          value: "Appointee",
+          html: "Yes, I have been appointed by DWP to deal with the benefits of someone who cannot manage their own affairs",
+          checked: data['del-auth-who-made-claim-2'] == "Appointee"
+        },
+        {
+          value: "Corporate Acting Body",
+          html: "Yes, I work for a Corporate Acting Body for the applicant",
+          checked: data['del-auth-who-made-claim-2'] == "Corporate Acting Body"
+        },
+        {
+          value: "Personal Acting Body",
+          html: "Yes, I am a Personal Acting Body for the applicant",
+          checked: data['del-auth-who-made-claim-2'] == "Personal Acting Body"
+        },
+        {
+          value: "Someone else",
+          html: "No, I am helping them informally",
+          checked: data['del-auth-who-made-claim-2'] == "Someone else"
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

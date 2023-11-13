@@ -1,0 +1,71 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- ShowHide -->
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post" action="/session-clear-route">
+       <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-5/mvp/landing">
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Pass these details to the Pension Credit adviser along with the caller</h1>
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div>
+
+  {% if data['nino'] == '' %}
+
+  <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">I'm going to pass you to a colleague in the Pension Centre who will help you decide whether to apply</h1>
+
+  <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">I cannot see your details or start an application without a National Insurance number, but they will be able to help you.</p>
+
+  {% else %}
+
+<h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">I'm going to pass you to a colleague in the Pension Centre who will help you decide whether to apply</h1>
+
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Because you pay service charges or ground rent, Pension Credit might be able to help you. An advisor will ask you some more questions as part of a full assessment.</p>
+
+
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+{% endif %}
+
+
+{% include "g4s-0-5/mvp/claim-details.html" %}
+
+
+{{ govukButton({
+text: "Finish and close",
+classes: "govuk-button--warning dont-print govuk-!-margin-top-6"
+}) }}
+
+</form>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+<!-- {% include "includes/internal-header.html" %} -->
+{% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">QQ 11 22 33 c</p>
+
+  </div>
+</div>
+
+{% if data["nil-task-1-outcome"] %}
+
+<div class="govuk-grid-row govuk-!-margin-top-6">
+  <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">This application failed the nil award checks</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">XXXX</p>
+
+
+{% elif data["nil-task-1-passed"] and data["nil-task-2-passed"] and data["nil-task-3-passed"] %}
+
+<h1 class="govuk-heading-l govuk-!-margin-bottom-2">This application passed the nil award checks</h1>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">XXX</p>
+
+
+
+
+      {% else %}
+
+      {% endif %}
+
+
+  <!------------ ––– ------------>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <ol class="app-task-list">
+  <li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">1.</span>Identity
+  </h2>
+  <ul class="app-task-list__items">
+    <li class="app-task-list__item">
+      <a class="app-task-list__task-name" href="process-nil-task-1" aria-describedby="task-1">
+        Check IDV
+      </a>
+      {% if data["nil-task-1-outcome"] %}      <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+      {% elif data["nil-task-1-passed"] %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+      {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+      {% endif %}
+
+    </li>
+
+  </ul>
+  </li>
+
+  {% if data["nil-task-1-outcome"] %}
+  {% else %}
+
+  <li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">2.</span>IDOCs
+  </h2>
+  <ul class="app-task-list__items">
+    <li class="app-task-list__item">
+      <a class="app-task-list__task-name" href="process-nil-task-2" aria-describedby="task-2">
+        Contact history or previous contact
+      </a>
+      {% if data["nil-task-2-outcome"] %}      <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+      {% elif data["nil-task-2-passed"] %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+      {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+      {% endif %}
+  </ul>
+  </li>
+  {% endif %}
+
+  {% if data["nil-task-1-outcome"] %}
+  {% else %}
+
+  <li>
+  <h2 class="app-task-list__section">
+    <span class="app-task-list__section-number">3.</span>Task 3
+  </h2>
+  <ul class="app-task-list__items">
+    <li class="app-task-list__item">
+      <a class="app-task-list__task-name" href="process-nil-task-3" aria-describedby="task-3">
+        Contact information
+      </a>
+      {% if data["nil-task-3-outcome"] %}      <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+      {% elif data["nil-task-3-passed"] %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+      {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+      {% endif %}
+  </ul>
+  </li>
+  </ol>
+  {% endif %}
+
+
+      <!------------ ––– ------------>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add a shares account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-shares-account-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Shares details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of company"
+        },
+        id: "msic-shares-account-name",
+        name: "msic-shares-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+    <!--------------- MONEY ----------------------------------------------------------------------------------------->
+
+            {{ govukInput({
+              label: {
+                html: "How many shares did you have on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+              },
+              id: "msic-shares-account-number-EED",
+              name: "msic-shares-account-number-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                html: "How many shares did you have on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+              },
+              id: "msic-shares-account-number-TODAY",
+              name: "msic-shares-account-number-TODAY",
+              classes: "govuk-input--width-20"
+            }) }}
+
+    <!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-8">Housing costs</h2>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <ul class="govuk-list class="">
+              <li class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application answers </li>
+              <li class="govuk-body govuk-!-font-weight-bold">Do you pay any service charges?</li>
+              <li class="govuk-!-margin-bottom-4">No</li>
+
+              <li class="govuk-body govuk-!-font-weight-bold">Do you pay ground rent?</li>
+              <li class="govuk-!-margin-bottom-8">No</li>
+            </ul>
+          </div>
+      </div>
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+              {{ govukTextarea({
+                name: "more-detail",
+                id: "more-detail",
+                label: {
+                  text: "Notes",
+                  classes: "govuk-label--m",
+                  isPageHeading: true
+                },
+                hint: {
+                  text: "Include any new or corrected information within the backdating period"
+                }
+              }) }}
+            </div>
+          </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+        <br> <a href="case-summary">...</a>
+
+      </div>
+
+
+
+
+
+    </form>
+{% endblock %}

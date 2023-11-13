@@ -1,0 +1,62 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  State Pension Status - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-income-separate-more" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "partner-benefit-ca",
+        name: "partner-benefit-ca",
+        fieldset: {
+          legend: {
+            text: "Has your partner applied for Carer's Allowance?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+
+        },
+        hint: {
+          text: ""
+
+
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "benefit-ca",
+            text: "Yes",
+            checked: (data["partner-benefit-ca"] == "Yes")
+          },
+
+          {
+            value: "not-applied-sp",
+            text: "No",
+            checked: (data["partner-benefit-ca"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

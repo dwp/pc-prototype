@@ -1,0 +1,440 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: Employment and other income
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Employment
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ data["employment-yn"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="employment-yn">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+
+
+                  {% if data["employment-yes-more-detail"] %}
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Details
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            details{{ data["employment-yes-more-detail"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="notepad-selfEmployment">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+                        {% endif %}
+
+            <br>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Self - Employment
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["employment-yn"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="employment-yn">
+                  Change
+                </a>
+              </dd>
+            </div>
+
+
+            {% if data["employment-yes-more-detail"] %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Details
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      details{{ data["employment-yes-more-detail"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="notepad-selfEmployment">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+
+      <br>
+
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Item
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["other-income-benefits-aboard-yn"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="other-income-benefits-aboard-yn">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        {% if data["other-income-benefits-aboard-yn"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Details
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  details{{ data["XXX"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-benefits-aboard-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                  <br>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Item
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["other-income-spousal-maintenance-yn"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="other-income-spousal-maintenance-yn">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        {% if data["other-income-spousal-maintenance-yn"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Details
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  Details, {{ data["other-income-spousal-maintenance-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-spousal-maintenance-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  other-income-equity-release-yn
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-equity-release-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-equity-release-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-equity-release-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-equity-release-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-equity-release-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-sick-pay-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-sick-pay-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-sick-pay-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-sick-pay-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-sick-pay-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-royalties-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-royalties-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-royalties-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-royalties-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-royalties-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+
+<br>
+
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Item
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data["other-income-trust-payment-yn"] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a href="other-income-trust-payment-yn">
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+
+
+                                {% if data["other-income-trust-payment-yn"] %}
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Details
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          Details, {{ data["other-income-trust-payment-yn"] }}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="other-income-trust-payment-yes">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+                                      {% endif %}
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-armed-forces-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-armed-forces-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-armed-forces-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-armed-forces-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-armed-forces-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-injury-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-injury-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-injury-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-injury-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-injury-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+<br>
+
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-charitable-payments-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-charitable-payments-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-charitable-payments-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-charitable-payments-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-charitable-payments-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+                                    <br>
+
+
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Item
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-other-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-other-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["other-income-other-yn"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        Details, {{ data["other-income-other-yn"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-other-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+
+<br></dl></dl><br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="disregards-summary-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

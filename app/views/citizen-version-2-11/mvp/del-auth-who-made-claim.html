@@ -1,0 +1,61 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  del-auth-who-made-claim-router? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-who-made-claim-router" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "del-auth-who-made-claim",
+        name: "del-auth-who-made-claim",
+        fieldset: {
+          legend: {
+            text: "Who is completing this application?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yourself",
+            text: "I am applying for myself",
+              hint: {
+                text: ""
+              },
+              checked: data['del-auth-who-made-claim'] == "Yourself"
+                    },
+          {
+            value: "Helper",
+            text: "I am applying on behalf of someone else",
+              hint: {
+                text: ""
+              },
+            checked: (data["del-auth-help-to-claim"] == "Helper")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

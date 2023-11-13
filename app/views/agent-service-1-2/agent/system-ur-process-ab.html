@@ -1,0 +1,75 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-ur-process-ab-router" method="post" class="form">
+
+
+      <div class="govuk-panel--agent govuk-!-margin-top-6">
+
+        <!-- <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-6">How to process a nil award</h1> -->
+
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">We are looking to get your feedback on changes how we process claims that are flaged as a nil award.</p> -->
+
+
+      {{ govukRadios({
+        idPrefix: "system-ur-process-ab",
+        name: "system-ur-process-ab",
+        fieldset: {
+          legend: {
+            text: "Select a scenario",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        classes: "govuk-radios",
+        items: [
+        {
+          value: "A",
+          text: "A",
+          checked: (data["system-ur-process-ab"] == "A")
+                  },
+          {
+            value: "B",
+            text: "B",
+            checked: (data["system-ur-process-ab"] == "B")
+          },
+  {
+    value: "C",
+    text: "C",
+    checked: (data["system-ur-process-ab"] == "C")
+  }
+        ]
+      }) }}
+
+
+</div>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Start"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

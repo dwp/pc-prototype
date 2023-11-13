@@ -1,0 +1,70 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  benefits-war-widows-pensions-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-war-widows-pensions-yn-router" method="post" class="form">
+
+      <input type="hidden" name="benefit-war-disablement-yn-router" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        <p class=""></p>
+
+
+
+      {{ govukRadios({
+        name: "benefits-war-widows-pensions-yn",
+        fieldset: {
+          legend: {
+            html: "Adviser: Is there an interest shown for a War Widow or Widower's Pension?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefits-war-widows-pensions-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefits-war-widows-pensions-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Do you want us to send you some information about support with interest on a mortgage or loan secured against your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-equity-release" method="post" class="form">
+
+
+      {% set dynamicH1 %}
+
+        {% if data["home-smi-check"] == "Yes"%}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you want us to send you a form to reapply for Support for Mortgage Interest (SMI)?</h1>
+        {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you want us to send you some information about Support for Mortgage Interest (SMI)?</h1>
+
+        {% endif %}
+
+        {% endset -%}
+
+    {% set legendHint %}
+
+      {% if data["home-smi-check"] == "Yes"%}
+      <p class="govuk-hint">Your current claim for SMI will end when you move to Pension Credit. If you still need this support, you will need to apply again.</p>
+      {% else %}
+        <p class="govuk-hint">This support is paid as a loan that you must repay when your home is sold or transferred.</p>
+      {% endif %}
+
+      {% endset -%}
+
+
+      {{ govukRadios({
+        idPrefix: "home-mortgage-home-loan",
+        name: "home-mortgage-home-loan",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: legendHint
+            },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-mortgage-home-loan"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-mortgage-home-loan"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+{% endblock %}

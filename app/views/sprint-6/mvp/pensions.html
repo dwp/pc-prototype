@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Pensions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <h1 class="govuk-heading-xl">
+    Notinal
+  </h1>
+
+  <p class="govuk-heading-xl">
+    All this information form the notepad
+  </p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h2 class="govuk-heading-s">
+        Notinal income From notepad
+      </h2>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Current payment rate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £100.00
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rate start / end date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01 01 2019 -
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Projected rate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £100
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rate start
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01 01 2019 -
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  {% if data["pension-name"] %}
+    {% if data["pension-status"] == "In receipt" %}
+      <h2 class="govuk-heading-m">
+        Pensions that the claimant is in receipt of (1):
+      </h2>
+    {% elif data["pension-status"] == "Not claimed" %}
+      <h2 class="govuk-heading-m">
+        Pensions that the claimant is not currnetly claimed (1):
+      </h2>
+    {% elif data["pension-status"] == "Withdrawn / lump sum" %}
+      <h2 class="govuk-heading-m">
+        Lump sum pension payments (1):
+      </h2>
+    {% endif %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Pension provider: {{ data["pension-name"] }}
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Scheme name / Reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["pension-ref"] }}
+            </dd>
+          </div>
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Start / End date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["pension-start-day"] }}
+              {{ data["pension-start-month"] }}
+              {{ data["pension-start-year"] }} —
+              {{ data["pension-end-day"] }}
+              {{ data["pension-end-month"] }}
+              {{ data["pension-end-year"] }}
+            </dd>
+          </div> -->
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ (data["pension-value"] or 0) | formatMoney }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Rate of change / type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["pension-rate"] }}% / Fixed
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Weekly
+            </dd>
+          </div>
+        </dl>
+        {% set pensionDetails %}
+          <dl class="govuk-summary-list govuk-summary-list--long">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Company URL
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-url"] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-telephone"] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                E-mail
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-email"] }}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Company name<br>First line of address<br>Second line<br>POST CODE
+              </dd>
+            </div>
+          </dl>
+        {% endset %}
+        {{ govukDetails({
+          summaryText: "Provider address and contact details",
+          html: pensionDetails
+        }) }}
+      </div>
+    </div>
+  {% endif %}
+
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  <h2 class="govuk-heading-m">Any other non-state or private pension missing?</h2>
+  <p class="govuk-body">
+    <a href="add-pension" class="govuk-link">
+      Add a pension
+    </a>
+  </p>
+
+  <form action="task-list" method="post">
+    <input type="hidden" name="pensions-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+  </form>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+  {% endblock %}
+
+</div>

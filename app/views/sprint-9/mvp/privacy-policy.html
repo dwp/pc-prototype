@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you agree with the way we will use your information? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">How we use your personal information</h1>
+
+<!--
+
+{{ govukWarningText({
+  html: 'Agent: Read this page to the caller. You can answer any questions the claimant has using the full <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal Information Charter</a>',
+  iconFallbackText: "Warning"
+}) }}
+
+-->
+
+<div class="govuk-panel--agent">
+  <h2 class="govuk-heading-s"><span class="agent-action">Agent: </span> Read this page to the caller. </h2>
+
+  <p class="govuk-body">You can answer any questions the claimant has using the full <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal&nbsp;Information&nbsp;Charter (opens in a new window or tab)</a></p>
+
+  </div>
+
+  <p class="govuk-body">We will only use your information as allowed by data protection laws. This includes sharing information with other organisations and government departments where we need to.
+<br><br>To find out more about how we use information and your information rights, read our Personal Information Charter. You can get a copy of this at a jobcentre or by searching on GOV.UK.
+</p>
+
+
+
+<br>
+
+
+    <form action="privacy-policy-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "agrees-privacy",
+        name: "agrees-privacy",
+        fieldset: {
+          legend: {
+            text: "Do you understand the way we will use your personal information and want to continue your application?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["agrees-privacy"] == "Agree")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["agrees-privacy"] == "Disagree")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

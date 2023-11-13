@@ -1,0 +1,52 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Other help</h1>
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-top-8">DWP help</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Benefits</li>
+        <li>Calculator</li>
+        <li>Other</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-top-8">Other help</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>GOV.UK</li>
+        <li>Local Council</li>
+        <li>Intranet</li>
+        <li>Other</li>
+
+      </ul>
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Done",
+          href: "query-case-summary"
+        }) }}
+
+      </div>
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

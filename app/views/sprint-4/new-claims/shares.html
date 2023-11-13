@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Shares - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Shares
+    </h1>
+    <form action="has-bonds" method="post" class="form">
+      {{ govukInput({
+        label: {
+          text: "Company name"
+        },
+        id: "shares-name",
+        name: "shares-name",
+        classes: "govuk-input--width-20",
+        value: data["shares-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Type of shares"
+        },
+        id: "shares-type",
+        name: "shares-type",
+        classes: "govuk-input--width-20",
+        value: data["shares-type"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Amount of shares"
+        },
+        id: "shares-amount",
+        name: "shares-amount",
+        classes: "govuk-input--width-10",
+        value: data["shares-amount"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Value of shares"
+        },
+        id: "shares-value",
+        name: "shares-value",
+        classes: "govuk-input--width-10",
+        value: data["shares-value"]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Any other shares
+      </h2>
+
+      <p class="govuk-body">
+        <a href="">Add more shares</a>
+      </p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+
+
+  <div class="govuk-grid-column-one-third">
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <h3 class="govuk-heading-s" id="subsection-title">
+        This is using James' shares wizzard. No need to swap apps
+      </h3>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            <a class="govuk-link" href="#">
+              Source: Yahoo Finance TBC
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+
+
+{% endblock %}

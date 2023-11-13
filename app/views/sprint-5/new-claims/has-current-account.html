@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-current-account-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-current-account",
+        name: "has-current-account",
+        fieldset: {
+          legend: {
+            text: "Do you have any current accounts?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-current-account"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-current-account"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-changes-changed" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Housing costs</h1>
+
+            {{ govukInsetText({
+              text: "Ask the customer if they have any housing costs."
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: "housing",
+              name: "housing",
+              fieldset: {
+                legend: {
+                  text: "Are they paying any housing costs?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "Backdating period: 10 January 2022 to 28 February 2022."
+              },
+              items: [
+                {
+                  value: "no",
+                  text: "No",
+                  checked: (data["housing"] == "no")
+                },
+                {
+                  value: "changed",
+                  text: "Yes, within the backdating period",
+                  checked: (data["housing"] == "changed")
+                },
+                {
+                  value: "changed-out",
+                  text: "Yes, outside of the backdating period",
+                  checked: (data["housing"] == "changed-out")
+                }
+              ]
+            }) }}
+
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Answer given on application</p>
+
+            <p class="govuk-body ">No service charges or ground rent.</p>
+
+
+            {{ govukTextarea({
+              name: "housing-notes",
+              id: "housing-notes",
+              rows: "3",
+              label: {
+                text: "Record any changes and date of when it happened",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: " For example, Payed ground-rent from 10 Jan 22."
+              }
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

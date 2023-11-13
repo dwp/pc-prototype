@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you get council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="address-summary" method="post" class="form">
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "owns-council-tax",
+        name: "owns-council-tax",
+        fieldset: {
+          legend: {
+            text: "Do you get a Council Tax Reduction?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "@mark: I think this needs to be 2 separate pages ('Do you get?', then 'Do you want to apply?'). We need the option to say not receiving and do not want to apply."
+        },
+        items: [
+          {
+            value: "Gets council tax reduction",
+            text: "Gets council tax reduction",
+            checked: data['owns-council-tax'] == "Gets council tax reduction"
+          },
+          {
+            value: "Apply",
+            text: "If not, would like to apply",
+            checked: (data["owns-council-tax"] == "If not, would like to apply")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

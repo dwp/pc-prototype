@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bulding society current account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-buildings-current-accounts-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Add building society current account
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of building society"
+        },
+        id: "msic-buildings-current-account-name",
+        name: "msic-buildings-current-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of the roll number or account number"
+        },
+        id: "msic-buildings-current-account-last-digits",
+        name: "msic-buildings-current-account-last-digits",
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+
+            <br>
+            <p class="govuk-body">Total amount in this account, from <strong>Today</strong></p>
+
+          {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "msic-buildings-current-account-amount",
+        name: "msic-buildings-current-account-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Percentage stake"
+          },
+          id: "msic-buildings-current-account-stake",
+          name: "msic-buildings-current-account-stake",
+          classes: "govuk-input--width-5"
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "msic-buildings-current-account-owner",
+        name: "msic-buildings-current-account-owner",
+        fieldset: {
+          legend: {
+            text: "Who does this account belong to?"
+          }
+        },
+        items: [
+          {
+            value: "You",
+            text: "You"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account (excluding partner who lives with you)",
+            conditional: {
+              html: percentageField
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-buildings-current-account-read-from-statement",
+        name: "msic-buildings-current-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

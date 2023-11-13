@@ -1,0 +1,54 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  benefits-war-and-veterans-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-war-and-veterans-yn-router" method="post" class="form">
+
+      <input type="hidden" name="benefits-complete" value="in-progress"/>
+
+
+      {{ govukRadios({
+        idPrefix: "benefits-war-and-veterans-yn",
+        name: "benefits-war-and-veterans-yn",
+        fieldset: {
+          legend: {
+            html: "Do you get any other benefits that are related to war or service in the armed forces?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefits-war-and-veterans-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefits-war-and-veterans-yn"] == "No")
+          }
+        ]
+      }) }}
+<!--            text: "Were you self-employed between Monday, 15 April 2019 and Today? " + tamDate,-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

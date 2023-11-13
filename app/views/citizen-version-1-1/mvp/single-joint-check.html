@@ -1,0 +1,64 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="single-joint-check-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <div class="govuk-panel--agent">
+
+      {{ govukRadios({
+        idPrefix: "single-joint-check",
+        name: "single-joint-check",
+        fieldset: {
+          legend: {
+            text: "System: Single or joint",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Single",
+            text: "Single",
+            checked: (data["single-joint-check"] == "Single")
+                    },
+          {
+            value: "Joint",
+            text: "Joint",
+            checked: (data["single-joint-check"] == "Joint")
+          }
+        ]
+      }) }}
+
+</div>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

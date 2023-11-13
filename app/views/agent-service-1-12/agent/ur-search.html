@@ -1,0 +1,56 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <!-- <form action="ur-search-router" method="post" class="form"> -->
+    <form action="ur-record" method="post" class="form">
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find someone</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-0">Enter a National Insurance number</p>
+      <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-top-0 govuk-!-margin-bottom-4">For example, QQ 12 34 56 C</p>
+      <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-top-0 govuk-!-margin-bottom-4">P1 or P2 for today</p>
+
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "ur-search",
+                  name: "ur-search",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["search"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+
+                {% if data["search"] == "P1" %}
+                {% endif %}
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

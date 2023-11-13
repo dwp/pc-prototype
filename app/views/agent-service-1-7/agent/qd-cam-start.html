@@ -1,0 +1,60 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-application" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+
+      {% if data['nino-known'] === 'yes' %}
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enter Jeff's claim information into CAM</h1>
+
+        {% else %}
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enter Oliver's claim information into CAM</h1>
+
+      {% endif %}
+
+
+
+      <p class="govuk-!-font-size-24"> The changes you have identified have happened within the backdating period. To process a new decision, the claim must move over to CAM.</p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

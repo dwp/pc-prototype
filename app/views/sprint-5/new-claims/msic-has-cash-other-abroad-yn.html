@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any Unit trusts? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-cash-other-abroad-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-cash-other-abroad-yn",
+        name: "msic-cash-other-abroad-yn",
+        fieldset: {
+          legend: {
+            text: "Any other money held in this country or abroad?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-cash-other-abroad-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-cash-other-abroad-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

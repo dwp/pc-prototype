@@ -1,0 +1,102 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  claimant-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-post-code-lookup" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Employer details</h2>
+
+
+      {% set legendName %}
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What is the employer's name?</h3>
+      {% endset %}
+
+      {% if data["employment-add-another-check"] == "Yes" %}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        hint: {
+          text: "You can find this on a P60 or payslip."
+        },
+        id: "employment-details-partner",
+        name: "employment-details-partner",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["employment-details-partner"]
+      }) }}
+
+      {% else %}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        hint: {
+          text: "You can find this on a P60 or payslip."
+        },
+        id: "employment-details",
+        name: "employment-details",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["employment-details"]
+      }) }}
+
+      {% endif %}
+
+
+
+
+
+      {{ govukRadios({
+        name: "employment-you-or-partner",
+        fieldset: {
+          legend: {
+            html: "Whose is this employer?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-0"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yours",
+            text: "Yours",
+            checked: (data["employment-you-or-partner"] == "Yours")
+          },
+          {
+            value: "Partner",
+            text: "Your partner's",
+            checked: (data["employment-you-or-partner"] == "Partner")
+          }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

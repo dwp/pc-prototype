@@ -1,0 +1,76 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-care-home-route-check" method="post" class="form">
+
+    <h1 class="govuk-heading-xl">
+      Select the address we should send letters to
+    </h1>
+
+    <p class="govuk-!-font-size-24 govuk-body govuk-!-font-weight-regular govuk-!-margin-bottom-0"><strong>Postcode: </strong>NE16 6QG</p>
+    <p class=" govuk-body govuk-!-font-weight-regular"><a class="govuk-link" href="hrt-address-post-code-lookup">Change</a></p>
+
+
+
+      {{ govukSelect({
+        id: "address",
+        name: "address",
+        label: {
+          text: "Select an address"
+        },
+        items: [
+          {
+            value: "address-count",
+            text: "3 addresses found",
+            selected: (data["address"] == "address-count")
+          },
+          {
+            value: "221a",
+            text: "221A Baker Street",
+            selected: (data["address"] == "221a")
+          },
+          {
+            value: "221b",
+            text: "221B Baker Street",
+            selected: (data["address"] == "221b")
+          },
+          {
+            value: "222",
+            text: "222 Baker Street",
+            selected: (data["address"] == "222")
+          }
+        ]
+      }) }}
+
+
+      <br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="address-correspondence-post-code-lookup">Enter the address manually</a>
+      </li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

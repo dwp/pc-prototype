@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  🗼 Admissions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>
+        {{ govukBackLink({
+          href: "/sprint-2/monolith/index#pensions"
+        }) }}
+      </p>
+
+      <form method="post" class="form">
+        <h1 class="govuk-heading-xl">
+          Add pension
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: "Name"
+          },
+          id: "name",
+          name: "name",
+          classes: "govuk-input--width-20",
+          value: pension["name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Income"
+          },
+          id: "income",
+          name: "income",
+          classes: "govuk-input--width-20",
+          value: pension["income"]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "pension-frequency",
+          name: "pension-frequency",
+          fieldset: {
+            legend: {
+              text: "Payment frequency"
+            }
+          },
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (pension['pension-frequency'] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (pension['pension-frequency'] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (pension['pension-frequency'] == "Every four weeks")
+            },
+            {
+              value: "Every month",
+              text: "Every month",
+              checked: (pension['pension-frequency'] == "Every month")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

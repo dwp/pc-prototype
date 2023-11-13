@@ -1,0 +1,342 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="non-deps-members-b-list" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Details of people that live with you</h1>
+
+
+         {{ govukInput({
+           label: {
+             html: "<strong>Name</strong>"
+           },
+           hint: {
+             text: "Include any middle names."
+           },
+           id: "non-depts-full-name",
+           name: "non-depts-full-name",
+           classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+           value: data["non-depts-full-name"]
+         }) }}
+
+         {{ govukInput({
+           label: {
+             html: "<strong>National insurance number</strong>"
+           },
+             hint: {
+               html: "It’s on your National Insurance card, benefit letter, payslip or P60. <br>For example, ‘QQ 12 34 56 C’."
+             },
+           id: "non-depts-details-nino",
+           name: "non-depts-details-nino",
+           classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+           value: data["non-depts-details-nino"]
+         }) }}
+
+
+         {{ govukDateInput({
+           id: "non-depts-details-dob",
+           namePrefix: "non-depts-details-dob",
+           fieldset: {
+             legend: {
+               text: "What is your date of birth?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           hint: {
+             text: "For example, 31 3 1948."
+           },
+           items: [
+             {
+               name: "day",
+               classes: "govuk-input--width-2 govuk-!-margin-bottom-4",
+               value: data["non-depts-dob-day"]
+             },
+             {
+               name: "month",
+               classes: "govuk-input--width-2",
+               value: data["non-depts-dob-month"]
+             },
+             {
+               name: "year",
+               classes: "govuk-input--width-4",
+               value: data["non-depts-dob-year"]
+             }
+           ]
+         }) }}
+
+         {{ govukRadios({
+           idPrefix: "XXX",
+           name: "XXX",
+           fieldset: {
+             legend: {
+               text: "Anyone who is certified blind or who has recently been on the register?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+               },
+               hint: {
+                 html: ""
+               },
+
+           classes: "govuk-radios",
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["XXX"] == "Yes")
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["XXX"] == "No")
+             }
+           ]
+         }) }}
+
+
+         {{ govukRadios({
+           idPrefix: "non-depts-category",
+           name: "non-depts-category",
+           fieldset: {
+             legend: {
+               text: "Relationship to the claimant",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           items: [
+             {
+             value: "A close relative",
+             text: "A close relative",
+             checked: data['non-depts-category'] == "A close relative",
+              hint: {
+                text: "XXX"
+              }
+           },
+           {
+             value: "Commercial boarders",
+             text: "Commercial boarders",
+             checked: data['non-depts-category'] == "Commercial boarders",
+              hint: {
+                text: "XXX"
+              }
+           },
+           {
+             value: "Commercial subtenants",
+             text: "Commercial subtenants",
+             checked: data['non-depts-category'] == "Commercial subtenants",
+              hint: {
+                text: "XXX"
+              }
+           },
+           {
+             value: "Certain joint tenants or owner occupiers",
+             text: "Certain joint tenants or owner occupiers",
+             checked: data['non-depts-category'] == "Certain joint tenants or owner occupiers",
+              hint: {
+                text: "XXX"
+              }
+           },
+           {
+             value: "Anyone who is separately liable to make payments to the landlord",
+             text: "Anyone who is separately liable to make payments to the landlord",
+             checked: data['non-depts-category'] == "Anyone who is separately liable to make payments to the landlord",
+              hint: {
+                text: "XXX"
+              }
+           },
+           {
+             value: "charitable org",
+             text: "charitable org",
+             checked: data['non-depts-category'] == "charitable org",
+              hint: {
+                text: "XXX"
+              }
+           }
+           ]
+         }) }}
+
+         {{ govukRadios({
+           idPrefix: "non-deps-bathroom",
+           name: "non-deps-bathroom",
+           fieldset: {
+             legend: {
+               text: "@pete. Really Share a bathroom? / Anyone who shares only a bathroom, toilet, hall or stairway",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+               },
+               hint: {
+                 html: ""
+               },
+
+           classes: "govuk-radios",
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-deps-bathroom"] == "Yes")
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-deps-bathroom"] == "No")
+             }
+           ]
+         }) }}
+
+
+
+         <!------------Legend------------>
+           {% set legendEducationEmployment %}
+           <ul class="govuk-list govuk-list--bullet">
+             <li>the details of any full-time or part-time education</li>
+             <li>the details of any full-time or part-time employment</li>
+           </ul>
+           {% endset %}
+         <!------------Legend------------>
+
+         {% set EducationEmploymentDetails %}
+           {{ govukTextarea({
+             label: {
+               classes: "govuk-label--s",
+               html: "Tell us"
+             },
+             hint: {
+               html: legendEducationEmployment
+             },
+             id: "non-depts-education-employment-details",
+             name: "non-depts-education-employment-details",
+             classes: "govuk-input--width-40",
+             attributes: {
+               maxlength: 200
+             }
+           }) }}
+         {% endset %}
+
+         <!------------H1 LEGEND------------>
+           {% set dynamicH1 %}
+           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">education-employment?</h2>
+           {% endset %}
+         <!------------Legend--------------->
+
+         {{ govukRadios({
+           name: "non-depts-education-employment",
+           fieldset: {
+             legend: {
+               html: dynamicH1,
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           hint: {
+             text: ""
+           },
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-depts-education-employment"] == "Yes"),
+                     conditional: {
+                       html: EducationEmploymentDetails
+           }
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-depts-education-employment"] == "No")
+             }
+           ]
+         }) }}
+
+
+
+
+         <!------------Legend------------>
+           {% set legendAmount %}
+           <ul class="govuk-list govuk-list--bullet">
+             <li>the amount any money they pay you and how often they pay you</li>
+           </ul>
+           {% endset %}
+         <!------------Legend------------>
+
+         {% set legendAmountDetails %}
+           {{ govukTextarea({
+             label: {
+               classes: "govuk-label--s",
+               html: "Tell us:"
+             },
+             hint: {
+               html: legendAmount
+             },
+             id: "non-depts-amount-details",
+             name: "non-depts-amount-details",
+             classes: "govuk-input--width-40",
+             attributes: {
+               maxlength: 200
+             }
+           }) }}
+         {% endset %}
+
+         <!------------H1 LEGEND------------>
+           {% set dynamicAmountHead %}
+           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Do they pay you any money?</h2>
+           {% endset %}
+         <!------------Legend--------------->
+
+         {{ govukRadios({
+           name: "non-depts-amount",
+           fieldset: {
+             legend: {
+               html: dynamicAmountHead,
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           hint: {
+             text: ""
+           },
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-depts-amount"] == "Yes"),
+                     conditional: {
+                       html: legendAmountDetails
+           }
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-depts-amount"] == "No")
+             }
+           ]
+         }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

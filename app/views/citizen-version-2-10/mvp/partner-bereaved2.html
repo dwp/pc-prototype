@@ -1,0 +1,137 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-check-yn-router2" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl">If you lived with a partner who died within the last 3 months, the earliest we can consider your application from is their date of death</h1>
+      <p class="govuk-body govuk-!-font-size-24">A partner is a husband, wife, civil partner or someone that you are in a relationship with. </p>
+
+
+
+      {% set ageCheck %}
+          {{ govukDateInput({
+            id: "partner-dob2",
+            namePrefix: "partner-dob2",
+            fieldset: {
+              legend: {
+                text: "What is your partner's date of birth?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "For example, 31 3 1948."
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["partner-dob-day2"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["partner-dob-month2"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["partner-dob-year2"]
+              }
+            ]
+          }) }}
+
+      {% endset -%}
+
+
+      {% set bereavedDate %}
+          {{ govukDateInput({
+            id: "partner-bereaved",
+            namePrefix: "partner-bereaved",
+            fieldset: {
+              legend: {
+                text: "What was your partner's date of death?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "For example, 22 3 2021."
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["partner-bereaved-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["partner-bereaved-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["partner-bereaved-year"]
+              }
+            ]
+          }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "partner-check-yn2",
+        name: "partner-check-yn2",
+        fieldset: {
+          legend: {
+            text: "Do you want us to consider your application from the date of your partner's death?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["partner-check-yn2"] == "Yes"),
+                  conditional: {
+                    html: bereavedDate
+                  }
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["partner-check-yn2"] == "partner-no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      <p class="govuk-body"><a href="done-residence-status">...</a></p>
+
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

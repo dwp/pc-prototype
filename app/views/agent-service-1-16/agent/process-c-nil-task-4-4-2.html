@@ -1,0 +1,230 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+
+{% endblock %}
+
+
+{% block content %}
+   <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds ">
+
+        
+
+        {% include "agent-service-1-16/agent/record-id.html" %}
+        
+        {% if data['scenario3-selection-error'] == 'true'%}
+        <div class="govuk-error-summary" data-module="govuk-error-summary">
+          <div role="alert">
+            <h2 class="govuk-error-summary__title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="selection-error">You must select at least 2 payments</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <form method="post" class="form">
+          <div class="govuk-form-group {% if data['scenario3-selection-error'] == 'true'%} govuk-form-group--error {%endif%}">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Which pension payments from SUNLIFE PLC should be averaged?
+                </h1>
+              </legend>
+              <div id="waste-hint" class="govuk-body-l">
+                The payments you select should represent the income on the day the claim was submitted (29 June 2023).
+              </div>
+              
+              {% if data['scenario3-selection-error'] == 'true'%}
+                <p id="selection-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> You must select at least 2 payments
+                </p>
+              {% endif %}
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount" name="scenario3-pension1-selected" type="checkbox" value="Yes" {% if data['scenario3-pension1-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount">
+                    1 June 2023, £{{data['scenario3-pension1-net']}}
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount-2" name="scenario3-pension2-selected" type="checkbox" value="Yes" {% if data['scenario3-pension2-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount-2">
+                    1 May 2023, £{{data['scenario3-pension2-net']}}
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount-3" name="scenario3-pension3-selected" type="checkbox" value="Yes" {% if data['scenario3-pension3-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount-3">
+                    1 April 2023, £{{data['scenario3-pension3-net']}}
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount-4" name="scenario3-pension4-selected" type="checkbox" value="Yes" {% if data['scenario3-pension4-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount-4">
+                    1 March 2023, £{{data['scenario3-pension4-net']}}
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount-5" name="scenario3-pension5-selected" type="checkbox" value="Yes" {% if data['scenario3-pension5-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount-5">
+                    1 February 2023, £{{data['scenario3-pension5-net']}}
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="amount-6" name="scenario3-pension6-selected" type="checkbox" value="Yes" {% if data['scenario3-pension6-selected'] == "Yes" %}checked="checked"{% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="amount-6">
+                    1 January 2023, £{{data['scenario3-pension6-net']}}
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+<!-- 
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "process-c-nil-task-4-4-2",
+            name: "process-c-nil-task-4-4-2",
+            fieldset: {
+              legend: {
+                
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "Matched",
+                text: "1 June 2023, £350",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Matched",
+                text: "1 May 2023, £320",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Matched",
+                text: "1 April 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 March 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 February 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 January 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              }
+            ]
+          }) }} -->
+
+
+
+          <!--<div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              </legend>
+             <div id="waste-hint" class="govuk-hint">
+                Select all that apply.
+              </div>
+             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                    1 June 2023, £350
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                    1 May 2023, £320
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 April 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 March 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 February 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 January 2023, £300
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>-->
+
+        
+
+        <!--{{ govukRadios({
+          idPrefix: "process-c-nil-task-4-3-1",
+          name: "process-c-nil-task-4-3-1",
+          fieldset: {
+            legend: {
+              text: "Do the payment dates, frequency and net pay match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-3-1"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            }
+          ]
+        }) }}-->
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  </form>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  What’s the postcode? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data["del-auth-who-made-claim"] == "Yourself" %}
+    {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+      What is the postcode of the address we should send letters to?
+    </h1>
+
+    <form action="address-correspondence-choice" method="post" class="form">
+      {{ govukInput({
+        id: "address-correspondence-post-code",
+        name: "address-correspondence-post-code",
+        value: data["address-correspondence-post-code"],
+        classes: "govuk-input--width-10",
+        label: {
+          text: "Postcode"
+        }
+      }) }}
+
+      <input type="hidden" name="address-complete" value="in-progress"/>
+
+      {{ govukButton({
+        text: "Find address"
+      }) }}
+    </form>
+
+    <br>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="address-correspondence-manual">Enter your address manually</a>
+      </li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+  </div>
+</div>
+{% endblock %}

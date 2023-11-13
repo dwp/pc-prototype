@@ -1,0 +1,46 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="national-insurance-call" method="post"><!--existing-claim-yn-->
+
+
+
+        <div class="govuk-panel--agent">
+
+        <!------------HEADLINE------------>
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Adviser: We could not look up the claimant's details because of a system error</h1>
+
+          <!------------ if only one headline on a page swap the headline for legend, ask Niall------------>
+
+          <!-- {% set legend %}
+          {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What are {{ data | getPronoun }} details?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What is ["who-is-caller-name"]'s details?</h1>{% endif %}
+          {% endset %} -->
+        <!------------HEADLINE------------>
+        <p class="govuk-body govuk-!-margin-bottom-6">We could not get the claimant's information from other systems. Try again or <a href=name-and-nino>take the claim by gathering the claimant's information yourself</a>.</p>
+
+</div>
+
+{{ govukButton({
+  classes: "govuk-!-margin-bottom-0",
+  text: "Try again"
+}) }}
+
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

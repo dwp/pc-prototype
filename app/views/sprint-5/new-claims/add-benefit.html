@@ -1,0 +1,150 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What benefits do you need to add?
+      </h1>
+
+      <form action="benefits-summary" method="post">
+        {{ govukSelect({
+          id: "benefit-name",
+          name: "benefit-name",
+          label: {
+            text: "Benefit name"
+          },
+          items: [
+          {
+            value: "Select a benefit (CA)",
+            text: "Select a benefit"
+          },
+          {
+            value: "Carers allowance (CA)",
+            text: "Carers allowance (CA)"
+          },
+          {
+            value: "Child Benet (CHB)",
+            text: "Child Benet (CHB)"
+          },
+          {
+            value: "Combined Employment & Support Allowance / (ESA)",
+            text: "Combined Employment & Support Allowance / (ESA)"
+          },
+          {
+            value: "Jobseeker's Allowance (contribution-based) (JSA)",
+            text: "Jobseeker's Allowance (contribution-based) (JSA)"
+          },
+          {
+            value: "Industrial Injuries Disablement Benet (IIDB)",
+            text: "Industrial Injuries Disablement Benet (IIDB)"
+          },
+          {
+            value: "Statutory sick pay (SSP)",
+            text: "Statutory sick pay (SSP)"
+          },
+          {
+            value: "Other",
+            text: "Other"
+          }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Value"
+          },
+          id: "benefit-value",
+          name: "benefit-value",
+          classes: "govuk-input--width-20",
+          value: data["benefit-value"]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "benefit-frequency",
+          name: "benefit-frequency",
+          fieldset: {
+            legend: {
+              text: "Payment frequency"
+            }
+          },
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data['benefit-frequency'] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data['benefit-frequency'] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (data['benefit-frequency'] == "Every four weeks")
+            },
+            {
+              value: "Every month",
+              text: "Every month",
+              checked: (data['benefit-frequency'] == "Every month")
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "benefit-day",
+          name: "benefit-day",
+          fieldset: {
+            legend: {
+              text: "Payment day"
+            }
+          },
+          items: [
+            {
+              value: "Monday",
+              text: "Monday",
+              checked: (data['benefit-day'] == "Monday")
+            },
+            {
+              value: "Tuesday",
+              text: "Tuesday",
+              checked: (data['benefit-day'] == "Tuesday")
+            },
+            {
+              value: "Wednesday",
+              text: "Wednesday",
+              checked: (data['benefit-day'] == "Wednesday")
+            },
+            {
+              value: "Thursday",
+              text: "Thursday",
+              checked: (data['benefit-day'] == "Thursday")
+            },
+            {
+              value: "Friday",
+              text: "Friday",
+              checked: (data['benefit-day'] == "Friday")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

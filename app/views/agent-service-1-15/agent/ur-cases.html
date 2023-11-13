@@ -1,0 +1,185 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">My cases</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">All the cases you have done or not finished</p> -->
+
+    </div>
+  </div>
+
+
+
+
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                              <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+                                <thead class="govuk-table__head">
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-20-percent">Date</td>
+                                    <td class="govuk-table__cell govuk-20-percent">Claim ID</td>
+                                    <td class="govuk-table__cell govuk-40-percent">Name</td>
+                                    <td class="govuk-table__cell govuk-30-percent">Status/Outcome</td>
+                                  </tr>
+                                  </thead>
+
+                                  {% if data["process-c-nil-task-1-9"] %}
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 26 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer"><a href=""></a>1148</td>
+                                    <td class="govuk-table__cell table-spacer"><a href="process-c-nil-task-list">Julianne Moore</a>
+                                      <!-- {{data["api-claim-outcome-details"]}} -->
+                                    </td>
+                                    <td class="govuk-table__cell table-spacer">
+
+                                    {% if data["process-c-nil-task-list"]  == "NIL" %}
+                                      <strong class="govuk-tag app-task-list__nil-case-passed">Done</strong>
+                                    {% elif data["process-c-nil-task-list"]  == "BAU" %}
+                                      <strong class="govuk-tag app-task-list__nil-case-failed">Failed</strong>
+                                    {% elif data["process-c-nil-task-list"]  == "UF" %}
+                                      <strong class="govuk-tag app-task-list__nil-case-not-done">Unfinished</strong>
+                                    {% else %}
+                                      <strong class="govuk-tag app-task-list__nil-case-not-done" id="eligibility-completed">Unfinished</strong>
+                                    {% endif %}
+
+                                    </td>
+                                    </tr>
+
+                                    {% else %}
+
+                                    {% endif %}
+
+                                  {% if data["process-b-nil-task-1"] %}
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 25 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer"><a href=""></a>1147</td>
+                                    <td class="govuk-table__cell table-spacer"><a href="process-b-nil-task-list">Jeff Bridges</a>
+                                      <!-- {{data["api-claim-outcome-details"]}} -->
+                                    </td>
+                                    <td class="govuk-table__cell table-spacer">
+
+                                      {% if data["process-b-nil-task-3-5"] == "Matched" %}
+                                        <strong class="govuk-tag app-task-list__nil-case-passed">Done</strong>
+                                      {% elif data["process-b-nil-task-3-5"]  === "Not matched" %}
+                                        <strong class="govuk-tag app-task-list__nil-case-failed">Failed</strong>
+                                      {% elif data["process-b-nil-task-3-5"]  === "Unfinished" %}
+                                        <strong class="govuk-tag app-task-list__nil-case-not-done">Unfinished</strong>
+                                      {% else %}
+                                        <strong class="govuk-tag app-task-list__nil-case-not-done" id="eligibility-completed">To do</strong>
+                                      {% endif %}
+
+                                    </td>
+                                    </tr>
+
+                                    {% else %}
+
+                                    {% endif %}
+
+
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 03 / 03 / 2022</td>
+
+                                    <td class="govuk-table__cell table-spacer">1146</td>
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>John Goodman</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-failed" id="eligibility-completed">Failed</strong>
+                                    </tr>
+
+
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 01 / 03 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">1145</td>
+
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>Steve Buscemi</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Done</strong>
+                                    </tr>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 01 / 02 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">1144</td>
+
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>John Turturro</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Done</strong>
+                                    </tr>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 18 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">1143</td>
+
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>Tara Reid</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-failed" id="eligibility-completed">Failed</strong>
+                                    </tr>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 02 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">1142</td>
+
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>Sam Elliott</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Done</strong>
+                                    </tr>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 01 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">1141</td>
+
+                                    <td class="govuk-table__cell table-spacer"><a href="#"></a>Philip Seymour Hoffman</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Done</strong>
+                                    </tr>
+
+                                  </table>
+
+
+                                  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                  <nav class="moj-pagination" id="pagination-label">
+
+                                  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                  <ul class="moj-pagination__list">
+                                  <li class="moj-pagination__item  moj-pagination__item--prev">
+                                    <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+                                  </li>
+
+                                  <li class="moj-pagination__item moj-pagination__item--active">1</li>
+
+                                  <li class="moj-pagination__item"><a class="moj-pagination__link" href="#">2</a></li>
+
+                                  <li class="moj-pagination__item"><a class="moj-pagination__link" href="#">3</a></li>
+
+                                  <li class="moj-pagination__item  moj-pagination__item--next">
+                                    <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+                                  </li>
+                                  </ul>
+                                  <p class="moj-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
+                                  </nav>
+
+
+
+                    </div>
+                  </div>
+    </form>
+{% endblock %}

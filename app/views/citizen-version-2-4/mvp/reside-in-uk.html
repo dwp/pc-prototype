@@ -1,0 +1,89 @@
+{% extends "layout-covid19.html" %}
+
+
+{% block pageTitle %}
+  Do you live in the UK? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="reside-in-uk-router" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "resides-in-uk",
+          name: "resides-in-uk",
+          fieldset: {
+            legend: {
+              text: "Which country do you live in?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl "
+            }
+          },
+
+          items: [
+            {
+              value: "England",
+              text: "England",
+              checked: data['resides-in-uk'] == "England"
+            },
+            {
+              value: "Scotland",
+              text: "Scotland",
+              checked: data['resides-in-uk'] == "Scotland"
+            },
+            {
+              value: "Wales",
+              text: "Wales",
+              checked: data['resides-in-uk'] == "Wales"
+            },
+            {
+              value: "Northern-Ireland",
+              text: "Northern Ireland",
+              checked: data['resides-in-uk'] == "Northern-Ireland"
+            },
+            {
+              value: "Other",
+              text: "Somewhere else",
+              checked: data['resides-in-uk'] == "Other"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+
+        </div>
+  </div>
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+  <div class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+        <h2 class="govuk-heading-m">Get help with your application</h2>
+
+        <ul class="govuk-list">
+          <li>Telephone: 0800 99 1234</li>
+          <li>Textphone: 0800 169 0133</li>
+        </ul>
+
+        <ul class="govuk-list">
+          <li>If you cannot hear or speak on the phone, use <br><a href="https://www.relayuk.bt.com/">Relay UK (opens in a new tab)</a>: 18001 then 0800 99 1234</li>
+          <li>Monday to Friday, 9.30am to 7.30pm</li>
+        </ul>
+
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">Find out about call charges (opens in a new tab)</a>
+        </p>
+  </div>
+{% endblock %}

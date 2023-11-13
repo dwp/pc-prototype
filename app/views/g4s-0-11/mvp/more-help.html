@@ -1,0 +1,189 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="bau-process-measure-4" method="post" class="form">
+
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">You might be entitled to<br>other help</h1>
+    <div class="govuk-accordion govuk-!-margin-top-4" data-module="govuk-accordion" id="accordion-default">
+
+      <!-- SECtiON -->
+
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                      Help with your health
+                    </span>
+                  </h2>
+                </div>
+
+                <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+                  <p class="govuk-body"><strong>Attendance Allowance</strong> helps with extra costs if you have a disability severe enough that you need someone to help look after you.</p>
+            <p class="govuk-body">Go to GOV.UK and search for "attendance allowance".</p>
+            <p class="govuk-body govuk-!-padding-bottom-4">You can also call 0800 731 0122 (Monday to Friday, 9:30am to 3:30pm).</p>
+                </div>
+              </div>
+
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                      Help with the cost of living
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+                  <p class="govuk-body">You may be entitled to extra payments to help with the cost of living.</p>
+                  <p class="govuk-body govuk-!-padding-bottom-4">Go to GOV.UK and search for "cost of living payment".</p>
+              </div>
+              </div>
+
+        <!-- SECtiON -->
+
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                      Help with heating your home
+                    </span>
+                  </h2>
+
+                </div>
+                <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+                  <p class="govuk-body">If you were born on or before 5 October 1954 you could get between £100 and £300 to help you pay your heating bills. This is known as a <strong>Winter Fuel Payment</strong>.</p>
+                  <p class="govuk-body">To help with the cost of living, there's also going to be an extra Winter Fuel Payment in winter 2022 to 2023.</p>
+
+                  <p class="govuk-body">Go to GOV.UK and search for "winter fuel payment".</p>
+                  <p class="govuk-body govuk-!-padding-bottom-4">You can also call 0800 731 0160 (Monday to Friday, 8am to 6pm).</p>
+                </div>
+              </div>
+
+
+        <!-- SECtiON -->
+
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                      Information about free bus passes
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+                  <p class="govuk-body">You can get a <strong>bus pass for free travel</strong>. You can get this when you reach State Pension age if you live in England, or when you reach age 60 if you live in Scotland or Wales.</p>
+                  <p class="govuk-body">Go to GOV.UK and search for "free bus pass".</p>
+                  <p class="govuk-body govuk-!-padding-bottom-4">You can also call your local council as they issue the bus passes.</p>
+                </div>
+              </div>
+
+      <!-- SECtiON -->
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+                      Help with renting your house or flat
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+                  <p class="govuk-body"><strong>Housing Benefit</strong> can help you pay your rent if you are unemployed, on a low income or claiming benefits.</p>
+                  <p class="govuk-body">Go to GOV.UK and search for "housing benefit".</p>
+                  <p class="govuk-body govuk-!-padding-bottom-4">You can call your local council to apply.</p>          </div>
+              </div>
+
+            <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                  Help with your Council Tax
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body"><strong>Council Tax Reduction</strong> can help you pay your Council Tax if you're on a low income or claim benefits.</p>
+
+              <p class="govuk-body">Go to GOV.UK and search for "Apply for Council Tax Reduction".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You can call your local council to apply.</p>
+          </div>
+          </div>
+      <!-- SECtiON -->
+
+
+              <div class="govuk-accordion__section ">
+                <div class="govuk-accordion__section-header">
+                  <h2 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-7">
+                      Help with your pensions
+                    </span>
+                  </h2>
+                </div>
+                <div id="accordion-default-content-7" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-7">
+                  <p class="govuk-body"><strong>MoneyHelper</strong> offers free information and advice about your money. This includes help with the State Pension or your company, personal, stakeholder or occupational pensions.</p>
+                  <p class="govuk-body">Go to GOV.UK and search for "MoneyHelper".</p>
+                  <p class="govuk-body">You can also call 0800 011 3797 (Monday to Friday, 9am to 5pm).</p>
+              </div>
+            </div>
+
+      <!-- SECtiON -->
+
+              <div class="govuk-accordion__section ">
+              <div class="govuk-accordion__section-header">
+                <h2 class="govuk-accordion__section-heading">
+                  <span class="govuk-accordion__section-button" id="accordion-default-heading-8">
+                    General help with benefits
+                  </span>
+                </h2>
+              </div>
+              <div id="accordion-default-content-8" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-8">
+                <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+                <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+            </div>
+      <!--
+            <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-">
+                  Help with your hands
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-7" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-9">
+              <p class="govuk-body">Go to Police.com and search for "Handy checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+          </div>
+          </div>
+       -->
+
+     </div>
+   </div>
+ </div>
+
+   {{ govukButton({
+     text: "Continue",
+     classes: "govuk-!-margin-top-6"
+   }) }}
+ {% endblock %}

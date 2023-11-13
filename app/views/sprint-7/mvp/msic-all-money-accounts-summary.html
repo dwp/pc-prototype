@@ -1,0 +1,347 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <h1 class="govuk-heading-xl">
+    Combined money, savings and <br> investments summary, notes <br>and evidence needed<br>
+  </h1>
+  <!----Headline---->
+  <form action="task-list" method="post">
+
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Overview:
+  </h3></div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+{% if data["msic-bank-savings-account-name"] %}
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Current accounts"
+      },
+      value: {
+        text: "2"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-bank-current-accounts-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Savings & bonds"
+      },
+      value: {
+        text: "2"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-savings-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Shares & unit trusts"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-shares-trusts-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Cash at home"
+      },
+      value: {
+        text: data["msic-cash-at-home-amount"] | formatMoney
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Cash aboard or recived as a lump sum"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+<br>
+
+{{ govukSummaryList({
+  rows: [
+  {
+    classes: 'govuk-summary-list--no-border',
+    key: {
+      text: "Combined total"
+    },
+    value: {
+      text: "£9,553.50"
+    },
+    actions: {
+      items: [
+        {
+          href: "money-you-have",
+          text: "",
+          visuallyHiddenText: "XXXX"
+        }
+      ]
+    }
+  }
+  ]
+}) }}
+
+{% endif %}
+
+{% if data["total-money"] %}
+
+
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Combined total"
+    },
+    value: {
+      text: data["total-money"] | formatMoney
+    },
+    actions: {
+      items: [
+        {
+          href: "money-you-have",
+          text: "",
+          visuallyHiddenText: "XXXX"
+        }
+      ]
+    }
+  }
+  ]
+}) }}
+
+{% endif %}
+
+
+</div></div>
+
+<!----      Use this to pull through from Money you have Total page. text: data["total-money"] | formatMoney--->
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+Notes
+    </h3>
+    <p></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"><p class="govuk-body"><a href="msic-notepad" class="govuk-link">Add money notes</a></p></th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="msic-notepad" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+
+    {% if data["msic-all-money-detail"] %}
+
+  <p class="govuk-body">
+    {{ data["msic-all-money-detail"] }}
+  </p>
+{% endif %}
+</div></div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Evidence:
+  </h3></div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+  <h3 class="govuk-heading-s">
+    You do not need to supply any evidence of your money, savings and investments
+  </h3></div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<!--
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Evidence needed:
+  </h3></div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+  
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Account",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Last 4 digits",
+        classes: 'govuk-!-width-one-quarter'
+      },
+      {
+        text: "Date range",
+        classes: 'govuk-!-width-two-Quarters'
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Halifax"
+        },
+        {
+          text: "0001"
+        },
+        {
+          text: "1 Jan 2019 — 1 Feb 2019"
+        }
+      ],
+      [
+        {
+          text: "Santander"
+        },
+        {
+          text: "0002"
+        },
+        {
+          text: "1 Jan 2019 — 1 Feb 2019"
+        }
+      ],
+      [
+        {
+
+          text: "HSBC"
+        },
+        {
+          text: "0003"
+        },
+        {
+          text: "1 Jan 2019 — 1 Feb 2019"
+        }
+      ]
+    ]
+  }) }}
+
+---->
+
+
+  <br><br>
+
+    <input type="hidden" name="money-you-have-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+
+
+{% endblock %}

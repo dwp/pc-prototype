@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Who pays for you to live in the care home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="from-hospital" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "care-home-funding",
+        name: "care-home-funding",
+        fieldset: {
+          legend: {
+            text: "Who pays for you to live in the care home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Local authority",
+            text: "Local authority",
+            checked: (data["care-home-funding"] == "Local authority")
+          },
+          {
+            value: "Self funded",
+            text: "Self funded",
+            checked: (data["care-home-funding"] == "Self funded")
+          },
+          {
+            value: "Part 'n' pat",
+            text: "I pay part and my local authority pays the rest",
+            checked: (data["care-home-funding"] == "Part 'n' pat")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

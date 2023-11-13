@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Eligibility confirmation
+    </h1>
+
+
+    <h2 class="govuk-heading-m">
+      Residency
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          UK National
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-national">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Residency
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UK
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="reside-in-uk">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Lived abroad
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="lived-abroad">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Claim date
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          08 January 2019
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="claim-date">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-m">
+      About claimant
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Who is caller
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Claimant
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="who-is-caller">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <dt class="govuk-summary-list__key">
+        National insurance
+      </dt>
+      <dd class="govuk-summary-list__value">
+        QQ 11 22 33 C
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="name-and-nino">
+          Change
+        </a>
+      </dd>
+
+
+      <div class="govuk-summary-list__row">
+
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Alex Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="name-and-nino">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Gender
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Not asked
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="over-spa">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20 October 1956 (66)
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="over-spa">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+
+      <h2 class="govuk-heading-m">
+        Security
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Passed security?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="security">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+    <form action="task-list" method="post">
+      <p>
+        {{ govukButton({
+          text: "Continue to application"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

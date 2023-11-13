@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Email address
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="email-already-registered" method="post">
+                {{ govukFieldset({
+                    legend: {
+                        html: "Enter your email address",
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+                <p>We will send a security code to this email address.</p>
+
+                {{ govukInput({
+                    label: {
+                        text: "Email address"
+                    },
+                    id: "register-email-address",
+                    name: "register-email-address",
+                    classes: "govuk-!-width-full-width"
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

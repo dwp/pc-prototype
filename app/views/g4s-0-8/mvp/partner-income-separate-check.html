@@ -1,0 +1,56 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+Income - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="cya" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "partner-income-separate-check",
+        name: "partner-income-separate-check",
+        fieldset: {
+          legend: {
+            text: "Is any of the partner's income from employment?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["partner-income-separate-check"] == "Yes")
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["partner-income-separate-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you live with a partner? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="owns-council-tax" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-mortgage",
+        name: "has-mortgage",
+        fieldset: {
+          legend: {
+            text: "Do you have a mortgage?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["has-mortgage"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["has-mortgage"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

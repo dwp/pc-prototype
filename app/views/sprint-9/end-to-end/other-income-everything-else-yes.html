@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  other-income-everything-else-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form action="other-income-summary" method="post" class="form">
+
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Do you get money from any of these types of things:</h1>
+
+
+        {% set sickPayYes %}
+          {{ govukTextarea({
+            label: {
+              html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+            hint: {
+              text: ""
+            },
+            id: "pensions-foreign-yes",
+            name: "pensions-foreign-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+          <!-------------- Check ---------------------->
+          {% set royaltiesYes %}
+          {{ govukTextarea({
+            label: {
+              html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+            hint: {
+              text: ""
+            },
+            id: "pensions-foreign-yes",
+            name: "pensions-foreign-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+          {% endset %}
+
+      <!-------------- Check ---------------------->
+
+
+                  {% set trustPaymentYes %}
+                  {{ govukTextarea({
+                    label: {
+                      html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+                    hint: {
+                      text: ""
+                    },
+                    id: "pensions-foreign-yes",
+                    name: "pensions-foreign-yes",
+                    classes: "govuk-input--width-30",
+                    attributes: {
+                      maxlength: 200
+                    }
+                  }) }}
+                  {% endset %}
+
+        <!------------------------------------>
+
+        {% set armedForcesYes %}
+        {{ govukTextarea({
+          label: {
+            html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+          hint: {
+            text: ""
+          },
+          id: "pensions-foreign-yes",
+          name: "pensions-foreign-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!-------------- Check ---------------------->
+
+
+        {% set personalInjuryYes %}
+        {{ govukTextarea({
+          label: {
+            html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+          hint: {
+            text: ""
+          },
+          id: "pensions-foreign-yes",
+          name: "pensions-foreign-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!-------------- Check ---------------------->
+
+
+        {% set otherCncomeCharitablePaymentsYes %}
+        {{ govukTextarea({
+          label: {
+            html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+          hint: {
+            text: ""
+          },
+          id: "other-income-charitable-payments-yes",
+          name: "other-income-charitable-payments-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!-------------- Check ---------------------->
+
+
+        {% set otherYes %}
+        {{ govukTextarea({
+          label: {
+            html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>XXX XXX may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+          hint: {
+            text: ""
+          },
+          id: "pensions-foreign-yes",
+          name: "pensions-foreign-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!------------------------------------>
+
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "Order TBC",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+              id: "other-income-sick-pay-yn",
+              name: "other-income-sick-pay-yn",
+              value: "Money from sick pay",
+              html: "Money from sick pay",
+              conditional: {
+                html: sickPayYes
+              }
+            },
+            {
+              idPrefix: "other-income-royalties-yn",
+              name: "other-income-royalties-yn",
+              value: "Money from royalties",
+              html: "Money from royalties",
+              conditional: {
+                html: royaltiesYes
+              }
+            },
+            {
+              idPrefix: "other-income-trust-payment-yn",
+              name: "other-income-trust-payment-yn",
+              value: "Money from a trust payment",
+              html: "Money from a trust payment",
+              conditional: {
+                html: trustPaymentYes
+              }
+            },
+            {
+              idPrefix: "other-income-armed-forces-yn",
+              name: "other-income-armed-forces-yn",
+              value: "Armed Forces Compensation Scheme",
+              html: "Armed Forces Compensation Scheme	",
+              conditional: {
+                html: armedForcesYes
+              }
+            },
+            {
+              idPrefix: "other-income-injury-yn",
+              name: "other-income-injury-yn",
+              value: "Money from injury",
+              html: "Money from injury",
+              conditional: {
+                html: personalInjuryYes
+              }
+            },
+            {
+              idPrefix: "other-income-charitable-payments-yn",
+              name: "other-income-charitable-payments-yn",
+              value: "Regular charitable payments",
+              html: "Regular charitable payments",
+              conditional: {
+                html: otherCncomeCharitablePaymentsYes
+              }
+            },
+            {
+              idPrefix: "other-income-other-yn",
+              name: "other-income-other-yn",
+              value: "Other money",
+              html: "Other money",
+              conditional: {
+                html: otherYes
+              }
+            }
+          ]
+        }) }}
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="#" method="post" class="form">
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which best reflects the caller's words/intention/feelings? </h1>
+
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">Because you queried automated processing, I'm required to send an email or letter which states how automated processing was used to assess your entitlement, that you asked for a human/person/agent to look at your application so I did that for you today and that and that you're not entitled based on your application and checks I have carried out.</p>
+
+        <p class="govuk-body"> Explain to the customer that they can still dispute the decision if they wish to.</p>
+
+      </div>
+
+
+      {{ govukRadios({
+        idPrefix: "ap-path",
+        name: "ap-path",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "1",
+            text: "They're happy with the decision and have no further questions",
+            checked: (data["ap-path"] == "other-help")
+
+          },
+          {
+            value: "explain",
+            text: "They asked for a human to review their decision",
+            checked: (data["ap-path"] == "explain")
+          },
+          {
+            value: "changes",
+            text: "They're satisfied with the explanation and that automated processing was used",
+            checked: (data["ap-path"] == "changes")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "update",
+            text: "They want to dispute the decision",
+            checked: (data["ap-path"] == "update")
+          }
+
+        ]
+      }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

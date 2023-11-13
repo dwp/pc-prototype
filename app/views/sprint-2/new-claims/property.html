@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you own any other property or land? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {% if data["has-shares"] == "yes" %}
+    {% set backLink = "shares-summary" %}
+  {% else %}
+    {% set backLink = "has-shares" %}
+  {% endif %}
+
+  {{ govukBackLink({
+    href: backLink
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="property-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-property",
+        name: "has-property",
+        fieldset: {
+          legend: {
+            text: "Do you own any other property or land?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-property"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-property"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

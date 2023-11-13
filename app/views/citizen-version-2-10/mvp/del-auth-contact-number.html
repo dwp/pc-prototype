@@ -1,0 +1,127 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Yourself-language - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-number-router" method="post" class="form">
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+
+      {% set legendTelephoneNumber %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is your contact telephone number?</h1>
+      {% else %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is the applicant's contact telephone number?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+
+      {% set delAuthContactNumberYes %}
+
+      {{ govukInput({
+        label: {
+          html: legendTelephoneNumber
+        },
+          hint: {
+            text: ""
+          },
+        id: "del-auth-contact-number",
+        name: "del-auth-contact-number",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["del-auth-contact-number"]
+      }) }}
+
+      {% endset -%}
+
+      {% set legendh2 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Do you have a contact telephone number?</h1>
+      {% else %}
+        <h1 class="govuk-heading-m govuk-!-margin-bottom-0">Does the applicant have a contact telephone number?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate acting body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">The quickest way for DWP to contact you is by phone</h1>
+        <p></p>
+ <p>We might need to contact you about Pension Credit, either while we are processing your application or once it is in payment. We might also need to contact you about other benefits that you might get now or in the future.</p>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">The quickest way for DWP to contact the applicant is by phone</h1>
+        <p></p>
+ <p>We might need to contact the applicant about Pension Credit, either while we are processing their application or once it is in payment. We might also need to contact them about other benefits that they might get now or in the future.</p>
+      {% endif %}
+
+
+
+      {{ govukRadios({
+        idPrefix: "del-auth-contact-number-check",
+        name: "del-auth-contact-number-check",
+        fieldset: {
+          legend: {
+            html: legendh2,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        classes: "govuk-radios govuk-!-margin-bottom-4",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["del-auth-contact-number-check"] == "Yes"),
+                  conditional: {
+                    html: delAuthContactNumberYes
+                  }
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["del-auth-contact-number-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post">
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+
+      {% set addressH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+      or data["del-auth-who-made-claim"] == "Charity or organisation"
+      or data["del-auth-who-made-claim"] == "Friend or family member"
+      or data["del-auth-who-made-claim"] == "Someone else" 
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">What is the address we should send letters to?</h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">What is your address?</h1>
+      {% endif %}
+
+      {% endset %}
+
+  {% call govukFieldset({
+    legend: {
+      html: addressH1,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      label: {
+        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      id: "del-auth-line-1",
+      name: "del-auth-line-1"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+      },
+      id: "del-auth-line-2",
+      name: "del-auth-line-2"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "del-auth-town",
+      name: "del-auth-town"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "County"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "del-auth-county",
+      name: "del-auth-county"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "del-auth-postcode",
+      name: "del-auth-postcode"
+    }) }}
+
+  {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      <p class="govuk-body"><a href="del-auth-correspondence-post-code-lookup">Use the postcode look up to find the address</a></p>
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

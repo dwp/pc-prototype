@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Post Pension Credit index - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+<!----------------------------------------------------------------------------------->
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="start" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+    <h1 class="govuk-heading-xl">
+      Post Pension Credit index
+    </h1>
+
+    <p class="govuk-body-l">Post call we may need to do a buch of stuff. <br><a href="https://confluence.service.dwpcloud.uk/display/MYPC/Post+Pension+Credit+index+page" class="govuk-link govuk-link--no-visited-state">@pete Reference</a></p>
+
+    <!----------------------------------------------------------------------------------->
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h1 class="govuk-heading-l">Housing Benefit</h1>
+
+    <p class="govuk-body-m">
+      @Pete what do we need to say to people here. <br></p>
+
+    <ul class="govuk-list govuk-list">
+    <li>Housing Benefit claim will take about 20 minutes.</li>
+    <li>It will be sent to your local authority for them to process.</li>
+        <li>The applicant will need to contact their Local Authority for progress update.</li>
+        <li>Local authority can be found here: <a href="gov.uk/find-local-council" class="govuk-link govuk-link--no-visited-state">gov.uk/find-local-council</a></li>
+    </ul>
+
+    <p class="govuk-heading-m"><strong>Process</strong></p>
+    <ul class="govuk-list govuk-list--number">
+        <li>Complete the Housing Benefit application</li>
+        <li>Download PDF</li>
+        <li>Upload to PTP CAM/DRS</li>
+    </ul>
+
+    <p class="govuk-heading-m"><strong>Application</strong></p>
+    <ul class="govuk-list govuk-list">
+      <li><a href="#" class="govuk-link govuk-link--no-visited-state">Housing Benefit  (Opens in new window)</a></li>
+    </ul>
+
+
+<!----------------------------------------------------------------------------------->
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h1 class="govuk-heading-l">Carers Allowance</h1>
+    <p class="govuk-body-m">
+      @Pete what do we need to say to people here. <br></p>
+      <p class="govuk-heading-m"><strong>Contact for United Kingdom and Northern Ireland</strong></p>
+<ul class="govuk-list govuk-list">
+  <li>Telephone: 0800 731 0297</li>
+    <li>Textphone: 0800 731 0317</li>
+    <li><a href="https://www.ngts.org.uk/" class="govuk-link govuk-link--no-visited-state">Next Generation Text (NGT)</a> text relay (if you cannot hear or speak on the phone): 18001 then 0800 731 0297</li>
+        <li>Monday to Friday, 8am to 6pm</li>
+        <li><a href="https://www.gov.uk/call-charges" class="govuk-link govuk-link--no-visited-state">Find out about call charges  (Opens in new window)</a></li>
+</ul>
+
+
+<p class="govuk-heading-m"><strong>Digital claim or download a paper claim pack</strong></p>
+<ul class="govuk-list govuk-list">
+<li>United Kingdom: <a href="gov.uk/carers-allowance" class="govuk-link govuk-link--no-visited-state">gov.uk/carers-allowance</a></li>
+
+<li>Northern Ireland: <a href="nidirect.gov.uk/articles/carers-allowance" class="govuk-link govuk-link--no-visited-state">nidirect.gov.uk/articles/carers-allowance</a></li>
+
+</ul>
+
+<!----------------------------------------------------------------------------------->
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h1 class="govuk-heading-l">Property evaulation in UK or abroad</h1>
+
+<p class="govuk-body-m">
+  @Pete what do we need to say to people here. <br></p>
+
+  <p class="govuk-heading-m"><strong>Process</strong></p>
+  <ul class="govuk-list govuk-list--number">
+      <li>Complete A64a</li>
+      <li>Download PDF</li>
+      <li>Upload to PTP CAM/DRS</li>
+  </ul>
+
+  <p class="govuk-heading-m"><strong>Reference</strong></p>
+  <ul class="govuk-list govuk-list">
+    <li>Refer to the Capital Valuations Handbook or full guidance on completion</li>
+    <li><a href="https://intranet.dwp.gov.uk/section/operational-instructions/customer-products/capital-valuations" class="govuk-link govuk-link--no-visited-state">How to complete the A64a  (Opens in new window)</a></li>
+  </ul>
+
+  <p class="govuk-heading-m"><strong>Application</strong></p>
+  <ul class="govuk-list govuk-list">
+    <li><a href="https://intranet.dwp.gov.uk/manual/single-source-guidance/telephone-completion-form-a64apc-valuation-property-uk-or-abroad">A64a  (Opens in new window)</a></li>
+  </ul>
+
+<!----------------------------------------------------------------------------------->
+
+<br><br>
+
+      {{ govukButton({
+        text: "Finish and close"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

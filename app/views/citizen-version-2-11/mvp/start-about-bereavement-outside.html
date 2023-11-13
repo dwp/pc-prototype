@@ -1,0 +1,42 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-check-ynC" method="post" class="form">
+
+
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">About scenario C</h1>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">This journey is not a full application.</p>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">In this scenario, a user told us that their partner died 2 months ago on 23 July 2021. They were outside the UK when this happened.   </p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"> They returned to the UK on 26 August 2021.</p>
+    </p>
+
+
+
+
+
+
+     {{ govukButton({
+       text: "Continue"
+     }) }}
+
+
+
+</form>
+</div>
+{% endblock %}

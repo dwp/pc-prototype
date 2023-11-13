@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        What is the account type you need to add?
+      </h1>
+
+      <form action="money-summary" method="post">
+        {{ govukSelect({
+          id: "account-details",
+          name: "account-details",
+          label: {
+            text: "Type of account"
+          },
+          items: [
+            {
+              value: "Current",
+              text: "Current account"
+            },
+            {
+              value: "Savings or deposit",
+              text: "Savings, deposit account"
+            },
+            {
+              value: "Bank, building society or POCA",
+              text: "Bank, building society or POCA"
+            },
+            {
+              value: "Cash",
+              text: "Cash held at home"
+            },
+            {
+              value: "Expected lump sum",
+              text: "Expected lump sum"
+            },
+            {
+              value: "Premium bonds granny bonds",
+              text: "Premium bonds granny bonds"
+            },
+            {
+              value: "ISAs, PEPs, TESSA only ISAs",
+              text: "ISAs, PEPs, TESSA only ISAs"
+            },
+            {
+              value: "Income, capital bonds",
+              text: "Income, capital bonds"
+            },
+            {
+              value: "Unit trust, shares",
+              text: "Unit trust, shares"
+            },
+            {
+              value: "Any other Monet help in this country or abroad",
+              text: "Any other Monet help in this country or abroad"
+            },
+            {
+              value: "Any other lump some (please reword)",
+              text: "Any other lump some (please reword)"
+            },
+            {
+              value: "Money from a boarder, lodger, tenant and subtenants",
+              text: "Money from a boarder, lodger, tenant and subtenants"
+            },
+            {
+              value: "Working tax credit",
+              text: "Working tax credit"
+            },
+            {
+              value: "Royalties",
+              text: "Royalties"
+            },
+            {
+              value: "Money paid from an ex-partner (spousal maintenance)",
+              text: "Money paid from an ex-partner (spousal maintenance)"
+            },
+            {
+              value: "Sick pay",
+              text: "Sick pay"
+            },
+            {
+              value: "Payments from a trust",
+              text: "Payments from a trust"
+            },
+            {
+              value: "Money from an Equity Release",
+              text: "Money from an Equity Release"
+            },
+            {
+              value: "Money from Armed forces compensation scheme",
+              text: "Money from Armed forces compensation scheme"
+            },
+            {
+              value: "Money from a personal injury payment",
+              text: "Money from a personal injury payment"
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Value"
+          },
+          id: "benefit-value",
+          name: "benefit-value",
+          classes: "govuk-input--width-20",
+          value: data["benefit-value"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

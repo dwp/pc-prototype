@@ -1,0 +1,293 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-b-nil-task-3-4" method="post" class="form">
+
+        {% include "agent-service-1-1/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">[Task 3-3]</span> -->
+      <p class="govuk-heading-xl govuk-!-margin-bottom-8">Benefits</p>
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Cross referece citizens provided details using AfPC with what was found in CIZ, CAM, SL</p> -->
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <!------------Legend------------>
+        {% set legendCheck1 %}
+
+      {{ govukCheckboxes({
+        idPrefix: "process-b-nil-task-3-check-3",
+        name: "process-b-nil-task-3-check-3",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+          }
+        },
+        items: [
+          {
+            classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+            value: "Pass",
+            text: " ",
+            checked: data['process-b-nil-task-3-check-3'] == "Pass"
+          }
+        ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck2 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-2",
+      name: "process-b-nil-task-3-check-2",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-2'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck3 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-3",
+      name: "process-b-nil-task-3-check-3",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-3'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck4 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-4",
+      name: "process-b-nil-task-3-check-4",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-4'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck5 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-5",
+      name: "process-b-nil-task-3-check-5",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-5'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+
+        <!------------Legend------------>
+          {% set tagSL %}
+
+          {{govukTag({
+             text: "SEARCHLIGHT",
+             classes: "govuk-tag--blue"
+           })}}
+
+        {% endset %}
+
+          {% set tagCPS %}
+
+          {{govukTag({
+             text: "CPS",
+             classes: "govuk-tag--yellow"
+           })}}
+
+        {% endset %}
+
+        {% set tagCAM %}
+
+        {{govukTag({
+           text: "CAM",
+           classes: "govuk-tag--red"
+         })}}
+
+      {% endset %}
+      <!------------Legend------------>
+
+      <!------------Legend------------>
+
+
+          {{ govukTable({
+            caption: "",
+            captionClasses: "govuk-table__caption--m",
+            classes: 'govuk-!-margin-bottom-8',
+            firstCellIsHeader: true,
+            head: [
+            {
+              text: "Information to check",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "Given by applicant [AfPC]",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "Data source",
+              classes: 'govuk-25-percent'
+            },
+            {
+              text: "Matched",
+              classes: 'govuk-15-percent'
+            }
+          ],
+            rows: [
+
+            [
+              {
+                text: "State Pension amount exceeded applicable amount today"
+              },
+              {
+                text: "N/A"
+              },
+              {
+                html: "SearchLight"
+              },
+              {
+                html: legendCheck3
+              }
+                ],
+                [
+                  {
+                    text: "State Pension amount exceeded applicable amount for the whole backdating period"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: "SearchLight"
+                  },
+                  {
+                    html: legendCheck3
+                  }
+                ],
+
+                [
+                  {
+                    text: "Applicant does not get any qualifying benefits today"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: "SearchLight"
+                  },
+                  {
+                    html: legendCheck3
+                  }
+                ]
+            ]
+          }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+  <div class="govuk-button-group">
+
+
+    {{ govukButton({
+      name: "process-b-nil-task-3-3",
+      value: "Matched",
+      checked: (data["process-b-nil-task-3-3"] == "Matched"),
+      text: "Save and continue"
+    }) }}
+
+    {{ govukButton({
+        name: "process-b-nil-task-3-3",
+        value: "Unfinished",
+        checked: (data["process-b-nil-task-3-3"] == "Unfinished"),
+      text: "I cannot complete",
+      classes: "govuk-button--secondary "
+    }) }}
+
+  </div>
+  </form>
+
+{% endblock %}

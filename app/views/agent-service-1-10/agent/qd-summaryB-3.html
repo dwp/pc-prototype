@@ -1,0 +1,61 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-actions" method="post" class="form">
+      {% include "agent-service-1-10/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-8">Record notes</h1>
+
+
+            {{ govukTextarea({
+              name: "summary-notes",
+              id: "summary-notes",
+              rows: 4,
+              label: {
+                text: "",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: "For example..."
+              }
+            }) }}
+
+
+            {{ govukButton({
+              text: "Exit record",
+              href: "home-user-0",
+              classes: "govuk-!-margin-top-4"
+            }) }}
+
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

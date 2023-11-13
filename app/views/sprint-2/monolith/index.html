@@ -1,0 +1,1025 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  🗼 - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body govuk--version-control">C.1.0 / Monolith</p>
+    <h1 class="govuk-heading-xl">Claim details</h1>
+    <style>
+      .contents li {
+        font-size: 16px;
+        margin: 0 0 0 25px;
+        padding: 7.5px 25px 0 0;
+      }
+
+      .contents li::before {
+        content: "— ";
+        margin-left: -25px;
+        padding-right: 5px;
+      }
+
+      .section-end {
+        position: relative;
+      }
+
+      .section-end .app-c-back-to-top {
+        position: absolute;
+        top: -2.5em;
+        right: 0;
+        padding-left: 5px;
+      }
+    </style>
+    <h2 class="govuk-body-s"  id="contents" style="margin-bottom:0">Contents</h2>
+    <ul class="govuk-list contents">
+      <li>
+        <a class="govuk-link" href="#claimant-details">Claimant details</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#contact">Contact</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#address">Address</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#housing-costs">Housing costs</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#admissions">Hospital admission or temporary care home</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#members">Household composition</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#benefits">Benefits</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#employments">Employment and earnings</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#capital">Finance, capital, shares and investments</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#pensions">Pensions</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#payment-details">Payment details</a>
+      </li>
+    </ul>
+    <h2 class="govuk-heading-l" id="claimant-details">
+      Claimant details
+    </h2>
+
+    {{ govukInput({
+      label: {
+        text: "Full name"
+      },
+      hint: {
+        text: "Include any middle names"
+      },
+      id: "full-name",
+      name: "full-name",
+      classes: "govuk-input--width-20",
+      value: data["full-name"]
+    }) }}
+
+    {{ govukDateInput({
+      id: "dob",
+      namePrefix: "dob",
+      fieldset: {
+        legend: {
+          text: "Date of birth"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1956"
+      },
+      items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          value: data["dob-day"]
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          value: data["dob-month"]
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          value: data["dob-year"]
+        }
+      ]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "National Insurance number"
+      },
+      id: "nino",
+      name: "nino",
+      classes: "govuk-input--width-20",
+      value: data["nino"]
+    }) }}
+
+    {{ govukRadios({
+      idPrefix: "blind",
+      name: "blind",
+      fieldset: {
+        legend: {
+          text: "Are they registered blind or severely sight impaired?"
+        }
+      },
+      classes: "govuk-radios--inline",
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked: (data["blind"] == "yes")
+        },
+        {
+          value: "no",
+          text: "No",
+          checked: (data["blind"] == "no")
+        }
+      ]
+    }) }}
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="contact">
+      Contact
+    </h2>
+
+    {{ govukInput({
+      label: {
+        text: "Telephone"
+      },
+      id: "telephone",
+      name: "telephone",
+      classes: "govuk-input--width-20",
+      value: data["telephone"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Mobile"
+      },
+      id: "mobile",
+      name: "mobile",
+      classes: "govuk-input--width-20",
+      value: data["mobile"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "E-mail"
+      },
+      id: "email",
+      name: "email",
+      classes: "govuk-input--width-20",
+      value: data["email"]
+    }) }}
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="address">
+      Address
+    </h2>
+
+    {% if data["address"] %}
+      <p class="govuk-body">
+        221B Baker Street<br>
+        Marylebone<br>
+        London<br>
+        NW1 5RT
+      </p>
+      {{ govukRadios({
+        idPrefix: "is-carehome",
+        name: "is-carehome",
+        fieldset: {
+          legend: {
+            text: "Is this a care home?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["is-carehome"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["is-carehome"] == "no")
+          }
+        ]
+      }) }}
+      <p>
+        <a href="postcode-lookup">Change address</a>
+      </p>
+    {% else %}
+      <p>
+        <a href="postcode-lookup">Add address</a>
+      </p>
+    {% endif %}
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="housing-costs">
+      Housing costs
+    </h2>
+
+    {{ govukInput({
+      label: {
+        text: "Ground rent"
+      },
+      id: "ground-rent",
+      name: "ground-rent",
+      classes: "govuk-input--width-20",
+      value: data["email"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Service charges"
+      },
+      id: "service-charges",
+      name: "service-charges",
+      classes: "govuk-input--width-20",
+      value: data["service-charge"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Other housing costs"
+      },
+      id: "other-housing-costs",
+      name: "other-housing-costs",
+      classes: "govuk-input--width-20",
+      value: data["email"]
+    }) }}
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="admissions">
+      Hospital admission or temporary care home
+    </h2>
+
+    {% for admission in data["admissions"] %}
+      <h3 class="govuk-heading-m">Admission {{loop.index}}</h3>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ admission["admission-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-admission/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date they went in
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ admission["date-in-day"] }}
+            {{ admission["date-in-month"] | getMonth }}
+            {{ admission["date-in-year"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-admission/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date they came out
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ admission["date-out-day"] }}
+            {{ admission["date-out-month"] | getMonth }}
+            {{ admission["date-out-year"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-admission/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Days in
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{
+              [
+                [
+                  admission["date-out-year"],
+                  admission["date-out-month"],
+                  admission["date-out-day"]
+                ],
+                [
+                  admission["date-in-year"],
+                  admission["date-in-month"],
+                  admission["date-in-day"]
+                ]
+              ] | dayDiff
+            }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-admission/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% endfor %}
+
+    <p>
+      <a href="add-admission">Add admission</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="members">
+      Household composition
+    </h2>
+
+    {% set partner %}
+      {{ govukInput({
+        label: {
+          text: "Partner's full name"
+        },
+        hint: {
+          text: "Include any middle names"
+        },
+        id: "partner-full-name",
+        name: "partner-full-name",
+        classes: "govuk-input--width-20",
+        value: data["full-name"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "partner-dob",
+        namePrefix: "partner-dob",
+        fieldset: {
+          legend: {
+            text: "Partner's date of birth"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 1956"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["partner-dob-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["partner-dob-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["partner-dob-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Partner's National Insurance number"
+        },
+        id: "partner-nino",
+        name: "partner-nino",
+        classes: "govuk-input--width-20",
+        value: data["partner-nino"]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "partner-blind",
+        name: "partner-blind",
+        fieldset: {
+          legend: {
+            text: "Is their partner registered blind or severely sight impaired?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["partner-blind"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["partner-blind"] == "no")
+          }
+        ]
+      }) }}
+    {% endset %}
+
+    {{ govukRadios({
+      idPrefix: "has-partner",
+      name: "has-partner",
+      fieldset: {
+        legend: {
+          text: "Do they have a partner?"
+        }
+      },
+      classes: "govuk-radios--inline",
+      items: [
+        {
+          value: "yes",
+          text: "Yes",
+          checked: (data["has-partner"] == "yes"),
+          conditional: {
+            html: partner
+          }
+        },
+        {
+          value: "no",
+          text: "No",
+          checked: (data["has-partner"] == "no")
+        }
+      ]
+    }) }}
+
+    <h3 class="govuk-heading-s">Other household members</h3>
+    {% for member in data["members"] %}
+      <h3 class="govuk-heading-m">Member {{loop.index}}</h3>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ member["member-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-member/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+
+    <p>
+      <a href="add-member">Add household member</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="benefits">
+      Benefits
+    </h2>
+    {% for benefit in data["benefits"] %}
+      <h3 class="govuk-heading-m">Benefit {{loop.index}}</h3>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ benefit["benefit-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-benefit/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ benefit["benefit-value"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-benefit/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ benefit["benefit-frequency"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-benefit/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+
+    <p>
+      <a class="govuk-link" href="add-benefit">Add benefit</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="employments">
+      Employment and earnings
+    </h2>
+
+    {% for employment in data["employments"] %}
+      <h3 class="govuk-heading-m">Employment {{loop.index}}</h3>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ employment["name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-employment/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Earnings
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ employment["earnings"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-employment/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ employment["employment-frequency"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-employment/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+
+    <p>
+      <a href="add-employment">Add employment</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="capital">
+      Finance, capital, shares and investments
+    </h2>
+
+    {{ govukInput({
+      label: {
+        text: "Cash"
+      },
+      id: "cash",
+      name: "cash",
+      classes: "govuk-input--width-10",
+      value: data["cash"]
+    }) }}
+
+    <h3 class="govuk-heading-m" id="savings">Savings accounts</h3>
+    {% for saving in data["savings"] %}
+      <h4 class="govuk-heading-s">Savings account {{loop.index}}</h4>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ saving["savings-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-saving/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ saving["savings-total"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-saving/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+    <p>
+      <a href="add-saving">Add savings account</a>
+    </p>
+
+    <h3 class="govuk-heading-m" id="investments">Investments</h3>
+    {% for investment in data["investments"] %}
+      <h4 class="govuk-heading-s">Investment {{loop.index}}</h4>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ investment["investment-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-investment/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ investment["investment-value"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-investment/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+    <p>
+      <a href="add-investment">Add investments</a>
+    </p>
+
+    <h3 class="govuk-heading-m" id="shares">Shares</h3>
+    {% for share in data["shares"] %}
+      <h4 class="govuk-heading-s">Share {{loop.index}}</h4>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Company
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ share["share-company-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-share/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ share["share-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-share/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ share["share-number"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-share/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ share["share-value"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-share/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+    <p>
+      <a href="add-share">Add shares</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="pensions">
+      Pensions
+    </h2>
+
+    {{ govukInput({
+      label: {
+        text: "State pension amount"
+      },
+      id: "sp-amount",
+      name: "sp-amount",
+      classes: "govuk-input--width-20",
+      value: data["sp-amount"]
+    }) }}
+
+    <h3 class="govuk-heading-m">Non state pensions</h3>
+
+    {% for pension in data["pensions"] %}
+      <h4 class="govuk-heading-s">Pension {{loop.index}}</h4>
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ pension["name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-pension/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Income
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ pension["income"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-pension/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ pension["pension-frequency"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="change-pension/{{loop.index0}}">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="govuk-body">None</p>
+    {% endfor %}
+
+    <p>
+      <a href="add-pension">Add non-state pension</a>
+    </p>
+
+    <div class="section-end">
+      <a class="app-c-back-to-top dont-print" href="#contents">
+         <svg class="app-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+           <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+         </svg>
+         Contents
+      </a>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"/>
+    </div>
+
+    <h2 class="govuk-heading-l" id="payment-details">
+      Payment Details
+    </h2>
+
+    {% set internaionalAccount %}
+      {{ govukInput({
+        label: {
+          text: "Name on account"
+        },
+        id: "name-on-account",
+        name: "name-on-account",
+        classes: "govuk-input--width-20",
+        value: data["name-on-account"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "SWIFT code"
+        },
+        id: "swift-code",
+        name: "swift-code",
+        classes: "govuk-input--width-10",
+        value: data["swift-code"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "IBAN number"
+        },
+        id: "iban-number",
+        name: "iban-number",
+        classes: "govuk-input--width-20",
+        value: data["iban-number"]
+      }) }}
+    {% endset %}
+    {% set ukAccount %}
+    {{ govukInput({
+      label: {
+        text: "Name on account"
+      },
+      id: "name-on-account",
+      name: "name-on-account",
+      classes: "govuk-input--width-20",
+      value: data["name-on-account"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Sort code"
+      },
+      id: "sort-code",
+      name: "sort-code",
+      classes: "govuk-input--width-10",
+      value: data["sort-code"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Account number"
+      },
+      id: "account-number",
+      name: "account-number",
+      classes: "govuk-input--width-20",
+      value: data["account-number"]
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Roll number"
+      },
+      id: "roll-number",
+      name: "roll-number",
+      classes: "govuk-input--width-20",
+      value: data["roll-number"]
+    }) }}
+    {% endset %}
+
+    {{ govukRadios({
+      idPrefix: "account-type",
+      name: "account-type",
+      fieldset: {
+        legend: {
+          text: "What type of account do they have?"
+        }
+      },
+      items: [
+        {
+          value: "uk",
+          text: "UK bank, building society or credit union account",
+          checked: (data["account-type"] == "uk"),
+          conditional: {
+            html: ukAccount
+          }
+        },
+        {
+          value: "international",
+          text: "International bank account",
+          checked: (data["account-type"] == "international"),
+          conditional: {
+            html: internaionalAccount
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

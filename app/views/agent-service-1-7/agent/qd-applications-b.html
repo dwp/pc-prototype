@@ -1,0 +1,304 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'applications' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-7/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-6">Full application </h1>
+        </div>
+
+
+      <!--
+        <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-margin-bottom-2"><a href=qd-all-applications>Past applications</a></p>
+        </div>
+      -->
+
+        <div class="govuk-grid-column-three-quarters">
+        <div class="govuk-accordion govuk-!-margin-top-4" data-module="govuk-accordion" id="accordion-default">
+
+
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Applicant details
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+
+              <table class="govuk-table">
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-half"></th>
+                    <th scope="col" class="govuk-table__header govuk-!-width-one-half"></th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Which country do you live in?</th>
+                    <td class="govuk-table__cell">England</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Your date of birth</th>
+                    <td class="govuk-table__cell">[Date]</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">What is your nationality as shown on your passport or travel document? </th>
+                    <td class="govuk-table__cell">British</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">...</th>
+                    <td class="govuk-table__cell">...</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+
+
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Partner details
+                </span>
+              </h2>
+
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+              <p class="govuk-body">If you were born on or before 5 October 1954 you could get between £100 and £300 to help you pay your heating bills. This is known as a <strong>Winter Fuel Payment</strong>.</p>
+              <p class="govuk-body">Go to GOV.UK and search for "winter fuel payment".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">Or call 0800 731 0160 (Monday to Friday, 8am to 6pm)</p>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Housing details
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+              <p class="govuk-body">You can get a <strong>bus pass for free travel</strong>. You can get this when you reach State Pension age if you live in England, or when you reach age 60 if you live in Scotland or Wales.</p>
+              <p class="govuk-body">Go to GOV.UK and search for "free bus pass".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">Or call your local council as they issue the bus passes.</p>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Housing costs
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+              <p class="govuk-body"><strong>Housing Benefit</strong> can help you pay your rent if you are unemployed, on a low income or claiming benefits.</p>
+              <p class="govuk-body">Go to GOV.UK and search for "housing benefit".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">Or call your local council as they will deal with your claim.</p>          </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Housing costs
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+              <p class="govuk-body"><strong>Housing Benefit</strong> can help you pay your rent if you are unemployed, on a low income or claiming benefits.</p>
+              <p class="govuk-body">Go to GOV.UK and search for "housing benefit".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">Or call your local council as they will deal with your claim.</p>          </div>
+          </div>
+
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+                  People who live with you
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-5" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+              <p class="govuk-body"><strong>MoneyHelper</strong> offers free information and advice about your money. This includes help with the State Pension or your company, personal, stakeholder or occupational pensions.</p>
+              <p class="govuk-body">Go to GOV.UK and search for "MoneyHelper".</p>
+              <p class="govuk-body">Or call 0800 011 3797 (Monday to Friday, 9am-5pm)</p>
+          </div>
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Benefits
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Employment
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Self-employment
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Pensions
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Other income
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Money
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Applicant's residency in the UK
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+          <div class="govuk-accordion__section ">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+                Contact details
+              </span>
+            </h2>
+          </div>
+            <div id="accordion-default-content-6" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+              <p class="govuk-body">Go to GOV.UK and search for "benefits checker".</p>
+              <p class="govuk-body govuk-!-padding-bottom-4">You will find links to a number of independent benefits calculators to help you find out what benefits you could get, how to claim and how your benefits will be affected if you start work.</p>
+            </div>
+          </div>
+
+
+
+        </div>
+        </div>
+        </div>
+
+
+
+        </div>
+      </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

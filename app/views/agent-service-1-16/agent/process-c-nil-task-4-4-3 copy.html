@@ -1,0 +1,147 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-4-4-3"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-4-4-3-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-16/agent/record-id.html" %}
+
+        <!--<span class="govuk-caption-m">(*Scenario 3*)</span>--> 
+        
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Sainsbury's pension payments</p>
+        <!--<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">Application submitted on the 29 June 2023.</p>-->
+
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Payment date (monthly)</th>
+              <th scope="col" class="govuk-table__header">Net pay</th>
+              <th scope="col" class="govuk-table__header">Selected for averaging</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 June 2023</th>
+              <td class="govuk-table__cell">£350</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                Yes
+              </strong></td>
+            </tr>
+            
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 May 2023</th>
+              <td class="govuk-table__cell">£320</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                  Yes
+              </strong>
+            </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 April 2023</th>
+              <td class="govuk-table__cell">£300</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                  Yes
+              </strong>
+            </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 March 2023</th>
+              <td class="govuk-table__cell">£300</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+                  No
+              </strong>
+            </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 February 2023</th>
+              <td class="govuk-table__cell">£300</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+                  No
+              </strong>
+            </td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 January 2023</th>
+              <td class="govuk-table__cell">£300</td>
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">
+                  No
+              </strong>
+            </td>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-4-3",
+          name: "process-c-nil-task-4-4-3",
+          fieldset: {
+            legend: {
+              text: "Does an average of £325.33 a month represent the applicant's income on the day the claim was submitted (29 June 2023)?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-list"] == "Matched")
+          },
+            {
+              value: "Not matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+            }
+          ]
+        }) }}
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

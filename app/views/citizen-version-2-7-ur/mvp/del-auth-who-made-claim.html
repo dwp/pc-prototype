@@ -1,0 +1,99 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  del-auth-who-made-claim-router? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-who-made-claim-router" method="post" class="form">
+
+      {% set helpIDSomeoneElse %}
+        {{ govukInput({
+        label: {
+          html: "What is your relationsip to the applicant?"
+        },
+        id: "del-auth-who-made-claim-SomeoneElse",
+        name: "del-auth-who-made-claim-SomeoneElse",
+        classes: "govuk-input--width-20"
+        }) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+        idPrefix: "del-auth-who-made-claim",
+        name: "del-auth-who-made-claim",
+        fieldset: {
+          legend: {
+            text: "Which of these best describes you?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+        {
+        value: "Yourself",
+        html: "You are applying for Pension Credit for yourself",
+        checked: data['del-auth-who-made-claim'] == "Yourself"
+      },
+      {
+        value: "Friend or family member",
+        html: "You are a friend or family member who is helping the applicant make their application",
+        checked: data['del-auth-claim-help-who'] == "Friend or family member"
+      },
+      {
+          value: "Power of attorney",
+          html: "You have power of attorney for the applicant",
+          checked: data['del-auth-who-made-claim'] == "Power of attorney"
+        },
+        {
+          value: "Charity or organisation",
+          html: "You work for a charity or organisation that is helping the applicant make their application",
+          checked: data['del-auth-who-made-claim'] == "Charity or organisation"
+        },
+        {
+          value: "Appointee",
+          html: "You have been appointed by DWP to deal with the benefits of someone who cannot manage their own affairs",
+          checked: data['del-auth-who-made-claim'] == "Appointee"
+        },
+        {
+          value: "Corporate Acting Body",
+          html: "You are a Corporate Acting Body for the applicant",
+          checked: data['del-auth-who-made-claim'] == "Corporate Acting Body"
+        },
+        {
+          value: "Personal Acting Body",
+          html: "You are a Personal Acting Body for the applicant",
+          checked: data['del-auth-who-made-claim'] == "Personal Acting Body"
+        },
+        {
+          value: "Someone else",
+          html: "Someone else",
+          checked: data['del-auth-claim-help-who'] == "Someone else",
+          conditional: {
+            html: helpIDSomeoneElse
+          }
+        }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

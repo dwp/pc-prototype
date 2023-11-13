@@ -1,0 +1,165 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Phil Collins
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-full-width.html" %}
+ <div class="moj-primary-navigation">
+
+   <div class="moj-primary-navigation__container">
+
+     <div class="moj-primary-navigation__nav">
+
+       <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+         <ul class="moj-primary-navigation__list">
+           <li class="moj-primary-navigation__item" >
+             <a class="moj-primary-navigation__link" href="home-user-0">My homepage</a>
+           </li>
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  href="new-process-c-nil-task-list">Processing</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link"  aria-current="page" href="qd-start">Queries and disputes</a>
+           </li>
+
+           <li class="moj-primary-navigation__item">
+             <a class="moj-primary-navigation__link" href="ur-mi">Overview</a>
+           </li>
+
+
+         </ul>
+
+       </nav>
+
+     </div>
+
+   </div>
+
+ </div>
+ <section class="dwp-key-details-bar" aria-label="Key details">
+ <div class="dwp-key-details-bar__key-details">
+ <dl class="dwp-key-details-bar__top-block">
+     <dt class="govuk-visually-hidden">Name:</dt>
+     <dd class="dwp-key-details-bar__primary">Phil Collins</dd>
+     <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+     <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
+
+ </dl>
+ <dl class="dwp-key-details-bar__bottom-block">
+     <dt>Entitlement status:</dt>
+     <dd>Not entitled</dd>
+    
+
+ </dl>
+ </div>
+ </section>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+
+    <nav class="moj-side-navigation" aria-label="Side navigation">
+      <ul class="moj-side-navigation__list">
+        <li class="moj-side-navigation__item ">
+          <a href="qd-new-summary">Claim summary</a>
+        </li>
+
+        <li class="moj-side-navigation__item moj-side-navigation__item--active">
+          <a href="qd-new-summary-state-pension" aria-current="location">State Pension</a>
+        </li>
+
+        <li class="moj-side-navigation__item">
+          <a href="qd-new-summary-non-sate-pension">Non-State Pension</a>
+        </li>
+        <li class="moj-side-navigation__item">
+          <a href="#3">Income</a>
+        </li>
+        <li class="moj-side-navigation__item">
+          <a href="#3">Qualifying benefits</a>
+        </li>
+        <li class="moj-side-navigation__item">
+          <a href="#3">Claim notes</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-7">State Pension</h1>
+
+<div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+          <h2 class="govuk-heading-l">£172<p class="govuk-hint">Weekly State Pension amount</p></h2>
+
+
+
+          </div>
+
+
+
+
+          </div>
+
+            <div class="govuk-grid-row">
+                   <div class="govuk-grid-column-full">
+
+          <table class="govuk-table">
+    <!-- <caption class="govuk-table__caption govuk-table__caption--m">How was this calculated</caption> -->
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Date</th>
+        <th scope="col" class="govuk-table__header">4 weekly amount</th>
+        <th scope="col" class="govuk-table__header">Weekly amount</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">October</th>
+        <td class="govuk-table__cell">£XXX</td>
+          <td class="govuk-table__cell">£XXX</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">September</th>
+        <td class="govuk-table__cell">£XXX</td>
+          <td class="govuk-table__cell">£XXX</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__header">August</th>
+        <td class="govuk-table__cell">£XXX</td>
+          <td class="govuk-table__cell">£XXX</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  </div>
+
+</div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

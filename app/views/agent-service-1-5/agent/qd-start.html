@@ -1,0 +1,56 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-search" method="post" class="form">
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">How can I help?</h1>
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">Answer the customer's query using either:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your knowledge</li>
+          <li><a href=qd-help-start>other help</a></li>
+        </ul>
+        <p class="govuk-body">If the customer is wanting to discuss their claim, you must go into their record.</p>
+
+      </div>
+
+      {{ govukButton({
+        text: "Go into record",
+        classes: "govuk-!-margin-right-1"
+      }) }}
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

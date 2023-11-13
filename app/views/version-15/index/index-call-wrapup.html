@@ -1,0 +1,116 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="index-claim-download" method="post" class="form">
+
+  <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <h1 class="govuk-heading-xl">
+        Application in progress
+      </h1>
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">
+        We are doing some final checks on your application. We will contact you
+        by <strong>DD / Month / Year (6 - 8 weeks) </strong> either to confirm your award or ask you for more information. You do not need to contact us before then unless anything changes.
+      </p>
+
+
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">If anything changes</h2>
+
+      <p class="govuk-body">
+        While you are receiving Pension Credit, you must tell us straight away about any changes that could affect the amount of Pension Credit you get.</p>
+      <p class="govuk-body">  If you do not report any changes, we might reduce or stop your Pension Credit.</p>
+
+      <p class="govuk-body">  Changes that could affect your claim include:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>if you go abroad for longer than 4 weeks</li>
+        <li>your address changes, or anyone moves in or out of your home</li>
+        <li>your income changes, including any changes to employment or self-employment</li>
+        <li>changes to the value of your savings, investments or second properties</li>
+        <li>if you go into hospital or a care home for more than 4 weeks</li>
+      </ul>
+
+
+
+
+<h2 class="govuk-heading-m govuk-!-margin-top-6">Contact the Pension Service helpline to report any changes:</h2>
+
+<ul class="govuk-list govuk-list">
+  <li>Telephone: 0800 731 0469</li>
+  <li>Textphone: 0800 169 0133</li>
+<li><a href="https://www.ngts.org.uk/" class="govuk-link govuk-link--no-visited-state">Next Generation Text (NGT)</a> text relay (if you cannot hear or speak on the phone): 18001 then 0800 731 0469</li>
+    <li>Monday to Friday, 8am to 7:30pm</li>
+    <br>
+    <li><a href="https://www.gov.uk/call-charges" class="govuk-link govuk-link--no-visited-state">Find out about call charges  (opens in a new window or tab)</a></li>
+</ul>
+
+<p>You can also report by post. The address is on the letters you get about your Pension Credit.</p>
+
+
+<!--
+
+<h3 class="govuk-heading-m">How you can contact the Pension Credit service for United Kingdom and Northern Ireland</h3>
+
+<ul class="govuk-list govuk-list">
+  <li>Telephone: 0800 731 0469</li>
+  <li>Textphone: 0800 169 0133</li>
+<li><a href="https://www.ngts.org.uk/" class="govuk-link govuk-link--no-visited-state">Next Generation Text (NGT)</a> text relay (if you cannot hear or speak on the phone): 18001 then 0800 731 0469</li>
+    <li>Monday to Friday, 8am to 7:30pm</li>
+    <br>
+    <li><a href="https://www.gov.uk/call-charges" class="govuk-link govuk-link--no-visited-state">Find out about call charges  (Opens in new window)</a></li>
+    <li>You can also report by post. The address is on the letters you get about your Pension Credit.</li>
+</ul>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h3 class="govuk-heading-m">XXXX</h3>
+
+<p class="govuk-body">
+XXXXX
+</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>XXX</li>
+  <li>XXX</li>
+  <li>XXX</li>
+  <li>XXX</li>
+  <li>XXX</li>
+</ul>
+
+-->
+
+
+        {{ govukButton({
+          text: "End call and download claims",
+          classes: "govuk-!-margin-top-6"
+        }) }}
+
+
+</form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout-fake-searchlight.html" %}
+{% from "nav-component/macro.html" import nav %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">{{ data ["sl-find-a-claim"]}}</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">10 August 1955</h1>
+
+
+      {{ nav({ active: "personalDetails" }) }}
+
+      {% include "third-party/sl-3/sl-personal-details.html" %}
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

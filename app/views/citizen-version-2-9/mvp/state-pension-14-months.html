@@ -1,0 +1,61 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  XXX - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="state-pension-14-months-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "state-pension-14-months",
+        name: "state-pension-14-months",
+        fieldset: {
+          legend: {
+            text: "Have you applied for a State Pension within the last 14 months?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+
+        },
+        hint: {
+          text: ""
+
+
+        },
+        classes: "govuk-radios",
+        items: [
+{
+            value: "Yes",
+            text: "Yes",
+            checked: (data["state-pension-14-months"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["state-pension-14-months"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

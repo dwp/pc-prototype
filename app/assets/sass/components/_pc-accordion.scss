@@ -1,0 +1,73 @@
+.pc-accordion {
+  .govuk-accordion__section-header {
+    padding: 0;
+  }
+
+  .govuk-accordion__section-button {
+    @include govuk-responsive-padding(2, "top");
+    @include govuk-font($size: 24, $weight: bold, $tabular: false, $line-height: 1.4);
+    color: $govuk-text-colour;
+    display: inline-block;
+    width: 100%;
+
+    &:hover:not(:focus) {
+      color: $govuk-link-colour;
+      text-decoration: none;
+
+      .gem-c-step-nav__button-text {
+        text-decoration: underline;
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 -4px $govuk-text-colour;
+      color: $govuk-text-colour;
+
+      .gem-c-step-nav__toggle-link {
+        color: $govuk-text-colour;
+      }
+
+      .gem-c-step-nav__chevron-stroke {
+        stroke: $govuk-text-colour;
+      }
+    }
+  }
+
+  .govuk-accordion__section-button > :first-child {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .gem-c-step-nav__toggle-link {
+    @include govuk-responsive-padding(6, "bottom");
+    @include govuk-font($size: 16, $weight: regular, $tabular: false, $line-height: 1.2);
+    color: $govuk-link-colour;
+    display: block;
+    text-transform: capitalize;
+  }
+
+  .gem-c-step-nav__button-text {
+    display: inline-block;
+    text-align: left;
+    min-width: 2.5em;
+  }
+
+  .gem-c-step-nav__chevron {
+    display: inline-block;
+    margin-left: .3125em;
+    vertical-align: middle;
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  .govuk-accordion__section--expanded .gem-c-step-nav__chevron svg {
+    transform: rotate(180deg);
+  }
+
+  .govuk-accordion__section-content {
+    @include govuk-responsive-padding(5, "bottom");
+    padding-top: 0;
+  }
+}

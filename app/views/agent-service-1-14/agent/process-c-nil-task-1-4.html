@@ -1,0 +1,91 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-1-4"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-1-4-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-14/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">[Task 1-4]</span> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Address</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Given in the application:</p>
+
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-0">9</p>
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-0">Benton Park Road</p>
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24 govuk-!-margin-bottom-0">Newcastle upon Tyne</p>
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-24">NE98 1ZZ</p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Systems to check:</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>Searchlight</strong></p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-1-4",
+          name: "process-c-nil-task-1-4",
+          fieldset: {
+            legend: {
+              text: "Does the address given in the application match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-1-4"] == "Matched")
+          },
+            {
+              value: "Not matched",
+              text: "No",
+              checked: (data["process-c-nil-task-1-4"] == "Not matched")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

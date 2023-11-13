@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What address should we use to write to you? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "contact-preference"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="check-your-answers" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "use-home-address",
+        name: "use-home-address",
+        fieldset: {
+          legend: {
+            text: "What address should we use to write to you?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "home",
+            text: "Your home address",
+            checked: (data["use-home-address"] == "home")
+          },
+          {
+            value: "different",
+            text: "A different address",
+            checked: (data["use-home-address"] == "different")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

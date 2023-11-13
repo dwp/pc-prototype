@@ -1,0 +1,78 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Do you have any money or income from an equity release scheme? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<!---- SHARED ---->{% if data['home-ownership'] == 'Shared ownership' %}
+<form action="home-shared-housing-benefit" method="post" class="form">
+<!---- OTHER ---->{% elseif data['home-ownership'] == 'Other accommodation' %}
+<form action="home-other-housing-benefit" method="post" class="form">
+<!---- OWN ---->{% else %}
+
+    <!---- Mortgage Yes ---->{% if data['home-mortgage'] == 'Yes' %}
+    <form action="home-shared-payments" method="post" class="form">
+    <!---- Mortgage No ---->{% else %}
+    <form action="non-deps-living-with-you" method="post" class="form">
+    {% endif %}
+
+{% endif %}
+
+
+
+      {% set legendHint %}
+      <p class="govuk-hint"></p>
+      {% endset %}
+
+
+
+      {{ govukRadios({
+        idPrefix: "home-equity-release",
+        name: "home-equity-release",
+        fieldset: {
+          legend: {
+            text: "Do you have any money or income from an equity release scheme?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: legendHint
+            },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-equity-release"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-equity-release"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+{% endblock %}

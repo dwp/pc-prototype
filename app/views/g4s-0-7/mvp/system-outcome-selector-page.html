@@ -1,0 +1,130 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-outcome-selector" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <!-- <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% if data['state-pension-status'] == 'sp-handover' or data['partner-state-pension-status'] == 'sp-handover' %}
+
+      Issues with SP / Partner
+      <form action="handover-early-sp" method="post" class="form">
+
+      {% elif data['system-children-mac-check'] == 'mac'%}
+      <form action="handover-early-mac" method="post" class="form">
+      I am too youung
+
+      {% elif data['system-children-mac-check'] == 'children-mac'%}
+      I have children and too young
+      <form action="done-children" method="post" class="form">
+      {% else %}
+
+      I am normal
+      <form action="outcome" method="post" class="form">
+
+      {% endif %} -->
+
+
+
+
+      <!-- <br>
+      handover-early-sp
+      <br>
+      checked: (data["partner-amount-not-known"] == "amount-not-known") handover-early-sp
+      <br>
+      (data["partner-state-pension-status"] == "NoSP" handover-early-sp -->
+
+
+
+      <div class="govuk-panel--agent">
+
+      {{ govukRadios({
+        idPrefix: "system-outcome-selector",
+        name: "system-outcome-selector",
+        fieldset: {
+          legend: {
+            text: "System: Outcome selector",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+        {
+          value: "Likley",
+          text: "Single & Joint Likely",
+          checked: (data["system-outcome-selector"] == "Likley")
+        },
+        {
+          value: "Unlikely",
+          text: "Single & Joint: Unlikely",
+          checked: (data["system-outcome-selector"] == "Unlikely")
+        },
+        {
+            value: "children-handover",
+            text: "Single & Joint: Children",
+            checked: (data["system-outcome-selector"] == "children-handover")
+          },
+          {
+            value: "mac",
+            text: "Joint: MAC CTC not in payment",
+            checked: (data["system-outcome-selector"] == "mac")
+          },
+          {
+            value: "waiting-for-first-payment",
+            text: "Single: First SP not received [Day 2]",
+            checked: (data["system-outcome-selector"] == "waiting-for-first-payment")
+          },
+          {
+            value: "joint-waiting-for-first-payment",
+            text: "Joint: First SP not received [Day 2]",
+            checked: (data["system-outcome-selector"] == "joint-waiting-for-first-payment")
+          },
+          {
+            value: "sp-not-claimed",
+            text: "Single: SP not claimed or not got first payment [Day one hack]",
+            checked: (data["system-outcome-selector"] == "sp-not-claimed")
+          },
+          {
+            value: "joint-sp-not-claimed",
+            text: "Joint: 1/2 have not claimed SP",
+            checked: (data["system-outcome-selector"] == "joint-sp-not-claimed")
+          },
+          {
+            value: "housing-costs",
+            text: "Service and ground rent",
+            checked: (data["system-outcome-selector"] == "housing-costs")
+          }
+        ]
+      }) }}
+
+</div>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

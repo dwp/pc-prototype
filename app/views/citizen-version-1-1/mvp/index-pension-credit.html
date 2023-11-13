@@ -1,0 +1,82 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Post Pension Credit index - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<!----------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="index-survey-yn" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      {{ govukPanel({
+              titleText: "Application sent",
+                classes:"govuk-!-margin-top-8 govuk-!-margin-bottom-6"
+            }) }}
+
+      <h3 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">What happens next</h3>
+
+      <p class="govuk-body">
+        We are doing some final checks on your application. We will contact you
+        by <strong>18 June 2020</strong> either to confirm your award or ask you for more information. You do not need to contact us before then unless anything changes.
+      </p>
+
+      <p class="govuk-heading-m govuk-!-margin-bottom-4">If your application is successful we will pay your Pension Credit into the same account as your State Pension.</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You will be able to change this to a different account once your Pension Credit is in payment.</p>
+
+
+
+      <div class="govuk-!-margin-top-6">
+      <h2 class="govuk-heading-m govuk-!-margin-bottom-3">If anything changes</h2>
+      <p class="govuk-body">While you are receiving Pension Credit, you must tell us straight away about any <a href="https://www.gov.uk/pension-credit/change-of-circumstances">changes that could affect the amount of Pension Credit you get (opens in a new window or tab)</a>.</p>
+      </div>
+
+
+
+<!----------------------------------------------------------------------------------->
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<div class="govuk-!-margin-top-6">
+  <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Council Tax Reduction and Housing Benefit</h2>
+  <p class="govuk-body">If your application is successful, you might be able to claim Council Tax Reduction and Housing Benefit. You should contact your local authority to apply for these.</p>
+</div>
+
+
+
+<div class="govuk-!-margin-top-6">
+  <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Carer's Allowance</h2>
+  <p class="govuk-body">You might be able to claim <a href="https://www.gov.uk/carers-allowance">Carer's Allowance (Opens in a new window or tab)<a/> if you care for someone for 35 hours or more a week.</p>
+</div>
+
+
+<!----------------------------------------------------------------------------------->
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<div class="govuk-!-margin-top-6">
+<h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+Help us improve Pension Credit
+</h2>
+<p class="govuk-body govuk-!-margin-bottom-8"><a href="https://getinvolved.dwp.gov.uk/digital/fa743129/start_preview?token=721b98c7019344093611254c9ffe7a1d4807b86f">Take a short survey (opens in a new window or tab)</a></p>
+</div>
+
+
+      <!-- {{ govukButton({
+        text: "Continue"
+      }) }} -->
+    </form>
+  </div>
+</div>
+{% endblock %}

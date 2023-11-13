@@ -1,0 +1,98 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'history' %}
+
+{% block date %}
+{% endblock %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">History</h1>
+        </div>
+          <div class="govuk-grid-column-three-quarters">
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Date and time",
+                        classes: 'govuk-!-width-one-third'
+
+                },
+                {
+                  text: "Update",
+                    classes: 'govuk-!-width-two-thirds'
+
+                }
+              ],
+              rows: [
+              [
+                {
+                  text: "4 May 2022"
+                },
+                {
+                  text: "Contact with customer - security passed to view record"
+                }
+              ],
+                [
+                  {
+                    text: "01 March 2022"
+                  },
+                  {
+                    text: "Entitlement letter sent"
+                  }
+                ],
+                [
+                  {
+                    text: "1 March 2022"
+                  },
+                  {
+                    text: "Processed by Hazel Littlefair (Senior Processor in Pension Credit Pilot)"
+                  }
+                ],
+                [
+                  {
+                    text: "28 February 2022 6am"
+                  },
+                  {
+                    text: "Online application received"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

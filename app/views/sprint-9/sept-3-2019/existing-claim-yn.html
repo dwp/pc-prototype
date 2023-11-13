@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+System check for exitsting claim: Yes / No - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="existing-claim-router" method="post" class="form">
+      {{ govukRadios({
+        name: "existing-claim",
+        fieldset: {
+          legend: {
+            text: "System check for existing claim: Existing / New",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This would be hidden, the power of the internets would workout and send you to the right place."
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Existing / Task list",
+            checked: (data["existing-claim"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "Continue new claim",
+            checked: (data["existing-claim"] == "No")
+          }
+        ]
+      }) }}
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="X" value="true"/>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

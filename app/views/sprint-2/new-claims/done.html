@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Application complete",
+        html: "Your reference number<br><strong>ZZ123456A</strong>"
+      }) }}
+
+<br>
+
+
+
+      <p class="govuk-body">Based on the information you gave us, you are entitled to a Pension Credit of £68.77 a week from 27 August 2018</p>
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">
+        We are doing some final checks on your application.
+      </p>
+      <p class="govuk-body">
+        We will write to you by 13 December either to confirm your award or ask you for more information.
+      </p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+    </div>
+  </div>
+{% endblock %}

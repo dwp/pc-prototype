@@ -1,0 +1,47 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- ShowHide -->
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post" action="/session-clear-route">
+       <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-6/mvp/landing">
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">I'm going to pass you to a colleague who will help you further</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You might be on hold for up to three minutes. If we can't get you through, you'll be transferred back to me.</p>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h1 class="govuk-heading-xm govuk-!-margin-bottom-4">Applicant details</h1>
+
+{% include "g4s-0-6/mvp/claim-details.html" %}
+
+
+{{ govukButton({
+text: "Finish and close",
+classes: "govuk-button--warning dont-print govuk-!-margin-top-6"
+}) }}
+
+</form>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,518 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bulding society current account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-all-savings-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Savings account details
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank or building society"
+        },
+        id: "msic-all-savings-account-name",
+        name: "msic-all-savings-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+
+<!--------------- EED ----------------------------------------------------------------------------------------->
+
+{% set balanceEED %}
+      {{ govukInput({
+        label: {
+          html: "Balance on <strong>"
+            + data['claim-date-cam-date-entry-day']
+            + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth)
+            + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>"
+        },
+        id: "msic-all-savings-account-amount-EED",
+        name: "msic-all-savings-account-amount-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+{% endset -%}
+
+{% set balanceDateEED %}
+{{ govukDateInput({
+  id: "claim-date-idoc-yn-date",
+  namePrefix: "claim-date-idoc-yn-date",
+  fieldset: {
+    legend: {
+      text: "Date this balance is from"
+    }
+  },
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["claim-date-idoc-yn-date-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["claim-date-idoc-yn-date-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["claim-date-idoc-yn-date-year"]
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    html: "Balance on this date"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-all-savings-account-amount-TAM",
+  name: "msic-all-savings-account-amount-TAM"
+}) }}
+{% endset -%}
+
+
+
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "msic-all-savings-account-amount-balanceEED-check",
+        name: "msic-all-savings-account-amount-balanceEED-check",
+        fieldset: {
+          legend: {
+            html: "Do you know the balance of this account on <strong>"
+              + data['claim-date-cam-date-entry-day']
+              + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth)
+              + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["msic-all-savings-account-amount-balanceTAM-check"] == "Yes"),
+          conditional: {
+            html: balanceEED
+          }
+        },
+          {
+            value: "No",
+            text: "No, I know it on a different date",
+            checked: (data["msic-all-savings-account-amount-balanceTAM-check"] == "No"),
+            conditional: {
+              html: balanceDateEED
+            }
+          }
+        ]
+      }) }}
+
+
+    <!--------------- TODAY = YES + BALANCE ----------------------------------------------------------------------------------------->
+
+      {% set balanceToday %}
+
+        {{ govukInput({
+          label: {
+          html: "Current balance"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-all-savings-account-amount-TODAY",
+          name: "msic-all-savings-account-amount-TODAY"
+        }) }}
+
+      {% endset -%}
+
+      <!--------------- TODAY = YES + BALANCE ----------------------------------------------------------------------------------------->
+
+        {% set balanceDateToday %}
+
+          {{ govukDateInput({
+            id: "msic-all-savings-account-evidence-date",
+            namePrefix: "msic-all-savings-account-evidence-date",
+            fieldset: {
+              legend: {
+                text: "Date this balance is from"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["msic-all-savings-account-evidence-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["msic-all-savings-account-evidence-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["msic-all-savings-account-evidence-date-year"]
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: "Balance on this date"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-all-savings-account-amount-TODAY",
+            name: "msic-all-savings-account-amount-TODAY"
+          }) }}
+
+        {% endset -%}
+
+
+
+    <!--------------- TODAY = YES/NO ----------------------------------------------------------------------------------------->
+
+    {% set balanceCheckYes %}
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "balance-check-yes",
+      name: "balance-check-yes",
+      fieldset: {
+        legend: {
+          html: "Do you know the current balance of this account?"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["balance-check-yes"] == "Yes"),
+        conditional: {
+          html: balanceToday
+        }
+      },
+        {
+          value: "No",
+          text: "No, I know it on a different date",
+          checked: (data["balance-check-yes"] == "No"),
+          conditional: {
+            html: balanceDateToday
+          }
+        }
+      ]
+    }) }}
+
+    {% endset -%}
+
+
+    <!--------------- TODAY = YES ----------------------------------------------------------------------------------------->
+
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "balance-check-yn",
+      name: "balance-check-yn",
+      fieldset: {
+        legend: {
+          html: "Is the current balance of this account different?"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Different",
+        text: "Yes",
+        checked: (data["balance-check-yn"] == "Different"),
+        conditional: {
+          html: balanceCheckYes
+        }
+      },
+        {
+          value: "Same",
+          text: "No",
+          checked: (data["balance-check-yn"] == "Same"),
+          conditional: {
+            html: balanceCheckNo
+          }
+        }
+      ]
+    }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!---------------------------------------------------------------->
+
+
+
+      {% set balanceTAM %}
+      {{ govukInput({
+        label: {
+          html: "Balance on <strong>" + '' | formatDate + "</strong>"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-all-savings-account-amount-TAM",
+        name: "msic-all-savings-account-amount-TAM"
+      }) }}
+
+
+            {{ govukInput({
+              label: {
+                html: "Balance on <strong>"
+                  + data['claim-date-cam-date-entry-day']
+                  + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth)
+                  + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>"
+              },
+              id: "msic-all-savings-account-amount-EED",
+              name: "msic-all-savings-account-amount-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+      {% endset -%}
+
+      {% set balanceCheckNo %}
+      {{ govukDateInput({
+        id: "claim-date-idoc-yn-date",
+        namePrefix: "claim-date-idoc-yn-date",
+        fieldset: {
+          legend: {
+            text: "Date this balance is from"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["claim-date-idoc-yn-date-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "@pet1e: Balance on <strong>" + '' | formatDate + "</strong>"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-all-savings-account-amount-TAM",
+        name: "msic-all-savings-account-amount-TAM"
+      }) }}
+      {% endset -%}
+
+
+
+
+
+
+
+<!---------------------------------------------------------------->
+
+
+
+
+      {% set balanceDateTAM %}
+
+      {{ govukInput({
+        label: {
+          html: "@pete: Balance on <strong>" + '' | formatDate + "</strong>"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-all-savings-account-amount-TAM",
+        name: "msic-all-savings-account-amount-TAM"
+      }) }}
+      {% endset -%}
+
+
+      {% set balanceEED %}
+            {{ govukInput({
+              label: {
+                html: "Amount in this account on <strong>"
+                  + data['claim-date-cam-date-entry-day']
+                  + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth)
+                  + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>"
+              },
+              id: "msic-all-savings-account-amount-EED",
+              name: "msic-all-savings-account-amount-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+      {% endset -%}
+
+      {% set balanceDateEED %}
+      {{ govukDateInput({
+        id: "claim-date-idoc-yn-date",
+        namePrefix: "claim-date-idoc-yn-date",
+        fieldset: {
+          legend: {
+            text: "Date this balance is from"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["claim-date-idoc-yn-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["claim-date-idoc-yn-date-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "@pete: Balance on <strong>" + '' | formatDate + "</strong>"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-all-savings-account-amount-TAM",
+        name: "msic-all-savings-account-amount-TAM"
+      }) }}
+      {% endset -%}
+
+
+
+
+
+
+
+      <!--------------- OTHER DETIALS ----------------------------------------------------------------------------------------->
+
+
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Amount of money that is yours"
+          },
+          id: "msic-all-savings-account-stake",
+          name: "msic-all-savings-account-stake",
+          classes: "govuk-input--width-10"
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "msic-all-savings-account-owner",
+        name: "msic-all-savings-account-owner",
+        fieldset: {
+          legend: {
+            text: "Account owner",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "You",
+            text: "Only you"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account",
+            conditional: {
+              html: percentageField
+            }
+          }
+        ]
+      }) }}
+
+<!--
+      {{ govukRadios({
+        idPrefix: "msic-all-savings-account-read-from-statement",
+        name: "msic-all-savings-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+-->
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

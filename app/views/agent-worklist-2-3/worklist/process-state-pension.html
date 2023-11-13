@@ -1,0 +1,67 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-benefits" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          How much State Penson does Mel get a week?
+        </h1>
+
+        {% set legendName %}
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Amount paid a week</h3>
+        {% endset -%}
+
+        {{ govukInput({
+          label: {
+            html: "Amount paid a week"
+          },
+          hint: {
+            text: ""
+          },
+          id: "user-full-name",
+          name: "user-full-name",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+          value: data["user-full-name"]
+        }) }}
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          Mel Gibson gets paid £140.00 a week from State Pension
+        </h1>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">First payment: <strong>01 May 1940</strong></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Continue"
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Back to start</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-clear">...</a></p> -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

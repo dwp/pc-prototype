@@ -1,0 +1,265 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-summary" method="post" class="form">
+
+      <input type="hidden" name="contact-formats-complete" value="in-progress"/>
+
+      {% set disabilities = data["disabilities"] or [] %}
+      {% set accessability = data["accessibility"] or [] %}
+
+      {{ govukCheckboxes({
+        idPrefix: "disabilities",
+        name: "disabilities",
+        fieldset: {
+          legend: {
+            text: "Do you need us to contact you in any different formats?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply:"
+        },
+        items: [
+{
+          value: "Audio form",
+          text: "Audio form",
+          checked: (disabilities.includes("Audio"))
+        },
+        {
+
+          value: "Audio CD, cassette or MP3",
+          text: "Audio CD, cassette or MP3",
+          checked: (accessability.includes("Audioform"))
+        },
+
+          {
+            value: "Braille",
+            text: "Braille",
+            checked: (disabilities.includes("Braille"))
+          },
+          {
+            value: "Large print",
+            text: "Large print",
+            checked: (disabilities.includes("Large print"))
+          },
+
+          {
+            value: "TexBox",
+            text: "TexBox",
+            checked: (disabilities.includes("Large print"))
+          },
+          {
+            value: "TypeTalk",
+            text: "TypeTalk",
+            checked: (disabilities.includes("TypeTalk"))
+          }
+        ]
+      }) }}
+
+<!--
+      {{ govukCheckboxes({
+        idPrefix: "disabilities",
+        name: "disabilities",
+        fieldset: {
+          legend: {
+            text: "Do you need letters in Welsh?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (disabilities.includes("Welsh"))
+          }
+        ]
+      }) }}
+-->
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "disabilities-welsh-yn",
+        name: "disabilities-welsh-yn",
+        fieldset: {
+          legend: {
+            html: "Do you need letters in Welsh?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["disabilities-welsh-yn"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["disabilities-welsh-yn"] == "No")
+        }
+
+        ]
+      }) }}
+
+
+
+
+
+
+      {% set hasEmail %}
+      {{ govukInput({
+    label: {
+      html: "Email address"
+    },
+    id: "contact-formats-email-yes",
+    name: "contact-formats-email-yes",
+    classes: "govuk-input--width-20"
+  }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-formats-email-yn",
+        name: "contact-formats-email-yn",
+        fieldset: {
+          legend: {
+            html: "Do you need us to send letters by email?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "We can only use email if a disability means that you are not able to read letters."
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["contact-formats-email-yn"] == "Yes"),
+          conditional: {
+            html: hasEmail
+          }
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["contact-formats-email-yn"] == "No")
+        }
+
+        ]
+      }) }}
+
+      <div>
+
+      <div class="adviser-notice">
+      <h1 class="adviser-notice__heading">Adviser: for your information</h1>
+      <p class="govuk-body"><strong>Does the claimant need a translator?<strong>
+      </div>
+
+            {% set altLanguage %}
+              {{ govukInput({
+            label: {
+              html: "What language?"
+            },
+            id: "contact-formats-altLanguage",
+            name: "contact-formats-altLanguage",
+            classes: "govuk-input--width-20"
+          }) }}
+              {% endset -%}
+
+              {{ govukRadios({
+                classes: "govuk-radios",
+                idPrefix: "contact-formats-altLanguage-yn",
+                name: "contact-formats-altLanguage-yn",
+                fieldset: {
+                  legend: {
+                    html: "",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                hint: {
+                  text: ""
+                },
+                items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (data["contact-formats-altLanguage-yn"] == "Yes"),
+                  conditional: {
+                    html: altLanguage
+                  }
+
+                },
+                  {
+                    value: "No",
+                    text: "No",
+                    checked: (data["contact-formats-altLanguage-yn"] == "No")
+                  }
+                ]
+              }) }}
+
+</div>
+
+<!--
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-welsh-yn",
+        name: "contact-welsh-yn",
+        fieldset: {
+          legend: {
+            text: "Do you want written communication in Welsh, can this not be part of the list??",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-welsh-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-welsh-yn"] == "No")
+          }
+        ]
+      }) }}
+-->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+
+  </div>
+</div>
+{% endblock %}

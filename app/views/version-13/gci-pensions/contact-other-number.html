@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-translator" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action">Agent: </span>The number the claimant is calling from is 0<strong>{{ data["telephone-number"] }}</strong></h2>
+      </div>
+
+
+      {% set otherNumberLandline %}
+      {{ govukInput({
+        label: {
+          text: "Telephone number"
+        },
+        id: "contact-other-number",
+        name: "contact-other-number",
+        classes: "govuk-input--width-20",
+        attributes: {
+          maxlength: 20
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-other-number",
+        name: "contact-other-number",
+        fieldset: {
+          legend: {
+            html: "Can we call you to give you updates on your claim or to ask for more information?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-other-number"] == "Add number"),
+            conditional: {
+              html: otherNumberLandline
+            }
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-other-number"] == "Opt out of telephone")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

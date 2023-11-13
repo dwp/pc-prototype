@@ -1,0 +1,84 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="national-insurance-return-router" method="post"><!--existing-claim-yn-->
+
+
+
+        <div class="govuk-panel--agent">
+
+        <!------------HEADLINE------------>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Person found</h1>
+
+
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Name: <strong>Bert Smash</strong></h1>
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National Insurance number: <strong>{{ data ["nino"]}}</strong></h1>
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Date of birth: <strong>{{ data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']}}</strong></h1>
+
+          <!------------ if only one headline on a page swap the headline for legend, ask Niall------------>
+
+          <!-- {% set legend %}
+          {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What are {{ data | getPronoun }} details?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What is ["who-is-caller-name"]'s details?</h1>{% endif %}
+          {% endset %} -->
+        <!------------HEADLINE------------>
+<br>
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "national-insurance-return",
+          name: "national-insurance-return",
+          fieldset: {
+            legend: {
+              html: "Is this the right person?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            html: ""
+          },
+          items: [
+          {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["national-insurance-return"] == "Yes")
+            },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["national-insurance-return"] == "No")
+              }
+            ]
+          }) }}
+
+
+          {{ govukButton({
+            classes: "govuk-!-margin-bottom-0",
+            text: "Continue"
+          }) }}
+
+          </div>
+
+          <p class="govuk-body govuk-!-padding-top-6"><a href="national-insurance-return-fail">@pete: Failed call</a></p>
+
+
+
+
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

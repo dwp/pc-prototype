@@ -1,0 +1,176 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+How to Claim - Pension Credit
+{% endblock %}
+
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Working, jobs and pensions</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">State Pension</a>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Pension Credit
+        </h1>
+
+
+        {% include "citizen-version-2-6/mvp/gov-uk-menu.html" %}
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-xl">Eligibility</h2>
+
+        <p class="govuk-body">You can apply for Pension Credit if you have reached <a href="/calculate-state-pension">State Pension age</a>.</p>
+
+
+        <p class="govuk-body">If you live alone, you can apply for Pension Credit for yourself. If you live with a partner, you must both be included in the same application.</p>
+
+
+<p class="govuk-body">If you live with a partner you can apply for Pension Credit if both of you have reached State Pension age.</p>
+
+<p class="govuk-body">You can also apply if one of you is under State Pension age, and one of you gets Housing Benefit for people over State Pension age.</p>
+
+<p class="govuk-body">A partner is a husband, wife or civil partner or someone else you live with as if you were married or in a civil partnership.</p>
+
+<h2 class="govuk-heading-l id="working-out-your-income">Your income</h2>
+
+<p class="govuk-body">When you apply for Pension Credit we work out if you could get it based partly on your income. This includes:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+<li>State Pension</li>
+<li>other pensions</li>
+<li>earnings from employment and self-employment</li>
+<li>other income you have</li>
+</ul>
+
+<p class="govuk-body">If you have money, savings and investments, you can still get Pension Credit. The first £10,000 you have will not affect your Pension Credit. If you have more than £10,000, when we work out how much Pension Credit you could get, we treat every £500 you have over £10,000 as if it gives you an income of £1 a week.</p>
+
+<p class="govuk-body">We count most social security benefits as income. We do not count some benefits, including:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+<li>Armed Force Independence payments</li>
+<li>Attendance Allowance</li>
+<li>Child Benefit</li>
+<li>Christmas Bonus </li>
+<li>Council Tax Reduction</li>
+<li>Disability Living Allowance</li>
+<li>Housing Benefit</li>
+<li>Personal Independence Payment</li>
+<li>social fund payments like Winter Fuel Allowance</li>
+</ul>
+
+
+<p class="govuk-body">If you have not yet claimed a State Pension, private or workplace pension that you are entitled to, we will still count the amount you could get as income.</p>
+
+<p class="govuk-body">If you or your partner get Pension Credit, you will not build up extra State Pension or a lump sum for <a href="/deferring-state-pension/what-you-may-get">deferring your State Pension</a>.</p>
+
+<p class="govuk-body">If anything changes, you should tell us straight away as it can affect how much Pension Credit you get. Read about <a href="gov-uk-coc">changes you need to tell us about</a>.</p>
+
+
+
+        <div class="pagination govuk-!-margin-top-8">
+            <a href="gov-uk-overview" class="gem-c-pagination__link" rel="prev">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Previous
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">What Pension Credit is</span>
+            </a>
+
+        </div>
+        <div class="pagination">
+            <a href="gov-uk-what-you-get" class="gem-c-pagination__link" rel="next">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Next
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">What you could get</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "citizen-version-2-4/mvp/gov-uk-side-menu.html" %}
+    </div>
+
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-contextual-footer">
+
+            <div class="gem-c-related-navigation">
+
+
+
+
+
+                <nav role="navigation" class="gem-c-related-navigation__nav-section"
+                    aria-labelledby="related-nav-topics-250e20b6" data-module="gem-toggle">
+
+                    <h2 class="govuk-heading-s gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+
+                    <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+                        <li class="gem-c-related-navigation__link"><a
+                                class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer"
+                                data-track-category="relatedLinkClicked" href="../state_pension_browse">State
+                                Pension</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

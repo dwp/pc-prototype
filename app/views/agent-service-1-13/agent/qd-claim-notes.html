@@ -1,0 +1,277 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+
+{{ govukBackLink({
+  text: "Back",
+  href: "qd-summary"
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-summary" method="post" class="form">
+
+
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Claim notes</h1>
+
+
+      {% if data['qd-search-nino'] === 'ZZ439386A' %}
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "11 June 2022 at 10.00am"
+            },
+            {
+              html: "Failed security. Answered the following questions incorrectly, 'What is the name of your bank' and 	'What is your mobile telephone number'."
+            }
+          ]
+        ]
+      }) }}
+
+
+      {% elif data['qd-search-nino'] === 'EO972577A' %}
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+
+          [
+            {
+              text: "15 June 2022 at 11.00am"
+            },
+            {
+              text: "Called to query decision. Has gone to look for information and to wait for a callback from DWP. "
+            }
+          ]
+        ]
+      }) }}
+
+
+      {% elif data['qd-search-nino'] === 'AB987654A' %}
+
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quater'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quaters'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "16 April 2022"
+            },
+            {
+              text: "Called for an explanation of award."
+            }
+          ]
+        ]
+      }) }}
+
+
+      {% elif data['qd-search-nino'] === 'BB668734A' %}
+
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "1 May 2022"
+            },
+            {
+              text: "Called for an explanation of award."
+            }
+          ]
+        ]
+      }) }}
+
+
+      {% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "&nbsp"
+            },
+            {
+              hmtl: ""
+            }
+          ]
+        ]
+      }) }}
+
+
+      {% elif data['qd-search-nino'] === 'EO972577A' %}
+
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+        [
+          {
+            html: "&nbsp"
+          },
+          {
+            text: ""
+          }
+          ]
+        ]
+      }) }}
+
+
+      {% else %}
+
+      {{ govukTable({
+        caption: "",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-quarter'
+
+          },
+          {
+            text: "Notes",
+              classes: 'govuk-!-width-three-quarters'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "&nbsp"
+            },
+            {
+              text: ""
+            }
+          ]
+        ]
+      }) }}
+
+
+
+      {% endif %}
+
+
+
+      </div>
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

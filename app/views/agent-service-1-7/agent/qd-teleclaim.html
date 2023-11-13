@@ -1,0 +1,78 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-teleclaim-router" method="post" class="form">
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">You need to make a new application for Pension Credit. Would you like to do this now?</h1>
+
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">Explain they can do this now on the phone or go to GOV.UK to make an online application.</p>
+      </div>
+
+      {{ govukRadios({
+        idPrefix: "teleclaim",
+        name: "teleclaim",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["teleclaim"] == "yes")
+
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["teleclaim"] == "no")
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Pension Credit / UT space
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">User testing space</h1>
+    <p class="govuk-body-l">
+      Quick links to user journeys for UR sessions.<br><br>
+  </div>
+</div>
+
+{# <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> #}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <table class="govuk-table">
+      {# <caption class="govuk-table__caption govuk-table__caption--m">Month you apply</caption> #}
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Piece of work</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Sprint #</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date/s tested</th>
+          <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">JIRA</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/citizen-version-2-13/mvp/gov-uk-start">OIDV</a>
+          </td> 
+          <td class="govuk-table__cell">Sprint -</td>
+          <td class="govuk-table__cell">TBD</td>
+          <td class="govuk-table__cell">
+            <a href="https://dwpdigital.atlassian.net/browse/AFPC-2226" target="_blank">AFPC-2226</a> <br>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/agent-service-1-14/agent/ur-home">CIS500</a>
+          </td> 
+          <td class="govuk-table__cell">Sprint 74</td>
+          <td class="govuk-table__cell">TBD</td>
+          <td class="govuk-table__cell">
+            <a href="https://dwpdigital.atlassian.net/browse/AFPC-2989" target="_blank">AFPC-2989</a> <br>
+            <a href="https://dwpdigital.atlassian.net/browse/AFPC-3259" target="_blank">AFPC-3259</a>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <a href="/agent-service-1-15/agent/ur-home">Correspondence address</a>
+          </td> 
+          <td class="govuk-table__cell">Sprint -</td>
+          <td class="govuk-table__cell">TBD</td>
+          <td class="govuk-table__cell"><a href="https://dwpdigital.atlassian.net/browse/AFPC-2945" target="_blank">AFPC-2945</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

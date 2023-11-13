@@ -1,0 +1,52 @@
+{% if data['qd-search-nino'] === 'EO972577M' %}
+
+  {% set qdNameTemplate = "Mason Rogers " %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">28 February 1943</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">EO 97 25 77 M</p>
+
+
+{% elif data['qd-search-nino'] === 'ZZ439386T' %}
+
+  {% set qdNameTemplate = "Karen Mitchell" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">28 February 1943</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">ZZ 43 93 86 T</p>
+
+
+{% elif data['qd-search-nino'] === 'AB987654C' %}
+
+  {% set qdNameTemplate = "Dale Clarke" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">23 December 1953</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">AB 98 76 54 C</p>
+
+{% elif data['qd-search-nino'] === 'BB668734F' %}
+
+  {% set qdNameTemplate = "Julie Green" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">21 February 1947</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">BB 66 87 34 F</p>
+
+{% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+  {% set qdNameTemplate = "Jennifer Davis" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">18 January 1955</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">QQ 45 77 41 A</p>
+
+
+{% else %}
+
+  {% set qdNameTemplate = "Mark Collins" %}
+  <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">22 September 1949</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">ZZ 15 85 38 T </</p>
+{% endif %}
+
+
+<!--
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["query-search-nino"]}}</p>
+
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob"]}}</p>
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob-day"]  ["search-dob-month"]  ["search-dob-year"] }}</p>-->

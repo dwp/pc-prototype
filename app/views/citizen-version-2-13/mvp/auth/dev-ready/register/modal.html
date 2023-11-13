@@ -1,0 +1,68 @@
+{% extends "layout-assisted-digital-removed.html" %}
+
+{% block pageTitle %}
+  Your registration will be stopped soon -
+        {{ data['service-name']  }}
+    - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+
+     
+    <dialog id="prototype_warning_dialog" class="dialog" role="dialog" aria-labelledby="dialog-title" open="" style="z-index: 100002; top: 25%">
+        <!-- <div class="lightbox__inner"> -->
+        <h1  class="govuk-heading-l">Your registration will be stopped soon</h1>
+
+        <p class="govuk-body">
+            You will have to start again unless you continue in one minute. This is because no information has been entered recently. This keeps your information secure.
+        </p>
+        
+        <!-- <a class="button" href="#" role="button">Got it</a> -->
+        <button class="govuk-button dialog-close dialog-button" onclick="window.location.href='name.html';">Continue registration</button>
+        <!-- </div> -->
+    </dialog>
+        
+    <div class="backdrop" style="z-index: 100001;"></div>
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-two-thirds">
+            <form action="date-of-birth" method="post">
+                {{ govukFieldset({
+                    legend: {
+                        html: "What is your name?",
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+                {{ govukInput({
+                    label: {
+                        text: "First name"
+                    },
+                    id: "first-name",
+                    name: "first-name",
+                    classes: "govuk-!-width-two-thirds"
+                }) }}
+
+                {{ govukInput({
+                    label: {
+                        text: "Last name"
+                    },
+                    id: "last-name",
+                    name: "last-name",
+                    classes: "govuk-!-width-two-thirds"
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

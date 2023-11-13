@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Gimme money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "money-you-have"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="second-property" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Capital
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Current, building society or savings account
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of account number"
+        },
+        classes: "govuk-input--width-5",
+        id: "account-number",
+        name: "account-number",
+        value: data["account-number"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Balance"
+        },
+        classes: "govuk-input--width-10",
+        id: "balance",
+        name: "balance",
+        value: data["balance"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "date-of-balance",
+        namePrefix: "date-of-balance",
+        fieldset: {
+          legend: {
+            text: "Date of balance"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 2018"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["date-of-balance-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["date-of-balance-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["date-of-balance-year"]
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        ISAs
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Total value of investments"
+        },
+        classes: "govuk-input--width-20",
+        id: "isa-total",
+        name: "isa-total",
+        value: data["isa-total"]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "isa-life-insurance",
+        name: "isa-life-insurance",
+        fieldset: {
+          legend: {
+            text: "Does this account have life insurance attached?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["isa-life-insurance"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["isa-life-insurance"] == "no")
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Shares
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Company"
+        },
+        classes: "govuk-input--width-20",
+        id: "share-company",
+        name: "share-company",
+        value: data["share-company"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Type"
+        },
+        classes: "govuk-input--width-20",
+        id: "share-type",
+        name: "share-type",
+        value: data["share-type"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Number of shares"
+        },
+        classes: "govuk-input--width-10",
+        id: "number-of-shares",
+        name: "number-of-sharess",
+        value: data["number-of-sharess"]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Investments
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Total value"
+        },
+        classes: "govuk-input--width-10",
+        id: "investments-total",
+        name: "investments-total",
+        value: data["investments-total"]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Bonds
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Account total"
+        },
+        classes: "govuk-input--width-10",
+        id: "bonds-total",
+        name: "bonds-total",
+        value: data["bonds-total"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "bond-start-date",
+        namePrefix: "bond-start-date",
+        fieldset: {
+          legend: {
+            text: "Start date"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 2018"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["bond-start-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["bond-start-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["bond-start-date-year"]
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Cash
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Total cash"
+        },
+        classes: "govuk-input--width-10",
+        id: "total-cash",
+        name: "total-cash",
+        value: data["total-cash"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

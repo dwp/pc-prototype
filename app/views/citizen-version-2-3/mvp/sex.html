@@ -1,0 +1,49 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Sex - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="sex-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "sex",
+        name: "sex",
+        fieldset: {
+          legend: {
+            text: "Sex?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "M",
+            text: "Male",
+            checked: (data["sex"] == "M")
+          },
+          {
+            value: "F",
+            text: "Female",
+            checked: (data["sex"] == "F")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

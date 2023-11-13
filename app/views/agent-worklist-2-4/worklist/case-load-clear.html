@@ -1,0 +1,44 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="case-next-claim" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Pension Credit claims</h1>
+    </div>
+  </div>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">There are <strong>0</strong> claims to download.</p>
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-4",
+          text: "Check for new claims"
+        }) }}
+
+        </form>
+<!--
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-full">
+
+<div>
+<h2 class="govuk-heading-l govuk-!-margin-top-4 govuk-!-margin-bottom-4">Find a claim</h2>
+<p class="govuk-body"><a href="find-a-claim">Find a claim<a/> using a National Insurance number.</p>
+</div>
+
+</div>
+</div> -->
+
+{% endblock %}

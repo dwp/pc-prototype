@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="other-income-equity-release-yn" method="post">
+
+        <span class="govuk-caption-m"></span>
+    <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-xl">Agent: Changes you need to make to income shown in Searchlight</h1>
+
+
+      {{ govukTextarea({
+      label: {
+        html: "Details of income that is shown incorrectly in Searchlight and the reason you need to use a different income figure in the calculation"
+      },
+      id: "other-income-searchlight-no-match-details",
+      name: "other-income-searchlight-no-match-details",
+      classes: "govuk-input--width-100"
+    ,
+  hint: {
+    text: ""
+  }
+    }) }}
+
+
+      </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}

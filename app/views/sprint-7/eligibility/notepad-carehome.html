@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about the care home or nursing home where the claimant lives.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Ask the claimant for all the information you need, including:</p>
+
+
+        <ul class="govuk-list">
+          <li>
+            the date they were admitted
+          </li>
+          <li>
+          whether their stay is temporary or permanent
+          </li>
+          <li>
+            if the stay is temporary, the date they expect to be discharged
+          </li>
+          <li>
+            whether their stay is funded by the local authority, self-funded or both
+          </li>
+          <li>
+            whether they still own a property? (Mark: Can this be a separate check box to tailor the question in the capital section?)
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "carehome-more-detail",
+          id: "carehome-more-detail",
+
+          value: data["carehome-more-detail"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

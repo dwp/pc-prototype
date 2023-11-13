@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: hospital admissions
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                {% if data["hospital-yn"] %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Have you spent any time in hospital since (date)?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ data["hospital-yn"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="hospital-yn">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+
+                                    {% if data["hospital-details-detail"] %}
+                                      <div class="govuk-summary-list__row">
+                                        <dt class="govuk-summary-list__key">
+                                          Hospital admission details
+                                        </dt>
+                                        <dd class="govuk-summary-list__value">
+                                          {{ data["hospital-details-detail"] }}
+                                        </dd>
+                                        <dd class="govuk-summary-list__actions">
+                                          <a href="hospital-details">
+                                            Change
+                                          </a>
+                                        </dd>
+                                      </div>
+                                      {% endif %}
+
+
+                {% if data["hospital-details-admission-date"] %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Date they were admitted?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ data["hospital-details-admission-date"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="hospital-details">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+
+                  {% if data["hospital-details-discharge-date"] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Date they were discharge?
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data["hospital-details-discharge-date"] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="hospital-details">
+                          Change
+                        </a>
+                      </dd>
+                    </div>
+                    {% endif %}
+
+                    {% if data["hospital-details-funding"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          hospital-details-type
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["hospital-details-funding"] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="hospital-details">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+                      {% endif %}
+
+                    {% if data["hospital-details-funding-more-detail"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          hospital-details-funding-more-detail
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["hospital-details-funding-more-detail"] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="hospital-details">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+                      {% endif %}
+
+                      {% if data["hospital-name"] %}
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            hospital-name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["hospital-name"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="hospital-details">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+                        {% endif %}
+
+                      {% if data["hospital-city"] %}
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            hospital-city
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["hospital-city"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="hospital-details">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+                        {% endif %}
+
+
+
+
+
+<br></dl></dl><br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- ShowHide -->
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post" action="/session-clear-route">
+       <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-6/mvp/landing">
+
+<!--
+        <div class="moj-banner">
+        <div class="moj-banner__message">
+        <h2 class="govuk-heading-m govuk-!-margin-top-0">G4S to DWP handover</h2>
+        </div>
+        </div>
+-->
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">I'm going to pass you to a colleague in the Pension Centre who will help you decide whether to apply</h1>
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div>
+
+  <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">I cannot see your details or start an application without a National Insurance number, but they will be able to help you.</p>
+
+
+
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+
+{% include "g4s-0-6/mvp/claim-details.html" %}
+
+
+{{ govukButton({
+text: "Finish and close",
+classes: "govuk-button--warning dont-print govuk-!-margin-top-6"
+}) }}
+
+</form>
+</div>
+</div>
+
+
+{% endblock %}

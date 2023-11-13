@@ -1,0 +1,72 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="money-disregards-payments" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Do you have any money saved to carry out essential work on your main home, or to buy a property?</h1>
+
+
+
+
+   <!-- <p class="govuk-heading-s govuk-!-margin-bottom-2">We might not use some money, savings and investments to work out your Pension Credit if they are:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>savings that you intend to use to buy or make essential repairs to your main home</li> -->
+
+      </ul>
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            idPrefix: "money-disregards-all",
+            name: "money-disregards-all",
+            fieldset: {
+              legend: {
+                text: "
+
+
+                ",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "This money might not affect your Pension Credit if it's for work such as repairing the roof or altering a bathroom to make it accessible."
+
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+
+              },
+              {
+                value: "No",
+                text: "No"
+
+              }
+            ]
+
+          }) }}
+
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

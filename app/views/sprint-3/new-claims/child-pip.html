@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you live with a partner? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="child-pip-router" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        About the child’s Personal Independance Payment
+      </h1>
+
+      {{ govukRadios({
+        idPrefix: "child-pip-daily-living",
+        name: "child-pip-daily-living",
+        fieldset: {
+          legend: {
+            html: "<h2 class=\"govuk-heading-s govuk-!-margin-bottom-1\">Do they get the daily living component?</h2>"
+          }
+        },
+        items: [
+          {
+            value: "Standard",
+            text: "Standard",
+            checked: (data["child-pip-daily-living"] == "Standard")
+          },
+          {
+            value: "Enhanced",
+            text: "Enhanced",
+            checked: (data["child-pip-daily-living"] == "Enhanced")
+          },
+          {
+            value: "None",
+            text: "None",
+            checked: (data["child-pip-daily-living"] == "None")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "child-pip-mobility",
+        name: "child-pip-mobility",
+        fieldset: {
+          legend: {
+            html: "<h2 class=\"govuk-heading-s govuk-!-margin-bottom-1\">Do they get the mobility component?</h2>"
+          }
+        },
+        items: [
+          {
+            value: "Standard",
+            text: "Standard",
+            checked: (data["child-pip-mobility"] == "Standard")
+          },
+          {
+            value: "Enhanced",
+            text: "Enhanced",
+            checked: (data["child-pip-mobility"] == "Enhanced")
+          },
+          {
+            value: "None",
+            text: "None",
+            checked: (data["child-pip-mobility"] == "None")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

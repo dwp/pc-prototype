@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-router" method="post" class="form">
+
+      
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment",
+        name: "msic-pc-payment",
+        fieldset: {
+          legend: {
+            text: "How would you like to receive your Pension Credit payments?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">We know about the account your State Pension is paid into."
+            },
+        items: [
+          {
+            value: "Same account as State Pension",
+            text: "Same account as State Pension",
+            checked: (data["msic-pc-payment"] == "Same account as State Pension")
+          },
+          {
+            value: "An alternative account",
+            text: "UK bank, building society or credit union account",
+            checked: (data["msic-pc-payment"] == "An alternative account")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

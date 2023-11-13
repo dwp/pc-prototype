@@ -1,0 +1,76 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="doc-draft-date-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% set claimdate %}
+
+      <p class="govuk-body govuk-!-font-size-24">Based on your circumstances, this is the earliest date we can consider backdating your application to.</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">If your circumstances have changed since [Calculated EED], you might want us to consider your application from the date that change took place. For example, if you have:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>been part of a previous claim for Pension Credit</li>
+        <li>started or stopped living with a partner</li>
+          </ul>
+
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "doc-draft-date",
+        name: "doc-draft-date",
+        fieldset: {
+          legend: {
+            text: "Do you want us to consider backdating your application to [Calculated EED]?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          html: claimdate
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes — consider my application from [Calculated EED]",
+            checked: (data["doc-draft-date"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No — consider my application from a different date",
+            checked: (data["doc-draft-date"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

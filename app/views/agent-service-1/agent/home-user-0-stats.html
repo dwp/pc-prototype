@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Processing nil awards stats</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p> -->
+
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 ">Overview</h3>
+  <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Processing</h3> -->
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-2">Passed</h3>
+  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2 ">80%</h3>
+  <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">800 claims</h3>
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-2">Failed</h3>
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2 ">20%</h3>
+  <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">200 claims</h3>
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Header #1</h3> -->
+  <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Processing</h3> -->
+
+  </div>
+
+
+  </div>
+  <hr class="govuk-section-break govuk-section-break govuk-section-break--visible ">
+
+  <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-8">
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Claims that had <br>a single failure</h3>
+  <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Number of instances <br>[Total: 200]</h3>
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+
+
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"><strong>Identity</strong><br>[Task 1]</h3>
+
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Name: <strong>80</strong></h3>
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">DOB: <strong>10</strong></h3>
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">X: <strong>10</strong></h3>
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Y: <strong>5</strong></h3>
+      <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Z: <strong>5</strong></h3>
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"><strong>Previous claims</strong><br>[Task 2]</h3>
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">IDOC / AfPC: <strong>50</strong></h3>
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"><strong>Verify rules</strong><br>[Task 3]</h3>
+
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">A: <strong>5</strong></h3>
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">B: <strong>2</strong></h3>
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">C: <strong>41</strong></h3>
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">D: <strong>1</strong></h3>
+    <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">E: <strong>1</strong></h3>
+
+  </div>
+
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <hr class="govuk-section-break govuk-section-break govuk-section-break--visible ">
+
+    <div class="govuk-grid-row govuk-!-margin-top-6 govuk-!-margin-bottom-8">
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Claims that had a  <br>combination of failures</h3>
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+
+  <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Something to talk about, its possible that it could be a combination of failures, so how do we account for that.  </h3>
+
+  </div>
+
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

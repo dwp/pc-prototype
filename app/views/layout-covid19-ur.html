@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% set mainClasses = 'id-bar' %}
+
+{% block beforeContent %}
+
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Testing only",
+    classes: "govuk-tag--user-reseach"
+  },
+  html: 'No information is stored or sent using this service.'
+}) }}
+
+<br>
+
+{% endblock %}
+
+{% block footer %}
+
+
+<footer class="govuk-footer govuk-!-margin-top-9" role="contentinfo">
+<div class="govuk-width-container ">
+  <div class="govuk-footer__navigation">
+    <div class="govuk-footer__section">
+      <h2 class="govuk-heading-s"></h2>
+      <ul class="govuk-footer__list govuk-footer__list--columns-2">
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="eject-error-reason">
+            Save claim and exit
+          </a>
+        </li>
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">
+            Personal Information Charter (opens in a new window or tab)
+          </a>
+        </li>
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="this-is-housing-benefit">
+            Housing benefit claim
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="#">
+            <br>
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="#">
+             <br>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "accessibility-statement",
+          text: "Accessibility"
+        },
+        {
+          href: "claim-filter",
+          text: "Claim filter"
+        },
+        {
+          href: "national-insurance-call-B",
+          text: "Change National insurance number"
+        },
+        {
+          href: "task-list",
+          text: "Task list"
+        },
+        {
+          href: "/version-15/survey/start.html",
+          text: "Service survey"
+        },
+        {
+          href: "/prototype-admin/clear-data",
+          text: "Clear data"
+        },
+        {
+          href: "https://govuk-prototype-kit.herokuapp.com/",
+          text: "GOV.UK Prototype Kit " + releaseVersion
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
+
+
+<!--
+{% if data["who-is-caller"] !== "Yourself" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+
+{% if data["national-insurance-return"] == "Yes" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+<br>
+-->
+
+<!-- {% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar-item govuk-!-font-size-19 verticalLine"><br></li>{% endif %} -->
+
+<!-- IF caller is claimant -->

@@ -1,0 +1,93 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-1-6"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-1-6-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-6/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">[Task 1-6]</span> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Bank name</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Given in the application:</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>Barclays</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Systems to check:</p>
+        <!-- <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-4">CPS will show a sort code and account number, then use Check payment account details (CPAD), formally Bank Wizard 🧙 to get the bank name</p> -->
+
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and </strong> <a href="/bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>Check Payment Account Details<br>(opens in a new tab)</strong></a></p>
+
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and</strong> <a href="/bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>Customer Payment Account Details</strong> (Opens in new tab)</a></p> -->
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and</strong> <a href="bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>CPAD</strong> (Opens in new tab)</a>, formally Bank Wizard 🧙 </p> -->
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    </div>
+  </div>
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-1-6",
+          name: "process-c-nil-task-1-6",
+          fieldset: {
+            legend: {
+              html: "Does the bank name given in the application<br>match what is in Check Payment Account Details?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-1-6"] == "Matched")
+          },
+            {
+              value: "Not matched",
+              text: "No",
+              checked: (data["process-c-nil-task-1-6"] == "Not matched")
+            }
+          ]
+        }) }}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+    </div>
+  </div>
+
+
+
+
+</form>
+
+{% endblock %}

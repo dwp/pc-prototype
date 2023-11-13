@@ -1,0 +1,37 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/introduction">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">I need to check some additional details for you</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Use the <a href="https://www.gov.uk/pension-credit-calculator">Pension Credit calculator (opens in new tab)</a> to check if the caller is entitled to Savings Credit.</p>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"></p>
+
+      {{ govukButton({
+      text: "Finish and close",
+      classes: "govuk-button dont-print govuk-!-margin-top-6"
+      }) }}
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

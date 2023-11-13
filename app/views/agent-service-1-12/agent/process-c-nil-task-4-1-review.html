@@ -1,0 +1,158 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-c-nil-task-4-1-router" method="post" class="form">
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Income over applicable amount</p>
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-8",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Income",
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              text: "Frequency",
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              text: "Amount",
+              classes: 'govuk-!-width-one-quarter'
+            },
+            {
+              text: "Tax",
+              classes: 'govuk-!-width-one-quarter'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "State Pension"
+              },
+              {
+                text: "Weekly"
+              },
+              {
+                text: "£150.00"
+              },
+              {
+                text: "—"
+              }
+            ],
+            [
+              {
+                text: "Occupational pension 1"
+              },
+              {
+                text: "Weekly"
+              },
+              {
+                text: "£69.10"
+              },
+              {
+                text: "£0.90"
+              }
+            ]
+          ]
+        }) }}
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-2 govuk-!-margin-bottom-2"><strong>Calculation</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-0">Applicable amount for this person is <strong>£182.15</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Their weekly income is <strong>£219.1</strong></p>
+
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-1",
+          name: "process-c-nil-task-4-1",
+          fieldset: {
+            legend: {
+              html: "Are you happy you want to nil this claim<br>due to excicess income?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "XX"
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-1"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-1"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

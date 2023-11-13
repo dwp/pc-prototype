@@ -1,0 +1,605 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: about where you live
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Is your home address the same as the address we use to send you letters?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["address-correspondence-yn"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="address-correspondence-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          221B Baker Street<br>
+          Marylebone<br>
+          London<br>
+          NW1 5RT
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="address-choice">
+            Change
+          </a>
+        </dd>
+      </div>
+
+<!-- Type ------------------------------------------------------>
+
+{% if data["home-ownership"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Description of where you live
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["home-ownership"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="home-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+
+      <!-- Owns ------------------------------------------------------>
+
+{% if data["own-service-charges"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Service charges
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["own-service-charges"] or "None "}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="service-charges">
+              Change
+            </a>
+          </dd>
+        </div>
+{% endif %}
+
+{% if data["own-ground-rent"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Ground rent
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["own-ground-rent"] or "None "}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="ground-rent">
+              Change
+            </a>
+          </dd>
+        </div>
+{% endif %}
+
+{% if data["own-mortgage-home-loan-yes"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Mortgage/HomeLoan
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["own-mortgage-home-loan-yes"] or "No "}}
+            {% if data["own-mortgage-home-loan-yes"] === "Yes" %}
+            <strong></strong>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="mortgage-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+              {% if data["own-council-tax-yn"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Do you get Council Tax Reduction?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{data["own-council-tax-yn"]}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="rent-council-tax-yn">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+                {% endif %}
+
+                {% if data["own-council-tax-apply"] %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                    Apply for Council Tax Reduction
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{data["own-council-tax-apply"]}}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="rent-service-charges">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+                  {% endif %}
+
+<!-- Rent ------------------------------------------------------>
+
+{% if data["rent-service-charges"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Additional service charges
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["rent-service-charges"] or "None "}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="ground-rent">
+              Change
+            </a>
+          </dd>
+        </div>
+{% endif %}
+
+        {% if data["rent-council-tax-yn"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you get Council Tax Reduction?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data["rent-council-tax-yn"]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="rent-council-tax-yn">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+          {% if data["rent-council-tax-apply"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              Apply for Council Tax Reduction
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data["rent-council-tax-apply"]}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="rent-service-charges">
+                  Change
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+
+
+          {% if data["rent-housing-benefit-yn"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you get Housing Benefit?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data["rent-housing-benefit-yn"]}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="rent-service-charges">
+                  Change
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+
+            {% if data["rent-housing-benefit-apply"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Apply for Housing Benefit
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{data["rent-housing-benefit-apply"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="rent-service-charges">
+                    Change
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+
+
+
+
+
+
+
+        <!-- Shared ownership ------------------------------------------------------>
+
+
+        {% if data["shared-ownership-more-detail)"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Shared ownership
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shared-ownership-more-detail"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="notepad-shared-ownership">
+                Change
+              </a>
+            </dd>
+          </div>
+      {% endif %}
+
+      {% if data["notepad-shared-ownership"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Ownership
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["notepad-shared-ownership"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="notepad-shared-ownership">
+              Change
+            </a>
+          </dd>
+        </div>
+    {% endif %}
+
+    {% if data["notepad-shared-ownership-property"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Equity release scheme
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["notepad-shared-ownership-property"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-shared-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+  {% if data["notepad-shared-ownership-loan"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Loan secured against home
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-shared-ownership-loan"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-shared-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+          <!-- Care home ------------------------------------------------------>
+
+      {% if data["notepad-care-nursing-home-status"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Admission date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["admission-date-day"] }}Day {{ data["admission-date-month"] }}Month {{ data["admission-date-year"] }}Year
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-carehome">
+            Change
+          </a>
+        </dd>
+      </div>
+    {% endif %}
+
+
+{% if data["notepad-care-nursing-home-status"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Do you live there permanently or temporarily?
+  </dt>
+  <dd class="govuk-summary-list__value">
+     {{ data["notepad-care-nursing-home-status"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-carehome">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+{% if data["notepad-care-nursing-home-status-more-detail"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Permanently or temporarily notes
+  </dt>
+  <dd class="govuk-summary-list__value">
+     {{ data["notepad-care-nursing-home-status-more-detail"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-carehome">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+{% if data["discharge-date-day"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Discharge date
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["discharge-date-day"] }} XX {{ data["discharge-date-month"] }} Month {{ data["discharge-date-year"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-carehome">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+
+
+    {% if data["notepad-care-nursing-home-funding"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        How is your stay in the nursing home or care home paid for
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-care-nursing-home-funding"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-carehome">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  {% if data["notepad-care-nursing-home-funding-more-detail"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      How is your stay in the nursing home or care home paid for, notes
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["notepad-care-nursing-home-funding-more-detail"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="notepad-carehome">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+
+
+    {% if data["notepad-care-nursing-home-property"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you own a residential property?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["notepad-care-nursing-home-property"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-shared-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+  {% if data["notepad-care-nursing-home-property-more-details"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Do you own a residential property notes
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-care-nursing-home-property-more-details"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-shared-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+
+
+
+
+        <!-- Sheltered accommodation ------------------------------------------------------>
+
+        {% if data["notepad-sheltered-funding"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How is your stay in sheltered accommodation paid for?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["notepad-sheltered-funding"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="notepad-shared-ownership">
+                Change
+              </a>
+            </dd>
+          </div>
+      {% endif %}
+
+      {% if data["notepad-sheltered-funding-more-detail"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How is your stay in sheltered accommodation paid for notes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["notepad-sheltered-funding-more-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="notepad-sheltered">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {% if data["notepad-sheltered-property"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details of any residential property that you own.
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["notepad-sheltered-property"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="notepad-shared-ownership">
+              Change
+            </a>
+          </dd>
+        </div>
+    {% endif %}
+
+      {% if data["notepad-sheltered-property-more-detail"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details of any residential property that you own notes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["notepad-sheltered-property-more-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="notepad-sheltered">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+        <!-- Someone else ------------------------------------------------------>
+
+
+      {% if data["someone-else-more-detail"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Notes
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["someone-else-more-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="notepad-someoneelse">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+        <!-- Other ------------------------------------------------------>
+
+        {% if data["other-res-where"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["other-res-where"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="notepad-someoneelse">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+        {% if data["other-res-more-detail"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Notes
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["other-res-more-detail"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="notepad-someoneelse">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+
+
+
+
+      <!-------------------------------------------------------->
+
+
+      </dl>
+
+<br><br>
+
+    <form action="pensions-overview" method="post">
+      <input type="hidden" name="address-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}
+Viewport
+Window
+×
+×
+×

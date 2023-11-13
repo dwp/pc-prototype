@@ -1,0 +1,62 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-cam-date-reason" method="post">
+
+        <div class="govuk-panel--agent">
+          <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Adviser: Work out the earliest date a claim can be considered from</h1>
+
+          <p class='govuk-body govuk-!-font-size-24 govuk-!-padding-bottom-0'>Talk to the claimant and use the information available in CAM and SearchLight to help them decide the best date to start their claim.</p>
+
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Things that could influence this date are:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>previous claims for Pension Credit or other benefits </li>
+            <li>changes to whether they live with a partner or anyone else</li>
+            <li>changes to the amount of money they have, their income or employment status</li>
+            <li>whether they have spent longer than 4 weeks outside the UK since the earliest claim date, unless it was connected to medical treatment, convalescence or the death of a partner or child</li>
+              </ul>
+
+        <br>
+
+        {{ govukDateInput({
+        id: "claim-date-cam-date-entry",
+        namePrefix: "claim-date-cam-date-entry",
+        fieldset: {
+        legend: {
+        html: "Claim start date",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+        }
+        },
+        hint: {
+        text: "For example, 12 11 2019"
+        }
+        }) }}
+
+      </div>
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+        <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

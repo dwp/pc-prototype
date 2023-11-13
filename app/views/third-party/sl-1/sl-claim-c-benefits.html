@@ -1,0 +1,82 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Maddison Sophie Todd</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">{{ data ["sl-find-a-claim"]}}</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">2 March 1949</h1>
+
+      <nav class="navigation-secondary govuk-!-margin-bottom-8">
+          <ul>
+            <li>
+              <a href="sl-claim-c">Personal details</a>
+              <!-- <a href="case-load">Pension Credit claims</a> -->
+            </li>
+            <li>
+              <!-- <a href="find-a-claim" class="active" aria-current="section">Find a claim</a> -->
+              <a href="sl-claim-c-benefits" class="active" aria-current="section">Benefits</a>
+            </li>
+            <li>
+              <!-- <a href="stats" class="active" aria-current="section">Hot hot stats</a> -->
+              <a href="sl-claim-c-income">Income</a>
+            </li>
+
+
+          </ul>
+        </nav>
+
+
+
+        <p class="govuk-body govuk-!-font-size-36 govuk-!-margin-top-8 govuk-!-margin-bottom-6"><strong>Benefits</p>
+
+                              <div class="sl-grey">
+                                    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table ">
+                                      <thead class="govuk-table__head">
+                                        <tr class="govuk-table__row">
+                                          <th class="govuk-table__cell govuk-20-percent">Start date</th>
+                                          <th class="govuk-table__cell govuk-40-percent">Benefit</th>
+                                          <th class="govuk-table__cell govuk-20-percent">Frequency</th>
+                                          <th class="govuk-table__cell govuk-20-percent">Amount</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tr class="govuk-table__row">
+                                          <td class="govuk-table__cell table-spacer">April 2002</td>
+                                          <td scope="row" class="govuk-table__cell table-spacer">State Pension [SP]</td>
+                                          <td class="govuk-table__cell table-spacer">Weekly</td>
+                                          <td class="govuk-table__cell table-spacer">£150.00</td>
+                                        </tr>
+
+                                        <tr class="govuk-table__row">
+                                          <td class="govuk-table__cell table-spacer">April 2002</td>
+                                          <td scope="row" class="govuk-table__cell table-spacer">Disability Living Allowance [DLA]<br>Care component / Middle rate</td>
+                                          <td class="govuk-table__cell table-spacer">Weekly</td>
+                                          <td class="govuk-table__cell table-spacer">£66.95</td>
+                                        </tr>
+
+                                        </table>
+                                </div>
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

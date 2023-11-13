@@ -1,0 +1,75 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-address-correspondence-yn-router" method="post" class="form">
+
+      {% set addressRadio %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+       %}
+        <p class="govuk-body govuk-!-margin-bottom-0">Your home address</p>
+      {% else %}
+        <p class="govuk-body govuk-!-margin-bottom-0">The applicant's home address</p>
+      {% endif %}
+
+      {% endset -%}
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "del-auth-address-correspondence-yn",
+        name: "del-auth-address-correspondence-yn",
+        fieldset: {
+          legend: {
+            html: "What address should we send letters to?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+        {
+            value: "Claimant address",
+            html: addressRadio,
+            checked: (data["del-auth-address-correspondence-yn"] == "Claimant address")
+          },
+          {
+            value: "A different address",
+            text: "A different address",
+            checked: (data["del-auth-address-correspondence-yn"] == "A different address")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

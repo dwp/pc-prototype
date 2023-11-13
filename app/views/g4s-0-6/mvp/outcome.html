@@ -1,0 +1,204 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data["housing-costs"] == "Yes" %}
+    <form action="outcome-housing-costs-router" method="post" class="form">
+    {% else %}
+    <form action="outcome-radios-router" method="post" class="form">
+    {% endif %}
+
+
+    <!------------H1 LEGEND------------>
+
+    {% if data['nino'] == 'SS 11 00 00 A' or data['nino'] == 'SS110000A' %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Based on your income, it doesn't look like you meet the criteria for Pension Credit</h1>
+
+
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Would you like to find out what other help might be available with your living or housing costs?</p>
+
+    {% elif data['nino'] == '' %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">I cannot start your application without a National Insurance number</h1>
+
+
+   <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Would you like me to hand you over to a colleague who will be able to help you make an application without a National Insurance number?</p>
+
+
+    {% elif data["housing-costs"] == "Yes" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Because you pay towards your housing, Pension Credit might be able to help you</h1>
+
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Would you like me to hand you over to a colleague to make a full phone application now?</p>
+
+
+    {% elif data['nino'] == 'SS 22 00 00 B' or data['nino'] == 'SS220000B' or data['nino'] == 'SS 33 00 00 C' or data['nino'] == 'SS330000C' %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Based on your income, it doesn't look like you meet the criteria for Pension Credit</h1>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Would you like to find out what other help might be available with your living or housing costs?</p>
+
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">That said, I can still put you through to the full application service if you want.</p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">An advisor will ask you some more questions about your personal and financial circumstances and do a full assessment.</h1>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Would you like me to hand you over to a colleague to make a full phone application now?</p> -->
+
+
+    {% else %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Based on what we know, it looks like you meet the criteria for Pension Credit</h1>
+
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Would you like me to hand you over to a colleague to make a full phone application now?</p>
+
+
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+
+         <!------------Legend--------------->
+
+         <!-- DYNAMIC RADIO -->
+
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                          Select the next action
+                        </h1>
+                      </legend>
+                      <div id="outcome-radios" class="govuk-hint">
+
+                      </div>
+                      <div class="govuk-radios">
+
+                     {% if data["housing-costs"] == "Yes" %}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="dwp">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[HOUSING COSTS]--> Applicant has housing costs - put them through to DWP <!-- - route to handover-early.html-->
+                          </label>
+                        </div>
+
+                        {% elif data['nino'] == 'SS 22 00 00 B' or data['nino'] == 'SS220000B' or data['nino'] == 'SS 33 00 00 C' or data['nino'] == 'SS330000C' or data['nino'] == 'SS 11 00 00 A' or data['nino'] == 'SS110000A' %}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="help">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                             <!--[OTHER HELP]--> Other help that is available <!-- - route to more-help.html-->
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="exit">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[END CALL]--> Applicant wants to end the call <!-- - route to exit.html-->
+                          </label>
+                        </div>
+
+                        {% else %}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="apply">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[STANDARD HANDOVER]--> Applicant is eligible - put them through to DWP <!-- - route to handover.html-->
+                          </label>
+                        </div>
+
+                       {% endif %}
+
+                      <!-- <div class="govuk-radios__divider">or</div> -->
+
+                      {% if data['nino'] == 'SS 22 00 00 B' or data['nino'] == 'SS220000B' or data['nino'] == 'SS 33 00 00 C' or data['nino'] == 'SS330000C' or data['nino'] == 'SS 11 00 00 A' or data['nino'] == 'SS110000A' %}
+                       <div class="govuk-radios__item">
+                         <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="manual-dwp">
+                         <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                           <!--[HANDOVER TO DWP]--> Not eligible, but user insists or G4S flagging a borderline case <!-- - route to handover-user-request.html-->
+                         </label>
+                       </div>
+
+                     {% elif data['nino'] == 'SS 33 00 00 C' or data['nino'] == 'SS330000C' or data["earnings"] == "No" or data["housing-costs"] == "No" %}
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="help">
+                        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                          <!--[OTHER HELP]--> Other help that is available <!-- - route to more-help.html-->
+                        </label>
+                      </div>
+
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input"
+                        id="outcome-radios"
+                        name="outcome-radios"
+                        type="radio"
+                        value="end">
+                        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                          <!--[END CALL]--> Applicant wants to end the call <!--- route to exit.html-->
+                        </label>
+                      </div>
+                     {% endif %}
+
+
+                     {% if data['nino'] == 'SS 44 00 00 D' or data['nino'] == 'SS440000D'%}
+
+                     <div class="govuk-radios__item">
+                       <input class="govuk-radios__input"
+                       id="outcome-radios"
+                       name="outcome-radios"
+                       type="radio"
+                       value="end">
+                       <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                         <!--[END CALL]--> Applicant wants to end the call <!--- route to exit.html-->
+                       </label>
+                     </div>
+
+
+                     {% elif data['nino'] == 'SS 11 00 00 A' or data['nino'] == 'SS110000A' or data['nino'] == 'SS 22 00 00 B' or data['nino'] == 'SS220000B' or data['nino'] == 'SS 33 00 00 C' or data['nino'] == 'SS330000C' %}
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input"
+                      id="outcome-radios"
+                      name="outcome-radios"
+                      type="radio"
+                      value="challenge">
+                      <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                        <!--[END CALL]--> Applicant asked for details of the information we used <!--- route to exit.html-->
+                      </label>
+                    </div>
+                    {% endif %}
+
+
+
+
+                    </fieldset>
+                  </div>
+
+
+
+         {{ govukButton({
+           text: "Continue",
+           classes: "dont-print"
+         }) }}
+
+
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

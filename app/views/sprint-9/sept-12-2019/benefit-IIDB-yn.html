@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefit-IIDB-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-IIDB-yn-router" method="post" class="form">
+
+      <input type="hidden" name="benefit-IIDB-yn-router" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-m"> Agent: Check in Legacy and SearchLight?</h1>
+        <p class=""></p>
+
+
+
+      {{ govukRadios({
+        idPrefix: "benefit-IIDB-yn",
+        name: "benefit-IIDB-yn",
+        fieldset: {
+          legend: {
+            html: "Is there an indication of Industrial Injuries Disablement Benefit (IIDB) for the claimant?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "(this includes an allowance paid from Workmen’s Compensation and Pneumoconiosis Scheme which forms part of the IIDB scheme so don't need to ask separately) so could ask: Do you get Industrial Injuries Disablement Benefit or any Industrial Injuries related benefit?"
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefit-IIDB-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefit-IIDB-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

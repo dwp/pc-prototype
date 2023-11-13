@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Who lives with you - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<!----Headline---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Memebers of the household:<br/>
+      221B Baker Street, Marylebone,<br>
+      London, NW1 5RT
+    </h1>
+
+  </div>
+</div>
+<!----Headline---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Partner information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-partner" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["partner-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+{% if data["household-more-detail"] %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Others in the household
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-household-composition" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["household-more-detail"] }}
+  </p>
+
+
+
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+<!----Add more
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+---->
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<br><br>
+
+
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="task-list" value="true"/>
+      <p>
+
+        <!-- Hidden input to set task to complete on task-list -->
+        <input type="hidden" name="household-complete" value="true"/>
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+<!----Break---->
+  {% endblock %}

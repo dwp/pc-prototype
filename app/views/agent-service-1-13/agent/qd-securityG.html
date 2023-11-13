@@ -1,0 +1,171 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+{% include "global-nav-full-width.html" %}
+<div class="moj-primary-navigation">
+
+  <div class="moj-primary-navigation__container">
+
+    <div class="moj-primary-navigation__nav">
+
+      <nav class="moj-primary-navigation" aria-label="Primary navigation">
+
+        <ul class="moj-primary-navigation__list">
+          <li class="moj-primary-navigation__item" >
+            <a class="moj-primary-navigation__link" href="home-user-0">My homepage</a>
+          </li>
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link"  href="new-process-c-nil-task-list">Processing</a>
+          </li>
+
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link"  aria-current="page" href="qd-start">Queries and disputes</a>
+          </li>
+
+          <li class="moj-primary-navigation__item">
+            <a class="moj-primary-navigation__link" href="ur-mi">Overview</a>
+          </li>
+
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </div>
+
+</div>
+<section class="dwp-key-details-bar" aria-label="Key details">
+<div class="dwp-key-details-bar__key-details">
+<dl class="dwp-key-details-bar__top-block">
+    <dt class="govuk-visually-hidden">Name:</dt>
+    <dd class="dwp-key-details-bar__primary">Phil Collins</dd>
+    <dt class="govuk-visually-hidden">National Insurance Number:</dt>
+    <dd class="dwp-key-details-bar__secondary">QQ 12 34 56 X</dd>
+
+</dl>
+<dl class="dwp-key-details-bar__bottom-block">
+    <dt>Entitlement status:</dt>
+    <dd>Not entitled</dd>
+
+
+</dl>
+</div>
+</section>
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "qd-search"
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-securityG-router" method="post" class="form">
+
+
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+
+
+
+      {% if data['qd-search-nino'] === 'ZZ439386A' %}
+
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading ">
+          In the past, this claimant failed certain security questions</p>
+        <p class="govuk-body govuk-!-font-weight-bold">
+          If you can, avoid the following questions:</p>
+
+          <p class="govuk-body govuk-!-margin-bottom-1">
+            Recorded 11 June 2022 at 10.00am</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>What is the name of your bank</li>
+          <li>What is your mobile telephone number</li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+
+      {% else %}
+
+      {% endif %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Use searchlight to ask security questions</h1>
+
+
+
+      {{ govukRadios({
+        classes: "",
+        idPrefix: "qd-securityG",
+        name: "qd-securityG",
+        fieldset: {
+          legend: {
+            text: "Did the claimant pass security?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "pass",
+          text: "Yes",
+          checked: (data["qd-securityG"] == "pass")
+
+        },
+          {
+            value: "fail",
+            text: "No",
+            checked: (data["qd-securityG"] == "fail")
+
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

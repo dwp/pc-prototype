@@ -1,0 +1,45 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="non-deps-member-category" method="post" class="form">
+
+
+        {% if data["single-joint-check"] == "Joint" %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">People that live with you and your partner</h2>
+
+        {% else %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">People that live with you</h2>
+        {% endif %}
+        <p class="govuk-body">Add details of each person that lives with you separately. You can add as many as you need to.</p>
+
+        <p class="govuk-body">People that live with you, their employment status and income might affect how much Pension Credit you could get.</p>
+
+
+
+<!------------Legend------------>
+
+
+
+      {{ govukButton({
+        text: "Add a person that lives with you"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

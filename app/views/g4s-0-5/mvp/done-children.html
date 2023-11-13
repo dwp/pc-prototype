@@ -1,0 +1,52 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-5/mvp/landing">
+
+<!--
+      <div class="moj-banner">
+      <div class="moj-banner__message">
+      <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Children BAU</h2>
+      </div>
+      </div>
+-->
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You told us that children or young people live with you</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I will pass you to a colleague in the pension centre to continue your application.</p>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+
+      {% include "g4s-0-5/mvp/claim-details.html" %}
+
+
+      {{ govukButton({
+      text: "Finish and close",
+      classes: "govuk-button--warning dont-print govuk-!-margin-top-6"
+      }) }}
+
+    </form>
+    </div>
+    </div>
+
+
+{% endblock %}

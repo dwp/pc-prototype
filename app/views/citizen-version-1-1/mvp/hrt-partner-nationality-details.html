@@ -1,0 +1,213 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hrt-partner-uk-sponsorship" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Your partner's nationality and residence
+      </h1>
+
+      {% set legendNationality %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What is your partner's nationality?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendNationality
+        },
+          hint: {
+            text: ""
+          },
+        id: "partner-nationality",
+        name: "partner-nationality",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["partner-claimant-nationality"]
+      }) }}
+
+
+      {% set legendOriginCountry %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Which country has your partner come from?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendOriginCountry
+        },
+          hint: {
+            text: ""
+          },
+        id: "partner-origin-country",
+        name: "partner-origin-country",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["partner-origin-country"]
+      }) }}
+
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+  id: "partner-date-to-uk",
+  namePrefix: "partner-date-to-uk",
+  fieldset: {
+    legend: {
+      text: "What date did your partner last come to the UK?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 12 11 2007"
+  }
+}) }}
+
+{{ govukRadios({
+  idPrefix: "claimant-work-uk",
+  name: "partner-work-uk",
+  fieldset: {
+    legend: {
+      text: "Did your partner come to the UK to work?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["partner-work-uk"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["partner-work-uk"] == "No")
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "partner-passport-recourse",
+  name: "partner-passport-recourse",
+  fieldset: {
+    legend: {
+      text: "Does your partner's passport say they have no recourse to public funds?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["partner-passport-recourse"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["partner-passport-recourse"] == "No")
+    }
+  ]
+}) }}
+
+{% set lastLeftUk %}
+{{ govukDateInput({
+  id: "partner-ate-left-uk",
+  namePrefix: "partner-date-left-uk",
+  fieldset: {
+    legend: {
+      text: "What date did your partner last leave the UK?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 12 11 2007"
+  }
+}) }}
+{% endset %}
+
+{{ govukRadios({
+  idPrefix: "partner-lived-uk-before",
+  name: "partner-lived-uk-before",
+  fieldset: {
+    legend: {
+      text: "Has your partner lived in the UK before?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["partner-lived-uk-before"] == "Yes"),
+      conditional: {
+        html: lastLeftUk
+}
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["partner-lived-uk-before"] == "No")
+    }
+  ]
+}) }}
+
+
+
+{{ govukRadios({
+  idPrefix: "partner-family-reunion-uk",
+  name: "partner-family-reunion-uk",
+  fieldset: {
+    legend: {
+      text: "Has your partner come to the UK under the Family Reunion Scheme?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["partner-family-reunion-uk"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["partner-family-reunion-uk"] == "No")
+    }
+  ]
+}) }}
+
+<br>
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

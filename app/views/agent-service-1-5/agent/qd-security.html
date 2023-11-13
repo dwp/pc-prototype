@@ -1,0 +1,74 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-summary" method="post" class="form">
+
+
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Verify applicant</h1>
+
+      {{ govukInsetText({
+        text: "Use the current process for security. If a caller fails a question record it in the notes box."
+      }) }}
+
+      {{ govukTextarea({
+        name: "security-failed",
+        id: "security-failed",
+        rows: "3",
+        label: {
+          text: "Record any failed questions",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        }
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Caller passed security",
+          href: "qd-summary"
+        }) }}
+
+        {{ govukButton({
+          text: "Caller failed security",
+          classes: "govuk-button--secondary",
+          href: "#"
+        }) }}
+      </div>
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

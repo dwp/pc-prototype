@@ -1,0 +1,121 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Yourself-language - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="del-auth-contact-ff-number-check-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% elif data["del-auth-who-made-claim-2"]%}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-2"]}}</span>
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-3"]}}</span>
+      {% endif %}
+
+
+      {% set legendTelephoneNumber %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is your contact telephone number?</h1>
+      {% else %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is the applicant's contact telephone number?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+
+      {% set delAuthContactNumberYes %}
+
+      {{ govukInput({
+        label: {
+          html: legendTelephoneNumber
+        },
+          hint: {
+            text: ""
+          },
+        id: "del-auth-contact-number",
+        name: "del-auth-contact-number",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["del-auth-contact-number"]
+      }) }}
+
+      {% endset -%}
+
+      {% set LegendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate acting body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Can we call you about this application?</h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">How should we ask for more information about this application?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "del-auth-contact-ff-number-check",
+        name: "del-auth-contact-ff-number-check",
+        fieldset: {
+          legend: {
+            html: LegendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-4"
+          }
+        },
+        hint: {
+          text: "Phone calls help us process applications faster if we need more information."
+        },
+        classes: "govuk-radios govuk-!-margin-bottom-2",
+        items: [
+          {
+            value: "Phone the applicant",
+            text: "Phone the applicant",
+            checked: (data["del-auth-contact-ff-number-check"] == "Phone the applicant"),
+                  conditional: {
+                    html: delAuthContactNumberYes
+                  }
+            },
+          {
+            value: "Phone someone else",
+            text: "Phone someone else",
+            checked: (data["del-auth-contact-ff-number-check"] == "Phone someone else")
+          },
+        {
+          value: "letter",
+          text: "Send a letter to the applicant",
+          checked: (data["del-auth-contact-ff-number-check"] == "Send a letter to the applicant")
+        }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

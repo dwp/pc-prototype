@@ -1,0 +1,47 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Answer query</h1>
+
+      <p class="govuk-body-l govuk-!-margin-bottom-4">Use your knowledge and guidance on the Intranet to help.</p>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+              <li><a href="query-types-start">Add a query</a></li>
+              <li><a href="query-help-start">Offer help</a></li>
+            </ul>
+          </div>
+      </div>
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

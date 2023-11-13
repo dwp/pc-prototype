@@ -1,0 +1,70 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Pre-declaration - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Declaration</h1>
+
+      <p class="govuk-body">We will use the information you give us to pay you the right amount of Pension Credit. If you give wrong or incomplete information we might pay you too much or too little. If we pay you too much, you will have to pay the money back.</p>
+
+      <p class="govuk-body">You could be prosecuted or have to pay a financial penalty if you deliberately give us wrong or incomplete information, or fail to tell us about any changes that could affect your claim.</p>
+
+
+
+    <br>
+
+
+
+
+
+
+    <form action="pre-declaration-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "pre-declaration",
+        name: "pre-declaration",
+        fieldset: {
+          legend: {
+            text: "Do you agree to this declaration?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["preDeclaration"] == "Agree")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["preDeclaration"] == "Disagree")
+          }
+        ]
+      }) }}
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="X" value="true"/>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

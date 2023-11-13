@@ -1,0 +1,39 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-sms" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6"><strong>You are about to send a notification to Mel Gibson</strong></h1>
+
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>Letter content</strong></p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Dear Mel, You will get pension Creadit of <strong>£175.00</strong> a week.</p>
+
+        <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">I need to change/add some addional content</a></p>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-6",
+        text: "Send notification"
+      }) }}
+
+</form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,218 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  other-income-equity-release-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-income-everything-else-yes" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Details of income from an equity release scheme</h1>
+
+
+          {{ govukDateInput({
+            id: "other-income-equity-release-yes-date",
+            namePrefix: "other-income-equity-release-yes-date",
+            fieldset: {
+              legend: {
+                text: "Enter the date this income started"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["other-income-equity-release-yes-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["other-income-equity-release-yes-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["other-income-equity-release-yes-date-year"]
+              }
+            ]
+          }) }}
+
+
+    <!------------------------->
+
+    {% set otherPaymentFrequency %}
+    {{ govukInput({
+    label: {
+      html: "How often is this paid?"
+    },
+    id: "other-income-equity-release-yes-payment-frequency-yes-other",
+    name: "other-income-equity-release-yes-payment-frequency-yes-other",
+    classes: "govuk-input--width-20"
+  }) }}
+    {% endset -%}
+
+
+        {{ govukRadios({
+          idPrefix: "other-income-equity-release-yes-payment-frequency-yes",
+          name: "other-income-equity-release-yes-payment-frequency-yes",
+          fieldset: {
+            legend: {
+              text: "How often is this income paid?",
+              isPageHeading: true,
+              classes: "<!--govuk-fieldset__legend--s-->"
+              }
+              },
+
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data["other-income-equity-release-yes-payment-frequency-yes"] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data["other-income-equity-release-yes-payment-frequency-yes"] == "Every two weeks")
+            },
+            {
+              value: "Monthly",
+              text: "Every month",
+              checked: (data["other-income-equity-release-yes-payment-frequency-yes"] == "Monthly")
+            },
+            {
+              value: "Other payment frequency",
+              text: "Other",
+              checked: (data["other-income-benefits-aboard-payment-frequency-yes-period"] == "Other payment frequency")                      ,
+                    conditional: {
+                      html: otherPaymentFrequency
+                    }
+                  }
+                ]
+              }) }}
+
+
+
+          <!------------------------->
+
+
+
+        {{ govukInput({
+        label: {
+          html: "<strong>How much is this income?</strong>"
+        },
+        id: "other-income-equity-release-yes-amount",
+        name: "other-income-equity-release-yes-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      <!------------------------->
+
+      <!------------------------->
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      {% set otherIncomeSpousalMaintenanceYes %}
+      {{ govukTextarea({
+        name: "other-income-benefits-aboard-yes-more-detail",
+        id: "other-income-benefits-aboard-yes-more-detail",
+        label: {
+          text: "Description of this income, how much it is and how often it is paid"
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "other-income-benefits-aboard-yes-more-yn",
+        name: "other-income-benefits-aboard-yes-more-yn",
+        fieldset: {
+          legend: {
+            html: "Do you have any other income from an equity release scheme?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "yes-date",
+          text: "Yes",
+          checked: (data["other-income-benefits-aboard-yes-more-yn"] == "Yes"),
+          conditional: {
+            html: otherIncomeSpousalMaintenanceYes
+          }
+        },
+          {
+            value: "no-date",
+            text: "No",
+            checked: (data["other-income-benefits-aboard-yes-more-yn"] == "No")
+          }
+          ]
+        }) }}
+
+        <!--
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      {{ govukCheckboxes({
+  idPrefix: "other-income-equity-release-evidence-check",
+  name: "other-income-equity-release-evidence-check",
+  fieldset: {
+    legend: {
+      text: "Add evidence marker to PDF",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "You will need to remind them to send in the evidence"
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    }
+  ]
+}) }}
+
+-->
+
+
+
+
+
+
+
+
+
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

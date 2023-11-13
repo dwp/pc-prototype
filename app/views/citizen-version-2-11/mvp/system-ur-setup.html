@@ -1,0 +1,68 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-ur-setup-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <div class="govuk-panel--agent">
+
+      {{ govukRadios({
+        idPrefix: "system-ur-setup",
+        name: "system-ur-setup",
+        fieldset: {
+          legend: {
+            text: "Select a scenario",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This is for testing only, Carlene and James will explain everything"
+        },
+        classes: "govuk-radios",
+        items: [
+        {
+          value: "full",
+          text: "A",
+          checked: (data["system-ur-setup"] == "full")
+                  },
+        {
+          value: "B",
+          text: "B",
+          checked: (data["system-ur-setup"] == "B")
+                  }
+        ]
+      }) }}
+
+
+</div>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="bau-exit" method="post" class="form">
+
+      {% include "includes/js-back-link.html" %}
+
+
+    {% set somethingElse %}
+      {{ govukTextarea({
+        label: {
+          classes: "govuk-label--s",
+          html: "Description of the reason for the call"
+        },
+        hint: {
+          text: ""
+        },
+        id: "type-of-claim-details",
+        name: "type-of-claim-details",
+        classes: "govuk-input--width-100",
+        attributes: {
+          maxlength: 200
+        }
+      }) }}
+    {% endset %}
+
+    {{ govukRadios({
+      idPrefix: "type-of-claim",
+      name: "type-of-claim",
+      fieldset: {
+        legend: {
+          text: "Select a reason for the call",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      classes: "govuk-radios",
+      hint: {
+        html: ""
+      },
+      items: [
+      {
+          value: "7",
+          text: "Change of circumstances",
+          checked: (data["type-of-claim"] == "7")
+        },
+        {
+          value: "8",
+          text: "I want to edit my Pension Credit application",
+          checked: (data["type-of-claim"] == "8")
+        },
+        {
+          value: "9",
+          text: "Help with the online Apply for Pension Credit service",
+          checked: (data["type-of-claim"] == "9")
+        },
+
+        {
+          value: "11",
+          text: "Non-Pension Credit related",
+          checked: (data["type-of-claim"] == "11")
+        },
+        {
+          value: "12",
+          text: "Something else",
+          checked: (data["type-of-claim"] == "12"),
+                conditional: {
+                  html: somethingElse
+      }
+        }
+      ]
+    }) }}
+
+<!--
+    {
+      value: "A",
+      text: "A",
+      checked: (data["ab-check"] == "A")
+    },
+-->
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-bottom-8"
+     }) }}
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

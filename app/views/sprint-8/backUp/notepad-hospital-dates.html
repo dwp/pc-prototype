@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Hospital admissions / NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="hospital-admission-next" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about the claimant's time in hospital.</h1>
+
+        <h3 class="govuk-heading-m">Adminssion and discharge dates</h3>
+        <p class="govuk-body govuk-!-font-size-19">Ask the claimant for all the information you need, including the start and end date of each period they have spent in hospital. <br><br>  Note: The total days in hospital are minus one day to account for the 'wake up rule'</p>
+
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__header" scope="col">Admission</th>
+              <th class="govuk-table__header govuk-table__header" scope="col">Discharge</th>
+              <th class="govuk-table__header govuk-table__header" scope="col">Total days</th>
+              <td class="govuk-table__cell govuk-table__cell"></td>
+
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for stay in data['hospital-stays'] %}
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header govuk-table-pc__header" scope="row">{{ stay['admission'] | formatDate }}</th>
+                <td class="govuk-table__cell ">{{ stay['discharge'] | formatDate }}</td>
+                <td class="govuk-table__cell ">{{ stay['totalDays'] }}</td>
+                <td class="govuk-table__cell"><a href="change-hospital-admission/{{ loop.index0 }}">Change</a>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <p class="govuk-body"><a href="add-hospital-admission">Add hospital entry detials</a></p> <br>
+
+
+
+
+
+<!--
+        <h3 class="govuk-heading-m">What happened next</h3>
+        <p class="govuk-body govuk-!-font-size-19">Were they were discharged to a care home after any period they spent in hospital</p>
+
+
+
+<br>
+
+{{ govukTextarea({
+  name: "hospital-more-detail",
+  id: "hospital-more-detail",
+
+  value: data["hospital-more-detail"]
+}) }}
+-->
+
+
+<!-- Hidden input to set task to complete on task-list -->
+<input type="hidden" name="notepad-hospital-dates" value="true"/>
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+
+
+
+  </div>
+{% endblock %}

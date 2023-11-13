@@ -1,0 +1,100 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="reside-in-uk" method="post" class="form">
+
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#passport-issued-error">Select yes if you have the right information to make an application for Pension Credit.</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    <p class="govuk-body govuk--version-control">Citizen version 2.7 / MVP</p>
+
+    <h1 class="govuk-heading-xl ">Do you have the right information to make an application for Pension Credit?</h1>
+
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">We will ask for some information about you and your partner (if you have one) while you make your application. </p>
+    
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Make sure you have this ready before starting your application.</p>
+      
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You will not be able to save your application and come back later.</p>
+      
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">You will need:</p>
+
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your National Insurance number</li>
+      <li>bank statements, usually for the last three months</li>
+      <li>details of any income, pensions, savings or investments</li>
+    </ul>
+
+
+    {{ govukRadios({
+      idPrefix: "information",
+      name: "information",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      errorMessage: {
+        text: "Select yes if you have the right information to make an application for Pension Credit."
+     
+      },
+      classes: "govuk-radios--inline",
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["information"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["information"] == "No")
+        }
+      ]
+    }) }}
+
+
+
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8",
+       isStartButton: true
+     }) }}
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-2-nil-task-list" method="post" class="form">
+        <input type="hidden" name="nil-task-2-passed" value="passed">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-4">[Task 2] Previous contact</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Check against CAM, CIZ and SL to to XYZ for an idoc<br> This is appropriate dummy text </p>
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukRadios({
+          idPrefix: "process-2-nil-task-2-idoc",
+          name: "process-2-nil-task-2-idoc",
+          fieldset: {
+            legend: {
+              text: "Is there an IDOC or previous AfPC CAM?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-0"
+            }
+          },
+          hint: {
+            html: hintLegend
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["process-2-nil-task-2-idoc"] == "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-2-nil-task-2-idoc"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

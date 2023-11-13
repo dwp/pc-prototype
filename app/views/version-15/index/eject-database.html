@@ -1,0 +1,119 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  eject-database - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="start" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">Eject (Error log)</h1>
+
+
+      {{ govukTable({
+        caption: "",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date",
+            classes: 'govuk-eject-table-1'
+          },
+          {
+            text: "Agent",
+            classes: 'govuk-eject-table-2'
+          },
+          {
+            text: "Exit URL",
+            classes: 'govuk-eject-table-3'
+          },
+          {
+            text: "Type of error",
+            classes: 'govuk-eject-table-4'
+          },
+          {
+            text: "Error description",
+            classes: 'govuk-eject-table-5'
+          },
+          {
+            text: " ",
+            classes: 'govuk-eject-table-6'
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "01.01.19"
+            },
+            {
+              text: "Nick Valentine"
+            },
+            {
+              text: "/this-is-a-url"
+            },
+            {
+              text: "Agent"
+            },
+            {
+              text: "This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. "
+            },
+            {
+              text: "<a href=\"\">Change</a>" | safe
+            }
+          ],
+          [
+          {
+            text: "02.01.19"
+          },
+          {
+            text: "Debbie Gibson"
+          },
+          {
+            text: "/this-is-a-url"
+          },
+          {
+            text: "Agent"
+          },
+          {
+            text: "This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. "
+          },
+          {
+            text: "<a href=\"\">Change</a>" | safe
+          }
+          ],
+          [
+          {
+            text: "03.01.19"
+          },
+          {
+            text: "Nick Valentine"
+          },
+          {
+            text: "/this-is-a-url"
+          },
+          {
+            text: "Agent"
+          },
+          {
+            text: "This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. "
+          },
+          {
+            text: "<a href=\"\">Change</a>" | safe
+          }
+          ]
+        ]
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

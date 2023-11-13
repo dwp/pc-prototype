@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa" method="post">
+
+        <h1 class="govuk-heading-xl">
+          Your details
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: "What is your full name?"
+          },
+          hint: {
+            text: "Include any middle names."
+          },
+          id: "full-name",
+          name: "full-name",
+          classes: "govuk-input--width-20",
+          value: data["full-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is your National Insurance number?"
+          },
+          id: "nino",
+          name: "nino",
+          classes: "govuk-input--width-10",
+          value: data["nino"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-cam-end" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Copy and paste into 'contact history' in CAM</h1>
+
+
+      <div class="govuk-inset-text">
+        <ul class="govuk-list govuk-list">
+          <li>Inbound call on 16 June 2022. Call taken by Nil Awards Pilot Team Hazel Littlefair.</li>
+          <li>Asked for an explanation regarding their decision. </li>
+          <li>Changes within the backdating period were identified.</li>
+        </ul>
+      </div>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

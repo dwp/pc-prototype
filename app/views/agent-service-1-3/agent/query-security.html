@@ -1,0 +1,100 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% set query = 'start' %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-overview" method="post" class="form">
+
+
+      <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">Jen Bridges</p>
+      <p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["query-search-nino"]}}</p>
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Verify applicant</h1>
+
+      {{ govukInsetText({
+        text: "Follow the existing KBV process and record any failed questions here."
+      }) }}
+
+      <!--
+      <p class="govuk-caption-l govuk-!-margin-bottom-8">Ask up to customer must answer correctly two from three of the KBV questions listed below, based on information held in the following systems</p>
+    -->
+
+
+      {{ govukInput({
+        label: {
+          text: "Record failed question"
+        },
+        hint: {
+          text: "Record the question from  KBV document"
+        },
+        id: "kbv-q1",
+        name: "kbv-q1"
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Record failed question"
+        },
+        hint: {
+          text: "Record the question from KBV document"
+        },
+        id: "kbv-q2",
+        name: "kbv-q2"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Record failed question"
+        },
+        hint: {
+          text: "Record the question from KBV document"
+        },
+        id: "kbv-q3",
+        name: "kbv-q3"
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Caller passed security",
+          href: "query-overview"
+        }) }}
+
+        {{ govukButton({
+          text: "Caller failed security",
+          classes: "govuk-button--secondary",
+          href: "#"
+        }) }}
+      </div>
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

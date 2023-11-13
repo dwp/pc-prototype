@@ -1,0 +1,58 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Do you want to apply for support with interest on a mortgage or loan secured against your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-shared-payments" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "own-mortgage-home-loan-yes",
+        name: "own-mortgage-home-loan-yes",
+        fieldset: {
+          legend: {
+            text: "Do you want to apply for support with interest on a mortgage or loan secured against your home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\">
+                This support is paid as a loan that you must repay when your home is sold or transferred. We will send you more information and an application form by post.</p>
+
+                    "
+            },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["own-mortgage-home-loan-yes"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["own-mortgage-home-loan-yes"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+{% endblock %}

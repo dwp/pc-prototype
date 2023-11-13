@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <span class="govuk-caption-m">Money, savings, investments and capital</span>
+  <h1 class="govuk-heading-xl">
+    Cash and lum sums<br>
+  </h1>
+  <!----Headline---->
+  <form action="msic-has-second-property-yn" method="post">
+
+    {% if data["msic-cash-at-home-amount"] %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+        <!------>  <h3 class="govuk-heading-s">
+            Cash at home<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+          </h3></div>
+
+
+        <div class="govuk-grid-column-two-thirds">
+
+          {{ govukSummaryList({
+            rows: [
+            {
+              key: {
+                text: "Total"
+              },
+              value: {
+                text: data['msic-cash-at-home-amount']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-cash-at-home",
+                    text: "Change Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+
+    </div></div>
+
+  <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+  <!----------------------------------------------------->
+
+  {% if data["msic-cash-other-abroad-detail"] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        Any other money held in this country or abroad<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-cash-other-abroad-detail']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-cash-other-abroad",
+                text: "Change Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    </div></div>
+
+  <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+  <!----------------------------------------------------->
+
+  {% if data["msic-cash-lump-sum-detail"] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+    Lump sum (From insurance payments eg.)<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-cash-lump-sum-detail']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-cash-lump-sum",
+                text: "Change Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+  </div></div>
+
+  <!----------------------------------------------------->
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  {% endif %}
+  <!----------------------------------------------------->
+
+
+
+<!--------------------------------------------------------------------------------->
+
+
+
+  <br><br>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

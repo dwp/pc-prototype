@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">My cases</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Nil awards held for 14 months, failed are held for 56 days</p>
+
+    </div>
+  </div>
+
+
+
+
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                              <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+                                <thead class="govuk-table__head">
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell govuk-20-percent">Date?</td>
+                                    <td class="govuk-table__cell govuk-20-percent">Claim ID</td>
+                                    <td class="govuk-table__cell govuk-40-percent">Name?</td>
+                                    <td class="govuk-table__cell govuk-30-percent">Nil award outcome</td>
+                                  </tr>
+                                  </thead>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 19 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">0004</td>
+                                    <td class="govuk-table__cell table-spacer"> <a href="task-2-awards">Jeff Bridges</a>
+                                      <!-- {{data["api-claim-outcome-details"]}} -->
+                                    </td>
+                                    <td class="govuk-table__cell table-spacer">
+
+                                      {% if data["nil-task-1-passed"] or data["nil-process-task-2-idoc"] == "Yes" or data["process-nil-task-3-process"] == "Yes" %}     <strong class="govuk-tag app-task-list__nil-case-failed" id="eligibility-completed">Failed</strong>
+                                      {% elif data["nil-task-1-passed"] and data["nil-process-task-2-idoc"] == "No" and data["process-nil-task-3-process"] == "No" %}     <strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                                      {% else %}                                      <strong class="govuk-tag app-task-list__nil-case-not-done" id="eligibility-completed">Unfinished</strong>
+                                      {% endif %}
+                                      <!-- <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong> -->
+                                      <!-- <strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong> -->
+
+                                    </td>
+                                    </tr>
+
+                                    <tr class="govuk-table__row">
+                                      <td class="govuk-table__cell table-spacer"> 18 / 01 / 2022</td>
+
+                                      <td class="govuk-table__cell table-spacer">0003</td>
+                                      <td class="govuk-table__cell table-spacer"> <a href="task-2-awards">Jeff Bridges</a>
+
+                                      <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                                      </tr>
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 18 / 01 / 2022</td>
+
+                                    <td class="govuk-table__cell table-spacer">0002</td>
+                                    <td class="govuk-table__cell table-spacer">John Goodman</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                                    </tr>
+
+
+
+                                  <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell table-spacer"> 01 / 01 / 2022</td>
+                                    <td class="govuk-table__cell table-spacer">001</td>
+
+                                    <td class="govuk-table__cell table-spacer">Steve Buscemi</td>
+
+                                    <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                                    </tr>
+
+                                  </table>
+
+
+                                  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                  <nav class="moj-pagination" id="pagination-label">
+
+                                  <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
+
+                                  <ul class="moj-pagination__list">
+                                  <li class="moj-pagination__item  moj-pagination__item--prev">
+                                    <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+                                  </li>
+
+                                  <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">1</a></li>
+
+                                  <li class="moj-pagination__item moj-pagination__item--active">2</li>
+
+                                  <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+
+                                  <li class="moj-pagination__item  moj-pagination__item--next">
+                                    <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+                                  </li>
+                                  </ul>
+                                  <p class="moj-pagination__results">Showing <b>1</b> to <b>3</b> of <b>3</b> results</p>
+                                  </nav>
+
+
+
+                    </div>
+                  </div>
+    </form>
+{% endblock %}

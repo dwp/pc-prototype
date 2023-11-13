@@ -1,0 +1,103 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="type-of-claim-router" method="post" class="form">
+      <p class="govuk-body govuk--version-control govuk-!-padding-top-4">G4s version 0.9 / MVP</p>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4 govuk-!-padding-top-4">Hello, you have reached Pension Credit</h1>
+
+
+    {{ govukRadios({
+      idPrefix: "type-of-claim",
+      name: "type-of-claim",
+      fieldset: {
+        legend: {
+          text: "What is the reason for your call today?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m "
+        }
+      },
+      classes: "govuk-radios",
+      hint: {
+        html: ""
+      },
+      items: [
+      {
+          value: "eligibility",
+          text: "Check eligibility for Pension Credit",
+          checked: (data["type-of-claim"] == "eligibility")
+        },
+        {
+          value: "bau-exit",
+          text: "Check progress of a claim",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "bau-exit",
+          text: "I was given an IDOC",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "bau-exit",
+          text: "I was asked by DWP to call",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "7",
+          text: "Change of circumstances",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "8",
+          text: "I want to edit my Pension Credit application",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "9",
+          text: "Help with the online Apply for Pension Credit service",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+
+        {
+          value: "11",
+          text: "Non-Pension Credit related",
+          checked: (data["type-of-claim"] == "bau-exit")
+        },
+        {
+          value: "12",
+          text: "Something else",
+          checked: (data["type-of-claim"] == "bau-exit")
+        }
+      ]
+    }) }}
+
+<!--
+    {
+      value: "A",
+      text: "A",
+      checked: (data["ab-check"] == "A")
+    },
+-->
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-bottom-8"
+     }) }}
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

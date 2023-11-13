@@ -1,0 +1,72 @@
+ {% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Current accounts - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<form action="msic-all-current-accounts-summary-router" method="post">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <!------------HEADLINE------------>
+      {% set legend %}
+      {% if data["claim-filter"] == "Advanced or Today" %} Do you have any more current accounts with a bank or building society? {% endif %}
+      {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any more current accounts with a bank or building society?{% endif %}
+      {% endset %}
+    <!------------HEADLINE------------>
+
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "add-another-current",
+    name: "add-another-current",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+  {% include "version-14/APIs/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+  <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+{% endblock %}

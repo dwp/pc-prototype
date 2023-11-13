@@ -1,0 +1,177 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" class="form">
+      
+        {% include "agent-service-1-16/agent/record-id.html" %}
+
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">SUNLIFE PLC's pension payments</p>
+        <!--<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">Application submitted on the 29 June 2023.</p>-->
+
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Payment date (monthly)</th>
+              <th scope="col" class="govuk-table__header">Net pay</th>
+              <th scope="col" class="govuk-table__header">Selected for averaging</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 June 2023</th>
+              <td class="govuk-table__cell">£{{data['scenario3-pension1-net']}}</td>
+              <td class="govuk-table__cell"><strong
+                {% if data['scenario3-pension1-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+                {{data['scenario3-pension1-selected']}}
+              </strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 May 2023</th>
+              <td class="govuk-table__cell">£ {{data['scenario3-pension2-net']}}</td>
+              <td class="govuk-table__cell"><strong 
+                {% if data['scenario3-pension2-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+
+                {{data['scenario3-pension2-selected']}}
+              </strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 April 2023</th>
+              <td class="govuk-table__cell">£{{data['scenario3-pension3-net']}}</td>
+              <td class="govuk-table__cell"><strong 
+                
+                {% if data['scenario3-pension3-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+
+                {{data['scenario3-pension3-selected']}}
+              </strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 March 2023</th>
+              <td class="govuk-table__cell">£{{data['scenario3-pension4-net']}}</td>
+              <td class="govuk-table__cell"><strong 
+                {% if data['scenario3-pension4-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+                {{data['scenario3-pension4-selected']}}
+              </strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 February 2023</th>
+              <td class="govuk-table__cell">£{{data['scenario3-pension5-net']}}</td>
+              <td class="govuk-table__cell"><strong 
+                {% if data['scenario3-pension5-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+                {{data['scenario3-pension5-selected']}}
+              </strong></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">1 January 2023</th>
+              <td class="govuk-table__cell">£{{data['scenario3-pension6-net']}}</td>
+              <td class="govuk-table__cell"><strong 
+                {% if data['scenario3-pension6-selected'] == "Yes" %}
+                  class="govuk-tag govuk-tag--green">
+                {% else %}
+                  class="govuk-tag govuk-tag--grey">
+                {% endif %}
+                {{ data['scenario3-pension6-selected'] }}
+              </strong></td>
+            </tr>
+            
+
+
+          </tbody>
+        </table>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Does an average of £{{data['scenario3-pension-average']}} a month represent the applicant's income on the day the claim was submitted (29 June 2023)?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-2" name="scenario3-pension-complete" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive-3" name="scenario3-pension-complete" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+                  No
+                </label>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+
+        
+
+       <!-- {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-4-1",
+          name: "process-c-nil-task-4-4-1",
+          fieldset: {
+            legend: {
+              text: "Does an average of data['scenario3-pension-average'] a month represent the applicant's income on the day the claim was submitted (29 June 2023)?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-list"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+            }
+          ]
+        }) }} -->
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+
+ </form>
+
+{% endblock %}

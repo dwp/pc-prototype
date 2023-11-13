@@ -1,0 +1,367 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Eligibility summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<h1 class="govuk-heading-xl">
+  Pension Credit Eligibility summary.<br>
+</h1>
+<!----Headline---->
+<form action="task-list" method="post">
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Agreements
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Personal information consent"
+            },
+            value: {
+              text: data['agrees-privacy']
+            },
+            actions: {
+              items: [
+                {
+                  href: "start",
+                  text: "Change",
+                  visuallyHiddenText: "Agreed to pre-declaration"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Pre-declaration"
+            },
+            value: {
+              text: data['pre-declaration']
+            },
+            actions: {
+              items: [
+                {
+                  href: "pre-declaration",
+                  text: "Change",
+                  visuallyHiddenText: "Agreed to pre-declaration"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Method of claim
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+
+          {
+            key: {
+              text: "Who are you claiming pension credit for?"
+            },
+            value: {
+              text: data['claiming-for']
+            },
+            actions: {
+              items: [
+                {
+                  href: "who-is-caller",
+                  text: "Change",
+                  visuallyHiddenText: "who the caller is"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "PC1 notepad"
+            },
+            value: {
+              text: data['pc1-more-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "who-is-caller",
+                  text: "Change",
+                  visuallyHiddenText: "PC1 Detials"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      About the claimant
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: data["full-name"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "National Insurance number"
+              },
+              value: {
+                text: data["nino"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "National Insurance number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Telephone number"
+              },
+              value: {
+                text: data["telephone-number"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "telephone number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "over-spa",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Eligibility
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Do you live in the UK?"
+            },
+            value: {
+              text: data['resides-in-uk']
+            },
+            actions: {
+              items: [
+                {
+                  href: "reside-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "UK residence"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Have you lived permanently in the UK for the last 2 years?"
+            },
+            value: {
+              text: data['lived-abroad']
+            },
+            actions: {
+              items: [
+                {
+                  href: "lived-abroad",
+                  text: "Change",
+                  visuallyHiddenText: "abroad"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Are you a UK national?"
+            },
+            value: {
+              text: data['uk-national']
+            },
+            actions: {
+              items: [
+                {
+                  href: "uk-national",
+                  text: "Change",
+                  visuallyHiddenText: "uk national"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have a partner?"
+            },
+            value: {
+              text: data["has-partner"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "partner-under-spa",
+                  text: "Change",
+                  visuallyHiddenText: "the fact they have a partner under spa"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<br>
+<h2 class="govuk-heading-m">Eligibility outcome download</h2>
+
+<p class="govuk-body">
+  Based on the answers above, which tool do you need to use?<br>
+  Continue with MyPC or business as usual (PTP CAM)<br>
+  <a href="/get-eligibility-pdf" class="govuk-link">
+    Download (PDF)
+  </a>
+</p>
+<br>
+
+<br><br>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+<!----Break---->
+
+{% endblock %}

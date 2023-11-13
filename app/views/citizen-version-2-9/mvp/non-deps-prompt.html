@@ -1,0 +1,58 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="non-deps-member-category" method="post" class="form">
+
+
+        {% if data["single-joint-check"] == "Joint" %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">People who live with you and your partner</h2>
+
+        <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">You must add each person who lives with you and your partner. You can add as many people as you need.</p>
+
+        <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">For some people we only need their name. For close relatives and friends we will ask for further details.</p>
+
+        {% else %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">People who live with you</h2>
+        <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">You must add each person who lives with you. You can add as many people as you need.</p>
+        
+
+        <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">For some people we only need their name. For close relatives and friends we will ask for further details.</p>
+
+        {% endif %}
+    
+
+<!------------Legend------------>
+
+{% if data["single-joint-check"] == "Joint" %}
+
+    {{ govukButton({
+    text: "Add a person who lives with you and your partner"
+    }) }}
+    
+    {% else %}
+    {{ govukButton({
+    text: "Add a person who lives with you"
+    }) }}
+    {% endif %}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    <p class="govuk-body"><a href="">Cancel</a></p> -->
+
+
+  </div>
+</div>
+{% endblock %}

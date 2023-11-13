@@ -1,0 +1,47 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-state-pension" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>The details submitted didnt match CIS recrods, you will need to manually check and update to find a match:</strong></p>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Mel Gibson</strong></h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National insurance number: <strong>NA 11 22 33 c</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Date of birth: <strong>01 May 1940</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Last known address: <strong>Byker Grove, Newcastle Upon Tyne NE16 6QG</strong></p>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Received: <strong>02 May 2020</strong></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Update infromation"
+      }) }}
+
+      <p class="govuk-body govuk-!-margin-top-2"><a href="case-load">This person doesnt exist</a></p>
+
+</form>
+    </div>
+  </div>
+{% endblock %}

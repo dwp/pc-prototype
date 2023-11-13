@@ -1,0 +1,92 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  claimant-national-insurance - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-numberb" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+
+      <!-- <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        What is the quickest way to contact you?
+      </h1>-->
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        It's quicker if we can call you
+      </h1>
+
+
+      {{ govukCheckboxes({
+        idPrefix: "money-disregards-payments-options",
+        name: "money-disregards-payments-options",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "We will need to contact you for as long as you claim Pnesion credit. We can write to your home address but it makes things quicker if we can call. It also saves DWP/taxpayers money."
+        },
+        items: [
+          {
+            value: "Option-1",
+            text: "Call me to process my application"
+          },
+          {
+            value: "Option-2",
+            text: "Call me about queries if my application is successful"
+          }
+        ]
+      }) }}
+
+      <p class="govuk-body govuk-!-font-weight-regular">or</p>
+
+      {{ govukCheckboxes({
+        idPrefix: "money-disregards-payments-options",
+        name: "money-disregards-payments-options",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Option-1",
+            text: "I don't have a telephone number at the momment"
+          },
+          {
+            value: "Option-1",
+            text: "Don't call me"
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

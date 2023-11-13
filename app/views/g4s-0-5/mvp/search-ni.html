@@ -1,0 +1,37 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claimant-national-insurance" method="post" class="form">
+
+    <h1 class="govuk-heading-xl">I'll see if I can find your National Insurance number using your name and date of birth</h1>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I might need to ask you for a few more details if I cannot find it with what you've already told me.</p>
+
+
+
+
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8"
+     }) }}
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

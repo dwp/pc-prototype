@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="pensions-journey-2-router" method="post">
+
+        {{ govukRadios({
+          idPrefix: "pensions-journey-2",
+          name: "pensions-journey-2",
+          fieldset: {
+            legend: {
+              text: "Private and workplace pensions scenarios",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "A",
+              text: "Display private and workplace pensions",
+              checked: data['pensions-journey'] == "A"
+            },
+            {
+            value: "B",
+            text: "Display no private and workplace pensions",
+            checked: data['pensions-display-no-pension'] == "B"
+          },
+          {
+            value: "C",
+            text: "API down",
+            checked: data['display-bau'] == "C"
+          },
+          {
+            value: "D",
+            text: "GCII down",
+            checked: data['display-bau'] == "D"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

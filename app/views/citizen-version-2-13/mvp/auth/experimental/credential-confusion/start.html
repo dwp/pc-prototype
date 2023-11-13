@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Register – GOV.UK 
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Register</h1>
+
+      <p>If you’ve used any of the services listed below, you may already have an account.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>Access to Work</li>
+          <li>Repay and manage benefit money you owe</li>
+      </ul>
+
+      <div class="govuk-inset-text">
+        <a href="/auth/dev-ready/sign-in">Sign in if you have already created an account</a>
+      </div>
+
+      <h2 class="govuk-heading-m">Create a new account</h2>
+
+      <p>Create a new account so you can sign in securely each time you visit.</p>
+
+      <p>You will need:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>an email address</li>
+          <li>a mobile phone</li>
+          <li>your National Insurance number</li>
+      </ul>
+
+      <p>We will send security codes to your email and phone to check they belong to you.</p>
+
+      <p>You will also need information from 2 sources so we can confirm your identity and help protect you from fraud.</p>
+
+      <p>You can choose from:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+          <li>a valid UK passport</li>
+          <li>payslips or P60</li>
+          <li>Self Assessment</li>
+          <li>information about tax credits, if you claim them</li>
+          <li>details of your bank accounts, loans, mortgages or credit agreements</li>
+      </ul>
+      
+      {{ govukButton({
+          text: "Create an account",
+          href: "email-address.html"
+      }) }}
+
+      <p>
+        {% if data['service-name'] === 'access-to-work-oidv'  %}
+            <a href="https://prototype-carers-allowance.herokuapp.com/apply/ACA-1974-full-journey/identity-manual">
+        {% else %}
+            <a href="#">
+        {% endif %}
+        I do not have this information</a></p>
+
+  </div>
+</div>
+{% endblock %}

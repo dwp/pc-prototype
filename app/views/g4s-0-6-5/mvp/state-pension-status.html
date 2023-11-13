@@ -1,0 +1,72 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  State Pension Status - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="state-pension-status-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "state-pension-status",
+        name: "state-pension-status",
+        fieldset: {
+          legend: {
+            text: "Tell us about your State Pension",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+
+        },
+        hint: {
+          text: ""
+
+
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "I am receiving my State Pension",
+            checked: (data["state-pension-status"] == "Yes")
+          },
+          {
+            value: "Yes",
+            text: "I have claimed my State Pension and I am waiting for the first payment",
+            checked: (data["state-pension-status"] == "Yes")
+          },
+          {
+            value: "NoBank",
+            text: "I applied for a State Pension but I am not entitled to one",
+            checked: (data["state-pension-status"] == "NoBank")
+          },
+    
+          {
+            value: "sp-handover",
+            text: "I have not applied for a State Pension",
+            checked: (data["state-pension-status"] == "sp-handover")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

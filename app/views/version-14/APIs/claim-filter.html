@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="start" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        <h1 class="govuk-heading-xl">For internal use only, backdating set up</h1>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Add full name</h2>
+
+
+        {{ govukInput({
+          label: {
+            text: ""
+          },
+          hint: {
+            text: "Include any middle names."
+          },
+          id: "full-name",
+          name: "full-name",
+          classes: "govuk-input--width-20",
+          value: data["full-name"]
+        }) }}
+
+
+      {{ govukRadios({
+        idPrefix: "claim-filter",
+        name: "claim-filter",
+        fieldset: {
+          legend: {
+            html: "Type of claim",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">"
+            },
+        items: [
+          {
+            value: "Advanced or Today",
+            text: "Advanced or Today",
+            checked: (data["claim-filter"] == "Advanced or Today")
+          },
+          {
+            value: "Backdating",
+            text: "Backdating",
+            checked: (data["claim-filter"] == "Backdating")
+          }
+        ]
+      }) }}
+
+
+      {{ govukDateInput({
+        id: "claim-date-cam-date-entry",
+        namePrefix: "claim-date-cam-date-entry",
+        fieldset: {
+          legend: {
+            html: "Date of claim",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "disregards-capital-total-yn",
+        name: "disregards-capital-total-yn",
+        fieldset: {
+          legend: {
+            html: "10k Filter",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: " "
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Under or over 10k and/or has capital bonds, shares, second property and foreign account",
+            checked: (data["disregards-capital-total-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "Under 10k in all accounts (None of the four danger accounts)",
+            checked: (data["disregards-capital-total-yn"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "benefit-hospital-check-yn",
+        name: "benefit-hospital-check-yn",
+        fieldset: {
+          legend: {
+            html: "Do they have: AA, DLA, CAA PIP?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefit-hospital-check-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefit-hospital-check-yn"] == "No")
+          }
+        ]
+      }) }}
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+
+
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+    </div>
+{% endblock %}

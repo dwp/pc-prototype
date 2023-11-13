@@ -1,0 +1,31 @@
+{% extends "layout-id-bar.html" %}
+
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="contact-text-yn" method="post">
+
+        <h1 class="govuk-heading-xl"> Based on the conversation we have had, we will start your claim from {{data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year']}}</h1>
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

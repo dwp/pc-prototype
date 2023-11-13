@@ -1,0 +1,108 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+
+
+
+                <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-4"><strong>Results for: </strong>{{ data ["search"]}}</p>
+                <!-- <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claims found for: <strong>NA112233c</strong></p> -->
+
+                <p class="govuk-body">Some features missing from this SearchLight Dummy</p>
+
+
+                            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                              <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                  <td class="govuk-table__cell govuk-20-percent">NI number</td>
+                                  <td class="govuk-table__cell govuk-39-percent">Name</td>
+                                  <td class="govuk-table__cell govuk-15-percent">Status</td>
+                                  <td class="govuk-table__cell govuk-16-percent">Received</td>
+                                  <td class="govuk-table__cell govuk-10-percent">Age (days)</td>
+                                </tr>
+                                </thead>
+
+
+
+
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                  <td class="govuk-table__cell table-spacer">Jeff Bridges</td>
+                                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--grey govuk-phase-banner__content__tag">To do</strong></td>
+
+                                  <td class="govuk-table__cell table-spacer">DD Sept 2020</td>
+                                  <td class="govuk-table__cell table-spacer">99</td>
+                                </tr>
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                  <td class="govuk-table__cell table-spacer">Jeff Bridges</td>
+                                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--pink govuk-phase-banner__content__tag">Assigned</strong></td>
+
+                                  <td class="govuk-table__cell table-spacer">DD Sept 2020</td>
+                                  <td class="govuk-table__cell table-spacer">102</td>
+                                </tr>
+
+                                <tr class="govuk-table__row">
+                                  <th scope="row" class="govuk-table__cell table-spacer">{{ data ["search"]}}</th>
+                                  <td class="govuk-table__cell table-spacer">Jeff Bridges</td>
+                                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">Downloaded</strong></td>
+
+                                  <td class="govuk-table__cell table-spacer">DD Sept 2020</td>
+                                  <td class="govuk-table__cell table-spacer">110</td>
+                                </tr>
+
+                                </table>
+
+
+                                <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"><strong>State pensions tab</p>
+
+                                  <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"><strong>Benefits tab</p>
+
+
+                                <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"><strong>Pensions tab</p>
+
+
+                                <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"><strong>Earnigns tab</p>
+
+
+
+                                {{ govukButton({
+                                  text: "Find another claim",
+                                  classes: "govuk-!-margin-right-1"
+                                }) }}
+
+                              <!-- {{ govukButton({
+                                 text: "Clear",
+                                 classes: "govuk-button--secondary-clear",
+                                 href: "find-a-claim"
+                               }) }} -->
+
+                                          <!-- <p class="govuk-body govuk-!-margin-top-2"><a href="case-load">Back to start</a></p> -->
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

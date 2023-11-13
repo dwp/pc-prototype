@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Money, savings and capital
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="msic-cash-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-l">Money received as a lump sum</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Pension lump sums are taken into account for PC, but they are included in the amount for whatever account they are paid into. <br><br>We could consider an field in NSP to record the account it was paid into (last 4 digits, bank name etc.) The fact that they had a lump sum is recorded in ISCS/PTP CAM currently but the only purpose it serves is to show that they had one.
+        <br><br>Personal Injury payments must have been made in consequence of a personal injury to the customer or partner. The lump sum payment and any regular payment made as an annuity from the claim are disregarded
+</p>
+
+
+
+<p class="govuk-body govuk-!-font-size-19">A brief summary includes:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Vaccine damage payments</li>
+          <li>lump sum awards of damages</li>
+          <li>out of court settlements (insurance companies etc.)</li>
+          <li>lump sum gratuities under the War Pensions and Industrial Injuries Schemes</li>
+          <li>Criminal Injury Compensation Scheme payments</li>
+          <li>Lump sum payments made to people injured in an accident or disaster following charitable collections or public donations</li>
+          <li>Lump sum payments from accident insurance</li>
+        </ul>
+
+        {{ govukTextarea({
+          name: "msic-cash-lump-sum-detail",
+          id: "msic-cash-lump-sum-detail",
+          value: data["MoneyOver10k-more-detail"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

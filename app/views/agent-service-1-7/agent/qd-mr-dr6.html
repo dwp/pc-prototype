@@ -1,0 +1,65 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-mr-dr6" method="post" class="form">
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">I'm just going to fill in a form with the reason you'd like to dispute this claim</h1>
+
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">Fill in a DR6 form with details of why the citizen would like to dispute their claim. Include as much information as you can.</p>
+        </div>
+
+      <p><a href=>Download DR6 (docx, 234KB )</a></p>
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      <p><a href=“qd-mr-send”>...</a></p>
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

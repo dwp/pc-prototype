@@ -1,0 +1,327 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Details of income or capital bonds
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-capital-bond-account-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Income or capital bonds details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of income or capital bond"
+        },
+        id: "msic-capital-bond-company-name",
+        name: "msic-capital-bond-company-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      <!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // BALANCE ONLY  ----------------------------------------------------------------------------------------->
+
+{% set balanceEED %}
+      {{ govukInput({
+        label: {
+          html: "What was the value of this bond on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+        },
+        id: "msic-capital-bond-account-amount-EED",
+        name: "msic-capital-bond-account-amount-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+{% endset -%}
+
+<!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+
+{% set balanceDateEED %}
+{{ govukDateInput({
+  id: "msic-capital-bond-account-amount-EED-date-evidence",
+  namePrefix: "msic-capital-bond-account-amount-EED-date-evidence",
+  fieldset: {
+    legend: {
+      html: "<strong>Date this figure is from</strong>"
+    }
+  },
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["msic-capital-bond-account-amount-EED-date-evidence-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["msic-capital-bond-account-amount-EED-date-evidence-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["msic-capital-bond-account-amount-EED-date-evidence-year"]
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    html: "What was the value of this bond on this date?"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-capital-bond-account-amount-EED",
+  name: "msic-capital-bond-account-amount-EED"
+}) }}
+{% endset -%}
+
+
+
+<!--------------- (1) EARLIEST ENTITLEMENT DATE // CHECK ----------------------------------------------------------------------------------------->
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "msic-capital-bond-amount-balanceEED-check",
+        name: "mmsic-capital-bond-amount-balanceEED-check",
+        fieldset: {
+          legend: {
+            html: "Do you know how the value of this bond on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["msic-capital-bond-amount-balanceEED-check"] == "Yes"),
+          conditional: {
+            html: balanceEED
+          }
+        },
+          {
+            value: "No",
+            text: "No, I know the value on a different date",
+            checked: (data["msic-capital-bond-amount-balanceEED-check"] == "No"),
+            conditional: {
+              html: balanceDateEED
+            }
+          }
+        ]
+      }) }}
+
+
+      <!--------------- (2) TODAY // BALANCE ONLY ----------------------------------------------------------------------------------------->
+
+
+      {% set balanceToday %}
+
+        {{ govukInput({
+          label: {
+          html: "What was the value of this bond on <strong>" + '' | formatDate + "?</strong>"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-capital-bond-amount-TODAY",
+          name: "msic-capital-bond-amount-TODAY"
+        }) }}
+
+      {% endset -%}
+
+      <!--------------- (2) TODAY // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+        {% set balanceDateToday %}
+
+          {{ govukDateInput({
+            id: "msic-capital-bond-account-amount-TODAY-date-evidence",
+            namePrefix: "msic-capital-bond-account-amount-TODAY-date-evidence",
+            fieldset: {
+              legend: {
+                html: "<strong>Date this figure is from</strong>"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["msic-capital-bond-account-amount-TODAY-date-evidence-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["msic-capital-bond-account-amount-TODAY-date-evidence-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["msic-capital-bond-account-amount-TODAY-date-evidence-year"]
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: "What was the value of this bond on this date?"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-capital-bond-account-amount-TODAY",
+            name: "msic-capital-bond-account-amount-TODAY"
+          }) }}
+
+        {% endset -%}
+
+
+
+        <!--------------- (2) TODAY CHECK  ----------------------------------------------------------------------------------------->
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "msic-capital-bond-balanceTODAY-check",
+      name: "msic-capital-bond-balanceTODAY-check",
+      fieldset: {
+        legend: {
+          html: "Do you know the value of this bond on <strong>" + '' | formatDate + "?</strong>"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["msic-capital-bond-balanceTODAY-check"] == "Yes"),
+        conditional: {
+          html: balanceToday
+        }
+      },
+        {
+          value: "No",
+          text: "No, I know the value on a different date",
+          checked: (data["msic-capital-bond-balanceTODAY-check"] == "No"),
+          conditional: {
+            html: balanceDateToday
+          }
+        }
+      ]
+    }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-life-assurance",
+        name: "msic-capital-bond-account-life-assurance",
+        fieldset: {
+          legend: {
+            text: "Does this bond have any element of life assurance attached to it?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-life-assurance"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-life-assurance"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-transfer",
+        name: "msic-capital-bond-account-transfer",
+        fieldset: {
+          legend: {
+            text: "Can this bond be assigned or transfered to someone else?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-transfer"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-transfer"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-cash-early",
+        name: "msic-capital-bond-account-cash-early",
+        fieldset: {
+          legend: {
+            text: "Can you cash this bond in early?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-cash-early"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-cash-early"] == "No")
+          }
+        ]
+      }) }}
+
+<!--
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-read-from-statement",
+        name: "msic-capital-bond-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

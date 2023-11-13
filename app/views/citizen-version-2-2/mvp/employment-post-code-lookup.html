@@ -1,0 +1,52 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  What is the postcode of the address we should use to send you letters? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      What is the postcode of the address of your employers?
+    </h1>
+
+    <form action="employment-address-choice" method="post" class="form">
+      {{ govukInput({
+        id: "postcode",
+        name: "postcode",
+        value: data["postcode"],
+        classes: "govuk-input--width-10",
+        label: {
+          text: "Postcode"
+        }
+      }) }}
+
+      <input type="hidden" name="address-complete" value="in-progress"/>
+
+      {{ govukButton({
+        text: "Find address"
+      }) }}
+    </form>
+
+    <br>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="employment-address-manual">Enter your address manually</a>
+      </li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

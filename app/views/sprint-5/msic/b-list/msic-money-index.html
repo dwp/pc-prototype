@@ -1,0 +1,204 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <!-- <span class="govuk-caption-m">Money, savings and investments</span> -->
+  <form action="msic-shares-trusts-index" method="post">
+
+  <h1 class="govuk-heading-xl">
+    Tell us about money you have in savings<br>
+  </h1>
+  <!----Headline---->
+
+    <!-- <p class="govuk-body">Give details of each account you have.</p> -->
+
+    <br><br>
+
+        <h3 class="govuk-heading-m">
+          Bank current accounts
+        </h3>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+          <p class="govuk-body"><a href="msic-bank-current-account" class="govuk-link">Add a bank current account</a></p>
+
+        </div></div>
+
+
+      <!----Break---->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+        </div>
+      </div>
+      <!----Break---->
+
+
+      <h3 class="govuk-heading-m">
+        Building society current accounts
+      </h3>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+            <p class="govuk-body"><a href="msic-building-current-account" class="govuk-link">Add a building society current account</a></p>
+
+          </div></div>
+
+    <!----Break---->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+    <!----Break---->
+
+
+    <h3 class="govuk-heading-m">
+      Post Office Card Account
+    </h3>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+          <p class="govuk-body"><a href="msic-post-office-account" class="govuk-link">Add a Post Office Card Account</a></p>
+
+        </div></div>
+
+
+
+    <!--------------------------------------------------------------------------------->
+
+      <!----Break---->
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        </div>
+      </div>
+      <!----Break---->
+
+    <h3 class="govuk-heading-m">
+      Bank savings account
+    </h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+      <p class="govuk-body"><a href="msic-bank-savings-account" class="govuk-link">Add a bank savings account</a></p>
+
+    </div></div>
+
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <h3 class="govuk-heading-m">
+    Building society savings accounts
+  </h3>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+        <p class="govuk-body"><a href="msic-building-savings-account" class="govuk-link">Add a building society savings account</a></p>
+
+      </div></div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<h3 class="govuk-heading-m">
+  Premium Bonds
+</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+      <p class="govuk-body"><a href="msic-premium-bond-account" class="govuk-link">Add Premium Bonds</a></p>
+
+    </div></div>
+
+    <!----Break---->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+    <!----Break---->
+
+
+    <h3 class="govuk-heading-m">
+      ISAs, TESSA, TOISAs and PEPs
+    </h3>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+          <p class="govuk-body"><a href="msic-isa-savings-account" class="govuk-link">Add an ISA, TESSA, TOISA or PEP</a></p>
+
+        </div></div>
+
+
+        <!----Break---->
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+          </div>
+        </div>
+        <!----Break---->
+
+
+        <h3 class="govuk-heading-m">
+          Capital bonds
+        </h3>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+              <p class="govuk-body"><a href="msic-capital-bond-account" class="govuk-link">Add a capital bond</a></p>
+
+            </div></div>
+
+
+
+
+<!--------------------------------------------------------------------------------->
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <br><br>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

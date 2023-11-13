@@ -1,0 +1,315 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="non-deps-summary-loop" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Details of the person who lives with you</h1>
+
+        <!-- {% if data['non-deps-summary'] == "Yes" %}
+
+         {{ govukInput({
+           label: {
+             html: "<strong>What is their full name?</strong>"
+           },
+           hint: {
+             text: "Include any middle names."
+           },
+           id: "non-deps-member-full-name-2",
+           name: "non-deps-member-full-name-2",
+           classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+           value: data["non-deps-member-full-name-2"]
+         }) }}
+
+
+         {% else %}\
+
+        {% endif %}-->
+
+         {{ govukInput({
+           label: {
+             html: "<strong>What is their full name?</strong>"
+           },
+           hint: {
+             text: "Include any middle names."
+           },
+           id: "non-deps-member-full-name-2",
+           name: "non-deps-member-full-name-2",
+           classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+           value: data["non-deps-member-full-name-2"]
+         }) }}
+
+
+
+
+         {% if data['non-deps-member-category-2'] == "Certain volunteers from charitable organisations" %}
+
+                  {{ govukInput({
+                    label: {
+                      html: "<strong>What is the name of the charity this person works for?</strong>"
+                    },
+                    hint: {
+                      text: ""
+                    },
+                    id: "non-deps-member-charity-name",
+                    name: "non-deps-member-charity-name",
+                    classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+                    value: data["non-deps-member-charity-name"]
+                  }) }}
+
+               {% endif %}
+
+               {% if data['non-deps-member-category-2'] == "A close relative or friend" %}
+
+         {{ govukDateInput({
+           id: "non-deps-member-details-dob-2",
+           namePrefix: "non-deps-member-details-dob-2",
+           fieldset: {
+             legend: {
+               text: "What is their date of birth?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           hint: {
+             text: "For example, 31 3 1948."
+           },
+           items: [
+             {
+               name: "day",
+               classes: "govuk-input--width-2 govuk-!-margin-bottom-4",
+               value: data["non-deps-member-details-dob-day-2"]
+             },
+             {
+               name: "month",
+               classes: "govuk-input--width-2",
+               value: data["non-deps-member-details-dob-month-2"]
+             },
+             {
+               name: "year",
+               classes: "govuk-input--width-4",
+               value: data["non-deps-member-details-dob-year-2"]
+             }
+           ]
+         }) }}
+
+         {{ govukRadios({
+           idPrefix: "non-deps-member-details-blind-2",
+           name: "non-deps-member-details-blind-2",
+           fieldset: {
+             legend: {
+               text: "Are they registered blind or severely sight impaired?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+               },
+               hint: {
+                 html: ""
+               },
+
+           classes: "govuk-radios govuk-!-margin-bottom-4",
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-deps-member-details-blind-2"] == "Yes")
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-deps-member-details-blind-2"] == "No")
+             }
+           ]
+         }) }}
+
+         {{ govukRadios({
+           name: "non-deps-frequency",
+           fieldset: {
+             legend: {
+               html: "Does this person live with you all the time?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+           },
+           hint: {
+             text: ""
+           },
+       classes: "govuk-radios govuk-!-margin-bottom-4",
+       items: [
+         {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-deps-frequency-2"] == "Yes")
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-deps-frequency-2"] == "No")
+             }
+           ]
+         }) }}
+
+
+
+         {{ govukRadios({
+           idPrefix: "non-deps-member-education-2",
+           name: "non-deps-member-education-2",
+           fieldset: {
+             legend: {
+               text: "Are they in education?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+               },
+               hint: {
+                 html: ""
+               },
+
+           classes: "govuk-radios govuk-!-margin-bottom-4",
+           items: [
+             {
+               value: "Full time-2",
+               text: "Yes - full-time",
+               checked: (data["non-deps-member-education-2"] == "Full time")
+             },
+             {
+               value: "Part time-2",
+               text: "Yes - part-time",
+               checked: (data["non-deps-member-education-2"] == "Part time")
+             },
+             {
+               value: "Not in education",
+               text: "No",
+               checked: (data["non-deps-member-education-2"] == "Not in education")
+             }
+           ]
+         }) }}
+
+
+                  {% set nonDepSlary %}
+
+                  {% set LegendAmount %}
+                  <strong>[Dynamic based on Yes to housing costs] How much do they earn each week?<strong>
+                  {% endset -%}
+
+                        {{ govukInput({
+                          id: "non-deps-member-details-weekly-earnings-2",
+                          name: "non-deps-member-details-weekly-earnings-2",
+                          label: {
+                            html: "How much money do they earn each week?",
+                            classes: "govuk-label--s",
+                            isPageHeading: true
+                          },
+                          hint: {
+                            html: "Tell us their total earnings in pounds and pence before tax and National Insurance are deducted, for example, 100.00"
+                          },
+                          prefix: {
+                            text: "£"
+                          },
+                          value: data["non-deps-member-details-weekly-earnings-2"],
+                          classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+                          spellcheck: false
+                        }) }}
+
+                        {% endset -%}
+
+
+
+                  {{ govukRadios({
+                    idPrefix: "non-deps-member-employment-2",
+                    name: "non-deps-member-employment-2",
+                    fieldset: {
+                      legend: {
+                        text: "Are they in employment?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--s"
+                      }
+                        },
+                        hint: {
+                          html: ""
+                        },
+
+                    classes: "govuk-radios govuk-!-margin-bottom-4",
+                    items: [
+                      {
+                        value: "Full time",
+                        text: "Yes - full-time",
+                        checked: (data["non-deps-member-employment-2"] == "Full time"),
+                              conditional: {
+                                html: nonDepSlary
+                              }
+                        },
+                      {
+                        value: "Part time",
+                        text: "Yes - part-time",
+                        checked: (data["non-deps-member-employment-2"] == "Part time"),
+                              conditional: {
+                                html: nonDepSlary
+                              }
+                        },
+                      {
+                        value: "Not in employment",
+                        text: "No",
+                        checked: (data["non-deps-member-employment"] == "Not in employment")
+                      }
+                    ]
+                  }) }}
+
+
+
+         {{ govukRadios({
+           idPrefix: "non-deps-member-self-employment-2",
+           name: "non-deps-member-self-employment-2",
+           fieldset: {
+             legend: {
+               text: "Are they self-employed?",
+               isPageHeading: true,
+               classes: "govuk-fieldset__legend--s"
+             }
+               },
+               hint: {
+                 html: ""
+               },
+
+           classes: "govuk-radios govuk-!-margin-bottom-4",
+           items: [
+             {
+               value: "Yes",
+               text: "Yes",
+               checked: (data["non-deps-member-self-employment-2"] == "Yes")
+             },
+             {
+               value: "No",
+               text: "No",
+               checked: (data["non-deps-member-self-employment-2"] == "No")
+             }
+           ]
+         }) }}
+
+
+  {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-c-nil-task-4-c-router" method="post" class="form">
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        {% set USED %}
+        {{govukTag({
+          text: "System",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set MANUAL %}
+        {{govukTag({
+          text: "Manual",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Check the pension payments <br> from MetroLand LTD</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">The payments selected are used to work out the applicant's weekly income from this pension.</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-0">This application was submitted on Saturday 29 May 2022.</p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-6">[Lets say todays date is the 1st June]</p>
+
+
+        {{ govukTable({
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-6",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Payment date (monthly)",
+              classes: 'govuk-30-percent'
+            },
+            {
+              text: "Net pay",
+              classes: 'govuk-20-percent'
+            },
+            {
+              html: "Selection method",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 June 2022"
+              },
+              {
+                text: "£1,100.00"
+              },
+              {
+                html: NOTUSED
+              }
+              ],
+              [
+                {
+                  text: "1 May 2022"
+                },
+                {
+                  text: "£1,100.00"
+                },
+                {
+                  html: USED
+                }
+              ],
+            [
+              {
+                text: "1 April 2022"
+              },
+              {
+                text: "£1,100.00"
+              },
+              {
+                html: USED
+              }
+            ],
+              [
+                {
+                  text: "1 March 2022"
+                },
+                {
+                  text: "£880.00"
+                },
+                {
+                  html: NOTUSED
+                }
+              ]
+          ]
+        }) }}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-c",
+          name: "process-c-nil-task-4-c",
+          fieldset: {
+            legend: {
+              text: "These payments convert to £253.85 a week. Do you agree with this weekly income?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-c"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-c"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+</form>
+
+{% endblock %}

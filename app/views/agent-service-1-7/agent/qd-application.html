@@ -1,0 +1,298 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-case-notes" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+
+
+        <div class="govuk-grid-column-three-quarters">
+
+          {% if data['nino-known'] === 'yes' %}
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-6">Build the claim on CAM using Jeff's information from this application</h1>
+
+
+            {% else %}
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-6">Build the claim on CAM using Oliver's information from this application</h1>
+
+          {% endif %}
+
+
+
+
+            {{ govukInsetText({
+              text: "Ask any additional information that is needed on CAM."
+            }) }}
+
+
+            {% if data['nino-known'] === 'yes' %}
+
+              {{ govukTable({
+                caption: "Applicant details",
+                captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "Question",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  {
+                    text: "Answer",
+                    classes: 'govuk-!-width-one-half'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Which country do you live in?"
+                    },
+                    {
+                      text: "England"
+                    }
+                  ],
+                  [
+                    {
+                      text: "Your date of birth"
+                    },
+                    {
+                      text: "10 August 1955"
+                    }
+                  ],
+                  [
+                    {
+                      text: "What is your nationality as shown on your passport or travel document? "
+                    },
+                    {
+                      text: "British"
+                    }
+                  ]
+                ]
+              }) }}
+
+
+
+              {% else %}
+
+              {{ govukTable({
+                caption: "Applicant details",
+                captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "Question",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  {
+                    text: "Answer",
+                    classes: 'govuk-!-width-one-half'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Which country do you live in?"
+                    },
+                    {
+                      text: "England"
+                    }
+                  ],
+                  [
+                    {
+                      text: "Your date of birth"
+                    },
+                    {
+                      text: "21 February 1952"
+                    }
+                  ],
+                  [
+                    {
+                      text: "What is your nationality as shown on your passport or travel document? "
+                    },
+                    {
+                      text: "British"
+                    }
+                  ]
+                ]
+              }) }}
+
+            {% endif %}
+
+
+
+            {{ govukTable({
+              caption: "Housing details",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Do you live permanently in a care home? "
+                  },
+                  {
+                    text: "No"
+                  }
+                ],
+                [
+                  {
+                    text: "Is any part of your care home funding provided by the local authority? "
+                  },
+                  {
+                    text: "No"
+                  }
+                ],
+                [
+                  {
+                    text: "Do you own the property you used to live in? "
+                  },
+                  {
+                    text: "No"
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Housing costs",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Do you pay for any housing costs?"
+                  },
+                  {
+                    text: "No"
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Benefits",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Do you have any relevant benefits?"
+                  },
+                  {
+                    text: "Yes"
+                  }
+                ],
+                [
+                  {
+                    text: "What benefit do you receive "
+                  },
+                  {
+                    text: "Attendance allowance"
+                  }
+                ],
+                [
+                  {
+                    text: "When did this benefit start"
+                  },
+                  {
+                    text: "29 November 2021"
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Application continued",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

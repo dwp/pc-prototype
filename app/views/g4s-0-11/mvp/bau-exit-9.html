@@ -1,0 +1,40 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-11/mvp/introduction"> -->
+        <form method="post" action="wrap-up">
+
+        <span class="govuk-caption-m">[9]</span>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">As you are already getting Pension Credit you will need to contact the changes line</h1>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Change of circumstances telephone number 0800 7310469</p>
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">[MM: Might have to be a number]</p> -->
+
+        {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-button dont-print govuk-!-margin-top-6"
+        }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

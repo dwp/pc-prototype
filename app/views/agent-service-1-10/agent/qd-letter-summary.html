@@ -1,0 +1,131 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-letter-summary-router" method="post" class="form">
+
+
+      {% include "agent-service-1-10/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Open Document Repository Store (DRS) and search for the letter using the nationality insurance number below</h1>
+
+        {{ govukTable({
+          caption: "",
+          classes: "govuk-!-margin-bottom-8",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "",
+              classes: 'govuk-!-width-one-third govuk-table--no-border'
+            },
+            {
+              text: "",
+              classes: 'govuk-!-width-one-half govuk-table--no-border'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "National Insurance Number:",
+                classes: 'govuk-table--no-border '
+
+              },
+              {
+                text: "1327663",
+                classes: 'govuk-table--no-border '
+
+              }
+            ]]
+        }) }}
+
+
+        {% set letterNotes %}
+        {{ govukTextarea({
+          name: "letter-summary-notes",
+          id: "letter-summary-notes",
+          rows: 4,
+          label: {
+            text: "Enter notes",
+            classes: "govuk-label--s",
+            isPageHeading: true
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "qd-letter-summary",
+          name: "qd-letter-summary",
+          fieldset: {
+            legend: {
+              text: "What do you need to do after reading the letter?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "notes",
+              text: "Record notes and exit record",
+                conditional: {
+                  html: letterNotes
+                }
+            },
+            {
+              value: "claim",
+              text: "View claim details"
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

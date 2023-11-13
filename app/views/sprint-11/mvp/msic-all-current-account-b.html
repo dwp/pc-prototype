@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-all-current-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Current account details
+      </h1>
+
+      {% set count = (data["account-count"] or 0) | int %}
+
+      <input type="hidden" name="account-count" value="{{ count + 1 }}"/>
+
+<!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+          {{ govukInput({
+            label: {
+              text: "Name of bank or building society"
+            },
+            id: "msic-all-current-account-name",
+            name: "msic-all-current-account-name-" + count,
+            classes: "govuk-input--width-20"
+          }) }}
+
+
+
+
+          <!--------------- OTHER DETIALS ----------------------------------------------------------------------------------------->
+
+
+                {{ govukInput({
+                  label: {
+                    html: "How much was in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+                  },
+                  id: "msic-all-current-account-amount-EED",
+                  name: "msic-all-current-account-amount-EED-" + count,
+                  classes: "govuk-input--width-20"
+                }) }}
+
+
+                {% set OtherPercentTODAY %}
+                {{ govukInput({
+                  label: {
+                    html: ""
+                  },
+                  classes: "govuk-input--width-10",
+                  id: "msic-all-current-account-amount-TODAY",
+                  name: "msic-all-current-account-amount-TODAY-" + count
+                }) }}
+                {% endset %}
+
+              {{ govukRadios({
+                classes: "govuk-radios--small",
+                idPrefix: "percent-yoursTODAY",
+                name: "percent-yoursTODAY",
+                fieldset: {
+                  legend: {
+                    text: "Percent that is yours",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                items: [
+                {
+                  value: "100%",
+                  text: "100%"
+                },
+                  {
+                    value: "Other",
+                    text: "Other",
+                    conditional: {
+                      html: OtherPercentTODAY
+                    }
+                  }
+                ]
+              }) }}
+
+
+
+
+
+                {{ govukInput({
+                  label: {
+                    html: "How much was in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+                  },
+                  id: "msic-all-current-account-amount-EED",
+                  name: "msic-all-current-account-amount-EED-" + count,
+                  classes: "govuk-input--width-20"
+                }) }}
+
+                {% set OtherPercentEED %}
+                {{ govukInput({
+                  label: {
+                    html: ""
+                  },
+                  classes: "govuk-input--width-10",
+                  id: "msic-all-current-account-amount-TODAY",
+                  name: "msic-all-current-account-amount-TODAY-" + count
+                }) }}
+                {% endset %}
+
+              {{ govukRadios({
+                classes: "govuk-radios--small",
+                idPrefix: "percent-yoursEED",
+                name: "percent-yoursEED",
+                fieldset: {
+                  legend: {
+                    text: "Percent that is yours",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                items: [
+                {
+                  value: "100%",
+                  text: "100%"
+                },
+                  {
+                    value: "Other",
+                    text: "Other",
+                    conditional: {
+                      html: OtherPercentEED
+                    }
+                  }
+                ]
+              }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% set nav = 'tasks' %}
+{% include "agent-service-1-3/agent/query-primary-nav.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-phone-log" method="post" class="form">
+
+
+
+        <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+
+          <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">1. Explain</h3>
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+
+                  <ol class="app-task-list">
+                  <li>
+                  <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                      <a class="app-task-list__task-name" href="query-tasks-benefits" aria-describedby="task-1">
+                        Benefits
+                      </a>
+                      <span>
+                      <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Not started</strong></span>
+                    <li class="app-task-list__item">
+                      <a class="app-task-list__task-name" href="query-tasks-relationship" aria-describedby="task-1">
+                        Relationship
+                      </a>
+                      <span>
+                      <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Not started</strong></span>
+
+                    <li class="app-task-list__item">
+                      <a class="app-task-list__task-name" href="query-tasks-housing" aria-describedby="task-1">
+                        Housing costs
+                      </a>
+                      <span>
+                      <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Not started</strong></span>
+
+                    <li class="app-task-list__item">
+                      <a class="app-task-list__task-name" href="query-tasks-sp" aria-describedby="task-1">
+                        State Pension
+                      </a>
+                      <span>
+                      <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="read-declaration-status">Not started</strong></span>
+
+                    </li>
+
+                  </ul>
+                  </li>
+
+                  </ol>
+
+                </div>
+
+
+              </div>
+
+
+
+
+          </div>
+
+          </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+    </form>
+{% endblock %}

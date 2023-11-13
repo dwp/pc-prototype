@@ -1,0 +1,143 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+Total amount of money you have today - Apply for Pension Credit - GOV.UK
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data["money-negative-scenarios"] == "Backdated-a" %}
+    <form action="/prototype-admin/clear-data" method="post" class="form">
+      {% else %}
+      <form action="money-3-total-now-confirm-negative-router" method="post" class="form">
+      {% endif %}
+
+
+      {% if data["money-negative-scenarios"] == "Backdated-a" %}
+
+
+            <!------------H1 LEGEND------------>
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You have told us you have a total of less than £0.00</h1>
+
+            <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Total amount of money you have today:</h1>
+
+            <p class="govuk-heading-l govuk-!-margin-bottom-2">– {{ data['money-3-total-now-value'] | formatMoney }}</p>
+            <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">Minus {{ data['money-3-total-now-value'] | formatMoneyToWords }}</p>
+
+                 <!------------Legend--------------->
+
+                 <p class="govuk-body2 govuk-!-margin-bottom-8">When we calculate how much Pension Credit you could get, we do not consider overdrafts or other debts. We will use a total of £0.00. </p>
+
+
+
+
+
+      {% elif data["money-negative-scenarios"] == "Backdated-b" %}
+
+
+
+            <!------------H1 LEGEND------------>
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Total amount of money you have today</h1>
+
+                 <!------------Legend--------------->
+
+                 <p class="govuk-body govuk-!-margin-bottom-2">You told us that the total amount of money you have today is -{{ data['money-3-total-now-value'] | formatMoney }}. When we calculate how much Pension Credit you could get, we do not consider overdrafts or other debts. We will use a total of £0.00. </p>
+
+
+                 <p class="govuk-heading-l govuk-!-margin-bottom-2">– {{ data['money-3-total-now-value'] | formatMoney }}</p>
+                 <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">Minus {{ data['money-3-total-now-value'] | formatMoneyToWords }}</p>
+
+                 {{ govukRadios({
+                   idPrefix: "money-3-total-now-confirm-negative",
+                   name: "money-3-total-now-confirm-negative",
+                   fieldset: {
+                     legend: {
+                       text: "Is this the right amount?",
+                       isPageHeading: true,
+                       classes: "govuk-fieldset__legend--m"
+                     }
+                   },
+
+                   classes: "govuk-radios",
+                   items: [
+                     {
+                       value: "Yes",
+                       text: "Yes",
+                       checked: (data["money-3-total-now-confirm-negative"] == "Yes")
+                     },
+                     {
+                       value: "No",
+                       text: "No - I want to go back and change the amount",
+                       checked: (data["money-3-total-now-confirm-negative"] == "No")
+                     }
+                   ]
+                 }) }}
+
+      {% else %}
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You have told us you have a total of less than £0.00</h1>
+
+            <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Total amount of money you have today:</h1>
+
+            <p class="govuk-heading-l govuk-!-margin-bottom-2">– {{ data['money-3-total-now-value'] | formatMoney }}</p>
+            <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">Minus {{ data['money-3-total-now-value'] | formatMoneyToWords }}</p>
+
+                 <!------------Legend--------------->
+
+                 <p class="govuk-body2 govuk-!-margin-bottom-8">When we calculate how much Pension Credit you could get, we do not consider overdrafts or other debts. We will use a total of £0.00. </p>
+
+
+      {{ govukRadios({
+        idPrefix: "money-3-total-now-confirm-negative",
+        name: "money-3-total-now-confirm-negative",
+        fieldset: {
+          legend: {
+            text: "Is this the right amount?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["money-3-total-now-confirm-negative"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No - I want to go back and change the amount",
+            checked: (data["money-3-total-now-confirm-negative"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+      {% endif %}
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

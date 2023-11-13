@@ -1,0 +1,62 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Adviser: Check benefits account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-missing-account-benfit-check-yn-router" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+      <!------------HEADLINE------------>
+        {% set legend %}
+        {% if data["claim-filter"] == "Advanced or Today" %} Do you have any current accounts with a bank or building society? {% endif %}
+        {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any current accounts with a bank or building society?{% endif %}
+        {% endset %}
+      <!------------HEADLINE------------>
+
+      {{ govukRadios({
+        idPrefix: "msic-missing-account-benfit-check-yn",
+        name: "msic-missing-account-benfit-check-yn",
+        fieldset: {
+          legend: {
+            text: "Do you get your benefits paid into any of the accounts you have given us already?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-missing-account-benfit-check-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-missing-account-benfit-check-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+    </div>
+{% endblock %}

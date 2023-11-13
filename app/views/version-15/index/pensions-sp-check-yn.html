@@ -1,0 +1,61 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-overview" method="post" class="form">
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+        <h1 class="govuk-heading-l"><span class="agent-action">Adviser: Does SearchLight show an interest for State Pension or a State Pension in payment?</h1>
+      </div>
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "pensions-sp-check-yn",
+        name: "pensions-sp-check-yn",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pensions-sp-check-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["pensions-sp-check-yn"] == "No")
+          }
+        ]
+      }) }}
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

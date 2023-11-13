@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="can-contact-router" method="post" class="form">
+      {{ govukCheckboxes({
+        idPrefix: "contact-options",
+        name: "contact-options",
+        fieldset: {
+          legend: {
+            text: "How can we contact you?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Text",
+            text: "Text",
+            checked: (data["contact-options"] and data["contact-options"].includes("Text"))
+          },
+          {
+            value: "Phone call",
+            text: "Phone call",
+            checked: (data["contact-options"] and data["contact-options"].includes("Phone call"))
+          },
+          {
+            value: "Email",
+            text: "Email",
+            checked: (data["contact-options"] and data["contact-options"].includes("Email"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

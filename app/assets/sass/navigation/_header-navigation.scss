@@ -1,0 +1,336 @@
+$mobile-nav-break-point : 390px; //NOT IN USE FOR HAS PROTOTYPE VERSION - point where nav switches to a mobile nav with a JavaScript dropdown nav
+$nojs-mobile-nav-break-point : tablet; // point where nav switchs to mobile view when JavaScript is disabled
+
+/* Chevron - TODO: cross-browser testing
+   Creates a chevron in a chosen direction and colour by styling the :after pseudo element 
+
+   Usage: @include dwp-chevron("down", govuk-colour("blue"), inline-block);
+
+   @param {String} $direction - Direction for chevron: up, right, down, left
+   @param {Number} $colour - Colour of chevron, can be colour value e.g. hex, rgb etc., css variable or result of another mixin e.g. govuk-colour()
+   @param {String} $display [block] - CSS display property of the arrow
+*/
+
+@mixin dwp-chevron($direction, $colour, $display: block) {
+    &:after {
+      background: transparent;
+      content: "";
+      border-bottom: 2px solid $colour;
+      border-right: 2px solid $colour;
+      display: $display;
+      height: 8px;
+      position: relative;
+      vertical-align: middle;
+      width: 8px;
+  
+      @if $direction == "up" {
+          -webkit-transform: translateY(1px) rotate(225deg) scale(1);
+          -ms-transform: translateY(1px) rotate(225deg) scale(1);
+          transform: translateY(1px) rotate(225deg) scale(1);
+      } @else if $direction == "right" {
+          -webkit-transform: translateY(1px) rotate(-45deg) scale(1);
+          -ms-transform: translateY(1px) rotate(-45deg) scale(1);
+          transform: translateY(1px) rotate(-45deg) scale(1);
+      } @else if $direction == "down" {
+          -webkit-transform: translateY(-35%) rotate(45deg) scale(1);
+          -ms-transform: translateY(-35%) rotate(45deg) scale(1);
+          transform: translateY(-35%) rotate(45deg) scale(1);
+      } @else if $direction == "left" {
+          -webkit-transform: translateY(1px) rotate(135deg) scale(1);
+          -ms-transform: translateY(1px) rotate(135deg) scale(1);
+          transform: translateY(1px) rotate(135deg) scale(1);
+      } @else {
+        @error "Invalid arrow direction: expected `up`, `right`, `down` or `left`, got `#{$direction}`";
+      }
+    }
+  }
+
+/* Current, active, hover link style */
+@mixin current {
+  text-decoration: underline;
+  text-decoration-thickness: max(3px, 0.0625rem);
+  box-shadow: none;
+}
+
+/* Link and button base styles for all header navigation links  */
+@mixin header-nav-link-and-button-base {
+  box-sizing: border-box;
+  color: govuk-colour("light-grey");
+  display: block;    
+  font-size: 1rem;
+  padding: 3px 7px 7px 7px;
+  text-decoration: none;
+  
+  &:focus,
+  &:hover {
+    @include current;
+  }
+  
+  &.current {
+    font-weight: 700;
+    @include current;
+  }
+
+  @include govuk-media-query($until: $nojs-mobile-nav-break-point) {
+    text-align: left;
+    padding: govuk-spacing(2) govuk-spacing(3) govuk-spacing(3);
+  }
+}
+
+/* Button overriding styles - extra bits required for button interaction behaviour */
+@mixin header-nav-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  @include dwp-chevron("down", govuk-colour("light-grey"), inline-block);
+
+  &:after {
+    left: -4px;
+    margin: 0 0 0 govuk-spacing(2);
+  }
+
+  &:focus {
+    @include current;
+    background-color: govuk-colour("yellow");
+    color: govuk-colour("black");
+
+    &:after {
+      border-bottom-color: govuk-colour("black");
+      border-right-color: govuk-colour("black");
+    }
+  }
+
+  @include govuk-media-query($until: $mobile-nav-break-point ) {
+    margin-right: govuk-spacing(3) * -1;
+    margin-top: -8px;
+  }
+
+  &.dwp-header-navigation__menu-button--open {
+    @include dwp-chevron("up", govuk-colour("light-grey"), inline-block);
+
+    font-weight: 700;
+
+    &:focus {
+      background-color: govuk-colour("yellow");
+      color: govuk-colour("black");
+      @include current;
+  
+      &:after {
+        border-bottom-color: govuk-colour("black");
+        border-right-color: govuk-colour("black");
+      }
+    }
+  }
+}
+
+/* header navigation styles */
+.dwp-header-navigation {
+  background-color: govuk-colour("black");
+  padding-bottom: govuk-spacing(1);
+
+  ul {
+    @include govuk-clearfix;
+    left: -7px;
+    margin: 0 auto;
+    max-width: 960px;
+    min-height: 34px;
+    padding: 0 govuk-spacing(6);
+    position: relative;
+    
+    @include govuk-media-query($until: $nojs-mobile-nav-break-point) {
+      padding: 0 7px;
+    }
+  }
+
+  .js-enabled &.dwp-header-navigation--js-nav ul {
+    overflow: hidden;
+    height: 34px; 
+
+    @include govuk-media-query($until: $nojs-mobile-nav-break-point) {
+      height: 44px;
+    }
+  }
+
+  li {
+    box-sizing: border-box;
+    float: left;
+    margin: 0 govuk-spacing(3) 5px 0;
+    list-style-type: none;
+
+    &.dwp-header-navigation__button-list-item {
+      margin-right: 0;
+    }
+
+    @include govuk-media-query($until: $nojs-mobile-nav-break-point) {
+      margin: 0;
+    }
+  }
+
+  a, .dwp-header-navigation__overflow-menu-button {
+    @include header-nav-link-and-button-base;
+  }
+
+  a:focus {
+    color: govuk-colour("black");
+  }
+
+  .dwp-header-navigation__overflow-menu-button {
+    @include header-nav-button; 
+
+    @include govuk-media-query($until: $mobile-nav-break-point) {
+      display: none;
+    }
+  }
+
+
+  .nav-links--overflow {
+    display: none;
+
+    @include govuk-media-query($until: $mobile-nav-break-point) {
+      display: block;
+    }
+  }
+  
+
+  .nav-links--overflow.navlinks--overflow-visible {
+    display: block;
+    position: relative;
+
+
+    ul {
+      height: auto;
+      position: relative;
+      padding-left: govuk-spacing(6);
+
+      li:first-child {
+        margin-left: 0;
+      }
+
+      @include govuk-media-query($until: $nojs-mobile-nav-break-point) {
+        padding: 0 7px;
+      }
+    }
+    
+    a {
+      @include govuk-media-query($from: $mobile-nav-break-point) {
+        margin: govuk-spacing(1) 0 0 0;
+      }
+
+      &:focus,
+      &:focus-visible {
+        background-color: govuk-colour("yellow");
+        color: govuk-colour("black");
+      }
+    }
+  }
+  
+  @include govuk-media-query($until: $mobile-nav-break-point) {
+    ul {
+      height: auto;
+      overflow: visible;
+      padding: 0 govuk-spacing(1);
+      text-align: left;
+
+      a, .govuk-header__link  {
+        display: inline-block;
+        
+        &:before {
+          display: none;
+        }      
+      }
+
+      .govuk-header__link {
+        &:focus {
+          color: govuk-colour("black");
+        }
+      }
+    }
+
+    &.dwp-header-navigation--js-nav ul {
+      display: none; 
+
+      &.nav-links--mobile-visible {
+        display: block;
+        overflow: visible;
+        height: auto;
+        left: 0;
+        padding: 0;
+
+        li {
+          width: 100%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  @include govuk-media-query($from:$mobile-nav-break-point, $until: $nojs-mobile-nav-break-point ) {
+    &.dwp-header-navigation--js-nav ul { 
+      display: none; 
+    }
+
+    .js-enabled & ul {
+      display: block; 
+    }
+  }
+  
+  @include govuk-media-query($until: $nojs-mobile-nav-break-point ) {
+    &.dwp-header-navigation--nojs-mobile ul {
+      display: none;
+    }
+  }
+}
+
+/* Internal service header override - Nojs mobile navigation button */
+.dwp-header-navigation__nojs-mobile-nav-link {
+  display: none;
+
+  @include govuk-media-query($until: $nojs-mobile-nav-break-point ) {
+    display: block;
+    margin-bottom: 8px;
+    margin-left: govuk-spacing(3);
+  }
+}
+
+
+/* Internal service header override - Mobile navigation button */
+.dwp-header-navigation__mobile-nav-button {
+  @include header-nav-link-and-button-base;
+  @include header-nav-button; 
+
+  display: none;
+  float: right;
+  font-size: inherit;
+  font-weight: 700;
+
+  &:after {
+    margin: 0 0 1px 14px;
+  }
+
+  @include govuk-media-query($until: $mobile-nav-break-point ) {
+   .js-enabled & { 
+     display: inline-block;
+    }
+  }
+
+  &.dwp-header-navigation__menu-button--open {
+    background-color: transparent;
+    color: govuk-colour("light-grey");
+
+    &:after {
+      border-bottom-color: govuk-colour("light-grey");
+      border-right-color: govuk-colour("light-grey");
+      margin: 0 0 -2px 14px;
+    }
+  }
+}
+
+/* Internal service header override - applied by js to hide any links in the header component when using js mobile nav */
+@include govuk-media-query($until: $mobile-nav-break-point ) {
+  .hide-links--mobile {
+    a {
+      display: none;
+    }
+  }
+}
+

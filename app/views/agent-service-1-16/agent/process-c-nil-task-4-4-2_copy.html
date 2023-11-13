@@ -1,0 +1,181 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-4-4-2"] %}
+      <form action="process-c-nil-task-4-4-3" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-4-4-2-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-16/agent/record-id.html" %}
+
+       <!--<span class="govuk-caption-m">(*Scenario 3*)</span>-->
+        
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+   <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Which pension payments from
+          Sainsbury's should be averaged? </p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">The payments you select should represent
+          the income on the day the claim was submitted (29 June 2023).</p>
+
+
+          {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "process-c-nil-task-4-4-2",
+            name: "process-c-nil-task-4-4-2",
+            fieldset: {
+              legend: {
+                
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "Matched",
+                text: "1 June 2023, £350",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Matched",
+                text: "1 May 2023, £320",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Matched",
+                text: "1 April 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 March 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 February 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              },
+              {
+                value: "Not matched",
+                text: "1 January 2023, £300",
+                checked: (data["process-c-nil-task-4-4-2"] == "Not matched")
+              }
+            ]
+          }) }}
+
+
+
+          <!--<div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              </legend>
+             <div id="waste-hint" class="govuk-hint">
+                Select all that apply.
+              </div>
+             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                    1 June 2023, £350
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                    1 May 2023, £320
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 April 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 March 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 February 2023, £300
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    1 January 2023, £300
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>-->
+
+        
+
+        <!--{{ govukRadios({
+          idPrefix: "process-c-nil-task-4-3-1",
+          name: "process-c-nil-task-4-3-1",
+          fieldset: {
+            legend: {
+              text: "Do the payment dates, frequency and net pay match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-3-1"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            }
+          ]
+        }) }}-->
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

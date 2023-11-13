@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body govuk--version-control">declaration.0.2</p>
+
+
+    <h1 class="govuk-heading-xl">Apply for Pension Credit</h1>
+
+    <h2 class="govuk-heading-m">Use this service to start a Pension Credit application</h2>
+
+    <p class="govuk-body-m">This part of your application should take around <strong>20 minutes</strong> depending on your circumstances.</p>
+
+
+<h3 class="govuk-heading-m">Personal information  - read to the caller</h3>
+      <p class="govuk-body">We will only use your information as allowed by data protection laws.</p>
+
+      <p class="govuk-body">To find out more about how we use information and your information rights, read our <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal Information Charter</a> (opens in a new window or tab). You can get a copy of this at a jobcentre or by searching on GOV.UK.</p>
+
+<h3 class="govuk-heading-m">Confirm that you have read this to the claimant</h3>
+{{ govukCheckboxes({
+  idPrefix: "citizenship-conditional",
+  name: "confirm",
+
+  items: [
+    {
+      value: "confirm",
+      text: "I have read this to the claimant"
+
+    }
+
+  ]
+}) }}
+
+    {{ govukButton({
+      text: "Start now",
+      href: "uk-account1",
+      classes: "govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+    }) }}
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+
+</div>
+{% endblock %}

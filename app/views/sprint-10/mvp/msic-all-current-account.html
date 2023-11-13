@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-all-current-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Current account details
+      </h1>
+
+      {% set count = (data["account-count"] or 0) | int %}
+
+      <input type="hidden" name="account-count" value="{{ count + 1 }}"/>
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank or building society"
+        },
+        id: "msic-all-current-account-name",
+        name: "msic-all-current-account-name-" + count,
+        classes: "govuk-input--width-20"
+      }) }}
+
+<!--
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of the account number or roll number"
+        },
+        id: "msic-all-current-account-last-digits",
+        name: "msic-all-current-account-last-digits-" + count,
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+-->
+
+      {% set balanceTAM %}
+      {{ govukInput({
+        label: {
+          html: "Amount in this account on <strong>" + '' | formatDate + "</strong>"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-all-current-account-amount-TAM",
+        name: "msic-all-current-account-amount-TAM-" + count
+      }) }}
+      {% endset -%}
+
+            {{ govukInput({
+              label: {
+                html: "Amount in this account on <strong>"
+                  + data['claim-date-cam-date-entry-day']
+                  + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth)
+                  + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>"
+              },
+              id: "msic-all-current-account-amount-EED",
+              name: "msic-all-current-account-amount-EED-" + count,
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              idPrefix: "msic-all-current-account-amount-balanceTAM-check",
+              name: "msic-all-current-account-amount-balanceTAM-check-" + count,
+              fieldset: {
+                legend: {
+                  html: "Was the amount in this account different on <strong>" + '' | formatDate + "</strong>"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["msic-all-current-account-amount-balanceTAM-check"] == "Yes"),
+                conditional: {
+                  html: balanceTAM
+                }
+              },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (data["msic-all-current-account-amount-balanceTAM-check"] == "No")
+                }
+              ]
+            }) }}
+
+
+
+
+
+<!--data["claim-date-cam-date-entry"
+html: "Amount in this account" + data["claim-date-cam-date-entry"]""
+
+{{ data["claim-date-manual-eed-daf-yn-camDate-alternate-date"] or data["claim-date-manual-eed-daf-yn-alternate-date"] }}
+
+]-->
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Amount of money that is yours"
+          },
+          id: "msic-all-current-account-stake",
+          name: "msic-all-current-account-stake-" + count,
+          classes: "govuk-input--width-10"
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "current-owner",
+        name: "current-owner-" + count,
+        fieldset: {
+          legend: {
+            text: "Account owner",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "You",
+            text: "Only you"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account",
+            conditional: {
+              html: percentageField
+            }
+          }
+        ]
+      }) }}
+
+
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

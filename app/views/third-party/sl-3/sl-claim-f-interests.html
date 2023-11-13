@@ -1,0 +1,73 @@
+{% extends "layout-fake-searchlight.html" %}
+{% from "nav-component/macro-f.html" import nav %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Mason Rogers </h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">EO 97 25 77 M</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">28 February 1943</h1>
+
+
+      {{ nav({ active: "interests" }) }}
+
+        <p class="govuk-body govuk-!-font-size-36 govuk-!-margin-top-8 govuk-!-margin-bottom-6"><strong>Interests</p>
+
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th class="govuk-table__cell govuk-20-percent">Start date</th>
+              <th class="govuk-table__cell govuk-40-percent">Benefit</th>
+              <th class="govuk-table__cell govuk-20-percent">Frequency</th>
+              <th class="govuk-table__cell govuk-20-percent">Amount</th>
+            </tr>
+            </thead>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell table-spacer">Date</td>
+              <td scope="row" class="govuk-table__cell table-spacer"><strong>State Pension</strong> [SP]</td>
+              <td class="govuk-table__cell table-spacer">Weekly</td>
+              <td class="govuk-table__cell table-spacer">£198.00</td>
+            </tr>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell table-spacer">N/A</td>
+              <td scope="row" class="govuk-table__cell table-spacer"><strong>Pension Credit</strong> [PC]<br>Call digital team</td>
+              <td class="govuk-table__cell table-spacer">N/A</td>
+              <td class="govuk-table__cell table-spacer">£0.00</td>
+            </tr>
+            <!--
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell table-spacer">01 April 2002</td>
+              <td scope="row" class="govuk-table__cell table-spacer"><strong>Disability Living Allowance</strong> [DLA]<br>Care component / Middle rate</td>
+              <td class="govuk-table__cell table-spacer">Weekly</td>
+              <td class="govuk-table__cell table-spacer">£66.95</td>
+            </tr>
+            -->
+
+            </table>
+                                </div>
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

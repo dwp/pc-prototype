@@ -1,0 +1,137 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="start" method="post" class="form">
+
+  <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+<div class="govuk-panel--agent ">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">
+        Adviser: Download(s) 2
+      </h1>
+      <!-- <span id="citizenship-conditional-hint" class="govuk-hint govuk-!-margin-bottom-8">
+Select claims to downlaod
+</span> -->
+
+<!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Select claims to downlaod<strong></strong></p> -->
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+
+    <div class="govuk-checkboxes govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="organisation-2" name="organisation" type="checkbox" value="employment-tribunal">
+        <label class="govuk-label govuk-checkboxes__label" for="organisation-2">
+          <p class="govuk-body govuk-!-font-size-27  govuk-!-margin-bottom-0"> Pension Credit<strong></strong></p>
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+
+    <div class="govuk-checkboxes govuk-checkboxes--small">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="organisation-2" name="organisation" type="checkbox" value="employment-tribunal">
+        <label class="govuk-label govuk-checkboxes__label" for="organisation-2">
+          <p class="govuk-body govuk-!-font-size-27  govuk-!-margin-bottom-0"> Housing benefit<strong></strong></p>
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+
+
+
+
+<!-- <h2 class="govuk-heading-m govuk-!-margin-top-8">Before leaving this screen:</h2>
+      <ul class="govuk-list govuk-list--number">
+
+        <li class="govuk-!-padding-bottom-2">Download claim(s)</li>
+
+        <li class="govuk-!-padding-bottom-2">Upload claim to <strong>PTP CAM</strong> and tag as the following:</li>
+
+        <li>Business unit: <strong>Pension Service</strong></li>
+        <ul class="govuk-list">
+          <li>Classification: <strong>Supporting</strong></li>
+          <li>Issue date: <strong>DD MM YYYY</strong></li>
+        </ul>
+
+        <li>Document type:
+        <ul class="govuk-list">
+        <li>Pension Credit: <strong>PC1L</strong></li>
+        <li>Housing benefit: <strong>HCTB1 (PC)</strong></li>
+        </ul>
+        <li>Process business as usual (BAU)</li>
+        </ul> -->
+
+
+
+
+        {{ govukButton({
+          text: "Download selected",
+          classes: "govuk-!-margin-top-4 govuk-button--secondary govuk-!-margin-bottom-9",
+          href: "pdf-download-complete"
+        }) }}
+
+        {{ govukCheckboxes({
+        idPrefix: "download-pdf-checkbox",
+        name: "download-pdf-checkbox",
+        fieldset: {
+        legend: {
+        text: "",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--s"
+        }
+        },
+        items: [
+        {
+        value: "download-pdf",
+        text: "Confirm that you have downloaded this claim"
+        }
+        ]
+        }) }}
+
+</div>
+
+
+        {{ govukButton({
+          text: "Finish and close",
+          classes: "govuk-!-margin-top-4"
+        }) }}
+
+
+</form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have an share? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-shares-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-shares",
+        name: "has-shares",
+        fieldset: {
+          legend: {
+            text: "Do you have any shares?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-shares"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-shares"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

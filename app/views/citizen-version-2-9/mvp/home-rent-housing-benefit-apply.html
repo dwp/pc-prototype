@@ -1,0 +1,85 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Housing benefit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="non-deps-living-with-you" method="post" class="form">
+
+         <!------------H1 LEGEND------------>
+         {% set dynamicH1 %}
+ {% if data["home-rent-housing-benefit"] == "Yes HeUC" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Your housing payment from Universal Credit will stop if you get Pension Credit</h1>
+ {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you want to apply for Housing Benefit?</h1>{% endif %}
+ {% endset %}
+                
+              <!------------Legend--------------->
+
+      {% set legendHint %}
+
+      {% if data["home-rent-housing-benefit"] == "Yes HeUC"%}
+      <p class="govuk-hint">If you choose to apply for Housing Benefit instead, we will pass the information you give us in your Pension Credit application to your local authority who will start your application.</p>
+      {% else %}
+        <p class="govuk-hint">If you choose to apply for Housing Benefit, we will pass the information you give us in your Pension Credit application to your local authority who will start your application.</p>
+      {% endif %}
+
+      {% if data["home-rent-housing-benefit"] == "Yes HeUC"%}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Do you want to apply for Housing Benefit?</p>
+      {% else %}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2"></p>{% endif %}
+
+
+      {% endset -%}
+
+
+
+      
+
+      {{ govukRadios({
+        idPrefix: "home-rent-housing-benefit-apply",
+        name: "home-rent-housing-benefit-apply",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: legendHint
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-rent-housing-benefit-apply"] == "Yes")
+
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-rent-housing-benefit-apply"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

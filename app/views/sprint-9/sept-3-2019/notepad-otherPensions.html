@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="unclaimed-pensions-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about private pension scheme that the claimant has not claimed.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19"><strong>Have a conversation with the claimant to:</strong></p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            tell the claimant that any notional income will affect their eligibility for and entitlement to Pension Credit
+            </li>
+          <li>ask for documents from the claimant or a conference call with the pension provider to show the maximum annual pension payable
+            </li>
+            </ul>
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+          <p><strong>If documents are not available and the information cannot be gathered conference call:</strong>
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+          <li>send form PPR1 for each pension scheme that may be potentially classed as a notional income
+            </li>
+          <li>set a 6 week task from the date form PPR1 is issued
+            </li>
+          <li>take notional income into consideration when the task matures, or when the PPR1 has been returned
+            </li>
+            <li>ask an appropriate person to make a notional income decision where needed
+          </li>
+        </ul>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <p><strong>Scheme Details</strong>
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+        <li>Who is the scheme with?
+          </li>
+        <li>Date of entitlement?
+          </li>
+        <li>Lumpsum or regular payments
+          </li>
+      </ul>
+
+
+
+<br>
+
+        {{ govukTextarea({
+          name: "otherPension-more-detail",
+          id: "otherPension-more-detail",
+          label: {
+            text: "Make notes about the outcome of this converation"
+          }
+        }) }}
+
+        <!-- Hidden input to set task to complete on task-list -->
+        <input type="hidden" name="notepad-otherPensions" value="true"/>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  When can the claim start from? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="hospital-summary" method="post">
+
+
+Add in date ranges
+
+        <!-- Hidden input to set task to complete on task-list -->
+        <input type="hidden" name="claim-date-complete" value="true"/>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

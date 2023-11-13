@@ -1,0 +1,46 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="ur-mi" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-top-4">Backdating scenarios</h1>
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Working out backdating amounts</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"><a href="process-c-nil-task-4-cya-review" class="govuk-link" rel="noreferrer noopener">[1] Don't show Backdating, we dont need to show agents if its nil throughout</a></p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-backdater-a" class="govuk-link" rel="noreferrer noopener">[2] Stable backdating with no payments needed, nil claim</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-backdater-b" class="govuk-link" rel="noreferrer noopener">[3] Unstable backdating with no payments needed, nil claim</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8"><a href="process-c-nil-task-backdater-c" class="govuk-link" rel="noreferrer noopener">[4] Unstable backdating with payments needed, nil claim</a></p>
+
+      <!-- <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Section 4 [eg, amounts still under AmmAp]</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8"><a href="process-c-nil-task-4-cya-under-appam" class="govuk-link" rel="noreferrer noopener">Total weekly amount was under the applipale amount</a></p> -->
+
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Application is fine, but you need to make a change to Name, address or telephone</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8"><a href="process-c-nil-task-4-manual" class="govuk-link" rel="noreferrer noopener">[5] Unexpected outcome in section 1</a></p>
+
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-2">Unexpected within section 2 or 3</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-cya-unexpected" class="govuk-link" rel="noreferrer noopener">[6] Unexpected outcome in section 1,2 or 3</a></p>
+
+
+
+
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

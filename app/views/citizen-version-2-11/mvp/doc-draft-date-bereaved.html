@@ -1,0 +1,72 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="doc-draft-date-bereaved-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">The earliest we can consider your application from is 23 July 2021</h1>
+
+      <p class="govuk-body govuk-!-font-size-24">You told us that this is the date your partner died.</p>
+
+
+      {{ govukRadios({
+        idPrefix: "doc-draft-date-bereaved",
+        name: "doc-draft-date-bereaved",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes — consider my application from 23 July 2021",
+            checked: (data["doc-draft-date-bereaved"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No — consider my application from a different date",
+            checked: (data["doc-draft-date-bereaved"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

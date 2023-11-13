@@ -1,0 +1,367 @@
+{% extends "layout.html" %}
+
+<!-- Adds a class to increase vertical spacing for pages without a back button -->
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block pageTitle %}
+  Task list
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Alex Smith’s Pension Credit application
+      </h1>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About the claimant
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="who-is-caller" aria-describedby="eligibility-completed">
+                Eligibility questions and personal details
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="mvp-eligibility-summary" aria-describedby="eligibility-completed">
+                Eligibility outcome (PDF)
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              {% set today = '' | formatDate %}
+
+              <a class="app-task-list__task-name" href="claim-date" aria-describedby="eligibility-completed">
+                Claim start date
+                {% if data["claim-date"] == "Today" %}
+                  ({{ today }})
+                {% elif data["claim-date"] == "SPA Entitlement" %}
+                  ({{ data['back-dating-date'] | formatDate }})
+                {% elif data["claim-date"] == "Alternative date" %}
+                  ({{ data['alternate-date-day'] + ' ' + (data['alternate-date-month'] | getMonth) + ' ' + data['alternate-date-year'] }})
+                {% endif %}
+              </a>
+              {% if data["claim-date-complete"] %}
+                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+              {% else %}
+                <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">2. </span> How we contact you
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="can-contact.html" aria-describedby="eligibility-completed">
+                  Landline, mobile, SMS, & email
+                </a>
+                {% if data["contact-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="disability" aria-describedby="read-declaration-completed">
+                  Accessibility & disabilities
+                </a>
+                {% if data["contact-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="contact-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">3. </span> About where you live
+            </h2>
+            <ul class="app-task-list__items">
+                            <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="post-code-lookup" aria-describedby="eligibility-completed">
+                  Address and home ownership
+                  {% if data["home-ownership"] %} type: {{data["home-ownership"]}} {% endif %}
+                </a>
+                {% if data["address-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="address-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">4. </span> Who lives with you
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="anyone-living-with-you" aria-describedby="read-declaration-completed">
+                  Other people who live with you
+                </a>
+                {% if data["household-summary-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="household-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span> Hospitals admissions
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="hospital-yn" aria-describedby="eligibility-completed">
+                  Admission details
+                </a>
+                {% if data["hospital-yes-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="hospital-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">6. </span> Pensions & notional income
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="has-private-pension" aria-describedby="eligibility-completed">
+                  Private, workplace pensons & notional income
+                </a>
+                {% if data["notepad-otherPensions"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="notional-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">7. </span> Money, savings and investments
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="money-you-have" aria-describedby="eligibility-completed">
+                  All accounts
+                </a>
+                {% if data["money-summary-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="money-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">8. </span> Self-employment and other income
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="employment" aria-describedby="eligibility-completed">
+                  Current work status
+                </a>
+                {% if data["employment"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="other-income" aria-describedby="eligibility-completed">
+                  Other regular income
+                </a>
+                {% if data["other-income"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="earnings-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+        <!------------
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">X </span> Service kickout
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="mvp-kickout-summary" aria-describedby="mvp-kickout-summary-completed">
+                  Service kickout outcome (PDF)
+                </a>
+                {% if data["bank-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+            </ul>
+          </li>
+        </ol>
+------------>
+
+        <!------------ Final summary ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">9. </span> Payment details
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="type-of-account" aria-describedby="eligibility-completed">
+                  Bank account
+                </a>
+                {% if data["bank-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="bank-account-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ Final summary ------------>
+
+  <!------------  <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number"> </span> Temporary notepad
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="notepad-temporary" aria-describedby="eligibility-completed">
+                  Capture if we have missed anything or gone wrong.
+                </a>
+                {% if data["notepad-temporary"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="notepad-temporary">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="notepad-temporary">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="temporary-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol> ------------>
+
+        <!------------ Final summary ------------>
+
+
+
+
+    </div>
+  </div>
+
+  <form action="pension-credit-summary" method="post">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

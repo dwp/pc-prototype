@@ -1,0 +1,14 @@
+@import "node_modules/govuk-frontend/govuk/base";
+
+.xpl-part-of {
+  margin: 0 0 20px;
+  @include govuk-font(19);
+}
+
+.xpl-part-of__label {
+  display: block;
+}
+
+.xpl-part-of__link {
+  @include govuk-font(19, $weight: bold);
+}

@@ -1,0 +1,76 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="ur-record-wtl-address-select" method="post" class="form">
+
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Current addresss</h2>
+
+      <!-- <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Current address</h3> -->
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">221b Baker Street</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Marylebone</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">NW1 6XE</p>
+
+      {% set legendName1 %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Enter new post code</h3>
+      {% endset %}
+
+        {% if data["ur-search"] == "P1" %}
+
+            {{ govukInput({
+              label: {
+                html: legendName1
+              },
+              hint: {
+                text: "For example, NE1 3EU"
+              },
+              id: "ur-p1-record-wtl-address-post-code",
+              name: "ur-p1-record-wtl-address-post-code",
+              classes: "govuk-input--width-10 govuk-!-margin-bottom-2",
+              value: data["ur-p1-record-wtl-address-post-code"]
+            }) }}
+
+        {% else %}
+
+        {{ govukInput({
+          label: {
+            html: legendName1
+          },
+          hint: {
+            text: "For example, NE1 3EU"
+          },
+          id: "ur-p2-record-wtl-address-post-code",
+          name: "ur-p2-record-wtl-address-post-code",
+          classes: "govuk-input--width-10 govuk-!-margin-bottom-2",
+          value: data["ur-p2-record-wtl-address-post-code"]
+        }) }}
+
+
+        {% endif %}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </div>
+  </div>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-test-router" method="post">
+        {{ govukRadios({
+          idPrefix: "claim-date-options-backdating-yn",
+          name: "claim-date-options-backdating-yn",
+          fieldset: {
+            legend: {
+              text: "Have you been outside of the UK for longer than 4 weeks between the XX/XX/XXXX and XX/XX/XXXX?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+              },
+              hint: {
+                html: "<br><p class=\"hint\">
+                        XXXX Details
+                        </p><br>"
+              },
+          classes: "govuk-radios--inline",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["claim-date-options-backdating-yn"] == "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["claim-date-options-backdating-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

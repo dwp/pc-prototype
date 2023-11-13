@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add a shares account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-shares-account-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Shares details
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of company"
+        },
+        id: "msic-shares-account-name",
+        name: "msic-shares-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Percentage stake"
+          },
+          id: "msic-shares-account-stake",
+          name: "msic-shares-account-stake",
+          classes: "govuk-input--width-10"
+        }) }}
+      {% endset %}
+
+          {{ govukInput({
+        label: {
+          text: "Total number of shares you hold"
+        },
+        id: "msic-shares-account-amount",
+        name: "msic-shares-account-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+<!--
+      {{ govukRadios({
+        idPrefix: "msic-shares-account-read-from-statement",
+        name: "msic-shares-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

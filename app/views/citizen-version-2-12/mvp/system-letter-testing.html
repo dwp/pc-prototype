@@ -1,0 +1,42 @@
+{% extends "layout-ur.html" %}
+
+{% block pageTitle %}
+  Letter testing - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row govuk-!-padding-bottom-8">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="claimant-name-a" method="post" class="form">
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-6">Testing DWP letters</h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">We won't be collecting any personal information, just a mock letter so that we can try to improve the way DWP communicate Pension Credit decisions.</p>
+
+        {# <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-4"><a href="/citizen-version-2-12/mvp/letter-march-2023.pdf" target="_blank">Open letter in a new window [March 2023]</a></p> #}
+        {# <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-4"><a href="/citizen-version-2-12/mvp/letter-26-may.pdf" target="_blank">Open letter in a new window [May 2022]</a></p> #}
+        <!-- <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-4"><a href="/citizen-version-2-12/mvp/letter-17-jan.pdf" target="_blank">Open letter in a new window [Jan 2022]</a></p> -->
+
+
+
+        <!-- <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-8"><a href="/citizen-version-2-12/mvp/letter-17-jan.pdf" download="letter-test-17-jan">Download letter as a PDF</a></p> -->
+
+        <!-- {{ govukButton({
+          text: "Open letter as PDF",
+          classes: "govuk-button--secondary govuk-!-margin-bottom-6",
+          href: "/citizen-version-2-12/mvp/letter-17-jan.pdf"
+        }) }} -->
+
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add start date - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yn" method="post">
+
+      <div class="govuk-panel--agent">
+
+<!--Enter the earliest entitlement date-->
+
+        {{ govukDateInput({
+          id: "claim-date-manual-eed-date",
+          namePrefix: "claim-date-manual-eed-date",
+          fieldset: {
+            legend: {
+              html: "<span class=\"agent-action\">Agent: </span>Enter the earliest entitlement date",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2019"
+          }
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+</div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

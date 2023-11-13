@@ -1,0 +1,44 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/exit">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Take this call using the existing process</h1>
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Finish and close"
+        }) }}
+
+        {{ govukButton({
+          name: "process-c-nil-task-1-6",
+          value: "Other enquiry",
+          checked: (data["process-c-nil-task-1-6"] == "Unfinished"),
+          classes: "govuk-button--secondary",
+          text: "Save and exit"
+        }) }}
+        </div>
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

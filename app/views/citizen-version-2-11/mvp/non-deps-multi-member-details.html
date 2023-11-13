@@ -1,0 +1,71 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="benefit-UC-Carer" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Information about other people who live with you</h1>
+
+         <!------------Legend------------>
+           {% set legendMemberDetials %}
+           <p class="govuk-hint"><strong>For each person, tell us:</strong></p>
+           <ul class="govuk-hint govuk-list govuk-list--bullet">
+           <li>their name</li>
+           <li>their date of birth</li>
+           <li>their relationship to you</li>
+           <li>any income they have from employment or self-employment</li>
+           <li>the date you started living together</li>
+           <li>the date they started paying towards the rent or mortgage, if they do pay</li>
+
+
+           </ul>
+           {% endset %}
+         <!------------Legend------------>
+
+
+
+
+
+           {{ govukTextarea({
+             label: {
+               classes: "govuk-label--s",
+               html: ""
+                    },
+             hint: {
+               html: legendMemberDetials
+             },
+             id: "non-deps-multi-member-details",
+             name: "non-deps-multi-member-details",
+             classes: "govuk-input--width-100",
+             attributes: {
+               maxlength: 3000
+             }
+           }) }}
+
+           <div class="govuk-inset-text">
+            You should tell people living with you that DWP might use their details as part of your application. This includes any information you provide or that DWP already holds about them.
+          </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

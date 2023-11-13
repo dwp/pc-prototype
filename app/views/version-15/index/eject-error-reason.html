@@ -1,0 +1,115 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  eject-error-reason - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="eject-pension-credit-summary" method="post" class="form">
+
+      <div class="govuk-panel--agent">
+
+
+      {% set agentProblem %}
+      {{ govukInput({
+        label: {
+          text: "What was the issue?"
+        },
+        id: "eject-error-reason-details",
+        name: "eject-error-reason-details",
+        classes: "govuk-input--width-60",
+        attributes: {
+          maxlength: 60
+        }
+      }) }}
+      {% endset -%}
+
+      {% set claimantProblem %}
+      {{ govukInput({
+        label: {
+          text: "What was the issue?"
+        },
+        id: "eject-error-reason-details",
+        name: "eject-error-reason-details",
+        classes: "govuk-input--width-60",
+        attributes: {
+          maxlength: 60
+        }
+      }) }}
+      {% endset -%}
+
+      {% set somethingElse %}
+      {{ govukInput({
+        label: {
+          text: "What was the issue?"
+        },
+        id: "eject-error-reason-details",
+        name: "eject-error-reason-details",
+        classes: "govuk-input--width-60",
+        attributes: {
+          maxlength: 60
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "eject-error-reason",
+        name: "eject-error-reason",
+        fieldset: {
+          legend: {
+            html: "Adviser: Reason for not finishing this application",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+       },
+      hint: {
+        text: "Do not include any personally identifiable information. For example names, National Insurance numbers or addresses."
+      },
+      items: [
+        {
+          value: "Agent problem",
+          text: "Agent had to stop taking the application",
+          checked: (data["eject-error-reason"] == "Agent problem"),
+          conditional: {
+            html: agentProblem
+          }
+        },
+          {
+            value: "Claimant problem",
+            text: "Claimant had to stop taking the application",
+            checked: (data["eject-error-reason"] == "Claimant problem"),
+            conditional: {
+              html: claimantProblem
+            }
+          },
+          {
+            value: "Something else",
+            text: "Something else",
+            checked: (data["eject-error-reason"] == "Something else"),
+            conditional: {
+              html: somethingElse
+            }
+            }
+        ]
+      }) }}
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

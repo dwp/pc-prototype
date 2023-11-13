@@ -1,0 +1,589 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+
+      <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-full">
+              <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Claim summary</h1>
+          </div>
+      </div>
+
+
+      {% if data['qd-search-nino'] === 'ZZ439386A' %}
+
+        <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+
+                  <p class="govuk-body govuk-!-font-weight-bold"> Date claim submitted</p>
+
+                </div>
+
+
+                <div class="govuk-grid-column-two-thirds">
+
+                  <p>02 January 2022</p>
+
+                </div>
+
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold"> Backdating period start date</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>2 October 2021</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Date processed</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>02 January 2022</p>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold"> 	Entitlement status</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>Not entitled</p>
+
+            </div>
+        </div>
+
+
+
+
+      {% elif data['qd-search-nino'] === 'EO972577A' %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold"> Date claim submitted</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>10 June 2022</p>
+
+          </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold"> Backdating period start date</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>None</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Date processed</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>10 June 2022</p>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Entitlement status</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>Not entitled</p>
+
+            </div>
+        </div>
+
+
+
+      {% elif data['qd-search-nino'] === 'AB987654A' %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold"> Date claim submitted</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>2 April 2022</p>
+
+          </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold"> Backdating period start date</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>02 January 2022</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Date processed</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>3 April 2022</p>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Entitlement status</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>Not entitled</p>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+      {% else %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold"> Date claim submitted</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>28 February 2022</p>
+
+          </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold"> Backdating period start date</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>28 November 2021</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Date processed</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>28 February 2022</p>
+
+            </div>
+
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Entitlement status</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>Not entitled</p>
+
+            </div>
+        </div>
+
+
+      {% endif %}
+
+
+        <div class="govuk-grid-column-one-full govuk-!-margin-bottom-7">
+
+          <p><a href="qd-claim-notes" class="govuk-link">View claim notes</a></p>
+
+        </div>
+
+
+        <div class="divider govuk-!-margin-bottom-7">
+          <!--Break line-->
+        </div>
+
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-7">Information the claimant might ask you to check</h2>
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-4">Qualifying benefit and State Pension details you can check in Searchlight</h3>
+
+
+
+
+      {% if data['qd-search-nino'] === 'ZZ439386A' %}
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Qualifying benefits</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>No</p>
+
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Weekly State Pension amount</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>£188</p>
+
+            </div>
+        </div>
+
+
+      {% elif data['qd-search-nino'] === 'EO972577A' %}
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Qualifying benefits</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>No</p>
+
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Weekly State Pension amount</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>£201</p>
+
+            </div>
+        </div>
+
+
+
+      {% else %}
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Qualifying benefits</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>No</p>
+
+            </div>
+        </div>
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+
+              <p class="govuk-body govuk-!-font-weight-bold">Weekly State Pension amount</p>
+
+            </div>
+
+
+            <div class="govuk-grid-column-two-thirds">
+
+              <p>£188</p>
+
+            </div>
+        </div>
+
+
+
+      {% endif %}
+
+
+
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-4">Details you can check with the claimant</h3>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold">Living with partner</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>No</p>
+
+          </div>
+      </div>
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold">Ground rent</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>None</p>
+
+          </div>
+      </div>
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+
+            <p class="govuk-body govuk-!-font-weight-bold">Service charges</p>
+
+          </div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <p>None</p>
+
+          </div>
+      </div>
+
+
+
+      <p class="govuk-body govuk-!-margin-bottom-7"><a href="/agent-service-1-10/agent/jennifer-claim.pdf" target="_blank">View full application (PDF)</a></p>
+
+
+
+
+      <div class="divider govuk-!-margin-bottom-4">
+        <!--Break line-->
+      </div>
+
+      <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Other help</h2>
+
+
+
+
+      <p> <a href="qd-help-summary" class="govuk-link">Find out what other help is available</a></p>
+
+
+
+      <div class="divider govuk-!-padding-top-4">
+        <!--Break line-->
+      </div>
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/input/macro.njk" import govukInput %}
+
+    {% set notesHtml %}
+    {{ govukTextarea({
+      name: "summary-notes",
+      id: "summary-notes",
+      rows: 4,
+      label: {
+        text: "Notes about the claim",
+        classes: "govuk-label--m",
+        isPageHeading: true
+      },
+      hint: {
+        text: ""
+      }
+    }) }}
+    {% endset -%}
+
+
+
+    {{ govukRadios({
+      idPrefix: "notes",
+      name: "notes",
+      fieldset: {
+        legend: {
+          text: "Do you need to leave notes about the claim?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l govuk-!-padding-top-4"
+        }
+      },
+      hint: {
+        text: "For example, the call reason, any action you took and any other relevant information."
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          conditional: {
+            html: notesHtml
+          }
+        },
+        {
+          value: "No",
+          text: "No",
+          conditional: {
+            html: phoneHtml
+          }
+        }
+      ]
+    }) }}
+
+
+    {% if data['qd-start'] === 'admin' %}
+
+    <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Save and finish"
+    }) }}
+    <a class="govuk-link" href="qd-start">Take a claimant through security</a>
+    </div>
+
+    {% else %}
+
+    {{ govukButton({
+      text: "Save and finish"
+    }) }}
+
+    {% endif %}
+
+
+  </div>
+
+</div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

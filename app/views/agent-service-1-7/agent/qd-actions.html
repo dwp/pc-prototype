@@ -1,0 +1,84 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-actions-router" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">What else can I help you with?</h1>
+
+
+      {{ govukRadios({
+        idPrefix: "qd-actions",
+        name: "qd-actions",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "other-help",
+            text: "Give more information on help in other areas",
+            checked: (data["qd-actions"] == "other-help")
+
+          },
+          {
+            value: "changes",
+            text: "Record a change to a claim",
+            checked: (data["qd-actions"] == "changes")
+          },
+          {
+            value: "mr",
+            text: "Request a Mandatory Reconsideration",
+            checked: (data["qd-actions"] == "mr")
+          },
+          {
+            value: "ap",
+            text: "Give more information on automated processing",
+            checked: (data["qd-actions"] == "ap")
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

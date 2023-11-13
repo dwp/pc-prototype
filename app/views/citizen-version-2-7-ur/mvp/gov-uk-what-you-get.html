@@ -1,0 +1,220 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+How to Claim - Pension Credit
+{% endblock %}
+
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Working, jobs and pensions</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">State Pension</a>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Pension Credit
+        </h1>
+
+
+        {% include "citizen-version-2-6/mvp/gov-uk-menu.html" %}
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l  class="govuk-heading-xl">What you could get</h2>
+
+        <p class="govuk-body">The basic amount of Pension credit tops up your weekly income to £173.75 for single people or £265.20 for couples.</p>
+
+<p class="govuk-body">The basic amount could be increased with extra amounts if you have other responsibilities and costs.</p>
+
+<p class="govuk-body">These amounts make up what is called the Guarantee Credit part of Pension Credit.</p>
+
+<h2 class="govuk-heading-m">If you have a severe disability</h2>
+
+<p class="govuk-body">You could get an extra £66.95 a week if you get:
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Attendance Allowance </li>
+    <li>the middle or highest rate care component of Disability Living Allowance (DLA) </li>
+    <li>Personal Independence Payment (PIP) </li>
+    <li>Armed Forces Independence Payment (AFIP) </li>
+</ul>
+
+<h2 class="govuk-heading-m">If you care for another adult</h2>
+<p class="govuk-body">You could get an extra £37.50 a week if:</p>
+<ul class="govuk-list govuk-list--bullet">
+<li>you get Carer’s Allowance</li>
+<li>you have claimed Carer's Allowance but are not being paid because you already get another benefit paying a higher amount</li>
+</ul>
+
+<p class="govuk-body">If you have a partner, you can both get this extra amount if you have claimed or are getting Carer's Allowance.</p>
+
+
+<h2 class="govuk-heading-m">If you are responsible for children or young people</h2>
+  <p class="govuk-body">You could get an extra amount if you are the main carer for children or young people that live with you.</p>
+
+  <p class="govuk-body">A child is anyone under 16 years old. A young person is between 16 and 19 and must be in non-advanced education. For example, studying for GSCEs or A levels.</p>
+
+  <p class="govuk-body">You could get an extra £54.32 a week for each child or young person. This is increased to £64.82 a week for the first child if they were born before 6 April 2017.</p>
+
+<p class="govuk-body">If the child or young person is disabled, you could also get an extra amount of either:
+  <ul class="govuk-list govuk-list--bullet">
+    <li>£29.52 a week if they get DLA or PIP</li>
+    <li>£92.12 a week if they are blind or they get  the highest rate care component of DLA, or
+the enhanced daily living component of PIP</li>
+    </ul>
+
+<p class="govuk-body">You cannot get this additional payment through Pension Credit if you get Tax Credits.</p>
+
+
+<h2 class="govuk-heading-m">If you have housing costs</h2>
+
+  <p class="govuk-body">You could get an extra amount to cover your housing costs, such as:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>ground rent</li>
+    <li>some service charges</li>
+    <li>charges for tents and site rents</li>
+  </ul>
+
+  <p class="govuk-body">The amount you could get depends on your housing costs.</p>
+
+
+  <p class="govuk-body">If you get Pension Credit, you can also apply for:</p>
+  <ul class="govuk-list govuk-list--bullet">
+  <li>Council Tax Reduction</li>
+  <li>Housing Benefit if you rent the property you live in, or support with mortgage interest if you own it</li>
+
+</ul>
+
+
+
+
+
+  <h2 class="govuk-heading-m">If you have savings</h2>
+
+  <p class="govuk-body">If you reached State Pension age before 6 April 2016, you could also get an extra amount if you have made some provision for retirement, such as savings or a second pension.
+
+    <p class="govuk-body">This is called Savings Credit and is up to £13.97 a week for single  people and £15.62 a week for couples.</p>
+
+    <p class="govuk-body">You might still get some Savings Credit even if you don’t get the Guarantee Credit part of Pension Credit.</p>
+
+  <h2 class="govuk-heading-m">Find out how much you could get</h2>
+
+
+    <p class="govuk-body">Use the <a href="/pension-credit-calculator">Pension Credit calculator</a> to work out how much you might get.</p>
+
+
+
+
+    <h2 class="govuk-heading-m  id="how-youre-paid">How you’re paid</h2>
+
+    <p class="govuk-body">Find out <a href="/how-to-have-your-benefits-paid">how and when your benefits are paid</a>.</p>
+
+
+
+
+
+        <div class="pagination govuk-!-margin-top-8">
+            <a href="gov-uk-eligibility" class="gem-c-pagination__link" rel="prev">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Previous
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">Eligibility</span>
+            </a>
+
+        </div>
+        <div class="pagination">
+            <a href="gov-uk-start" class="gem-c-pagination__link" rel="next">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Next
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">How to apply</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "citizen-version-2-4/mvp/gov-uk-side-menu.html" %}
+    </div>
+
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-contextual-footer">
+
+            <div class="gem-c-related-navigation">
+
+
+
+
+
+                <nav role="navigation" class="gem-c-related-navigation__nav-section"
+                    aria-labelledby="related-nav-topics-250e20b6" data-module="gem-toggle">
+
+                    <h2 class="govuk-heading-l  class="govuk-heading-s gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+
+                    <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+                        <li class="gem-c-related-navigation__link"><a
+                                class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer"
+                                data-track-category="relatedLinkClicked" href="../state_pension_browse">State
+                                Pension</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

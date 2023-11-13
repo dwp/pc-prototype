@@ -1,0 +1,165 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="non-deps-member-details" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+        {% set OtherDetails %}
+
+        <!------------SUBHEAD LEGEND------------>
+          {% set dynamicSubHead %}
+          <p class="govuk-body govuk-!-font-weight-bold">Describe your relationship with this person</p>
+          {% endset %}
+        <!------------Legend--------------->
+
+
+
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: dynamicSubHead
+          },
+          hint: {
+            text: ""
+          },
+          id: "non-deps-member-category-OtherDetails",
+          name: "non-deps-member-category-OtherDetails",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+
+      {% endset %}
+
+      {% set RelationshipDetails %}
+
+      <!------------SUBHEAD LEGEND------------>
+        {% set dynamicRelationshipSubHead %}
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">Who is this person?</p>
+        {% endset %}
+      <!------------Legend--------------->
+
+      {{ govukInput({
+        label: {
+          html: dynamicRelationshipSubHead
+        },
+        hint: {
+          text: "For example, daughter, brother or friend."
+        },
+        id: "non-deps-relationship",
+        name: "non-deps-relationship",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["non-deps-relationship"]
+      }) }}
+
+
+
+        {% endset %}
+
+      <!------------ CR ENDS--------------->
+
+
+
+
+      {{ govukCheckboxes({
+        name: "non-deps-member-category",
+        fieldset: {
+          legend: {
+            text: "What is your relationship to the person who lives with you?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          text: "Select all that apply. For example, this person may be a close relative or friend who is also a joint tenant.",
+          classes: "govuk-fieldset__legend--s govuk-!-margin-bottom-6"
+        },
+        items: [
+             {
+             value: "A close relative or friend",
+             text: "A close relative or friend",
+             checked: data['non-deps-member-category'] == "A close relative or friend",
+
+           hint: {
+             text: "A close relative is a parent, parent-in-law, son, son-in-law, daughter, daughter-in-law, step-parent, step-son, step-daughter, brother, sister, or anyone that is the partner of one of these people."
+           },
+                conditional: {
+                  html: RelationshipDetails
+                }
+              },
+           {
+             value: "Commercial boarders",
+             text: "A commercial boarder, lodger or subtenant",
+             checked: data['non-deps-member-category'] == "Commercial boarders",
+              hint: {
+                text: "Someone who pays you to share your home or rent part of the property."
+              }
+           },
+
+           {
+             value: "Certain joint tenants or owner occupiers",
+             text: "A joint tenant or owner occupier",
+             checked: data['non-deps-member-category'] == "Certain joint tenants or owner occupiers",
+              hint: {
+                text: "Someone who is named on the mortgage or tenancy agreement."
+              }
+           },
+           {
+             value: "Anyone who is separately liable to make payments to the landlord",
+             text: "A person who is separately liable to make payments to the landlord",
+             checked: data['non-deps-member-category'] == "Anyone who is separately liable to make payments to the landlord",
+              hint: {
+                text: "Someone who has a separate agreement with the same landlord as you."
+              }
+           },
+           {
+             value: "Certain volunteers from charitable organisations",
+             text: "Someone from a charity or voluntary organisation",
+             checked: data['non-deps-member-category'] == "Certain volunteers from charitable organisations",
+              hint: {
+                text: "Someone who volunteers or is paid to live in your home to care for you."
+              }
+            },
+            {
+              value: "Landlords/landladies and their families",
+              text: "A landlord landlady and their family",
+              checked: data['non-deps-member-category'] == "Landlords/landladies and their families",
+               hint: {
+                 text: ""
+               }
+            },
+           {
+             value: "Other",
+             text: "Someone else",
+             checked: data['non-deps-member-category'] == "Other",
+                conditional: {
+                  html: OtherDetails
+                }
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

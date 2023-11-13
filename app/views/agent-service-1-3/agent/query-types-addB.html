@@ -1,0 +1,75 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+
+
+    {{ govukCheckboxes({
+      idPrefix: "query_types",
+      name: "query-types",
+      fieldset: {
+        legend: {
+          text: "Select query types",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "Language",
+          text: "Query regarding language in letter",
+          checked: (data["query-types"] == "Language")
+
+        },
+        {
+          value: "Review",
+          text: "New information or customer error",
+          checked: (data["query-types"] == "Review")
+
+        },
+        {
+          value: "Automated processing",
+          text: "Automated processing",
+          checked: (data["query-types"] == "Automated processing")
+
+        },
+        {
+          value: "Contest",
+          text: "Contest",
+          checked: (data["query-types"] == "Contest")
+
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Done"
+    }) }}
+
+    <br> <a href="query-phone-help">...</a>
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

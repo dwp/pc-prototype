@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which account do you want us to pay any Pension Credit into? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="msic-pc-payment-summary" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Which account do you want us to pay any Pension Credit into?
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of account"
+        },
+        id: "name-on-account",
+        name: "name-on-account",
+        classes: "govuk-input--width-20",
+        value: data["name-on-account"]
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank or building society"
+        },
+        id: "msic-pc-payment-alternative-account-name",
+        name: "msic-pc-payment-alternative-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+{{ govukInput({
+  name: "sort-code",
+  id: "sort-code",
+  classes: "govuk-input--width-10",
+  value: data["sort-code"],
+  label: {
+    text: "Sort code"
+  }
+}) }}
+
+{{ govukInput({
+  name: "Account number",
+  id: "Account number",
+  classes: "govuk-input--width-10",
+  value: data["account number"],
+  label: {
+    text: "Account number"
+  }
+}) }}
+
+<!--
+{{ govukInput({
+  name: "Roll number",
+  id: "Roll number",
+  classes: "govuk-input--width-20",
+  value: data["roll-number"],
+  label: {
+    html: "Roll or reference number<br>"
+  },
+  hint: {
+    text: "If your account has a roll or reference number, you need to provide it. You will find it on your statement or passbook."
+  }
+}) }}
+-->
+
+
+{% set buildingSociety %}
+
+{{ govukInput({
+  name: "Roll number",
+  id: "Roll number",
+  classes: "govuk-input--width-20",
+  value: data["roll-number"],
+  label: {
+    html: "Roll or reference number"
+  },
+  hint: {
+    text: ""
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "msic-pc-payment-alternative-account-bank-buildings",
+  name: "msic-pc-payment-alternative-account-bank-buildings",
+  fieldset: {
+    legend: {
+      text: "Does your account have a roll or reference number?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+{
+  value: "Building society",
+  text: "Yes",
+  checked: (data["notepad-care-nursing-home-status"] == "Building society"),
+    conditional: {
+      html: buildingSociety
+    }
+  },
+  {
+      value: "Bank account",
+      text: "No",
+      checked: (data["dischargeDate"] == "Bank account")
+  }
+  ]
+}) }}
+
+<p class="govuk-body govuk-!-font-weight-bold">
+  If this account is shared with someone else, only tell<br>us about the amount of money that is yours.
+</p>
+
+{{ govukInput({
+  label: {
+    html: "How much money did you have in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+  },
+  id: "msic-pc-payment-alternative-account-EED",
+  name: "msic-pc-payment-alternative-account-EED",
+  classes: "govuk-input--width-20"
+}) }}
+
+{{ govukInput({
+  label: {
+  html: "How much money did you have in this account on  <strong>" + '' | formatDate + "?</strong>"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-pc-payment-alternative-account-TODAY",
+  name: "msic-pc-payment-alternative-account-TODAY"
+}) }}
+
+
+<br>
+
+<br>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add Unit Trust account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-unit-trust-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Unit trust details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of trust"
+        },
+        id: "msic-unit-trust-account-name",
+        name: "msic-unit-trust-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      <!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // BALANCE ONLY  ----------------------------------------------------------------------------------------->
+
+{% set balanceEED %}
+      {{ govukInput({
+        label: {
+          html: "How many units did you own on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+        },
+        id: "msic-unit-trust-account-units-EED",
+        name: "msic-unit-trust-account-units-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "What was the bid price on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+        },
+        id: "msic-unit-trust-account-price-EED",
+        name: "msic-unit-trust-account-price-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+
+{% endset -%}
+
+<!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+
+{% set balanceDateEED %}
+{{ govukDateInput({
+  id: "msic-unit-trust-account-amount-EED-date-evidence",
+  namePrefix: "msic-unit-trust-account-amount-EED-date-evidence",
+  fieldset: {
+    legend: {
+      html: "<strong>Date these figures are from</strong>"
+    }
+  },
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["msic-unit-trust-account-amount-EED-date-evidence-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["msic-unit-trust-account-amount-EED-date-evidence-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["msic-unit-trust-account-amount-EED-date-evidence-year"]
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    html: "How many units did you own on this date?"
+  },
+  id: "msic-unit-trust-account-units-EED",
+  name: "msic-unit-trust-account-units-EED",
+  classes: "govuk-input--width-20"
+}) }}
+
+{{ govukInput({
+  label: {
+    html: "What was the bid price on this date?"
+  },
+  id: "msic-unit-trust-account-price-EED",
+  name: "msic-unit-trust-account-price-EED",
+  classes: "govuk-input--width-20"
+}) }}
+{% endset -%}
+
+
+
+<!--------------- (1) EARLIEST ENTITLEMENT DATE // CHECK ----------------------------------------------------------------------------------------->
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "msic-unit-trust-account-amount-balanceEED-check",
+        name: "msic-unit-trust-account-amount-balanceEED-check",
+        fieldset: {
+          legend: {
+            html: "Do you know the value of your investment in this trust on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["msic-unit-trust-account-amount-balanceEED-check"] == "Yes"),
+          conditional: {
+            html: balanceEED
+          }
+        },
+          {
+            value: "No",
+            text: "No, I know the value on a different date",
+            checked: (data["msic-unit-trust-account-amount-balanceEED-check"] == "No"),
+            conditional: {
+              html: balanceDateEED
+            }
+          }
+        ]
+      }) }}
+
+
+      <!--------------- (2) TODAY // BALANCE ONLY ----------------------------------------------------------------------------------------->
+
+
+      {% set balanceToday %}
+
+        {{ govukInput({
+          label: {
+          html: "How many units did you own on <strong>" + '' | formatDate + "?</strong>"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-unit-trust-account-units-TODAY",
+          name: "msic-unit-trust-account-units-TODAY"
+        }) }}
+
+        {{ govukInput({
+          label: {
+          html: "What was the bid price on <strong>" + '' | formatDate + "?</strong>"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-unit-trust-account-price-TODAY",
+          name: "msic-unit-trust-account-price-TODAY"
+        }) }}
+
+      {% endset -%}
+
+      <!--------------- (2) TODAY // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+        {% set balanceDateToday %}
+
+          {{ govukDateInput({
+            id: "msic-unit-trust-account-amount-TODAY-date-evidence",
+            namePrefix: "msic-unit-trust-account-amount-TODAY-date-evidence",
+            fieldset: {
+              legend: {
+                html: "<strong>Date these figures are from</strong>"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["msic-unit-trust-account-amount-TODAY-date-evidence-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["msic-unit-trust-account-amount-TODAY-date-evidence-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["msic-unit-trust-account-amount-TODAY-date-evidence-year"]
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+            html: "How many units did you own on this date?"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-unit-trust-account-units-TODAY",
+            name: "msic-unit-trust-account-units-TODAY"
+          }) }}
+
+          {{ govukInput({
+            label: {
+            html: "What was the bid price on this date?"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-unit-trust-account-price-TODAY",
+            name: "msic-unit-trust-account-price-TODAY"
+          }) }}
+        {% endset -%}
+
+
+
+        <!--------------- (2) TODAY CHECK  ----------------------------------------------------------------------------------------->
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "msic-unit-trust-account-amount-balanceTODAY-check",
+      name: "msic-unit-trust-account-amount-balanceTODAY-check",
+      fieldset: {
+        legend: {
+          html: "Do you know the value of your investment in this trust on <strong>" + '' | formatDate + "?</strong>"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["msic-unit-trust-account-amount-balanceTODAY-check"] == "Yes"),
+        conditional: {
+          html: balanceToday
+        }
+      },
+        {
+          value: "No",
+          text: "No, I know the value on a different date",
+          checked: (data["msic-unit-trust-account-amount-balanceTODAY-check"] == "No"),
+          conditional: {
+            html: balanceDateToday
+          }
+        }
+      ]
+    }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

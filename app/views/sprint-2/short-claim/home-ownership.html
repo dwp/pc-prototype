@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you own the house, rent it or neither? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "address-choice"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-ownership-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "home-ownership",
+        name: "home-ownership",
+        fieldset: {
+          legend: {
+            text: "Do you own or rent the place where you live?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Own",
+            text: "Own",
+            checked: (data["home-ownership"] == "Own")
+          },
+          {
+            value: "Rent",
+            text: "Rent",
+            checked: (data["home-ownership"] == "Rent")
+          },
+          {
+            value: "Neither",
+            text: "Neither",
+            checked: (data["home-ownership"] == "Neither")
+          },
+          {
+            value: "Care home",
+            text: "Care home",
+            checked: (data["home-ownership"] == "Care home")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-11/mvp/introduction"> -->
+        <form method="post" action="wrap-up">
+
+        <span class="govuk-caption-m">[1-3]</span>
+
+
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You will need to call us back once it has been 35 days or more</h1>
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">If you can, tell the caller what date to call back if they need to.</p>
+          <!-- <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">To get you the right help, I need to transfer you through to one of my colleagues</h1>
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Transfer call to G4S enquiry line.</p> -->
+          {{ govukButton({
+          text: "Continue",
+          classes: "govuk-button dont-print govuk-!-margin-top-6"
+          }) }}
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-cash" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Adding a new current account
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank"
+        },
+        id: "current-name",
+        name: "current-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of account"
+        },
+        id: "current-last-digits",
+        name: "current-last-digits",
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Money in the account?
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Total value"
+        },
+        id: "current-value",
+        name: "current-value",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "current-owner",
+        name: "current-owner",
+        fieldset: {
+          legend: {
+            text: "Who's is this account?"
+          }
+        },
+        items: [
+          {
+            value: "My Account",
+            text: "My Account"
+          },
+          {
+            value: "Partners",
+            text: "Partners"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Any other current accounts
+      </h2>
+
+      <p class="govuk-body">
+        <a href="">Add^ current account</a>
+      </p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Email confirmation? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        Is this email address correct?
+      </h1>
+
+
+      <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-6"> {{ data["email-address"] | typoTLD }}</p>
+
+
+      {% set emailAddressChange %}
+      {{ govukInput({
+        label: {
+          html: legendHint
+        },
+        hint: {
+          text: "Enter the correct email address"
+        },
+        id: "email-addressC",
+        name: "email-addressC",
+        type: "email-addressC",
+        autocomplete: "email",
+        spellcheck: false,
+        value: ""
+      }) }}
+      {% endset %}
+
+
+
+      {{ govukRadios({
+        name: "del-auth-email-reconfirmation",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes, use this email address for the confirmation email",
+            checked: (data["del-auth-email-reconfirmation"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No, I need to change it",
+            checked: (data["del-auth-email-reconfirmation"] == "No"),
+                  conditional: {
+                    html: emailAddressChange
+        }
+          }
+        ]
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-padding-bottom-6"><a href="XXX">@pete I need help?</a></p> -->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

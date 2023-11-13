@@ -1,0 +1,73 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post" class="form">
+
+
+      {{ govukRadios({
+        idPrefix: "del-auth-claim-help-who",
+        name: "del-auth-claim-help-who",
+        fieldset: {
+          legend: {
+            text: "Who helped you make this application?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+        {
+          value: "Charity",
+          text: "Someone from a charity or organisation that you have asked for help"
+        },
+        {
+          value: "Family member",
+          text: "A family member",
+          checked: data['del-auth-claim-help-who'] == "Family member"
+        },
+        {
+          value: "Friend",
+          text: "A friend",
+          checked: data['del-auth-claim-help-who'] == "Friend"
+        },
+        {
+          value: "SomeoneElse",
+          text: "Someone else",
+          checked: data['del-auth-claim-help-who'] == "SomeoneElse",
+          conditional: {
+            html: helpIDSomeoneElse
+          }
+        }
+        ]
+      }) }}
+
+<!--
+      ,
+      checked: data['del-auth-claim-help-who'] == "Charity",
+      conditional: {
+        html: helpIDCharity
+      } -->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

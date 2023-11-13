@@ -1,0 +1,164 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="home-responsible-CTR-HB" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Details of people that live with you</h1>
+
+
+        {% set householdMemberX %}
+          {% set bloodHint %}
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>their name</li>
+              <li> their national Insurance number</li>
+              <li>their date of birth</li>
+              <li>the details of any full-time or part-time education</li>
+              <li>the details of any full-time or part-time employment</li>
+              <li>the amount any money they pay you and how often they pay you</li>
+            </ul>
+          {% endset %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              text: "Tell us:"
+             },
+            hint: {
+              html: bloodHint
+            },
+            id: "disregards-blood-yes",
+            name: "disregards-blood-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+
+
+
+          <!---- ——————— ---->
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            name: 'Household member 1',
+            value: "Household member 1",
+            html: "Household member 1",
+            conditional: {
+              html: householdMemberX
+            }
+          },
+          {
+            name: 'Household member 2',
+            value: "Household member 2",
+            html: "Household member 2",
+            conditional: {
+              html: householdMemberX
+            }
+          },
+            {
+              name: 'Household member 3',
+              value: "Household member 3",
+              html: "Household member 3",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 4',
+              value: "Household member 4",
+              html: "Household member 4",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 5',
+              value: "Household member 5",
+              html: "Household member 5",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 6',
+              value: "Household member 6",
+              html: "Household member 6",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 7',
+              value: "Household member 7",
+              html: "Household member 7",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 8',
+              value: "Household member 8",
+              html: "Household member 8",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 9',
+              value: "Household member 9",
+              html: "Household member 9",
+              conditional: {
+                html: householdMemberX
+              }
+            },
+            {
+              name: 'Household member 10',
+              value: "Household member 10",
+              html: "Household member 10",
+              conditional: {
+                html: householdMemberX
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

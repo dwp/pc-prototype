@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Hospital admission and discharge - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Change admission and discharge dates for hospital
+      </h1>
+
+      <form method="post">
+
+        {{ govukDateInput({
+          id: "admission",
+          namePrefix: "admission",
+          fieldset: {
+            legend: {
+              text: "Hospital admission"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: admission["day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: admission["month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: admission["year"]
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "discharge",
+          namePrefix: "discharge",
+          fieldset: {
+            legend: {
+              text: "Hospital discharge"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: discharge["day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: discharge["month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: discharge["year"]
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

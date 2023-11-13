@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Second property details? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-second-property-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+      <h1 class="govuk-heading-xl">
+        Agent: Fill our A64a post Pension Credit application. A note will be added to the PDF to remind you.
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Property reference to identify this property"
+        },
+        id: "msic-second-property-reference",
+        name: "msic-second-property-reference",
+        classes: "govuk-input--width-10"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

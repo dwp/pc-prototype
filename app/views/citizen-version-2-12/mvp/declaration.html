@@ -1,0 +1,60 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-scenarios-what-happens-next" method="post" class="form">
+
+            <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+              <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Submit your application</h2>
+
+              {% if data["resides-in-uk"] == "Northern-Ireland"%}
+              <p class="govuk-list govuk-!-font-size-24">By applying you agree that:</p>
+
+                 <ul class="govuk-list govuk-list--bullet">
+                   <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">the information you've given is correct and complete as far as you know</p></li>
+                   <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-6">you&rsquo;ll pay back any money you&rsquo;re overpaid if you&rsquo;re asked to</p></li>
+                 </ul>
+
+                 <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>You could be prosecuted or have to pay a financial penalty if you deliberately give the wrong or incomplete information or do&nbsp;not report changes.</strong></p>
+                 {% else %}
+                 <p class="govuk-list govuk-!-font-size-24">By submitting this application, you agree:
+
+                </p>
+
+                 <ul class="govuk-list govuk-list--bullet">
+                   <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">the information you have given is complete and correct</p></li>
+                   <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-6">to tell the Department for Communities (DfC) straight away if your circumstances change, such as your address, bank details or marital status</p></li>
+                   <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-6">to pay back any Pension Credit if you are paid too much</p></li>
+                 </ul>
+
+                 <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>You may be prosecuted or have to pay a financial penalty if you give wrong or incomplete information, or if you don’t report any changes straight away.</strong></p>
+                 {% endif %}
+
+            </div>
+          </div>
+
+
+      {{ govukButton({
+        text: "Submit"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

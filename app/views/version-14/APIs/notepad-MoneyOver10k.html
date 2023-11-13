@@ -1,0 +1,62 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  NotePad - Money, savings and capital
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="money-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-l">Information about money the claimant has.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">For each type of money, saving or investment, ask the user for all relevant details, including:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+        <li>the amount</li>
+        <li>the name of the account holder</li>
+        <li>the name on the bank or building society accounts</li>
+        <li>the name of the bank, building society or investment company</li>
+        <li>the last 4 digits of the account number</li>
+        <li>the start and end dates of any investment vehicles</li>
+        <li>any changes to amounts that the claimant expects during any backdating period</li>
+        <li>any land or property the claimant owns</li>
+        <li>any significant changes that the claimant expects over the next 12 months</li>
+
+      </ul>
+
+
+      {{ govukTextarea({
+        name: "MoneyOver10k-more-detail",
+        id: "MoneyOver10k-more-detail",
+
+        value: data["money-more-detail"]
+      }) }}
+
+
+
+
+
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

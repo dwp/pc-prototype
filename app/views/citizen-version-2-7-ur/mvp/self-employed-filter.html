@@ -1,0 +1,104 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="self-employed" method="post" class="form">
+
+
+      <div class="govuk-panel--agent">
+
+
+        {{ govukRadios({
+          idPrefix: "claim-filter",
+          name: "claim-filter",
+          fieldset: {
+            legend: {
+              text: "System: Normal or Advanced claim",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "Today",
+              text: "Claiming backdated = 3 months back from their backdated date",
+              checked: (data["claim-filter"] == "Normal")
+            },
+  {
+              value: "Normal",
+              text: "Claiming from today = 3 months back from today",
+              checked: (data["claim-filter"] == "Today")
+            },
+          {
+            value: "Today",
+            text: "If we don't establish a date of claim = 6 months back from today",
+            checked: (data["claim-filter"] == "Advanced")
+          },
+  {
+              value: "SPA",
+              text: "Claiming less than 3 months in advance = 3 months back from their SPA",
+              checked: (data["claim-filter"] == "SPA")
+            },
+            {
+              value: "Advanced",
+              text: "Claiming more than 3 months in advance = We just ask if they're self employed now",
+              checked: (data["claim-filter"] == "Advanced")
+            }
+          ]
+        }) }}
+
+      {{ govukRadios({
+        idPrefix: "single-joint-check",
+        name: "single-joint-check",
+        fieldset: {
+          legend: {
+            text: "System: Single or joint",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Single",
+            text: "Single",
+            checked: (data["single-joint-check"] == "Single")
+                    },
+          {
+            value: "Joint",
+            text: "Joint",
+            checked: (data["single-joint-check"] == "Joint")
+          }
+        ]
+      }) }}
+
+
+
+</div>
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

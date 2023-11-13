@@ -1,0 +1,128 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="changes-router" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Make a change</h1>
+
+            {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: [
+                      {
+                        classes: "",
+                        key: {
+                          text: "No qualifying benefits"
+                        },
+                        value: {
+                          text: "No change"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-benefits",
+                              text: "Change",
+                              visuallyHiddenText: "name"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Weekly State Pension is £182"
+                        },
+                        value: {
+                          text: "No change"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-sp",
+                              text: "Change",
+                              visuallyHiddenText: "date of birth"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "No partner"
+                        },
+                        value: {
+                          html: "No change"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-partner",
+                              text: "Change",
+                              visuallyHiddenText: "address"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "No housing costs"
+                        },
+                        value: {
+                          html: "No change"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-housing",
+                              text: "Change",
+                              visuallyHiddenText: "contact details"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }) }}
+
+                  <div class="govuk-!-margin-top-4">
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+                  </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+
+
+
+{% endblock %}

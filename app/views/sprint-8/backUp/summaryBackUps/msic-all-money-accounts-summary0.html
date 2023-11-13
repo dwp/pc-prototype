@@ -1,0 +1,412 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <h1 class="govuk-heading-xl">
+    Money you have: <br>Totals and evidence requests
+  </h1>
+
+  <form action="msic-all-current-accounts-summary-router" method="post">
+
+
+
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Overview:
+  </h3></div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+{% if data["msic-all-savings-account-name"] %}
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Current accounts"
+      },
+      value: {
+        text: "2"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-all-current-accounts-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Savings accounsts"
+      },
+      value: {
+        text: "2"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-all-savings-accounts-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Post office Card counts"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-post-office-accounts-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Premium Bonds"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-premium-bond-account-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "ISAs, TESSA, TOISA or PEP"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-isa-savings-accounts-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Capital Bonds"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-capital-bond-account-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Shares Accounts"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-shares-account-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Unit trust accounts"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-unit-trust-summary",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Cash at home"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-at-home",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Cash aboard"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-other-abroad",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "Cash recived as a lump sum"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-lump-sum",
+            html: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+<br>
+<!--
+
+{{ govukSummaryList({
+  rows: [
+  {
+    classes: 'govuk-summary-list--no-border',
+    key: {
+      text: "Combined total"
+    },
+    value: {
+      text: "£9,553.50"
+    },
+    actions: {
+      items: [
+        {
+          href: "money-you-have",
+          text: "",
+          visuallyHiddenText: "XXXX"
+        }
+      ]
+    }
+  }
+  ]
+}) }}
+-->
+
+{% endif %}
+
+
+{% if data["total-money"] %}
+
+
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Combined total"
+    },
+    value: {
+      text: data["total-money"] | formatMoney
+    },
+    actions: {
+      items: [
+        {
+          href: "money-you-have",
+          text: "",
+          visuallyHiddenText: "XXXX"
+        }
+      ]
+    }
+  }
+  ]
+}) }}
+
+{% endif %}
+
+<!----Headline---->
+<h1 class="govuk-heading-l">
+  Total: £9,553.50<br>
+</h1>
+<!----Headline---->
+
+</div></div>
+
+<!----      Use this to pull through from Money you have Total page. text: data["total-money"] | formatMoney--->
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Evidence:
+  </h3></div>
+
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+    {{ govukTable({
+      firstCellIsHeader: true,
+      head: [
+        {
+          text: "Account",
+          classes: 'govuk-!-width-one-quarter'
+        },
+        {
+          text: "Last 4 digits",
+          classes: 'govuk-!-width-one-quarter'
+        },
+        {
+          text: "Date range",
+          classes: 'govuk-!-width-two-Quarters'
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "Halifax"
+          },
+          {
+            text: "0001"
+          },
+          {
+            text: "1 Jan 2019 — 1 Feb 2019"
+          }
+        ],
+        [
+          {
+            text: "Santander"
+          },
+          {
+            text: "0002"
+          },
+          {
+            text: "1 Jan 2019 — 1 Feb 2019"
+          }
+        ],
+        [
+          {
+
+            text: "HSBC"
+          },
+          {
+            text: "0003"
+          },
+          {
+            text: "1 Jan 2019 — 1 Feb 2019"
+          }
+        ]
+      ]
+    }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+
+
+  <br><br>
+
+
+
+
+
+    <input type="hidden" name="money-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+  </form>
+{% endblock %}

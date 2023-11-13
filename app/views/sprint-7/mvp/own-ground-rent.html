@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you pay any ground rent? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="own-mortgage-yn" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "own-ground-rent",
+        name: "own-ground-rent",
+        fieldset: {
+          legend: {
+            text: "Do you pay ground rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "You might pay ground rent if you are the leaseholder of your home."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["own-ground-rent"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["own-ground-rent"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+<!-- Old with dropdown
+
+      {% set groundRent %}
+        {{ govukInput({
+          label: {
+            text: "How much do you pay each year?"
+          },
+          id: "own-ground-rent",
+          name: "own-ground-rent",
+          classes: "govuk-input--width-20",
+          value: data["ground-rent"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "have-any-ground-rent",
+        name: "have-any-ground-rent",
+        fieldset: {
+          legend: {
+            text: "Do you pay any ground rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "You might pay ground rent if you are the leaseholder of your home."
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            conditional: {
+              html: groundRent
+            },
+            checked: (data["have-any-ground-rent"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["have-any-ground-rent"] == "no")
+          }
+        ]
+      }) }}
+
+-->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

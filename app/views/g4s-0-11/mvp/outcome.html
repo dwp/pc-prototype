@@ -1,0 +1,198 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="outcome-radios-router" method="post" class="form">
+
+
+    <!------------H1 LEGEND------------>
+
+    {% if data["system-outcome-selector"] == "Unlikely" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Based on your income, it doesn't look like you currently meet the criteria for Pension Credit</h1>
+    <p class="govuk-body">You should ask about Pension Credit again if your income drops, if anyone moves into your home or you start getting:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Attendance Allowance</li>
+      <li>Carer's Allowance</li>
+      <li>the middle or highest rate from the care component of Disability Living Allowance (DLA)</li>
+      <li>  the daily living component of Personal Independence Payment (PIP)</li>
+      <li> Armed Forces Independence Payment</li>
+    </ul>
+
+
+    {% elif data["system-outcome-selector"] == "housing-costs" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because you pay towards your housing costs, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">I will transfer you to a colleague who will be able to do that.</p> -->
+
+
+    {% elif data["system-outcome-selector"] == "Likley" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Based on what we know, it looks like you meet the criteria for Pension Credit</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">I will transfer you to a colleague who will be able to take a full application.</p> -->
+
+    {% elif data['system-outcome-selector'] == 'children-handover'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because you are responsible for children, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">I will transfer you to a colleague who will be able to do that.</p> -->
+
+    {% elif data['system-outcome-selector'] == 'mac'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because one of you has not reached State Pension age, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">I will transfer you to a colleague who will be able to do that.</p> -->
+
+    {% elif data['system-outcome-selector'] == 'waiting-for-first-payment'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because you do not have a State Pension in payment, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I will transfer you to a colleague who will be able to do that.</p> -->
+
+    {% elif data['system-outcome-selector'] == 'joint-waiting-for-first-payment'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because your partner does not have a State Pension in payment, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I will transfer you to a colleague who will be able to do that.</p> -->
+
+
+    {% elif data['system-outcome-selector'] == 'sp-not-claimed'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because you do not have a State Pension in payment, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I will transfer you to a colleague who will be able to do that.</p> -->
+
+    {% elif data['system-outcome-selector'] == 'joint-sp-not-claimed'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Because your partner does not have a State Pension in payment, we will need to go through a full application</h1>
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">I will transfer you to a colleague who will be able to do that.</p> -->
+
+
+    {% else %}
+    No scenario selected
+    {% endif %}
+
+
+
+
+
+                <!-- <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> -->
+
+
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-margin-bottom-1">
+                        <h2 class="govuk-fieldset__heading">
+
+                          {% if data["system-outcome-selector"] == "Likley" %}
+                          Select the next action
+                          {% else %}
+                          Would you like to find out about other help you may be able to get?
+                          {% endif %}
+                        </h2>
+                      </legend>
+                      <div id="outcome-radios" class="govuk-hint">
+
+                      </div>
+                      <div class="govuk-radios">
+
+
+
+                        {% if data["system-outcome-selector"] == "Likley" %}
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="housing-costs">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[HOUSING COSTS]--> Transfer to DWP <!-- - route to handover-early.html-->
+                          </label>
+                        </div>
+
+                        {% elif data["system-outcome-selector"] == "sp-not-claimed" or data['system-outcome-selector'] == 'joint-sp-not-claimed' or data['system-outcome-selector'] == 'waiting-for-first-payment' or data['system-outcome-selector'] == 'joint-waiting-for-first-payment'%}
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="housing-costs">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[HOUSING COSTS]--> Transfer to DWP <!-- - route to handover-early.html-->
+                          </label>
+                        </div>
+
+
+                     {% elif data["system-outcome-selector"] == "housing-costs" or data["system-outcome-selector"] == "mac" %}
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="housing-costs">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[HOUSING COSTS]--> Transfer to DWP <!-- - route to handover-early.html-->
+                          </label>
+                        </div>
+
+                        {% elif data["system-outcome-selector"] == "Unlikely" %}
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="help">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                             <!--[OTHER HELP]--> Yes, caller wants to know more <!-- - route to more-help.html-->
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="handover-user-request">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[HANDOVER TO DWP]--> Caller still wants to make a full application <!-- - route to handover-user-request.html-->
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input"
+                          id="outcome-radios"
+                          name="outcome-radios"
+                          type="radio"
+                          value="handover-challenge">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            <!--[END CALL]--> Caller asked for the information we used <!--- route to exit.html-->
+                          </label>
+                        </div>
+
+
+                      {% elif data['system-outcome-selector'] == 'children-handover'%}
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="outcome-radios" name="outcome-radios" type="radio" value="children">
+                        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                          <!--[HOUSING COSTS]--> Transfer to DWP child addition team  <!-- - route to handover-early.html-->
+                        </label>
+                      </div>
+
+
+
+
+
+      {% endif %}
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input"
+        id="outcome-radios"
+        name="outcome-radios"
+        type="radio"
+        value="exit">
+        <label class="govuk-label govuk-radios__label" for="changed-name-2">
+          <!--[END CALL]--> Caller wants to end the call <!--- route to exit.html-->
+        </label>
+      </div>
+
+    </fieldset>
+  </div>
+
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-4"
+      }) }}
+
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

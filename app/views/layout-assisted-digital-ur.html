@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% set mainClasses = 'id-bar' %}
+
+{% block beforeContent %}
+
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Testing only",
+    classes: "govuk-tag--user-reseach"
+  },
+  html: 'No information is stored or sent using this service.'
+}) }}
+
+<br>
+
+{% endblock %}
+
+
+
+
+{% block footer %}
+
+<div class="govuk-width-container ">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<div class="govuk-heading-s">
+      <h2 class="govuk-heading-m">Get help with your application</h2>
+
+      <!---- NORTHERN IRELAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+      <ul class="govuk-list govuk-!-margin-bottom-2">
+        <li>Telephone: 0800 587 0892</li>
+        <li>Textphone: 0808 100 2198</li>
+      </ul>
+
+      <ul class="govuk-list govuk-!-margin-bottom-2">
+        <li><a href="https://dwppensioncredit.signvideo.net/">Video relay service (opens in a new tab)</a> for British Sign Language (BSL) or Irish Sign Language (ISL) users. <a href="https://www.youtube.com/watch?v=Osx7FFxFpNY">Check you can use the BSL service (opens in a new tab)</a>. <a href="https://www.youtube.com/watch?v=MSN79HlU7XECheck">Check you can use the ISL service (opens in a new tab)</a></li>
+        </ul>
+
+      <p class="govuk-body govuk-list govuk-!-margin-bottom-2">
+        Monday to Friday, 9am to 4pm (closed on public holidays).<br>
+        <a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers.<br>
+
+</p>
+
+
+        <!---- UK ---->{% else %}
+
+        <ul class="govuk-list govuk-!-margin-bottom-2">
+          <li>Telephone: 0800 99 1234</li>
+          <li>Textphone: 0800 169 0133</li>
+        </ul>
+
+        <ul class="govuk-list govuk-!-margin-bottom-2">
+          <li>If you cannot hear or speak on the phone, use <br><a href="https://www.relayuk.bt.com/">Relay UK (opens in a new tab)</a>: 18001 then 0800 99 1234</li>
+        </ul>
+
+        <ul class="govuk-list govuk-!-margin-bottom-2">
+          <li><a href="https://dwppensioncredit.signvideo.net/">Video relay service (opens in a new tab)</a> for British Sign Language (BSL) users - <a href="https://www.youtube.com/watch?v=Osx7FFxFpNY">check you can use this service (opens in a new tab)</a></li>
+          </ul>
+
+          <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 8:30am to 6pm (closed on bank holidays).<br><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+
+       <!--  <p class="govuk-body">
+  <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges (opens in a new tab)</a> -->
+</p>
+
+        <!---- COUNTRY END ---->{% endif %}
+
+        <ul class="govuk-list govuk-!-padding-top-8">
+          <li><a href="system-ur-setup">Return to UR scenarios</a></li>
+        </ul>
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+<footer class="govuk-footer govuk-!-margin-top-9" role="contentinfo">
+<div class="govuk-width-container ">
+  <div class="govuk-footer__navigation">
+    <div class="govuk-footer__section">
+      <h2 class="govuk-heading-s"></h2>
+      <ul class="govuk-footer__list govuk-footer__list--columns-2">
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="accessibility-statement">
+            Accessibility statement
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="cookie-monster">
+            Cookies
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">
+            Personal Information Charter (opens in a new tab)
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="https://www.communities-ni.gov.uk/publications/supplementary-privacy-notices-dfc-business-areas">
+            Northern Ireland Privacy (opens in a new tab)
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="#">
+             <br>
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="#">
+             <br>
+          </a>
+        </li>
+
+        <li class="govuk-footer__list-item">
+          <a class="govuk-footer__link" href="#">
+             <br>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "claim-filter",
+          text: "Claim filter"
+        },
+        {
+          href: "task-list",
+          text: "Task list"
+        },
+        {
+          href: "/version-15/survey/start.html",
+          text: "Service survey"
+        },
+        {
+          href: "/prototype-admin/clear-data",
+          text: "Clear data"
+        },
+        {
+          href: "https://govuk-prototype-kit.herokuapp.com/",
+          text: "GOV.UK Prototype Kit " + releaseVersion
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
+
+
+<!--
+{% if data["who-is-caller"] !== "Yourself" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+
+{% if data["national-insurance-return"] == "Yes" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+<br>
+-->
+
+<!-- {% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar-item govuk-!-font-size-19 verticalLine"><br></li>{% endif %} -->
+
+<!-- IF caller is claimant -->

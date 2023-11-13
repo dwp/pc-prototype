@@ -1,0 +1,112 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-check-yn-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% set ageCheck %}
+          {{ govukDateInput({
+            id: "partner-dob",
+            namePrefix: "partner-dob",
+            fieldset: {
+              legend: {
+                text: "What is your partner's date of birth?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "For example, 31 3 1948."
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["partner-dob-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["partner-dob-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["partner-dob-year"]
+              }
+            ]
+          }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "partner-check-yn",
+        name: "partner-check-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have a partner?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          text: "A partner is a husband, wife, civil partner or someone that you are in a relationship with."
+        },
+        items: [
+          {
+            value: "Yes, we live together and will both be included in this claim",
+            text: "Yes, we live together and will both be included in this claim",
+            checked: (data["partner-check-yn"] == "Yes"),
+                  conditional: {
+                    html: ageCheck
+                  }
+                    },
+            {
+              value: "Yes, but we do not live together so they wont be included in this claim",
+              text: "Yes, but we do not live together so they won't be included in this claim",
+              checked: (data["partner-check-yn"] == "No")
+
+                              },
+          {
+            value: "No, I do not have a partner",
+            text: "No, I do not have a partner",
+            checked: (data["partner-check-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+  <p class="govuk-body"><a href="partner-mac-yn">Goes down the mac check route </a></p>
+
+
+<br><br>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

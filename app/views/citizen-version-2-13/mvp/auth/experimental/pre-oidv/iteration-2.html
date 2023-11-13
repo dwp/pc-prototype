@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% set pageHeading = 'Prove your identity to continue' %}
+
+{% set signInAndVerifyYourDetailsHint %}
+<p class="govuk-hint">
+    You'll have an account if you've already proved your identity online to access any of the services below:
+</p>
+<ul class="govuk-list govuk-list--bullet govuk-hint">
+    <li>Access to work</li>
+    <li>Repay and manage the benefit money you owe</li>
+</ul>
+<p class="govuk-hint">
+    If you have not previously proved your identity online, select Create an account.  
+</p>
+{% endset%}
+
+
+
+{% block pageTitle %}
+  {{pageHeading}} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <form action="/pre-oidv/iteration-2/routes" method="post" novalidate>
+                {{ govukRadios({
+                name: "pre-oidv-iteration-2",
+                fieldset: {
+                    legend: {
+                        text: pageHeading,
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--l"
+                    }
+                },
+                hint: {
+                        html: signInAndVerifyYourDetailsHint
+                },
+                items: [
+                    {
+                        value: "sign-in",
+                        text: "Sign in"
+                    },
+                    {
+                        value: "create-an-account",
+                        text: "Create an account"
+                    }
+                ]
+                }) }}
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

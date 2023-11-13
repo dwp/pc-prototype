@@ -1,0 +1,78 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Yourself-contact-check - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-letter-formats-check-router" method="post" class="form">
+
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% elif data["del-auth-who-made-claim-2"]%}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-2"]}}</span>
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-3"]}}</span>
+      {% endif %}
+
+
+      {% set legendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim-2"] == "Power of attorney"
+         or data["del-auth-who-made-claim-2"] == "Appointee"
+         or data["del-auth-who-made-claim-2"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim-2"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Should we use a different format when we write to you?</h1>
+
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Should we use a different format when we write to the applicant?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+
+{{ govukRadios({
+  idPrefix: "del-auth-contact-letter-formats-check",
+  name: "del-auth-contact-letter-formats-check",
+  fieldset: {
+    legend: {
+      html: legendH1,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-2"
+    }
+  },
+  hint: {
+    text: "For example, audio, braille or large print."
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["del-auth-contact-letter-formats-check"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["del-auth-contact-letter-formats-check"] == "No")
+    }
+  ]
+}) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

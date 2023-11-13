@@ -1,0 +1,76 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-check-yn-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "partner-check-yn",
+        name: "partner-check-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have a partner?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          text: "If you live with a partner, their details must be included as part of your application. A partner is a husband, wife, civil partner or someone that you are in a relationship with."
+        },
+        items: [
+          {
+            value: "Yes, we live together",
+            text: "Yes, we live together",
+            checked: (data["partner-check-yn"] == "Yes")
+                    },
+            {
+              value: "Yes, but we do not live together",
+              text: "Yes, but we do not live together",
+              hint: {
+         text: "If you do not live together, we will not need to ask you about them."
+       },
+              checked: (data["partner-check-yn"] == "No")
+
+                              },
+
+          {
+            value: "No, I do not have a partner",
+            text: "No, I do not have a partner",
+            checked: (data["partner-check-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-!-margin-top-4"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

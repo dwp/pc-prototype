@@ -1,0 +1,354 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-1-nil-task-list" method="post" class="form">
+        <input type="hidden" name="process-1-nil-task-3-passed" value="passed">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-4">[Task 3] Verifiy award</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Cross referece citizens provided details using AfPC with what was found in CIZ, CAM, SL</p>
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <!------------Legend------------>
+          {% set legendProcess %}
+
+        {{ govukCheckboxes({
+          idPrefix: "process-1-nil-task-3-fail",
+          name: "process-1-nil-task-3-fail",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "1",
+              text: " ",
+              checked: data['process-1-nil-task-3-fail'] == "1"
+            }
+          ]
+        }) }}
+
+        {% endset %}
+
+
+        <!------------Legend------------>
+          {% set tagSL %}
+
+          {{govukTag({
+             text: "SEARCHLIGHT",
+             classes: "govuk-tag--blue"
+           })}}
+
+        {% endset %}
+
+          {% set tagCPS %}
+
+          {{govukTag({
+             text: "CPS",
+             classes: "govuk-tag--yellow"
+           })}}
+
+        {% endset %}
+
+        {% set tagCAM %}
+
+        {{govukTag({
+           text: "CAM",
+           classes: "govuk-tag--red"
+         })}}
+
+      {% endset %}
+      <!------------Legend------------>
+
+      <!------------Legend------------>
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "What the service checked",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "Citizen supplied [AfPC]",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "CIZ data",
+              classes: 'govuk-30-percent'
+            },
+            {
+              text: "Mark as incorrect",
+              classes: 'govuk-10-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "Single claim"
+              },
+              {
+                text: "No partner or doesn't live with them"
+              },
+              {
+                text: "Shown as not living with a partner"
+              },
+              {
+                html: legendProcess              }
+            ],
+            [
+              {
+                text: "Service charge or ground rent"
+              },
+              {
+                text: "No"
+              },
+              {
+                text: "Not shown DWP data"
+              },
+              {
+                html: legendProcess              }
+            ],
+            [
+              {
+                text: "State Pension exceeded applicable amount today"
+              },
+              {
+                text: "Not asked in AfPC service"
+              },
+              {
+                html: tagSL
+              },
+              {
+                html: legendProcess              }
+                ],
+                [
+                  {
+                    text: "Applicant not in receipt of any qualifying benefits today"
+                  },
+                  {
+                    text: "Not asked in AfPC service"
+                  },
+                  {
+                    text: "No benefits shown found"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "No open in interest in CIS for qualifying benefits today"
+                  },
+                  {
+                    text: "Not asked in AfPC service"
+                  },
+                  {
+                    text: "No open in interest"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "Applicant is not waiting to hear about any other benefits"
+                  },
+                  {
+                    text: "No"
+                  },
+                  {
+                    text: "No indication shown"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "7"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "8"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "9"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "10"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "11"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "12"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "13"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "14"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "15"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "16"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ]
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

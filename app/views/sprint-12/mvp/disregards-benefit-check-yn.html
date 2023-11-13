@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="disregards-monolith-2" method="post" class="form">
+
+        <input type="hidden" name="disregards-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        {% set arrearsOver %}
+          {{ govukTextarea({
+            label: {
+              html: "<p><strong>Description of the payments for arrears or official error, the date paid and the amount.</strong></p>
+
+
+                      "},
+            hint: {
+              html: "<p class=govuk-hint>Disregard arrears of benefits up to £5,000 for one year.</p>
+                      <p class=govuk-hint> Disregard arrears of benefits of £5,000 or over indefinitely.</p>
+                      <p class=govuk-hint>Disregard payments of £5,000 or more to correct or compensate for official errors or late payment of benefit indefinitely.</p>"
+            },
+            id: "disregards-benefit-check-yes",
+            name: "disregards-benefit-check-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          name: "disregards-benefit-check-yn",
+          fieldset: {
+            legend: {
+              html: "Agent: Does the Legacy notepad show any payments to correct or compensate for an official error or for arrears of benefits?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["disregards-benefit-check-yn"] == "Yes"),
+              conditional: {
+                html: arrearsOver
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["disregards-benefit-check-yn"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}

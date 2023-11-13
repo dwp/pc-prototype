@@ -1,0 +1,109 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="ur-record-wtl" method="post" class="form">
+
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Select address</h2>
+
+      <!-- <h3 class="govuk-heading-m govuk-!-margin-bottom-2">Current address</h3> -->
+
+
+      <p class="govuk-!-font-size-24 govuk-body govuk-!-font-weight-regular govuk-!-margin-bottom-1"><strong>Postcode: </strong>{{data["ur-p1-record-wtl-address-post-code"]}} {{data["ur-p2-record-wtl-address-post-code"]}}</p>
+      <p class=" govuk-body govuk-!-font-weight-regular govuk-!-margin-bottom-6"><a class="govuk-link" href="address-post-code-lookup">Change</a></p>
+
+      {% set legendName1 %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Enter new post code</h3>
+      {% endset %}
+
+        {% if data["ur-search"] == "P1" %}
+
+        {{ govukSelect({
+          id: "address",
+          name: "address",
+          label: {
+            text: "Select an address"
+          },
+          items: [
+            {
+              value: "address-count",
+              text: "3 addresses found",
+              selected: (data["address"] == "address-count")
+            },
+            {
+              value: "6 Fore Street",
+              text: "6 Fore Street",
+              selected: (data["address"] == "6 Fore Street")
+            },
+            {
+              value: "26 Fore Street",
+              text: "26 Fore Street",
+              selected: (data["address"] == "26 Fore Street")
+            },
+            {
+              value: "226 Fore Street",
+              text: "226 Fore Street",
+              selected: (data["address"] == "226 Fore Street")
+            }
+          ]
+        }) }}
+
+
+        {% else %}
+
+        {{ govukSelect({
+          id: "address",
+          name: "address",
+          label: {
+            text: "Select an address"
+          },
+          items: [
+            {
+              value: "address-count",
+              text: "3 addresses found",
+              selected: (data["address"] == "address-count")
+            },
+            {
+              value: "221a",
+              text: "3 Liardet Street",
+              selected: (data["address"] == "3 Liardet Street")
+            },
+            {
+              value: "221b",
+              text: "5 Liardet Street",
+              selected: (data["address"] == "5 Liardet Street")
+            },
+            {
+              value: "222",
+              text: "35 Liardet Street",
+              selected: (data["address"] == "35 Liardet Street")
+            }
+          ]
+        }) }}
+
+
+        {% endif %}
+
+
+
+      {{ govukButton({
+        text: "Save"
+      }) }}
+    </div>
+  </div>
+
+    </form>
+{% endblock %}

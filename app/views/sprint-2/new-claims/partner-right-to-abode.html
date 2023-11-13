@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Personal details - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "has-partner"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="about-partner" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Partner right to abode
+      </h1>
+    </form>
+  </div>
+</div>
+{% endblock %}

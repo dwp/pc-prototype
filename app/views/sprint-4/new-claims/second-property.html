@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Adding details of a second property
+      </h1>
+
+      <p class="govuk-body">
+        1007 <br>Mountain Drive<br>Gotham<br>New York State (US)
+      </p>
+      <p class="govuk-body">
+        <a href="">Change</a>
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Property value
+      </h2>
+
+      {{ govukInput({
+        label: {
+          text: "Total value of property based on the outcome of the A64a"
+        },
+        id: "property-value",
+        name: "property-value",
+        classes: "govuk-input--width-10"
+      }) }}
+
+
+      <h2 class="govuk-heading-m">
+        Any other properties
+      </h2>
+
+      <p class="govuk-body">
+        <a href="">Add another property</a>
+      </p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

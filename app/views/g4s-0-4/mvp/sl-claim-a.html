@@ -1,0 +1,125 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+
+
+
+                <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-6"><strong>Results for: </strong>{{ data ["sl-find-a-claim"]}}</p>
+                <!-- <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claims found for: <strong>NA112233c</strong></p> -->
+
+
+
+                                <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8"><table class="govuk-table">
+                                  <thead class="govuk-table__head">
+                                    <tr class="govuk-table__row">
+                                      <td class="govuk-!-font-size-19 govuk-table__cell govuk-20-percent">Name</td>
+                                      <td class="govuk-!-font-size-24 govuk-table__cell govuk-80-percent">Jamie E Harvey (Male)</td>
+                                    </tr>
+                                    </thead>
+
+                                    <tr class="govuk-table__row">
+                                      <td class="govuk-!-font-size-19 govuk-table__cell govuk-20-percent">Date of birth</td>
+                                      <td class="govuk-!-font-size-24 govuk-table__cell govuk-80-percent">20 July 1955</td>
+                                    </tr>
+
+                                    </table>
+
+
+                                  <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-top-8 govuk-!-margin-bottom-4"><strong>Benefits</p>
+
+                                    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                      <thead class="govuk-table__head">
+                                        <tr class="govuk-table__row">
+                                          <td class="govuk-table__cell govuk-20-percent">Start date</td>
+                                          <td class="govuk-table__cell govuk-40-percent">Benefit</td>
+                                          <td class="govuk-table__cell govuk-20-percent">Award start</td>
+                                          <td class="govuk-table__cell govuk-20-percent">Amount</td>
+                                        </tr>
+                                        </thead>
+
+                                        <tr class="govuk-table__row">
+                                          <td class="govuk-table__cell table-spacer">April 2002</td>
+                                          <th scope="row" class="govuk-table__cell table-spacer">State Pension [SP]</th>
+                                          <td class="govuk-table__cell table-spacer">April 2021</td>
+                                          <td class="govuk-table__cell table-spacer">£260.00</td>
+                                        </tr>
+
+                                        <tr class="govuk-table__row">
+                                          <td class="govuk-table__cell table-spacer">April 2002</td>
+                                          <th scope="row" class="govuk-table__cell table-spacer">Disability living allowance [DLA]</th>
+                                          <td class="govuk-table__cell table-spacer">April 2002</td>
+                                          <td class="govuk-table__cell table-spacer">£66.95</td>
+                                        </tr>
+
+                                        </table>
+
+                                <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-top-8 govuk-!-margin-bottom-4"><strong>Pensions</p>
+
+                                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                    <thead class="govuk-table__head">
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell govuk-20-percent">Paid</td>
+                                        <th scope="row" class="govuk-table__cell table-spacer govuk-40-percent">Name</th>
+                                        <td class="govuk-table__cell govuk-20-percent">Frequency</td>
+                                        <td class="govuk-table__cell govuk-20-percent">Taxable pay</td>
+                                      </tr>
+                                      </thead>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">April 2021</td>
+                                        <th scope="row" class="govuk-table__cell table-spacer">Metro Land legacy pensions</th>
+                                        <td class="govuk-table__cell table-spacer">Fortnightly</td>
+                                        <td class="govuk-table__cell table-spacer">£10.00</td>
+                                      </tr>
+
+                                      </table>
+
+                                <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-top-8 govuk-!-margin-bottom-4"><strong>Earnings</p>
+
+                                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                    <thead class="govuk-table__head">
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell govuk-20-percent">Paid</td>
+                                        <th scope="row" class="govuk-table__cell table-spacer govuk-40-percent">Name</th>
+                                        <td class="govuk-table__cell govuk-20-percent">Frequency</td>
+                                        <td class="govuk-table__cell govuk-20-percent">Taxable pay</td>
+                                      </tr>
+                                      </thead>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">—</td>
+                                        <th scope="row" class="govuk-table__cell table-spacer">—</th>
+                                        <td class="govuk-table__cell table-spacer">—</td>
+                                        <td class="govuk-table__cell table-spacer">—</td>
+                                      </tr>
+
+
+                                      </table>
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

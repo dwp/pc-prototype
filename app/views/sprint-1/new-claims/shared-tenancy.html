@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you the only person on the tenancy agreement? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data["has-partner"] == "yes" %}
+      {% set legend = "Is anyone other than you and your partner named on the tenancy agreement?" %}
+    {% else %}
+      {% set legend = "Is anyone other than you named on the tenancy agreement?" %}
+    {% endif %}
+
+    <form action="other-people-you-live-with" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "shared-tenancy",
+        name: "shared-tenancy",
+        fieldset: {
+          legend: {
+            text: legend,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["shared-tenancy"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["shared-tenancy"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

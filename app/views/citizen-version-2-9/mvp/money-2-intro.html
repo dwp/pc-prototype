@@ -1,0 +1,85 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-2-total-now" method="post" class="form">
+
+      {% if data["money-2-claim-filter"] == "Backdated" %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You want us to consider your application from  <strong>[EED]</strong></h1>
+
+      {% elif data["money-2-claim-filter"] == "Today" %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from <strong>today</strong></h1>
+
+      {% else %}
+      <p class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from <strong>[Advanced]</strong></p>
+
+      {% endif %}
+
+
+    <!------------Legend--------------->
+
+    {% if data["money-2-claim-filter"] == "Backdated" %}
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">This means we will ask you about any money, savings and investments for two separate dates:</p>
+
+    <ul class="govuk-!-font-size-24 govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>today</li>
+      <li>[EED]</li>
+    </ul>
+
+    {% elif data["money-2-claim-filter"] == "Today" %}
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-8">This means we need to ask you about any money, savings and investments you have today.</p>
+
+
+    {% else %}
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">This means we need to ask you about any money, savings and investments you have today.</p>
+    <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-6">We will then call you back by <strong>DD MM YYYY</strong> to confirm how much money you have then.</p>
+
+    <!-- <ul class="govuk-!-font-size-24 govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>today</li>
+      <li>XX</li>
+    </ul> -->
+
+    {% endif %}
+
+
+    <!------------ --------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

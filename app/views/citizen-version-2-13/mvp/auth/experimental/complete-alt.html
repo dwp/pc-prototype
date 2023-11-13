@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Registration complete -
+        {{ data['service-name']  }}
+    - GOV.UK 
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+       
+        <h1 class="govuk-heading-l">You have created your account</h1>
+        
+        {% if data['service-name'] == '' %}
+          <p>You can now sign in.</p>
+          <p>We will then ask you some questions about your personal details.</p>
+        {% else %}
+          <p>You can now sign in to {{ data['service-name'] }}.</p>
+        {% endif %} 
+        
+        {{ govukButton({
+          text: "Sign in to continue",
+          href: "../sign-in"
+        }) }}
+      </div>
+    </div>
+{% endblock %}
+
+
+
+

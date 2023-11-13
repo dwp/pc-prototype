@@ -1,0 +1,61 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="bau-process-measure-1-router" method="post" class="form">
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "bau-process-measure-1",
+        name: "bau-process-measure-1",
+        fieldset: {
+          legend: {
+            text: "Did you transfer the call to DWP or complete a pro forma?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: data['bau-process-measure-1'] == "Yes"
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: data['bau-process-measure-1'] == "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button"
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

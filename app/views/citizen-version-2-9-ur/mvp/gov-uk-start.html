@@ -1,0 +1,187 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+How to Claim - Pension Credit
+{% endblock %}
+
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Working, jobs and pensions</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">State Pension</a>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Pension Credit
+        </h1>
+
+        {% include "citizen-version-2-7/mvp/gov-uk-menu.html" %}
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l">How to apply</h2>
+
+        <p class="govuk-body">You can apply online, by phone or by post.</p>
+
+        <h2 class="govuk-heading-m">When to apply</h2>
+
+        <p class="govuk-body">The earliest you can start your application is 4 months before you reach <a
+                href="/eligibility/pension_age_start">State Pension age</a>.</p>
+                <p class="govuk-body">If you apply after you have reached State Pension age, you can backdate your application by up to 3 months.</p>
+
+                <h2 class="govuk-heading-m">Information you will need</h2>
+
+        <p class="govuk-body">You will need:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>your National Insurance number and your partner's, if you have one</li>
+            <li>information about any income, savings and investments you (and your partner, if you have one) have</li>
+            <li>your bank account details, if you are applying by phone or by post</li>
+        </ul>
+
+        <p class="govuk-body">If you backdate your claim, we will ask for a total balance of the money, savings and investments you have today and on the date you want to backdate your claim to. This is usually either 3 months ago or the date you reached your State Pension age.</p>
+
+
+
+        <h2 class="govuk-heading-m">Apply online</h2>
+
+        <p class="govuk-body">You can use the online service if:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+            <li>you have already claimed your State Pension</li>
+            <li>there are no children or young people included in your claim</li>
+        </ul>
+        <a href="/citizen-version-2-9-ur/mvp/start-check" class="govuk-button">Apply now</a>
+        <!-- <a href="https://apply-for-pension-credit.service.gov.uk/start" class="govuk-button">Apply now</a> -->
+
+        <h2 class="govuk-heading-m">Apply by phone</h2>
+        <p class="govuk-body">A friend or family member can call for you if you cannot use the phone.</p>
+
+        <div class="govuk-inset-text govuk-!-padding-top-1 govuk-!-padding-bottom-1 govuk-!-margin-top-5 govuk-!-margin-bottom-5">
+            <p class="govuk-body "> It is taking longer than usual to apply by phone because of<br>coronavirus (COVID-19).</p>
+            </div>
+
+                <p class="govuk-heading-s govuk-!-margin-bottom-2">Pension Credit claim line</p>
+                <p class="govuk-body govuk-!-margin-bottom-1">Telephone: 0800 99 1234</p>
+                <p class="govuk-body govuk-!-margin-bottom-2">Textphone: 0800 169 0133</p>
+                <p class="govuk-body govuk-!-margin-bottom-2"><a href=" http://ngts.org.uk/"> <abbr title="Next Generation Text">NGT</abbr> text relay</a> (if you
+                cannot hear or speak on the phone):<br>18001 then 0800 99 1234 </p>
+                <p class="govuk-body govuk-!-margin-bottom-6">Monday to Friday, 9.30am to 3:30pm<br><a href="/call-charges">Find out about call charges</a></p>
+
+
+
+                <h2 class="govuk-heading-m">Apply by post</h2>
+
+            <p class="govuk-body">To apply by post, <a href="https://www.gov.uk/government/publications/pension-credit-claim-form--2">print out and fill in the Pension Credit claim form</a> or call the claim line to ask for a form.</p>
+
+            <p class="govuk-body">Send the claim form to the Pension Service, or ask someone to do it for you.</p>
+
+            <p class="govuk-body">Contact a voluntary organisation such as <a href="https://www.citizensadvice.org.uk/">Citizens Advice</a> or <a href="http://www.ageuk.org.uk/money-matters/claiming-benefits/pension-credit/what-is-pension-credit/">Age UK</a> if you need help with the form.</p>
+
+        <h2 class="govuk-heading-m">If you disagree with a decision</h2>
+        <p class="govuk-body">You can <a href="https://www.gov.uk/mandatory-reconsideration">challenge a decision</a> about your claim.
+            This is called asking for mandatory
+            reconsideration.</p>
+        <div class="pagination">
+            <a href="gov-uk-what-you-get" class="gem-c-pagination__link" rel="prev">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Previous
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">What you could get</span>
+            </a>
+
+        </div>
+        <div class="pagination">
+            <a href="gov-uk-coc" class="gem-c-pagination__link" rel="next">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.406.7246-6.7266z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Next
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">Changes you need to report</span>
+            </a>
+        </div>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "citizen-version-2-7/mvp/gov-uk-side-menu.html" %}
+    </div>
+
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-contextual-footer">
+
+            <div class="gem-c-related-navigation">
+
+
+
+
+
+                <nav role="navigation" class="gem-c-related-navigation__nav-section"
+                    aria-labelledby="related-nav-topics-250e20b6" data-module="gem-toggle">
+
+                    <h2 class="govuk-heading-s gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+
+                    <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+                        <li class="gem-c-related-navigation__link"><a
+                                class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer"
+                                data-track-category="relatedLinkClicked" href="../state_pension_browse">State
+                                Pension</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

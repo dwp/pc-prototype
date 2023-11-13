@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefits-war-widows-pensions-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-war-widows-pensions-yn-router" method="post" class="form">
+
+      <input type="hidden" name="benefit-war-disablement-yn-router" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        <p class=""></p>
+
+
+
+      {{ govukRadios({
+        name: "benefits-war-widows-pensions-yn",
+        fieldset: {
+          legend: {
+            html: "Agent: Is there an interest shown for a War Widow or Widower's Pension?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefits-war-widows-pensions-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefits-war-widows-pensions-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

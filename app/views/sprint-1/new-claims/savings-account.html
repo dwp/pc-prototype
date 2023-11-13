@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any money in current, savings or investment accounts? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Money in account
+    </h1>
+    <form action="/new-claims/savings-account-router" method="post" class="form">
+      {% set account = "account-" + accountNumber %}
+      {% set amount = "amount-" + accountNumber %}
+
+      {{ govukInput({
+        label: {
+          text: "Account"
+        },
+        id: account,
+        name: account,
+        classes: "govuk-input--width-20",
+        value: data[account]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Amount"
+        },
+        id: amount,
+        name: amount,
+        classes: "govuk-input--width-10",
+        value: data[amount]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

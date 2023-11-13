@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-nil-task-list" method="post" class="form">
+        <input type="hidden" name="nil-task-3-passed" value="passed">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-l govuk-!-margin-bottom-4">[Task 3] Verify award</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Verifing data used [Sort term check]<br> This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. </p>
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        {{ govukCheckboxes({
+          idPrefix: "nil-task-3-fail",
+          name: "nil-task-3-fail",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Function: Highlight whats wrong",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+              },
+              hint: {
+                text: "Select all that apply"
+
+
+          },
+          items: [
+            {
+              value: "1",
+              text: "Single claim",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "2",
+              text: "Service charge or ground rent",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "3",
+              text: "State Pension exceeded applicable amount today",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "4",
+              text: "4",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "5",
+              text: "5",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "6",
+              text: "6",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "7",
+              text: "7",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "8",
+              text: "8",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "9",
+              text: "10",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "11",
+              text: "11",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "12",
+              text: "12",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "13",
+              text: "13",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "14",
+              text: "14",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "15",
+              text: "15",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "16",
+              text: "16",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "17",
+              text: "17",
+              checked: data['nil-task-3-fail'] == "1"
+            },
+            {
+              value: "18",
+              text: "18",
+              checked: data['nil-task-3-fail'] == "1"
+            }
+          ]
+        }) }}
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

@@ -1,0 +1,292 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Household composition of:<br/>
+      221B Baker Street, Marylebone,<br>
+      London, NW1 5RT
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Partner
+    </h2>
+  <!---
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          National Insurance number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          QQ 12 34 56 A
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-partner">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Jo Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-partner">
+            .
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          5 January 1953
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-partner">
+            .
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+----->
+
+    <p class="none">
+      None
+    </p>
+
+    <h2 class="govuk-heading-m">
+      Children
+    </h2>
+    {% if data["child-in-home"] == "true" %}
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            QQ 12 34 56 A
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Child 1
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2003
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="none">
+        None
+      </p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Qualifying young person
+    </h2>
+    {% if data["qyp-in-home"] == "true" %}
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            QQ 12 34 56 A
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            QYP 1
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2000
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-child">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% else %}
+      <p class="none">
+        None
+      </p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Boarders and lodgers
+    </h2>
+    {% if data["boarder-in-home"] == "true" %}
+      <dl class="govuk-summary-list govuk-summary-list--long">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Boarder or lodger
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Boarder
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            John Watson
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2000
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Move in date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 2010
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rent
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £100 a week
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Meals prepared
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+
+
+      </dl>
+    {% else %}
+      <p class="none">
+        None
+      </p>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Anyone else missing from the household?
+    </h2>
+    <p class="govuk-body">
+      <a class="govuk-link" href="other-people-who-live-with-you">
+        Add another person
+      </a>
+    </p>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="household-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

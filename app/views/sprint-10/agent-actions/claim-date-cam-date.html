@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-cam-date-reason" method="post">
+
+
+<!--
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check if there is an initial date of claim (IDOC) in PTP CAM.
+          </strong>
+        </div>
+
+-->
+
+<div class="adviser-notice">
+<h1 class="adviser-notice__heading">Adviser: check other systems</h1>
+<h1 class="govuk-heading-l">Use CAM to work out the date of claim</h1>
+</div>
+
+<div>
+
+        {{ govukDateInput({
+          id: "claim-date-cam-date-entry",
+          namePrefix: "claim-date-cam-date-entry",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 12 11 2019"
+          }
+        }) }}
+
+                </div>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

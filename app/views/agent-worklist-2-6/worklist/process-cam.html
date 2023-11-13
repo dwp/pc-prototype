@@ -1,0 +1,46 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-done" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6"><strong>Download claim package and process as BAU</strong></h1>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>Next steps</strong></p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Upload PDF, notification and claim outcome to DRS/CAM</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Suppress letters sent by default from CAM</p>
+
+
+        {{ govukButton({
+          text: "Download claim package",
+          classes: "govuk-button--secondary govuk-!-margin-bottom-6"
+        }) }}
+
+<br>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Continue"
+      }) }}
+
+</form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-monolith" method="post" class="form">
+
+      <input type="hidden" name="pensions-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-l"> Agent: Check and discuss the pensions {{ data["full-name"] }}'s has</h1>
+
+          <ul class="govuk-body govuk-!-font-size-19 govuk-list govuk-list">
+            <li><strong>Searchlight</strong> shows pensions in payment</li>
+            <li><strong>OLE NIRS</strong> shows payments being made into a pension</li>
+          </ul>
+      </div>
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

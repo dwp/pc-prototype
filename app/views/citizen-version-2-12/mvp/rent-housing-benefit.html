@@ -1,0 +1,120 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Housing benefit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pension-check" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Do you get housing benefit?
+      </h1>
+
+      {% set altLanguage %}
+        {{ govukTextarea({
+        label: {
+        html: "@pete would you like to apply for housing benefit? @clare - get rid of this box"
+        },
+        id: "contact-formats-altLanguage",
+        name: "contact-formats-altLanguage",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-4"
+        }) }}
+      {% endset -%}
+
+
+      <!---- ESWNI ---->{% if data['resides-in-uk'] !== 'Wales' %}
+
+      {{ govukRadios({
+        idPrefix: "claimant-language-check",
+        name: "claimant-language-check",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["claimant-language-check"] == "Yes")
+          },
+            {
+            value: "No",
+            text: "No",
+            checked: (data["claimant-language-check"] == "No"),
+                  conditional: {
+                    html: altLanguage
+                  }
+          }
+        ]
+      }) }}
+
+<!---- COUNTRY END ---->{% endif %}
+
+
+
+
+<!---- WALES ---->{% if data['resides-in-uk'] == 'Wales' %}
+{{ govukRadios({
+  idPrefix: "claimant-language-check",
+  name: "claimant-language-check",
+  fieldset: {
+    legend: {
+      text: "What language do you want us to speak to you in?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "English",
+      text: "English",
+      checked: (data["claimant-language-check"] == "English")
+      },
+      {
+        value: "Welsh",
+        text: "Welsh",
+        checked: (data["claimant-language-check"] == "Welsh")
+        },
+      {
+      value: "Other",
+      text: "Other",
+      checked: (data["claimant-language-check"] == "Other"),
+            conditional: {
+              html: altLanguage
+            }
+      }
+    ]
+  }) }}
+<!---- COUNTRY END ---->{% endif %}
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

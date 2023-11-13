@@ -1,0 +1,88 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="index-pension-credit" method="post" class="form">
+
+<br>
+
+      <!---- SERVICE CHARGE ONLY ---->
+      {% if
+        data["home-own-service-charges"] == "Yes" or
+        data["home-other-service-charges"] == "Yes"
+      %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We need you to send us some information about your service charges</h1>
+            <p class="govuk-!-font-size-24">Send a copy of your most recent service charge invoice, with an itemised breakdown of charges, including your <strong>name</strong> and <strong>National Insurance number</strong> to:</p>
+
+      <!---- GROUND RENT ONLY ---->
+      {% elif
+        data["home-rent-ground-rent"] == "Yes" or
+        data["home-shared-ground-rent"] == "Yes" or
+        data["home-own-ground-rent"] == "Yes" or
+        data["home-other-ground-rent"] == "Yes"
+      %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We need you to send us some information about your ground rent</h1>
+        <p class="govuk-!-font-size-24">Send a copy of your most up to date ground rent invoice, including your <strong>name</strong> and <strong>National Insurance number</strong> to:</p>
+
+      <!---- BOTH GROUND AND SERVICE ---->
+      {% elif
+        data["home-own-service-charges"] == "Yes" and
+        data["home-own-ground-rent"] == "Yes"
+      %}
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We need you to send us some information about your service charges and ground rent</h1>
+          <p class="govuk-!-font-size-24">Send a copy of your most recent ground rent invoice and your most recent service charge invoice, with an itemised breakdown of charges, including your <strong>name</strong> and <strong>National Insurance number</strong> to:</p>
+      {% else %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">We need you to send us some information about your service charges and ground rent</h1>
+      <p class="govuk-!-font-size-24">Send a copy of your most recent ground rent invoice and your most recent service charge invoice, with an itemised breakdown of charges, including your <strong>name</strong> and <strong>National Insurance number</strong> to:</p>
+
+      {% endif %}
+
+    <div  class="govuk-panel--address govuk-!-margin-top-4">
+
+        <p class="govuk-heading-s govuk-!-margin-bottom-1">By email:</p>
+        <p class="govuk-body">newcastle.pensioncentre@dwp.gsi.gov.uk</p>
+      </div>
+
+      <div  class="govuk-panel--address">
+
+        <p class="govuk-heading-s govuk-!-margin-bottom-1">By post:</p>
+
+        <p class="govuk-body">
+        The Pension Service 4<br>
+        Mail Handling Site A<br>
+        Wolverhampton
+        WV98 1AG</p>
+      </div>
+
+<br>
+
+      <!-- {{ govukButton({
+        text: "Print a copy of this page",
+        classes: "govuk-button--secondary govuk-!-margin-top-4 govuk-!-margin-bottom-2 dont-print"
+      }) }} -->
+
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+
+    </form>
+
+
+
+  </div>
+</div>
+{% endblock %}

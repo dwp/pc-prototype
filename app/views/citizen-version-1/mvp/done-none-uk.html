@@ -1,0 +1,39 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We can only accept applications from people who live in England, Scotland or Wales</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">We cannot take your application for Pension Credit.</p>
+
+      <p class="govuk-heading-s govuk-!-margin-bottom-2">If you live in Northern Ireland, you can apply through the Northern Ireland Pension Centre on 0808 100 6165.</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 8am to 6pm (closed on bank holidays).<br>Calls to this number are free from landlines and mobiles.</p>
+
+      {% include "citizen-version-1/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+
+
+    </div>
+  </div>
+{% endblock %}

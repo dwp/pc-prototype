@@ -1,0 +1,71 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!------------ DYNAMIC ROUTER ------------>
+      {% if data["money-2-total-now"] == "Less than £7,000" %}
+      <form action="money-2-total-eed-same-check-7-router" method="post" class="form">
+      {% else %}
+      <form action="money-2-total-eed-same-check-10-router" method="post" class="form">
+      {% endif %}
+      <!------------ DYNAMIC ROUTER END ------------>
+
+
+     <!------------H1 LEGEND------------>
+       {% set dynamicH1 %}
+       {% if data["money-2-total-now"] == "Less than £7,000" %}
+       <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Did you have less than £7,000 on [EED]?</h1>
+       {% else %}<p class="govuk-heading-xl govuk-!-margin-bottom-0">Did you have between £7,000 and £10,000 on [EED]?</p>{% endif %}
+       {% endset %}
+     <!------------ LEGEND END --------------->
+
+           {{ govukRadios({
+             idPrefix: "money-2-total-eed-same-check",
+             name: "money-2-total-eed-same-check",
+             fieldset: {
+               legend: {
+                 html: dynamicH1,
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["money-2-total-eed-same-check"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No",
+                 checked: (data["money-2-total-eed-same-check"] == "No")
+               }
+             ]
+           }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

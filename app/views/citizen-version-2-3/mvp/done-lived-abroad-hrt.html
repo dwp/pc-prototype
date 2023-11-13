@@ -1,0 +1,52 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Done, a habitual residence test needed - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="done-hrt" method="post">
+
+<!----Headline---->
+
+<h1 class="govuk-heading-xl">We need to ask you some questions about your residency in the UK</h1>
+
+  <p>As you have lived outside the UK in the last 2 years, or do not have the right to live and work in the UK without restrictions, we need you to call us.</p>
+<h2 class="govuk-heading-l">What to do next</h2>
+
+<p class=govuk-body>Call the Pension Credit claim line.</p>
+
+<ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+  <li>Telephone: 0800 99 1234</li>
+  <li>Textphone: 0800 169 0133</li>
+</ul>
+
+<p>Monday to Friday, 9:30am to 3:30pm (closed on bank holidays).</p>
+
+<p class="govuk-body govuk-!-margin-bottom-0"><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+
+<!----Headline---->
+
+{% include "citizen-version-2-3/mvp/survey.html" %}
+
+<!-- {{ govukButton({
+  text: "Finish and close",
+  classes: "govuk-!-margin-top-6"
+}) }} -->
+
+  </div></div>
+
+  <!----Break---->
+
+  {% endblock %}

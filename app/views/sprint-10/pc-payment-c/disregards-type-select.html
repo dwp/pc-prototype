@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="disregards-type-more-yn" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+
+      <h1 class="govuk-heading-xl">What is this money for?</h1>
+
+
+
+            {{ govukSelect({
+              id: "Select-a-payment-type",
+              name: "Select-a-payment-type",
+              label: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "Payment type A",
+                  text: "Payment type A / XX weeks",
+                  selected: true
+                },
+                {
+                  value: "Charity A",
+                  text: "Charity A / XX weeks"
+                },
+                {
+                  value: "Charity B",
+                  text: "Charity B / XX weeks"
+                },
+                {
+                  value: "Charity C",
+                  text: "Charity C / XX weeks"
+                },
+                {
+                  value: "Local athority: Home maintainance",
+                  text: "Local athority: Home maintainance / XX weeks"
+                },
+                {
+                  value: "Other payment",
+                  text: "Other payment"
+                }
+              ]
+            }) }}
+
+<!--
+      {{ govukInput({
+        label: {
+          text: "Name of payment"
+        },
+        id: "disregards-entry-name",
+        name: "disregards-entry-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of the account number or roll number"
+        },
+        id: "msic-all-savings-account-last-digits",
+        name: "msic-all-savings-account-last-digits",
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+  -->
+
+      {{ govukDateInput({
+        id: "disregards-entry-date",
+        namePrefix: "disregards-entry-date",
+        fieldset: {
+          legend: {
+            text: "When did you get this money?"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["disregards-entry-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["disregards-entry-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["disregards-entry-date-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+      label: {
+        html: "How much money do you have?"
+      },
+      id: "disregards-entry-amount",
+      name: "disregards-entry-amount",
+      classes: "govuk-input--width-20"
+    }) }}
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header govuk-radio-table-select"></th>
+          <th scope="col" class="govuk-table__header govuk-radio-table-item">Disregard type</th>
+          <th scope="col" class="govuk-table__header govuk-radio-table-weeks">Weeks allowable</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+
+            <div class="govuk-radios govuk-radios--small">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="month">
+                <label class="govuk-label govuk-radios__label" for="changed-name">
+<br>
+                </label>
+              </div>
+            </div>
+
+          </th>
+          <td class="govuk-table__cell">Local Authority payments to the claimant of their partner to help them to continue to live independently in their own accommodation</td>
+          <td class="govuk-table__cell">26 weeeks</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+
+            <div class="govuk-radios govuk-radios--small">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="month">
+                <label class="govuk-label govuk-radios__label" for="changed-name">
+                  <br>
+                </label>
+              </div>
+            </div>
+
+          </th>
+          <td class="govuk-table__cell">Local Authority payments made to the claimant of their partner by way of local welfare provision (including arrears or payments in lieu)</td>
+          <td class="govuk-table__cell">52 weeeks</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+
+            <div class="govuk-radios govuk-radios--small">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="month">
+                <label class="govuk-label govuk-radios__label" for="changed-name">
+<br>
+                </label>
+              </div>
+            </div>
+
+          </th>
+          <td class="govuk-table__cell">Arrears of benefit, compensation for late payment of benefit or payment in lieu of benefit</td>
+          <td class="govuk-table__cell">52 weeeks</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

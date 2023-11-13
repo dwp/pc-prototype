@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a buildings society savings account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-premium-bond-account-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-has-premium-bond-account-yn",
+        name: "msic-has-premium-bond-account-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have any premium bond accounts?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\">
+(NS&I) Premium Bonds is a lottery bond issued by the United Kingdom government's National Savings and Investments agency.
+<br><br>
+The bonds are entered in a monthly prize draw and the government promises to buy them back, on request, for their original price. </p><br>"
+            },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-has-premium-bond-account-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-has-premium-bond-account-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

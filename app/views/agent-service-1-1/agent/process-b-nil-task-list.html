@@ -1,0 +1,280 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <form action="ur-home" method="post" class="form">
+
+
+      <!-- {% if data["process-1-nil-task-1-outcome"] or data["process-1-nil-task-2-idoc"] == "Yes" or data["process-1-nil-task-3-fail"] %}
+        <form action="process-nil-start" method="post" class="form">
+      {% elif data["process-1-nil-task-1-passed"] and data["process-1-nil-task-2-idoc"] == "No" and data["process-1-nil-task-3-passed"] %}
+        <form action="process-nil-start" method="post" class="form">
+      {% else %}
+        <form action="process-nil-start" method="post" class="form">
+      {% endif %} -->
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {% include "agent-service-1-1/agent/record-id.html" %}
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Process a nil award</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Claim attached is what the citizen submitted using AfPC. Do X Y and Z to check against the following tasks</p> -->
+
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+    <ol class="app-task-list">
+    <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">1.</span>Identity
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-b-nil-task-1" aria-describedby="task-1">
+          Check identity
+        </a>
+
+        {% if data["process-b-nil-task-1"]  == "Matched" %}
+          <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+          {% elif data["process-b-nil-task-1"]  == "Not matched" %}
+          <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+        {% elif data["process-b-nil-task-1"]  == "Unfinished" %}
+          <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+        {% else %}
+          <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+
+      </li>
+
+    </ul>
+    </li>
+
+
+<!-- SHOW ALL OF THIS IF THEY PASS ID -->
+
+
+{% if data["process-b-nil-task-1"]  == "Matched" %}
+
+
+                <li>
+                <h2 class="app-task-list__section">
+                  <span class="app-task-list__section-number">2.</span>Previous applications
+                </h2>
+                <ul class="app-task-list__items">
+                  <li class="app-task-list__item">
+                    <a class="app-task-list__task-name" href="process-b-nil-task-2" aria-describedby="task-2">
+                      Check for previous applications
+                    </a>
+                    {% if data["process-b-nil-task-2-idoc"] == "Found" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Found</strong>
+                    {% elif data["process-b-nil-task-2-idoc"] == "Not found" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Not found</strong>
+                    {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                    {% endif %}
+
+                </ul>
+                </li>
+
+
+
+                <li>
+                <h2 class="app-task-list__section">
+                  <span class="app-task-list__section-number">3.</span>Verify rules
+                </h2>
+                <ul class="app-task-list__items">
+
+                  <li class="app-task-list__item">
+                    <a class="app-task-list__task-name" href="process-b-nil-task-3-1" aria-describedby="task-3">
+                      <!-- [3-1]  -->Personal details
+                    </a>
+
+                    {% if data["process-b-nil-task-3-1"]  == "Matched" %}
+                      <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+                    {% elif data["process-b-nil-task-3-1"]  == "Not matched" %}
+                      <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+                    {% elif data["process-b-nil-task-3-1"]  == "Unfinished" %}
+                      <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+                    {% else %}
+                      <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                    {% endif %}
+
+                    </li>
+
+                    <li class="app-task-list__item">
+                      <a class="app-task-list__task-name" href="process-b-nil-task-3-2" aria-describedby="task-3">
+                        <!-- [3-2]  -->Interests
+                      </a>
+
+                      {% if data["process-b-nil-task-3-2"]  == "Matched" %}
+                        <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+                      {% elif data["process-b-nil-task-3-2"]  == "Not matched" %}
+                        <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+                      {% elif data["process-b-nil-task-3-2"]  == "Unfinished" %}
+                        <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+                      {% else %}
+                        <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                      {% endif %}
+
+                      </li>
+
+                      <li class="app-task-list__item">
+                        <a class="app-task-list__task-name" href="process-b-nil-task-3-3" aria-describedby="task-3">
+                          <!-- [3-3]  -->Benefits
+                        </a>
+
+                        {% if data["process-b-nil-task-3-3"]  == "Matched" %}
+                          <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+                        {% elif data["process-b-nil-task-3-3"]  == "Not matched" %}
+                          <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+                        {% elif data["process-b-nil-task-3-3"]  == "Unfinished" %}
+                          <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+                        {% else %}
+                          <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                        {% endif %}
+
+                        </li>
+
+                        <li class="app-task-list__item">
+                          <a class="app-task-list__task-name" href="process-b-nil-task-3-4" aria-describedby="task-3">
+                            <!-- [3-4]  -->Relationships
+                          </a>
+
+                          {% if data["process-b-nil-task-3-4"]  == "Matched" %}
+                            <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+                          {% elif data["process-b-nil-task-3-4"]  == "Not matched" %}
+                            <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+                          {% elif data["process-b-nil-task-3-4"]  == "Unfinished" %}
+                            <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+                          {% else %}
+                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                          {% endif %}
+
+                          </li>
+
+                          <li class="app-task-list__item">
+                            <a class="app-task-list__task-name" href="process-b-nil-task-3-5" aria-describedby="task-3">
+                              <!-- [3-5]  -->Housing
+                            </a>
+
+                            {% if data["process-b-nil-task-3-5"]  == "Matched" %}
+                              <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+                            {% elif data["process-b-nil-task-3-5"]  == "Not matched" %}
+                              <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+                            {% elif data["process-b-nil-task-3-5"]  == "Unfinished" %}
+                              <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+                            {% else %}
+                              <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+                            {% endif %}
+
+                            </li>
+
+                  </ul>
+                  </li>
+
+
+                </ol>
+
+
+
+
+                </div>
+                </div>
+
+{% else %}
+
+{% endif %}
+
+<!------------ SHOW ALL OF THIS WHEN THERE IS AN OUTCOME ------------>
+
+{% if data["process-b-nil-task-3-5"] == "Matched" %}
+
+<div class="govuk-grid-row govuk-!-margin-top-4">
+<div class="govuk-grid-column-three-quarters">
+
+          <h1 class="govuk-heading-l govuk-!-margin-bottom-2">This application matches</h1>
+          <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">A notification will now be sent to the applicant.</p>
+
+          {{ govukButton({
+          text: "Confirm and notify",
+          classes: "govuk-!-margin-right-2"
+          }) }}
+
+          {% elif data["process-b-nil-task-1"]  == "Not matched" %}
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-2">This application is unmatched</h1>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">It will be sent back to BAU.</p>
+
+    {{ govukButton({
+    text: "Confirm and reject",
+    classes: "govuk-!-margin-right-2"
+    }) }}
+
+
+    {% elif data["process-b-nil-task-3-5"] == "Not matched" %}
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Submitting an unmatched claim</h1>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">It will be sent back to BAU.</p>
+
+        {{ govukButton({
+        text: "Confirm and send",
+        classes: "govuk-!-margin-right-2"
+        }) }}
+
+
+
+
+
+    {% elif data["process-b-nil-task-1"]  == "Unfinished" %}
+
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-4">You have unfinished tasks</h1>
+
+
+
+    {{ govukButton({
+    text: "Exit process early",
+    classes: "govuk-button--secondary",
+    href: "process-nil-task-alt-outcome"
+    }) }}
+
+    {% else %}
+
+
+            <h1 class="govuk-heading-m govuk-!-margin-bottom-4">Leaving the process early</h1>
+
+
+
+          {{ govukButton({
+          text: "Save progress and exit",
+          classes: "govuk-button--secondary",
+          href: "process-nil-task-alt-outcome"
+          }) }}
+
+    {% endif %}
+
+      </div>
+    </div>
+
+  </form>
+
+{% endblock %}

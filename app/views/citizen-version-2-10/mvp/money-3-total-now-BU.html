@@ -1,0 +1,74 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+Money you have now - Apply for Pension Credit - GOV.UK
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-3-total-now-confirm" method="post" class="form">
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Money you and your partner have today</h1>
+      {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Money you have today</h1>{% endif %}
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">If you have money in accounts shared with someone other than your partner, only tell us about the amount of money that belongs to you and your partner.</p>
+      {% else %}  <p class="govuk-!-font-size-24">If you have money in accounts shared with someone else, only tell us about the amount of money that belongs to you.</p>{% endif %}
+
+      {% set DynamicDetails %}
+            <!-- <p class="govuk-heading-s govuk-!-margin-bottom-2">This includes money, savings and investments such as:</p> -->
+      <ul class="govuk-list govuk-list--bullet ">
+            <li>current, savings or deposit accounts with a bank, building society, credit union or the Post Office</li>
+            <li>investment ISAs or cash ISAs</li>
+            <li>National Savings and Investments products, such as Premium Bonds or Savings Certificates</li>
+            <li>money invested in unit trusts</li>
+            <li>income or capital bonds</li>
+            <li>money at home in cash</li>
+      </ul>
+      {% endset -%}
+
+      {{ govukDetails({
+        summaryText: "What money, savings and investments should you include?",
+        classes: "govuk-!-margin-bottom-6",
+        html: DynamicDetails
+      }) }}
+
+{{ govukInput({
+  id: "money-3-total-now-value",
+  name: "money-3-total-now-value",
+  label: {
+    html: "What is the total amount of money you have today?",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example, 100.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["money-3-total-now-value"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+  spellcheck: false
+}) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

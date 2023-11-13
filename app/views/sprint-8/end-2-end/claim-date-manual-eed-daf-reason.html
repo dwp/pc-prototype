@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add start date - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yn" method="post">
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check SeachLight or PTP CAM
+          </strong>
+        </div>
+
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "claim-date-manual-eed-daf-reason",
+  name: "claim-date-manual-eed-daf-reason",
+  fieldset: {
+    legend: {
+      text: "Add reason for why the USER wants to have a differnt date",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "XXX"
+  },
+  items: [
+    {
+      value: "Customer stopped working",
+      text: "Customer stopped working"
+    },
+    {
+      value: "Bereavement",
+      text: "Bereavement"
+    },
+    {
+      value: "Living on own or separated",
+      text: "Living on own or separated"
+    },
+    {
+      value: "Customer’s request",
+      text: "Customer’s request"
+    },
+    {
+      value: "Arriving/returning to UK",
+      text: "Arriving/returning to UK"
+    },
+    {
+      value: "Moved into care home",
+      text: "Moved into care home"
+    },
+    {
+      value: "Reduction of savings/income",
+      text: "Reduction of savings/income"
+    },
+    {
+      value: "Carers Allowance awarded",
+      text: "Carers Allowance awarded"
+    },
+    {
+      value: "AA/DLA claimed/awarded",
+      text: "AA/DLA claimed/awarded"
+    },
+    {
+      value: "Change of address",
+      text: "Change of address"
+    },
+    {
+      value: "Re-applying for Pension Credit",
+      text: "Re-applying for Pension Credit"
+    },
+    {
+      value: "Hospital admission/discharge",
+      text: "Hospital admission/discharge"
+    },
+    {
+      value: "Backdated claim",
+      text: "Backdated claim"
+    },
+    {
+      value: "Released from HMP",
+      text: "Released from HMP"
+    },
+    {
+      value: "PIP claimed/awarded",
+      text: "PIP claimed/awarded"
+    }
+  ]
+}) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,358 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="hrt-check" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Is any of the money you have from:</h1>
+
+
+         {% set arrearsOver %}
+           {{ govukTextarea({
+             label: {
+               html: "<p><strong>Describe the payments for arrears or official error, the date paid and the amount</strong></p>
+
+
+                       "},
+             hint: {
+               html: ""
+             },
+             id: "disregards-benefit-check-yes",
+             name: "disregards-benefit-check-yes",
+             classes: "govuk-input--width-30",
+             attributes: {
+               maxlength: 200
+             }
+           }) }}
+         {% endset %}
+
+
+        {% set council %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the payment related to Council Tax Reduction, the date it was paid and amount"
+            },
+            hint: {
+              text: ""
+            },
+            id: "disregards-council-yes",
+            name: "disregards-council-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set warPaymentYes %}
+          {% set warHint %}
+            <p class="govuk-hint">This includes:</p>
+            <ul class="govuk-hint govuk-list govuk-list--bullet">
+              <li>
+                Payments (other than War Disablement Pension or War Widow(er)'s Pension) to compensate for the fact that during the second world war you:
+                <ul class="govuk-hint govuk-list">
+                  <li>were a slave labourer or forced labourer</li>
+                  <li>suffered property loss or personal injury</li>
+                  <li>were a parent of a child who died</li>
+                </ul>
+              </li>
+              <li>Payments made to Far East Prisoners of War or their partners</li>
+              <li>Armed Forces Independence Payment</li>
+            </ul>
+          {% endset %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the compensation payments related to the second world war or service in the armed forces, the date they were paid and amount"
+            },
+            hint: {
+              html: warHint
+            },
+            id: "disregards-warpayment-yes",
+            name: "disregards-warpayment-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set compensationInjury %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe this personal injury payment, the date it was paid and amount"
+            },
+            hint: {
+              text: ""
+            },
+            id: "disregards-compensation-for-injury-yes",
+            name: "disregards-compensation-for-injury-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set ContentsInsurance %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the payment from home insurance, the date it was paid and amount"
+            },
+            hint: {
+              text: ""
+            },
+            id: "disregards-contents-insurance-yes",
+            name: "disregards-contents-insurance-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set moneyForProperty %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the money to buy or make essential repairs to a home, the date you have had it since and amount"
+            },
+            hint: {
+              text: ""
+            },
+            id: "disregards-money-for-property-yes",
+            name: "disregards-money-for-property-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set independentlyLiving %}
+        {% set indyHint %}
+        <p class=govuk-hint>This includes:</p>
+        <ul class="govuk-hint govuk-list">
+          <li>payments from The Independent Living Fund.</li>
+          <li>local authority payments to help you to continue to live independently in your own home.</li>
+          <li>welfare assistance grants from the local authority.</li>
+        </ul>
+        {% endset %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the payments to help you live independently, the date they were paid and amount"
+            },
+            hint: {
+              html: indyHint            },
+            id: "disregards-independently-living-yes",
+            name: "disregards-independently-living-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set incidentPayment %}
+        {% set emergHint %}
+          <p class="govuk-hint">This includes payments from:</p>
+          <ul class="govuk-hint govuk-list govuk-list--bullet">
+            <li>The National Emergencies Trust</li>
+            <li>London Emergency Trust</li>
+            <li>The We Love Manchester Emergency Fund</li>
+            <li>The London Bombing Charitable Trust</li>
+            <li>The Rugby Portobello Trust</li>
+            <li>Grenfell Tower Residents’ Discretionary Fund</li>
+          </ul>
+        {% endset %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the payment to help you after an incident or emergency, the date it was paid and amount"
+            },
+            hint: {
+              html: emergHint
+            },
+            id: "disregards-incident-payment-yes",
+            name: "disregards-incident-payment-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set windrushYes %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Describe the Windrush child compensation payment, the date it was paid and amount"                          },
+            hint: {
+              text: ""
+            },
+            id: "disregards-windrush-yes",
+            name: "disregards-windrush-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        {% set infectedBlood %}
+          {% set bloodHint %}
+            <p class=govuk-hint>This includes payments from:</p>
+            <ul class="govuk-hint govuk-list govuk-list--bullet">
+              <li>The McFarlane Trust</li>
+              <li>McFarlane (Special Payments) Trust</li>
+              <li>Trust MFET Limited</li>
+              <li>The Skipton Fund</li>
+              <li>The Caxton Foundation</li>
+              <li>The Scottish Infected Blood Support Scheme or an approved blood scheme</li>
+            </ul>
+          {% endset %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              text: "Describe the payment to support you with the effects of a blood infection or vCJD, the date it was paid and amount"
+             },
+            hint: {
+              html: bloodHint
+            },
+            id: "disregards-blood-yes",
+            name: "disregards-blood-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+
+        <!-- ———————————————————————————————————— -->
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            name: 'arrears',
+            value: "Payments to correct or compensate for an official error or for arrears of benefits",
+            html: "Payments to correct or compensate for an official error or for arrears of benefits",
+            conditional: {
+              html: arrearsOver
+            }
+          },
+          {
+            name: 'council',
+            value: "Payments related to Council Tax Reduction",
+            html: "Payments related to Council Tax Reduction",
+            conditional: {
+              html: council
+            }
+          },
+            {
+              name: 'warpayment',
+              value: "Compensation payments related to the second world war or service in the armed forces",
+              html: "Compensation payments related to the second world war or service in the armed forces",
+              conditional: {
+                html: warPaymentYes
+              }
+            },
+            {
+              name: 'compensation-for-injury',
+              value: "Personal injury claim payments",
+              html: "Personal injury claim payments",
+              conditional: {
+                html: compensationInjury
+              }
+            },
+            {
+              name: "contents-insurance",
+              value: "Payments from a home insurance policy to cover lost or damaged personal possessions",
+              html: "Payments from a home insurance policy to cover lost or damaged personal possessions",
+              conditional: {
+                html: ContentsInsurance
+              }
+            },
+            {
+              name: 'money-for-property',
+              value: "Savings that you intend to use to buy or make essential repairs to your main home",
+              html: "Savings that you intend to use to buy or make essential repairs to your main home",
+              conditional: {
+                html: moneyForProperty
+              }
+            },
+            {
+              name: 'independently-living',
+              value: "Payments to help you live independently in your own home or the community",
+              html: "Payments to help you live independently in your own home or the community",
+              conditional: {
+                html: independentlyLiving
+              }
+            },
+            {
+              name: 'incident-payments',
+              value: "Payments to help you if you have been involved in an incident or emergency",
+              html: "Payments to help you if you have been involved in an incident or emergency",
+              conditional: {
+                html: incidentPayment
+              }
+            },
+            {
+              name: 'windrush',
+              value: "Windrush child compensation",
+              html: "Windrush child compensation",
+              conditional: {
+                html: windrushYes
+              }
+            },
+            {
+              name: 'blood',
+              value: "Payments to support you with the effects of a blood infection or vCJD",
+              html: "Payments to support you with the effects of a blood infection or vCJD",
+              conditional: {
+                html: infectedBlood
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="money-you-have-router" method="post" class="form">
+      <h1 class="govuk-heading-xl">How much money do you have? </h1>
+
+      <p class="govuk-body">This includes:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>money in current, saving or deposit accounts</li>
+        <li>money invested in ISAs, shares or unit trusts</li>
+        <li>capital bonds, premium bonds</li>
+        <li>any other National Savings and Investment products</li>
+        <li>property or Land other than your home</li>
+        <li>any other money held in this country or abroad</li>
+        <li>sums of money you keep at home in cash</li>
+        <li>lump sums, such as insurance payouts, that you expect in the near future</li>
+      </ul>
+
+      <br>
+
+      {{ govukInput({
+        name: "total-money",
+        label: {
+          html: "<strong>Total money you have:</strong>"
+        },
+        classes: "govuk-input--width-10"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

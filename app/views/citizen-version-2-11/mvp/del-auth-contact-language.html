@@ -1,0 +1,131 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  del-auth-contact-language - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-formats-check" method="post" class="form">
+
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% elif data["del-auth-who-made-claim-2"]%}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-2"]}}</span>
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-3"]}}</span>
+      {% endif %}
+
+
+      {% set legendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">What language should we use when we call you?</h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">What language should we use when we call the applicant?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+      {% set altLanguage %}
+        {{ govukInput({
+        label: {
+          html: "What language do you want us to use?"
+        },
+        id: "del-auth-contact-formats-altLanguage",
+        name: "del-auth-contact-formats-altLanguage",
+        classes: "govuk-input--width-20"
+        }) }}
+      {% endset -%}
+
+
+      <!---- ESWNI ---->{% if data['resides-in-uk'] !== 'Wales' %}
+
+      {{ govukRadios({
+        idPrefix: "del-auth-contact-language-check",
+        name: "del-auth-contact-language-check",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-!-margin-bottom-2"
+          }
+        },
+        classes: "govuk-!-margin-bottom-0",
+        items: [
+          {
+            value: "English",
+            text: "English",
+            checked: (data["del-auth-contact-language-check"] == "English")
+          },
+            {
+            value: "Other",
+            text: "Other",
+            checked: (data["del-auth-contact-language-check"] == "Other"),
+                  conditional: {
+                    html: altLanguage
+                  }
+          }
+        ]
+      }) }}
+
+<!---- COUNTRY END ---->{% endif %}
+
+
+
+
+<!---- WALES ---->{% if data['resides-in-uk'] == 'Wales' %}
+{{ govukRadios({
+  idPrefix: "del-auth-contact-language-check",
+  name: "del-auth-contact-language-check",
+  fieldset: {
+    legend: {
+      html: legendH1,
+      isPageHeading: true,
+      classes: "govuk-!-margin-bottom-4"
+    }
+  },
+  classes: "govuk-radios ",
+  items: [
+    {
+      value: "English",
+      text: "English",
+      checked: (data["del-auth-contact-language-check"] == "English")
+      },
+      {
+        value: "Welsh",
+        text: "Welsh",
+        checked: (data["del-auth-contact-language-check"] == "Welsh")
+        },
+      {
+      value: "Other",
+      text: "Other",
+      checked: (data["del-auth-contact-language-check"] == "Other"),
+            conditional: {
+              html: altLanguage
+            }
+      }
+    ]
+  }) }}
+<!---- COUNTRY END ---->{% endif %}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

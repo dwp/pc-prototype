@@ -1,0 +1,571 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "second-property"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers
+    </h1>
+
+    <p class="govuk-body">
+      We have collected some information about you from other parts of the DWP
+      and other organisations. We might also share your information with others
+      where it is appropriate.
+    </p>
+
+    <h2 class="govuk-heading-m">
+      About you
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["full-name"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          National Insurance number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["nino"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Telephone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["telephone-number"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Self-employed
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["self-employed"] | upperCaseFirst }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Right to abode
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["right-to-abode"] | upperCaseFirst }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="about-you">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% if data["has-partner"] == "no" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Have partner
+          </dt>
+          <dd class="govuk-summary-list__value">
+            No
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="has-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+    </dl>
+
+    {% if data["has-partner"] == "yes" %}
+      <h2 class="govuk-heading-m">
+        About your partner
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["partner-full-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["partner-nino"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Self employed
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["partner-self-employed"] | upperCaseFirst }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Address
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          221B Baker Street<br>
+          Marylebone<br>
+          London<br>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="address-choice">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Postcode
+        </dt>
+        <dd class="govuk-summary-list__value">
+          NW1 5RT
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="postcode-lookup">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home ownership
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["home-ownership"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="home-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% if data["home-ownership"] == "Own" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Ground rent
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["ground-rent"] or "None "}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="ground-rent">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Service charges
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["service-charges"] or "None "}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="service-charges">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+    </dl>
+
+    {% if data["has-private-pensions"] %}
+      <h2 class="govuk-heading-m">
+        Non state pensions
+      </h2>
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["pension-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["pension-value"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payment frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["pension-frequency"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Money you have
+    </h2>
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Money, savings or investments of more than £10,000
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["over-10k"] | upperCaseFirst }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="money-you-have">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% if data["over-10k"] == "no" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total amount
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["total-amount"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="money-you-have">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other property or land
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["second-property"] | upperCaseFirst }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="second-property">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    {% if data["over-10k"] == "yes" %}
+      {% if data["account-number"] or data["balance"] %}
+        <h3 class="govuk-heading-s">
+          Current, building society or savings account
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last 4 digits of account number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["account-number"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Balance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["balance"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of balance
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["date-of-balance-day"] }}
+              {{ data["date-of-balance-month"] | getMonth }}
+              {{ data["date-of-balance-year"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+      {% if data["isa-total"] or data["isa-life-insurance"] %}
+        <h3 class="govuk-heading-s">
+          ISAs
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total value of investments
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["isa-total"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does this account have life insurance attached?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["isa-life-insurance"] | upperCaseFirst }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+      {% if data["share-company"] or data["share-type"] or data["number-of-sharess"] %}
+        <h3 class="govuk-heading-s">
+          Shares
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Company
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["share-company"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["share-type"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Number of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["number-of-sharess"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+      {% if data["investments-total"] %}
+        <h3 class="govuk-heading-s">
+          Investments
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["investments-total"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+      {% if data["bonds-total"] %}
+        <h3 class="govuk-heading-s">
+          Bonds
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Account total
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["bonds-total"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Start date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["bond-start-date-day"] }}
+              {{ data["bond-start-date-month"] | getMonth }}
+              {{ data["bond-start-date-year"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+      {% if data["total-cash"] %}
+        <h3 class="govuk-heading-s">
+          Cash
+        </h3>
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total cash
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["total-cash"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="capital">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+    {% endif %}
+
+    <h2 class="govuk-heading-m">
+      Claimant declaration
+    </h2>
+
+    <p class="govuk-body">
+      By submitting this claim you agree that the information you’ve given is
+      complete and correct. While you’re receiving Pension Credit,
+      you’ll report changes to your circumstances straight away by calling
+      0800&nbsp;731&nbsp;7898. If you give wrong or incomplete information, or
+      you don’t report changes, you may:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be paid too much Pension Credit and have to pay the money back</li>
+      <li>have your Pension Credit reduced or stopped</li>
+      <li>need to pay a financial penalty</li>
+      <li>be prosecuted</li>
+    </ul>
+
+    <form action="done" method="post">
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

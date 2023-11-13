@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefit-overview? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-industrial-death-benefit-yn" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Add benefit details</h1>
+
+
+        {% set benefitIIDBYes %}
+          {{ govukDateInput({
+            id: "benefit-IIDB-yes-date",
+            namePrefix: "benefit-IIDB-yes-date",
+            fieldset: {
+              legend: {
+                text: "Enter the received"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["benefit-IIDB-yes-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["benefit-IIDB-yes-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["benefit-IIDB-yes-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "benefit-IIDB-date-yn",
+          name: "benefit-IIDB-date-yn",
+          fieldset: {
+            legend: {
+              html: "Date of payment",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes-date",
+            text: "Enter date",
+            checked: (data["benefit-IIDB-date-yn"] == "Yes"),
+            conditional: {
+              html: benefitIIDBYes
+            }
+          },
+            {
+              value: "no-date",
+              text: "Unknown",
+              checked: (data["benefit-IIDB-date-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        <!------------------------->
+
+        {{ govukRadios({
+          idPrefix: "benefit-IIDB-payment-frequency",
+          name: "benefit-IIDB-payment-frequency",
+          fieldset: {
+            legend: {
+              text: "How often do get this?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+              }
+              },
+
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data["benefit-IIDB-payment-frequency"] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data["benefit-IIDB-payment-frequency"] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (data["benefit-IIDB-payment-frequency"] == "Every four weeks")
+            },
+            {
+              value: "Unsure",
+              text: "Unsure",
+              checked: (data["benefit-IIDB-payment-frequency"] == "Unsure")
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+        label: {
+          html: "<strong>How much money do you get?</strong>"
+        },
+        id: "benefit-IIDB-disablement-amount",
+        name: "benefit-IIDB-disablement-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About you - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">
+    About you
+  </h1>
+  <form action="/form-example/page-2" method="post" class="form">
+    {{ govukInput({
+      label: {
+        text: "What is your full name?"
+      },
+      id: "fullName",
+      name: "fullName",
+      classes: "govuk-input--width-20",
+      value: data['fullName']
+    }) }}
+
+    {{ govukDateInput({
+      id: "dob",
+      namePrefix: "dob",
+      fieldset: {
+        legend: {
+          text: "What is your date of birth?"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      }
+    }) }}
+
+    {% call govukFieldset({
+      legend: {
+        text: "What is your home address?",
+        classes: "govuk-!-font-weight-bold"
+      }
+    }) %}
+      {{ govukInput({
+        label: {
+          html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+        },
+        classes: "govuk-input--width-30",
+        id: "address-line-1",
+        name: "address-line-1"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+        },
+        classes: "govuk-input--width-30",
+        id: "address-line-2",
+        name: "address-line-2"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Town or city"
+        },
+        classes: "govuk-input--width-20",
+        id: "address-town",
+        name: "address-town"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "County"
+        },
+        classes: "govuk-input--width-20",
+        id: "address-county",
+        name: "address-county"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Postcode"
+        },
+        classes: "govuk-input--width-10",
+        id: "address-postcode",
+        name: "address-postcode"
+      }) }}
+    {% endcall %}
+
+    {{ govukInput({
+      label: {
+        text: "What is your daytime phone number?"
+      },
+      id: "dayphone",
+      name: "dayphone",
+      classes: "govuk-input--width-20",
+      value: data['dayphone']
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+{% endblock %}

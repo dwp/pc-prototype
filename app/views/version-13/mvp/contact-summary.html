@@ -1,0 +1,434 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: How we contact you
+    </h1>
+
+
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+      {
+        key: {
+          text: "Can we send you text messages?"
+        },
+        value: {
+          text: data['contact-text-yn']
+        },
+        actions: {
+          items: [
+          {
+            href: "contact-text-yn",
+            text: "Change",
+            visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
+
+    {% if data["contact-text-yn-number"] %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Mobile phone number"
+          },
+          value: {
+            text: data['contact-text-yn-number']
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-text-yn-number",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+    {% endif %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Can we call you on the same number we text you on?"
+          },
+          value: {
+            text: data['contact-mobile-can-call-yn']
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-mobile-can-call",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    {% if data["contact-mobile-can-call-yn"] %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Different number"
+          },
+          value: {
+            html: data["contact-mobile-can-call-number"]
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-text-yn-number",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+    {% endif %}
+
+    {% if data["contact-mobile-can-call-number"] %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Can we call you on a different number?"
+          },
+          value: {
+            html: data["contact-mobile-can-call-number"]
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-text-yn-number",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+    {% endif %}
+
+    {% if data["contact-other-number-yn"] %}
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Can we call you?"
+          },
+          value: {
+            html: data["contact-other-number-yn"]
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-text-yn-number",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+    {% endif %}
+
+
+
+        {% if data["contact-other-number-yn"] %}
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+            {
+              key: {
+                text: "Can we call you?"
+              },
+              value: {
+                html: data["contact-other-number-yn"]
+              },
+              actions: {
+                items: [
+                {
+                  href: "contact-text-yn-number",
+                  text: "Change",
+                  visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+        {% endif %}
+
+
+    <!------------------------------------------------------------------------>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Did the claimant need a translator to make this claim?"
+          },
+          value: {
+            html: data["contact-formats-altLanguage-yn"]
+          },
+          actions: {
+            items: [
+            {
+              href: "contact-translator",
+              text: "Change",
+              visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      {% if data["contact-formats-altLanguage"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+          {
+            key: {
+              text: "Claimant's first language"
+            },
+            value: {
+              html: data["contact-formats-altLanguage"]
+            },
+            actions: {
+              items: [
+              {
+                href: "contact-translator",
+                text: "Change",
+                visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+      {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+          {
+            key: {
+              text: "Address for letters"
+            },
+            value: {
+              html: "221B Baker Street<br>
+              Marylebone<br>
+              London<br>
+              NW1 5RT"
+            },
+            actions: {
+              items: [
+              {
+                href: "contact-translator",
+                text: "Change",
+                visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+          {
+            key: {
+              text: "Do you need letters in Welsh?"
+            },
+            value: {
+              html: data["contact-welsh-check-yn"]
+            },
+            actions: {
+              items: [
+              {
+                href: "contact-welsh-check",
+                text: "Change",
+                visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+        {% if data["contact-formats-email-yn"] %}
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+            {
+              key: {
+                text: "Do you need any additional help when we send you letters or speak to you on the phone?"
+              },
+              value: {
+                html: data["contact-formats-email-yn"]
+              },
+              actions: {
+                items: [
+                {
+                  href: "contact-email",
+                  text: "Change",
+                  visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+        {% endif %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [
+          {
+            key: {
+              text: "Do you need us to contact you in any different formats?"
+            },
+            value: {
+              html: "Braille<br>
+              Email<br>
+              Large print<br>
+              Sign language<br>
+              ...<br>"
+            },
+            actions: {
+              items: [
+              {
+                href: "contact-formats",
+                text: "Change",
+                visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+            {
+              key: {
+                text: "Do you accept the risk of us sending your personal information by email?"
+              },
+              value: {
+                html: data["contact-email-check-yn"]
+              },
+              actions: {
+                items: [
+                {
+                  href: "contact-email-check",
+                  text: "Change",
+                  visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+
+
+
+        {% if data["contact-formats-email-yes"] %}
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: data["contact-formats-email-yes"]
+              },
+              actions: {
+                items: [
+                {
+                  href: "contact-email",
+                  text: "Change",
+                  visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </dl>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="contact-complete" value="true"/>
+      <input type="hidden" name="contact-address-choice-complete" value="true"/>
+      <input type="hidden" name="contact-formats-complete" value="true"/>
+
+<br><br>
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+</div>
+{% endblock %}

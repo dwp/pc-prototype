@@ -1,0 +1,69 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-8">Email details and preferences</h2>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Email</p>
+            <p class="govuk-body govuk-!-margin-bottom-8"
+              > jeff.bridges@gmail.com
+              <br> <a href="case-summary">Capture change</a>
+            </p>
+          </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <ul class="govuk-list class="">
+              <li class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Contact format preferences </li>
+              <li class="govuk-body govuk-!-margin-bottom-8">None</li>
+            </ul>
+          </div>
+      </div>
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <ul class="govuk-list class="">
+              <li class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Language </li>
+              <li class="govuk-body govuk-!-margin-bottom-8">English <br> <a href="case-summary">Capture change</a></li>
+            </ul>
+          </div>
+      </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+
+      </div>
+
+
+
+
+
+    </form>
+{% endblock %}

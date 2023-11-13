@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Who else lives in your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-you-have" method="post" class="form">
+      {{ govukCheckboxes({
+        idPrefix: "relationships",
+        fieldset: {
+          legend: {
+            text: "Who else lives in your home?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            name: "relationship-children",
+            value: "yes",
+            text: "Children",
+            checked: (data["relationship-children"] == "yes")
+          },
+          {
+            name: "relationship-landlord",
+            value: "yes",
+            text: "Landlord",
+            checked: (data["relationship-landlord"] == "yes")
+          },
+          {
+            name: "relationship-joint-tenant",
+            value: "yes",
+            text: "Joint tenant",
+            checked: (data["relationship-joint-tenant"] == "yes")
+          },
+          {
+            name: "relationship-sub-tenant",
+            value: "yes",
+            text: "Sub-tenant",
+            checked: (data["relationship-sub-tenant"] == "yes")
+          },
+          {
+            name: "relationship-co-owner",
+            value: "yes",
+            text: "Co-owner",
+            checked: (data["relationship-co-owner"] == "yes")
+          },
+          {
+            name: "relationship-boarder",
+            value: "yes",
+            text: "Boarder",
+            checked: (data["relationship-boarder"] == "yes")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

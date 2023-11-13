@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body govuk--version-control">A.2.1</p>
+
+
+      <h1 class="govuk-heading-xl">Apply for Pension Credit</h1>
+
+      <h2 class="govuk-heading-m">Use this service to start a Pension Credit application</h2>
+
+      <p class="govuk-body">This part of your application should take around <strong>20 minutes</strong> depending on your circumstances.</p>
+
+      <p class="govuk-body"><strong>You will need to tell us about:</strong></p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>your National Insurance number</li>
+        <li>any children you look after</li>
+        <li>any benefits you get</li>
+        <li>any pensions you get</li>
+        <li>any money, savings or investments you have, including balances, account and reference numbers</li>
+        <li>any second properties or land you own</li>
+        <li>earnings from employment and any other income. You can find this on your P45, P60 or any pay slips</li>
+        <li>details of the bank account you want any Pension Credit paid into</li>
+      </ul>
+
+  <h3 class="govuk-heading-m">Personal information</h3>
+        <p class="govuk-body">We will treat your information carefully and only use it as allowed by data protection laws.</p>
+
+        <p class="govuk-body">To find out more about how we use information and your information rights, read our Personal Information Charter. You can get a copy of this at a jobcentre.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "who-is-caller",
+        classes: "govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"
+      }) }}
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a class="govuk-link" href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-link govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+
+    </div>
+  </div>
+{% endblock %}

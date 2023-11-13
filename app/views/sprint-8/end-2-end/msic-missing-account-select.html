@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="msic-missing-account" method="post">
+
+        {{ govukRadios({
+          idPrefix: "msic-missing-account",
+          name: "msic-missing-account",
+          fieldset: {
+            legend: {
+              text: "What would you like to add?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+          {
+            value: "Other type of account",
+            text: "Other type of account",
+            checked: data['msic-missing-account'] == "Other type of account"
+          },
+          {
+            divider: "or"
+          },
+          {
+              value: "Current account",
+              text: "Current account",
+              checked: data['msic-missing-account'] == "Current account"
+            },
+            {
+            value: "Savings account",
+            text: "Savings account",
+            checked: data['msic-missing-account'] == "Savings account"
+          },
+          {
+            value: "Post office",
+            text: "Post office",
+            checked: data['msic-missing-account'] == "Post office"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

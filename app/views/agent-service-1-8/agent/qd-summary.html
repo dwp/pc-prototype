@@ -1,0 +1,798 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-actions" method="post" class="form">
+      {% include "agent-service-1-8/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">I'm just going to check some details with you and explain your decision</h1>
+
+
+            {% if data['qd-search-nino'] === 'EO972577M' %}
+
+            {{ govukTable({
+              caption: "",
+              classes: "govuk-!-margin-bottom-2",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Date of claim",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "10 June 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Backdating period start date",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "None",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                  {
+                    text: "Date processed",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "10 June 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Entitlement status",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "Not entitled",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                  {
+                    text: "Recent notes",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "20 June 2022 at 9am: Inbound letter uploaded.",
+                    classes: 'govuk-table--no-border'
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {% elif data['qd-search-nino'] === 'AB987654C' %}
+
+            {{ govukTable({
+              caption: "",
+              classes: "govuk-!-margin-bottom-2",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Date of claim",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "16 April 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Backdating period start date",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "16 February 2022",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                  {
+                    text: "Date processed",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "16 April 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Entitlement status",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "Not entitled",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                  {
+                    text: "Recent notes",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "16 April 2022: Award letter sent",
+                    classes: 'govuk-table--no-border'
+                  }
+                ]
+              ]
+            }) }}
+
+
+              {% elif data['qd-search-nino'] === 'AB987654C' %}
+
+              {{ govukTable({
+                caption: "",
+                classes: "govuk-!-margin-bottom-2",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Date of claim",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "16 April 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Backdating period start date",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "16 February 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Date processed",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "16 April 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Entitlement status",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "Not entitled",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Recent notes",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "16 April 2022: Award letter sent",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+              {% elif data['qd-search-nino'] === 'BB668734F' %}
+
+              {{ govukTable({
+                caption: "",
+                classes: "govuk-!-margin-bottom-2",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Date of claim",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "1 May 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Backdating period start date",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "None",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Date processed",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "1 May 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Entitlement status",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "Not entitled",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Recent notes",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "1 May 2022 at 10am: Award letter sent",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+              {% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+              {{ govukTable({
+                caption: "",
+                classes: "govuk-!-margin-bottom-2",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Date of claim",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "11 April 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Backdating period start date",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "11 January 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Date processed",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "11 April 2022",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ],
+                  [
+                  {
+                    text: "Entitlement status",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "Not entitled",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                    {
+                      text: "Recent notes",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "11 April 2022: Award letter sent",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+              {% else %}
+
+                {{ govukTable({
+                  caption: "",
+                  classes: "govuk-!-margin-bottom-2",
+                  captionClasses: "govuk-table__caption--m",
+                  firstCellIsHeader: true,
+                  head: [
+                    {
+                      text: "",
+                      classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                    },
+                    {
+                      text: "",
+                      classes: 'govuk-!-width-one-half govuk-table--no-border'
+                    }
+                  ],
+                  rows: [
+                    [
+                      {
+                        text: "Date of claim",
+                        classes: 'govuk-table--no-border'
+
+                      },
+                      {
+                        text: "28 February 2022",
+                        classes: 'govuk-table--no-border'
+                      }
+                    ],
+                    [
+                    {
+                      text: "Backdating period start date",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "28 November 2021",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                      {
+                        text: "Date processed",
+                        classes: 'govuk-table--no-border'
+
+                      },
+                      {
+                        text: "28 February 2022",
+                        classes: 'govuk-table--no-border'
+                      }
+                    ],
+                    [
+                    {
+                      text: "Entitlement status",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "Not entitled",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                      {
+                        text: "Recent notes",
+                        classes: 'govuk-table--no-border'
+
+                      },
+                      {
+                        text: "28 February 2022: Award letter sent",
+                        classes: 'govuk-table--no-border'
+                      }
+                    ]
+                  ]
+                }) }}
+
+              {% endif %}
+
+              <p> <a href="qd-claim-notes" class="govuk-link">View all notes</a> </p>
+
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-8">
+            <h2 class="govuk-heading-m ">Open Searchlight and check the information on qualifying benefits and State Pension match.</h2>
+
+
+
+
+            {% if data['qd-search-nino'] === 'EO972577M' %}
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Qualifying benefits",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "No",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                  {
+                    text: "Weekly State Pension amount",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "£198",
+                    classes: 'govuk-table--no-border'
+                  }
+                ]
+              ]
+            }) }}
+
+
+
+            {% elif data['qd-search-nino'] === 'AB987654C' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£191",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% elif data['qd-search-nino'] === 'BB668734F' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£183",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£184",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% else %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£188",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+            {% endif %}
+
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Ask the citizen to confirm if they live with a partner and if they have any housing costs.</h2>
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                {
+                  text: "Living with partner",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "No",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Housing costs",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "None",
+                  classes: 'govuk-table--no-border'
+                }
+                ]
+              ]
+            }) }}
+
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+            {{ govukTextarea({
+              name: "summary-notes",
+              id: "summary-notes",
+              rows: 4,
+              label: {
+                text: "Enter notes",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: ""
+              }
+            }) }}
+
+
+            <p> <a href="qd-application" class="govuk-link ">View application</a> </p>
+
+            {{ govukButton({
+              text: "Save and exit claim",
+              href: "home-user-0"
+            }) }}
+
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

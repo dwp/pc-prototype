@@ -1,0 +1,83 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-own-ground-rent" method="post" class="form">
+
+
+      <!------------HEADLINE------------>
+        {% set legend %}
+
+        <p class="govuk-hint"><strong>Service charges can include:</strong></p>
+        <ul class="govuk-hint govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+          <li>
+            warden services
+          </li>
+          <li>
+            caretaker services like gardening, maintenance and cleaning of communal areas
+          </li>
+          <li>
+            use of a laundry room
+          </li>
+          <li>
+            use of communal areas like a lounge or TV area
+          </li>
+        </ul>
+
+        {% endset %}
+      <!------------HEADLINE------------>
+
+
+
+      {{ govukRadios({
+        idPrefix: "home-own-service-charges",
+        name: "home-own-service-charges",
+        fieldset: {
+          legend: {
+            text: "Do you pay any service charges?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          html: legend
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-own-service-charges"] == "Yes")
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-own-service-charges"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

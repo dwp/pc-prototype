@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <span class="govuk-caption-m">Money, savings, investments and capital</span>
+  <h1 class="govuk-heading-xl">
+    Cash and lum sums<br>
+  </h1>
+  <!----Headline---->
+  <form action="msic-all-money-accounts-summary" method="post">
+
+
+    <h3 class="govuk-heading-m">
+      Cash at home
+    </h3>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+          <p class="govuk-body"><a href="msic-cash-at-home" class="govuk-link">Add a details</a></p>
+
+        </div></div>
+
+
+<br><br>
+{% if data["msic-cash-at-home-amount"] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-s">
+        <p class="govuk-body"><!--<a href="msic-cash-summary" class="govuk-link">Remove</a>--></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+          {{ govukSummaryList({
+            rows: [
+            {
+              key: {
+                text: "Total"
+              },
+              value: {
+                text: data['msic-cash-at-home-amount']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-cash-at-home",
+                    text: "Change Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+
+  </div></div>
+
+{% endif %}
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <h3 class="govuk-heading-m">
+    Any other money held in this country or abroad (1)
+  </h3>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <p class="govuk-body"><a href="msic-cash-other-abroad" class="govuk-link">Add details about other money</a></p>
+
+      </div></div>
+
+  {% if data["msic-cash-other-abroad-detail"] %}
+
+<br><br>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      {{ data["msic-cash-other-abroad-detail"] }}<p class="govuk-body"><!--<a href="msic-cash-other-abroad" class="govuk-link">Remove</a>--></p>
+    </h3></div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Total"
+        },
+        value: {
+          text: data['msic-cash-other-abroad-detail']
+        },
+        actions: {
+          items: [
+            {
+              href: "msic-cash-other-abroad",
+              text: "Change Remove",
+              visuallyHiddenText: "XXX"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
+
+</div></div>
+
+{% endif %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<h3 class="govuk-heading-m">
+  Pension Lump sum (1)
+</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+      <p class="govuk-body"><a href="msic-cash-lump-sum" class="govuk-link">Add another lump sum from pension</a></p>
+
+    </div></div>
+
+<br><br>
+
+{% if data["msic-cash-lump-sum-detail"] %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    {{ data["msic-cash-lump-sum-detail"] }}<p class="govuk-body"><!--<a href="msic-post-office-account" class="govuk-link">Remove</a>--></p>
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Total"
+      },
+      value: {
+        text: data['msic-cash-lump-sum-detail']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-lump-sum",
+            text: "Change Remove",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+
+</div></div>
+{% endif %}
+
+
+
+<!--------------------------------------------------------------------------------->
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <br><br>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

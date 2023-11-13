@@ -1,0 +1,77 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="sl-find-a-claim-router" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Search</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-0">Enter a National Insurance number.</p>
+      <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-top-0 govuk-!-margin-bottom-2">For example, ‘QQ 12 34 56 C’</p>
+
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "sl-find-a-claim",
+                  name: "sl-find-a-claim",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["sl-find-a-claim"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+                {% set legendNI %}
+
+                S1 11 22 33 A<br><br>
+                S2 11 22 33 B<br><br>
+                S3 11 22 33 C<br><br>
+                S4 11 22 33 D<br><br>
+                S5 11 22 33 E<br><br>
+                S6 11 22 33 F
+
+                <!--
+                S1 11 22 33 A: Someone has MAX / OVER SP with no qualifying benefits<br><br>
+                S2 11 22 33 B: Someone has Low SP, Qualifying benefits, but too much income via Private pension<br><br>
+                S3 11 22 33 C: Someone has Low SP, Qualifying benefits, but too much income via Employment<br><br>
+                S4 11 22 33 D: Service charges = Fast tracked to DWP<br><br>
+                S5 11 22 33 E: Claimants scenario is massively complex, too much for G4s to handle = Handover to DWP<br><br>
+                S6 11 22 33 F: Low SP, Low Pensions, zero income = Classic PC. (edited)
+                -->
+                {% endset -%}
+
+
+            {{ govukDetails({
+            summaryText: "NI scenarios",
+            html: legendNI
+            }) }}
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

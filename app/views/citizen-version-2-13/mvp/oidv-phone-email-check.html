@@ -1,0 +1,60 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  OIDV - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="oidv-phone-email-check-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {{ govukRadios({
+        idPrefix: "oidv-phone-email-check",
+        name: "oidv-phone-email-check",
+        fieldset: {
+          legend: {
+            text: "Do you have access to a mobile phone and an email address?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+
+        },
+        hint: {
+          text: ""
+
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["oidv-phone-email-check"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["oidv-phone-email-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

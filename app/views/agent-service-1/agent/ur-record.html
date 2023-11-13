@@ -1,0 +1,37 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      {% if data["ur-search"] == "P2" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Julianne Moore</h1>
+      {% else %}                        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% endif %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["ur-search"]}}</p>
+    </div>
+  </div>
+
+    {% include "agent-service-1/agent/ur-navigation.html" %}
+
+  <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Overview</h3> -->
+
+    <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Overview of this persons details, things like their awards etc.</p> -->
+  </div>
+  </div>
+
+
+    </form>
+{% endblock %}

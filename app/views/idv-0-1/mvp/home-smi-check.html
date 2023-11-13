@@ -1,0 +1,66 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Do you want us to send you some information about support with interest on a mortgage or loan secured against your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-mortgage-home-loan" method="post" class="form">
+
+      {% set legendHint %}
+      <p class="govuk-hint">You might have applied for an SMI loan if you were previously getting one or more qualifying benefit, such as:
+
+Income Support
+income-based Jobseeker’s Allowance (JSA)
+income-related Employment and Support Allowance (ESA)
+Universal Credit</p>
+      {% endset %}
+
+
+      {{ govukRadios({
+        idPrefix: "home-smi-check",
+        name: "home-smi-check",
+        fieldset: {
+          legend: {
+            text: "Do you currently get support for mortgage interest (SMI)?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: legendHint
+            },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-smi-check"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-smi-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+{% endblock %}

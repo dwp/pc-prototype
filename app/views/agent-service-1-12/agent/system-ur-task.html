@@ -1,0 +1,31 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="process-c-nil-task-4-x-review" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-top-4">I am the task list and the CTA is telling to continue and see the outcome</h1>
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

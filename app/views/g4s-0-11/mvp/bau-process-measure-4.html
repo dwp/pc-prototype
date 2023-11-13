@@ -1,0 +1,48 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- <form action="bau-process-measure-3" method="post" class="form"> -->
+      <form action="type-of-claim" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Continue with the call using your Standard Work Instructions</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Record the call outcome if the call has ended or help with another enquiry. </p>
+
+      {{ govukButton({
+        text: "Another enquiry"
+      }) }}
+
+      <!-- <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Record call outcome"
+        }) }}
+
+        {{ govukButton({
+          value: "Another enquiry",
+          text: "Another enquiry",
+          href: "type-of-claim.html",
+          classes: "govuk-button--secondary"
+        }) }}
+        </div> -->
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

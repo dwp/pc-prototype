@@ -1,0 +1,82 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-second-property-router" method="post" class="form">
+
+
+      <!------------H1 LEGEND------------>
+        {% set DynamicH1 %}
+
+        {% if data["single-joint-check"] == "Joint" %}
+          {% if data["home-ownership"] == "You own it" or data["home-ownership"] == "Shared ownership" %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you or your partner own any property or land other than the home you live in?</h1>
+          {% else %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you or your partner own any property or land?</h1>
+          {% endif %}
+
+        {% else %}
+
+          {% if data["home-ownership"] == "You own it" or data["home-ownership"] == "Shared ownership" %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you own any property or land other than the home you live in?</h1>
+          {% else %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you own any property or land?</h1>
+          {% endif %}
+
+        {% endif %}
+
+        {% endset %}
+      <!------------Legend--------------->
+
+
+
+      {{ govukRadios({
+        name: "money-second-property-check",
+        fieldset: {
+          legend: {
+            html: DynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["money-second-property-check"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["money-second-property-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+            <p class="govuk-body govuk-!-padding-top-0"><a href="hrt-claimant-immigration-restrictions">Routing: <10k route</a></p>
+            <!-- <p class="govuk-body govuk-!-padding-top-0"><a href="hrt-check">Money under 10k</a></p> -->
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

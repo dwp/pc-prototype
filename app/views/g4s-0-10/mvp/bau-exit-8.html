@@ -1,0 +1,65 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="bau-exit-8-router">
+
+        <span class="govuk-caption-m">[8]</span>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What is it about your Pension Credit that you would like to discuss?</h1>
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "bau-exit-8",
+          name: "bau-exit-8",
+          fieldset: {
+            legend: {
+              text: "Can you help answer the query?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+
+          items: [
+            {
+              value: "Yes",
+              text: "Yes - take them through security",
+              checked: data['bau-exit-8'] == "Yes"
+            },
+            {
+              value: "No",
+              text: "No - request a DWP call back",
+              checked: data['bau-exit-8'] == "No"
+            }
+          ]
+        }) }}
+
+      {{ govukButton({
+      text: "Continue",
+      classes: "govuk-button dont-print"
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

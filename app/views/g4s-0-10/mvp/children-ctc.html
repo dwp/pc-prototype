@@ -1,0 +1,60 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+Are you responsible for any children or qualifying young people who live with you? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="children-ctc-router" method="post" class="form">
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {{ govukRadios({
+        idPrefix: "children-ctc",
+        name: "children-ctc",
+        fieldset: {
+          legend: {
+            text: "Do you get Child Tax Credit for the children that live with you?",
+            hint: " ",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        hint: {
+          html: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["children-ctc"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["children-ctc"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body"><a href="system-outcome-selector-page">Outcome router: MAC with children: With/Without CTC</a></p>
+
+  </div>
+</div>
+{% endblock %}

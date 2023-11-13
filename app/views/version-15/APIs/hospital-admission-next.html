@@ -1,0 +1,54 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Were they were discharged to a care home after any period they spent in hospital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "start"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hospital-to-carehome-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "hospital-admission-next",
+        name: "hospital-admission-next",
+        fieldset: {
+          legend: {
+            text: "Were they were discharged to a care home after any period they spent in hospital?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["hospital-admission-next"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["hospital-admission-next"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

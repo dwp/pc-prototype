@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you in paid employment? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-work-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "employment-fulltime",
+        name: "employment-fulltime",
+        fieldset: {
+          legend: {
+            text: "Are you still in full time employment",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+            text: "We can use this same page for full time, part, self and other."
+            },
+            items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-work"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-work"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

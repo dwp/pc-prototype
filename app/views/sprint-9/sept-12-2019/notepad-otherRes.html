@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Other accommodation: Detiails</h1>
+
+        {% call govukFieldset({
+          legend: {
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: "What is this place?"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "other-res-where",
+            name: "other-res-where"
+          }) }}
+
+
+        {% endcall %}
+
+<br>
+
+
+        <p class="govuk-body govuk-!-font-size-19">@pete, @dan, TBC: Ask the claimant for all the information you need that is relevant to the claim.</p>
+
+        {{ govukTextarea({
+          name: "other-res-more-detail",
+          id: "other-res-more-detail",
+          value: data["other-res-more-detail"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

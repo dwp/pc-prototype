@@ -1,0 +1,160 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hrt-partner-check" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+              Your asylum application
+            </h1>
+
+{{ govukRadios({
+  idPrefix: "asylum-before-april",
+  name: "asylum-before-april",
+  fieldset: {
+    legend: {
+      text: "Did you first apply for asylum before 3 April 2000?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["asylum-before-april"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["asylum-before-april"] == "No")
+    }
+  ]
+}) }}
+
+{% set legendSuccessfulDecision %}
+<h3 class="govuk-heading-m govuk-!-margin-bottom-0">What date did you get a successful decision on your application?</h3>
+{% endset -%}
+
+        {% set yesDate %}
+          {{ govukDateInput({
+            id: "asylum-decision-date",
+            namePrefix: "asylum-decision-date",
+            fieldset: {
+              legend: {
+                html: legendSuccessfulDecision
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["asylum-decision-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["asylum-decision-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["asylum-decision-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "asylum-decision-check",
+          name: "asylum-decision-check",
+          fieldset: {
+            legend: {
+              html: "Have you recently had a successful decision on your asylum application?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["asylum-decision-check"] == "Yes"),
+            conditional: {
+              html: yesDate
+            }
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["asylum-decision-check"] == "No")
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "supported-by-home-office",
+          name: "supported-by-home-office",
+          fieldset: {
+            legend: {
+              text: "Have you been supported by the Home Office while waiting for a decision on your application?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["supported-by-home-office"] == "Yes")
+                      },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["supported-by-home-office"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+              <br>
+
+              {{ govukButton({
+                text: "Continue"
+              }) }}
+            </form>
+
+              </div>
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Cash at home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-cash-other-abroad-yn" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Details of money at home in cash
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+    
+
+      <!--------------- DATE ONE (CLAIM START) ----------------------------------------------------------------------------------------->
+      {% if data["claim-filter"] == "Backdating" %}
+
+      {{ govukInput({
+        label: {
+          html: "How much cash did you have on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>?"
+        },
+        id: "msic-has-cash-at-home-amount-EED",
+        name: "msic-has-cash-at-home-amount-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+
+    {% endif %}
+
+    <!--------------- DATE TWO (TODAY) ----------------------------------------------------------------------------------------->
+    {% if data["claim-filter"] == "Advanced or Today" or data["claim-filter"] == "Backdating" %}
+
+      {{ govukInput({
+        label: {
+        html: "How much cash do you have <strong>today</strong>?"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-has-cash-at-home-amount-TODAY",
+        name: "msic-has-cash-at-home-amount-TODAY"
+      }) }}
+    {% endif %}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Out privacy policy - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+<!----Headline---->
+<h1 class="govuk-heading-xl">
+  (out-privacy-policy) Eligibility, check your answers.<br>
+</h1>
+<!----Headline---->
+<form action="done-privacy-policy" method="post">
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Agreements
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Personal information consent"
+            },
+            value: {
+              text: data['agrees-privacy']
+            },
+            actions: {
+              items: [
+                {
+                  href: "start",
+                  text: "Change",
+                  visuallyHiddenText: "Agreed to pre-declaration"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<br><br>
+
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<!----Break---->
+
+{% endblock %}
+</div></div>

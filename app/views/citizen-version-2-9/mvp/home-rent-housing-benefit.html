@@ -1,0 +1,82 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Housing benefit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-rent-housing-benefit-router" method="post" class="form">
+
+
+      {% set legendHint %}
+
+      <p></p>
+      <p class="govuk-!-font-size-24 govuk-!-margin-bottom-6">If you get a housing payment from Universal Credit, it will stop if you move to Pension Credit. If you get Housing Benefit, it will continue. </p>
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">What help do you want with your rent?</p>
+
+      <p class="govuk-hint"></p>
+
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "home-rent-housing-benefit",
+        name: "home-rent-housing-benefit",
+        fieldset: {
+          legend: {
+            text: "Help with your rent",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: legendHint
+
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "I want my local authority to start my application for Housing Benefit",
+            checked: (data["home-rent-housing-benefit-check"] == "Yes")
+
+            },
+
+            {
+              value: "Yes",
+              text: "I want my current Housing Benefit claim to continue",
+              checked: (data["home-rent-housing-benefit-check"] == "Yes")
+
+              },
+
+          {
+            value: "No",
+            text: "I do not need any help with my rent",
+            checked: (data["home-rent-housing-benefit-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,505 @@
+{% extends "layout.html" %}
+
+<!-- Adds a class to increase vertical spacing for pages without a back button -->
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block pageTitle %}
+  Task list
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+      {{ data["full-name"] }}: Pension Credit application
+      </h1>
+
+
+    <!------------ ––– ------------>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> About the claimant
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="mvp-eligibility-summary" aria-describedby="eligibility-completed">
+                Eligibility and service fiters
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+            </li>
+            <li class="app-task-list__item">
+              <a class="app-task-list__task-name" href="mvp-eligibility-summary" aria-describedby="eligibility-completed">
+                (Hidden) Summary
+              </a>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+            </li>
+
+          </ul>
+        </li>
+      </ol>
+
+      <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">2. </span> Date of claim
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="claim-date-options" aria-describedby="eligibility-completed">
+                  Establish date of claim
+                </a>
+                {% if data["claim-date-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="claim-date-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+
+
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">3. </span> How we contact you
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="contact-text-yn" aria-describedby="eligibility-completed">
+                  Contact
+                </a>
+                {% if data["contact-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["contact-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="Contact-post-code-lookup" aria-describedby="read-declaration-completed">
+                  Correspondence Address
+                </a>
+                {% if data["contact-address-choice-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["contact-address-choice-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="contact-formats" aria-describedby="read-declaration-completed">
+                  Contact formats
+                </a>
+                {% if data["contact-formats-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["contact-formats-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="contact-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">4. </span> About where you live
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="address-correspondence-yn" aria-describedby="eligibility-completed">
+                  Address
+                  {% if data["home-ownership"] %} type: {{data["home-ownership"]}} {% endif %}
+                </a>
+                {% if data["address-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["address-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="home-ownership" aria-describedby="eligibility-completed">
+                  Home ownership
+                  {% if data["home-ownership"] %} type: {{data["home-ownership"]}} {% endif %}
+                </a>
+                {% if data["address-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["address-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="address-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+    <!---
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span> Who lives with you
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="anyone-living-with-you" aria-describedby="read-declaration-completed">
+                  Other people who live with you
+                </a>
+                {% if data["household-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["household-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else  %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="household-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+--->
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span> Hospitals admissions
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="hospital-check-yn" aria-describedby="eligibility-completed">
+                  Admission details
+                </a>
+                {% if data["hospitals-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["hospitals-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="hospital-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">6. </span> Pensions
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="pensions-overview" aria-describedby="eligibility-completed">
+                  Overview
+                </a>
+                {% if data["pensions-summary"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["pensions-summary"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="pensions-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">7. </span> Benefits
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="benefit-overview" aria-describedby="eligibility-completed">
+                  Overview
+                </a>
+                {% if data["benefits-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["benefits-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="benefits-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">8. </span> Earnings and other regular income
+            </h2>
+            <ul class="app-task-list__items">
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="other-income-overview" aria-describedby="eligibility-completed">
+                  Overview
+                </a>
+                {% if data["employment-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["employment-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="other-income-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">9. </span> Money, savings and investments
+            </h2>
+            <ul class="app-task-list__items">
+
+                <li class="app-task-list__item">
+                  <a class="app-task-list__task-name" href="msic-pc-payment" aria-describedby="eligibility-completed">
+                    Pension Credit payment account
+                  </a>
+                  {% if data["msic-pc-payment-complete"] == "true" %}
+                    <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                  {% elif data["msic-pc-payment-complete"] == "in-progress" %}
+                    <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                  {% else %}
+                    <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                  {% endif %}
+                </li>
+
+                <li class="app-task-list__item">
+                  <a class="app-task-list__task-name" href="msic-pc-payment-summary" aria-describedby="eligibility-completed">
+                    (Hidden) Pension Credit Payment account summary
+                  </a>
+                </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="msic-has-current-account-yn" aria-describedby="eligibility-completed">
+                  All accounts
+                </a>
+                {% if data["money-you-have-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["money-you-have-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="msic-check-your-answers-a" aria-describedby="eligibility-completed">
+                  (Hidden) Money you have summary
+                </a>
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="disregards-capital-total-yn" aria-describedby="eligibility-completed">
+                  Capital disregards
+                </a>
+                {% if data["disregards-summary-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["disregards-summary-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="disregards-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Disregards summary
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+
+        <!------------ ––– ------------>
+
+
+
+
+
+        <!------------ ––– ------------>
+        <!------------
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">X </span> Service kickout
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="mvp-kickout-summary" aria-describedby="mvp-kickout-summary-completed">
+                  Service kickout outcome (PDF)
+                </a>
+                {% if data["bank-complete"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+            </ul>
+          </li>
+        </ol>
+------------>
+
+        <!------------ Final summary ------------>
+<!--
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">9. </span> Payment details
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="type-of-account" aria-describedby="eligibility-completed">
+                  Bank account
+                </a>
+                {% if data["bank-complete"] == "true" %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Done</strong>
+                {% elif data["bank-complete"] == "in-progress" %}
+                  <strong class="govuk-tag govuk-tag--in-progress app-task-list__task-in-progress" id="eligibility-completed">In progress</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="eligibility-completed">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="bank-account-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol>
+-->
+        <!------------ Final summary ------------>
+
+  <!------------  <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number"> </span> Temporary notepad
+            </h2>
+            <ul class="app-task-list__items">
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="notepad-temporary" aria-describedby="eligibility-completed">
+                  Capture if we have missed anything or gone wrong.
+                </a>
+                {% if data["notepad-temporary"] %}
+                  <strong class="govuk-tag app-task-list__task-completed" id="notepad-temporary">Done</strong>
+                {% else %}
+                  <strong class="govuk-tag govuk-tag--incomplete app-task-list__task-completed" id="notepad-temporary">Not done</strong>
+                {% endif %}
+              </li>
+              <li class="app-task-list__item">
+                <a class="app-task-list__task-name" href="temporary-summary" aria-describedby="eligibility-completed">
+                  (Hidden) Summary
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ol> ------------>
+
+        <!------------ Final summary ------------>
+
+
+
+
+    </div>
+  </div>
+
+  <form action="pension-credit-summary" method="post">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </form>
+
+{% endblock %}

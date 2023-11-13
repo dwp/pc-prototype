@@ -1,0 +1,33 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  You've hit your limit? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-summary" method="post" class="form">
+
+      <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">You can only enter details of up to 15 employments</h2>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Continue with the rest of your claim and we will contact you to discuss your employment income.</p>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

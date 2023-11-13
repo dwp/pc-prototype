@@ -1,0 +1,194 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-types" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+            <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+              <li>Claim reference</li>
+              <li>Application date</li>
+              <li>Award</li>
+              <li>State Pension amount</li>
+              <li>Backdating period</li>
+              <li><a href="case-timeline">Case history</a></li>
+              <li><a href="customer-history">Customer history</a></li>
+
+            </ul>
+          </div>
+
+          <div class="govuk-grid-column-two-quarters">
+            <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+              <li>20220110</li>
+              <li>28 February 2022</li>
+              <li>Not eligible</li>
+              <li>£182 (£177 threshold when processed) </li>
+              <li>10 January 2022 to 28 February 2022</li>
+              <li>Award letter sent on 1 March 2022</li>
+            </ul>
+          </div>
+        </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">1.</span>Current query
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="query-types-addB" aria-describedby="task-1">
+            Query types
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="query-phone-log-XL" aria-describedby="task-1">
+            Notes
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="query-phone-helpB" aria-describedby="task-1">
+            Other help
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-letters-emails" aria-describedby="task-1">
+            View letters or emails from customer
+          </a>
+          <strong class="govuk-tag app-task-list__nil-task-passed">1 Unread</strong>
+
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-contact-templates" aria-describedby="task-1">
+            Send a letter or email
+          </a>
+        </li>
+
+      </ul>
+      </li>
+
+      </ol>
+
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">2.</span>Check award
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-benefits" aria-describedby="task-1">
+            Benefits
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-relationships" aria-describedby="task-1">
+            Relationships
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-housing-costs" aria-describedby="task-1">
+            Housing costs
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-sp" aria-describedby="task-1">
+            State Pension
+          </a>
+        </li>
+
+      </ul>
+      </li>
+
+      </ol>
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">3.</span>Check documents
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-Application" aria-describedby="task-1">
+            Application
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-award" aria-describedby="task-1">
+            Award letter
+          </a>
+        </li>
+
+      </ul>
+      </li>
+
+      </ol>
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">4.</span>Check contact details and preferences
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-contact-address" aria-describedby="task-1">
+            Home address
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-contact-phone" aria-describedby="task-1">
+            Phone number
+          </a>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-contact-email" aria-describedby="task-1">
+            Email
+          </a>
+        </li>
+
+      </ul>
+      </li>
+
+      </ol>
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">5.</span>Disputes
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="case-contact-address" aria-describedby="task-1">
+            Request for an agent to re-process application
+          </a>
+        </li>
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="#" aria-describedby="task-1">
+            Request mandatory reconsideration
+          </a>
+        </li>
+      </ul>
+      </li>
+
+      </ol>
+
+    </div>
+  </div>
+
+    {{ govukButton({
+      text: "Save and answer next query",
+      classes: "govuk-button--primary"
+    }) }}
+
+    </form>
+{% endblock %}

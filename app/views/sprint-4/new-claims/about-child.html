@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About child - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      About child
+    </h1>
+
+    <form action="about-child-router" method="post" class="form">
+      <input type="hidden" name="child-in-home" value="true"/>
+
+      {{ govukInput({
+        label: {
+          text: "Full name"
+        },
+        id: "child-full-name",
+        name: "child-full-name",
+        classes: "govuk-input--width-20",
+        value: data["child-full-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Child Benefit number"
+        },
+        id: "child-chb",
+        name: "child-chb",
+        classes: "govuk-input--width-20",
+        value: data["child-chb"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "child-dob",
+        namePrefix: "child-dob",
+        fieldset: {
+          legend: {
+            text: "What is [Child name]'s date of birth?"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 2008"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["dob-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["dob-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["dob-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "is-child-blind",
+        name: "is-child-blind",
+        fieldset: {
+          legend: {
+            text: "Is [child name] registered blind or severely sight impaired?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["is-child-blind"] == "yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["is-child-blind"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: "child-benefits",
+        name: "child-benefits",
+        fieldset: {
+          legend: {
+            text: "Does [child name] get any of these benefits?"
+          }
+        },
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "Personal Independance Payment (PIP)",
+            text: "Personal Independance Payment (PIP)",
+            checked: ((data["child-benefits"] or []).includes("Personal Independance Payment (PIP)"))
+          },
+          {
+            value: "Disibility Living Allowance (DLA)",
+            text: "Disibility Living Allowance (DLA)",
+            checked: ((data["child-benefits"] or []).includes("Disibility Living Allowance (DLA)"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

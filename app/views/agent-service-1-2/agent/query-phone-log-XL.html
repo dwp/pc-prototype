@@ -1,0 +1,80 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+<form
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-half">
+    <form action="query-case-summary" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+  </div>
+
+
+  <!--
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter">
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Call date</li>
+          <li>Call duration</li>
+          <li>Call type</li>
+          <li>Caller</li>
+          <li>Query type</li>
+        </ul>
+      </div>
+
+      <div class="govuk-grid-column-one-half">
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>1 May 2022</li>
+          <li>9:30am - 9:35am</li>
+          <li>Inbound</li>
+          <li>Applicant - Jeff Bridges</li>
+          <li>Query regarding language in letter <br><a href="query-types">Change</a> </li>
+
+        </ul>
+      </div>
+    </div>
+    -->
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukTextarea({
+          name: "notes-xl",
+          id: "notes-xl",
+          rows: "10",
+          label: {
+            text: "Notes",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Follow guidance on what to include"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+      </div>
+    </div>
+
+
+    </div>
+
+</form>
+{% endblock %}

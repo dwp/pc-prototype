@@ -1,0 +1,95 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  claimant-national-insurance - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-state-pension-amount-check" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        I'm just going to check your partner's State Pension details
+       </h1>
+
+
+{% set partnerStatePensionAmount %}
+
+{{ govukInput({
+  id: "partner-state-pension-amount",
+  name: "partner-state-pension-amount",
+  label: {
+    html: "What is the partner’s weekly State Pension amount?",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example 150.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["partner-state-pension-amount"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  spellcheck: false
+}) }}
+
+
+{% endset %}
+
+
+      {{ govukRadios({
+        idPrefix: "partner-state-pension-amount-check",
+        name: "partner-state-pension-amount-check",
+        fieldset: {
+          legend: {
+            html: "Is there a State Pension amount shown in Searchlight for the partner?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["partner-state-pension-amount-check"] == "Yes"),
+            conditional: {
+              html: partnerStatePensionAmount
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["partner-state-pension-amount-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <!-- <p class="govuk-body govuk-!-padding-bottom-2"><a href="handover-early-sp">No State Pension shown in SearchLight</a></p> -->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-other-money" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      {% set dynamicH1 %}
+ {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">UK personal pensions not taken yet</h1>
+ {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">UK personal pensions not taken yet</h1>{% endif %}
+ {% endset %}
+      <!------------Legend--------------->
+
+      {% set dynamicHint %}
+
+      <p></p>
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">We need to know about UK personal pensions you or your partner have paid into but have not taken yet.</p>
+
+      <p class="govuk-!-font-size-24">Personal pensions are pensions you have set up yourself. They are sometimes also called private pensions.</p>
+
+      <p class="govuk-!-font-size-24">You do not need to tell us about your State Pension or any other pensions currently in payment.</p>
+
+      {% else %}<p class="govuk-!-font-size-24">We need to know about UK personal pensions you’ve paid into but have not taken yet.</p>
+      
+      <p class="govuk-!-font-size-24">Personal pensions are pensions you have set up yourself. They are sometimes also called private pensions.</p>
+      
+      {% endif %}
+
+      <p class="govuk-!-font-size-24 govuk-!-margin-bottom-6">You do not need to tell us about your State Pension or any other pensions currently in payment.</p>
+
+
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Have you or your partner paid into any UK personal pensions that you have not taken yet?</p>
+      {% else %}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Have you paid into any UK personal pensions that you have not taken yet?</p>{% endif %}
+
+
+
+
+
+ {% endset %}
+
+
+      {{ govukRadios({
+        name: "pension-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: dynamicHint
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pension-check"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["pension-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

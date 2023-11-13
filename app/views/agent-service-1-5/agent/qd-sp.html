@@ -1,0 +1,113 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-changes-changed" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">State Pension</h1>
+
+            {{ govukInsetText({
+              text: "Ask the customer if they're still receiving their State Pension. Check searchlight to match the information given."
+            }) }}
+
+            {{ govukRadios({
+              idPrefix: "state-pension",
+              name: "state-pension",
+              fieldset: {
+                legend: {
+                  text: "Has their State Pension amount changed?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "Backdating period: 10 January 2022 to 28 February 2022"
+              },
+              items: [
+                {
+                  value: "no",
+                  text: "No",
+                  checked: (data["state-pension"] == "no")
+                },
+                {
+                  value: "changed",
+                  text: "Yes, within the backdating period",
+                  checked: (data["state-pension"] == "changed")
+                },
+                {
+                  value: "changed-out",
+                  text: "Yes, outside of the backdating period",
+                  checked: (data["state-pension"] == "changed-out")
+                }
+              ]
+            }) }}
+
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Answers given on application</p>
+
+            <p class="govuk-body govuk-!-margin-bottom-2"> State Pension is £182</p>
+
+
+            {{ govukDetails({
+              classes : "govuk-!-margin-bottom-8",
+              summaryText: "Check calculation details",
+              text: "Checked against SearchLight on 1st of March 2022."
+            }) }}
+
+            {{ govukTextarea({
+              name: "sp-notes",
+              id: "sp-notes",
+              rows: "3",
+              label: {
+                text: "Record any changes and date of when it happened",
+                classes: "govuk-label--s",
+                isPageHeading: true
+              },
+              hint: {
+                text: "For example, Received £122.15 from 1 to 20 Jan 22."
+              }
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

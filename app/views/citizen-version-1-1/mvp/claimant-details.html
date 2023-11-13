@@ -1,0 +1,284 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Your details? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      {% if data["partner-check-yn"] == "Yes" and data["contact-formats-check"]%}
+      <form action="contact-formats-check-joint-router" method="post" class="form">
+      {% endif %}
+
+      {% if data["partner-check-yn"] == "No" %}
+      <form action="contact-formats-router" method="post" class="form">
+      {% endif %}
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Your details
+      </h1>
+
+      {% set legendName %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What is your full name?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        hint: {
+          text: "Include any middle names."
+        },
+        id: "full-name",
+        name: "full-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+        value: data["full-name"]
+      }) }}
+
+
+      {% set legendPreviousName %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What were your previous names?</h3>
+      {% endset -%}
+
+
+      {% set altName %}
+
+        {{ govukTextarea({
+          id: "claimant-alt-name-yes",
+          name: "claimant-alt-name-yes",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+          label: {
+            html: legendPreviousName
+          },
+          hint: {
+            text: ""
+          }
+        }) }}
+
+
+
+      {% endset -%}
+
+
+      {{ govukRadios({
+        idPrefix: "claimant-name-check",
+        name: "claimant-name-check",
+        fieldset: {
+          legend: {
+            text: "Have you been known by any previous names?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+          }
+        },
+        hint: {
+          text: "For example, maiden names or previous married names."
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["claimant-name-check"] == "Yes"),
+                  conditional: {
+                    html: altName
+                  }
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["claimant-name-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+      <!-- {{ govukInput({
+        label: {
+          text: "Other names you have been known by (optional)"
+        },
+        hint: {
+          text: "For example, maiden names or previous married names."
+        },
+        id: "other-full-name",
+        name: "other-full-name",
+        classes: "govuk-input--width-20",
+        value: data["full-name"]
+      }) }} -->
+
+
+      {% set legendNI %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What is your National Insurance number?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendNI
+        },
+          hint: {
+            text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+          },
+        id: "nino",
+        name: "nino",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["nino"]
+      }) }}
+
+      {% set legendTelephoneNumber %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">What is your contact telephone number?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendTelephoneNumber
+        },
+          hint: {
+            text: ""
+          },
+        id: "telephone-number",
+        name: "telephone-number",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["telephone-number"]
+      }) }}
+
+
+      {{ govukRadios({
+        idPrefix: "contact-blind-check",
+        name: "contact-blind-check",
+        fieldset: {
+          legend: {
+            text: "Are you registered blind or severely sight impaired?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-blind-check"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-blind-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+{% set altLanguage %}
+  {{ govukInput({
+  label: {
+  html: "What is your first language?"
+  },
+  id: "contact-formats-altLanguage",
+  name: "contact-formats-altLanguage",
+  classes: "govuk-input--width-20 govuk-!-margin-bottom-4"
+  }) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "claimant-language-check",
+  name: "claimant-language-check",
+  fieldset: {
+    legend: {
+      text: "Are you able to speak to us in English?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["claimant-language-check"] == "Yes")
+      },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["claimant-language-check"] == "No"),
+            conditional: {
+              html: altLanguage
+            }
+    }
+  ]
+}) }}
+
+
+{{ govukRadios({
+  idPrefix: "contact-welsh-check",
+  name: "contact-welsh-check",
+  fieldset: {
+    legend: {
+      text: "If you live in Wales, do you want to speak to us in Welsh?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["contact-welsh-check"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["contact-welsh-check"] == "No")
+    }
+  ]
+}) }}
+
+
+
+{{ govukRadios({
+  idPrefix: "contact-formats-check",
+  name: "contact-formats-check",
+  fieldset: {
+    legend: {
+      text: "Do you need help with letters or phone calls?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m "
+    }
+  },
+  classes: "govuk-radios govuk-!-margin-bottom-4",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["contact-formats-check"] == "Yes")
+              },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["contact-formats-check"] == "No")
+    }
+  ]
+}) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

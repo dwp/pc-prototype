@@ -1,0 +1,64 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you get housing benefit or council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="address-summary" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "rent-housing-council-tax",
+        name: "rent-housing-council-tax",
+        fieldset: {
+          legend: {
+            text: "Are you in receipt housing benefit and council tax reduction?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "@pete: any thoughts on this?"
+        },
+        items: [
+          {
+            value: "Housing benefit",
+            text: "Housing benefit",
+            checked: (data["rent-housing-council-tax"] == "Housing benefit")
+          },
+          {
+            value: "Council tax reduction",
+            text: "Council tax reduction",
+            checked: (data["rent-housing-council-tax"] == "Council tax reduction")
+          },
+          {
+            value: "In receipt tax and housing benefit",
+            text: "Both (In receipt tax and housing benefit)",
+            checked: (data["rent-housing-council-tax"] == "In receipt tax and housing benefit")
+          },
+          {
+            value: "If not, would like to apply",
+            text: "If not, would like to apply",
+            checked: (data["rent-housing-council-tax"] == "If not, would like to apply")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

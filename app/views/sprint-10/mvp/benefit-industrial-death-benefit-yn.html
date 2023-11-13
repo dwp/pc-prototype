@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefit-industrial-death-benefit-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-industrial-death-benefit-yn-router" method="post" class="form">
+
+      <input type="hidden" name="benefits-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-m"> Agent: Check in Legacy and SearchLight?</h1>
+        <p class=""></p>
+
+
+
+      {{ govukRadios({
+        idPrefix: "benefit-industrial-death-benefit-yn",
+        name: "benefit-industrial-death-benefit-yn",
+        fieldset: {
+          legend: {
+            html: "Is there an indication of Industrial Death Benefit (IDB) for the claimant?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "XXX"
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefit-industrial-death-benefit-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefit-industrial-death-benefit-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

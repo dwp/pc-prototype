@@ -1,0 +1,66 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Date of birth - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa-router" method="post">
+
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1948."
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["dob-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["dob-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["dob-year"]
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+                <p class="govuk-body"><a href="done-too-young">...</a></p>
+
+
+
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

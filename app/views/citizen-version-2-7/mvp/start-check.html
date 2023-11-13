@@ -1,0 +1,112 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="start-check-router" method="post" class="form">
+
+    <p class="govuk-body govuk--version-control">Citizen version 2.7 / MVP</p>
+
+    <!-- <h1 class="govuk-heading-xl ">Confirm you have the right information to hand</h1> -->
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Do you have the right information to make an application for Pension Credit?</h1>
+
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">We will ask for some information about you and your partner (if you have one) while you make your application. </p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3">Make sure you have this ready before starting your application.</p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You will not be able to save your application and come back later.</p>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">You will need:</p>
+
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your National Insurance number</li>
+      <li>bank statements, usually for the last three months</li>
+      <li>details of any income, pensions, savings or investments</li>
+    </ul>
+
+
+    {{ govukRadios({
+      idPrefix: "start-check",
+      name: "start-check",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["start-check"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["start-check"] == "No")
+        }
+      ]
+    }) }}
+
+
+<!-- {{ govukCheckboxes({
+  idPrefix: "start-check",
+  name: "start-check",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+
+    {
+      value: "confirm",
+      text: "I confirm I have this information ready",
+      checked: (data["start-check"] == "confirm")
+
+    }
+  ]
+}) }} -->
+
+
+
+     <!--  {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8",
+       isStartButton: true
+     }) }} -->
+
+
+     <button class="govuk-button" data-module="govuk-button">
+      Continue
+    </button>
+
+
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

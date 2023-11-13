@@ -1,0 +1,37 @@
+{% extends "layout-fake-searchlight.html" %}
+{% from "nav-component/macro-c.html" import nav %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Julie Green</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">BB 66 87 34 F</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">21 February 1947</h1>
+
+
+      {{ nav({ active: "personalDetails" }) }}
+
+      {% include "third-party/sl-3/sl-personal-c-details.html" %}
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

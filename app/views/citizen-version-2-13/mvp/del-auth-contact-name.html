@@ -1,0 +1,102 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Yourself-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data["del-auth-who-made-claim"] == "Power of attorney" %}
+    <form action="del-auth-secure-access-code" method="post" class="form">
+    {% else %}
+    <form action="claimant-contact-callback" method="post" class="form">
+    {% endif %}
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Your details</h1>
+
+      {% set legendName %}
+      <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is your full name?</h1>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        hint: {
+          text: "Include any middle names."
+        },
+        id: "del-auth-contact-name",
+        name: "del-auth-contact-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["del-auth-contact-name"]
+      }) }}
+
+      <!---- CAB  ---->{% if data['del-auth-who-made-claim'] == "Corporate Acting Body" %}
+
+
+      {% set legendCorporateID %}
+      <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is your corporate ID?</h1>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendCorporateID
+        },
+        hint: {
+          html: ""
+        },
+        id: "del-auth-contact-corporate-id",
+        name: "del-auth-contact-corporate-id",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["del-auth-contact-corporate-id"]
+      }) }}
+
+      <!---- CAB  ---->{% endif %}
+
+      <!---- CAB  ---->{% if data['del-auth-who-made-claim'] !== "Corporate Acting Body" %}
+
+
+      {% set legendNI %}
+      <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is your National Insurance number?</h1>
+      {% endset -%}
+
+
+      {{ govukInput({
+        label: {
+          html: legendNI
+        },
+        hint: {
+          html: "It’s on your National Insurance card, benefit letter, payslip or P60. <br>For example, ‘QQ 12 34 56 C’."
+        },
+        id: "del-auth-national-insurance",
+        name: "del-auth-national-insurance",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["del-auth-national-insurance"]
+      }) }}
+
+    <!---- CAB  ---->{% endif %}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

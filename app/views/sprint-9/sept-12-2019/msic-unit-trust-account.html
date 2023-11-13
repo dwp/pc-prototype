@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add Unit Trust account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-unit-trust-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Unit trust details
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of trust"
+        },
+        id: "msic-trust-account-name",
+        name: "msic-trust-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+          {{ govukInput({
+        label: {
+          html: "Number of units"
+        },
+        id: "msic-trust-account-purchase-value",
+        name: "msic-trust-account-purchase-value",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+    label: {
+      html: "Bid price of units <strong>today</strong>"
+    },
+    id: "msic-trust-account-units",
+    name: "msic-trust-account-units",
+    classes: "govuk-input--width-20"
+  }) }}
+
+<!--
+  {{ govukRadios({
+    idPrefix: "msic-trust-account-read-from-statement",
+    name: "msic-trust-account-read-from-statement",
+    fieldset: {
+      legend: {
+        text: "Did you read these details from a statement?"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      }
+    ]
+  }) }}
+-->
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-11/mvp/introduction">
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "bau-process-measure-2",
+        name: "bau-process-measure-2",
+        fieldset: {
+          legend: {
+            text: "What action did you take?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+        {
+          value: "None",
+          text: "I answered the query and no further action was needed",
+          checked: data['bau-process-measure-2'] == "None"
+        },
+        {
+            value: "DWP",
+            text: "I transferred the call to DWP",
+            checked: data['bau-process-measure-2'] == "DWP"
+          },
+          {
+            value: "Proforma",
+            text: "I completed a pro forma",
+            checked: data['bau-process-measure-2'] == "Proforma"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-button"
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

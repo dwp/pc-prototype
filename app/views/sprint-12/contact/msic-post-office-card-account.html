@@ -1,0 +1,225 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bank current account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-credit-union-account-yn" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Post Office Card Account details
+      </h1>
+
+<!--------------- EED = Yes ----------------------------------------------------------------------------------------->
+
+      {% set balanceEED %}
+            {{ govukInput({
+              label: {
+                html: "How much was in this account on <strong>"
+                  + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+              },
+              id: "msic-post-office-card-account-amount-EED",
+              name: "msic-post-office-card-account-amount-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+      {% endset -%}
+
+      {% set balanceDateEED %}
+      {{ govukDateInput({
+        id: "msic-post-office-card-account-amount-EED-date-evidence",
+        namePrefix: "msic-post-office-card-account-amount-EED-date-evidence",
+        fieldset: {
+          legend: {
+            html: "<strong>Date this figure is from</strong>"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["msic-post-office-card-account-amount-EED-date-evidence-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["msic-post-office-card-account-amount-EED-date-evidence-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["msic-post-office-card-account-amount-EED-date-evidence-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "How much was in this account on this date?"
+        },
+        classes: "govuk-input--width-20",
+        id: "msic-post-office-card-account-amount-EED",
+        name: "msic-post-office-card-account-amount-EED"
+      }) }}
+      {% endset -%}
+
+
+
+<!--------------- EED = YN ----------------------------------------------------------------------------------------->
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "msic-post-office-card-account-amount-balanceEED-check",
+        name: "msic-post-office-card-account-amount-balanceEED-check",
+        fieldset: {
+          legend: {
+            html: "Do you know how much was in this account on <strong>"
+              + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["msic-post-office-card-account-amount-balanceEED-check"] == "Yes"),
+          conditional: {
+            html: balanceEED
+          }
+        },
+          {
+            value: "No",
+            text: "No, I know how much was in this account on a different date",
+            checked: (data["msic-post-office-card-account-amount-balanceEED-check"] == "No"),
+            conditional: {
+              html: balanceDateEED
+            }
+          }
+        ]
+      }) }}
+
+
+    <!--------------- TODAY = YES + BALANCE ----------------------------------------------------------------------------------------->
+
+      {% set balanceToday %}
+
+        {{ govukInput({
+          label: {
+          html: "How much was in this account on <strong>" + '' | formatDate + "?</strong>"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-post-office-card-account-amount-TODAY",
+          name: "msic-post-office-card-account-amount-TODAY"
+        }) }}
+
+      {% endset -%}
+
+      <!--------------- TODAY = YES + BALANCE ----------------------------------------------------------------------------------------->
+
+        {% set balanceDateToday %}
+
+          {{ govukDateInput({
+            id: "msic-post-office-card-account-amount-TODAY-date-evidence",
+            namePrefix: "msic-post-office-card-account-amount-TODAY-date-evidence",
+            fieldset: {
+              legend: {
+                html: "<strong>Date this figure is from</strong>"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["msic-post-office-card-account-amount-TODAY-date-evidence-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["msic-post-office-card-account-amount-TODAY-date-evidence-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["msic-post-office-card-account-amount-TODAY-date-evidence-year"]
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: "How much was in this account on this date?"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-post-office-card-account-amount-TODAY",
+            name: "msic-post-office-card-account-amount-TODAY"
+          }) }}
+
+        {% endset -%}
+
+
+
+    <!--------------- TODAY = YN ----------------------------------------------------------------------------------------->
+
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "msic-post-office-card-account-amount-balanceTODAY-check",
+      name: "msic-post-office-card-account-amount-balanceTODAY-check",
+      fieldset: {
+        legend: {
+          html: "Do you know much was in this account on <strong>" + '' | formatDate + "?</strong>"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["msic-post-office-card-account-amount-balanceTODAY-check"] == "Yes"),
+        conditional: {
+          html: balanceToday
+        }
+      },
+        {
+          value: "No",
+          text: "No, I know how much was in this account on a different date",
+          checked: (data["msic-post-office-card-account-amount-balanceTODAY-check"] == "No"),
+          conditional: {
+            html: balanceDateToday
+          }
+        }
+      ]
+    }) }}
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

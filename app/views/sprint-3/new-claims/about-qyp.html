@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About qyp - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      About qualifying young person
+    </h1>
+
+    <form action="about-qyp-router" method="post" class="form">
+      <input type="hidden" name="qyp-in-home" value="true"/>
+
+      {{ govukInput({
+        label: {
+          text: "Full name"
+        },
+        id: "qyp-full-name",
+        name: "qyp-full-name",
+        classes: "govuk-input--width-20",
+        value: data["qyp-full-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "What is their National Insurance number?"
+        },
+        id: "qyp-nino",
+        name: "qyp-nino",
+        classes: "govuk-input--width-20",
+        value: data["partner-nino"]
+      }) }}
+
+      {{ govukDateInput({
+        id: "qyp-dob",
+        namePrefix: "qyp-dob",
+        fieldset: {
+          legend: {
+            text: "What is their date of birth?"
+          }
+        },
+        hint: {
+          text: "For example, 31 3 1956"
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["dob-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["dob-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["dob-year"]
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "is-qyp-blind",
+        name: "is-qyp-blind",
+        fieldset: {
+          legend: {
+            text: "Are they blind?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["is-qyp-blind"] == "yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["is-qyp-blind"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: "qyp-benefits",
+        name: "qyp-benefits",
+        fieldset: {
+          legend: {
+            text: "Benefits"
+          }
+        },
+        hint: {
+          text: "Please select any benefits:"
+        },
+        items: [
+          {
+            value: "Personal Independance Payment (PIP)",
+            text: "Personal Independance Payment (PIP)",
+            checked: ((data["qyp-benefits"] or []).includes("Personal Independance Payment (PIP)"))
+          },
+          {
+            value: "Disibility Living Allowance (DLA)",
+            text: "Disibility Living Allowance (DLA)",
+            checked: ((data["qyp-benefits"] or []).includes("Disibility Living Allowance (DLA)"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1462 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Pension Credit calculation. Check your answers
+    </h1>
+
+    <h2 class="govuk-heading-m">
+      Residency
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          UK National
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-national">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Residency
+        </dt>
+        <dd class="govuk-summary-list__value">
+          UK
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="reside-in-uk">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Lived abroad
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="lived-abroad">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">
+      Claim date
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          10 October 2018
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="claim-date">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+
+    <h2 class="govuk-heading-m">
+      About claimant
+    </h2>
+
+    <dl class="govuk-summary-list govuk-summary-list--short">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Who is caller
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Claimant
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="who-is-caller">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <dt class="govuk-summary-list__key">
+        National insurance
+      </dt>
+      <dd class="govuk-summary-list__value">
+        QQ 11 22 33 C
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="name-and-nino">
+          Change
+        </a>
+      </dd>
+
+
+      <div class="govuk-summary-list__row">
+
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Alex Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="name-and-nino">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sex
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Male
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="over-spa">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20 October 1953
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="over-spa">
+            Change
+          </a>
+        </dd>
+      </div>
+    </dl>
+
+
+      <h2 class="govuk-heading-m">
+        Security
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--short">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Passed security?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="security">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can be contacted by
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["contact-options"] %}
+              {{ data["contact-options"].join(", ") }}
+            {% else %}
+              No means
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% if data["mobile"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Mobile phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["mobile"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="mobile">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+        {% if data["landline"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["landline"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="landline">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+        {% if data["email"]%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["email"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="email">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Disabilities
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["disabilities"] %}
+              {{ data["disabilities"].join(", ") }}
+            {% else %}
+              None
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="disability">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">
+        Address
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            221B Baker Street<br>
+            Marylebone<br>
+            London<br>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="address-choice">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Postcode
+          </dt>
+          <dd class="govuk-summary-list__value">
+            NW1 5RT
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="postcode-lookup">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home ownership
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["home-ownership"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="home-ownership">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% if data["home-ownership"] == "Owns" %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Ground rent
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["ground-rent"] or "None "}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="ground-rent">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Service charges
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["service-charges"] or "None "}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="service-charges">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has mortgage
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["has-mortgage"] or "No "}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="mortgage-yn">
+                Change
+              </a>
+            </dd>
+          </div>
+        {% endif %}
+      </dl>
+
+
+      <h2 class="govuk-heading-m">
+        Household composition
+      </h2>
+
+      <h3 class="govuk-heading-m">
+        Partner
+      </h3>
+      <!------------ Partner
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            QQ 12 34 56 A
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Jo Smith
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            5 January 1953
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="about-partner">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+------------>
+<p class="none">
+  None
+</p>
+
+      <h3 class="govuk-heading-m">
+        Children
+      </h3>
+      {% if data["child-in-home"] == "true" %}
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              QQ 12 34 56 A
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Child 1
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              5 January 2003
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% else %}
+        <p class="none">
+          None
+        </p>
+      {% endif %}
+
+      <h3 class="govuk-heading-m">
+        Qualifying young person
+      </h3>
+      {% if data["qyp-in-home"] == "true" %}
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              QQ 12 34 56 A
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              QYP 1
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              5 January 2000
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="about-child">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% else %}
+        <p class="none">
+          None
+        </p>
+      {% endif %}
+
+      <h3 class="govuk-heading-m">
+        Boarders / Lodgers
+      </h3>
+      {% if data["boarder-in-home"] == "true" %}
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Mr Boarder
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="boarders-and-loadgers">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              5 January 2000
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="boarders-and-loadgers">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Move in date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              5 January 2010
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="boarders-and-loadgers">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Rent
+            </dt>
+            <dd class="govuk-summary-list__value">
+              £100 a week
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="boarders-and-loadgers">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% else %}
+        <p class="none">
+          None
+        </p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Benefits
+      </h2>
+
+      <h4 class="govuk-heading-s">
+        Attendance allowance
+      </h4>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Value
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £100
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="benefits">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Benefit rate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Lower
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="benefits">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Payment day / frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Monday / Every week
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Start date / end date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            	01 01 2018 -
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="boarders-and-loadgers">
+              .
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+
+          <!------------ ------------>
+
+      {% if data["benefit-name"] %}
+        <h4 class="govuk-heading-s">
+          {{ data["benefit-name"] }}
+        </h4>
+
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["benefit-value"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-benefit">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Benefit rate
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Lower
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-benefit">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment day / frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["benefit-day"] }} / {{ data["benefit-frequency"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-benefit">
+                Change
+              </a>
+            </dd>
+          </div>
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Start date / end date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              01 01 2018 -
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-benefit">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        All pensions
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            State pension
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £98.58
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+          <!------------
+          <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rate start / end date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01 01 2019 -
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Projected rate
+          </dt>
+          <dd class="govuk-summary-list__value">
+            £100
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-pension">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Rate start
+          </dt>
+          <dd class="govuk-summary-list__value">
+            01 01 2019 -
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-pension">
+              Change
+            </a>
+          </dd>
+        </div>      ------------>
+      </dl>
+
+
+      {% if data["pension-name"] %}
+        {% if data["pension-status"] == "In receipt" %}
+          <h2 class="govuk-heading-m">
+            Pensions that the claimant is in receipt of (1):
+          </h2>
+        {% elif data["pension-status"] == "Not claimed" %}
+          <h2 class="govuk-heading-m">
+            Pensions that the claimant is not currnetly claimed (1):
+          </h2>
+        {% elif data["pension-status"] == "Withdrawn / lump sum" %}
+          <h2 class="govuk-heading-m">
+            Lump sum pension payments (1):
+          </h2>
+        {% endif %}
+
+        <h3 class="govuk-heading-s">
+          Pension provider: {{ data["pension-name"] }}
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-5">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Scheme name / Reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["pension-ref"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-pension">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ (data["pension-value"] or 0) | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-pension">
+                .
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Rate of change / type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["pension-rate"] }}% / Fixed
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-pension">
+                .
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Weekly
+            </dd>
+          </div>
+          
+          <dd class="govuk-summary-list__actions">
+            <a href="add-pension">
+              .
+            </a>
+          </dd>
+        </dl>
+        {% set pensionDetails %}
+          <dl class="govuk-summary-list govuk-summary-list--long">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Company URL
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-url"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="add-pension">
+                  Change
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-telephone"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="add-pension">
+                  Change
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                E-mail
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["pension-email"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="add-pension">
+                  Change
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Company name<br>First line of address<br>Second line<br>POST CODE
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="add-pension">
+                  Change
+                </a>
+              </dd>
+            </div>
+          </dl>
+
+        {% endset %}
+        {{ govukDetails({
+          summaryText: "Provider address and contact details",
+          html: pensionDetails
+        }) }}
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Capital and savings
+      </h2>
+
+      {% if data['has-current-account'] %}
+        <h3 class="govuk-heading-s">
+          Current account
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of bank
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-name'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last 4 digits of account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-last-digits'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-value'] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Who's is this account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-owner'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      {% endif %}
+
+      {% if data['has-savings-account'] %}
+        <h3 class="govuk-heading-s">
+          Savings account
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of bank
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-name'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last 4 digits of account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-last-digits'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-value'] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Who's is this account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-owner'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="current-account">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      {% endif %}
+
+      {% if data['has-cash'] %}
+        <h3 class="govuk-heading-s">
+          Cash
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["cash-amount"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="cash">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      {% endif %}
+
+      {% if data["has-shares"] %}
+        <h3 class="govuk-heading-s">
+          Shares
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Company name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-name"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="shares">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-type"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="shares">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-amount"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="shares">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Value of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-value"]  | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="shares">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Employment and earnings
+      </h2>
+
+      {% if data["work-name"] %}
+        <h2 class="govuk-heading-m">
+          {{ data["employment-type"] }}
+        </h2>
+
+        <h3 class="govuk-heading-s">
+          {{ data["work-name"] }}
+        </h3>
+
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          {% if data["work-payroll"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payroll ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-payroll"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-start-day"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Start / End date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-start-day"] }}
+              {{ data["work-start-month"] | getMonth }}
+              {{ data["work-start-year"] }} —
+              {{ data["work-end-day"] }}
+              {{ data["work-end-month"] | getMonth }}
+              {{ data["work-end-year"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-gross"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Taxable pay (gross)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-gross"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-frequency"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment day / frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-frequency"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-tax"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Tax
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-tax"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-ni"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National insurance contributions
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-ni"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-pensions"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Pensions
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-pensions"] | formatMoney }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-employment">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+    {% endif %}
+    {% if data["self-name"] %}
+      <h2 class="govuk-heading-m">
+        Self employment
+      </h2>
+
+      <h3 class="govuk-heading-s">
+        {{ data["self-name"] }}
+      </h3>
+
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        {% if data["self-profit"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Profit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-profit"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-self-employment">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+        {% if data["self-loss"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-loss"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-self-employment">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+        {% if data["self-total"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total amount in business account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-total"] | formatMoney }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="add-self-employment">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+    {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Payment details
+      </h2>
+
+      <h2 class="govuk-heading-m">
+        Bank details
+      </h2>
+      {% if data["type-of-account"] == "uk" %}
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            UK bank, building society or credit union account
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="type-of-account">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name on account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["name-on-account"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["sort-code"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["account-number"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+      </dl>
+      {% else %}
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            UK Bank account
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="type-of-account">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name on account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["name-on-account"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              .
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Sort code
+          </dt>
+          <dd class="govuk-summary-list__value">
+            11-22-33
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="home-ownership">
+              .
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Account number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            00 11 22 33
+          </dd>
+
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              .
+            </a>
+          </dd>
+        </div>
+
+
+
+      </dl>
+      {% endif %}
+
+      <!------------ ---- ------------>
+      <h2 class="govuk-heading-m">
+        Claimant declaration
+      </h2>
+
+      <p class="govuk-body">
+        By submitting this claim you agree that the information you’ve given is
+        complete and correct. <br><br>While you’re receiving Pension Credit,
+        you’ll report changes to your circumstances straight away by calling
+        0800&nbsp;731&nbsp;7898. <br> If you give wrong or incomplete information, or
+        you don’t report changes, you might:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>be paid too much Pension Credit and have to pay the money back</li>
+        <li>have your Pension Credit reduced or stopped</li>
+        <li>need to pay a financial penalty</li>
+        <li>be prosecuted</li>
+      </ul>
+
+    <form action="done" method="post">
+      <p>
+        {{ govukButton({
+          text: "Submit claim"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

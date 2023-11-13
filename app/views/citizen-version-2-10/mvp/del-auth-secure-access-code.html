@@ -1,0 +1,89 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Yourself-language - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claimant-contact-callback" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+
+      <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>
+
+      {% set legendTelephoneNumber %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">What is the LPA access code?</h1>
+      {% endset -%}
+
+
+      {% set delAuthContactNumberYes %}
+
+      {{ govukInput({
+        label: {
+          html: legendTelephoneNumber
+        },
+          hint: {
+            text: "For example, V-AB12-CD34-EF56"
+          },
+        id: "del-auth-secure-access-code",
+        name: "del-auth-secure-access-code",
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        value: data["del-auth-secure-access-code"]
+      }) }}
+
+      {% endset -%}
+
+      {% set LegendH1 %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Do you have a lasting power of attorney (LPA) access code?</h1>
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "del-auth-secure-access-code-check",
+        name: "del-auth-secure-access-code-check",
+        fieldset: {
+          legend: {
+            html: LegendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          text: "An LPA access code is a unique code from the 'use a lasting power of attorney' service. It will allow people or organisations to view a summary of an LPA. "
+        },
+        classes: "govuk-radios govuk-!-margin-bottom-4",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["del-auth-secure-access-code-check"] == "Yes"),
+                  conditional: {
+                    html: delAuthContactNumberYes
+                  }
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["del-auth-secure-access-code-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+{% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search"]}}</p>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-font-weight-bold"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Overview</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-nil-outcome" class="govuk-link" rel="noreferrer noopener">Awards and decisions</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Sent information</a></p>
+
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-2">Citizen details</h3>
+
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Personal details</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Contact</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="task-2-where-they-live" class="govuk-link" rel="noreferrer noopener">Address</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="_blank">Links #6</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="task-2-dump" class="govuk-link" rel="noreferrer noopener">Dump</a></p>
+
+  </div>
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Overview</h3>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Applied for Pension Credit on DD MM YYYY, the outcome was a nil because their State Pension of £180.55 exceeded the Pension Credit threshold.
+  </p>
+  </div>
+
+  </div>
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,253 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: How we contact you
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Can we send you text messages?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes / No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-text-yn">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      {% if data["contact-text-yn-number"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Mobile phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["contact-text-yn-number"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="contact-text-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Can we call you on the same number we text you on?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes / No – call on a different number / No – do not call
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-text-yn">
+            Change
+          </a>
+        </dd>
+      </div>
+
+
+      {% if data["contact-mobile-can-call-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can we call you on a different number?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["contact-mobile-can-call-number"] }} (Yes to text, but a different number to call on)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="contact-text-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+
+      {% if data["contact-mobile-can-call-number"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can we call you?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["contact-mobile-can-call-number"] }} (Yes to text, but no to call. This is a an alt number)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="contact-text-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {% if data["contact-other-number-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can we call you?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["contact-other-number"] }} (No to text, yes to call number)
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="contact-text-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address for letters
+          </dt>
+          <dd class="govuk-summary-list__value">
+            221B Baker Street<br>
+            Marylebone<br>
+            London<br>
+            NW1 5RT
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="address-choice">
+              Change
+            </a>
+          </dd>
+        </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Different formats
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Braille<br>
+          Large print<br>
+          Sign language<br>
+          ...<br>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-formats">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you need letters in Welsh?
+        </dt>
+        <dd class="govuk-summary-list__value">
+{{ data["disabilities-welsh-yn"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-formats">
+            Change
+          </a>
+        </dd>
+      </div>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you need us to send letters by email?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["contact-formats-email-yn"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-formats">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      {% if data["contact-formats-email-yes"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["contact-formats-email-yes"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-formats">
+            Change
+          </a>
+        </dd>
+      </div>
+{% endif %}
+
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Does the claimant need a translator?
+
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["contact-formats-altLanguage-yn"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-text-yn">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row ">
+        <dt class="govuk-summary-list__key">
+          What language?
+
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["contact-formats-altLanguage"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="contact-text-yn">
+            Change
+          </a>
+        </dd>
+      </div>
+
+
+
+
+
+
+
+    </dl>
+
+    <form action="address-correspondence-yn" method="post">
+      <input type="hidden" name="contact-complete" value="true"/>
+      <input type="hidden" name="contact-address-choice-complete" value="true"/>
+      <input type="hidden" name="contact-formats-complete" value="true"/>
+
+<br><br>
+
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+</div>
+{% endblock %}

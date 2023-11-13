@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you live with a partner? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-partner-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-partner",
+        name: "has-partner",
+        fieldset: {
+          legend: {
+            text: "Do you live with a partner?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "A partner is a husband, wife, civil partner or someone that you live with as a couple."
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-partner"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-partner"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

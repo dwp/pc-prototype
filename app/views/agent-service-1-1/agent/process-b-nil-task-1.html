@@ -1,0 +1,429 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-b-nil-task-list" method="post" class="form">
+        <!-- <input type="hidden" name="process-b-nil-task-1" value="Matched"> -->
+
+        {% include "agent-service-1-1/agent/record-id.html" %}
+
+
+        <!-- <span class="govuk-caption-m">[Task 1]</span> -->
+      <p class="govuk-heading-xl govuk-!-margin-bottom-8">Identity</p>
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Cross referece citizens provided details using AfPC with what was found in CIZ</p> -->
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <!------------Legend------------>
+          {% set legendCheck1 %}
+
+        {{ govukCheckboxes({
+          idPrefix: "process-b-nil-task-1-1",
+          name: "process-b-nil-task-1-1",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+            }
+          },
+          items: [
+            {
+              classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+              value: "Matched",
+              text: " ",
+              checked: data['process-b-nil-task-1-1'] == "Matched"
+            }
+          ]
+        }) }}
+
+
+
+        {% endset %}
+
+        {% set legendCheck2 %}
+
+      {{ govukCheckboxes({
+        idPrefix: "process-b-nil-task-1-2",
+        name: "process-b-nil-task-1-2",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+          }
+        },
+        items: [
+          {
+            classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+            value: "Matched",
+            text: " ",
+            checked: data['process-b-nil-task-1-2'] == "Matched"
+          }
+        ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck3 %}
+
+    {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-1-3",
+      name: "process-b-nil-task-1-3",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Matched",
+          text: " ",
+          checked: data['process-b-nil-task-1-3'] == "Matched"
+        }
+      ]
+    }) }}
+
+    {% endset %}
+
+    {% set legendCheck4 %}
+
+  {{ govukCheckboxes({
+    idPrefix: "process-b-nil-task-1-4",
+    name: "process-b-nil-task-1-4",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+      }
+    },
+    items: [
+      {
+        classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+        value: "Matched",
+        text: " ",
+        checked: data['process-b-nil-task-1-4'] == "Matched"
+      }
+    ]
+  }) }}
+
+  {% endset %}
+
+  {% set legendCheck5 %}
+
+{{ govukCheckboxes({
+  idPrefix: "process-b-nil-task-1-5",
+  name: "process-b-nil-task-1-5",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+    }
+  },
+  items: [
+    {
+      classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+      value: "Matched",
+      text: " ",
+      checked: data['process-b-nil-task-1-5'] == "Matched"
+    }
+  ]
+}) }}
+
+{% endset %}
+
+{% set legendCheck6 %}
+
+            {{ govukCheckboxes({
+            idPrefix: "process-b-nil-task-1-6",
+            name: "process-b-nil-task-1-6",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                text: "",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+              }
+            },
+            items: [
+              {
+                classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+                value: "Matched",
+                text: " ",
+                checked: data['process-b-nil-task-1-6'] == "Matched"
+              }
+            ]
+            }) }}
+
+
+
+{% endset %}
+      <!------------Legend------------>
+
+        {% set legendAddress %}
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-0">Benton Park Road</p>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Newcastle upon Tyne</p>
+        <p class="govuk-body govuk-!-font-size-19">NE98 1ZZ</p>
+
+      {% endset %}
+
+      <!------------Legend------------>
+        {% set tagSL %}
+
+        {{govukTag({
+           text: "SEARCHLIGHT",
+           classes: "govuk-tag--blue"
+         })}}
+
+      {% endset %}
+
+        {% set tagCPS %}
+
+        {{govukTag({
+           text: "CPS",
+           classes: "govuk-tag--yellow"
+         })}}
+
+      {% endset %}
+
+      {% set tagCAM %}
+
+      {{govukTag({
+         text: "CAM",
+         classes: "govuk-tag--red"
+       })}}
+
+    {% endset %}
+    <!------------Legend------------>
+
+
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+          {
+            text: "Information to check",
+            classes: 'govuk-30-percent'
+          },
+          {
+            html: "Given by applicant [AfPC]",
+            classes: 'govuk-30-percent'
+          },
+          {
+            html: "Data source",
+            classes: 'govuk-25-percent'
+          },
+          {
+            text: "Matched",
+            classes: 'govuk-15-percent'
+          }
+        ],
+          rows: [
+            [
+              {
+                text: "Name"
+              },
+              {
+                text: "Jeff Bridges"
+              },
+              {
+                html: "SearchLight"
+              },
+              {
+                html: legendCheck1
+              }
+            ],
+            [
+              {
+                text: "Date of birth"
+              },
+              {
+                text: "01 January 1954"
+              },
+              {
+                html: "SearchLight"
+              },
+              {
+                html: legendCheck2
+              }
+            ],
+            [
+              {
+                text: "Delegated authorities"
+              },
+              {
+                text: "None"
+              },
+              {
+                html: "SearchLight"
+              },
+              {
+                html: legendCheck3
+              }
+            ],
+            [
+              {
+                text: "Telephone"
+              },
+              {
+                text: "07910 20 30 50"
+              },
+              {
+                html: "SearchLight"
+              },
+              {
+                html: legendCheck3             }
+                ],
+                [
+                  {
+                    text: "Address"
+                  },
+                  {
+                    html: legendAddress
+                  },
+                  {
+                    html: "SearchLight"
+                  },
+                  {
+                    html: legendCheck4
+                  }
+                  ],
+                  [
+                    {
+                      text: "Marital status"
+                    },
+                    {
+                      html: "Single"
+                    },
+                    {
+                      html: "SearchLight"
+                    },
+                    {
+                      html: legendCheck5
+                    }
+                  ],
+                [
+                  {
+                    text: "Bank details"
+                  },
+                  {
+                    text: "Halifax"
+                  },
+                  {
+                    html: "CPS"
+                  },
+                  {
+                    html: legendCheck6
+                  }
+                ]
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+  <!-- {{ govukRadios({
+    idPrefix: "process-b-nil-task-1",
+    name: "process-b-nil-task-1",
+    fieldset: {
+      legend: {
+        text: "What happened?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m govuk-!-padding-top-4"
+      }
+    },
+    hint: {
+      html: hintLegend
+    },
+    classes: "govuk-radios govuk-!-padding-bottom-0",
+    items: [
+    {
+      value: "Matched",
+      text: "All matched",
+      checked: (data["process-b-nil-task-1"] == "Passed")
+    },
+      {
+        value: "Failed",
+        text: "Some did not match",
+        checked: (data["process-b-nil-task-1"] == "Failed")
+      },
+      {
+        value: "unfinished",
+        text: "Can't complete",
+        checked: (data["process-b-nil-task-1"] == "unfinished")
+      }
+    ]
+  }) }} -->
+
+  <div class="govuk-button-group">
+
+
+    {{ govukButton({
+      name: "process-b-nil-task-1",
+      value: "Matched",
+      checked: (data["process-b-nil-task-1"] == "Matched"),
+      text: "Save and continue"
+    }) }}
+
+    {{ govukButton({
+        name: "process-b-nil-task-1",
+        value: "Unfinished",
+        checked: (data["process-b-nil-task-1"] == "Unfinished"),
+      text: "I cannot complete",
+      classes: "govuk-button--secondary "
+    }) }}
+
+
+
+  </div>
+
+  <br>
+  {{ govukButton({
+      name: "process-b-nil-task-1",
+      value: "Not matched",
+      checked: (data["process-b-nil-task-1"] == "Not matched"),
+      text: "Testing only: Example of what unmatched looks like",
+    classes: "govuk-button--secondary govuk-fake-button"
+  }) }}
+
+
+
+{% endblock %}

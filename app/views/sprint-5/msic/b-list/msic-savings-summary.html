@@ -1,0 +1,462 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <span class="govuk-caption-m">Money, savings and investments</span>
+  <h1 class="govuk-heading-xl">
+    Savings accounts summary<br>
+  </h1>
+  <!----Headline---->
+  <form action="msic-shares-trusts-index" method="post">
+
+
+    <h3 class="govuk-heading-m">
+      Bank current accounts (1)
+    </h3>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+          <p class="govuk-body"><a href="msic-bank-savings-account" class="govuk-link">Add a bank current account</a></p>
+
+        </div></div>
+
+
+<br><br>
+{% if data["msic-bank-savings-account-name"] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-s">
+        {{ data["msic-bank-savings-account-name"] }}<p class="govuk-body"><!--<a href="msic-bank-savings-account" class="govuk-link">Remove</a>--></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+          {{ govukSummaryList({
+            rows: [
+            {
+              key: {
+                text: "Last four digits"
+              },
+              value: {
+                text: data['msic-bank-savings-account-last-digits']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-savings-account",
+                    text: "Change Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Amount"
+              },
+              value: {
+                text: data['msic-bank-savings-account-amount']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-savings-account",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Who's account?"
+              },
+              value: {
+                text: data['msic-bank-savings-account-owner']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-savings-account",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "% stake in joint account"
+              },
+              value: {
+                text: data['msic-bank-savings-account-stake']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-savings-account",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+
+  </div></div>
+{% endif %}
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <h3 class="govuk-heading-m">
+    Building society savings accounts (1)
+  </h3>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+        <p class="govuk-body"><a href="msic-building-savings-account" class="govuk-link">Add a building society account</a></p>
+
+      </div></div>
+
+  {% if data["msic-building-savings-account-name"] %}
+
+<br><br>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      {{ data["msic-building-savings-account-name"] }}<p class="govuk-body"><!--<a href="msic-building-savings-account" class="govuk-link">Remove</a>--></p>
+    </h3></div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Last four digits"
+        },
+        value: {
+          text: data['msic-building-savings-account-last-digits']
+        },
+        actions: {
+          items: [
+            {
+              href: "msic-building-savings-account",
+              text: "Change Remove",
+              visuallyHiddenText: "XXX"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Amount"
+        },
+        value: {
+          text: data['msic-building-savings-account-amount']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "",
+              visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Who's account?"
+        },
+        value: {
+          text: data['msic-buildings-savings-account-owner']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "",
+              visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "% stake in joint account"
+        },
+        value: {
+          text: data['msic-buildings-savings-account-stake']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "",
+              visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+      }
+      ]
+    }) }}
+
+
+
+
+
+
+</div></div>
+{% endif %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<h3 class="govuk-heading-m">
+  Premium Bonds (1)
+</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+      <p class="govuk-body"><a href="msic-premium-bond-account" class="govuk-link">Add Premium Bonds</a></p>
+
+    </div></div>
+
+<br><br>
+
+{% if data["msic-premium-bond-account-total-bonds"] %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    {{ data["msic-premium-bond-account-name"] }}<p class="govuk-body"><!--<a href="msic-premium-bond-account" class="govuk-link">Remove</a>--></p>
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Combined financial total"
+      },
+      value: {
+        text: data['msic-premium-bond-account-total-bonds']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-premium-bond-account",
+            text: "Change Remove",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+
+</div></div>
+{% endif %}
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<h3 class="govuk-heading-m">
+  ISAs, TESSAs, TOISA and PEPs (1)
+</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+      <p class="govuk-body"><a href="msic-isa-savings-account" class="govuk-link">Add an ISA, TESSA, TOISA or PEP</a></p>
+
+    </div></div>
+
+<br><br>
+
+{% if data["msic-isa-savings-account-name"] %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    {{ data["msic-isa-savings-account-name"] }}<p class="govuk-body"><!--<a href="msic-isa-savings-account" class="govuk-link">Remove</a>--></p>
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Last four digits"
+      },
+      value: {
+        text: data['msic-building-savings-account-last-digits']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-isa-savings-account",
+            text: "Change Remove",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Amount"
+      },
+      value: {
+        text: data['msic-isa-savings-account-amount']
+      },
+      actions: {
+        items: [
+          {
+            href: "pre-declaration",
+            text: "",
+            visuallyHiddenText: "XXXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+</div></div>
+{% endif %}
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<h3 class="govuk-heading-m">
+  Capital bonds (1)
+</h3>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+      <p class="govuk-body"><a href="msic-capital-bond-account" class="govuk-link">Add a capital bond</a></p>
+
+    </div></div>
+
+<br><br>
+
+{% if data["msic-capital-bond-company-name"] %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    {{ data["msic-capital-bond-company-name"] }}<p class="govuk-body"><!--<a href="msic-capital-bond-account" class="govuk-link">Remove</a>--></p>
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Value of bonds"
+      },
+      value: {
+        text: data['msic-capital-bond-account-total-bonds']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-capital-bond-account",
+            text: "Change Remove",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+
+</div></div>
+{% endif %}
+
+
+
+
+
+
+
+
+  <br><br>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

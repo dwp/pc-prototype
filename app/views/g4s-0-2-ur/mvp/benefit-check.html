@@ -1,0 +1,75 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<!--- NI ROUTER --->
+{% if data['nino'] == 'S1 11 22 33 A' %}
+<form action="outcome" method="post" class="form">
+{% else %}
+<form action="benefit-check-router" method="post" class="form">
+{% endif %}
+
+
+      <div class="moj-banner">
+      <div class="moj-banner__message">
+      <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Find this information in SearchLight. Do not ask caller.</h2>
+      </div>
+      </div>
+
+{{ govukCheckboxes({
+  idPrefix: "benefit-check",
+  name: "benefit-check",
+  fieldset: {
+    legend: {
+      text: "Do they get any of these benefits?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "Select all that apply. [Demo doesnt account for CP and DB]",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "B",
+      text: "Attendance Allowance, the middle or highest rate of Disability living Allowance, Personal Independence Payment, or Armed Forces Independence Payment",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "CA",
+      text: "Carers Allowance, including an underlying entitlement",
+      checked: (data["benefit-check"] == "CA")
+    },
+    {
+      value: "None",
+      text: "None of these",
+      checked: (data["benefit-check"] == "None")
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Backdating: Outside of UK - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-changes-yn-router" method="post" class="form">
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-options-backdating-changes-yn",
+          name: "claim-date-options-backdating-changes-yn",
+          fieldset: {
+            legend: {
+              text: "Has there been any changes between Monday, 16 April 2019 and Today?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "By changes we mean: XX Things are are interested in are, money in and out, people in and out."
+          },
+          items: [
+          {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["claim-date-options-backdating-changes-yn"] == "No")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["claim-date-options-backdating-changes-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

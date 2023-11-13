@@ -1,0 +1,61 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  XXX - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <form action="home-care-home-check-router" method="post" class="form"> -->
+    <form action="home-hospital-check-router" method="post" class="form">
+
+      {% set dynamicH1 %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        {% if data["single-joint-check"] == "Joint" %} Have you or your partner had any overnight stays in hospital between [DATE] and today?  <!--What this is doing is: depending on what answer they say for home-ownership the h1 will change depending on what they say, EG, OWN, rent and if its a joint claim -->
+        {% else %} Have you had any overnight stays in hospital between [DATE] and today? {% endif %}
+      </h1>
+      {% endset %}
+
+
+{{ govukRadios({
+  idPrefix: "home-hospital-check",
+  name: "home-hospital-check",
+  fieldset: {
+    legend: {
+      html: dynamicH1,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["home-hospital-check"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["home-hospital-check"] == "No")
+    }
+  ]
+}) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-cam-date" method="post">
+
+
+<!--
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check if there is an initial date of claim (IDOC) in PTP CAM.
+          </strong>
+        </div>
+
+-->
+
+<div class="adviser-notice">
+<h1 class="adviser-notice__heading">Adviser: check other systems</h1>
+<h1 class="govuk-heading-xl">Is there an initial date of contact (IDOC) in CAM?</h1>
+</div>
+
+<div class="">
+        {% set yesDate %}
+          {{ govukDateInput({
+            id: "claim-date-idoc-yn-date",
+            namePrefix: "claim-date-idoc-yn-date",
+            fieldset: {
+              legend: {
+                text: "Enter the IDOC"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["claim-date-idoc-yn-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["claim-date-idoc-yn-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["claim-date-idoc-yn-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-idoc-yn",
+          name: "claim-date-idoc-yn",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes-date",
+            text: "Yes",
+            checked: (data["claim-date-idoc-yn"] == "Yes"),
+            conditional: {
+              html: yesDate
+            }
+          },
+            {
+              value: "no-date",
+              text: "No - use today's date",
+              checked: (data["claim-date-idoc-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

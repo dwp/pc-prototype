@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="mobile-call-router" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        What mobile number should we use to send you text messages?
+      </h1>
+
+      {{ govukInput({
+        id: "mobile",
+        name: "mobile",
+        type: "tel",
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "Mobile number"
+        },
+        value: data["mobile"]
+      }) }}
+
+      {% set landLine %}
+        {{ govukInput({
+          id: "landline",
+          name: "landline",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "What number should we call you on?"
+          },
+          value: data["landline"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "mobile-call",
+        name: "mobile-call",
+        fieldset: {
+          legend: {
+            text: "Can we also call you on this number?"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["mobile-call"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            conditional: {
+              html: landLine
+            },
+            checked: (data["mobile-call"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

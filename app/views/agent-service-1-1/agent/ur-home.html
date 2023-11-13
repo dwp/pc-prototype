@@ -1,0 +1,115 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur-home.html" %}
+{% endblock %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+
+  {% if data["system-ur-process-ab"]  == "A" %}
+    <!----->
+
+      {% if data["process-b-nil-task-1"]  == "Matched" %}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">Nil award application successfully processed.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% else %}
+      {% endif %}
+      <!----->
+
+    {% elif data["system-ur-process-ab"]  == "B" %}
+
+      <!----->
+
+      {% if data["process-c-nil-task-1-1"]  == "Matched" and  data["process-c-nil-task-1-2"]  == "Matched" and  data["process-c-nil-task-1-3"]  == "Matched" and  data["process-c-nil-task-1-4"]  == "Matched" and data["process-c-nil-task-1-5"]  == "Matched" and data["process-c-nil-task-1-6"]  == "Matched" and data["process-c-nil-task-1-7"]  == "Matched" and data["process-c-nil-task-2-idoc"] == "Not found" and data["process-c-nil-task-3-15"] == "Matched" %}
+
+      {% set html %}
+      <p class="govuk-body govuk-!-font-size-19">Nil award application successfully processed.</p>
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: 'success'
+      }) }}
+
+      {% else %}
+      {% endif %}
+
+  <!----->
+  {% else %}
+  {% endif %}
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Actions and tasks</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">[UR] <br>This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. </p> -->
+
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Processing claims</h3> -->
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Group 1</h3> -->
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="system-ur-process-ab" class="govuk-link" rel="noreferrer noopener" target="">Process a nil award</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-cases" class="govuk-link" rel="noreferrer noopener" target=>My cases</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-5"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Live proving</a></p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-mi" class="govuk-link" rel="noreferrer noopener" target="">Nil award statistics</a></p>
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">All other claims</h3> -->
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Queries and disputes</h3> -->
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Process AfPC claim</a></p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-5"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Find a downloaded claim</a></p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Disributor statistics</a></p> -->
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Group 3</h3> -->
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Telephony</h3> -->
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="">Take an inbound call</a></p> -->
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4"><a href="" class="govuk-link" rel="noreferrer noopener" target="">Find someone</a></p> -->
+
+  </div>
+
+  <div class="govuk-grid-column-one-quarter govuk-!-margin-bottom-8">
+    <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Group 4</h3> -->
+  <!-- <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-4">Help</h3> -->
+
+  <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="#" class="govuk-link" rel="noreferrer noopener" target="">Request access</a></p> -->
+
+  </div>
+
+
+
+  </div>
+    </form>
+{% endblock %}

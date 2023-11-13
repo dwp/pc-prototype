@@ -1,0 +1,42 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="reside-in-uk" method="post"><!--existing-claim-yn-->
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+          What is the number you are calling from?
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: ""
+          },
+          hint: {
+            html: "This is the number we will use to call you back if this call is cut off. If you have a different number for future contact, you can give us this later."
+          },
+          id: "telephone-number",
+          name: "telephone-number",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+          value: data["telephone-number"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

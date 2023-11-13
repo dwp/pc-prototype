@@ -1,0 +1,38 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+      <h2 class="govuk-heading-l">Security</h2>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

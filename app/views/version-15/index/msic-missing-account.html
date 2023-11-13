@@ -1,0 +1,77 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Add Other money, savings or investments that you have not told us about - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-missing-account-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Other money, savings or investments that you have not told us about
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Description of this money"
+        },
+        id: "msic-missing-account-name",
+        name: "msic-missing-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+<!--------------- DATE ONE (CLAIM START) ----------------------------------------------------------------------------------------->
+{% if data["claim-filter"] == "Backdating" %}
+
+{{ govukInput({
+  label: {
+    html: "How much did you have on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>?"
+  },
+  id: "msic-missing-account-amount-EED",
+  name: "msic-missing-account-amount-EED",
+  classes: "govuk-input--width-20"
+}) }}
+
+{% endif %}
+
+<!--------------- DATE TWO (TODAY) ----------------------------------------------------------------------------------------->
+{% if data["claim-filter"] == "Advanced or Today" or data["claim-filter"] == "Backdating" %}
+
+{{ govukInput({
+  label: {
+    html: "How much do you have <strong>today</strong>?"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-missing-account-amount-TODAY",
+  name: "msic-missing-account-amount-TODAY"
+}) }}
+
+{% endif %}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+    </div>
+{% endblock %}

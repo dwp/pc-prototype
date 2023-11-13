@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Details of income or capital bonds
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-capital-bond-account-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Income or capital bonds details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+      {{ govukInput({
+        label: {
+          text: "Name of income or capital bond"
+        },
+        id: "msic-capital-bond-company-name",
+        name: "msic-capital-bond-company-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      <!--------------- DATE ONE (CLAIM START) ----------------------------------------------------------------------------------------->
+      {% if data["claim-filter"] == "Backdating" %}
+
+            {{ govukInput({
+              label: {
+                html: "What was the value of this bond on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "</strong>?"
+              },
+              id: "msic-capital-bond-account-amount-EED",
+              name: "msic-capital-bond-account-amount-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {% endif %}
+
+<!--------------- DATE TWO (TODAY) ----------------------------------------------------------------------------------------->
+
+            {% if data["claim-filter"] == "Advanced or Today" or data["claim-filter"] == "Backdating" %}
+
+            {{ govukInput({
+              label: {
+                html: "What is the value of this bond <strong>today</strong>?"
+              },
+              id: "msic-capital-bond-account-amount-TODAY",
+              name: "msic-capital-bond-account-amount-TODAY",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {% endif %}
+
+    <!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+
+
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-life-assurance",
+        name: "msic-capital-bond-account-life-assurance",
+        fieldset: {
+          legend: {
+            text: "Does this bond have any element of life assurance attached to it?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-life-assurance"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-life-assurance"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-transfer",
+        name: "msic-capital-bond-account-transfer",
+        fieldset: {
+          legend: {
+            text: "Can this bond be assigned or transfered to someone else?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-transfer"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-transfer"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-capital-bond-account-cash-early",
+        name: "msic-capital-bond-account-cash-early",
+        fieldset: {
+          legend: {
+            text: "Can you cash this bond in early?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["msic-capital-bond-account-cash-early"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["msic-capital-bond-account-cash-early"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

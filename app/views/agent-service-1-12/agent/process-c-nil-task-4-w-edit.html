@@ -1,0 +1,234 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-c-nil-task-4-w-edit-router" method="post" class="form">
+
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+<div>
+  <strong class="govuk-tag govuk-tag--date govuk-!-margin-bottom-2 govuk-!-margin-bottom-4" id="company-information-completed">Application submitted or Date of cliam: 2 June 2022</strong>
+
+        <!-- <strong class="govuk-tag govuk-tag--date-lead govuk-!-margin-bottom-2" id="company-information-completed">Application submitted:</strong> -->
+        <!-- <strong class="govuk-tag govuk-tag--date govuk-!-margin-bottom-2" id="company-information-completed">2 June 2022</strong> -->
+
+</div>
+          <p class="govuk-heading-xl govuk-!-margin-bottom-6">What pension payments from Woolworths INC do you want to use to work out the applicant's curent income?</p>
+
+
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can select one or more payments.</p>
+
+
+              {% set LegendHelpToProcess %}
+              <p class=" govuk-!-margin-bottom-2"><strong>How many should I select to find a representitive amount?:</strong></p>
+              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+                <li>[Every weekly]: Select a max of 4</li>
+                <li>[Every four weeks]: Select a max of 4</li>
+                <li>[Every calendar month]: Select a max of 2</li>
+                <li>[Every quarter]: Select a max of 2</li>
+                <li>[Every weekly]: Select a max of 2</li>
+                <li>[Twice a year]: Select a max of 2</li>
+                <li>[Every year]: Select a max of 2</li>
+
+              </ul>
+
+              {% endset -%}
+
+              <!-- {{ govukDetails({
+                summaryText: "How many should I select?",
+                html: LegendHelpToProcess
+              }) }} -->
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-15-percent"><strong>Select</strong></td>
+              <td class="govuk-table__cell govuk-35-percent"><strong>Date amount changed</strong></td>
+              <td class="govuk-table__cell govuk-25-percent"><strong>Payment frequency</strong></td>
+              <td class="govuk-table__cell govuk-25-percent"><strong>Net pay</strong></td>
+
+            </tr>
+            </thead>
+
+            <tr class="govuk-table__row">
+
+              <td class="govuk-table__cell table-spacer">
+
+                <div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-6" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </div>
+
+              </td>
+
+              <td class="govuk-table__cell table-spacer">1 June 2022</td>
+              <td class="govuk-table__cell table-spacer">Weekly</td>
+              <td class="govuk-table__cell table-spacer">£253.84</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell table-spacer">
+
+                  <div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-6" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                      <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                      </label>
+                    </div>
+                  </div>
+
+                </td>
+
+                <td class="govuk-table__cell table-spacer">25 May 2022</td>
+                <td class="govuk-table__cell table-spacer">Weekly</td>
+                <td class="govuk-table__cell table-spacer">£253.84</td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer">
+
+                        <div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-6" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                            <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                            </label>
+                          </div>
+                        </div>
+
+                  </td>
+                  <td class="govuk-table__cell table-spacer">18 May 2022</td>
+                  <td class="govuk-table__cell table-spacer">Weekly</td>
+                  <td class="govuk-table__cell table-spacer">£253.84</td>
+                  </tr>
+
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell table-spacer">
+
+                          <div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-6" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                              <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                              </label>
+                            </div>
+                          </div>
+
+                    </td>
+                    <td class="govuk-table__cell table-spacer">11 May 2022</td>
+                    <td class="govuk-table__cell table-spacer">Weekly</td>
+                    <td class="govuk-table__cell table-spacer">£253.84</td>
+                    </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer">
+
+
+                  </td>
+
+                  <td class="govuk-table__cell table-spacer">4 May 2022</td>
+                  <td class="govuk-table__cell table-spacer">Weekly</td>
+                  <td class="govuk-table__cell table-spacer">£253.84</td>
+                  </tr>
+
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell table-spacer">
+
+
+                    </td>
+
+                    <td class="govuk-table__cell table-spacer">27 April 2022</td>
+                    <td class="govuk-table__cell table-spacer">Weekly</td>
+                    <td class="govuk-table__cell table-spacer">£253.84</td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell table-spacer">
+
+
+                      </td>
+
+                      <td class="govuk-table__cell table-spacer">20 April 2022</td>
+                      <td class="govuk-table__cell table-spacer">Weekly</td>
+                      <td class="govuk-table__cell table-spacer">£200.00</td>
+                      </tr>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell table-spacer">
+
+
+                        </td>
+
+                        <td class="govuk-table__cell table-spacer">13 April 2022</td>
+                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                        <td class="govuk-table__cell table-spacer">£200.00</td>
+                        </tr>
+
+
+            </table>
+
+
+
+
+
+    </div>
+  </div>
+
+  {{ govukRadios({
+    idPrefix: "process-c-nil-task-4-w1-edit",
+    name: "process-c-nil-task-4-w1-edit",
+    fieldset: {
+      legend: {
+        text: "What do you want to do next?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l govuk-!-padding-top-4"
+      }
+    },
+    hint: {
+      text: "If you cant process this, let Debs know"
+    },
+    classes: "govuk-radios",
+    items: [
+    {
+      value: "Yes",
+      text: "I'm happy with my selection, looks about right",
+      checked: (data["process-c-nil-task-4-w1-edit"] == "Yes")
+    },
+      {
+        value: "No",
+        text: "I want nothing to do with this, This needs to go to BAU",
+        checked: (data["process-c-nil-task-4-w1-edit"] == "No")
+      }
+    ]
+  }) }}
+
+
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+</form>
+
+{% endblock %}

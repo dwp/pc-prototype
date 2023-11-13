@@ -1,0 +1,171 @@
+  {% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <form action="process-nil-start" method="post" class="form">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Check outcome</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Claim attached is what the citizen submitted using AfPC. Do X Y and Z to check against the following tasks</p>
+
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+    <ol class="app-task-list">
+    <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">1.</span>Identity and contact
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-2-nil-task-1-1" aria-describedby="task-1">
+          Task #1
+        </a>
+
+        {% if data["process-2-nil-task-1-1"] == "No" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+        {% elif data["process-2-nil-task-1-1"] == "Yes" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+        {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+      </li>
+
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-2-nil-task-1-more" aria-describedby="task-1">
+          Task #2 — #8
+        </a>
+
+        {% if data["process-2-nil-task-1-more"] == "No" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+        {% elif data["process-2-nil-task-1-more"] == "Yes" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+        {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+      </li>
+
+    </ul>
+    </li>
+
+    {% if data["process-2-nil-task-1-more"] == "No" %}
+
+    {% else %}
+
+    <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">2.</span>Previous contact
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-2-nil-task-2" aria-describedby="task-2">
+          They might have made another claim
+        </a>
+        {% if data["process-2-nil-task-2-idoc"] == "Yes" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+        {% elif data["process-2-nil-task-2-idoc"] == "No" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+        {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+
+    </ul>
+    </li>
+    {% endif %}
+
+    {% if data["process-2-nil-task-1-more"] == "No"  %}
+    {% else %}
+
+    <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">3.</span>Verifiy award
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-2-nil-task-3-1" aria-describedby="task-1">
+          Task #1
+        </a>
+
+        {% if data["process-2-nil-task-3-1"] == "No" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+        {% elif data["process-2-nil-task-3-1"] == "Yes" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+        {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+      </li>
+
+      <li class="app-task-list__item">
+        <a class="app-task-list__task-name" href="process-2-nil-task-3-more" aria-describedby="task-1">
+          Task #2 — #18
+        </a>
+
+        {% if data["process-2-nil-task-3-more"] == "No" %}     <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong>
+        {% elif data["process-2-nil-task-3-more"] == "Yes" %}    <strong class="govuk-tag app-task-list__nil-task-passed" id="eligibility-completed">Passed</strong>
+        {% else %}                            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+        {% endif %}
+      </li>
+    </ol>
+    {% endif %}
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+  {% if data["process-2-nil-task-1-more"] == "No" or data["process-2-nil-task-2-idoc"] == "Yes" or data["process-2-nil-task-3-more"] == "No" %}
+
+  <div class="govuk-grid-row govuk-!-margin-top-6">
+    <div class="govuk-grid-column-three-quarters">
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Submitting a failed outcome</h1>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Failed will push this claim back to BAU and an other agent will pick this up</p>
+
+        {{ govukButton({
+          text: "Submit",
+          classes: "govuk-!-margin-right-2"
+        }) }}
+
+  {% elif data["process-2-nil-task-1-more"] == "Yes" and data["process-2-nil-task-2-idoc"] == "No" and data["process-2-nil-task-3-more"] == "Yes" %}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Submitting a passed outcome</h1>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Confirming a claim meets a nil award will issue a notification to the citizen</p>
+
+  {{ govukButton({
+    text: "Submit",
+    classes: "govuk-!-margin-right-2"
+  }) }}
+
+  <!-- {{ govukButton({
+    text: "Exit process early",
+    classes: "govuk-button--secondary"
+  }) }} -->
+
+
+        {% else %}
+
+        {{ govukButton({
+          text: "Exit process early",
+          classes: "govuk-button--secondary",
+          href: "home-user-0"
+        }) }}
+
+        {% endif %}
+      </div>
+    </div>
+
+  </form>
+
+{% endblock %}

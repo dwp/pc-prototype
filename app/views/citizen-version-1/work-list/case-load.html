@@ -1,0 +1,257 @@
+{% extends "layout-work-list-id-bar.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Pension Credit claims work list</h1>
+  </div>
+
+          <div class="govuk-grid-column-one-third govuk-37-5-percent">
+            <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-2">Total cases: <strong>1,009 </strong></p>
+          </div>
+
+          <div class="govuk-grid-column-two-thirds govuk-60-percent">
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">To do: <strong>5</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Problems: <strong>2</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Downloaded: <strong>1,002</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Removed: <strong>2</strong></p>
+
+          </div>
+        </div>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+              <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+                  {% set faq %}
+                  <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-1">How do I find someone: Use (CMD + F) to find a National Insurance number (NI) or name </p>
+                  <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-1">How do I XXX</p>
+                  <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-1">How do I get help: Any problems call XXX 0800 20 30 40 (Call costs)</p>
+
+                  {% endset %}
+
+
+                {{ govukDetails({
+                  classes: "govuk-!-margin-bottom-4",
+                  summaryText: "FAQs",
+                  html: faq
+                }) }}
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell govuk-20-percent">Date received</td>
+      <td class="govuk-table__cell govuk-20-percent"><strong>NI</strong></td>
+      <td class="govuk-table__cell govuk-50-percent">Name</td>
+      <td class="govuk-table__cell govuk-10-percent">Status</td>
+
+    </tr>
+    </thead>
+
+    <tbody class="govuk-table__body">
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected">Graham Smith</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-todo govuk-phase-banner__content__tag">To do</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected">Niall Molloy</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-todo govuk-phase-banner__content__tag">To do</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected">Mark McCormick</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-todo govuk-phase-banner__content__tag">To do</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected">Phil Hills</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-todo govuk-phase-banner__content__tag">To do</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-selected">Steven Borthwick</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-todo govuk-phase-banner__content__tag">To do</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-problem">Emma Nicol</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-problem govuk-phase-banner__content__tag">Problem</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-problem">Kevin Jones</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-problem govuk-phase-banner__content__tag">Problem</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Greg Roberts</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Lisa Payne</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Sandeep Shergill</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Nick Valentine</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">James Gauld</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">James Gauld</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Jeffrey Douglass</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Paul Costigan</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Joe Quinn</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Deborah Gibson</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Clare Brow</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">James Millen</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">DD Sept 2020</td>
+      <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+      <td class="govuk-table__cell"><a href="case-selected-downloaded">Jonathan Greener</a></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+    </tr>
+
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">DD Sept 2020</td>
+    <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+    <td class="govuk-table__cell"><a href="case-selected-downloaded">Gavin Clark</a></td>
+    <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+  </tr>
+
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">DD Sept 2020</td>
+    <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+    <td class="govuk-table__cell"><a href="case-selected-downloaded">Mark Duncan</a></td>
+    <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">Downloaded</strong></td>
+  </tr>
+
+    </tbody>
+    </table>
+
+<p class="govuk-body govuk-!-font-size-27 govuk-!-padding-top-6 govuk-!-margin-bottom-4"><strong>Removed cases</strong></p>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell govuk-20-percent">Date received</td>
+          <td class="govuk-table__cell govuk-20-percent"><strong>NI</strong></td>
+          <td class="govuk-table__cell govuk-50-percent">Name</td>
+          <td class="govuk-table__cell govuk-10-percent">Status</td>
+
+        </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">DD Sept 2020</td>
+          <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+          <td class="govuk-table__cell"><a href="case-deleted">Tommy 'fluff ball' Oliver</a></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-deleted govuk-phase-banner__content__tag">Deleted</strong></td>
+        </tr>
+
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">DD Sept 2020</td>
+        <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+        <td class="govuk-table__cell"><a href="case-deleted">Alex Smith</a></td>
+        <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--covid19-deleted govuk-phase-banner__content__tag">Deleted</strong></td>
+      </tr>
+
+        </tbody>
+        </table>
+
+</div>
+</div>
+{% endblock %}

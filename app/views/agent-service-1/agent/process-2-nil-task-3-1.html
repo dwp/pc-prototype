@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-2-nil-task-3-more" method="post" class="form">
+        <input type="hidden" name="nil-task-2-passed" value="passed">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-4">[Task 3 #1]</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-1">Supplied by in AfPC applicant:</p>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>Single claim</strong></p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-1">Supplied from CAM/SL:</p>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>data item to check</strong></p>
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukRadios({
+          idPrefix: "process-2-nil-task-3-1",
+          name: "process-2-nil-task-3-1",
+          fieldset: {
+            legend: {
+              text: "Was this correct in CAM/SL?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-0"
+            }
+          },
+          hint: {
+            html: hintLegend
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["process-2-nil-task-3-1"] == "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-2-nil-task-3-1"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

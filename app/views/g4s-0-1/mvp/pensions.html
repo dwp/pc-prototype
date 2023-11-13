@@ -1,0 +1,110 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-router" method="post" class="form">
+
+
+    <div class="moj-banner">
+    <div class="moj-banner__message">
+    <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Use SeachLight, do not ask citizen</h2>
+    </div>
+    </div>
+
+     <!------------H1 LEGEND------------>
+       {% set dynamicH1 %}
+       {% if data["benefit-check"] == "CA" %}
+       <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Does their income from pensions add up to more than £62.50 a week</h1>
+
+       {% elif data["benefit-check"] == "B" %}
+       <p class="govuk-heading-xl govuk-!-margin-bottom-0">Does their income from pensions add up to more than £91.95 a week</p>
+       {% else %}
+       <p class="govuk-heading-xl govuk-!-margin-bottom-0">Does their income from pensions add up to more than £25.00 a week</p>
+       {% endif %}
+       {% endset %}
+
+     <!------------ LEGEND END --------------->
+
+     {% set pensionHowMuch %}
+     {{ govukInput({
+       id: "pensions-howMuch-value",
+       name: "pensions-howMuch-value",
+       label: {
+         html: "Enter pension amount per week",
+         classes: "govuk-label--s",
+         isPageHeading: true
+       },
+       hint: {
+         text: "Enter an amount in pounds and pence, for example, 100.00"
+       },
+       prefix: {
+         text: "£"
+       },
+       value: data["pensions-howMuch-value"],
+       classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+       spellcheck: false
+     }) }}
+     {% endset %}
+
+
+           {{ govukRadios({
+             idPrefix: "pensions",
+             name: "pensions",
+             fieldset: {
+               legend: {
+                 html: dynamicH1,
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+             hint: {
+               text: "Use £5 if no benefits, use £10 for CP or DB"
+             },
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["pensions"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No",
+                 checked: (data["pensions"] == "No"),
+                 conditional: {
+                   html: pensionHowMuch
+                 }
+               }
+             ]
+           }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+<br><br>
+    [+CP]  £25.00+£37.50]
+    [+DB] £25.00+£66.95]
+    [CP+DB] £104.45
+
+
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

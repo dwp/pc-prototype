@@ -1,0 +1,85 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <form method="post" action="/session-clear-route">
+          <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/introduction"> -->
+          <form method="post" action="wrap-up">
+
+
+          <span class="govuk-caption-m">[7]</span>
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Other places that might help</h1>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Something along these lines</p>
+
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Gov.uk</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Why</p>
+
+            Go to GOV.UK and search for "MoneyHelper".
+
+            Or call 0800 011 3797 (Monday to Friday, 9am-5pm)
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">How: telephone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">How: URL</p>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Age UK</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Why</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">How: telephone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">How: URL</p>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Citizens Advice</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Why</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">How: telephone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">How: URL</p>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Turn2us</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Why</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">How: telephone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">How: https://benefits-calculator.turn2us.org.uk/</p>
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>EntitledTo</strong></p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Why</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">How: telephone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">How: https://www.entitledto.co.uk/?utm_source=BAdviser&utm_medium=referral&utm_campaign=GovUK</p>
+
+From the benefit calc page
+            Turn2us - for information on income-related benefits, tax credits, Council Tax Reduction, Carer’s Allowance, Universal Credit and how your benefits will be affected if you start work or change your working hours
+            Policy in Practice - for information on income-related benefits, tax credits, contribution-based benefits, Council Tax Reduction, Carer’s Allowance, Universal Credit, how these are calculated and how your benefits will be affected if you start work or change your working hours
+            entitledto - for information on income-related benefits, tax credits, contribution-based benefits, Council Tax Reduction, Carer’s Allowance, Universal Credit and how your benefits will be affected if you start work
+
+
+
+            {{ govukButton({
+            text: "Finish and close",
+            classes: "govuk-button dont-print govuk-!-margin-top-6"
+            }) }}
+
+
+
+
+
+
+    </form>
+      </div>
+    </div>
+
+
+
+
+{% endblock %}

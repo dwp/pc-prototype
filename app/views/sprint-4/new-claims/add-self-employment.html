@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        About self employment
+      </h1>
+
+      <form action="earnings-summary" method="post">
+        {{ govukInput({
+          label: {
+            text: "Company name"
+          },
+          id: "self-name",
+          name: "self-name",
+          classes: "govuk-input--width-20",
+          value: data["self--name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Profit"
+          },
+          id: "self-profit",
+          name: "self-profit",
+          classes: "govuk-input--width-10",
+          value: data["self-profit"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Loss"
+          },
+          id: "self-loss",
+          name: "self-loss",
+          classes: "govuk-input--width-10",
+          value: data["self-loss"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Total amount in business account"
+          },
+          id: "self-total",
+          name: "self-total",
+          classes: "govuk-input--width-10",
+          value: data["self-total"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

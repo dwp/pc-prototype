@@ -1,0 +1,53 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="state-pension-amount" method="post" class="form">
+      {% include "includes/js-back-link.html" %}
+
+    <h1 class="govuk-heading-xl">G4s questions</h1>
+
+    <p class="govuk-heading-m govuk-!-font-size-24 govuk-!-margin-bottom-4">Questions from live service [Single claim] [9]</p>
+
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> Which country do you live in?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> What is your date of birth?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> Have you claimed your State Pension?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> Do any children or qualifying young people live with you?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> What is your National Insurance number?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> What is your full name?</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Citizen]</strong> Ground rent / Service</p>
+<p class="govuk-body govuk-!-margin-bottom-6"><strong>[Citizen]</strong> SMI</p>
+
+<p class="govuk-heading-m govuk-!-font-size-24 govuk-!-margin-bottom-4">[Demo] Questions unique to G4s filter [4]</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[SearchLight]</strong> State Pension Amount</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[SearchLight]</strong> Benefit [quanlifing benefits + CA]</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[SearchLight]</strong> Pension amount</p>
+<p class="govuk-body govuk-!-margin-bottom-6"><strong>[SearchLight]</strong> Earnings amount</p>
+
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Agent]</strong> Start/into</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Agent]</strong> CYA</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Agent]</strong> Outcome</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Agent]</strong> Handover</p>
+<p class="govuk-body govuk-!-margin-bottom-2"><strong>[Agent]</strong> End call</p>
+
+<br><br>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+</form>
+</div>
+{% endblock %}

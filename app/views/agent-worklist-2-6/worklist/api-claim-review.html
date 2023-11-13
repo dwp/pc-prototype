@@ -1,0 +1,112 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="api-claims" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Jeff Bridges</strong></h1>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National Insurance number: <strong>NA 11 22 33 C</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">State Pension amount: <strong>£175.5</strong></p>
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">API outcome reason found: <strong>Max State Pension no qualifying benefits</strong></p> -->
+
+        <!------------Legend------------>
+          {% set LegendList %}
+        <p class="govuk-heading-s govuk-!-margin-bottom-2">Checks done on this claim:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+        <li>matched using National Insurance number and Date of birth</li>
+        <li>reached SPA on or after 6 April 2016 [Savings Credit not applicable]</li>
+        <li>Applicant does not live with partner</li>
+        <li>no housing costs (service charges and ground rent)</li>
+        <li>State Pension amount</li>
+        <li>no other affected benefits in payment</li>
+        <li>no open interest in affected benefits</li>
+        </ul>
+
+          {% endset %}
+        <!------------Legend------------>
+
+        {{ govukDetails({
+          summaryText: "Checking criteria",
+          html: LegendList
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Open PDF claim in new tab",
+          classes: "govuk-button--secondary govuk-!-margin-bottom-9"
+        }) }}
+
+        {% set outcomeDetails %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Why was the outcome of the adviser check different to the decision?"
+            },
+            hint: {
+              text: ""
+            },
+            id: "api-claim-outcome-details",
+            name: "api-claim-outcome-details",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+          {% endset %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "api-claim-outcome",
+          name: "api-claim-outcome",
+          fieldset: {
+            legend: {
+              text: "Does the outcome match the adviser check?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m "
+            }
+          },
+
+          items: [
+            {
+              value: "Correct",
+              text: "Yes",
+              checked: data['api-claim-outcome'] == "Correct"
+            },
+            {
+              value: "Incorrect",
+              text: "No",
+              checked: data['api-claim-outcome'] == "Incorrect",
+                    conditional: {
+                      html: outcomeDetails
+             }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-0",
+          text: "Confirm outcome"
+        }) }}
+
+</form>
+    </div>
+  </div>
+{% endblock %}

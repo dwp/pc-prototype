@@ -1,0 +1,130 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    {% if data["ur-new-claim-1"] %}
+    <form action="ur-task-done" method="post" class="form">
+
+    {% else %}
+    <form action="ur-error" method="post" class="form">
+
+    {% endif %}
+
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Matt Leblanc</h1>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 C</p>
+
+          </div>
+        </div>
+
+        {% if data["ur-new-claim-1"] %}
+
+      {{ govukRadios({
+        idPrefix: "ur-new-claim-1-pass",
+        name: "ur-new-claim-1-pass",
+        classes: "govuk-radio--small",
+        fieldset: {
+          legend: {
+            text: "Which program did Matt Leblanc star in?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+            },
+            hint: {
+              text: ""
+
+
+        },
+        items: [
+          {
+            value: "Friends",
+            text: "Friends",
+            checked: data['ur-new-claim-1-pass'] == "Friends"
+          },
+          {
+            value: "Frasier",
+            text: "Frasier",
+            checked: data['ur-new-claim-1-pass'] == "Frasier"
+          },
+          {
+            value: "Dont know",
+            text: "Don't know",
+            checked: data['ur-new-claim-1-pass'] == "Dont know"
+          }
+        ]
+      }) }}
+
+
+      {% else %}
+
+
+      {{ govukRadios({
+        idPrefix: "ur-new-claim-1",
+        name: "ur-new-claim-1",
+        classes: "govuk-radio--small",
+        fieldset: {
+          legend: {
+            text: "Which program did Matt Leblanc star in?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+            },
+            hint: {
+              text: ""
+
+
+        },
+        items: [
+          {
+            value: "Friends",
+            text: "Friends",
+            checked: data['ur-new-claim-1'] == "Friends"
+          },
+          {
+            value: "Fraser",
+            text: "Fraser",
+            checked: data['ur-new-claim-1'] == "Fraser"
+          },
+          {
+            value: "Dont know",
+            text: "Don't know",
+            checked: data['ur-new-claim-1'] == "Dont know"
+          }
+        ]
+      }) }}
+
+
+      {% endif %}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+  </div>
+
+
+
+
+  </div>
+    </form>
+{% endblock %}

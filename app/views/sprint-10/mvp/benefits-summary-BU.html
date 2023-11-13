@@ -1,0 +1,501 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits: Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+
+    <h1 class="govuk-heading-xl">
+      Benefits: Check your answers
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+<!--
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        benefits-working-tax-credits-yn
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["benefits-working-tax-credits-yn"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="benefits-working-tax-credits-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+
+{% if data["benefits-working-tax-credits-yn"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          XXX
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["XXX"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="XXX">
+            Change
+          </a>
+        </dd>
+      </div>
+{% endif %}
+
+-->
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-war-disablement-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-war-disablement-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-war-disablement-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-war-disablement-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-war-widows-pensions-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-war-widows-pensions-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-war-widows-pensions-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-war-widows-pensions-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-war-and-veterans-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-war-and-veterans-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-war-and-veterans-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-adult-dependent-pension-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      benefits-adult-dependent-pension-yn
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-adult-dependent-pension-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-adult-dependent-pension-yes"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-adult-dependent-pension-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yes">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-war-parent-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      benefits-war-parent-yn
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-war-parent-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-war-parent-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-war-parent-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yes">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-war-orphans-pension-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      war-orphans-pension-yn
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-war-orphans-pension-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-war-orphans-pension-yes"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-war-orphans-pension-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yes">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-guaranteed-income-payments-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      guaranteed-income-payments-yn
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-guaranteed-income-payments-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["benefits-guaranteed-income-payments-yes"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["benefits-guaranteed-income-payments-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="benefits-war-and-veterans-yes">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefit-IIDB-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefit-IIDB-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefit-IIDB-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefit-IIDB-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefit-industrial-death-benefit-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefit-industrial-death-benefit-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefit-industrial-death-benefit-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefit-industrial-death-benefit-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-aboard-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-aboard-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-aboard-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-aboard-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-aboard-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-aboard-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-aboard-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-aboard-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-aboard-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-aboard-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-aboard-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-aboard-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    benefits-aboard-yn
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["benefits-aboard-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="benefits-aboard-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+{% if data["benefits-aboard-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      XXX
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["XXX"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="XXX">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+<br><!---------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+
+<br></dl></dl><br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="benefits-complete" value="true"/>
+
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

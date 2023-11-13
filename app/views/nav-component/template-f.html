@@ -1,0 +1,19 @@
+<nav class="navigation-secondary govuk-!-margin-bottom-8">
+  <ul>
+    <li>
+      <a href="sl-claim-f"{{ ' class=active aria-current=section' if params.active === 'personalDetails' }}>Personal details</a>
+      <!-- <a href="case-load">Pension Credit claims</a> -->
+    </li>
+    <li>
+      <a href="sl-claim-f-interests"{{ ' class=active aria-current=section' if params.active === 'interests' }}>Interests</a>
+      <!-- <a href="case-load">Pension Credit claims</a> -->
+    </li>
+    <li>
+      <!-- <a href="find-a-claim" class="active" aria-current="section">Find a claim</a> -->
+      <a href="sl-claim-f-benefits"{{ ' class=active aria-current=section' if params.active === 'benefits' }}>Benefits</a>
+    </li>
+    <!--<li>
+      <a href="#"{{ ' class=active aria-current=section' if params.active === 'income' }}>Income</a>
+    </li>-->
+  </ul>
+</nav>

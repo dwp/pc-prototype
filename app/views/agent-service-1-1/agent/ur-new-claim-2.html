@@ -1,0 +1,79 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <form action="ur-task-done" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-three-quarters">
+
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Harrison Ford</h1>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 33 22 33 C</p>
+
+          </div>
+        </div>
+
+
+
+      {{ govukRadios({
+        idPrefix: "ur-new-claim-2",
+        name: "ur-new-claim-2",
+        classes: "govuk-radio--small",
+        fieldset: {
+          legend: {
+            text: "Was Harrison Ford in Star Wars?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+            },
+            hint: {
+              text: ""
+
+
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: data['ur-new-claim-2'] == "Yes"
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: data['ur-new-claim-2'] == "No"
+          },
+          {
+            value: "Dont know",
+            text: "Don't know",
+            checked: data['ur-new-claim-2'] == "Dont know"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+  </div>
+
+
+
+
+  </div>
+    </form>
+{% endblock %}

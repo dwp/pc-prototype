@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Temporary
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="temporary-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Other information about the claim.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Make a note of any other information that is relevant to the claim.</p>
+
+
+
+
+<br>
+
+        {{ govukTextarea({
+          name: "temporary-more-detail",
+          id: "temporary-more-detail",
+          value: data["other-res-more-detail"]
+        }) }}
+
+        <!-- Hidden input to set task to complete on task-list -->
+        <input type="hidden" name="notepad-temporary" value="true"/>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

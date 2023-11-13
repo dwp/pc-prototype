@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  AGENT: Check Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-payments-yn-router" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <!------------HEADLINE------------>
+        {% set legend %}
+        {% if data["claim-filter"] == "Advanced or Today" %} Do you have any current accounts with a bank or building society? {% endif %}
+        {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any current accounts with a bank or building society?{% endif %}
+        {% endset %}
+      <!------------HEADLINE------------>
+
+
+      {{ govukWarningText({
+        text: "Agent: Check in SearchLight regarding State Pension and benefit payments",
+        iconFallbackText: "Warning"
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "msic-has-payments-yn",
+        name: "msic-has-payments-yn",
+        fieldset: {
+          legend: {
+            text: "Does the Claimant get State Pension or a benefits?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-has-payments-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-has-payments-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

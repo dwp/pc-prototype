@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {% if data["account-type"] == "uk" %}
+    {% set backLink = "uk-account" %}
+  {% else %}
+    {% set backLink = "international-account" %}
+  {% endif %}
+
+  {{ govukBackLink({
+    href: backLink
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="correspondence-address" method="post" class="form">
+      {% set emailHtml %}
+        {{ govukInput({
+          id: "contact-by-email",
+          name: "contact-by-email",
+          type: "email",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Email address"
+          },
+          value: data["contact-by-email"]
+        }) }}
+        {% endset -%}
+
+        {% set phoneHtml %}
+        {{ govukInput({
+          id: "contact-by-phone",
+          name: "contact-by-phone",
+          type: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Phone number"
+          },
+          value: data["contact-by-phone"]
+        }) }}
+        {% endset -%}
+
+        {% set textHtml %}
+        {{ govukInput({
+          id: "contact-by-text",
+          name: "contact-by-text",
+          type: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Mobile phone number"
+          },
+          value: data["contact-by-text"]
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "how-contacted-conditional",
+          name: "how-contacted",
+          fieldset: {
+            legend: {
+              text: "How would you prefer to be contacted?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option."
+          },
+          items: [
+            {
+              value: "email",
+              text: "Email",
+              conditional: {
+                html: emailHtml
+              },
+              checked: (data["how-contacted"] == "email")
+            },
+            {
+              value: "phone",
+              text: "Phone",
+              conditional: {
+                html: phoneHtml
+              },
+              checked: (data["how-contacted"] == "phone")
+            },
+            {
+              value: "text",
+              text: "Text message",
+              conditional: {
+                html: textHtml
+              },
+              checked: (data["how-contacted"] == "text")
+            }
+          ]
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,5208 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="index-rent-housing-benefit-apply" method="post" class="form">
+
+
+<!----Headline---->
+
+<h1 class="govuk-heading-xl">{{ data["full-name"] }}: Pension Credit application summary</h1>
+
+<h2 class="govuk-heading-xm">Personal information and declaration</h2>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+  {
+    key: {
+      text: "Do you agree to how we use your personal information?"
+    },
+    value: {
+      text: data['agrees-privacy']
+    },
+    actions: {
+      items: [
+        {
+          href: "start",
+          text: "Change",
+          visuallyHiddenText: "Change agreement to privacy policy"
+        }
+      ]
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Do you agree to the declaration?"
+    },
+    value: {
+      text: data['pre-declaration']
+    },
+    actions: {
+      items: [
+        {
+          href: "pre-declaration",
+          text: "Change",
+          visuallyHiddenText: "Change agreement to declaration"
+        }
+      ]
+    }
+  }
+  ]
+}) }}
+
+
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Caller details</h2>
+
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Who you are claiming for"
+    },
+    value: {
+      text: data['who-is-caller']
+    },
+    actions: {
+      items: [
+        {
+          href: "who-is-caller",
+          text: "Change",
+          visuallyHiddenText: "Change who you are claiming for"
+        }
+      ]
+    }
+  }
+
+  ]
+}) }}
+{% if data["who-is-caller-name"] %}
+
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Caller"
+    },
+    value: {
+      text: data['who-is-caller-name']
+    },
+    actions: {
+      items: [
+        {
+          href: "who-is-caller",
+          text: "Change",
+          visuallyHiddenText: "Change who you are claiming for"
+        }
+      ]
+    }
+  },
+
+  {
+    key: {
+      text: "Number you are calling from"
+    },
+    value: {
+      text: data["telephone-number"]
+    },
+    actions: {
+      items: [
+        {
+          href: "name-and-nino",
+          text: "Change",
+          visuallyHiddenText: "Change number you are calling from"
+        }
+      ]
+    }
+  }
+
+  ]
+}) }}
+
+{% endif %}
+
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">About you</h2>
+
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+
+                        {
+                          key: {
+                            text: "National Insurance number"
+                          },
+                          value: {
+                            text: data["nino"]
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "name-and-nino",
+                                text: " ",
+                                visuallyHiddenText: "Change National Insurance number"
+                              }
+                            ]
+                          }
+                        },
+
+                        {
+                          key: {
+                            text: "Date of birth"
+                          },
+                          value: {
+                            text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "over-spa",
+                                text: "",
+                                visuallyHiddenText: "Change date of birth"
+                              }
+                            ]
+                          }
+                        },
+
+                        {
+                          key: {
+                            text: "Name"
+                          },
+                          value: {
+                            text: data["full-name"]
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "name-and-nino",
+                                text: "",
+                                visuallyHiddenText: "Change name"
+                              }
+                            ]
+                          }
+                        },
+
+                        {
+                          key: {
+                            text: "Number you are calling from"
+                          },
+                          value: {
+                            text: data["telephone-number"]
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "name-and-nino",
+                                text: "Change",
+                                visuallyHiddenText: "Change number you are calling from"
+                              }
+                            ]
+                          }
+                        }
+
+                      ]
+                    }) }}
+
+                  {% if data["who-is-caller-name"] == "Yourself" %}
+
+                    {{ govukSummaryList({
+                      classes: 'govuk-!-margin-bottom-9',
+                      rows: [
+
+                      {
+                        key: {
+                          text: "Number you are calling from"
+                        },
+                        value: {
+                          text: data["telephone-number"]
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "name-and-nino",
+                              text: "Change",
+                              visuallyHiddenText: "Change number you are calling from"
+                            }
+                          ]
+                        }
+                      }
+
+                    ]
+                  }) }}
+                  {% endif %}
+
+                    {{ govukSummaryList({
+                      rows: [
+                      {
+                        key: {
+                          text: "Do you live in the UK?"
+                        },
+                        value: {
+                          text: data['resides-in-uk']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "reside-in-uk",
+                              text: "Change",
+                              visuallyHiddenText: "Change whetehr you live in the UK"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Have you lived permanently in the UK for the last 2 years?"
+                        },
+                        value: {
+                          text: data['lived-abroad']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "lived-abroad",
+                              text: "Change",
+                              visuallyHiddenText: "Change whether you have lived permanently in the UK for the last 2 years"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "Are you a UK national?"
+                        },
+                        value: {
+                          text: data['uk-national']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "uk-national",
+                              text: "Change",
+                              visuallyHiddenText: "Change whether you are a UK national"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        classes: 'govuk-summary-list',
+                        key: {
+                          text: "Does anyone else live with you?"
+                        },
+                        value: {
+                          text: data['who-lives-with-you']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "who-lives-with-you",
+                              text: "Change",
+                              visuallyHiddenText: "Change who else lives with you"
+                            }
+                          ]
+                        }
+                      }
+                      ]
+                    }) }}
+
+
+<!------------------------------------------------------------------------------- Date of claim ------------------------------------------------------------>
+
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Date of claim</h2>
+
+<dl class="govuk-summary-list govuk-summary-list--long">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Initial date of contact (IDOC)
+          </dt>
+          <dd class="govuk-summary-list__value">
+          {{ data['claim-date-idoc-yn-date-day'] + ' ' + (data['claim-date-idoc-yn-date-month'] | getMonth) + ' ' + data['claim-date-idoc-yn-date-year'] }}
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="claim-date-cam-idoc-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Initial date of contact (IDOC)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            XX Month 2019
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="home-ownership">
+              Change
+            </a>
+          </dd>
+        </div>
+
+
+{% if data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Claim start date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="claim-date-cam-date">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+
+
+        {% if data["claim-date-manual-eed-date"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Earliest entitlement start (EDD)
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data["claim-date-manual-eed-date"] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="claim-date-cam-date">
+                    Change
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+
+{% if data["claim-date-options-backdating-outside-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Have you spent longer than four weeks outside the UK?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["claim-date-options-backdating-outside-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="home-ownership">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["claim-date-options-backdating-outside-reason"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Why were you outide of the UK?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["claim-date-options-backdating-outside-reason"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="home-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+{% if data["claim-date-manual-eed-daf-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Take a claim from a different date to allow for simple changes
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["claim-date-manual-eed-daf-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="home-ownership">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+
+
+
+
+{% if data["claim-date-manual-eed-daf-yn"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Date agreed
+      </dt>
+      <dd class="govuk-summary-list__value">
+        00 Month / year {{ data["claim-date-manual-eed-daf-yn-camDate-alternate-date"] or data["claim-date-manual-eed-daf-yn-alternate-date"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="home-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+
+
+{% if data["claim-date-manual-eed-daf-reason"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Reason for change to earliest entitlement date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["claim-date-manual-eed-daf-reason"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="claim-date-cam-date-reason">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+
+
+{% if data["claim-date-manual-eed-daf-yn"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Based on the conversation we have had, we will start your claim from
+      </dt>
+      <dd class="govuk-summary-list__value">
+        00 Month / year {{ data["claim-date-manual-eed-daf-yn-camDate-alternate-date"] or data["claim-date-manual-eed-daf-yn-alternate-date"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="home-ownership">
+
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+
+
+
+
+
+{% if data["claim-date-options-backdating-changes-yn"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Changes in the backdating period?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["claim-date-options-backdating-changes-yn"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="home-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+
+  <!-------------------------------------------------------->
+
+  {% if data["claim-date-options-today-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Claim date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            XX / XX / 2019
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="home-ownership">
+              Change
+            </a>
+          </dd>
+        </div>
+    {% endif %}
+
+    {% if data["claim-date-options-advanced-yn"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Claim date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              XX / XX / 2019
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="home-ownership">
+                Change
+              </a>
+            </dd>
+          </div>
+      {% endif %}
+
+  </dl>
+
+
+  <!------------------------------------------------------------------------------- Contact ------------------------------------------------------------>
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">How can we contact you</h2>
+
+
+<dl class="govuk-summary-list govuk-summary-list--long">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Can we send you text messages?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Yes / No
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-text-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+
+  {% if data["contact-text-yn-number"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Mobile phone number
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["contact-text-yn-number"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="contact-text-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Can we call you on the same number we text you on?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Yes / No – call on a different number / No – do not call
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-text-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+
+
+  {% if data["contact-mobile-can-call-yn"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Can we call you on a different number?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["contact-mobile-can-call-number"] }} (Yes to text, but a different number to call on)
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="contact-text-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+
+  {% if data["contact-mobile-can-call-number"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Can we call you?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["contact-mobile-can-call-number"] }} (Yes to text, but no to call. This is a an alt number)
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="contact-text-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  {% if data["contact-other-number-yn"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Can we call you?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["contact-other-number"] }} (No to text, yes to call number)
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="contact-text-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Address for letters
+      </dt>
+      <dd class="govuk-summary-list__value">
+        221B Baker Street<br>
+        Marylebone<br>
+        London<br>
+        NW1 5RT
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="address-choice">
+          Change
+        </a>
+      </dd>
+    </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Different formats
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Braille<br>
+      Large print<br>
+      Sign language<br>
+      ...<br>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-formats">
+        Change
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Do you need letters in Welsh?
+    </dt>
+    <dd class="govuk-summary-list__value">
+{{ data["disabilities-welsh-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-formats">
+        Change
+      </a>
+    </dd>
+  </div>
+
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Do you need us to send letters by email?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["contact-formats-email-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-formats">
+        Change
+      </a>
+    </dd>
+  </div>
+
+  {% if data["contact-formats-email-yes"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      EmailAddress
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["contact-formats-email-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-formats">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Does the claimant need a translator?
+
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["contact-formats-altLanguage-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-text-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row ">
+    <dt class="govuk-summary-list__key">
+      What language?
+
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["contact-formats-altLanguage"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="contact-text-yn">
+        Change
+      </a>
+    </dd>
+  </div>
+
+</dl>
+
+
+
+<!------------------------------------------------------------------------------- About where you live ------------------------------------------------------------>
+
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">About where you live</h2>
+
+
+<dl class="govuk-summary-list govuk-summary-list--long">
+
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Is your homeAddress the same as theAddress we use to send you letters?
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["address-correspondence-yn"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="address-correspondence-yn">
+      Change
+    </a>
+  </dd>
+</div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      HomeAddress
+    </dt>
+    <dd class="govuk-summary-list__value">
+      221B Baker Street<br>
+      Marylebone<br>
+      London<br>
+      NW1 5RT
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="address-choice">
+        Change
+      </a>
+    </dd>
+  </div>
+
+<!-- Type ------------------------------------------------------>
+
+{% if data["home-ownership"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Description of where you live
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["home-ownership"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="home-ownership">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+
+  <!-- Owns ------------------------------------------------------>
+
+{% if data["own-service-charges"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Service charges
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["own-service-charges"] or "None "}}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="service-charges">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+{% if data["own-ground-rent"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Ground rent
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["own-ground-rent"] or "None "}}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="ground-rent">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+{% if data["own-mortgage-home-loan-yes"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Mortgage/HomeLoan
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["own-mortgage-home-loan-yes"] or "No "}}
+        {% if data["own-mortgage-home-loan-yes"] === "Yes" %}
+        <strong> ● Process SMI</strong>
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="mortgage-yn">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+          {% if data["own-council-tax-yn"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you get Council Tax Reduction?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data["own-council-tax-yn"]}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="rent-council-tax-yn">
+                  Change
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+
+            {% if data["own-council-tax-apply"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                Apply for Council Tax Reduction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{data["own-council-tax-apply"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="rent-service-charges">
+                    Change
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+<!-- Rent ------------------------------------------------------>
+
+{% if data["rent-service-charges"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+       Additional service charges
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["rent-service-charges"] or "None "}}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="ground-rent">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+    {% if data["rent-council-tax-yn"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you get Council Tax Reduction?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data["rent-council-tax-yn"]}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="rent-council-tax-yn">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if data["rent-council-tax-apply"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Apply for Council Tax Reduction
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["rent-council-tax-apply"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="rent-service-charges">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+
+      {% if data["rent-housing-benefit-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Do you get Housing Benefit?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{data["rent-housing-benefit-yn"]}}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="rent-service-charges">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data["rent-housing-benefit-apply"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Apply for Housing Benefit
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data["rent-housing-benefit-apply"]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="rent-service-charges">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+
+
+
+
+
+
+
+    <!-- Shared ownership ------------------------------------------------------>
+
+
+    {% if data["shared-ownership-more-detail)"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Shared ownership
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["shared-ownership-more-detail"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-shared-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+  {% if data["notepad-shared-ownership"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Ownership
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-shared-ownership"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-shared-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+{% if data["notepad-shared-ownership-property"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Equity release scheme
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["notepad-shared-ownership-property"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="notepad-shared-ownership">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["notepad-shared-ownership-loan"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Loan secured against home
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["notepad-shared-ownership-loan"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-shared-ownership">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+
+      <!-- Care home ------------------------------------------------------>
+
+  {% if data["notepad-care-nursing-home-status"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Admission date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["admission-date-day"] }}Day {{ data["admission-date-month"] }}Month {{ data["admission-date-year"] }}Year
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="notepad-carehome">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+
+{% if data["notepad-care-nursing-home-status"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you live there permanently or temporarily?
+</dt>
+<dd class="govuk-summary-list__value">
+ {{ data["notepad-care-nursing-home-status"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="notepad-carehome">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+{% if data["notepad-care-nursing-home-status-more-detail"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Permanently or temporarily notes
+</dt>
+<dd class="govuk-summary-list__value">
+ {{ data["notepad-care-nursing-home-status-more-detail"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="notepad-carehome">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+{% if data["discharge-date-day"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Discharge date
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["discharge-date-day"] }} XX {{ data["discharge-date-month"] }} Month {{ data["discharge-date-year"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="notepad-carehome">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+
+
+{% if data["notepad-care-nursing-home-funding"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    How is your stay in the nursing home or care home paid for
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["notepad-care-nursing-home-funding"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-carehome">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+{% if data["notepad-care-nursing-home-funding-more-detail"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+  How is your stay in the nursing home or care home paid for, notes
+</dt>
+<dd class="govuk-summary-list__value">
+  {{ data["notepad-care-nursing-home-funding-more-detail"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+  <a href="notepad-carehome">
+    Change
+  </a>
+</dd>
+</div>
+{% endif %}
+
+
+
+{% if data["notepad-care-nursing-home-property"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Do you own a residential property?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["notepad-care-nursing-home-property"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="notepad-shared-ownership">
+        Change
+      </a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if data["notepad-care-nursing-home-property-more-details"] %}
+<div class="govuk-summary-list__row">
+  <dt class="govuk-summary-list__key">
+    Do you own a residential property notes
+  </dt>
+  <dd class="govuk-summary-list__value">
+    {{ data["notepad-care-nursing-home-property-more-details"] }}
+  </dd>
+  <dd class="govuk-summary-list__actions">
+    <a href="notepad-shared-ownership">
+      Change
+    </a>
+  </dd>
+</div>
+{% endif %}
+
+
+
+
+
+
+    <!-- Sheltered accommodation ------------------------------------------------------>
+
+    {% if data["notepad-sheltered-funding"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          How is your stay in sheltered accommodation paid for?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["notepad-sheltered-funding"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-shared-ownership">
+            Change
+          </a>
+        </dd>
+      </div>
+  {% endif %}
+
+  {% if data["notepad-sheltered-funding-more-detail"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        How is your stay in sheltered accommodation paid for notes
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-sheltered-funding-more-detail"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-sheltered">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+  {% if data["notepad-sheltered-property"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Details of any residential property that you own.
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-sheltered-property"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-shared-ownership">
+          Change
+        </a>
+      </dd>
+    </div>
+{% endif %}
+
+  {% if data["notepad-sheltered-property-more-detail"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Details of any residential property that you own notes
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["notepad-sheltered-property-more-detail"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-sheltered">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+    <!-- Someone else ------------------------------------------------------>
+
+
+  {% if data["someone-else-more-detail"] %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Notes
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data["someone-else-more-detail"] }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="notepad-someoneelse">
+          Change
+        </a>
+      </dd>
+    </div>
+  {% endif %}
+
+    <!-- Other ------------------------------------------------------>
+
+    {% if data["other-res-where"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["other-res-where"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-someoneelse">
+            Change
+          </a>
+        </dd>
+      </div>
+    {% endif %}
+
+    {% if data["other-res-more-detail"] %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Notes
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["other-res-more-detail"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="notepad-someoneelse">
+            Change
+          </a>
+        </dd>
+      </div>
+    {% endif %}
+
+  </dl>
+
+    <!------------------------------------------------------------------------------- Pensions ------------------------------------------------------------>
+
+    <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">@pete: State pension details</h2>
+
+<!--
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__cell govuk-20-percent">Start date</th>
+          <th class="govuk-table__cell govuk-20-percent">End date</th>
+          <th class="govuk-table__cell govuk-20-percent">Amount</th>
+          <th class="govuk-table__cell govuk-20-percent">Payment frequency</th>
+        </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">01 January 2020</td>
+          <td class="govuk-table__cell">—</td>
+          <td class="govuk-table__cell">£150.00</td>
+          <td class="govuk-table__cell">Weekly</td>
+        </tr>
+
+        </tbody>
+        </table>
+-->
+
+  <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Your private and workplace pensions in payment</h2>
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-40-percent">Name of provider</th>
+          <th class="govuk-table__header govuk-60-percent">Payment made</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Standard Life Assurance Plc</td>
+          <td class="govuk-table__cell">Monthly</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Hargreaves Lansdown</td>
+          <td class="govuk-table__cell">Monthly</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">True Potential Investor</td>
+          <td class="govuk-table__cell">Yearly</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <!------------------------------------------------------------------------------- API end ------------------------------------------------------------>
+
+  <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Other pensions</h2>
+
+  <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+              <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Do you have any pensions from employers in another country?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          Yes / No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="pensions-monolith">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+
+                      {% if data["foreign-pensions-yes"] %}
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Details of pensions from employers in another country
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                {{ data["foreign-pensions-yes"] }}
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="pensions-monolith">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+                            {% endif %}
+
+                <br>
+
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Do you have any private pensions from another country?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes / No
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="pensions-monolith">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+
+
+                {% if data["foreign-private-pension-yes"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Details of private pensions from another country
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["foreign-private-pension-yes"] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="pensions-monolith">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+                      {% endif %}
+
+<br>
+
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Do you have any state pensions from another country?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Yes / No
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="pensions-monolith">
+          Change
+        </a>
+      </dd>
+    </div>
+
+
+    {% if data["foreign-state-pension-yes"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Details of state pensions from another country
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["foreign-state-pension-yes"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="pensions-monolith">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+
+<br>
+
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Do you have any pensions that you have not claimed yet?
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes / No
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="pensions-monolith">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+
+
+                {% if data["pension-not-claimed-yes"] %}
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Details of pensions that you have not claimed yet
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["pension-not-claimed-yes"] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="pensions-monolith">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+                      {% endif %}
+
+<br>
+
+
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Do you have any income from annuities?
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="pensions-monolith">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["annuities-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of income from annuities
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["annuities-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="pensions-monolith">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+<br>
+
+
+                                        <div class="govuk-summary-list__row">
+                                          <dt class="govuk-summary-list__key">
+                                            Do you have any other pensions?
+                                          </dt>
+                                          <dd class="govuk-summary-list__value">
+                                            Yes / No
+                                          </dd>
+                                          <dd class="govuk-summary-list__actions">
+                                            <a href="pensions-monolith">
+                                              Change
+                                            </a>
+                                          </dd>
+                                        </div>
+
+
+                                        {% if data["other-pension-yes"] %}
+                                              <div class="govuk-summary-list__row">
+                                                <dt class="govuk-summary-list__key">
+                                                  Details of any other pensions
+                                                </dt>
+                                                <dd class="govuk-summary-list__value">
+                                                  {{ data["other-pension-yes"] }}
+                                                </dd>
+                                                <dd class="govuk-summary-list__actions">
+                                                  <a href="pensions-monolith">
+                                                    Change
+                                                  </a>
+                                                </dd>
+                                              </div>
+                                              {% endif %}
+
+</dl></dl>
+
+
+<!------------------------------------------------------------------------------- Benefits ------------------------------------------------------------>
+
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Benefits</h2>
+
+
+  <table class="govuk-table govuk-!-margin-bottom-6">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__cell govuk-40-percent">In payment</th>
+          <th scope="row" class="govuk-table__cell govuk-60-percent">Benefit</th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">Bereavement Support Payment</td>
+
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">Bereavement Support Payment</td>
+
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">Carer's Allowance</td>
+
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">Personal Independence payment</td>
+
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"></td>
+          <td class="govuk-table__cell">Working Tax Credit</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="govuk-table govuk-!-margin-bottom-6">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__cell govuk-40-percent">Interest</th>
+            <th scope="row" class="govuk-table__cell govuk-60-percent">Benefit</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">Council Tax Reduction</td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">Housing Benefit</td>
+
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">War Disablement Pension</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+
+
+<!-- Benefits full-->
+<div>
+<!--
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell govuk-20-percent">Benefit</td>
+      <td class="govuk-table__cell govuk-20-percent">Conponant</td>
+      <td class="govuk-table__cell govuk-20-percent">Start date</td>
+      <td class="govuk-table__cell govuk-20-percent">End date</td>
+      <td class="govuk-table__cell govuk-20-percent">Weekly amount</td>
+    </tr>
+    </thead>
+
+    <tbody class="govuk-table__body">
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell">Attendance Allowance</th>
+      <td class="govuk-table__cell">X</td>
+      <td class="govuk-table__cell">X M XX</td>
+      <th scope="row" class="govuk-table__header">—</th>
+      <td class="govuk-table__cell">£00.00</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell">Bereavement Support Payment</th>
+      <td class="govuk-table__cell">X</td>
+      <td class="govuk-table__cell">X M XX</td>
+      <th scope="row" class="govuk-table__header">—</th>
+      <td class="govuk-table__cell">£00.00</td>
+    </tr>
+
+    <tr class="govuk-table__row">
+      <th scope="row" class="govuk-table__cell">Disability Living Allowance Yes</th>
+      <td class="govuk-table__cell">X</td>
+      <td class="govuk-table__cell">X M XX</td>
+      <th scope="row" class="govuk-table__header">—</th>
+      <td class="govuk-table__cell">£00.00</td>
+    </tr>
+
+    </tbody>
+    </table>
+
+    <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Benefits (Interest)</h2>
+
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-20-percent">Benefit</td>
+        <td class="govuk-table__cell govuk-20-percent"></td>
+        <td class="govuk-table__cell govuk-20-percent">Start date</td>
+        <td class="govuk-table__cell govuk-20-percent">End date</td>
+        <td class="govuk-table__cell govuk-20-percent"></td>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__cell">Adult Dependent Pension (Veterans Agency)(payable to widows/widowers)</th>
+        <td class="govuk-table__cell"> </td>
+        <td class="govuk-table__cell">01 M XXXX</td>
+        <th scope="row" class="govuk-table__header">—</th>
+        <th scope="row" class="govuk-table__header"></th>
+      </tr>
+
+      <tr class="govuk-table__row">
+        <th scope="row" class="govuk-table__cell">Armed Forces Death in Service awards</th>
+        <td class="govuk-table__cell"> </td>
+        <td class="govuk-table__cell">01 M XXXX</td>
+        <th scope="row" class="govuk-table__header">—</th>
+        <th scope="row" class="govuk-table__header"></th>
+      </tr>
+
+    </tbody>
+  </table>
+
+-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------- API END ------------------------------------------------------------>
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Other benefits</h2>
+
+
+
+            <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Do you get any benefits from another country?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes / No
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="benefits-all-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+              {% if data["benefits-foreign-yes"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Details of benefits from another country
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data["benefits-foreign-yes"] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="benefits-all-yn">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+              <br><!---------------------------------------------------------------------------------------------->
+
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Do you get a War widow or widower's pension?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes / No
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="benefits-all-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+              {% if data["benefits-widows-pensions-yes"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Details of war widow or widower's pension
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data["benefits-widows-pensions-yes"] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="benefits-all-yn">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+              <br><!---------------------------------------------------------------------------------------------->
+
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Do you get Guaranteed Income Payments from the Armed Forces Compensation Scheme?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                 Yes / No
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="benefits-all-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+              {% if data["benefits-guaranteed-income-payments-yes"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Details of Guaranteed Income Payments from the Armed Forces Compensation Scheme
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data["benefits-guaranteed-income-payments-yes"] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="benefits-all-yn">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+              <br><!---------------------------------------------------------------------------------------------->
+
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Do you get any other benefits?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes / No
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="benefits-all-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+              {% if data["benefits-other-yes"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Details of any other benefits
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data["benefits-other-yes"] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="benefits-all-yn">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+              {% endif %}
+
+</dl>
+
+<!------------------------------------------------------------------------------- Hospitals ------------------------------------------------------------>
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Hospital admissions</h2>
+
+
+<dl class="govuk-summary-list govuk-summary-list--long">
+
+
+            <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Hospital YN
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data["hospital-yn"] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a href="hospital-yn">
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+
+
+                                {% if data["hospital-more-detail"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["hospital-more-detail"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="hospital-details">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+
+
+
+</dl></dl>
+
+
+
+<!------------------------------------------------------------------------------- Earnings & other income ------------------------------------------------------------>
+
+<div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Earnings & other income</h2>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Have you earned any other income in this country or overseas since undefined undefined undefined?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data["other-income-employment-yn"] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="other-income-employment-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+          <!----->
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  How did you earn this income?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data["other-income-employment-type"] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="other-income-employment-type">
+                    Change
+                  </a>
+                </dd>
+              </div>
+
+          </dl></div></div>
+
+              <!------------------------------------------------>
+
+
+              <div class="govuk-grid-row govuk-!-padding-top-8">
+                <div class="govuk-grid-column-full">
+                  <h2 class="govuk-heading-m govuk-!-font-size-24">Income from employment</h2>
+
+                  <dl class="govuk-summary-list govuk-summary-list--long">
+
+              {% if data["other-income-employment-what-is-this-money"] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        What is this income from employment?
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data["other-income-employment-what-is-this-money"] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="other-income-employment-yes">
+                          Change
+                        </a>
+                      </dd>
+                    </div>
+                    {% endif %}
+
+              {% if data["other-income-employment-frequency-yes"] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        How often is this income from employment paid?
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data["other-income-employment-frequency-yes"] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="other-income-employment-yes">
+                          Change
+                        </a>
+                      </dd>
+                    </div>
+                    {% endif %}
+
+                    {% if data["other-income-employment-frequency-yes-other"] %}
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                              How often is this income from employment paid?
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data["other-income-employment-frequency-yes-other"] }}
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                              <a href="other-income-employment-yes">
+                                Change
+                              </a>
+                            </dd>
+                          </div>
+                          {% endif %}
+
+                          {% if data["other-income-frequency-yes-other"] %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    How often is this income from employment paid?
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data["other-income-frequency-yes-other"] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a href="other-income-employment-yes">
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+
+                              {% if data["other-income-employment-amount"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Amount of income from employment
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["other-income-employment-amount"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="other-income-employment-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+
+                                    {% if data["other-income-employment-currency-yn"] %}
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">
+                                              What currency is this money in?
+                                            </dt>
+                                            <dd class="govuk-summary-list__value">
+                                              {{ data["other-income-employment-currency-yn"] }}
+                                            </dd>
+                                            <dd class="govuk-summary-list__actions">
+                                              <a href="other-income-employment-yes">
+                                                Change
+                                              </a>
+                                            </dd>
+                                          </div>
+                                          {% endif %}
+
+                                        {% if data["other-income-employment-currency-yes"] %}
+                                              <div class="govuk-summary-list__row">
+                                                <dt class="govuk-summary-list__key">
+                                                  Currency
+                                                </dt>
+                                                <dd class="govuk-summary-list__value">
+                                                  {{ data["other-income-employment-currency-yes"] }}
+                                                </dd>
+                                                <dd class="govuk-summary-list__actions">
+                                                  <a href="other-income-employment-yes">
+                                                    Change
+                                                  </a>
+                                                </dd>
+                                              </div>
+                                              {% endif %}
+
+                        {% if data["other-income-employment-more-yn"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Do you get any more income from employment?
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["other-income-employment-more-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="other-income-employment-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                          {% if data["other-income-employment-more-yes-detail"] %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Details of other income from employment
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data["other-income-employment-more-yes-detail"] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a href="other-income-employment-yes">
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+
+          </dl></div></div>
+
+      <!-------------------(Self - employment)----------------------------->
+
+      <div class="govuk-grid-row govuk-!-padding-top-8">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m govuk-!-font-size-24 ">Income from self-employment</h2>
+          <dl class="govuk-summary-list govuk-summary-list--long ">
+
+
+
+{% if data["other-income-self-employment-yes-details"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+       Details of income from self-employment, how much it is and how often it is paid
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["other-income-self-employment-yes-details"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="other-income-self-employment-yes">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+
+
+  <!---------------------(SearchLIght no match) --------------------------->
+
+
+              {% if data["other-income-searchlight-no-match-details"] %}
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Income shown on DWP systems is incorrect
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {{ data["other-income-searchlight-no-match-details"] }}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="other-income-searchlight-no-match">
+                          Change
+                        </a>
+                      </dd>
+                    </div>
+                    {% endif %}
+
+                    </dl></div></div>
+
+<!------------------------------------------------>
+
+
+                    <div class="govuk-grid-row govuk-!-padding-top-8">
+                      <div class="govuk-grid-column-full">
+                        <h2 class="govuk-heading-m govuk-!-font-size-24">Income from equity release</h2>
+                        <dl class="govuk-summary-list govuk-summary-list--long ">
+
+
+        {% if data["other-income-equity-release-yn"] %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Do you get any income from an equity release scheme?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data["other-income-equity-release-yn"] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a href="other-income-equity-release-yn">
+                    Change
+                  </a>
+                </dd>
+              </div>
+              {% endif %}
+
+
+  {% if data["other-income-home-income-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Is this equity release part of a home income scheme?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["other-income-home-income-yn"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="other-income-home-income-yn">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+<!----->
+
+{% if data["other-income-equity-release-yes-date-day"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Date this income from an equity release scheme started
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['other-income-equity-release-yes-date-day'] + ' ' + (data['other-income-equity-release-yes-date-month'] | getMonth) + ' ' + data['other-income-equity-release-yes-date-year'] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="other-income-searchlight-no-match">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+<!----->
+
+{% if data["other-income-equity-release-yes-payment-frequency-yes"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      How often is this income from an equity release scheme paid?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["other-income-equity-release-yes-payment-frequency-yes"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="other-income-searchlight-no-match">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+  {% if data["other-income-equity-release-yes-payment-frequency-yes"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How often is this income from an equity release scheme paid?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["other-income-equity-release-yes-payment-frequency-yes-other"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="other-income-searchlight-no-match">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+<!----->
+
+{% if data["other-income-equity-release-yes-amount"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      How much is this income from an equity release scheme?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["other-income-equity-release-yes-amount"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="other-income-searchlight-no-match">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+<!----->
+
+{% if data["other-income-benefits-aboard-yes-more-yn"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Do you have any other income from an equity release scheme?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data["other-income-benefits-aboard-yes-more-yn"] }}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="other-income-searchlight-no-match">
+        Change
+      </a>
+    </dd>
+  </div>
+  {% endif %}
+
+  {% if data["other-income-benefits-aboard-yes-more-yn"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details of other income from an equity release scheme
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["other-income-benefits-aboard-yes-more-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="other-income-searchlight-no-match">
+              Change
+            </a>
+          </dd>
+        </div>
+        {% endif %}
+
+          </dl></div></div>
+
+<!------------------------------------------------>
+
+<!--
+{% if data["other-income-armed-forces-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Armed forces compensation scheme
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-armed-forces-yes"] }} or No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+-->
+
+<div class="govuk-grid-row govuk-!-padding-top-8">
+<div class="govuk-grid-column-full">
+    <h2 class="govuk-heading-m govuk-!-font-size-24">Other income</h2>
+    <dl class="govuk-summary-list govuk-summary-list--long ">
+
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you get any discretionary payments from a trust?
+</dt>
+<dd class="govuk-summary-list__value">
+Yes / No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+
+{% if data["other-income-trust-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Details of discretionary payments from a trust
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-trust-yes"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+<!----->
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you get personal injury awards or payments from a trust relating to an award for a personal injury?
+</dt>
+<dd class="govuk-summary-list__value">
+Yes / No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+
+{% if data["other-income-personal-injury-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Details of personal injury awards or payments from a trust relating to an award for a personal injury
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-personal-injury-yes"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+<!----->
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you get maintenance from a spouse or civil partner or former spouse or civil partner?
+</dt>
+<dd class="govuk-summary-list__value">
+Yes / No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+
+{% if data["other-income-maintenance-spouse-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Details of maintenance from a spouse or civil partner or former spouse or civil partner
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-maintenance-spouse-yes"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+<!----->
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you get strike pay
+</dt>
+<dd class="govuk-summary-list__value">
+Yes / No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+
+
+{% if data["other-income-strike-pay-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Details of strike pay
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-strike-pay-yes"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+<!----->
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Do you get any other income?
+</dt>
+<dd class="govuk-summary-list__value">
+Yes / No
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+
+{% if data["other-income-all-other-yes"] %}
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+Details of any other income
+</dt>
+<dd class="govuk-summary-list__value">
+{{ data["other-income-all-other-yes"] }}
+</dd>
+<dd class="govuk-summary-list__actions">
+<a href="other-income-everything-else-yes">
+  Change
+</a>
+</dd>
+</div>
+{% endif %}
+
+
+  </div></div>
+
+
+  <!------------------------------------------------------------------------------- MSIC ------------------------------------------------------------>
+
+  <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Money, savings and investments</h2>
+
+  <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># current accounts </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+  {% set count = data["account-count"] or 0 %}
+  {% for i in range(0, count) -%}
+
+
+
+
+      {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-0',
+                rows: [
+              {
+                key: {
+                  text: "Account with"
+                },
+                value: {
+                  text: data['msic-all-current-account-name-' + i]
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "msic-all-savings-account",
+                      html: "Change",
+                      visuallyHiddenText: "XXX"
+                    },
+                    {
+                      href: "msic-remove",
+                      html: "Remove",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+              <h2 class="govuk-heading-s extra-space-cya">Account details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-0',
+              rows: [
+            {
+              key: {
+                text: "Date this figure is from"
+              },
+              value: {
+                html: data['msic-all-current-account-amount-EED-date-evidence-' + i + '-day'] + ' ' + (data['msic-all-current-account-amount-EED-date-evidence-' + i + '-month'] | getMonth) + ' ' + data['msic-all-current-account-amount-EED-date-evidence-' + i + '-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "How much you had in this account on this date"
+              },
+              value: {
+                text: data['msic-all-current-account-amount-EED-' + i] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+            }) }}
+
+            <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-8',
+              rows: [
+            {
+              key: {
+                text: "Date this figure is from"
+              },
+              value: {
+                html: data['msic-all-current-account-amount-TODAY-date-evidence-' + i + '-day'] + ' ' + (data['msic-all-current-account-amount-TODAY-date-evidence-' + i + '-month'] | getMonth) + ' ' + data['msic-all-current-account-amount-TODAY-date-evidence-' + i + '-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "How much you had in the account on this date"
+              },
+              value: {
+                text: data['msic-all-current-account-amount-TODAY-' + i] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+            }) }}
+
+            <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2"></h2>
+
+            {{ govukSummaryList({
+            rows: [
+            {
+              classes: 'govuk-summary-list',
+              key: {
+              text: "Account owner"
+            },
+            value: {
+              text: data['current-owner-' + i]
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+            },
+
+            {
+              classes: 'govuk-summary-list--no-border',
+              key: {
+                text: "Amount of money that is yours"
+              },
+              value: {
+                text: data['msic-all-current-account-stake-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+            }) }}
+
+
+  {% endfor %}
+
+  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+      <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># savings accounts </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+
+
+              {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-0',
+                        rows: [
+                      {
+                        key: {
+                          text: "Account with"
+                        },
+                        value: {
+                          text: data['msic-all-savings-account-name']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "msic-all-savings-account",
+                              html: "Change",
+                              visuallyHiddenText: "XXX"
+                            },
+                            {
+                              href: "msic-remove",
+                              html: "Remove",
+                              visuallyHiddenText: "XXX"
+                            }
+                          ]
+                        }
+                      }
+                      ]
+                      }) }}
+
+                      <h2 class="govuk-heading-s extra-space-cya">Account details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-0',
+          rows: [
+        {
+          key: {
+            text: "Date this figure is from"
+          },
+          value: {
+            text: data['msic-all-savings-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-all-savings-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-all-savings-account-amount-EED-date-evidence-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "How much you had in this account on this date"
+          },
+          value: {
+            html: data['msic-all-savings-account-amount-EED'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-8',
+          rows: [
+        {
+          key: {
+            text: "Date this figure is from"
+          },
+          value: {
+            text: data['msic-all-savings-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-all-savings-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-all-savings-account-amount-TODAY-date-evidence-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "How much you had in this account on this date"
+          },
+          value: {
+            html: data['msic-all-savings-account-amount-TODAY'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2"></h2>
+
+        {{ govukSummaryList({
+        rows: [
+        {
+          classes: 'govuk-summary-list',
+          key: {
+          text: "Account owner"
+        },
+        value: {
+          text: data['msic-all-savings-account-owner']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "",
+              visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+        },
+
+        {
+          classes: 'govuk-summary-list--no-border',
+          key: {
+            text: "Amount of money that is yours"
+          },
+          value: {
+            html: data['msic-all-savings-account-stake'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+              <br><br>
+
+
+  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># Post Office Card Accounts </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+
+    <h2 class="govuk-heading-s extra-space-cya">Account details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-0',
+      rows: [
+    {
+      key: {
+        text: "Date this figure is from"
+      },
+      value: {
+        text: data['msic-post-office-card-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-post-office-card-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-post-office-card-account-amount-EED-date-evidence-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "How much you had in this account on this date"
+      },
+      value: {
+        html: data['msic-post-office-card-account-amount-EED'] | formatMoney
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+    }) }}
+
+    <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-8',
+      rows: [
+    {
+      key: {
+        text: "Date this figure is from"
+      },
+      value: {
+        text: data['msic-post-office-card-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-post-office-card-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-post-office-card-account-amount-TODAY-date-evidence-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      classes: 'govuk-summary-list--no-border',
+      key: {
+        text: "How much you had in this account on this date"
+      },
+      value: {
+        html: data['msic-post-office-card-account-amount-TODAY'] | formatMoney
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    }
+    ]
+    }) }}
+
+                  <br><br>
+
+
+
+
+                  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+                  <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># credit union accounts </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+                  {{ govukSummaryList({
+                              classes: 'govuk-!-margin-bottom-0',
+                              rows: [
+                            {
+                              key: {
+                                text: "Account with"
+                              },
+                              value: {
+                                text: data['msic-credit-union-account-name']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "msic-credit-union-account",
+                                    html: "Change",
+                                    visuallyHiddenText: "XXX"
+                                  },
+                                  {
+                                    href: "msic-remove",
+                                    html: "Remove",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            }
+                            ]
+                            }) }}
+
+                            <h2 class="govuk-heading-s extra-space-cya">Account details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+                          {{ govukSummaryList({
+                            classes: 'govuk-!-margin-bottom-0',
+                            rows: [
+                          {
+                            key: {
+                              text: "Date this figure is from"
+                            },
+                            value: {
+                              text: data['msic-credit-union-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-credit-union-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-credit-union-account-amount-EED-date-evidence-year']
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "",
+                                  text: "",
+                                  visuallyHiddenText: "XXX"
+                                }
+                              ]
+                            }
+                          },
+
+                          {
+                            key: {
+                              text: "How much you had in this account on this date"
+                            },
+                            value: {
+                              html: data['msic-credit-union-account-amount-EED'] | formatMoney
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "",
+                                  text: "",
+                                  visuallyHiddenText: "XXX"
+                                }
+                              ]
+                            }
+                          }
+                          ]
+                          }) }}
+
+                          <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+                          {{ govukSummaryList({
+                            classes: 'govuk-!-margin-bottom-8',
+                            rows: [
+                          {
+                            key: {
+                              text: "Date this figure is from"
+                            },
+                            value: {
+                              text: data['msic-credit-union-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-credit-union-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-credit-union-account-amount-TODAY-date-evidence-year']
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "",
+                                  text: "",
+                                  visuallyHiddenText: "XXX"
+                                }
+                              ]
+                            }
+                          },
+
+                          {
+                            key: {
+                              text: "How much you had in this account on this date"
+                            },
+                            value: {
+                              html: data['msic-credit-union-account-amount-TODAY'] | formatMoney
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "",
+                                  text: "",
+                                  visuallyHiddenText: "XXX"
+                                }
+                              ]
+                            }
+                          }
+                          ]
+                          }) }}
+
+                          <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2"></h2>
+
+                          {{ govukSummaryList({
+                          rows: [
+                          {
+                            classes: 'govuk-summary-list',
+                            key: {
+                            text: "Account owner"
+                          },
+                          value: {
+                            text: data['msic-credit-union-account-owner']
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "",
+                                text: "",
+                                visuallyHiddenText: "XXXX"
+                              }
+                            ]
+                          }
+                          },
+
+                          {
+                            classes: 'govuk-summary-list--no-border',
+                            key: {
+                              text: "Amount of money that is yours"
+                            },
+                            value: {
+                              text: data['msic-credit-union-account-stake']
+                            },
+                            actions: {
+                              items: [
+                                {
+                                  href: "",
+                                  text: "",
+                                  visuallyHiddenText: "XXXX"
+                                }
+                              ]
+                            }
+                          }
+                          ]
+                          }) }}
+
+                              <br><br>
+
+
+
+
+          <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># Premium Bonds </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-0',
+            rows: [
+          {
+            key: {
+              text: "Date this figure is from"
+            },
+            value: {
+              text: data['msic-premium-bond-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-premium-bond-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-premium-bond-account-amount-EED-date-evidence-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Value of Premium Bonds on this date"
+            },
+            value: {
+              html: data['msic-premium-bond-account-amount-EED'] | formatMoney
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+          }) }}
+
+          <h2 class="govuk-heading-s extra-space-cya">Premium Bond details on (IDOC) {{'' | formatDate}}</h2>
+
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-8',
+            rows: [
+          {
+            key: {
+              text: "Date this figure is from"
+            },
+            value: {
+              text: data['msic-premium-bond-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-premium-bond-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-premium-bond-account-amount-TODAY-date-evidence-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            classes: 'govuk-summary-list--no-border',
+            key: {
+              text: "Value of Premium Bonds on this date"
+            },
+            value: {
+              html: data['msic-premium-bond-account-amount-TODAY'] | formatMoney
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+          }) }}
+
+                        <br><br>
+
+
+
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># ISAs </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+
+    {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-0',
+          rows: [
+        {
+          key: {
+            text: "Name of ISA"
+          },
+          value: {
+            text: data['msic-isa-savings-account-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-isa-savings-account",
+                html: "Change",
+                visuallyHiddenText: "XXX"
+              },
+              {
+                href: "msic-remove",
+                html: "Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s extra-space-cya">ISA details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-0',
+                rows: [
+              {
+                key: {
+                  text: "Date this figure is from"
+                },
+                value: {
+                  text: data['msic-isa-savings-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-isa-savings-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-isa-savings-account-amount-EED-date-evidence-year']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              },
+
+              {
+                key: {
+                  text: "How much you had in this ISA on this date"
+                },
+                value: {
+                  html: data['msic-isa-savings-account-amount-EED'] | formatMoney
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+              <h2 class="govuk-heading-s extra-space-cya">ISA details on (IDOC) {{'' | formatDate}}</h2>
+
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-8',
+                rows: [
+              {
+                key: {
+                  text: "Date this figure is from"
+                },
+                value: {
+                  text: data['msic-isa-savings-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-isa-savings-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-isa-savings-account-amount-TODAY-date-evidence-year']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              },
+
+              {
+                classes: 'govuk-summary-list--no-border',
+                key: {
+                  text: "How much you had in this ISA on this date"
+                },
+                value: {
+                  html: data['msic-isa-savings-account-amount-TODAY'] | formatMoney
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+    <br><br>
+
+
+
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># income or capital bonds</strong><a href="msic-check-your-answers-a">Add</a></p>
+
+    {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-0',
+          rows: [
+        {
+          key: {
+            text: "Name of income or capital bond"
+          },
+          value: {
+            text: data['msic-capital-bond-company-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-capital-bond-account",
+                html: "Change",
+                visuallyHiddenText: "XXX"
+              },
+              {
+                href: "msic-remove",
+                html: "Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s extra-space-cya">Bond details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-0',
+                rows: [
+              {
+                key: {
+                  text: "Date this figure is from"
+                },
+                value: {
+                  text: data['msic-capital-bond-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-capital-bond-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-capital-bond-account-amount-EED-date-evidence-year']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              },
+
+              {
+                key: {
+                  text: "Value of this bond on this date"
+                },
+                value: {
+                  html: data['msic-capital-bond-account-amount-EED'] | formatMoney
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+              <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-8',
+                rows: [
+              {
+                key: {
+                  text: "Date this figure is from"
+                },
+                value: {
+                  text: data['msic-capital-bond-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-capital-bond-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-capital-bond-account-amount-TODAY-date-evidence-year']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              },
+
+              {
+                key: {
+                  text: "Vaslue of this bond on this date"
+                },
+                value: {
+                  html: data['msic-capital-bond-account-amount-TODAY'] | formatMoney
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+              <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2"></h2>
+
+              {{ govukSummaryList({
+              rows: [
+              {
+                classes: 'govuk-summary-list',
+                key: {
+                text: "Does this bond have any element of life assurance attached to it?"
+              },
+              value: {
+                text: data['msic-capital-bond-account-life-assurance']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+              },
+
+              {
+                classes: 'govuk-summary-list',
+                key: {
+                text: "Can this bond be assigned or transfered to someone else?"
+              },
+              value: {
+                text: data['msic-capital-bond-account-transfer']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+              },
+
+              {
+                classes: 'govuk-summary-list--no-border',
+                key: {
+                  text: "Can you cash this bond in early?"
+                },
+                value: {
+                  html: data['msic-capital-bond-account-cash-early']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "",
+                      text: "",
+                      visuallyHiddenText: "XXXX"
+                    }
+                  ]
+                }
+              }
+              ]
+              }) }}
+
+        <br><br>
+
+
+
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># shares </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+
+        {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-0',
+              rows: [
+            {
+              key: {
+                text: "Name of company"
+              },
+              value: {
+                text: data['msic-shares-account-name']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-shares-account",
+                    html: "Change",
+                    visuallyHiddenText: "XXX"
+                  },
+                  {
+                    href: "msic-remove",
+                    html: "Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+            }) }}
+
+            <h2 class="govuk-heading-s extra-space-cya">Details of shares on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+                  {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-0',
+                    rows: [
+                  {
+                    key: {
+                      text: "Date this figure is from"
+                    },
+                    value: {
+                      text: data['msic-shares-EED-date-evidence-day'] + ' ' + (data['msic-shares-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-shares-EED-date-evidence-year']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "",
+                          text: "",
+                          visuallyHiddenText: "XXX"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    key: {
+                      text: "How many shares you had on this date"
+                    },
+                    value: {
+                      text: data['msic-shares-account-number-EED']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "",
+                          text: "",
+                          visuallyHiddenText: "XXX"
+                        }
+                      ]
+                    }
+                  }
+                  ]
+                  }) }}
+
+                  <h2 class="govuk-heading-s extra-space-cya">Details of shares on (IDOC) {{'' | formatDate}}</h2>
+
+
+                  {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-8',
+                    rows: [
+                  {
+                    key: {
+                      text: "Date this figure is from"
+                    },
+                    value: {
+                      text: data['msic-shares-TODAY-date-evidence-day'] + ' ' + (data['msic-shares-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-shares-TODAY-date-evidence-year']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "",
+                          text: "",
+                          visuallyHiddenText: "XXX"
+                        }
+                      ]
+                    }
+                  },
+
+                  {
+                    classes: 'govuk-summary-list--no-border',
+                    key: {
+                      text: "How many shares you had on this date"
+                    },
+                    value: {
+                      text: data['msic-shares-account-number-TODAY']
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "",
+                          text: "",
+                          visuallyHiddenText: "XXX"
+                        }
+                      ]
+                    }
+                  }
+                  ]
+                  }) }}
+
+                  <br><br>
+
+
+
+                  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                  <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># <u></u>unit trusts </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+                  {{ govukSummaryList({
+                        classes: 'govuk-!-margin-bottom-0',
+                        rows: [
+                      {
+                        key: {
+                          text: "Name of trust"
+                        },
+                        value: {
+                          text: data['msic-unit-trust-account-name']
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "msic-unit-trust-account",
+                              html: "Change",
+                              visuallyHiddenText: "XXX"
+                            },
+                            {
+                              href: "msic-remove",
+                              html: "Remove",
+                              visuallyHiddenText: "XXX"
+                            }
+                          ]
+                        }
+                      }
+                      ]
+                      }) }}
+
+                      <h2 class="govuk-heading-s extra-space-cya">Unit trust details on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+                            {{ govukSummaryList({
+                              classes: 'govuk-!-margin-bottom-0',
+                              rows: [
+                            {
+                              key: {
+                                text: "Date these figures are from"
+                              },
+                              value: {
+                                text: data['msic-unit-trust-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-unit-trust-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-unit-trust-account-amount-EED-date-evidence-year']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            },
+
+                            {
+                              key: {
+                                text: "Number of units you owned on this date"
+                              },
+                              value: {
+                                text: data['msic-unit-trust-account-units-EED']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            },
+
+                            {
+                              key: {
+                                text: "Unit price on this date"
+                              },
+                              value: {
+                                html: data['msic-unit-trust-account-price-EED'] | formatMoney
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            }
+                            ]
+                            }) }}
+
+                            <h2 class="govuk-heading-s extra-space-cya">Account details on (IDOC) {{'' | formatDate}}</h2>
+
+
+                            {{ govukSummaryList({
+                              classes: 'govuk-!-margin-bottom-8',
+                              rows: [
+                            {
+                              key: {
+                                text: "Date these figures are from"
+                              },
+                              value: {
+                                text: data['msic-unit-trust-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-unit-trust-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-unit-trust-account-amount-TODAY-date-evidence-year']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            },
+
+                            {
+                              key: {
+                                text: "Number of units you owned on this date"
+                              },
+                              value: {
+                                text: data['msic-unit-trust-account-units-TODAY']
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            },
+
+                            {
+                              classes: 'govuk-summary-list--no-border',
+                              key: {
+                                text: "Unit price on this date"
+                              },
+                              value: {
+                                html: data['msic-unit-trust-account-price-TODAY'] | formatMoney
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "",
+                                    text: "",
+                                    visuallyHiddenText: "XXX"
+                                  }
+                                ]
+                              }
+                            }
+
+
+                            ]
+                            }) }}
+
+                        <br><br>
+
+
+  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># cash at home </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+  {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-0',
+        rows: [
+      {
+        key: {
+          text: "Description of this money"
+        },
+        value: {
+          text: data['msic-has-cash-at-home-name']
+        },
+        actions: {
+          items: [
+            {
+              href: "msic-cash-at-home",
+              html: "Change",
+              visuallyHiddenText: "XXX"
+            },
+            {
+              href: "msic-remove",
+              html: "Remove",
+              visuallyHiddenText: "XXX"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "What currency is it"
+        },
+        value: {
+          text: data['msic-has-cash-at-home-currency']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              html: "",
+              visuallyHiddenText: "XXX"
+            }
+          ]
+        }
+      }
+
+
+      ]
+      }) }}
+
+      <h2 class="govuk-heading-s extra-space-cya">Details of this cash on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-0',
+              rows: [
+            {
+              key: {
+                text: "Date this figure is from"
+              },
+              value: {
+                text: data['msic-has-cash-at-home-amount-EED-date-evidence-day'] + ' ' + (data['msic-has-cash-at-home-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-has-cash-at-home-amount-EED-date-evidence-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Amount of cash you had on this date"
+              },
+              value: {
+                html: data['msic-has-cash-at-home-amount-EED'] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+            ]
+            }) }}
+
+            <h2 class="govuk-heading-s extra-space-cya">Details of this cash on (IDOC) {{'' | formatDate}}</h2>
+
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-8',
+              rows: [
+            {
+              key: {
+                text: "Date this figure is from"
+              },
+              value: {
+                text: data['msic-has-cash-at-home-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-has-cash-at-home-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-has-cash-at-home-amount-TODAY-date-evidence-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              classes: 'govuk-summary-list--no-border',
+              key: {
+                text: "Amount of cash you had on this date"
+              },
+              value: {
+                html: data['msic-has-cash-at-home-amount-TODAY'] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            }
+
+
+            ]
+            }) }}
+
+      <br><br>
+
+
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># monies abroad </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+
+      {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-0',
+            rows: [
+          {
+            key: {
+              text: "Description of this money"
+            },
+            value: {
+              text: data['msic-cash-other-abroad-name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-cash-at-home",
+                  html: "Change",
+                  visuallyHiddenText: "XXX"
+                },
+                {
+                  href: "msic-remove",
+                  html: "Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "What currency is it"
+            },
+            value: {
+              text: data['msic-cash-other-abroad-currency']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  html: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+
+
+          ]
+          }) }}
+
+          <h2 class="govuk-heading-s extra-space-cya">Details of this money on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-0',
+                  rows: [
+                {
+                  key: {
+                    text: "Date this figure is from"
+                  },
+                  value: {
+                    text: data['msic-cash-other-abroad-amount-EED-date-evidence-day'] + ' ' + (data['msic-cash-other-abroad-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-cash-other-abroad-amount-EED-date-evidence-year']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "",
+                        text: "",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                },
+
+                {
+                  key: {
+                    text: "Amount of money you had on this date"
+                  },
+                  value: {
+                    html: data['msic-cash-other-abroad-amount-EED'] | formatMoney
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "",
+                        text: "",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                }
+                ]
+                }) }}
+
+                <h2 class="govuk-heading-s extra-space-cya">Details of this money on (IDOC) {{'' | formatDate}}</h2>
+
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-8',
+                  rows: [
+                {
+                  key: {
+                    text: "Date this figure is from"
+                  },
+                  value: {
+                    text: data['msic-cash-other-abroad-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-cash-other-abroad-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-cash-other-abroad-amount-TODAY-date-evidence-year']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "",
+                        text: "",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                },
+
+                {
+                  classes: 'govuk-summary-list--no-border',
+                  key: {
+                    text: "Amount of money you had on this date"
+                  },
+                  value: {
+                    html: data['msic-cash-other-abroad-amount-TODAY'] | formatMoney
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "",
+                        text: "",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                }
+
+
+                ]
+                }) }}
+
+          <br><br>
+
+
+
+
+
+  <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong>Second properties </strong><a href="msic-check-your-answers-a"></a></p>
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Has second property"
+            },
+            value: {
+              text: data["msic-second-property-yn"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-second-property-yn",
+                  html: "Change",
+                  visuallyHiddenText: "XXX"
+                },
+                {
+                  href: "msic-remove",
+                  html: "Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+        <br><br>
+
+
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <div class="govuk-!-padding-bottom-3"></div><p class="govuk-body govuk-!-font-size-24"><strong># 0 other monies </strong><a href="msic-check-your-answers-a">Add</a></p>
+
+          {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-0',
+                  rows: [
+                {
+                  key: {
+                    text: "Description of this money"
+                  },
+                  value: {
+                    text: data['msic-missing-account-name']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "msic-missing-account",
+                        html: "Change",
+                        visuallyHiddenText: "XXX"
+                      },
+                      {
+                        href: "msic-remove",
+                        html: "Remove",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                },
+
+                {
+                  key: {
+                    text: "What currency is it"
+                  },
+                  value: {
+                    text: data['msic-missing-account-currency']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "",
+                        html: "",
+                        visuallyHiddenText: "XXX"
+                      }
+                    ]
+                  }
+                }
+
+
+                ]
+                }) }}
+
+      <h2 class="govuk-heading-s extra-space-cya">Details of this money on (EED) {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}</h2>
+
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-0',
+          rows: [
+        {
+          key: {
+            text: "Date this figure is from"
+          },
+          value: {
+            text: data['msic-missing-account-amount-EED-date-evidence-day'] + ' ' + (data['msic-missing-account-amount-EED-date-evidence-month'] | getMonth) + ' ' + data['msic-missing-account-amount-EED-date-evidence-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "How much money you had on this date"
+          },
+          value: {
+            html: data['msic-missing-account-amount-EED'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s extra-space-cya">Details of this money on (IDOC) {{'' | formatDate}}</h2>
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-8',
+          rows: [
+        {
+          key: {
+            text: "Date this figure is from"
+          },
+          value: {
+            text: data['msic-missing-account-amount-TODAY-date-evidence-day'] + ' ' + (data['msic-missing-account-amount-TODAY-date-evidence-month'] | getMonth) + ' ' + data['msic-missing-account-amount-TODAY-date-evidence-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "How much money you had on this date"
+          },
+          value: {
+            html: data['msic-missing-account-amount-TODAY'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+        <h2 class="govuk-heading-s govuk-!-margin-top-4 govuk-!-margin-bottom-2"></h2>
+
+        {{ govukSummaryList({
+        rows: [
+        {
+          classes: 'govuk-summary-list',
+          key: {
+          text: "Who owns this money?"
+        },
+        value: {
+          text: data['msic-missing-account-amount-owner']
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "",
+              visuallyHiddenText: "XXXX"
+            }
+          ]
+        }
+        },
+
+        {
+          classes: 'govuk-summary-list--no-border',
+          key: {
+            text: "Amount of money that is yours"
+          },
+          value: {
+            html: data['msic-missing-account-amount-stake'] | formatMoney
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+
+  <!------------------------------------------------------------------------------- CApital disregards ------------------------------------------------------------>
+
+  <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Capital disregards</h2>
+
+              <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Claimant has more than £10,000?
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data["disregards-benefit-check-yn"] }}
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="disregards-monolith-2">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+
+                      <br>
+
+
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Payments for arrears of benefits, or any payments to correct or compensate for an official error?
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                {{ data["disregards-benefit-check-yn"] }}
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+          {% if data["disregards-capital-total-yn"] %}
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Details of benefit arrears, correction or compensation payments
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data["disregards-benefit-check-yes"] }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a href="disregards-monolith-2">
+                      Change
+                    </a>
+                  </dd>
+                </div>
+                {% endif %}
+
+                <br>
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Payments related to Council Tax Reduction
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          Yes / No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="disregards-monolith-2">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+
+                      {% if data["disregards-council-yes"] %}
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Details of payments related to Council Tax Reduction
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                {{ data["disregards-council-yes"] }}
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+                            {% endif %}
+
+                <br>
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Compensation payments related to the second world war or service in the armed forces
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          Yes / No
+                        </dd>
+                        <dd class="govuk-summary-list__actions">
+                          <a href="disregards-monolith-2">
+                            Change
+                          </a>
+                        </dd>
+                      </div>
+
+
+                      {% if data["disregards-warpayment-yes"] %}
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Details of compensation payments related to the second world war or service in the armed forces
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                {{ data["disregards-warpayment-yes"] }}
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+                            {% endif %}
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Personal injury claim payments
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-compensation-for-injury-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of personal injury claim payments
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-compensation-for-injury-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Payments from a home insurance policy to cover lost or damaged personal possessions
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-contents-insurance-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of payments from a home insurance policy to cover lost or damaged personal possessions
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-contents-insurance-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Savings that you intend to use to buy or make essential repairs to your main home
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-money-for-property-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of savings that you intend to use to buy or make essential repairs to your main home
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-money-for-property-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Payments to help you live independently in your own home or the community
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-independently-living-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of payments to help you live independently in your own home or the community
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-independently-living-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Payments to help you if you have been involved in an incident or emergency
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-incident-payment-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of payments to help you if you have been involved in an incident or emergency
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-incident-payment-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+  <br>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__key">
+                                Windrush child compensation
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Yes / No
+                              </dd>
+                              <dd class="govuk-summary-list__actions">
+                                <a href="disregards-monolith-2">
+                                  Change
+                                </a>
+                              </dd>
+                            </div>
+
+
+                            {% if data["disregards-windrush-yes"] %}
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__key">
+                                      Details of Windrush child compensation
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      {{ data["disregards-windrush-yes"] }}
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a href="disregards-monolith-2">
+                                        Change
+                                      </a>
+                                    </dd>
+                                  </div>
+                                  {% endif %}
+
+  <br>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">
+                              Payments to support you with the effects of a blood infection or vCJD
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Yes / No
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                              <a href="disregards-monolith-2">
+                                Change
+                              </a>
+                            </dd>
+                          </div>
+
+
+                          {% if data["disregards-blood-yes"] %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Details of payments to support you with the effects of a blood infection or vCJD
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data["disregards-blood-yes"] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a href="disregards-monolith-2">
+                                      Change
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+
+
+  <br></dl></dl>
+
+
+  <!------------------------------------------------------------------------- PC PAYMENT ACCOUNT -------------------------------------------------------------------------------------------------------->
+
+  <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">State Pension payment account details</h2>
+
+
+  <!------------------------------- STATE PENSION PAID INTO ------------------------------------------------------>
+  {% if data["msic-sp-payment-choose"] == "Bank name A / £100.00" %}
+
+    {{ govukSummaryList({
+      rows: [
+
+        {
+            key: {
+            text: "Which account do you get your State Pension paid into?"
+          },
+          value: {
+            text: data["msic-sp-payment-choose"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "type of account"
+              }
+            ]
+          }
+        }
+
+      ]
+    }) }}
+
+    {% endif %}
+
+
+    <!------------------------------- STATE PENSION: DIFFERENT ------------------------------------------------------>
+
+
+    {% if data["msic-sp-payment-choose"] == "A different account" %}
+
+    {{ govukSummaryList({
+      rows: [
+
+      {
+          key: {
+          text: "Pension credit payment account"
+        },
+        value: {
+          text: data["msic-pc-payment-choose"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "type of account"
+            }
+          ]
+        }
+      },
+        {
+          key: {
+            text: "Amount in this account today"
+          },
+          value: {
+            text: data["msic-all-savings-account-amount"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "sort code"
+              }
+            ]
+          }
+        }
+
+
+      ]
+    }) }}
+    {% endif %}
+
+
+    <div class="govuk-!-padding-bottom-7"></div><h2 class="govuk-heading-xm">Pension Credit payment account details</h2>
+
+
+    <!------------------------------- PENSION CREDIT: DIFFERENT ------------------------------------------------------>
+
+    {% if data["msic-pc-payment-choose"] == "Same account as State Pension" %}
+
+    {{ govukSummaryList({
+      rows: [
+
+      {
+          key: {
+          text: "Which account do you get your Pension Credit paid into?"
+        },
+        value: {
+          text: data["msic-pc-payment-choose"]
+        },
+        actions: {
+          items: [
+            {
+              href: "msic-pc-payment-choose",
+              text: "Change",
+              visuallyHiddenText: ""
+            }
+          ]
+        }
+      }
+
+      ]
+    }) }}
+    {% endif %}
+
+  {% if data["msic-pc-payment-choose"] == "A different account" %}
+    {{ govukSummaryList({
+      rows: [
+
+        {
+          key: {
+            text: "Which account do you get your Pension Credit paid into?"
+          },
+          value: {
+            text: data["msic-pc-payment-choose"]
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-pc-payment-choose",
+                text: "Change",
+                visuallyHiddenText: "type of account"
+              }
+            ]
+          }
+        },
+
+      {
+          key: {
+            text: "Name on account"
+          },
+          value: {
+            text: data["name-on-account"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "name on account"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Account with"
+          },
+          value: {
+            text: data['msic-all-current-account-name-' + 0]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "type of account"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Sort code"
+          },
+          value: {
+            text: data["sort-code"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "sort code"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Account number"
+          },
+          value: {
+            text: data["Account number"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "account number"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Roll or reference number"
+          },
+          value: {
+            text: data["Roll number"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "roll number"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Type of account"
+          },
+          value: {
+            text: data["msic-pc-payment-alternative-account-type"]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "Bank or buildings society account"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Amount in this account today"
+          },
+          value: {
+            text: data['msic-all-current-account-amount-' + 0]
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "sort code"
+              }
+            ]
+          }
+        },
+
+
+        {
+        key: {
+          text: "Account owner"
+        },
+        value: {
+          text: data['msic-pc-payment-alternative-account-owner']
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "Account owner"
+            }
+          ]
+        }
+        },
+
+        {
+          key: {
+            text: "Amount of money that is yours"
+          },
+          value: {
+            text: data['msic-pc-payment-alternative-account-stake']
+          },
+          actions: {
+            items: [
+              {
+                href: "x",
+                text: "Change",
+                visuallyHiddenText: "Amount of money that is yours"
+              }
+            ]
+          }
+        }
+
+
+      ]
+    }) }}
+  {% endif %}
+
+  <!------------------ Choosen account ------------------------->
+
+  {% if data["msic-pc-payment-choose"] == "Bank name A / £100.00" %}
+
+  {{ govukSummaryList({
+    rows: [
+
+    {
+        key: {
+        text: "Which account do you get your Pension Credit paid into?"
+      },
+      value: {
+        text: data["msic-pc-payment-choose"]
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-pc-payment-choose",
+            text: "Change",
+            visuallyHiddenText: "type of account"
+          }
+        ]
+      }
+    },
+    {
+        key: {
+          text: "Name on account"
+        },
+        value: {
+          text: data["name-on-account"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "name on account"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Account with"
+        },
+        value: {
+          text: data["msic-all-savings-account-name"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "type of account"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Sort code"
+        },
+        value: {
+          text: data["sort-code"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "sort code"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Account number"
+        },
+        value: {
+          text: data["Account number"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "account number"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Roll or reference number"
+        },
+        value: {
+          text: data["Roll number"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "roll number"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Amount in this account today"
+        },
+        value: {
+          text: data["msic-all-savings-account-amount"]
+        },
+        actions: {
+          items: [
+            {
+              href: "x",
+              text: "Change",
+              visuallyHiddenText: "sort code"
+            }
+          ]
+        }
+      }
+
+
+    ]
+  }) }}
+  {% endif %}
+
+  <!------------------------------------------------------------------------------- End ------------------------------------------------------------>
+
+</div></div>
+
+<div class="govuk-grid-row govuk-!-margin-top-8">
+  <div class="govuk-grid-column-three-quarters">
+
+
+<div class="govuk-panel--agent ">
+  <h2 class="govuk-heading-l">Adviser: read this declaration to the caller</h2>
+</div>
+
+       <p class="govuk-body">
+         By applying you agree that:
+       </p>
+
+       <ul class="govuk-list govuk-list--bullet">
+         <li>the information is correct and complete as far as you know</li>
+         <li>you&rsquo;ll pay back any money you&rsquo;re overpaid if you&rsquo;re asked to</li>
+       </ul>
+
+       {{ govukWarningText({
+         html: "You could be prosecuted or have to pay a financial penalty if you
+         deliberately give the wrong or incomplete information or do&nbsp;not report changes.",
+         iconFallbackText: "Warning"
+       }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+</div></div>
+
+<!----Break---->
+
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-8">State Pension</h2>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application processing</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">State Pension amount exceeded applicable amount for the whole backdating period</p>
+            <p class="govuk-body govuk-!-margin-bottom-8"> State Pension checked against SearchLight and ISCS on 28th of February 2022</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">State Pension amount exceeded applicable amount when processed</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">State Pension checked against SearchLight on 28th of February 2022</p>
+          </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <ul class="govuk-list class="">
+              <li class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application answers </li>
+              <li class="govuk-body govuk-!-font-weight-bold">Tell us about your UK State Pension</li>
+              <li class="govuk-!-margin-bottom-8">I am receiving my UK State Pension</li>
+            </ul>
+          </div>
+      </div>
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Update checks</p>
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2"></p>
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "changed-name",
+          name: "changed-name",
+          fieldset: {
+            legend: {
+              text: "State Pension amount exceeded applicable amount for the whole backdating period",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Check SearchLight"
+          },
+          items: [
+            {
+              value: "NotChanged",
+              text: "Not changed"
+            },
+            {
+              value: "Changed",
+              text: "Changed"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "changed-name",
+          name: "changed-name",
+          fieldset: {
+            legend: {
+              text: "State Pension amount exceeded applicable amount when processed",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Check SearchLight"
+          },
+          items: [
+            {
+              value: "NotChanged",
+              text: "Not changed"
+            },
+            {
+              value: "Changed",
+              text: "Changed"
+            }
+          ]
+        }) }}
+
+
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+              {{ govukTextarea({
+                name: "more-detail",
+                id: "more-detail",
+                label: {
+                  text: "Notes",
+                  classes: "govuk-label--m",
+                  isPageHeading: true
+                },
+                hint: {
+                  text: "Include any new or corrected information within the backdating period"
+                }
+              }) }}
+            </div>
+          </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+        <br> <a href="case-summary">...</a>
+
+      </div>
+
+
+
+
+
+    </form>
+{% endblock %}

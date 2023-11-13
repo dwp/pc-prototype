@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bulding society current account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-missing-account-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Add an additional account
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name or type of account"
+        },
+        id: "msic-missing-account-name",
+        name: "msic-missing-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+<!--
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of the account number or roll number"
+        },
+        id: "msic-missing-account-last-digits",
+        name: "msic-missing-account-last-digits",
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+-->
+            <br>
+            <p class="govuk-body">Total amount in this account, from <strong>Today</strong></p>
+
+          {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "msic-missing-account-amount",
+        name: "msic-missing-account-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Percentage stake"
+          },
+          id: "msic-missing-account-stake",
+          name: "msic-missing-account-stake",
+          classes: "govuk-input--width-5"
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "msic-missing-account-owner",
+        name: "msic-missing-account-owner",
+        fieldset: {
+          legend: {
+            text: "Who does this account belong to?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "You",
+            text: "You"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account (joint account)",
+            conditional: {
+              html: percentageField
+            }
+          }
+        ]
+      }) }}
+
+<!--
+      {{ govukRadios({
+        idPrefix: "msic-missing-account-read-from-statement",
+        name: "msic-missing-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+-->
+      <br>
+
+      <p class="govuk-body">Because this wan't on our list give more details if possible</p>
+
+      {{ govukTextarea({
+        name: "msic-missing-account-money-detail",
+        id: "msic-missing-account-money-detail",
+
+        value: data["msic-missing-account-money-detail"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

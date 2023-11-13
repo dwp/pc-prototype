@@ -1,0 +1,88 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-3-total-now" method="post" class="form">
+
+      {% if data["money-3-claim-filter"] == "Advanced" %}
+      <p class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from <strong>[Advanced]</strong></p>
+
+      {% elif data["money-3-claim-filter"] == "Today" %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will consider your application from <strong>today</strong></h1>
+
+      {% elif data["money-3-claim-filter"] == "no-doc" %}
+      <p class="govuk-heading-xl govuk-!-margin-bottom-6">We will ask you questions about money, savings and investments <strong>today</strong></p>
+
+      {% else %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You want us to consider your application from  <strong>5 July 2021</strong></h1>
+
+
+      {% endif %}
+
+
+    <!------------Legend--------------->
+
+    {% if data["money-3-claim-filter"] == "Advanced" %}
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-4">This means we need to ask you about any money, savings and investments you have today.</p>
+    <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-6">We will then contact you by <strong>[Contact date]</strong> to confirm how much money you have then.</p>
+
+
+    {% elif data["money-3-claim-filter"] == "Today" %}
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-8">This means we need to ask you about any money, savings and investments you have today.</p>
+
+    {% elif data["money-3-claim-filter"] == "no-doc" %}
+    <p class="govuk-bold govuk-!-font-size-19 govuk-!-margin-bottom-6">We will then contact you by <strong>[Contact date]</strong> to discuss whether we can backdate your application and ask for any more information we need.</p>
+
+
+    {% else %}
+  <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-2">This means we will ask you about any money, savings and investments for two separate dates:</p>
+
+    <ul class="govuk-!-font-size-24 govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>today</li>
+      <li>5 July 2021</li>
+    </ul>
+
+    {% endif %}
+
+
+    <!------------ --------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

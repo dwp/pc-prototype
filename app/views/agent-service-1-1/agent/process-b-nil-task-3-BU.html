@@ -1,0 +1,593 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-b-nil-task-list" method="post" class="form">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-8">[Task 3] verify award</p>
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Cross referece citizens provided details using AfPC with what was found in CIZ, CAM, SL</p> -->
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <!------------Legend------------>
+        {% set legendCheck1 %}
+
+      {{ govukCheckboxes({
+        idPrefix: "process-b-nil-task-3-check-1",
+        name: "process-b-nil-task-3-check-1",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+          }
+        },
+        items: [
+          {
+            classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+            value: "Pass",
+            text: " ",
+            checked: data['process-b-nil-task-3-check-1'] == "Pass"
+          }
+        ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck2 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-2",
+      name: "process-b-nil-task-3-check-2",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-2'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck3 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-3",
+      name: "process-b-nil-task-3-check-3",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-3'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck4 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-4",
+      name: "process-b-nil-task-3-check-4",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-4'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+      {% set legendCheck5 %}
+
+      {{ govukCheckboxes({
+      idPrefix: "process-b-nil-task-3-check-5",
+      name: "process-b-nil-task-3-check-5",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+        }
+      },
+      items: [
+        {
+          classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+          value: "Pass",
+          text: " ",
+          checked: data['process-b-nil-task-3-check-5'] == "Pass"
+        }
+      ]
+      }) }}
+
+      {% endset %}
+
+
+        <!------------Legend------------>
+          {% set tagSL %}
+
+          {{govukTag({
+             text: "SEARCHLIGHT",
+             classes: "govuk-tag--blue"
+           })}}
+
+        {% endset %}
+
+          {% set tagCPS %}
+
+          {{govukTag({
+             text: "CPS",
+             classes: "govuk-tag--yellow"
+           })}}
+
+        {% endset %}
+
+        {% set tagCAM %}
+
+        {{govukTag({
+           text: "CAM",
+           classes: "govuk-tag--red"
+         })}}
+
+      {% endset %}
+      <!------------Legend------------>
+
+      <!------------Legend------------>
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Personal detials</h1>
+
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--m",
+          classes: 'govuk-!-margin-bottom-8',
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Information to check",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "Citizen supplied [AfPC]",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "DWP data / Source",
+              classes: 'govuk-30-percent'
+            },
+            {
+              text: "Correct",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+
+          [
+            {
+              text: "Applicant is not deceased"
+            },
+            {
+              text: "N/A"
+            },
+            {
+              html: tagSL
+            },
+            {
+              html: legendCheck1
+            }
+          ],
+            [
+              {
+                text: "Reached SPA on or after 6 April 2016 [Savings Credit not applicable]"
+              },
+              {
+                text: "DD/MM/YY"
+              },
+              {
+                html: tagCAM
+              },
+              {
+                html: legendCheck1
+              }
+            ]
+          ]
+        }) }}
+
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Interests</h1>
+
+
+          {{ govukTable({
+            caption: "",
+            captionClasses: "govuk-table__caption--m",
+            classes: 'govuk-!-margin-bottom-8',
+            firstCellIsHeader: true,
+            head: [
+              {
+                text: "Information to check",
+                classes: 'govuk-30-percent'
+              },
+              {
+                html: "Citizen supplied [AfPC]",
+                classes: 'govuk-30-percent'
+              },
+              {
+                html: "DWP data / Source",
+                classes: 'govuk-30-percent'
+              },
+              {
+                text: "Correct",
+                classes: 'govuk-20-percent'
+              }
+            ],
+            rows: [
+
+                [
+                  {
+                    text: "Applicant is not waiting to hear about any other benefits"
+                  },
+                  {
+                    text: "No"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendCheck2
+                  }
+                ],
+                [
+                  {
+                    text: "No open interest in CIS for qualifying benefits during the backdating period"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendCheck2
+                  }
+                ],
+                [
+                  {
+                    text: "No open interest in CIS for qualifying benefits today"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendCheck2
+                  }
+                ]
+            ]
+          }) }}
+
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Benefits</h1>
+
+
+          {{ govukTable({
+            caption: "",
+            captionClasses: "govuk-table__caption--m",
+            classes: 'govuk-!-margin-bottom-8',
+            firstCellIsHeader: true,
+            head: [
+              {
+                text: "Information to check",
+                classes: 'govuk-30-percent'
+              },
+              {
+                html: "Citizen supplied [AfPC]",
+                classes: 'govuk-30-percent'
+              },
+              {
+                html: "DWP data / Source",
+                classes: 'govuk-30-percent'
+              },
+              {
+                text: "Correct",
+                classes: 'govuk-20-percent'
+              }
+            ],
+            rows: [
+
+            [
+              {
+                text: "State Pension amount exceeded applicable amount today"
+              },
+              {
+                text: "N/A"
+              },
+              {
+                html: tagSL
+              },
+              {
+                html: legendCheck3
+              }
+                ],
+                [
+                  {
+                    text: "State Pension amount exceeded applicable amount for the whole backdating period"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendCheck3
+                  }
+                ],
+
+                [
+                  {
+                    text: "Applicant not in receipt of any qualifying benefits today"
+                  },
+                  {
+                    text: "N/A"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendCheck3
+                  }
+                ]
+            ]
+          }) }}
+
+
+
+              <!------------ TAB 2 ------------>
+
+              <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Relationships</h1>
+
+                {{ govukTable({
+                  caption: "",
+                  captionClasses: "govuk-table__caption--m",
+                  classes: 'govuk-!-margin-bottom-8',
+                  firstCellIsHeader: true,
+                  head: [
+                    {
+                      text: "Information to check",
+                      classes: 'govuk-30-percent'
+                    },
+                    {
+                      html: "Citizen supplied [AfPC]",
+                      classes: 'govuk-30-percent'
+                    },
+                    {
+                      html: "DWP data / Source",
+                      classes: 'govuk-30-percent'
+                    },
+                    {
+                      text: "Correct",
+                      classes: 'govuk-20-percent'
+                    }
+                  ],
+                  rows: [
+                    [
+                      {
+                        text: "Applicant does not live with partner"
+                      },
+                      {
+                        text: "No partner"
+                      },
+                      {
+                        html: tagSL
+                      },
+                      {
+                        html: legendCheck4
+                      }
+                    ]
+
+                  ]
+                }) }}
+
+
+
+                              <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Other</h1>
+
+                                {{ govukTable({
+                                  caption: "",
+                                  captionClasses: "govuk-table__caption--m",
+                                  firstCellIsHeader: true,
+                                  head: [
+                                    {
+                                      text: "Information to check",
+                                      classes: 'govuk-30-percent'
+                                    },
+                                    {
+                                      html: "Citizen supplied [AfPC]",
+                                      classes: 'govuk-30-percent'
+                                    },
+                                    {
+                                      html: "DWP data / Source",
+                                      classes: 'govuk-30-percent'
+                                    },
+                                    {
+                                      text: "Correct",
+                                      classes: 'govuk-20-percent'
+                                    }
+                                  ],
+                                  rows: [
+                                  [
+                                    {
+                                      text: "Date of claim is not in the future"
+                                    },
+                                    {
+                                      text: "DD/MM/YYYY"
+                                    },
+                                    {
+                                      text: "N/A"
+                                    },
+                                    {
+                                      html: legendCheck5
+                                    }
+                                  ],
+                                      [
+                                          {
+                                            text: "No housing costs (service charges and ground rent)"
+                                          },
+                                          {
+                                            text: "No"
+                                          },
+                                          {
+                                            text: "N/A"
+                                          },
+                                          {
+                                            html: legendCheck5
+                                          }
+                                        ],
+                                        [
+                                          {
+                                            text: "Applicant does not want to apply for Housing Benefit"
+                                          },
+                                          {
+                                            text: "No"
+                                          },
+                                          {
+                                            text: "N/A"
+                                          },
+                                          {
+                                            html: legendCheck5
+                                          }
+                                        ],
+                                        [
+                                          {
+                                            text: "Applicant does not want info on SMI"
+                                          },
+                                          {
+                                            text: "No"
+                                          },
+                                          {
+                                            text: "N/A"
+                                          },
+                                          {
+                                            html: legendCheck5
+                                          }
+                                        ],
+                                        [
+                                          {
+                                            text: "Applicant is not waiting to hear about any other benefits"
+                                          },
+                                          {
+                                            text: "No"
+                                          },
+                                          {
+                                            text: "N/A"
+                                          },
+                                          {
+                                            html: legendCheck5
+                                          }
+                                        ]
+
+                                  ]
+                                }) }}
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+  {{ govukRadios({
+    idPrefix: "process-b-nil-task-3",
+    name: "process-b-nil-task-3",
+    fieldset: {
+      legend: {
+        text: "What happened?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m govuk-!-padding-top-4"
+      }
+    },
+    hint: {
+      html: hintLegend
+    },
+    classes: "govuk-radios govuk-!-padding-bottom-0",
+    items: [
+    {
+      value: "Passed",
+      text: "Passed",
+      checked: (data["process-b-nil-task-3"] == "Passed")
+    },
+      {
+        value: "Failed",
+        text: "Failed",
+        checked: (data["process-b-nil-task-3"] == "Failed")
+      },
+      {
+        value: "unfinished",
+        text: "I can't complete",
+        checked: (data["process-b-nil-task-3"] == "unfinished")
+      }
+    ]
+  }) }}
+
+    {{ govukButton({
+      text: "Submit"
+    }) }}
+  </form>
+
+{% endblock %}

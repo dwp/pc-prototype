@@ -1,0 +1,70 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {# <form action="money-negative-scenarios" method="post" class="form"> #}
+      <form action="money-total-risk-check" method="post" class="form">
+
+      <div class="govuk-panel--agent govuk-!-margin-bottom-6">
+
+           {{ govukRadios({
+             idPrefix: "money-3-claim-filter",
+             name: "money-3-claim-filter",
+             fieldset: {
+               legend: {
+                 html: "Claim type?",
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--xl"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Backdated",
+                 text: "Backdated",
+                 checked: (data["money-3-claim-filter"] == "Backdated")
+               },
+               {
+                 value: "Today",
+                 text: "Today",
+                 checked: (data["money-3-claim-filter"] == "Today")
+               },
+               {
+                 value: "Advanced",
+                 text: "Advanced",
+                 checked: (data["money-3-claim-filter"] == "Advanced")
+               },
+               {
+                 value: "no-doc",
+                 text: "no-doc",
+                 checked: (data["money-3-claim-filter"] == "no-doc")
+               }
+             ]
+           }) }}
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

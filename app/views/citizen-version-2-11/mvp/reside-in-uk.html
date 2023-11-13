@@ -1,0 +1,71 @@
+{% extends "layout-covid19.html" %}
+
+
+{% block pageTitle %}
+  Do you live in the UK? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<p class="govuk-body govuk--version-control">Citizen version 2.11 [UR]</p>
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="reside-in-uk-router" method="post">
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "resides-in-uk",
+          name: "resides-in-uk",
+          fieldset: {
+            legend: {
+              text: "Which country do you live in?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl "
+            }
+          },
+
+          items: [
+            {
+              value: "England",
+              text: "England",
+              checked: data['resides-in-uk'] == "England"
+            },
+            {
+              value: "Scotland",
+              text: "Scotland",
+              checked: data['resides-in-uk'] == "Scotland"
+            },
+            {
+              value: "Wales",
+              text: "Wales",
+              checked: data['resides-in-uk'] == "Wales"
+            },
+            {
+              value: "Northern-Ireland",
+              text: "Northern Ireland",
+              checked: data['resides-in-uk'] == "Northern-Ireland"
+            },
+            {
+              value: "Other",
+              text: "Somewhere else",
+              checked: data['resides-in-uk'] == "Other"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+
+
+        </div>
+  </div>
+
+{% endblock %}

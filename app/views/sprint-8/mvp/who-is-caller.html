@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="name-and-nino" method="post">
+
+        {{ govukRadios({
+          idPrefix: "claiming-for",
+          name: "claiming-for",
+          fieldset: {
+            legend: {
+              text: "Who are you claiming Pension Credit for? ",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Yourself",
+              text: "Yourself",
+              checked: data['claiming-for'] == "Myself"
+            },
+            {
+              divider: "or"
+            },
+            {
+            value: "Power of attorney",
+            text: "Someone you have power of attorney for"
+          },
+          {
+            value: "Appointee",
+            text: "Someone you act as an appointee for"
+          },
+          {
+            value: "Charity",
+            text: "Someone who has asked your charity for help"
+          },
+          {
+            value: "Family member",
+            text: "A family member"
+          },
+          {
+            value: "Friend",
+            text: "A friend"
+          },
+          {
+            value: "SomeoneElse",
+            text: "Someone else"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

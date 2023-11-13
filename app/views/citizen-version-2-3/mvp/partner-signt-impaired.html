@@ -1,0 +1,59 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Partner details - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-care-home-check" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {% set legendH1 %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Is your partner registered blind or severely sight impaired?</h1>
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "contact-partner-blind-check",
+        name: "contact-partner-blind-check",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        classes: "govuk-radios govuk-!-margin-bottom-4",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-partner-blind-check"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-partner-blind-check"] == "No")
+          }
+        ]
+      }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+          <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+        </div>
+      </div>
+      {% endblock %}

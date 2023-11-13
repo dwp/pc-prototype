@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% set mainClasses = 'id-bar' %}
+
+{% block beforeContent %}
+
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "Testing only [G4s]",
+    classes: "govuk-tag--g4s-user-reseach"
+  },
+  html: 'No information is stored or sent using this service.'
+}) }}
+
+<br>
+
+{% endblock %}
+
+
+
+{% block footer %}
+
+<div class="govuk-width-container ">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early-ni">Handover claim early</a></p>
+
+
+</div>
+</div>
+</div>
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "accessibility-statement",
+          text: "Accessibility"
+        },
+        {
+          href: "claim-filter",
+          text: "Claim filter"
+        },
+        {
+          href: "national-insurance-call-B",
+          text: "Change National insurance number"
+        },
+        {
+          href: "task-list",
+          text: "Task list"
+        },
+        {
+          href: "/version-15/survey/start.html",
+          text: "Service survey"
+        },
+        {
+          href: "/prototype-admin/clear-data",
+          text: "Clear data"
+        },
+        {
+          href: "https://govuk-prototype-kit.herokuapp.com/",
+          text: "GOV.UK Prototype Kit " + releaseVersion
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
+
+
+<!--
+{% if data["who-is-caller"] !== "Yourself" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+
+{% if data["national-insurance-return"] == "Yes" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+<br>
+-->
+
+<!-- {% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar-item govuk-!-font-size-19 verticalLine"><br></li>{% endif %} -->
+
+<!-- IF caller is claimant -->

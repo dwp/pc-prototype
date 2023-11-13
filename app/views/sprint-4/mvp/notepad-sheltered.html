@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about the sheltered accomodation the claimant lives in.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Collect all the information you need, including:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            whether they own another property
+          </li>
+          <li>
+            whether their stay is funded by the local authority, self-funded or both
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "sheltered-more-detail",
+          id: "sheltered-more-detail",
+        
+          value: data['sheltered-more-detail']
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

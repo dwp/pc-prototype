@@ -1,0 +1,344 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- PRINT SCREEN DETAILS -->
+
+
+<style>
+
+  p {
+    color: black;
+  }
+
+#main-content > div > div > form > div:nth-child(5) > div:nth-child(6) > div:nth-child(8) > h2.govuk-heading-m {display: none}
+
+  #main-content > div > div > form > div:nth-child(2) {display: none} /* PRINT ONLY NOTIFICATION */
+
+  /* This is set to 0 globally for some reason, setting it back for this example */
+  .govuk-summary-list {
+    margin-bottom: 30px !important;
+  }
+
+  @media print {
+
+    #main-content > p > span {display: none}
+    body > div > div {display: none}
+    body > div > div {display: none}
+    #main-content > div > div > form > div:nth-child(2) {display: inline}  /* PRINT ONLY NOTIFICATION */
+
+
+
+    .dont-print,
+    .govuk-header__logo,
+    .govuk-footer,
+    .govuk-summary-list__actions {
+      display: none;
+    }
+    .govuk-header__container {
+      border: 0;
+    }
+
+    /* Use desktop layout for summary list */
+    .govuk-summary-list {
+      display:table;
+      width:100%;
+      table-layout:fixed;
+      margin-bottom:30px
+    }
+    .govuk-summary-list__row {
+      display:table-row
+    }
+    .govuk-summary-list__key,
+    .govuk-summary-list__value {
+      display:table-cell;
+      padding-right:20px;
+      padding-top:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid #b1b4b6
+    }
+    .govuk-summary-list__key {
+      width:30%
+    }
+    .govuk-summary-list__value {
+      width:50%
+    }
+    .govuk-summary-list__value:last-child {
+      width:70%
+    }
+  }
+</style>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="index-pension-credit" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl">Check your answers before sending your application (Example)</h1>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">This is only a copy of your answers. It is not proof that you have applied for or been awarded Pension Credit.</p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Printing this document does not submit your application. You must submit your application from the check your answers page.</p>
+
+</div>
+
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          key: {
+            text: "Which country do you live in?"
+          },
+          value: {
+            text: data['resides-in-uk']
+          },
+          actions: {
+            items: [
+              {
+                href: "reside-in-uk",
+                text: "Change",
+                visuallyHiddenText: "which country you live in"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Have you claimed your State Pension?"
+          },
+          value: {
+            text: data['state-pension-check-yn']
+          },
+          actions: {
+            items: [
+            {
+              href: "@ChangeURL",
+              text: "Change",
+              visuallyHiddenText: "whether you have claimed your State Pension"
+
+              }
+            ]
+          }
+        },
+
+        {
+          classes: 'govuk-summary-list',
+          key: {
+            text: "Do any children or qualifying young people live with you?"
+          },
+          value: {
+            text: data['children-check-yn']
+          },
+          actions: {
+            items: [
+              {
+                href: "@ChangeURL",
+                text: "Change",
+                visuallyHiddenText: "whether any children or qualifying young people live with you"
+            }
+          ]
+        }
+      }
+        ]
+      }) }}
+
+      {{ govukSummaryList({
+        rows: [
+
+        {
+          key: {
+            text: "Date of claim"
+          },
+          value: {
+            text: "Your date would be here"
+          },
+          actions: {
+            items: [
+              {
+                href: "doc-absence",
+                text: "Change",
+                visuallyHiddenText: "whether you been outside the UK for a period of more than four weeks since [3 months or SPA]?"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+      {{ govukSummaryList({
+        rows: [
+
+        {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: "NA 11 22 33 c"
+          },
+          actions: {
+            items: [
+              {
+                href: "claimant-national-insurance",
+                text: "Change",
+                visuallyHiddenText: "whether you been outside the UK for a period of more than four weeks since [3 months or SPA]?"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      {{ govukSummaryList({
+        rows: [
+
+        {
+          key: {
+            text: "Who lives with you"
+          },
+          value: {
+            text: "Your answers would be here"
+          },
+          actions: {
+            items: [
+              {
+                href: "non-deps-living-with-you",
+                text: "Change",
+                visuallyHiddenText: "Who lives with you?"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      {{ govukSummaryList({
+        rows: [
+
+        {
+          key: {
+            text: "Employment"
+          },
+          value: {
+            text: "Your answers would be here"
+          },
+          actions: {
+            items: [
+              {
+                href: "employment-check",
+                text: "Change",
+                visuallyHiddenText: "Employment"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+
+        {
+          key: {
+            text: "Other details you entered throughout the application"
+          },
+          value: {
+            text: "Your answers would be here"
+          },
+          actions: {
+            items: [
+              {
+                href: "...",
+                text: "",
+                visuallyHiddenText: "how many periods of more than 4 weeks have you spent outside the UK since [calculated EED]?"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+
+
+
+      </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  </div>
+  </div>
+
+    <div class="dont-print">
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+  <h3 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">Print a copy of your answers</h3>
+
+  <p class="govuk-body">This is a copy of the answers shown on this page. If you change anything, you will need to print a new copy.</p>
+
+    <!-- <button onclick="window.print(); return false;">Print Me !!!</button> -->
+            {{ govukButton({
+            text: "Print a copy of your answers",
+            classes: "govuk-button--secondary govuk-!-margin-bottom-9"
+          }) }}
+  </div>
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--Declaration-->
+  <div class="dont-print">
+
+      <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <h2 class="govuk-heading-l">By applying you agree that:</h2>
+           <ul class="govuk-list govuk-list--bullet">
+             <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">the information is correct and complete as far as you know</p></li>
+             <li><p class="govuk-list govuk-!-font-size-19 govuk-!-margin-bottom-2">you&rsquo;ll pay back any money you&rsquo;re overpaid if you&rsquo;re asked to</p></li>
+           </ul>
+
+           <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><strong>You could be prosecuted or have to pay a financial penalty if you deliberately give the wrong or incomplete information or do&nbsp;not report changes.</strong></p>
+
+      </div>
+    </div>
+  </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+{{ govukButton({
+  text: "Submit",
+  classes: "dont-print"
+}) }}
+
+</form>
+
+
+
+{% endblock %}

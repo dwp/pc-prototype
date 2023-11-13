@@ -1,0 +1,73 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Do you agree with the way we will use your information? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">How we use personal information</h1>
+
+  <p class="govuk-body">We only use your information as allowed by data protection laws. This includes using information we already have and sharing information with other organisations and government departments where we need to.</p>
+
+  <p class="govuk-body govuk-!-margin-bottom-2"><strong>For example, we will use information:</strong></p>
+   <ul class="govuk-list govuk-list--bullet">
+    <li>that we already have about your State Pension and any benefits you receive
+    <li>that we get from HMRC about your income and earnings</li>
+    </ul>
+<p class="govuk-body">You can get more information in our <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal Information Charter</a>.</p>
+
+
+<br>
+
+
+    <form action="privacy-policy-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "agrees-privacy",
+        name: "agrees-privacy",
+        fieldset: {
+          legend: {
+            text: "Do you understand the way we will use your personal information and want to continue your application?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["agrees-privacy"] == "Agree")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["agrees-privacy"] == "Disagree")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    <!-- <p class="govuk-body"><Strong>(Add to footer?) Adviser: Answer any questions the claimant has using the full </Strong><a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter"><br>Personal Information Charter (opens in a new window or tab)</a>.</p> -->
+
+  </div>
+</div>
+{% endblock %}

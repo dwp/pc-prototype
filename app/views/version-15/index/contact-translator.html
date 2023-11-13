@@ -1,0 +1,83 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  contact-translator? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-post-code-lookup" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        {% set altLanguage %}
+        {{ govukInput({
+      label: {
+        html: "What is the claimant's first language?"
+      },
+      id: "contact-formats-altLanguage",
+      name: "contact-formats-altLanguage",
+      classes: "govuk-input--width-20 "
+    }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios ",
+          idPrefix: "contact-formats-altLanguage-yn",
+          name: "contact-formats-altLanguage-yn",
+          fieldset: {
+            legend: {
+              html: "Adviser: Did the claimant need a translator to take this claim?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-formats-altLanguage-yn"] == "Yes"),
+            conditional: {
+              html: altLanguage
+            }
+
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["contact-formats-altLanguage-yn"] == "No")
+            }
+          ]
+        }) }}
+
+</div>
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

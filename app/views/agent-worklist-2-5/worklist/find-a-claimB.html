@@ -1,0 +1,100 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim-found" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find a claim</h1>
+
+
+                {{ govukInput({
+                  label: {
+                    text: "Enter a National Insurance number",
+                    classes: "govuk-label--m",
+                    isPageHeading: true
+                  },
+                  classes: "govuk-input--width-10",
+                  hint: {
+                    text: "For example, QQ 12 34 56 C "
+                  },
+                  id: "account-number",
+                  name: "account-number",
+                  inputmode: "numeric",
+                  pattern: "[0-9]*",
+                  spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Enter a name",
+                    classes: "govuk-label--m",
+                    isPageHeading: true
+                  },
+                  classes: "govuk-input--width-10",
+                  hint: {
+                    text: "For example, Jack Smith "
+                  },
+                  id: "account-number",
+                  name: "account-number",
+                  inputmode: "numeric",
+                  pattern: "[0-9]*",
+                  spellcheck: false
+                }) }}
+
+                {{ govukDateInput({
+                  id: "passport-issued",
+                  namePrefix: "passport-issued",
+                  fieldset: {
+                    legend: {
+                      text: "Enter date of birth?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  hint: {
+                    text: "For example, 27 3 2007"
+                  }
+                }) }}
+
+                <!-- {{ govukButton({
+                   text: "Clear",
+                   classes: "govuk-button--secondary-clear",
+                   href: "find-a-claim"
+                 }) }} -->
+
+                 {{ govukButton({
+                   text: "Save and continue"
+                 }) }}
+
+                {% if data["search"] == "NA112233c" %}
+
+
+
+
+
+
+                                {% endif %}
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

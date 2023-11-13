@@ -1,0 +1,197 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="ur-home" method="post" class="form">
+        <input type="hidden" name="outcome-nil" value="true"/>
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        {% set USED %}
+        {{govukTag({
+          text: "System",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set MANUAL %}
+        {{govukTag({
+          text: "Manual",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Income over applicable amount. This will be a nil claim, no entitlment in the backdating period.</p>
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-8",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Type of income",
+              classes: 'govuk-40-percent'
+            },
+            {
+              text: "Payment frequency",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Selection method",
+              classes: 'govuk-20-percent'
+            },
+            {
+              html: "Weekly net income",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "State Pension"
+              },
+              {
+                text: "Weekly"
+              },
+              {
+                html: USED
+              },
+              {
+                text: "£150.00"
+              }
+            ],
+            [
+              {
+                text: "OCC1: Woolworths INC"
+              },
+              {
+                text: "Weekly"
+              },
+              {
+                html: USED
+              },
+              {
+                text: "£253.84"
+              }
+            ],
+            [
+              {
+                text: "OCC2: MetroLand LTD"
+              },
+              {
+                text: "Monthly"
+              },
+              {
+                html: MANUAL
+              },
+              {
+                text: "£253.84"
+              }
+            ]
+          ]
+        }) }}
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-2 govuk-!-margin-bottom-2"><strong>Calculation</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-0">Applicable amount for this person is <strong>£182.15</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Their total weekly income is <strong>£403.84</strong></p>
+
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        <!-- {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-1",
+          name: "process-c-nil-task-4-1",
+          fieldset: {
+            legend: {
+              html: "Are you happy you want to nil this claim<br>due to excicess income?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "XX"
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes — issue a letter",
+            checked: (data["process-c-nil-task-4-1"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No — Send to Opps (BAU)",
+              checked: (data["process-c-nil-task-4-1"] == "No")
+            }
+          ]
+        }) }} -->
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-2">This is what is going to happen</h1>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Something here</p>
+
+    {{ govukButton({
+      text: "Confirm and notify"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+
+{# 
+	
+	To highlight the current page (link with no child pages)
+	1. Add 'dwp-list-navigation--current' css class to the <li>
+	2. Change the <a> to a <span>, remember to remove the href="" attribute from the <a>
+
+	E.g.
+	<li class=" dwp-list-navigation--current ">
+		<span class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Tatooine</span>
+	</li>
+
+	-------------------------------------------------------------------------------------------------------------------------------
+
+	To highlight a parent page as the current page (link that has child pages)
+	1. Add 'dwp-list-navigation--current dwp-list-navigation--current-parent' css classes to <li class="dwp-list-navigation__parent">
+	2. Change the parent <a> to a <span>, remember to remove the href="" attribute from the <a>	
+
+	E.g.
+
+	<li class="dwp-list-navigation__parent dwp-list-navigation--current dwp-list-navigation--current-parent">
+		<span href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Bespin</span>
+		
+		<ul role="group">
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Cantonica</a>
+			</li>
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Coruscant</a>
+			</li>
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Endor</a>
+			</li>
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Geonosis</a>
+			</li>
+		</ul>
+	</li>
+
+	-------------------------------------------------------------------------------------------------------------------------------
+
+	To highlight a child page as the current page (link that has a parent page)
+	1. Add 'dwp-list-navigation--current-parent' css class to <li class="dwp-list-navigation__parent">
+	2. Add 'dwp-list-navigation--current' css class to the child <li>
+	3. Change the child <a> to a <span>, remember to remove the href="" attribute from the <a>	
+
+	E.g.
+
+	<li class="dwp-list-navigation__parent dwp-list-navigation--current-parent">
+		<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Bespin</a>
+		
+		<ul role="group">
+			<li>
+				<span class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Cantonica</span>
+			</li>
+			<li class="dwp-list-navigation--current">
+				<span class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Coruscant</span>
+			</li>
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Endor</a>
+			</li>
+			<li>
+				<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Geonosis</a>
+			</li>
+		</ul>
+	</li>
+#}
+
+
+<nav class="dwp-list-navigation" aria-label="Secondary">
+	<ul role=“group” class="govuk-list">
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Tatooine</a>
+		</li>
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Naboo</a>
+		</li>
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Alderaan</a>
+		</li>
+		<li class="dwp-list-navigation__parent">
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Bespin</a>
+			
+			<ul role="group">
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Cantonica</a>
+				</li>
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Coruscant</a>
+				</li>
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Endor</a>
+				</li>
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Geonosis</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Jakku</a>
+		</li>
+		<li class="dwp-list-navigation__parent">
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Kamino</a>
+			
+			<ul role="group">
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Sub Kamino 1</a>
+				</li>
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Sub Kamino 2</a>
+				</li>
+				<li>
+					<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Sub Kamino 3</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Mandalore</a>
+		</li>
+		<li>
+			<a href="#" class="govuk-link govuk-link--no-visited-state" role=“menuitem”>Mustafar</a>
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,86 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+Request an update to applicant's telephone number
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="ur-home" method="post" class="form">
+
+        <input type="hidden" name="done-task" value="No">
+        <input type="hidden" name="done-ciz500" value="Yes">
+        <!-- @louise I've added some clears so you dont get sticky banners-->
+
+        {% include "agent-service-1-14/agent/record-id.html" %}
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Request an update to applicant's telephone number</p>
+
+        {# <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Using Searchlight, complete and submit a
+          <a href="https://intranet.dwp.gov.uk/section/operational-instructions/calculators-tools-and-systems/customer-information-system-cis/cis-guidance/cis-data-amendment-forms" class="govuk-link" target="_blank" rel="noreferrer noopener"><strong>
+            CIS500</a>.</p> #}
+
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Using Searchlight, complete and submit a <a href="https://intranet.dwp.gov.uk/section/operational-instructions/calculators-tools-and-systems/customer-information-system-cis/cis-guidance/cis-data-amendment-forms" class="govuk-link" target="_blank" rel="noreferrer noopener"><strong>CIS500<br>(opens in a new tab)</strong></a>.</p></p>
+
+          {# </p> #}
+          {# <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> #}
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">New telephone number: <strong>07123 456 789</strong></p></p>
+        {# <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> #}
+
+
+        <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="mr-cis-500" class="govuk-link" rel="noreferrer noopener">I am a CIS500</a></p> -->
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+      {{ govukRadios({
+        idPrefix: "process-c-nil-task-4-manual",
+        name: "process-c-nil-task-4-manual",
+        fieldset: {
+          legend: {
+            text: "Were you able to do this?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["process-c-nil-task-4-manual"] == "Yes")
+        },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["process-c-nil-task-4-manual"] == "No")
+          }
+        ]
+      }) }}
+
+
+      <!------------ ––– ------------>
+
+  </div>
+</div>
+
+
+    {{ govukButton({
+      text: "Save and finish",
+      classes: "govuk-!-margin-top-4"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

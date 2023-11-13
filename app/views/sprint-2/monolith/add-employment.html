@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  🗼 Admissions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>
+        {{ govukBackLink({
+          href: "/sprint-2/monolith/index#employments"
+        }) }}
+      </p>
+
+      <form method="post" class="form">
+        <h1 class="govuk-heading-xl">
+          Add employment
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: "Name"
+          },
+          id: "name",
+          name: "name",
+          classes: "govuk-input--width-20",
+          value: employment["name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Earnings"
+          },
+          id: "earnings",
+          name: "earnings",
+          classes: "govuk-input--width-20",
+          value: employment["earnings"]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "employment-frequency",
+          name: "employment-frequency",
+          fieldset: {
+            legend: {
+              text: "Payment frequency"
+            }
+          },
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (employment['employment-frequency'] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (employment['employment-frequency'] == "Every two weeks")
+            },
+            {
+              value: "Every four weeks",
+              text: "Every four weeks",
+              checked: (employment['employment-frequency'] == "Every four weeks")
+            },
+            {
+              value: "Every month",
+              text: "Every month",
+              checked: (employment['employment-frequency'] == "Every month")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

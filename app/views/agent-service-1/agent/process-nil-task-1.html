@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-nil-task-list" method="post" class="form">
+        <input type="hidden" name="nil-task-1-passed" value="passed">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-l govuk-!-margin-bottom-4">[Task 1] Identity and contact</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Check against CAM, CIZ and SL [Prior to IDV solution]<br> This is appropriate dummy text</p>
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        {{ govukCheckboxes({
+          idPrefix: "nil-task-1-outcome",
+          name: "nil-task-1-outcome",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Function: Highlight whats wrong",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+              },
+              hint: {
+                text: "Select all that apply"
+
+
+          },
+          items: [
+            {
+              value: "1",
+              text: "Applicant Name",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "2",
+              text: "Applicant DOB/age",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "3",
+              text: "Telephone",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "4",
+              text: "4",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "5",
+              text: "5",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "6",
+              text: "Bank last four digits",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "7",
+              text: "7",
+              checked: data['nil-task-1-outcome'] == "1"
+            },
+            {
+              value: "8",
+              text: "8",
+              checked: data['nil-task-1-outcome'] == "1"
+            }
+          ]
+        }) }}
+
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

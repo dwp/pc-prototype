@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-mobile-can-call-router" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action">Agent: </span>The number the claimant is calling from <strong>{{ data["telephone-number"] }}</strong>.</h2>
+      </div>
+
+
+      {% set yesOtherNumber %}
+      {{ govukInput({
+        label: {
+          text: "What is this other number?"
+        },
+        id: "contact-mobile-can-call-number",
+        name: "contact-mobile-can-call-number",
+        classes: "govuk-input--width-20",
+        attributes: {
+          maxlength: 20
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-mobile-can-call-yn",
+        name: "contact-mobile-can-call-yn",
+        fieldset: {
+          legend: {
+            html: "Can we call you on " + data["contact-text-yn-number"] + " to give you updates on your claim or to ask for more information?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-mobile-can-call"] == "Yes")
+          },
+          {
+            value: "No different number",
+            text: "No – call on a different number",
+            checked: (data["contact-mobile-can-call"] == "No different number"),
+            conditional: {
+              html: yesOtherNumber
+            }
+            },
+          {
+          value: "No",
+          text: "No – do not call",
+          checked: (data["contact-other-number-landline"] == "Opt out of telephone")
+        }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

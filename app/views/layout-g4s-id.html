@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% set mainClasses = 'id-bar' %}
+
+{% block beforeContent %}
+
+<!--
+{{ govukPhaseBanner({
+  tag: {
+    text: "Testing only [G4s]",
+    classes: "govuk-tag--g4s-user-reseach"
+  },
+  html: 'No information is stored or sent using this service.'
+}) }}
+ -->
+
+<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  {% if data["full-name"] %}<li class="li-id-bar govuk-!-font-size-16">Name:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>{% endif %}
+  {% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">NI:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>{% endif %}
+  {% if data["dob-day"] %}<li class="li-id-bar govuk-!-font-size-16">DOB:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year'] }}</strong></li>{% endif %}
+
+  {% if data["full-name"] %}<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">{% endif %}
+
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+
+<!-- <div class="govuk-width-container ">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+{% if data["pensions"] == "S1 11 22 33 A" %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% elif data["earnings"] == "S2 11 22 33 B" %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% elif data['nino'] == 'S3 11 22 33 C' %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% elif data['nino'] == 'S4 11 22 33 D' %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% elif data['nino'] == 'S5 11 22 33 E' %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% elif data['nino'] == 'S6 11 22 33 F' %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% else %}
+<p class="govuk-body govuk-!-padding-bottom-6"><strong>Can't continue?</strong><br><a href="handover-early">Handover claim early</a></p>
+{% endif %}
+
+
+</div>
+</div> -->
+
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "clear-filter",
+          text: "End call and restart"
+        },
+        {
+          href: "accessibility-statement",
+          text: "Accessibility"
+        }
+      ]
+    }
+  }) }}
+{% endblock %}
+
+
+
+<!--
+{% if data["who-is-caller"] !== "Yourself" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+
+{% if data["national-insurance-return"] == "Yes" %}<ul class="ul-id-bar govuk-body govuk-!-margin-top-4 govuk-!-margin-bottom-0">
+  <li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>
+  <li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>
+  {% if data["who-is-caller-name"] %}<li class="li-id-bar govuk-!-font-size-16">Caller:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['who-is-caller-name'] }}</strong></li>{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-section-break-id-bar">
+{% endif %}
+<br>
+-->
+
+<!-- {% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">Claimant:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['full-name'] }} </strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar govuk-!-font-size-16">NI number:</li> <li class="li-id-bar-item govuk-!-font-size-19"><strong>{{ data['nino'] }}</strong></li>{% endif %}
+{% if data["nino"] %}<li class="li-id-bar-item govuk-!-font-size-19 verticalLine"><br></li>{% endif %} -->
+
+<!-- IF caller is claimant -->

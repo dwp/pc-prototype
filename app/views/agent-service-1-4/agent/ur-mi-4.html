@@ -1,0 +1,73 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">Service statistics</h1>
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p> -->
+
+    </div>
+  </div>
+
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
+    <!-- {% include "agent-service-1-4/agent/mi-stats.html" %} -->
+
+  </div>
+
+
+
+  <!---------------------------------------->
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-8">
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+
+      {% include "agent-service-1-4/agent/mi-menu.html" %}
+    </div>
+
+
+      <div class="govuk-grid-column-two-thrids">
+        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Average processing times</h3>
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">For all of your Pension Credit needs</p> -->
+
+
+
+          <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-3">From submission to outcome</h3>
+          <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">2 days, 1 hour</h3>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-3">Processing a claim once pulled<br>from the queue [cohort one]</h3>
+        <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">4 minutes, 12 seconds</h3>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-margin-bottom-3">Completing an individual subtask</h3>
+      <h3 class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-0">30 seconds</h3>
+      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+        </div>
+
+
+      </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+{% endblock %}

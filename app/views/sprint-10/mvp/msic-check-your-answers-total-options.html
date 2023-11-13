@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefit-overview - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-hospital-check-yn" method="post" class="form">
+
+      <input type="hidden" name="benefits-complete" value="in-progress"/>
+
+        <h1 class="govuk-heading-xl">Total option test</h1>
+
+        <p class="govuk-body"><a href="msic-check-your-answers-total-seaham">Option A: Tested in Seaham</a></p>
+        <p class="govuk-body"><a href="msic-check-your-answers-total-b1">Option B1: Cash under 10k (Show total)</a></p>
+        <p class="govuk-body"><a href="msic-check-your-answers-total-b2">Option B2: Cash ± 10k (Can't show total due non-calculable accounts)</a></p>
+
+
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

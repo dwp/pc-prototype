@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="DOC-claim-idoc-yn" method="post">
+
+
+        <div class="govuk-panel--agent">
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Agent: Use the following guide to work out the best start date for the claimant</h1>
+
+          <p class="govuk-body">Discuss how any of the following changes, they may affect the claim and ask whether they want to make a claim from this date or choose a different date.</p>
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Check in CAM for:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+              <li>An IDOC date if one exists</li>
+                </ul>
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Check in SearchLight for:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+              <li>Previous Pension Credit claims</li>
+              <li>Other benedits / AAA/PIP/DLA started</li>
+                </ul>
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Check in SearchLight and discuss:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Changes to where they live</li>
+            <li>Changes to who lives with the claimant / separated from partner</li>
+            <li>Changes to income / Employment</li>
+              </ul>
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Have you spent longer than 4 weeks outside the UK since the date:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+             <li>You, a partner, child or qualifying young person was receiving medical treatment or convalescence = Can max backdate</li>
+             <li>In connection with the death of a partner, child or qualifying young person = Can max backdate</li>
+              <li>Something else, go into CAM or take claim from when they retuned to the UK</li>
+              </ul>
+      </div>
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <h2 class="govuk-heading-s govuk-!-padding-top-2 govuk-!-margin-bottom-1"></h2>
+      <p class="govuk-body"><a href="eject-error-reason">Claim completed in CAM</a></p>
+
+
+    </div>
+  </div>
+{% endblock %}

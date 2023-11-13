@@ -1,0 +1,80 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Date of claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <form action="claimant-details" method="post">
+
+
+
+
+          {% set claimdate %}
+
+          <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can claim up to 3 months in the past if you are eligible.</p>
+          <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>Changes that might affect when you can claim are:</strong></p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>when you reached your State Pension age</li>
+            <li>previous claims for Pension Credit or other benefits</li>
+            <li>changes to whether you live with a partner or anyone else</li>
+            <li>changes to the amount of money you have, your income or employment status</li>
+            <li>whether you have spent longer than 4 weeks outside the UK in the period you are claiming for, unless it was connected to medical treatment, convalescence or the death of a partner or child</li>
+              </ul>
+
+
+          {% endset %}
+
+        {{ govukDateInput({
+          id: "claim-date-of-claim",
+          namePrefix: "claim-date-of-claim",
+          fieldset: {
+            legend: {
+              html: "What date do you want your Pension Credit claim to start?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+            }
+          },
+          hint: {
+            html: claimdate
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["claim-date-of-claim-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["claim-date-of-claim-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["claim-date-of-claim-year"]
+            }
+          ]
+        }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue",
+          classes: "govuk-!-margin-top-4"
+        }) }}
+      </form>
+        <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

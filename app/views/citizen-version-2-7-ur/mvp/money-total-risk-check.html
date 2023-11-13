@@ -1,0 +1,174 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-risk-check-router" method="post" class="form">
+
+
+{{ govukCheckboxes({
+  idPrefix: "money-total-risk-check",
+  name: "money-total-risk-check",
+  fieldset: {
+    legend: {
+      text: "What accounts or investments do you have?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: "Select all that apply.",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "Low",
+      text: "National Savings and Investment products, such as Premium Bonds or Savings Certificates",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Investments, including shares ISAs",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Shares",
+      checked: (data["money-total-risk-check"] == "Shares")
+    },
+    {
+      value: "High",
+      text: "Money invested in unit trusts",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Income or capital bonds",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Money overseas",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "I have none of these",
+      checked: (data["money-total-risk-check"] == "None of these")
+    }
+  ]
+}) }}
+
+
+<!-- {{ govukCheckboxes({
+  idPrefix: "money-total-risk-check",
+  name: "money-total-risk-check",
+  fieldset: {
+    legend: {
+      text: "Tell us what accounts you use to store your money?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: "This will help us better understand how stable your financial situation is",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "Low",
+      text: "Current Accounts",
+      checked: (data["money-total-risk-check"] == "Current Accounts")
+
+    },
+    {
+      value: "Low",
+      text: "Savings or deposit accounts with a bank, building society",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Savings or deposit accounts with a credit union or the Post Office",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Premium Bonds, Income Bonds and residual accounts",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "National Savings and Investment products like Savings Certificates",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "money at home in cash",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "investments like ISAs",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Shares",
+      checked: (data["money-total-risk-check"] == "Shares")
+    },
+    {
+      value: "High",
+      text: "Money invested in unit trusts",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "income or capital bonds",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Any money overseas",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "Low",
+      text: "Something else",
+      checked: (data["money-total-risk-check"] == "Something else")
+    },
+    {
+      value: "Low",
+      text: "None of these",
+      checked: (data["money-total-risk-check"] == "None of these")
+    }
+  ]
+}) }} -->
+
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply for Pension Credit online</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You should <a href="https://www.gov.uk/new-state-pension/how-to-claim">claim your State Pension</a> first if you are entitled to one.</p>
+
+      <p></p>
+
+      <p class="govuk-heading-m govuk-!-margin-bottom-2">If you are not entitled to a State Pension call the<br>Pension Credit claim line.</p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 9:30am to 3:30pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0800 99 1234</li>
+        <li>Textphone: 0800 169 0133</li>
+      </ul>
+
+
+      {% include "citizen-version-1/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply for Pension Credit online</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">We need you to call us to make a claim that includes children or qualifying young people.</p>
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">Pension Credit claim line</h2>
+
+      <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0808 100 6165</li>
+        <li>Textphone (Text Relay): 0808 100 2198</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 10:00am to 4:00pm (closed on bank holidays).<br><a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers.</a></p>
+
+
+
+
+        <!---- UK ---->{% else %}
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Telephone: 0800 99 1234</li>
+          <li>Textphone: 0800 169 0133</li>
+        </ul>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-0">Monday to Friday, 9:30am to 6pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+        <!---- COUNTRY END ---->{% endif %}
+
+
+
+
+
+
+
+
+
+      {% include "citizen-version-2-4/mvp/survey.html" %}
+
+    </div>
+  </div>
+
+
+{% endblock %}

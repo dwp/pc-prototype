@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Not eligible! - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<p>
+  {{ govukBackLink({
+    href: "about-you"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-heading-xl">Not eligible!</p>
+  </div>
+</div>
+{% endblock %}

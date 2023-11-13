@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Notify CAS? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% if data["has-partner"] == "yes" %}
+  {% set backLink = "about-partner" %}
+{% else %}
+  {% set backLink = "about-you" %}
+{% endif %}
+
+<p>
+  {{ govukBackLink({
+    href: backLink
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-heading-xl">Notify CAS?</p>
+  </div>
+</div>
+{% endblock %}

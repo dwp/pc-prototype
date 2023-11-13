@@ -1,0 +1,79 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Test money
+      </h1>
+
+      <form method="get">
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "numberLanguage",
+          name: "numberLanguage",
+          fieldset: {
+            legend: {
+              text: "Language",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [{
+            value: "en",
+            text: "English",
+            checked: numberLanguage === "en"
+          }, {
+            value: "cy",
+            text: "Welsh",
+            checked: numberLanguage === "cy"
+          }]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Number you want to test",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example 150"
+          },
+          name: "numberToConvert",
+          value: numberToConvert
+        }) }}
+
+        {% if numberWords %}
+          <p class="govuk-inset-text">{{ numberWords }}</p>
+        {% endif %}
+
+        {{ govukInput({
+          label: {
+            text: "Money you want to test",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "For example 100.50"
+          },
+          name: "moneyToConvert",
+          value: moneyToConvert
+        }) }}
+
+        {% if moneyWords %}
+          <p class="govuk-inset-text">{{ moneyWords }}</p>
+        {% endif %}
+
+        {{ govukButton({
+          text: "Get words"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

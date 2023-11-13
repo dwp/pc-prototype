@@ -1,0 +1,307 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+
+    <h1 class="govuk-heading-xl">
+      Pensions: Check your answers
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Does the climant get War Disablement benefit?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ data["benefit-war-disablement-yn"] }}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="benefit-war-disablement-yn">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Date received
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          {{ data['benefit-war-disablement-yes-date-day'] + ' ' + (data['benefit-war-disablement-yes-date-month'] | getMonth) + ' ' + data['benefit-war-disablement-yes-date-year'] }}
+
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="benefit-war-disablement-yes">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+                        {% if data["benefit-war-disablement-payment-frequency"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Frequency
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["benefit-war-disablement-payment-frequency"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="benefit-war-disablement-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                              {% if data["benefit-war-disablement-amount"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Amount received
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["benefit-war-disablement-amount"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="benefit-war-disablement-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+
+
+
+
+
+
+
+            <br>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Does the climant get War Widows Pensions?
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["benefits-war-widows-pensions-yn"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="benefits-war-widows-pensions-yn">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Date received
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          {{ data['benefits-war-widows-pensions-yes-date-day'] + ' ' + (data['benefits-war-widows-pensions-yes-date-month'] | getMonth) + ' ' + data['benefits-war-widows-pensions-yes-date-year'] }}
+
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="benefits-war-widows-pensions-yes">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+                        {% if data["benefits-war-widows-pensions-payment-frequency"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Frequency
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["benefits-war-widows-pensions-payment-frequency"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="benefits-war-widows-pensions-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                              {% if data["benefits-war-widows-pensions-amount"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Amount received
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["benefits-war-widows-pensions-amount"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="benefits-war-widows-pensions-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+                  <br>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Does the climant get Industrial Injuries Disablement Benefit (IIDB)?
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["benefit-IIDB-yn"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="benefit-IIDB-yn">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Date received
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          {{ data['benefit-IIDB-yes-date-day'] + ' ' + (data['benefit-IIDB-yes-date-month'] | getMonth) + ' ' + data['benefit-IIDB-yes-date-year'] }}
+
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="claim-date-cam-idoc-yn">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+                        {% if data["benefit-IIDB-payment-frequency"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Frequency
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["benefit-IIDB-payment-frequency"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="benefit-war-disablement-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                              {% if data["benefit-IIDB-disablement-amount"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Amount received
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["benefit-IIDB-disablement-amount"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="benefit-war-disablement-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+<br>
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Does the claimant get Industrial Death Benefit?
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["benefit-industrial-death-benefit-yn"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="benefit-industrial-death-benefit-yn">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Date received
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                {{ data['benefit-industrial-death-benefit-yes-date-day'] + ' ' + (data['benefit-industrial-death-benefit-yes-date-month'] | getMonth) + ' ' + data['benefit-industrial-death-benefit-yes-date-year'] }}
+
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="benefit-industrial-death-benefit-yes">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+                              {% if data["benefit-industrial-death-benefit-payment-frequency"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Frequency
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["benefit-industrial-death-benefit-payment-frequency"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="benefit-industrial-death-benefit-yes">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if data["benefit-war-disablement-amount"] %}
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">
+                                              Amount received
+                                            </dt>
+                                            <dd class="govuk-summary-list__value">
+                                              {{ data["benefit-industrial-death-benefit-amount"] }}
+                                            </dd>
+                                            <dd class="govuk-summary-list__actions">
+                                              <a href="benefit-industrial-death-benefit-yes">
+                                                Change
+                                              </a>
+                                            </dd>
+                                          </div>
+                                          {% endif %}
+
+
+<br></dl></dl><br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="benefits-complete" value="true"/>
+
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

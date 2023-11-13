@@ -1,0 +1,144 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+<h2 class="govuk-heading-l govuk-!-margin-bottom-8">Benefits</h2>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-case-summary" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application processing</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Applicant is not waiting to hear about any other benefits</p>
+            <p class="govuk-body govuk-!-margin-bottom-4">Processor matched answer with SearchLight on 28th of February 2022</p>
+            <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">No open interest for qualifying benefits during the backdating period</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">Processor matched answer with SearchLight and ISCS on 28th of February 2022</p>
+          </div>
+      </div>
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <ul class="govuk-list class="">
+              <li class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application answers </li>
+              <li class="govuk-body govuk-!-font-weight-bold">Does anyone get Carer’s Allowance or the Carer’s Element of Universal Credit for looking after you?</li>
+              <li class="govuk-!-margin-bottom-4">No</li>
+
+              <li class="govuk-body govuk-!-font-weight-bold"> Have you applied for any benefits that you are waiting to hear about?</li>
+              <li class="govuk-!-margin-bottom-8">No</li>
+            </ul>
+          </div>
+      </div>
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Update checks</p>
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2"></p>
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "changed-name",
+          name: "changed-name",
+          fieldset: {
+            legend: {
+              text: "Applicant is not waiting to hear about any other benefits",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Check SearchLight"
+          },
+          items: [
+            {
+              value: "NotChanged",
+              text: "Not changed"
+            },
+            {
+              value: "Changed",
+              text: "Changed"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "changed-name",
+          name: "changed-name",
+          fieldset: {
+            legend: {
+              text: "No open interest for qualifying benefits during the backdating period",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Check SearchLight and ISCS"
+          },
+          items: [
+            {
+              value: "NotChanged",
+              text: "Not changed"
+            },
+            {
+              value: "Changed",
+              text: "Changed"
+            }
+          ]
+        }) }}
+
+
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+              {{ govukTextarea({
+                name: "more-detail",
+                id: "more-detail",
+                label: {
+                  text: "Notes",
+                  classes: "govuk-label--m",
+                  isPageHeading: true
+                },
+                hint: {
+                  text: "Include any new or corrected information within the backdating period"
+                }
+              }) }}
+            </div>
+          </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {{ govukButton({
+          text: "Done"
+        }) }}
+        <br> <a href="case-summary">...</a>
+
+      </div>
+
+
+
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="hrt-claimant-immigration-restrictions" method="post" class="form">
+
+        <input type="hidden" name="money-disregards-all-payments" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">What money do you have from payments and payouts?</h1>
+
+
+
+
+
+
+
+          {{ govukCheckboxes({
+            idPrefix: "money-disregards-payments-options",
+            name: "money-disregards-payments-options",
+            fieldset: {
+              legend: {
+                text: "",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "We might be able to ignore these amounts when working out your Pension Credit. Select all that apply."
+            },
+            items: [
+              {
+                value: "Option-1",
+                text: "Help for you to live independently in your own home or the community"
+              },
+              {
+                value: "Option-2",
+                text: "Corrections or compensation for an official error or for arrears of certain benefits"
+              },
+              {
+                value: "Option-3",
+                text: "Rectification of errors in Council Tax Reduction"
+              },
+              {
+                value: "Option-4",
+                text: "Help for you if you have been involved in an incident or emergency"
+              },
+              {
+                value: "Option-5",
+                text: "Home insurance policies to cover lost or damaged personal possessions"
+              },
+              {
+                value: "option-6",
+                text: "Support for you with the effects of a blood infection or vCJD"
+              },
+              {
+                value: "Option-7",
+                text: "Personal injury claims"
+              },
+              {
+                value: "Option-8",
+                text: "Compensation related to the second world war or service in the armed forces"
+              },
+              {
+                value: "Option-9",
+                text: "The Windrush Compensation Scheme"
+              }
+            ]
+          }) }}
+
+          <p class="govuk-!-font-size-19 govuk-!-padding-left-2 govuk-!-margin-top-0 govuk-!-margin-bottom-0">or</p>
+
+{{ govukCheckboxes({
+  idPrefix: "None",
+  name: "None",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-8 govuk-!-padding-top-0"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+  {
+    value: "Low",
+    text: "None of my money is from these",
+    checked: (data["pension-check"] == "None of these")
+  }
+  ]
+}) }}
+
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

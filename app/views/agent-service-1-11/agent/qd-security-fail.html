@@ -1,0 +1,60 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Security not passed</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 ">Tell the claimant you are ending the call and to ring back when they have the correct information.</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">
+        If they do not want to call back, they can write to: <br>
+        Freepost RTEY-GLCE-EGYE <br>
+        The Pension Service 4 <br>
+        Mail Handling Site A <br>
+        Wolverhampton <br>
+        WV98 1AG <br>
+      </p>
+
+
+      {{ govukButton({
+        text: "Finish"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

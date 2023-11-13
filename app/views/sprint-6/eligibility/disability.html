@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-summary" method="post" class="form">
+
+      <input type="hidden" name="disability-complete" value="in-progress"/>
+
+      {% set disabilities = data["disabilities"] or [] %}
+      {% set accessability = data["accessibility"] or [] %}
+
+      {{ govukCheckboxes({
+        idPrefix: "disabilities",
+        name: "disabilities",
+        fieldset: {
+          legend: {
+            text: "Do you need us to contact you in any different formats?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply:"
+        },
+        items: [
+          {
+            value: "Braille",
+            text: "Braille",
+            checked: (disabilities.includes("Braille"))
+          },
+          {
+            value: "Large print",
+            text: "Large print",
+            checked: (disabilities.includes("Large print"))
+          },
+          {
+            value: "Welsh",
+            text: "Welsh",
+            checked: (disabilities.includes("Welsh"))
+          },
+          {
+            value: "Textphone",
+            text: "Textphone",
+            checked: (disabilities.includes("Textphone"))
+          },
+
+          {
+            value: "Audio forms",
+            text: "Audio forms",
+            checked: (accessability.includes("Audioforms"))
+          },
+          {
+            value: "Sign language",
+            text: "Sign language",
+            checked: (accessability.includes("Signlanguage"))
+          },
+          {
+            value: "Induction loop",
+            text: "Induction loop",
+            checked: (accessability.includes("Inductionloop"))
+          },
+          {
+            value: "Local service contact",
+            text: "Local service contact",
+            checked: (accessability.includes("Localservicecontact"))
+          },
+          {
+            value: "Local service visit",
+            text: "Local service visit",
+            checked: (accessability.includes("Localservicevisit"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

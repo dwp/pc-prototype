@@ -1,0 +1,56 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Brian Harvey</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">SS110000A </h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">20 July 1955</h1>
+
+
+
+                <nav class="navigation-secondary govuk-!-margin-bottom-8">
+                    <ul>
+                      <li>
+                        <a href="sl-claim-a" class="active" aria-current="section">Personal details</a>
+                        <!-- <a href="case-load">Pension Credit claims</a> -->
+                      </li>
+                      <li>
+                        <!-- <a href="find-a-claim" class="active" aria-current="section">Find a claim</a> -->
+                        <a href="sl-claim-a-benefits">Benefits</a>
+                      </li>
+                      <li>
+                        <!-- <a href="stats" class="active" aria-current="section">Hot hot stats</a> -->
+                        <a href="sl-claim-a-income">Income</a>
+                      </li>
+
+
+                    </ul>
+                  </nav>
+
+
+                  {% include "searchlight/sl-1/sl-personal-details.html" %}
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  You do not have access to this service - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="case-load" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        You do not have access to this service
+      </h1>
+
+      <p class="govuk-body">Your line manager can request access for you using your user ID and office ID.</p>
+
+
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

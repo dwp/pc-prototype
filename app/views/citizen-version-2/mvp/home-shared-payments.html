@@ -1,0 +1,58 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pension-check" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you share the rent or mortgage for the place where you live with anyone other than your partner?</h1>
+        {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you share the rent or mortgage for the place where you live with anyone?</h1>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        name: "home-shared-payments",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-shared-payments"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-shared-payments"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

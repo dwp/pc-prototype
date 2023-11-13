@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefits-working-tax-credits-yn - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-working-tax-credits-yn-router" method="post" class="form">
+
+      <input type="hidden" name="employment-complete" value="in-progress"/>
+
+      {{ govukRadios({
+        idPrefix: "benefits-working-tax-credits-yn",
+        name: "benefits-working-tax-credits-yn",
+        fieldset: {
+          legend: {
+            html: "Do you get Working tax credits",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["benefits-working-tax-credits-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["benefits-working-tax-credits-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

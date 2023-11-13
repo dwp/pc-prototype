@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-manual-eed" method="post">
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Check SeachLight or PTP CAM
+          </strong>
+        </div>
+
+
+        {% set yesDate %}
+          {{ govukDateInput({
+            id: "alternate-date",
+            namePrefix: "alternate-date",
+            fieldset: {
+              legend: {
+                text: "What was the IDOC date?"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["alternate-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-idoc-yn",
+          name: "claim-date-idoc-yn",
+          fieldset: {
+            legend: {
+              text: "(Manual) Is there an (IDOC) Inital date of claim?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select one option."
+          },
+          items: [
+          {
+            value: "no-date",
+            text: "No",
+            checked: (data["claim-date-idoc-yn"] == "No")
+          },
+            {
+              value: "yes-date",
+              text: "Yes",
+              checked: (data["claim-date-idoc-yn"] == "Yes"),
+              conditional: {
+                html: yesDate
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

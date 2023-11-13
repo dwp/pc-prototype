@@ -1,0 +1,108 @@
+  {% extends "layout-assisted-digital-ur.html" %}
+
+  {% block pageTitle %}
+    Are you self employed? - Pension Credit
+  {% endblock %}
+
+  {% block header %}
+    {% include "includes/internal-header.html" %}
+  {% endblock %}
+
+  {% set mainClasses = "govuk-main-wrapper--l" %}
+
+  {% block content %}
+
+  {% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-other-money" method="post" class="form">
+
+      <!------------Legend------------>
+        {% set legendH1 %}
+
+        {% if
+          data["claim-filter"] == "Normal"
+          %}
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Did you have any income from self-employment between now and 3 months before {{ threeMonthsAgo | formatDate }}?</h1>
+          {% elif
+            data["claim-filter"] == "Today"
+            %}
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Did you have any income from self-employment between now and 3 months ago?</h1>
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Did you have any income from self-employment between now and 6 months ago?</h1>
+
+        {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are you self-employed?</h1>
+
+        {% endif %}
+
+        {% endset %}
+      <!------------Legend------------>
+
+
+      <!------------Legend------------>
+        {% set legendEmployment %}
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>What we need to kmow:</strong></p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">What is this money?</p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">How much is paid and how often?</p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">Who is paid the money? You/partner</p>
+
+        {% endset %}
+      <!------------Legend------------>
+
+      {% set selfEmploymentDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "Tell us what this income is, how much you are paid and how often you are paid."
+          },
+          hint: {
+            text: ""
+          },
+          id: "employment-check-yes-details",
+          name: "employment-check-yes-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "self-employed",
+        name: "self-employed",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["self-employed"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["self-employed"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

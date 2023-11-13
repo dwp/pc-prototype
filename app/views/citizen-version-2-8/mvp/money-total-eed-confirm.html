@@ -1,0 +1,66 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-eed-confirm-router" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+
+{% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Total amount of money you and your partner had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}</h1>
+{% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Total amount of money you had on  {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}</h1>{% endif %}
+
+
+           <!------------Legend--------------->
+
+           <p class="govuk-heading-l govuk-!-margin-bottom-2">{{ data['money-total-eed-value'] | formatMoney }}</p>
+           <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">{{ data['money-total-eed-value'] | formatMoneyToWords }}</p>
+
+           {{ govukRadios({
+             idPrefix: "money-total-eed-confirm",
+             name: "money-total-eed-confirm",
+             fieldset: {
+               legend: {
+                 text: "Is this amount correct?",
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["money-total-eed-confirm"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No",
+                 checked: (data["money-total-eed-confirm"] == "No")
+               }
+             ]
+           }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

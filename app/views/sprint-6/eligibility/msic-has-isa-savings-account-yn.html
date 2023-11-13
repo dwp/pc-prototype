@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any ISAs, TESSA, TOISAs and PEPs)? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-isa-savings-account-yn-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "msic-has-isa-savings-account-yn",
+        name: "msic-has-isa-savings-account-yn",
+        fieldset: {
+          legend: {
+            text: "Do you have any ISAs, TESSA, TOISAs and PEPs?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\"><strong>ISA</strong><br>
+                    An ISA is an Individual Savings Account. It works like a normal savings account, except you don’t pay any UK income or capital gains tax.
+                    <br><br><strong>TESSA</strong><br>
+                    A tax-exempt special savings account allowing savers to invest a certain amount in a bank or building society with no tax to pay on the interest.
+                    <br><br><strong>TOISA</strong><br>
+                    The TOISA was a form of cash ISA that could be opened using either capital that was originally invested in a TESSA and that had not been withdrawn, or with funds transferred from another TOISA
+                    <br><br><strong>PEP</strong><br>
+                    A personal equity plan (PEP) was an investment plan introduced in the U.K. that allowed people over the age of 18 to invest in shares of British companies.
+                    </hint><br>"
+            },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-has-isa-savings-account-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-has-isa-savings-account-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

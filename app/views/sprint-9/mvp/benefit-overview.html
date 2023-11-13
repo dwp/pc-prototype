@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefit-overview - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-all-yn" method="post" class="form">
+
+      <input type="hidden" name="benefits-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-xl"> Agent: Check in Searchlight and discuss any benefits or Tax Credits {{ data["full-name"] }} gets</h1>
+
+          <p class=govuk-body>If <strong>Searchlight</strong> shows an interest but no payment amounts, check <strong>Legacy</strong>, <strong>CPS</strong> and <strong>IIDB</strong>. Tell the claimant what you see.</p>
+      </div>
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

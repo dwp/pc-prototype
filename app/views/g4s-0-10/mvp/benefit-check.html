@@ -1,0 +1,115 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<!--- NI ROUTER --->
+{% if data['nino'] == 'SS 11 00 00 A' or data['nino'] == 'SS110000A' %}
+<form action="outcome" method="post" class="form">
+{% elif data['ab-check'] == 'C' %}
+<form action="income-separate" method="post" class="form">
+{% else %}
+<form action="benefit-check-router" method="post" class="form">
+{% endif %}
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        I'm just going to check any benefits you get
+      </h1>
+
+<!-- Dynamic ADP and Scoland  -->
+
+{% set legendScotland %}
+
+{% if data['resides-in-uk'] == 'Scotland' %}
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-0">The daily living component of Personal Independence Payment or Adult Disabilty Payment</p>
+{% else %}
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-0">The daily living component of Personal Independence Payment</p>
+{% endif %}
+
+{% endset -%}
+<!-- html: legendScotland -->
+
+
+{{ govukCheckboxes({
+  idPrefix: "benefit-check",
+  name: "benefit-check",
+  fieldset: {
+    legend: {
+      text: "Select any benefits the caller gets",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "",
+          classes: "govuk-fieldset__legend--xl"
+  },
+  items: [
+
+    {
+      value: "B",
+      text: "Attendance Allowance",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "B",
+      text: "Disability Living Allowance care component (middle or highest rate)",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "B",
+      text: "Personal Independence Payment daily living component",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "B",
+      html: "Adult Disability Payment daily living component",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "B",
+      text: "Armed Forces Independence Payment",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "CA",
+      text: "Carer's Allowance, including an underlying entitlement",
+      checked: (data["benefit-check"] == "CA")
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "None",
+      text: "None of these",
+      checked: (data["partner-benefit-check"] == "None"),
+      behaviour: "exclusive"
+    }
+
+  ]
+}) }}
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+
+</form>
+</div>
+{% endblock %}

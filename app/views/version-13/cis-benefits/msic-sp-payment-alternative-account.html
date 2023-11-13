@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which account do you want us to pay any Pension Credit into? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="msic-pc-payment-choose" method="post" class="form">
+      <input type="hidden" name="msic-sp-payment-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Details of the account you get you State Pension paid into
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of account"
+        },
+        id: "msic-sp-payment-alternative-account-name",
+        name: "msic-sp-payment-alternative-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+{{ govukInput({
+  label: {
+    html: "Amount in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+  },
+  id: "msic-sp-payment-alternative-account-EED",
+  name: "msic-sp-payment-alternative-account-EED",
+  classes: "govuk-input--width-20"
+}) }}
+
+{{ govukInput({
+  label: {
+  html: "Amount in this account on  <strong>" + '' | formatDate + "?</strong>"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-sp-payment-alternative-account-TODAY",
+  name: "msic-sp-payment-alternative-account-TODAY"
+}) }}
+
+
+<br>
+
+<br>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+{% set today = '' | formatDate %}
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+
+        <h1 class="govuk-heading-xl">Care home or nursing home details</h1>
+
+<br>
+
+{{ govukDateInput({
+  id: "notepad-care-nursing-home-admission-date",
+  namePrefix: "notepad-care-nursing-home-admission-date",
+  fieldset: {
+    legend: {
+      text: "What date were you admitted?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 31 12 2018."
+  },
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["admission-date-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["admission-date-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["admission-date-year"]
+    }
+  ]
+}) }}
+
+<br><br>
+
+{% set dischargeDate %}
+  {{ govukDateInput({
+    id: "dischargeDate",
+    namePrefix: "dischargeDate",
+    fieldset: {
+      legend: {
+        text: "What date do you expect to be discharged?"
+      }
+    },
+    hint: {
+      text: "For example, 31 12 2018."
+    },
+    items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: data["discharge-date-day"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: data["discharge-date-month"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: data["discharge-date-year"]
+      }
+    ]
+  }) }}
+{% endset %}
+
+{% set altDateNote %}
+{{ govukTextarea({
+  name: "notepad-care-nursing-home-status-more-detail",
+  id: "notepad-care-nursing-home-status-more-detail",
+  label: {
+    text: "Reason you do not know if your stay is temporary or permanent."
+  },
+  hint: {
+    text: "For example, you might be waiting for confirmation of a date that you will be discharged."
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "notepad-care-nursing-home-status",
+  name: "notepad-care-nursing-home-status",
+  fieldset: {
+    legend: {
+      text: "Do you live there permanently or temporarily?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+  items: [
+  {
+    value: "Permanent",
+    text: "Permanently",
+    checked: (data["notepad-care-nursing-home-status"] == "Permanent")
+  },
+  {
+    value: "Temporary",
+    text: "Temporarily",
+    checked: (data["dischargeDate"] == "Temporary"),
+    conditional: {
+      html: dischargeDate
+    }
+  },
+  {
+    value: "Don't know",
+    text: "Do not know",
+    checked: (data["notepad-care-nursing-home-status"] == "Dont know"),
+    conditional: {
+      html: altDateNote
+    }
+  }
+  ]
+}) }}
+
+<br>
+
+    {% set careHomefunding %}
+    {{ govukTextarea({
+      name: "notepad-care-nursing-home-funding-more-detail",
+      id: "notepad-care-nursing-home-funding-more-detail",
+      label: {
+        text: "How is your stay paid for?"
+      },
+      hint: {
+        text: "Do not include personal or financial information, like your National Insurance number or credit card details."
+      }
+    }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      idPrefix: "notepad-care-nursing-home-funding",
+      name: "notepad-care-nursing-home-funding",
+      fieldset: {
+        legend: {
+          text: "How is your stay in the nursing home or care home paid for?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+
+      items: [
+      {
+        value: "Local authority",
+        text: "Local authority",
+        checked: (data["notepad-care-nursing-home-funding"] == "Local authority")
+      },
+      {
+        value: "Self-funded",
+        text: "Self-funded",
+        checked: (data["notepad-care-nursing-home-funding"] == "Self-funded")
+      },
+      {
+        value: "Part Local authority and Self-funded",
+        text: "Part Local authority and part self-funded",
+        checked: (data["notepad-care-nursing-home-funding"] == "Part local authority and part self-funded")
+      },
+        {
+          value: "Other funding",
+          text: "Other funding",
+          checked: (data["notepad-care-nursing-home-funding"] == "Other funding"),
+          conditional: {
+            html: careHomefunding
+          }
+        }
+      ]
+    }) }}
+
+<br>
+
+
+{% set careHomefunding %}
+{{ govukTextarea({
+  name: "notepad-care-nursing-home-property-more-details",
+  id: "notepad-care-nursing-home-property-more-details",
+  label: {
+    text: "Details of any residential property that you own."
+  },
+  hint: {
+    text: "For example, you might own part of a home in shared ownership scheme."
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "notepad-care-nursing-home-property",
+  name: "notepad-care-nursing-home-property",
+  fieldset: {
+    legend: {
+      text: "Do you own a residential property?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+
+  items: [
+  {
+    value: "Yes",
+    text: "Yes",
+    checked: (data["notepad-care-nursing-home-property"] == "Yes")
+  },
+  {
+    value: "No",
+    text: "No",
+    checked: (data["notepad-care-nursing-home-property"] == "No")
+  },
+  {
+    value: "Other",
+    text: "Other",
+    checked: (data["notepad-care-nursing-home-property"] == "Other"),
+      conditional: {
+        html: careHomefunding
+      }
+    }
+  ]
+}) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}
+
+<!-- Ask the claimant for all the information you need, including:
+
+the date they were admitted
+whether their stay is temporary or permanent
+if the stay is temporary, the date they expect to be discharged
+whether their stay is funded by the local authority, self-funded or both
+whether they still own a property? (Mark: Can this be a separate check box to tailor the question in the capital section?)-->

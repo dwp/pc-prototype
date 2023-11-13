@@ -1,0 +1,128 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="case-next-claim" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Pension Credit claims</h1>
+    </div>
+  </div>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">There are <strong>13</strong> claims to download.</p>
+
+        {{ govukButton({
+          classes: "govuk-!-margin-top-4",
+          text: "Download next claim"
+        }) }}
+
+        </form>
+
+
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+              <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+
+<div>
+
+<p class="govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-padding-top-4 govuk-!-margin-bottom-4">Find a claim</p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Enter a National Insurance number. For example, ‘QQ 12 34 56 C’.</p>
+
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "search",
+                  name: "search",
+                  classes: "govuk-input--width-30 govuk-!-margin-bottom-0",
+                  value: data["search"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1 govuk-button--secondary govuk-!-margin-bottom-6",
+                  href: "case-load-claim-found"
+                }) }}
+
+                {{ govukButton({
+                  text: "Clear",
+                  classes: "govuk-button--secondary-clear",
+                  href: "case-load"
+                }) }}
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-top-2 govuk-!-margin-bottom-2">Claims found for: <strong>NA 11 22 33 C</strong></p>
+        <p class="govuk-body">Downloaded claims will be cleared from this list after 30 days</p>
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell govuk-20-percent">NI number</td>
+                  <td class="govuk-table__cell govuk-39-percent">Name</td>
+                  <td class="govuk-table__cell govuk-15-percent">Status</td>
+                  <td class="govuk-table__cell govuk-16-percent">Received</td>
+                  <td class="govuk-table__cell govuk-10-percent">Age (days)</td>
+                </tr>
+                </thead>
+
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                  <td class="govuk-table__cell">Mellon Adamson</td>
+                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">Downloaded</strong></td>
+
+                  <td class="govuk-table__cell">DD Sept 2020</td>
+                  <td class="govuk-table__cell"></td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                  <td class="govuk-table__cell">Mellon Adamson</td>
+                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey govuk-phase-banner__content__tag">To do</strong></td>
+
+                  <td class="govuk-table__cell">DD Sept 2020</td>
+                  <td class="govuk-table__cell">100</td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__cell">NA 11 22 33 c</th>
+                  <td class="govuk-table__cell">Mellon Adamson</td>
+                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--pink govuk-phase-banner__content__tag">Assigned</strong></td>
+
+                  <td class="govuk-table__cell">DD Sept 2020</td>
+                  <td class="govuk-table__cell">100</td>
+                </tr>
+
+
+
+              </table>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+{% endblock %}

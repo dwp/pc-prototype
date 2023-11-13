@@ -1,0 +1,233 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-4-3-1"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-4-3-1-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-16/agent/record-id.html" %}
+
+        <!--<span class="govuk-caption-m">(*Scenario 2*)</span>--> 
+        
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+   <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Which pension payment from
+          AVIVA should be used in the award decision?</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">The payment you select should represent
+          the income on the day the claim was submitted
+          (29 June 2023).</p>
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-3-1",
+          name: "process-c-nil-task-4-3-1",
+          fieldset: {
+            legend: {
+              
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Matched",
+              text: "1 June 2023, £350",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 May 2023, £350",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 April 2023, £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 March 2023, £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 February 2023, £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 January 2023, £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            }
+          ]
+        }) }}
+
+       <!--<br>
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-3-1",
+          name: "process-c-nil-task-4-3-1",
+          fieldset: {
+            legend: {
+              
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Matched",
+              text: "1 June 2023 - £350",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 May 2023 - £350",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 April 2023 - £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 March 2023 - £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 February 2023 - £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            },
+            {
+              value: "Matched",
+              text: "1 January 2023 - £320",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            }
+          ]
+        }) }}-->
+
+
+       <!--<br>
+        {{ govukRadios({
+          name: "sign-in",
+          fieldset: {
+            legend: {
+              
+            }
+          },
+          hint: {
+            
+          
+          },
+          items: [
+            {
+              value: "government-gateway",
+              text: "£350",
+              hint: {
+                text: "1 June 2023"
+              }
+            },
+            {
+              value: "government-gateway",
+              text: "£350",
+              hint: {
+                text: "1 May 2023"
+              }
+            },
+            {
+              value: "government-gateway",
+              text: "£320",
+              hint: {
+                text: "1 April 2023"
+              }
+            },
+            {
+              value: "government-gateway",
+              text: "£320",
+              hint: {
+                text: "1 March 2023"
+              }
+            },
+            {
+              value: "government-gateway",
+              text: "£320",
+              hint: {
+                text: "1 February 2023"
+              }
+            },
+            {
+              value: "govuk-verify",
+              text: "£320",
+              hint: {
+                text: "1 January 2023"
+              }
+            }
+          ]
+        }) }}-->
+
+         
+
+        <!--{{ govukRadios({
+          idPrefix: "process-c-nil-task-4-3-1",
+          name: "process-c-nil-task-4-3-1",
+          fieldset: {
+            legend: {
+              text: "Do the payment dates, frequency and net pay match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-3-1"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-3-1"] == "Matched")
+            }
+          ]
+        }) }}-->
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

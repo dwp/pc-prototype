@@ -1,0 +1,202 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-actions" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">I'm just going to check some details with you and explain your decision</h1>
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Date of claim",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "28 February 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Backdating period start date",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "28 November 2021",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                  {
+                    text: "Date processed",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "1 March 2022",
+                    classes: 'govuk-table--no-border'
+                  }
+                ],
+                [
+                {
+                  text: "Entitlement status",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "Not entitled",
+                  classes: 'govuk-table--no-border'
+                }
+                ]
+              ]
+            }) }}
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Open Searchlight and check the information on qualifying benefits and State Pension match.</h2>
+
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Qualifying benefits",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "No",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                  {
+                    text: "Weekly State Pension amount",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "£182",
+                    classes: 'govuk-table--no-border'
+                  }
+                ]
+              ]
+            }) }}
+
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Ask the citizen to confirm if they live with a partner and if they have any housing costs.</h2>
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                {
+                  text: "Living with partner",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "No",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Housing costs",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "None",
+                  classes: 'govuk-table--no-border'
+                }
+                ]
+              ]
+            }) }}
+
+
+            <div class="govuk-button-group">
+              {{ govukButton({
+                text: "Citizen has another query",
+                href: "qd-actions"
+              }) }}
+
+              {{ govukButton({
+                text: "Exit claim",
+                classes: "govuk-button--secondary",
+                href: "qd-help-explain"
+              }) }}
+            </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="handover" method="post" class="form">
+
+    {% if data["pensions"] == "Yes" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">[Pensions] Unlikey</h1>
+    {% elif data["earnings"] == "Yes" %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">[earnings] Unlikey</h1>
+    {% elif data['nino'] == 'S1 11 22 33 A' or data['nino'] == 'S1112233A'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">[SP / Benefit] Unlikey Too much income</h1>
+    {% elif data['nino'] == 'S5 11 22 33 E' data['nino'] == 'S5112233E'%}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Claimants scenario is massively complex, too much for G4s to handle = Handover to DWP</h1>
+    {% else %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">[Default] Unlikely</h1>
+    {% endif %}
+
+
+    {{ govukRadios({
+      idPrefix: "outcome-yn",
+      name: "outcome-yn",
+      fieldset: {
+        legend: {
+          text: "Given the outcome, does the citizen want to contine",
+          hint: "X",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      classes: "govuk-radios",
+      hint: {
+        html: ""
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["outcome-yn"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["outcome-yn"] == "No")
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      classes: "dont-print"
+    }) }}
+
+</form>
+</div>
+{% endblock %}

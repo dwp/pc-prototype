@@ -1,0 +1,139 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-changes-type-router" method="post" class="form">
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">What has changed?</h1>
+
+      <!--  <div class="govuk-inset-text">
+        <p class="govuk-body">Open Searchlight and check the information on qualifying benefits and State Pension match. Ask the citizen to confirm if they live with a partner and if they have any housing costs.</p>
+      </div>-->
+
+
+
+      {% if data['nino-known'] === 'yes' %}
+
+          {% set qdSp %}
+          {{ govukInput({
+            id: "qd-sp-amount",
+            name: "qd-sp-amount",
+            label: {
+              text: "How much State Pension is Jeff getting?",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            prefix: {
+              text: "£"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false,
+            value: data["qd-sp-amount"]
+          }) }}
+          {% endset -%}
+
+        {% else %}
+
+          {% set qdSp %}
+          {{ govukInput({
+            id: "qd-sp-amount",
+            name: "qd-sp-amount",
+            label: {
+              text: "How much State Pension is Oliver getting?",
+              classes: "govuk-label--s",
+              isPageHeading: true
+            },
+            prefix: {
+              text: "£"
+            },
+            classes: "govuk-input--width-5",
+            spellcheck: false,
+            value: data["qd-sp-amount"]
+          }) }}
+          {% endset -%}
+
+      {% endif %}
+
+
+
+
+      {{ govukCheckboxes({
+        idPrefix: "type",
+        name: "type",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-label-s"
+          }
+        },
+        hint: {
+          text: "Select all that have changed"
+        },
+        items: [
+          {
+            value: "benefits",
+            text: "Qualifying benefits",
+            checked: (data["type"] == "benefits")
+          },
+          {
+            value: "sp",
+            text: "State Pension",
+            checked: (data["type"] == "sp"),
+            conditional: {
+              html: qdSp
+            }
+          },
+          {
+            value: "partner",
+            text: "Living with a partner",
+            checked: (data["type"] == "partner")
+          },
+          {
+            value: "housing-costs",
+            text: "Housing costs",
+            checked: (data["type"] == "housing-costs")
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

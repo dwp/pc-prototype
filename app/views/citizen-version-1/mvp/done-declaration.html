@@ -1,0 +1,38 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="start" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You have not agreed to the declaration</h1>
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">We cannot take your claim for Pension Credit.</p>
+
+      {% include "citizen-version-1/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

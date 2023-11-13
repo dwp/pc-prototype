@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Shares - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Shares
+    </h1>
+    <form action="msic-shares-summary" method="post" class="form">
+      {{ govukInput({
+        label: {
+          text: "Name of company"
+        },
+        id: "msic-shares-account-name",
+        name: "msic-shares-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+          {{ govukInput({
+        label: {
+          text: "Total number of shares held"
+        },
+        id: "msic-shares-account-amount",
+        name: "msic-shares-account-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+
+
+  <div class="govuk-grid-column-one-third">
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <h3 class="govuk-heading-s" id="subsection-title">
+        This is using James' shares wizzard. No need to swap apps
+      </h3>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li>
+            <a class="govuk-link" href="#">
+              Source: Yahoo Finance TBC
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+</div>
+
+
+{% endblock %}

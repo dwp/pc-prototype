@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you own any property or land other than your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-second-property-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+  <span class="govuk-caption-m"></span>
+
+  <!------------HEADLINE------------>
+    {% set legend %}
+    {% if data["claim-filter"] == "Advanced or Today" %} Do you own any property or land other than your home? {% endif %}
+    {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you owned any property or land other than your home?{% endif %}
+    {% endset %}
+  <!------------HEADLINE------------>
+
+  {{ govukRadios({
+    idPrefix: "msic-second-property-yn",
+    name: "msic-second-property-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                    This means any properties you own or part-own in the UK or abroad, including timeshare properties.
+                  </p>"
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["msic-second-property-yn"] == "Yes")
+      },
+      {
+        value: "No",
+        text: "No",
+        checked: (data["msic-second-property-yn"] == "No")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+  {% include "version-13/gci-pensions/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+
+  <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+
+{% endblock %}

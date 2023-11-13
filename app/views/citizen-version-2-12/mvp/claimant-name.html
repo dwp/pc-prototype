@@ -1,0 +1,77 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  claimant-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claimant-sight-impaired" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <h3 class="govuk-heading-xl govuk-!-margin-bottom-4">What is your name?</h3>
+
+      <div class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-4">Use your full name that is shown on official documents. Do not use abbreviations or nicknames.
+
+            </div>
+
+      {{ govukInput({
+        label: {
+          html: "<strong>First name</strong>"
+        },
+        hint: {
+          text: ""
+        },
+        id: "first-name",
+        name: "First name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["first-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "<strong>Middle names</strong>"
+        },
+        hint: {
+          text: ""
+        },
+        id: "second-name",
+        name: "Second-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["second-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: "<strong>Last name</strong>"
+        },
+        hint: {
+          text: ""
+        },
+        id: "second-name",
+        name: "Second-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["second-name"]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

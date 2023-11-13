@@ -1,0 +1,49 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-6/mvp/landing">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">End the call</h1>
+
+      {% if data["pensions"] == "Yes" or data["earnings"] == "Yes" or data['nino'] == 'SS110000A' or data['nino'] == 'SS110000A' %}
+      <!-- <h1 class="govuk-heading-m govuk-!-margin-bottom-6">[Applicant not eligible]</h1> -->
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can contact us again if your circumstances change.</p>
+
+      {% else %}
+
+      <!-- <h1 class="govuk-heading-m govuk-!-margin-bottom-6">[Applicant is eligible but doesn't want to do full application now]</h1> -->
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can contact us again when you are ready to make your full application for Pension Credit.</p>
+      {% endif %}
+
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Thank you for calling the Department for Work and Pensions.</p>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Goodbye.</p>
+
+
+      {{ govukButton({
+      text: "Finish and close",
+      classes: "govuk-button--warning dont-print govuk-!-margin-top-6"
+      }) }}
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

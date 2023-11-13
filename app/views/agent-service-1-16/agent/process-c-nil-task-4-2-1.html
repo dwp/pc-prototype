@@ -1,0 +1,126 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-4-2-1"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-4-2-1-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-16/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">Task 3-1</span> -->
+        
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Check the pension payments from AVIVA</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">Claim submitted on 29 June 2023.</p>
+
+        {% from "govuk/components/table/macro.njk" import govukTable %}
+
+       {{ govukTable({
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Payment date (monthly)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Net pay",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 April 2023"
+              },
+              {
+                text: "£120"
+              }
+              ],
+              [
+                {
+                  text: "1 May 2023"
+                },
+                {
+                  text: "£120"
+                }
+              ],
+            [
+              {
+                text: "2 June 2023"
+              },
+              {
+                text: "£120"
+              }
+            ]
+          ]
+        }) }}
+
+    
+
+       
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-2-1",
+          name: "process-c-nil-task-4-2-1",
+          fieldset: {
+            legend: {
+              text: "Do the payment dates, frequency, and net pay match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-2-1"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-4-2-1"] == "Matched")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have any money in current, savings or investment accounts? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Summary
+    </h1>
+    <form action="property" method="post" class="form">
+      {% set numberOfShares = (data['number-of-shares'] or 1) %}
+
+      {% for i in range(0, numberOfShares) -%}
+        <h2 class="govuk-heading-m">Shares {{i + 1}}</h2>
+
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Company
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['share-company-' + i]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/new-claims/shares/{{i}}">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['share-type-' + i]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/new-claims/shares/{{i}}">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['share-amount-' + i]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/new-claims/shares/{{i}}">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['share-value-' + i]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/new-claims/shares/{{i}}">
+                Change
+              </a>
+            </dd>
+          </div>
+        </dl>
+      {%- endfor %}
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="/new-claims/shares/{{numberOfShares}}">
+          Add another
+        </a>
+      </p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  claimant-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-post-code-lookup" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Employment income</h1>
+
+      {% set legendName %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">How much is paid?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        id: "full-name",
+        name: "full-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["full-name"]
+      }) }}
+
+
+      {% set legendName %}
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-0">How often is it paid?</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        id: "full-name",
+        name: "full-name",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["full-name"]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

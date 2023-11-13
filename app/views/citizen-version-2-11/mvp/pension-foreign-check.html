@@ -1,0 +1,90 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pension-check" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      {% set dynamicH1 %}
+ {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Non-UK pensions</h1>
+ {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Non-UK pensions</h1>{% endif %}
+ {% endset %}
+
+      <!------------Legend--------------->
+
+
+      {% set dynamicHint %}
+      <p></p>
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">We need to know about any non-UK pensions you and your partner have paid into, including ones not taken yet. This includes:</p>
+
+      <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>private pensions</li>
+        <li>State Pensions</li>
+        <li>workplace pensions</li>
+      </ul>
+
+      {% else %}<p class="govuk-!-font-size-24">We need to know about any non-UK pensions you've paid into, including ones not taken yet. This includes:</p>{% endif %}
+
+      <ul class="govuk-!-font-size-19 govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+        <li>non-UK personal pensions</li>
+        <li>non-UK state pensions</li>
+        <li>non-UK workplace pensions</li>
+      </ul>
+
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Have you or your partner paid into any non-UK pensions?</p>
+      {% else %}<p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">Have you paid into any non-UK pensions?</p>{% endif %}
+
+ {% endset %}
+
+
+
+
+      {{ govukRadios({
+        name: "pension-foreign-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: dynamicHint
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["pension-foreign-check"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["pension-foreign-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

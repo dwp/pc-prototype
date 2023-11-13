@@ -1,0 +1,168 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-c-nil-task-4-y-edit-router" method="post" class="form">
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">What pension payments from <br> Peter Bates Marquees LTD do you want to use to work out the applicant's current income?</p>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4"> You can select one or more payments.</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">This application was submitted on Saturday 29 May 2022.</p>
+
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-10-percent"><strong>Select</strong></td>
+              <td class="govuk-table__cell govuk-50-percent"><strong>Payment date (once a year)</strong></td>
+              <td class="govuk-table__cell govuk-50-percent"><strong>Net pay</strong></td>
+
+            </tr>
+            </thead>
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell table-spacer">
+
+                {{ govukCheckboxes({
+                  idPrefix: "",
+                  name: "",
+                  classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                  fieldset: {
+                    legend: {
+                      text: "",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  items: [
+                    {
+                      value: " ",
+                      text: " "
+                    }
+                  ]
+                }) }}
+
+              </td>
+              <td class="govuk-table__cell table-spacer">1 June 2022</td>
+              <td class="govuk-table__cell table-spacer">£13,199.68</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell table-spacer">
+
+                  {{ govukCheckboxes({
+                    idPrefix: "",
+                    name: "",
+                    classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                    fieldset: {
+                      legend: {
+                        text: "",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--m"
+                      }
+                    },
+                    items: [
+                      {
+                        value: " ",
+                        text: " "
+                      }
+                    ]
+                  }) }}
+
+                </td>
+                <td class="govuk-table__cell table-spacer">1 June 2021</td>
+                <td class="govuk-table__cell table-spacer">£10,559.74</td>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer">
+
+                    {{ govukCheckboxes({
+                      idPrefix: "",
+                      name: "",
+                      classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                      fieldset: {
+                        legend: {
+                          text: "",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      items: [
+                        {
+                          value: " ",
+                          text: " "
+                        }
+                      ]
+                    }) }}
+
+                  </td>
+                  <td class="govuk-table__cell table-spacer">1 June 2020</td>
+                  <td class="govuk-table__cell table-spacer">£8,447.79</td>
+                  </tr>
+
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell table-spacer">
+
+                      {{ govukCheckboxes({
+                        idPrefix: "",
+                        name: "",
+                        classes: "govuk-checkboxes--small govuk-!-margin-0 govuk-!-margin-0",
+                        fieldset: {
+                          legend: {
+                            text: "",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                          }
+                        },
+                        items: [
+                          {
+                            value: " ",
+                            text: " "
+                          }
+                        ]
+                      }) }}
+
+                    </td>
+                    <td class="govuk-table__cell table-spacer">1 June 2019</td>
+                    <td class="govuk-table__cell table-spacer">£6,758.232</td>
+                    </tr>
+
+
+
+            </table>
+
+
+
+    </div>
+  </div>
+
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+
+</form>
+
+{% endblock %}

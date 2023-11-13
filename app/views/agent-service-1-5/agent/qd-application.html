@@ -1,0 +1,396 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'changes' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-5/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-5/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-6">Full application </h1>
+
+            {{ govukTable({
+              caption: "Applicant details",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Which country do you live in?"
+                  },
+                  {
+                    text: "England"
+                  }
+                ],
+                [
+                  {
+                    text: "Your date of birth"
+                  },
+                  {
+                    text: "[date]"
+                  }
+                ],
+                [
+                  {
+                    text: "What is your nationality as shown on your passport or travel document? "
+                  },
+                  {
+                    text: "British"
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Housing details",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Do you live permanently in a care home? "
+                  },
+                  {
+                    text: "No"
+                  }
+                ],
+                [
+                  {
+                    text: "Is any part of your care home funding provided by the local authority? "
+                  },
+                  {
+                    text: "No"
+                  }
+                ],
+                [
+                  {
+                    text: "Do you own the property you used to live in? "
+                  },
+                  {
+                    text: "Yes"
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Housing costs",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukTable({
+              caption: "People who live with you",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukTable({
+              caption: "Benefits",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+
+            {{ govukTable({
+              caption: "Employment",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukTable({
+              caption: "Self-employment",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukTable({
+              caption: "Pensions",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+            {{ govukTable({
+              caption: "Application continued",
+              captionClasses: "govuk-table__caption--m govuk-!-margin-bottom-1",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Question",
+                  classes: 'govuk-!-width-one-half'
+                },
+                {
+                  text: "Answer",
+                  classes: 'govuk-!-width-one-half'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "... "
+                  },
+                  {
+                    text: "..."
+                  }
+                ],
+                [
+                  {
+                    text: "..."
+                  },
+                  {
+                    text: "..."
+                  }
+                ]
+              ]
+            }) }}
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

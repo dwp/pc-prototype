@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  When do you want to apply from? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="name-and-nino" method="post">
+        {{ govukDateInput({
+          id: "claim-date",
+          namePrefix: "claim-date",
+          fieldset: {
+            legend: {
+              text: "When do you want your claim to start?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

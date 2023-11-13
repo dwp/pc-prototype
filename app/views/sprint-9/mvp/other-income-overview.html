@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you in paid employment? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="other-income-employment-yn" method="post" class="form">
+
+      <input type="hidden" name="employment-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-xl"> Agent: Check in Searchlight and discuss the earnings and income shown with {{ data["full-name"] }}</h1>
+          <p class=govuk-body>
+          {{ govukDetails({
+      summaryText: "What to do if the claimant tells you their income is wrong",
+      text: "Tell the claimant that you will use the figures you discussed for their claim. The information we have is from HMRC and they should contact HMRC to resolve any issues."
+    }) }}
+      </div>
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

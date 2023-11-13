@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "postcode-lookup"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {% if data["care-home-permanence"] == "yes" %}
+        What is the address of the care home that you live in?
+      {% else %}
+        What is your home address?
+      {% endif %}
+    </h1>
+
+    <form action="address-choice-router" method="post" class="form">
+      {{ govukSelect({
+        id: "address",
+        name: "address",
+        label: {
+          text: "Select an address"
+        },
+        items: [
+          {
+            value: "address-count",
+            text: "3 addresses found",
+            selected: (data["address"] == "address-count")
+          },
+          {
+            value: "221a",
+            text: "221A Baker Street",
+            selected: (data["address"] == "221a")
+          },
+          {
+            value: "221b",
+            text: "221B Baker Street",
+            selected: (data["address"] == "221b")
+          },
+          {
+            value: "222",
+            text: "222 Baker Street",
+            selected: (data["address"] == "222")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

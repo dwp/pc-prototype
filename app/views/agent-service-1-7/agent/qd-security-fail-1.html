@@ -1,0 +1,67 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="kbv-fail-1-router" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Enter the question they have failed on</h1>
+
+      {{ govukInput({
+        label: {
+          text: ""
+        },
+        hint: {
+          text: "For example, what is the name of your bank"
+        },
+        id: "security-fail-q1",
+        name: "security-fail-q1",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+        value: data["security-fail-q1"]
+      }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body govuk--version-control">A.2.9 Backdating test</p>
+
+    <h1 class="govuk-heading-xl">Apply for Pension Credit</h1>
+
+    <h2 class="govuk-heading-m">Start a Pension Credit application</h2>
+
+    <p class="govuk-body-m">This part of your application should take around <strong>20 minutes</strong> depending on your circumstances.</p>
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit
+
+    <p class="govuk-body"><strong>You will need to tell us about:</strong></p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your National Insurance number</li>
+      <li>any children you look after</li>
+      <li>any benefits you get</li>
+      <li>any pensions you get</li>
+      <li>any money, savings or investments you have, including balances, account and reference numbers</li>
+      <li>any second properties or land you own</li>
+      <li>earnings from employment and any other income. You can find this on your P45, P60 or any pay slips</li>
+      <li>details of the bank account you want any Pension Credit paid into</li>
+    </ul>
+
+-->
+
+
+      {{ govukButton({
+        text: "Start now",
+        href: "privacy-policy",
+        classes: "govuk-button--start govuk-!-margin-top-4 govuk-!-margin-bottom-2"
+      }) }}
+
+
+
+
+
+    <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+
+</div>
+{% endblock %}

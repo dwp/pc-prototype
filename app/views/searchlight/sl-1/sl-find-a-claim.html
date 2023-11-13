@@ -1,0 +1,161 @@
+{% extends "layout-fake-searchlight-find.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="sl-find-a-claim-router" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+      <h1 class="govuk-heading-m govuk-!-margin-top-4 sl-blue">SearchLight ProMax</h1>
+<h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-4">Look up a customer</h1>
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-0">Enter a National Insurance number. [USE ALL CAPS, NO SPACES]</p>
+<p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-top-0 govuk-!-margin-bottom-2">For example, ‘QQ 12 34 56 C’</p>
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "sl-find-a-claim",
+                  name: "sl-find-a-claim",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["sl-find-a-claim"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+              </div>
+            </div>
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+
+            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            <h1 class="govuk-heading-m govuk-!-margin-top-4 govuk-!-margin-bottom-4">Search for a customer</h1>
+
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-quarter">
+
+                {{ govukInput({
+                  label: {
+                    html: "Full name"
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "sl-name",
+                  name: "sl-name",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["sl-name"]
+                }) }}
+
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+
+                {{ govukInput({
+                  label: {
+                    html: "Date of birth"
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "sl-dob",
+                  name: "sl-dob",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["sl-dob"]
+                }) }}
+
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+
+                {{ govukInput({
+                  label: {
+                    html: "Post code"
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "sl-post-code",
+                  name: "sl-post-code",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["sl-post-code"]
+                }) }}
+
+              </div>
+
+              <div class="govuk-grid-column-one-quarter">
+                <p></p>
+              </div>
+            </div>
+
+
+              <a href="sl-claim-a" class="govuk-button govuk-button--secondary">Search customers</a>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+                {% set legendNI %}
+
+                SS110000A<br>
+                SS220000B<br>
+                SS330000C<br>
+                SS440000D<br>
+                SS550000E<br>
+                SS660000F
+
+                S1 11 22 33 A: Someone has MAX / OVER SP with no qualifying benefits<br><br>
+                S2 11 22 33 B: Someone has Low SP, Qualifying benefits, but too much income via Private pension<br><br>
+                S3 11 22 33 C: Someone has Low SP, Qualifying benefits, but too much income via Employment<br><br>
+                S4 11 22 33 D: Service charges = Fast tracked to DWP<br><br>
+                S5 11 22 33 E: Claimants scenario is massively complex, too much for G4s to handle = Handover to DWP<br><br>
+                S6 11 22 33 F: Low SP, Low Pensions, zero income = Classic PC. (edited)
+
+
+                {% endset -%}
+
+
+            {{ govukDetails({
+            summaryText: "NI scenarios",
+            html: legendNI
+            }) }}
+ -->
+
+
+
+
+
+{% endblock %}

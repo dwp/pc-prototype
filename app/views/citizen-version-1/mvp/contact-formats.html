@@ -1,0 +1,127 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="single-joint-check" method="post" class="form">
+
+      <input type="hidden" name="contact-formats-complete" value="in-progress"/>
+
+      {% set disabilities = data["disabilities"] or [] %}
+      {% set accessability = data["accessibility"] or [] %}
+
+      {% set textPhoneNumber %}
+      {{ govukInput({
+    label: {
+      html: "What is your textphone number?"
+    },
+    id: "contact-formats-text-phone-number",
+    name: "contact-formats-text-phone-number",
+    classes: "govuk-input--width-20 "
+  }) }}
+      {% endset -%}
+
+      {% set other %}
+
+      {{ govukTextarea({
+        id: "contact-other-details",
+        name: "contact-other-details",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+        label: {
+          html: legendPreviousName
+        },
+        hint: {
+          text: "Tell us any other ways we can help you when we contact you."
+        }
+      }) }}
+
+      {% endset -%}
+
+
+
+      {{ govukCheckboxes({
+        classes: "govuk-!-margin-bottom-4",
+        idPrefix: "contact-formats",
+        name: "contact-formats",
+        fieldset: {
+          legend: {
+            text: "Do you need us to contact you in any different formats?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          text: "Select all that apply:"
+        },
+        items: [
+{
+          value: "Audio",
+          text: "Audio",
+          checked: (data["contact-formats"] == "Audio")
+        },
+          {
+            value: "Braille",
+            text: "Braille",
+            checked: (data["contact-formats"] == "Braille")
+          },
+
+          {
+            value: "Large print",
+            text: "Large print",
+            checked: (data["contact-formats"] == "Large print")
+          },
+
+          {
+            value: "Sign language",
+            text: "Sign language",
+            checked: (data["contact-formats"] == "Sign language")
+          },
+          {
+            value: "TextPhone",
+            text: "TextPhone",
+            checked: (data["contact-formats"] == "TextPhone"),
+                  conditional: {
+                    html: textPhoneNumber
+                  }
+          },
+          {
+            value: "TypeTalk",
+            text: "TypeTalk",
+            checked: (data["contact-formats"] == "Sign language (Loop)")
+          },
+          {
+            value: "Other",
+            text: "Other",
+            checked: (data["contact-other-check"] == "Other"),
+                  conditional: {
+                    html: other
+                  }
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+  </div>
+</div>
+{% endblock %}

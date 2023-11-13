@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which account do you want us to pay any Pension Credit into? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-frequency" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Details of the account your State Pension is paid into
+      </h1>
+
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment-alternative-account-type",
+        name: "msic-pc-payment-alternative-account-type",
+        fieldset: {
+          legend: {
+            text: "What type of account is this?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+        {
+            value: "Current account",
+            text: "Current account",
+            checked: data['msic-pc-payment-alternative-account-type'] == "Current account"
+          },
+          {
+          value: "Savings account",
+          text: "Savings account",
+          checked: data['msic-pc-payment-alternative-account-type'] == "Savings account"
+        },
+        {
+          value: "Post Office",
+          text: "Post Office Card Account",
+          checked: data['msic-pc-payment-alternative-account-type'] == "Post Office"
+        },
+        {
+          value: "Credit Union account",
+          text: "Credit union account",
+          checked: data['msic-pc-payment-alternative-account-type'] == "Credit Union account"
+        },
+        {
+          value: "Other type of account",
+          text: "Other type of account",
+          checked: data['msic-pc-payment-alternative-account-type'] == "Other type of account"
+        }
+
+        ]
+      }) }}
+
+
+{{ govukInput({
+label: {
+html: "Amount in this account <strong>today</strong>"
+},
+id: "msic-pc-payment-alternative-account-balance",
+name: "msic-pc-payment-alternative-account-balance",
+classes: "govuk-input--width-20"
+}) }}
+
+
+{% set percentageField %}
+{{ govukInput({
+  label: {
+    text: "Amount of money that is yours"
+  },
+  id: "msic-pc-payment-alternative-account-stake",
+  name: "msic-pc-payment-alternative-account-stake",
+  classes: "govuk-input--width-10"
+}) }}
+{% endset %}
+
+{{ govukRadios({
+idPrefix: "msic-pc-payment-alternative-account-owner",
+name: "msic-pc-payment-alternative-account-owner",
+fieldset: {
+  legend: {
+    text: "Account owner",
+    classes: "govuk-fieldset__legend--s"
+  }
+},
+items: [
+  {
+    value: "You",
+    text: "Only you"
+  },
+  {
+    value: "Joint account",
+    text: "Joint account",
+    conditional: {
+      html: percentageField
+    }
+  }
+]
+}) }}
+
+<br>
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+<p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How often would you like to be paid? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-summary" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+
+
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment-frequency",
+        name: "msic-pc-payment-frequency",
+        fieldset: {
+          legend: {
+            text: "How often would you like us to pay your Pension Credit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+
+        items: [
+          {
+            value: "Every week",
+            text: "Every week",
+            checked: (data["msic-pc-payment-frequency"] == "Every week")
+          },
+          {
+            value: "Every two weeks",
+            text: "Every two weeks",
+            checked: (data["msic-pc-payment-frequency"] == "Every two weeks")
+          },
+          {
+            value: "Every four weeks",
+            text: "Every four weeks",
+            checked: (data["msic-pc-payment-frequency"] == "Every four weeks")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+    </div>
+{% endblock %}

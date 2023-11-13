@@ -1,0 +1,70 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  claimant-national-insurance - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefit-check" method="post" class="form">
+
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <div class="moj-banner">
+      <div class="moj-banner__message">
+      <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Find this information in SearchLight. Do not ask caller.</h2>
+      </div>
+      </div>
+
+      {% set legendH1 %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        What is your National Insurance number?
+      </h1>
+
+      {% endset -%}
+
+      {{ govukInput({
+        id: "state-pension-amount",
+        name: "state-pension-amount",
+        label: {
+          html: "How much is their weekly State Pension?",
+          classes: "govuk-label--xl",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter an amount in pounds and pence, for example 150.00"
+        },
+        prefix: {
+          text: "£"
+        },
+        value: data["state-pension-amount"],
+        classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+        spellcheck: false
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-padding-bottom-6"><a href="XXX">@pete I need help?</a></p> -->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+<br>
+<br>
+Pretend max SP = 175.00
+
+  </div>
+</div>
+{% endblock %}

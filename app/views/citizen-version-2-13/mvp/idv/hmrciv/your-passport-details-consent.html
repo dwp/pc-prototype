@@ -1,0 +1,85 @@
+{% set isHMRCPage = false %}
+
+{% extends "layout-assisted-digital-removed.html" %}
+
+{% block pageTitle %}
+    We need your consent to share your information
+{% endblock %}
+
+{% block serviceName %}
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <span class="govuk-caption-l">
+                Passport details
+            </span>
+            <h1 class="govuk-heading-l">
+                We need your consent to share your information
+            </h1>
+
+            <p class="govuk-body">
+                To help confirm your identity using your passport details, we need your consent to share your information with the HM Passport Office.
+            </p>
+
+            <p class="govuk-body">
+                The Passport Office will compare the information you enter with their records, and confirm with HMRC if the details are correct.
+            </p>
+
+            <p class="govuk-body">
+                For details about how we store and process your information, see our <a href="" class="govuk-link">privacy notice (opens in new window or tab)</a>.
+            </p>
+
+            <form method="post" novalidate action=
+                {% if payslip === "true" %} 
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?payslip=true"
+                {% elif p60 === "true" %}
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?p60=true" 
+                {% elif sa === "true" %} 
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?sa=true" 
+                {% elif tcKbv === "true" %} 
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?tcKbv=true"
+                {% elif tuKbv === "true" %} 
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?tuKbv=true" 
+                {% elif voiceId === "true" %} 
+                    "/citizen-version-2-13/mvp/idv/hmrciv/your-passport-details?voiceId=true"
+                {% endif %}
+            >
+
+                {{ govukRadios({
+                classes: "govuk-radios--inline",
+                name: "changed-name",
+                fieldset: {
+                    legend: {
+                    text: "Do you consent to HMRC sharing your passport details with the HM Passport Office?",
+                    isPageHeading: false,
+                    classes: "govuk-body"
+                    }
+                },
+                items: [
+                    {
+                    value: "yes",
+                    text: "Yes"
+                    },
+                    {
+                    value: "no",
+                    text: "No"
+                    }
+                ]
+                }) }}
+
+
+                {{ govukButton({
+                text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

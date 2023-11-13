@@ -1,0 +1,108 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="hrt-claimant-immigration-restrictions" method="post" class="form">
+
+        <input type="hidden" name="money-disregards-all-payments" value="in-progress"/>
+
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Have you ever had any of these payments and payouts?</h1>
+
+
+
+
+
+ <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+        <!------------H2 LEGEND------------>
+        {% set dynamicH2 %}
+        <p class="govuk-body">Money you were paid for errors in Rate Relief</p>
+        {% endset %}
+      <!------------Legend--------------->
+
+        <!---- UK ---->{% else %}
+
+        <!------------H2 LEGEND------------>
+          {% set dynamicH2 %}
+          <p class="govuk-body">Money you were paid for errors in Council Tax Reduction
+          </p>
+          {% endset %}
+        <!------------Legend--------------->
+
+        <!---- COUNTRY END ---->{% endif %}
+
+          {{ govukCheckboxes({
+            idPrefix: "money-disregards-payments-options",
+            name: "money-disregards-payments-options",
+            fieldset: {
+              legend: {
+                text: "",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: "We might be able to ignore these amounts when working out your Pension Credit. Select any that apply."
+            },
+            items: [
+              {
+                value: "Option-1",
+                text: "Money to help you live independently in your own home or the community"
+              },
+              {
+                value: "Option-2",
+                text: "Compensation or repayments relating to DWP benefits, where the wrong amount was paid, or where they were paid late"
+              },
+              {
+                value: "Option-3",
+                html: dynamicH2
+              },
+              {
+                value: "Option-4",
+                text: "Money you were paid because you were affected by a terrorist incident"
+              },
+              {
+                value: "Option-5",
+                text: "Money from a home insurance policy to cover lost or damaged personal possessions"
+              },
+              {
+                value: "option-6",
+                text: "Compensation for the effects of a vaccine or a blood infection, such as vCJD or HIV"
+              },
+              {
+                value: "Option-7",
+                text: "Money from a personal injury claim"
+              },
+              {
+                value: "Option-8",
+                text: "Compensation related to  World War 2 or service in the armed forces"
+              },
+              {
+                value: "Option-9",
+                text: "Money from the Windrush Compensation Scheme"
+              }
+            ]
+          }) }}
+
+     
+
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

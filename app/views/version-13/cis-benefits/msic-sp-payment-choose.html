@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-sp-payment-choose-router" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+
+      {{ govukRadios({
+        idPrefix: "msic-sp-payment-choose",
+        name: "msic-sp-payment-choose",
+        fieldset: {
+          legend: {
+            text: "Which account have you asked us to pay your State Pension paid into?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+
+        items: [
+        {
+          value: "Bank name A / £100.00",
+          html: "<strong> " + data['msic-all-current-account-name-' + 0] + "</strong> " + "account with a balance of" + "<strong> " + data['msic-all-current-account-amount-' + 0] + "</strong>",
+          checked: (data["msic-sp-payment-choose"] == "Bank name A / £100.00")
+        },
+          {
+            value: "Bank name B / £100.00",
+            html: "<strong> " + data['msic-all-current-account-name-' + 0] + "</strong> " + "account with a balance of" + "<strong> " + data['msic-all-current-account-amount-' + 0] + "</strong>",
+            checked: (data["msic-sp-payment-choose"] == "Bank name B / £100.00")
+          },
+          {
+            value: "A different account",
+            text: "A different account",
+            checked: (data["msic-sp-payment-choose"] == "A different account")
+          }
+
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

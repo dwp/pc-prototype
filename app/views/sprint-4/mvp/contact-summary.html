@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Contact preferences summary
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      {% if data["mobile"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Mobile phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["mobile"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["mobile"]%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can we text the mobile
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["can-text"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-text">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["landline"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["landline"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["email"]%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["email"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Alternative formats
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["disabilities"] %}
+            {{ data["disabilities"].join(", ") }}
+          {% else %}
+            None
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="disability">
+            Change
+          </a>
+        </dd>
+      </div>
+
+
+
+
+    </dl>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="contact-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

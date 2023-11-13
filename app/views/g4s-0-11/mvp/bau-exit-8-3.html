@@ -1,0 +1,63 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="bau-exit-8-3-router">
+
+        <span class="govuk-caption-m">[8-3]</span>
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Thanks for that, I am just going to take a look</h1>
+                <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Use CAM to help answer the query. If there is not enough information available, request a DWP call back.</p>
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "bau-exit-8-3",
+          name: "bau-exit-8-3",
+          fieldset: {
+            legend: {
+              text: "Did you resolve the query?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: data['bau-exit-8-3'] == "Yes"
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: data['bau-exit-8-3'] == "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button dont-print"
+        }) }}
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

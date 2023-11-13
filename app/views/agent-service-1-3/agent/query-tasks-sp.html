@@ -1,0 +1,201 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% set nav = 'tasks' %}
+{% include "agent-service-1-3/agent/query-primary-nav.html" %}
+
+{% set nav = 'tasks' %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="" method="post" class="form">
+
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+
+          <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">State pension</h3>
+
+
+          <!--
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application processing</p>
+                  <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">State Pension amount exceeded applicable amount for the whole backdating period</p>
+                  <p class="govuk-body govuk-!-margin-bottom-8"> State Pension checked against SearchLight and ISCS on 28th of February 2022</p>
+                  <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">State Pension amount exceeded applicable amount when processed</p>
+                  <p class="govuk-body govuk-!-margin-bottom-8">State Pension checked against SearchLight on 28th of February 2022</p>
+
+                </div>
+            </div>-->
+
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+
+                  <ul class="govuk-list class="">
+                    <li class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Application answers </li>
+                    <li class="govuk-body govuk-!-font-weight-bold">Tell us about your UK State Pension</li>
+                    <li class="govuk-!-margin-bottom-8">I am receiving my UK State Pension</li>
+                  </ul>
+
+
+                  {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: "change-sp-backdate",
+                    name: "change-sp-backdate",
+                    fieldset: {
+                      legend: {
+                        text: "State Pension amount exceeded applicable amount for the whole backdating period - 10 January 2022 to 28 February 2022",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--s"
+                      }
+                    },
+                    hint: {
+                      text: "Check SearchLight"
+                    },
+                    items: [
+                      {
+                        value: "Unchanged1",
+                        text: "Unchanged",
+                        checked: (data["change-sp-backdate"] == "Unchanged1")
+                      },
+                      {
+                        value: "Change",
+                        text: "Changed",
+                        checked: (data["change-sp-backdate"] == "Changed1")
+                      }
+                    ]
+                  }) }}
+                  {{ govukDetails({
+                    classes : "govuk-!-margin-bottom-8",
+                    summaryText: "View relevant application processing details",
+                    text: "State Pension amount exceeded applicable amount for the whole backdating period: 10 January 2022 to 28 February 2022. Checked against SearchLight and ISCS on 28th of February 2022."
+                  }) }}
+
+                  {{ govukRadios({
+                    classes: "govuk-radios--inline ",
+                    idPrefix: "change-sp",
+                    name: "change-sp",
+                    fieldset: {
+                      legend: {
+                        text: "State Pension amount exceeded applicable amount when processed",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--s"
+                      }
+                    },
+                    hint: {
+                      text: "No"
+                    },
+                    items: [
+                      {
+                        value: "Unchanged1",
+                        text: "Unchanged",
+                        checked: (data["change-sp-backdate"] == "Unchanged1")
+                      },
+                      {
+                        value: "Changed1",
+                        text: "Changed",
+                        checked: (data["change-sp-backdate"] == "Changed1")
+                      }
+                    ]
+                  }) }}
+
+                  {{ govukDetails({
+                    classes : "govuk-!-margin-bottom-8",
+                    summaryText: "View relevant application processing details",
+                    text: "State Pension amount exceeded applicable amount when processed. Checked against SearchLight and ISCS on 28th of February 2022."
+                  }) }}
+
+                  <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-full">
+
+                        {{ govukTextarea({
+                          name: "sp-notes",
+                          id: "sp-notes",
+                          label: {
+                            text: "Notes",
+                            classes: "govuk-label--m",
+                            isPageHeading: true
+                          },
+                          hint: {
+                            text: "Include any new or corrected information within the backdating period"
+                          }
+                        }) }}
+                </div>
+            </div>
+
+
+            <div class="govuk-button-group">
+              {{ govukButton({
+                text: "No changes",
+                href: "query-tasks"
+              }) }}
+
+              {{ govukButton({
+                text: "Changes made",
+                classes: "govuk-button--secondary",
+                href: "query-tasks-review-bau"
+              }) }}
+            </div>
+
+            <!--
+            {{ govukCheckboxes({
+              classes: "govuk-checkboxes--small ",
+              idPrefix: "reviewRouter",
+              name: "reviewRouter",
+              fieldset: {
+                legend: {
+                  text: "",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "changed",
+                  text: "Change recorded",
+                  checked: (data["reviewRouter"] == "bau")
+                },
+                {
+                  value: "test",
+                  text: "Not recorded",
+                  checked: (data["reviewRouter"] == "test")
+                }
+              ]
+            }) }}-->
+
+
+
+                </div>
+            </div>
+
+          </div>
+
+          </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+    </form>
+{% endblock %}

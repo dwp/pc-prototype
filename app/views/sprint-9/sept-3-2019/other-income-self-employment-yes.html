@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="other-income-equity-release-yn" method="post">
+
+        <span class="govuk-caption-m"></span>
+        <h1 class="govuk-heading-xl">Self-employment details</h1>
+
+
+      {{ govukTextarea({
+      label: {
+        html: "Description of income, how much it is and how often it is paid"
+      },
+      id: "other-income-self-employment-yes-details",
+      name: "other-income-self-employment-yes-details",
+      classes: "govuk-input--width-100"
+    ,
+  hint: {
+    text: ""
+  }
+    }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="start" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You have an existing Pension Credit claim</h1>
+
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-4">To make changes to your existing claim, call the Pension Credit helpline:</h2>
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0800 731 0469</li>
+        <li>Textphone: 0800 169 0133</li>
+      </ul>
+
+      <p>Monday to Friday, 9:30am to 3:30pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+      {% include "citizen-version-1/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+  </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,1133 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <h1 class="govuk-heading-xl">
+    Money, savings and investments summary
+  </h1>
+
+  {% if data["msic-bank-current-account-name"] %}
+
+  <h3 class="govuk-heading-m">
+    Bank current accounts (1)
+  </h3>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      <!------>  <h3 class="govuk-heading-s">
+          {{ data["msic-bank-current-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Last four digits"
+            },
+            value: {
+              text: data['msic-bank-current-account-last-digits']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-bank-current-account",
+                  text: "Change Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Total"
+            },
+            value: {
+              text: data['msic-bank-current-account-amount']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-bank-current-account",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Who's account?"
+            },
+            value: {
+              text: data['current-owner']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-bank-current-account",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "% stake in joint account"
+            },
+            value: {
+              text: data['msic-bank-current-account-stake']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-bank-current-account-stake",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+  </div></div>
+
+<!----------------------------------------------------->
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  {% endif %}
+<!----------------------------------------------------->
+
+{% if data["msic-buildings-current-account-name"] %}
+
+<h3 class="govuk-heading-m">
+  Building society current accounts (1)
+</h3>
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+<!------>  <h3 class="govuk-heading-s">
+    {{ data["msic-buildings-current-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Last four digits"
+      },
+      value: {
+        text: data['msic-buildings-current-account-last-digits']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-building-current-account",
+            text: "Change / Remove",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Total"
+      },
+      value: {
+        text: data['msic-buildings-current-account-amount']
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Who's account?"
+      },
+      value: {
+        text: data['current-owner']
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "XXXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "% stake in joint account"
+      },
+      value: {
+        text: data['msic-buildings-current-account-stake']
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-buildings-current-account-stake",
+            text: "",
+            visuallyHiddenText: "XXXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+</div></div>
+
+<!----------------------------------------------------->
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+{% endif %}
+<!----------------------------------------------------->
+{% if data["msic-post-office-account-amount"] %}
+
+<h3 class="govuk-heading-m">
+  Post office accounts (1)
+</h3>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        Post Office account<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-post-office-card-account-amount']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-post-office-card-account",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Who's account?"
+          },
+          value: {
+            text: data['current-owner']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "% stake in joint account"
+          },
+          value: {
+            text: data['msic-post-office-card-account-stake']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+
+    {% if data["msic-bank-savings-account-name"] %}
+
+    <h3 class="govuk-heading-m">
+      Bank savings account (1)
+    </h3>
+
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        {{ data["msic-bank-savings-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Last four digits"
+          },
+          value: {
+            text: data['msic-bank-savings-account-last-digits']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-bank-savings-account",
+                text: "Change Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-bank-savings-account-amount']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Who's account?"
+          },
+          value: {
+            text: data['current-owner']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "% stake in joint account"
+          },
+          value: {
+            text: data['msic-bank-savings-account-stake']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+    {% if data["msic-buildings-current-account-name"] %}
+
+    <h3 class="govuk-heading-m">
+      Building society savinings accounts (1)
+    </h3>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        {{ data["msic-buildings-current-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Last four digits"
+          },
+          value: {
+            text: data['msic-buildings-current-account-last-digits']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-buildings-savings-account",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-buildings-current-account-amount']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Who's account?"
+          },
+          value: {
+            text: data['current-owner']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "% stake in joint account"
+          },
+          value: {
+            text: data['msic-buildings-current-account-stake']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-buildings-current-account-stake",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+    {% if data["msic-premium-bond-account-name"] %}
+
+    <h3 class="govuk-heading-m">
+      Premium Bonds (1)
+    </h3>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        {{ data["msic-premium-bond-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Details"
+          },
+          value: {
+            text: data['msic-premium-bond-account-name']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-premium-bond-account",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Last four digits"
+          },
+          value: {
+            text: data['msic-premium-bond-account-last-digits']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Value of Premium Bonds"
+          },
+          value: {
+            text: data['msic-premium-bond-account-total-bonds']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+    {% if data["msic-isa-savings-account-name"] %}
+
+    <h3 class="govuk-heading-m">
+      ISAs, TESSAs, TOISA and PEPs accounts summary (1)
+    </h3>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        {{ data["msic-isa-savings-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Last four digits"
+          },
+          value: {
+            text: data['msic-isa-savings-account-last-digits']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-isa-savings-account",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Total"
+          },
+          value: {
+            text: data['msic-isa-savings-account-amount']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+        }) }}
+
+      </div></div>
+
+      <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+      <!----------------------------------------------------->
+      {% if data["msic-capital-bond-company-name"] %}
+
+      <h3 class="govuk-heading-m">
+        Capital bond accounts (1)
+      </h3>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      <!------>  <h3 class="govuk-heading-s">
+          {{ data["msic-capital-bond-company-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Value of capital bonds"
+            },
+            value: {
+              text: data['msic-capital-bond-account-total-bonds']
+            },
+            actions: {
+              items: [
+              {
+                href: "msic-capital-bond-account",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+      </div></div>
+
+      <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+      <!----------------------------------------------------->
+      {% if data["msic-shares-account-name"] %}
+
+      <h3 class="govuk-heading-m">
+        Shares Accounts (1)
+      </h3>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      <!------>  <h3 class="govuk-heading-s">
+          {{ data["msic-shares-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Total number shares held"
+            },
+            value: {
+              text: data['msic-shares-account-amount']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-shares-account",
+                  text: "Change Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Who's account?"
+            },
+            value: {
+              text: data['current-owner']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "% stake in joint account"
+            },
+            value: {
+              text: data['msic-shares-account-stake']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+      </div></div>
+
+      <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+      <!----------------------------------------------------->
+      {% if data["msic-trust-account-name"] %}
+
+      <h3 class="govuk-heading-m">
+        Unit trust accounts (1)
+      </h3>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          {{ data["msic-trust-account-name"] }}<p class="govuk-body"><!--<a href="msic-trust-account" class="govuk-link">Remove</a>--></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Total number of units"
+            },
+            value: {
+              text: data['msic-trust-account-units']
+            },
+            actions: {
+              items: [
+                {
+                  href: "unittrust-account",
+                  text: "Change Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Amount"
+            },
+            value: {
+              text: data['msic-trust-account-value']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-trust-account",
+                  text: "",
+                  visuallyHiddenText: "XXXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+      </div></div>
+
+      <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+      <!----------------------------------------------------->
+      {% if data["msic-cash-at-home-amount"] %}
+
+      <h3 class="govuk-heading-m">
+        Cash at home, abroad and recived as a lump sum
+      </h3>
+
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-third">
+          <!------>  <h3 class="govuk-heading-s">
+              Cash at home<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+            </h3></div>
+
+
+          <div class="govuk-grid-column-two-thirds">
+
+            {{ govukSummaryList({
+              rows: [
+              {
+                key: {
+                  text: "Total"
+                },
+                value: {
+                  text: data['msic-cash-at-home-amount']
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "msic-cash-at-home",
+                      text: "Change Remove",
+                      visuallyHiddenText: "XXX"
+                    }
+                  ]
+                }
+              }
+              ]
+            }) }}
+
+      </div></div>
+
+    <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+    <!----------------------------------------------------->
+
+    {% if data["msic-cash-other-abroad-detail"] %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      <!------>  <h3 class="govuk-heading-s">
+          Any other money held in this country or abroad<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Total"
+            },
+            value: {
+              text: data['msic-cash-other-abroad-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-cash-other-abroad",
+                  text: "Change Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+      </div></div>
+
+    <!----------------------------------------------------->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      {% endif %}
+    <!----------------------------------------------------->
+
+    {% if data["msic-cash-lump-sum-detail"] %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      <!------>  <h3 class="govuk-heading-s">
+      Lump sum (From insurance payments eg.)<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Total"
+            },
+            value: {
+              text: data['msic-cash-lump-sum-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-cash-lump-sum",
+                  text: "Change Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+
+    {% if data["msic-second-property-value"] %}
+
+  <br><br>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-s">
+        Property 1<p class="govuk-body"><!--<a href="msic-trust-account" class="govuk-link">Remove</a>--></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            text: "1007"
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-second-property",
+                text: "Change / Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: ""
+          },
+          value: {
+            text: "Mountain Drive"
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: ""
+          },
+          value: {
+            text: "Gotham "
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: ""
+          },
+          value: {
+            text: "New York State (US)"
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: ""
+          },
+          value: {
+            text: "."
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Value"
+          },
+          value: {
+            text: data['msic-second-property-value']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+    </div></div>
+
+    <!----------------------------------------------------->
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    {% endif %}
+    <!----------------------------------------------------->
+
+
+
+
+
+
+
+<!----------------------------------------------------->
+
+        <h3 class="govuk-heading-m">
+          Add any additional account<a href="add-account-type" class="govuk-link">
+              (Link to all accounts)
+            </a>
+        </h3>
+
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+
+
+  <form action="msic-all-money-accounts-summary" method="post">
+    <input type="hidden" name="money-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+  </form>
+{% endblock %}

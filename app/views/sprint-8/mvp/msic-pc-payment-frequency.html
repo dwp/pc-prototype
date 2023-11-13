@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How often would you like to be paid? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-summary" method="post" class="form">
+
+      
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment-frequency",
+        name: "msic-pc-payment-frequency",
+        fieldset: {
+          legend: {
+            text: "How often would you like your Pension Credit to be paid to you",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">We know about the account your State Pension is paid into."
+            },
+        items: [
+          {
+            value: "Every week",
+            text: "Every week",
+            checked: (data["msic-pc-payment-frequency"] == "Every week")
+          },
+          {
+            value: "Every two week",
+            text: "Every two week",
+            checked: (data["msic-pc-payment-frequency"] == "Every two week")
+          },
+          {
+            value: "Every four weeks",
+            text: "Every four weeks",
+            checked: (data["msic-pc-payment-frequency"] == "Every four weeks")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

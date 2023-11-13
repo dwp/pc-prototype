@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money and savings over 10 thousand pounds - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<h1 class="govuk-heading-xl">
+  Money and savings over 10 thousand pounds
+</h1>
+<!----Headline---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Total Money
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Value:/th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    £{{ data["total-amount"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["MoneyOver10k-savings-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Money / Cash
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["MoneyOver10k-savings-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Savings
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-savings-more-detail"] }}
+  </p>
+
+  </div>
+
+
+<!----End 1/3 + 2/3 ----></div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["MoneyOver10k-investments-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Investments
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-investments-more-detail"] }}
+  </p>
+
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+
+
+
+<!----Add more
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+---->
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="money-summary-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+
+  </div>
+</div>
+<!----Break---->
+
+{% endblock %}

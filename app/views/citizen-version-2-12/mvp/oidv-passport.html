@@ -1,0 +1,111 @@
+{% extends "layout-oidv.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="oidv-p60" method="post" class="form">
+
+      <!------------DYNAMIC HEADER------------>
+        {% set dynamicHead %}
+          {% if data["oidv-who"] == "Someone else" %}
+            <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Does the applicant have a valid UK passport?</h2>
+        {% else %}
+            <h2 class="govuk-heading-xl govuk-!-margin-bottom-0">Do you have a valid UK passport?</h2>
+          {% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+      <!------------DYNAMIC HINT------------>
+        {% set dynamicHint %}
+          {% if data["oidv-who"] == "Someone else" %}
+            <p class="govuk-hint">The applicants passport to be valid it must not have passed the expiry date.</p>
+        {% else %}
+            <p class="govuk-hint">For your passport to be valid it must not have passed the expiry date.</p>
+          {% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+    {{ govukRadios({
+      idPrefix: "oidv-passport",
+      name: "oidv-passport",
+      fieldset: {
+        legend: {
+          html: dynamicHead,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+        }
+      },
+      hint: {
+        html: dynamicHint
+      },
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["oidv-passport"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["oidv-passport"] == "No")
+        }
+      ]
+    }) }}
+
+
+<!-- {{ govukCheckboxes({
+  idPrefix: "start-check",
+  name: "start-check",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+
+    {
+      value: "confirm",
+      text: "I confirm I have this information ready",
+      checked: (data["start-check"] == "confirm")
+
+    }
+  ]
+}) }} -->
+
+
+
+     <!--  {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8",
+       isStartButton: true
+     }) }} -->
+
+
+     {{ govukButton({
+       text: "Continue"
+     }) }}
+     <p class="govuk-body govuk-!-padding-top-2"><a href="oidv-end"></a></p>
+
+
+
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="ur-home" method="post" class="form">
+        <input type="hidden" name="nil-task-2-passed" value="passed">
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-6">Your progress on this case has now been saved</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">You can return to any unfinished cases in <strong>My cases.</strong></p>
+
+
+    </div>
+  </div>
+
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "My home page"
+    }) }}
+
+
+    {{ govukButton({
+    text: "My cases",
+    classes: "govuk-button--secondary",
+    href: "ur-cases"
+    }) }}
+
+  </div>
+
+  </form>
+
+{% endblock %}

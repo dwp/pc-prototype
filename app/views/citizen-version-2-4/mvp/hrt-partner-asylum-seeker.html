@@ -1,0 +1,65 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hrt-partner-asylum-seeker-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+            {{ govukRadios({
+              idPrefix: "hrt-partner-asylum-seeker",
+              name: "hrt-partner-asylum-seeker",
+              fieldset: {
+                legend: {
+                  text: "Is your partner an asylum seeker?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-4"
+                }
+              },
+              classes: "govuk-radios",
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (data["hrt-partner-asylum-seeker"] == "Yes")
+                          },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (data["hrt-partner-asylum-seeker"] == "No")
+                }
+              ]
+            }) }}
+
+
+              <br>
+
+              {{ govukButton({
+                text: "Continue"
+              }) }}
+            </form>
+
+              </div>
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

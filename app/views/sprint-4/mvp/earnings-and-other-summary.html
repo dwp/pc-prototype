@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Earnings, self-employed and other income - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<h1 class="govuk-heading-xl">
+  Earnings and self-employment summary
+</h1>
+<!----Headline---->
+
+
+<!----Headline---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Were you self-employed on this date: 00.00.2018
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Yes/No</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-selfEmployment" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+
+</div>
+</div>
+<!----End 1/3 + 2/3 ---->
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Self-employment information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-selfEmployment" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["selfEmployment-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["otherIncome-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Other income
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-otherIncome" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["otherIncome-more-detail"] }}
+  </p>
+
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+<!----Add more
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+---->
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<br><br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="earnings-and-other-summary" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+
+  </div>
+</div>
+<!----Break---->
+
+{% endblock %}

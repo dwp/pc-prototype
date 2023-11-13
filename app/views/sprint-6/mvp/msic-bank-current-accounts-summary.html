@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings and investments - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-m">Money, savings and investments</span>
+    Bank current accounts summary<br>
+  </h1>
+  <!----Headline---->
+
+  <form action="msic-bank-current-accounts-summary-router" method="post">
+    <h3 class="govuk-heading-m">
+      Accounts
+    </h3>
+    <br><br>
+
+    {% set count = data["account-count"] or 0 %}
+
+    {% for i in range(0, count) -%}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <h3 class="govuk-heading-s">
+          {{ data["msic-bank-current-account-name-" + i] }}
+          </h3>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          {{ govukSummaryList({
+            rows: [
+            {
+              key: {
+                text: "Last four digits"
+              },
+              value: {
+                text: data['msic-bank-current-account-last-digits-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "Change Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Total"
+              },
+              value: {
+                text: data['msic-bank-current-account-amount-' + i] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Who's account?"
+              },
+              value: {
+                text: data['current-owner-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "% stake in joint account"
+              },
+              value: {
+                text: data['msic-bank-current-account-stake-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account-stake",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+        </div>
+      </div>
+    {%- endfor %}
+
+<!--------------------------------------------------------------------------------->
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+  <br><br>
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "add-another-current",
+    name: "add-another-current",
+    fieldset: {
+      legend: {
+        text: "Do you want to add another account?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

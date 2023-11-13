@@ -1,0 +1,88 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hrt-partner-other-details" method="post">
+
+      <h1 class="govuk-heading-xl">
+        Address not found
+      </h1>
+
+
+
+
+  {% call govukFieldset({
+    legend: {
+      text: "What is your partner's sponsor's address?",
+      classes: "govuk-fieldset__legend--m",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ govukInput({
+      label: {
+        html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+      },
+      id: "address-line-1",
+      name: "address-line-1"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+      },
+      id: "address-line-2",
+      name: "address-line-2"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Town or city"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-town",
+      name: "address-town"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "County"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "address-county",
+      name: "address-county"
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Postcode"
+      },
+      classes: "govuk-input--width-10",
+      id: "hrt-partner-address-postcode",
+      name: "hrt-partner-address-postcode"
+    }) }}
+
+  {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

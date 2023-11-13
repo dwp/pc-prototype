@@ -1,0 +1,206 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+How to Claim - Pension Credit
+{% endblock %}
+
+
+{% block header %}
+<!-- Blank header with no service name for the start page -->
+{{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Working, jobs and pensions</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">State Pension</a>
+    </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">
+            Pension Credit
+        </h1>
+
+
+        {% include "citizen-version-2-4/mvp/gov-uk-menu.html" %}
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-l  class="govuk-heading-l">Changes you need to tell us about</h2>
+
+        <p class="govuk-body"> Your claim might be stopped or reduced if you do not report a change straight away.</p>
+
+  <p class="govuk-body"> A change of personal circumstances can include:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>starting or stopping work</li>
+    <li>going into hospital or a care home</li>
+    <li>people moving in or out of your house</li>
+    <li>moving house</li>
+    <li>changing your name</li>
+    <li>switching your bank account</li>
+    <li>changes to your Post Office card account</li>
+    <li>leaving England, Scotland and Wales for over 4 weeks</li>
+    <li>you start or stop looking after a child or young person under the age of 20</li>
+  </ul>
+
+  <p class="govuk-body"> You also need to report if your income or expenses change. This can include changes to:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>housing costs, for example ground rent or service charges</li>
+    <li>benefits that anyone living in your home gets - including getting a new benefit or a benefit being stopped</li>
+    <li>occupational or personal pensions - including if you start to get a new pension or take a lump sum out of your pension pot</li>
+    <li>other income, for example foreign pensions or Working Tax Credits</li>
+    <li>savings, investments or property</li>
+  </ul>
+
+  <p class="govuk-body"> Call the Pension Credit helpline if you’re not sure if you need to report a change.</p>
+
+  <h2 class="govuk-heading-l id="if-you-already-get-pension-credit-and-youre-in-a-couple">If you already get Pension Credit and you’re in a couple</h2>
+
+  <p class="govuk-body">You’ll continue to get Pension Credit if you were getting it before 15 May 2019 even if your partner is under State Pension age. If your entitlement stops for any reason, for example your circumstances change, you cannot start getting it again unless you (or your partner) are eligible under the new rules.</p>
+
+  <h2 class="govuk-heading-l id="if-you-already-get-pension-credit-and-youre-single">If you already get Pension Credit and you’re single</h2>
+
+  <p class="govuk-body">You’ll stop getting Pension Credit if you start living with a partner who is under State Pension age. You can start getting it again when your partner reaches State Pension age.</p>
+
+  <h2 class="govuk-heading-l id="pension-credit-if-you-leave-great-britain">Pension Credit if you leave Great Britain</h2>
+
+  <p class="govuk-body">Your entitlement to Pension Credit may be affected if you leave Great Britain (England, Scotland and Wales) for any period of time. Call the helpline before you go.</p>
+
+  <p class="govuk-body">You cannot get Pension Credit if you leave Great Britain permanently.</p>
+
+
+  <div class="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      You could be taken to court or have to pay a penalty if you give wrong information or do not report a change in your circumstances.
+    </strong>
+</div>
+
+  <h2 class="govuk-heading-l  id="how-to-report">How to report</h2>
+
+  <div class="contact">
+  <p class="govuk-body"> <strong>Pension Service helpline</strong><br>
+  Telephone: 0800 731 0469 <br>
+  Textphone: 0800 169 0133<br>
+  <a href="https://www.relayuk.bt.com">Relay UK</a> (if you cannot hear or speak on the phone): 18001 then 0800 731 0469<br>
+  Monday to Friday, 9:30am to 3:30pm<br>
+  <a href="/call-charges">Find out about call charges</a></p>
+  </div>
+
+  <p class="govuk-body"> You can also report by post. The address is on the letters you get about your Pension Credit.</p>
+
+  <h2 class="govuk-heading-l  id="changes-to-assessed-income-periods-aips">Changes to Assessed Income Periods (<abbr title="Assessed Income Periods">AIPs</abbr>)</h2>
+
+  <p class="govuk-body"> An <abbr title="Assessed Income Period">AIP</abbr> is a period of time when you do not have to report changes to your pensions, savings or investments. Your Pension Credit award letter tells you if you have one.</p>
+
+  <div class="govuk-inset-text">If you have an <abbr title="Assessed Income Period">AIP</abbr> with no end date you must still report changes to your personal circumstances, for example if you move into a care home.
+  </div>
+
+  <p class="govuk-body"> No new <abbr title="Assessed Income Periods">AIPs</abbr> have been set since April 2016. If you have one it may end earlier than the date on your Pension Credit award letter. If your <abbr title="Assessed Income Period">AIP</abbr> is ending early, the Department for Work and Pensions will send you a letter with your new end date.</p>
+
+  <p class="govuk-body"> Your <abbr title="Assessed Income Period">AIP</abbr> will not be renewed and you will need to report any changes to your circumstances when it ends. Read about the <a href="https://www.gov.uk/government/publications/pension-credit">changes to <abbr title="Assessed Income Periods">AIPs</abbr> including the new end dates</a>.</p>
+
+  <h2 class="govuk-heading-l  id="if-youve-been-paid-too-much">If you’ve been paid too much</h2>
+
+  <p class="govuk-body"> You may have to repay the money if you:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>did not report a change straight away</li>
+    <li>gave wrong information</li>
+    <li>were overpaid by mistake</li>
+  </ul>
+
+  <p class="govuk-body"> Find out how to <a href="/benefit-overpayments">repay the money you owe from benefit overpayment</a>.</p>
+
+
+
+
+        <h2 class="govuk-heading-l  class="govuk-heading-m">If you disagree with a decision</h2>
+        <p class="govuk-body"> You can <a href="https://www.gov.uk/mandatory-reconsideration">challenge a decision</a> about your claim.
+            This is called asking for mandatory
+            reconsideration.</p>
+        <div class="pagination">
+            <a href="gov-uk-start" class="gem-c-pagination__link" rel="prev">
+                <span class="gem-c-pagination__link-title">
+                    <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17"
+                        viewBox="0 0 17 13">
+                        <path fill="currentColor"
+                            d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z">
+                        </path>
+                    </svg>
+                    <span class="gem-c-pagination__link-text">
+                        Previous
+                    </span>
+                </span>
+                <span class="gem-c-pagination__link-divider visually-hidden">:</span>
+                <span class="gem-c-pagination__link-label">How to apply</span>
+            </a>
+
+        </div>
+
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {% include "citizen-version-2-4/mvp/gov-uk-side-menu.html" %}
+    </div>
+
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <div class="gem-c-contextual-footer">
+
+            <div class="gem-c-related-navigation">
+
+
+
+
+
+                <nav role="navigation" class="gem-c-related-navigation__nav-section"
+                    aria-labelledby="related-nav-topics-250e20b6" data-module="gem-toggle">
+
+                    <h2 class="govuk-heading-l  class="govuk-heading-s gem-c-related-navigation__sub-heading--footer">Explore the topic</h2>
+
+                    <ul class="gem-c-related-navigation__link-list" data-module="track-click">
+
+
+                        <li class="gem-c-related-navigation__link"><a
+                                class="gem-c-related-navigation__section-link gem-c-related-navigation__section-link--footer"
+                                data-track-category="relatedLinkClicked" href="../state_pension_browse">State
+                                Pension</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

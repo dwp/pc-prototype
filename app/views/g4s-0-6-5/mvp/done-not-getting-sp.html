@@ -1,0 +1,65 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Done, not getting SP - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+    <!---- NORTHERN IRELAND ---->
+    {% if data['resides-in-uk'] == 'Northern-Ireland' %}
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply online for Pension Credit</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You need to <a href="https://www.nidirect.gov.uk/articles/ways-claim-state-pension">get your State Pension</a> before you can apply online for Pension Credit.</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can still <a href="https://www.nidirect.gov.uk/articles/applying-pension-credit#:~:text=You%20can%20apply%20for%20Pension%20Credit%20by%20phone.,coronavirus%20(COVID%2D19)">apply for Pension Credit by phone or post</a>.</p>
+
+
+      <!---- ENGLAND, SCOTLAND, WALES ---->
+      {% else %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply online for Pension Credit </h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You need to <a href="https://www.gov.uk/get-state-pension">get your State Pension</a> before you can apply online for Pension Credit.</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can still <a href="https://www.gov.uk/pension-credit/how-to-claim">apply for Pension Credit by phone or post</a>.</p>
+
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="https://www.gov.uk/get-state-pension">apply online</a></li>
+        <li><a href="https://www.gov.uk/government/publications/the-basic-state-pension">print off and post the State Pension claim form to the Pension Service</a></li>
+          <li>phone the Pension Service to get a State Pension claim form posted to you</li>
+        </ul>
+
+      <p class="govuk-heading-m govuk-!-margin-bottom-2">Contact the Pension Service</p>
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Telephone: 0800 731 0469</li>
+          <li>Textphone: 0800 731 0464</li>
+        </ul>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 9:30am to 3:30pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p> -->
+
+        <!---- COUNTRY END ---->
+        {% endif %}
+
+
+
+    </div>
+  </div>
+{% endblock %}

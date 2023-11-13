@@ -1,0 +1,249 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">
+      Check your answers: Pensions and annuities
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                <dl class="govuk-summary-list govuk-summary-list--long">
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Do you have any pensions from employers in another country?
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            Yes / No
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="pensions-monolith">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+
+
+                        {% if data["foreign-pensions-yes"] %}
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Details of pensions from employers in another country
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  {{ data["foreign-pensions-yes"] }}
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="pensions-monolith">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+                              {% endif %}
+
+                  <br>
+
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Do you have any private pensions from another country?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Yes / No
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="pensions-monolith">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+
+
+                  {% if data["foreign-private-pension-yes"] %}
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Details of private pensions from another country
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["foreign-private-pension-yes"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="pensions-monolith">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+                        {% endif %}
+
+<br>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you have any state pensions from another country?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes / No
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="pensions-monolith">
+            Change
+          </a>
+        </dd>
+      </div>
+
+
+      {% if data["foreign-state-pension-yes"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Details of state pensions from another country
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["foreign-state-pension-yes"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="pensions-monolith">
+                  Change
+                </a>
+              </dd>
+            </div>
+            {% endif %}
+
+<br>
+
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Do you have any pensions that you have not claimed yet?
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      Yes / No
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+                      <a href="pensions-monolith">
+                        Change
+                      </a>
+                    </dd>
+                  </div>
+
+
+                  {% if data["pension-not-claimed-yes"] %}
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            Details of pensions that you have not claimed yet
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data["pension-not-claimed-yes"] }}
+                          </dd>
+                          <dd class="govuk-summary-list__actions">
+                            <a href="pensions-monolith">
+                              Change
+                            </a>
+                          </dd>
+                        </div>
+                        {% endif %}
+
+<br>
+
+
+                              <div class="govuk-summary-list__row">
+                                <dt class="govuk-summary-list__key">
+                                  Do you have any income from annuities?
+                                </dt>
+                                <dd class="govuk-summary-list__value">
+                                  Yes / No
+                                </dd>
+                                <dd class="govuk-summary-list__actions">
+                                  <a href="pensions-monolith">
+                                    Change
+                                  </a>
+                                </dd>
+                              </div>
+
+
+                              {% if data["annuities-yes"] %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Details of income from annuities
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data["annuities-yes"] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a href="pensions-monolith">
+                                          Change
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    {% endif %}
+
+<br>
+
+
+                                          <div class="govuk-summary-list__row">
+                                            <dt class="govuk-summary-list__key">
+                                              Do you have any other pensions?
+                                            </dt>
+                                            <dd class="govuk-summary-list__value">
+                                              Yes / No
+                                            </dd>
+                                            <dd class="govuk-summary-list__actions">
+                                              <a href="pensions-monolith">
+                                                Change
+                                              </a>
+                                            </dd>
+                                          </div>
+
+
+                                          {% if data["other-pension-yes"] %}
+                                                <div class="govuk-summary-list__row">
+                                                  <dt class="govuk-summary-list__key">
+                                                    Details of any other pensions
+                                                  </dt>
+                                                  <dd class="govuk-summary-list__value">
+                                                    {{ data["other-pension-yes"] }}
+                                                  </dd>
+                                                  <dd class="govuk-summary-list__actions">
+                                                    <a href="pensions-monolith">
+                                                      Change
+                                                    </a>
+                                                  </dd>
+                                                </div>
+                                                {% endif %}
+
+                                    <br>
+
+
+
+<br></dl></dl><br><br>
+
+    <form action="benefit-overview" method="post">
+      <input type="hidden" name="pensions-summary" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

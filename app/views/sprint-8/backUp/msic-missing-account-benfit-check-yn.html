@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  AGENT: Check benefits account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-missing-account-benfit-check-yn-router" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "msic-missing-account-benfit-check-yn",
+        name: "msic-missing-account-benfit-check-yn",
+        fieldset: {
+          legend: {
+            text: "Do you get your benefits paid into any of the accounts you have given us already?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["msic-missing-account-benfit-check-yn"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["msic-missing-account-benfit-check-yn"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

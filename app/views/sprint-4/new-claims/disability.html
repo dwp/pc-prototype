@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-summary" method="post" class="form">
+      {% set disabilities = data["disabilities"] or [] %}
+
+      {{ govukCheckboxes({
+        idPrefix: "disabilities",
+        name: "disabilities",
+        fieldset: {
+          legend: {
+            text: "Do you have any disabilities or impairments?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply:"
+        },
+        items: [
+          {
+            value: "Blind",
+            text: "Registered blind or severely sight impaired",
+            checked: (disabilities.includes("Blind"))
+          },
+          {
+            value: "Other",
+            text: "Other",
+            checked: (disabilities.includes("Other"))
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

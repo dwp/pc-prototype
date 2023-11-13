@@ -1,0 +1,83 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-start-router" method="post" class="form">
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You've reached Pension Credit, how can I help?</h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Do not access a citizen's record unless you need to discuss personal details.</p>
+
+
+        {{ govukRadios({
+          classes: "",
+          idPrefix: "qd-start",
+          name: "qd-start",
+          fieldset: {
+            legend: {
+              text: "What is the reason for the call?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "help",
+              text: "Find out more information about other help available",
+              checked: (data["qd-start"] == "help")
+            },
+            {
+              value: "record",
+              text: "Access citizen's record",
+              checked: (data["qd-start"] == "record")
+            },
+            {
+              value: "exit",
+              text: "Exit",
+              checked: (data["qd-start"] == "exit")
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

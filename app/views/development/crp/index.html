@@ -1,0 +1,308 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+    {{ govukHeader({ serviceName: "Project X" }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start / Back section -->
+
+
+   <main class="govuk-main-wrapper">
+<!------------ Page content ------------>
+
+  <!------------ ---- ------------>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p>Personal details,<br>national insurance<br>and date of birth</p>
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+      <h1 class="govuk-heading-xl">Alex Smith<br>QQ 11 22 33 c<br>01 February 1953 (65)</h1>
+    </div>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p>Address</p>
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+      <h2 class="govuk-heading-s">221B Baker Street <br>Marylebone <br> London <br> NW1 6XE</h2>
+
+    </div>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p>Contact details</p>
+    </div>
+    <div class="govuk-grid-column-three-quarters">
+      <h2 class="govuk-heading-s">Telephone: 01234 567890<br>Mobile (SMS): 07900 090 000<br> Email: alex.smith@govmail.com</h2>
+
+    </div>
+  </div>
+  <!------------ ---- ------------>
+
+
+
+
+<br><br><br>
+<div class="govuk-panel govuk-panel--grey">
+
+<!---——————————--------- Column break ----———————————-------->
+
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+
+  <h3 class="govuk-heading-s">Your next payment</h3>
+
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Monday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">01.01.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95 (Weekly)</td>
+        </tr>
+      </tbody>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+    </div>
+</div>
+<!------------ ---- ------------>
+
+
+<br><br><br>
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-half">
+  <h3 class="govuk-heading-l">A breakdown of the benefits that you are in receipt of:</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+  </div>
+  <!------------ ---- ------------>
+
+</div>
+<br><br>
+
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-heading-s">State pension</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment (weekly)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Monday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">05.02.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95</td>
+        </tr>
+      </tbody>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+
+
+
+
+
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-heading-s">Pension credit</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment (weekly)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Tuesday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">02.02.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95</td>
+        </tr>
+      </tbody>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!------------ ---- ------------>
+</div>
+<br>
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-heading-s">Carer's allowance</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment (monthly)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Monday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">02.02.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95</td>
+        </tr>
+      </tbody>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-heading-s">Disability living allowance</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment (weekly)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Monday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">05.06.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95</td>
+        </tr>
+      </tbody>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<!------------ ROW ------------>
+<div class="govuk-grid-row">
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-one-quarter">
+  <h3 class="govuk-heading-s">Bereavement support payment</h3>
+  </div>
+  <!------------ ---- ------------>
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Payment day</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Date</th>
+          <th class="govuk-table__header govuk-table__header--numeric" scope="col">Payment (one off)</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">Monday</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">05.06.2018</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric">£125.95</td>
+        </tr>
+      </tbody>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="row">.</th>
+          <td class="govuk-table__cell govuk-table__cell--numeric">.</td>
+          <td class="govuk-table__cell govuk-table__cell--numeric"><a href="/#">View all previous payments</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<!------------ Content end / Right column ------------>
+   </main>
+ </div>
+
+
+{% endblock %}

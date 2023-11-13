@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add Unit Trust account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-unit-trust-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Unit trust details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of trust"
+        },
+        id: "msic-unit-trust-account-name",
+        name: "msic-unit-trust-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      <!--------------- DATE ONE (CLAIM START) ----------------------------------------------------------------------------------------->
+      {% if data["claim-filter"] == "Backdating" %}
+
+              {{ govukInput({
+                label: {
+                  html: "How many units did you own on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+                },
+                id: "msic-unit-trust-account-units-EED",
+                name: "msic-unit-trust-account-units-EED",
+                classes: "govuk-input--width-20"
+              }) }}
+
+            {{ govukInput({
+              label: {
+                html: "What was the bid price on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+              },
+              id: "msic-unit-trust-account-price-EED",
+              name: "msic-unit-trust-account-price-EED",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {% endif %}
+
+            <!--------------- DATE TWO (TODAY) ----------------------------------------------------------------------------------------->
+            {% if data["claim-filter"] == "Advanced or Today" or data["claim-filter"] == "Backdating" %}
+
+
+            {{ govukInput({
+              label: {
+                html: "How many units do you own <strong>today</strong>?"
+              },
+              id: "msic-unit-trust-account-units-TODAY",
+              name: "msic-unit-trust-account-units-TODAY",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {{ govukInput({
+              label: {
+                html: "What is the bid price <strong>today</strong>?"
+              },
+              id: "msic-unit-trust-account-price-TODAY",
+              name: "msic-unit-trust-account-price-TODAY",
+              classes: "govuk-input--width-20"
+            }) }}
+
+            {% endif %}
+
+    <!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

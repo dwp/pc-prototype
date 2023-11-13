@@ -1,0 +1,139 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-text-yn-router" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action">Adviser: </span>The number the claimant is calling from is 0<strong>{{ data["telephone-number"] }}</strong></h2>
+      </div>
+
+      <h1 class="govuk-heading-xl">
+        Telephone details
+      </h1>
+
+      {% set yesMobile %}
+      {{ govukInput({
+        label: {
+          text: "Mobile number"
+        },
+        id: "contact-text-yn-number",
+        name: "contact-text-yn-number",
+        classes: "govuk-input--width-20",
+        attributes: {
+          maxlength: 20
+        }
+      }) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-text-yn",
+        name: "contact-text-yn",
+        fieldset: {
+          legend: {
+            html: "Do you mobile?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+            text: "This helps us process your claim as quickly as possible. We will also be able to update you on the progress of your claim so that you do not need to contact us."
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-text-yn"] == "Mobile"),
+            conditional: {
+              html: yesMobile
+            }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-text-yn"] == "I don't have a mobile")
+          }
+        ]
+      }) }}
+
+
+      {% set otherNumberLandline %}
+      {{ govukInput({
+        label: {
+          text: "Telephone number"
+        },
+        id: "contact-other-number-landline",
+        name: "contact-other-number-landline",
+        classes: "govuk-input--width-20",
+        attributes: {
+          maxlength: 20
+        }
+      }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-other-number-landline",
+        name: "contact-other-number-landline",
+        fieldset: {
+          legend: {
+            html: "Is their another number we can call you on?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-other-number-landline"] == "Add number"),
+            conditional: {
+              html: otherNumberLandline
+            }
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-other-number-landline"] == "Opt out of telephone")
+          }
+        ]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

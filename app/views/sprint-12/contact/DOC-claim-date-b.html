@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-cam-date-reason" method="post">
+
+
+
+        <div class="govuk-panel--agent">
+
+{{ govukDateInput({
+  id: "claim-date-cam-date-entry",
+  namePrefix: "claim-date-cam-date-entry",
+  fieldset: {
+    legend: {
+      html: "Agent: Enter agreed date of claim",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "For example, 12 11 2019"
+  }
+}) }}
+
+      </div>
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

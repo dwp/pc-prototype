@@ -1,0 +1,36 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="bau-process-measure-1" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Continue with the call using your Standard Work Instructions</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">
+
+
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button"
+      }) }}
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

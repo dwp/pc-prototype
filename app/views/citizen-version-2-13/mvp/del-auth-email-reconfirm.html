@@ -1,0 +1,55 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Email confirmation? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      {% set legendH1 %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        Is this email address correct?
+      </h1>
+
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendH1
+        },
+          hint: {
+            text: "You can change it if it is wrong."
+          },
+        id: "email-address",
+        name: "email-address",
+        classes: "govuk-input--width-0 govuk-!-margin-bottom-0",
+        value: data["email-address"]
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-padding-bottom-6"><a href="XXX">@pete I need help?</a></p> -->
+
+
+
+      {{ govukButton({
+        text: "Yes - this email address is correct"
+      }) }}
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

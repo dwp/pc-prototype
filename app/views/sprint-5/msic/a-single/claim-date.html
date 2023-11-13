@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  When can the claim start from? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="eligibility-summary" method="post">
+        {% set today = '' | formatDate %}
+
+        {% set altDate %}
+          {{ govukDateInput({
+            id: "alternate-date",
+            namePrefix: "alternate-date",
+            fieldset: {
+              legend: {
+                text: "Claim date"
+              }
+            },
+            hint: {
+              text: "For example, 31 12 2018"
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["alternate-date-year"]
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date",
+          name: "claim-date",
+          fieldset: {
+            legend: {
+              text: "When do you want your claim to start?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "Today",
+              text: "Today (" + today + ")",
+              checked: (data["claim-date"] == "Today")
+            },
+            {
+              value: "SPA Entitlement",
+              text: "From the date you became eligible for State Pension (" + (data['spa-date'] | formatDate) + ")",
+              checked: (data["claim-date"] == "SPA Entitlement")
+            },
+            {
+              value: "Alternative date",
+              text: "Alternative date",
+              checked: (data["claim-date"] == "Alternative date"),
+              conditional: {
+                html: altDate
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

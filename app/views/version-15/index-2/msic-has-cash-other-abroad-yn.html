@@ -1,0 +1,78 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+Any other money held in this country or abroad? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-cash-other-abroad-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <!------------HEADLINE------------>
+      {% set legend %}
+      {% if data["claim-filter"] == "Advanced or Today" %} Do you have any money abroad? {% endif %}
+      {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any money abroad?{% endif %}
+      {% endset %}
+    <!------------HEADLINE------------>
+
+
+  {{ govukRadios({
+    idPrefix: "msic-cash-other-abroad-yn",
+    name: "msic-cash-other-abroad-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                    This could be money in any foreign accounts or invested in assets.
+                  </p>"
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-cash-other-abroad-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-cash-other-abroad-yn"] == "no")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+
+  {% include "version-15/index/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+
+  <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <h1 class="govuk-heading-xl">
+    Money, savings and investments
+  </h1>
+
+  {% if data['has-current-account'] %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Current account
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of bank
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-name'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last 4 digits of account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-last-digits'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-value'] | formatMoney }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Who's is this account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['current-owner'] }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% endif %}
+
+  {% if data['has-savings-account'] %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Savings account
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of bank
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-name'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Last 4 digits of account
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-last-digits'] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount / value
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-value'] | formatMoney }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Who's is this account?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['savings-owner'] }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% endif %}
+
+  {% if data['has-cash'] %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Cash
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Total
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["cash-amount"] | formatMoney }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% endif %}
+
+  {% if data["has-shares"] %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Shares
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long govuk-!-margin-bottom-0">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Company name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-name"] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Type of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-type"] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Amount of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-amount"] }}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Value of shares
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["shares-value"]  | formatMoney }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <h3 class="govuk-heading-s">
+      Bonds
+    </h3>
+
+    <h3 class="govuk-heading-s">
+      Unit trust
+    </h3>
+
+    <h3 class="govuk-heading-s">
+      Second property
+    </h3>
+
+
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% endif %}
+
+  <h2 class="govuk-heading-m">Use the following list to help guide the agent through the acounts then need to ask about and find out if any other accounts missing?</h2>
+
+      <strong</strong>
+      <p class="govuk-body">
+              <strong>Savings and investments</strong>
+
+              <ul class="govuk-list govuk-list--bullet">
+  <li>Current account,  </li>
+  <li>savings, deposit account,</li>
+  <li>bank, building society or POCA,</li>
+  <li>Cash held at home</li>
+  <li>Premium bonds granny bonds</li>
+  <li>ISAs, PEPs, TESSA only ISAs</li>
+  <li>Income, capital bonds</li>
+  <li>Unit trust, shares</li>
+  <li>Any other Monet help in this country or abroad</li>
+  <li>Are you expecting a lump sum</li>
+
+</ul></p>
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<p class="govuk-body">
+        <strong>Other income</strong>
+
+        <ul class="govuk-list govuk-list--bullet">
+  <li>Money from a boarder, lodger, tenant and subtenants</li>
+  <li>Working tax credit</li>
+  <li>Royalties</li>
+  <li>Money paid from an ex-partner (spousal maintenance)</li>
+  <li>Sick pay</li>
+  <li>Payments from a trust</li>
+  <li>Money from an Equity Release</li>
+  <li>Money from Armed forces compensation scheme</li>
+  <li>Money from a personal injury payment</li>
+
+</ul></p>
+
+
+<h2 class="govuk-heading-m">Any items missing from the above list</h2>
+<p class="govuk-body">
+  <a href="add-savings-account" class="govuk-link">
+    Add account details
+  </a>
+</p>
+
+
+  <form action="task-list" method="post">
+    <input type="hidden" name="money-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+  </form>
+{% endblock %}

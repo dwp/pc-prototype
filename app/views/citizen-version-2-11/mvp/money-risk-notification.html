@@ -1,0 +1,41 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-second-property" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+      {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We need to make some extra checks</h1>
+      {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We need to make some extra checks</h1>{% endif %}
+
+           <!------------Legend--------------->
+
+           {% if data["single-joint-check"] == "Joint" %}<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You have told us that you and your partner have shares, investments or money overseas. This might affect how much Pension Credit you could get.</p>
+           <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You can continue with your online application but we will need to contact you so that we can pay you the right amount of Pension Credit.</p>
+           {% else %}
+           <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You have told us that you have shares, investments or money overseas. This might affect how much Pension Credit you could get.</p>
+           <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You can continue with your online application but we will need to contact you so that we can pay you the right amount of Pension Credit.</p>{% endif %}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

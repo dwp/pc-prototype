@@ -1,0 +1,62 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Pension Credit - Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-1-1"] %}
+      <form action="process-c-nil-task-list-at" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-1-1-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">[Task 1-1]</span> -->
+          <p class="govuk-heading-xl govuk-!-margin-bottom-6">You must update this applicant’s information with a CIS500</p>
+
+          <p class="govuk-body-m govuk-!-margin-bottom-2">Before you continue you must <a href="mr-cis-500" class="govuk-link" rel="noreferrer noopener">complete a CIS500</a> to update this applicant's:</p>
+          <ul class="govuk-body-m govuk-list govuk-list--bullet">
+            <li>address to [address applicant has provided] <strong></strong></li>
+            <li>telephone number to [telephone number applicant has provided] <strong></strong></li>
+           
+          </ul>
+
+          
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+
+      
+
+
+
+
+    </div>
+  </div>
+
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+<!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  benefit-overview - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-all-yn" method="post" class="form">
+
+      <div class="govuk-panel--agent">
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Adviser: Two claims ready for you to download</h1>
+
+    <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-2">Claim one: <strong>Pension Credit</strong></p>
+    <p class="govuk-body govuk-!-font-size-27 govuk-!-margin-bottom-2">Claim two: <strong>Housing benefit</strong></p>
+
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3"><span class="agent-action">Before leaving this screen (I think there is two different process for uploading HB and PC)</h2>
+
+    <ul class="govuk-list govuk-list--number">
+    <li>Download Pension Credit claim</li>
+    <li>Upload claim to <strong>PTP CAM</strong> and tag as the following:</li>
+
+    <ul class="govuk-list govuk-list">
+    <li>Business unit: <strong>Pension Service</strong></li>
+    <li>Classification: <strong>Supporting</strong></li>
+    <li>Issue date: <strong>Today's date</strong></li>
+
+    <li>Document type: <strong>PC1L</strong></li>
+    </ul>
+
+    <li>Process business as usual (BAU)</li>
+    </ul>
+
+
+<br>
+
+    {{ govukButton({
+      text: "Download claim",
+      classes: "govuk-button--secondary",
+      href: "pdf-download-complete"
+    }) }}
+
+    {{ govukCheckboxes({
+    idPrefix: "download-pdf-checkbox",
+    name: "download-pdf-checkbox",
+    fieldset: {
+    legend: {
+    text: "",
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--s"
+    }
+    },
+    items: [
+    {
+    value: "download-pdf",
+    text: "Confirm that you have downloaded the claim"
+    }
+    ]
+    }) }}
+
+</div>
+
+
+<br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    <div class="govuk-panel--agent-alert govuk-!-margin-top-6">
+      {% set AddName %}
+
+      <p class="govuk-body"><a href="XX">Failed call</a></p>
+      <p class="govuk-body"><a href="XXX">Error 2</a></p>
+      <p class="govuk-body"><a href="XXX">Error 3</a></p>
+
+      {% endset %}
+    </div>
+
+    {{ govukDetails({
+      classes: "PC-router",
+      summaryText: "Router and API errors",
+      html: AddName
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

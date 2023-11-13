@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-ownership-router" method="post" class="form">
+      {{ govukRadios({
+        name: "home-ownership",
+        fieldset: {
+          legend: {
+            text: "Which best describes the place where you live?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "You own it",
+            text: "You own it",
+            checked: (data["home-ownership"] == "You own it")
+          },
+          {
+            value: "You rent it",
+            text: "You rent it",
+            checked: (data["home-ownership"] == "You rent it")
+          },
+          {
+            value: "You live in someone else's home without paying rent",
+            text: "You live in someone else's home without paying rent",
+            checked: (data["home-ownership"] == "You live in someone else's home without paying rent")
+          },
+          {
+            value: "You own and rent it (shared ownership)",
+            text: "You own and rent it (shared ownership)",
+            checked: (data["shared-ownership"] == "You own and rent it (shared ownership)")
+          },
+          {
+            value: "You live in a care home or nursing home",
+            text: "You live in a care home or nursing home",
+            checked: (data["home-ownership"] == "You live in a care home or nursing home")
+          },
+          {
+            value: "You live in sheltered accommodation",
+            text: "You live in sheltered accommodation",
+            checked: (data["home-ownership"] == "You live in sheltered accommodation")
+          },
+          {
+            value: "Other accommodation",
+            text: "Other accommodation",
+            checked: (data["home-ownership"] == "Other accommodation")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

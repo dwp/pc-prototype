@@ -1,0 +1,225 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  other-income-everything-else-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <form action="other-income-summary" method="post" class="form">
+
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Do you get any other income that you have not told us about?</h1>
+
+        <!--{
+            id: "other-income-armed-forces-yn",
+            name: "other-income-armed-forces-yn",
+            value: "A",
+            html: "Armed forces compensation scheme",
+            conditional: {
+              html: AAYes
+            }
+          },
+
+-->
+
+
+        {% set AAYes %}
+          {{ govukTextarea({
+            label: {
+              html: "Description of income from the Armed Forces Compensation Scheme, the start date, how often it is paid, how much it is and the end date if there is one"            },
+            hint: {
+              text: ""
+            },
+            id: "other-income-armed-forces-yes",
+            name: "other-income-armed-forces-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+          <!-------------- Check ---------------------->
+          {% set BBYes %}
+          {{ govukTextarea({
+            label: {
+              html: "Description of discretionary payments from a trust, the start date, how often it is paid, how much it is and the end date if there is one"            },
+            hint: {
+              text: ""
+            },
+            id: "other-income-trust-yes",
+            name: "other-income-trust-yes",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+          {% endset %}
+
+      <!-------------- Check ---------------------->
+
+
+                  {% set CCYes %}
+                  {{ govukTextarea({
+                    label: {
+                      html: "Description of income, the start date, how often it is paid, how much it is, whether it is a structured settlement and the end date if there is one"            },
+                    hint: {
+                      text: ""
+                    },
+                    id: "other-income-personal-injury-yes",
+                    name: "other-income-personal-injury-yes",
+                    classes: "govuk-input--width-30",
+                    attributes: {
+                      maxlength: 200
+                    }
+                  }) }}
+                  {% endset %}
+
+        <!------------------------------------>
+
+        {% set DDYes %}
+        {{ govukTextarea({
+          label: {
+            html: "Description of maintenance, the start date, how often it is paid, how much it is and the end date if there is one"            },
+          hint: {
+            text: ""
+          },
+          id: "other-income-maintenance-spouse-yes",
+          name: "other-income-maintenance-spouse-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+
+        <!-------------- Check ---------------------->
+
+
+        {% set FFYes %}
+        {{ govukTextarea({
+          label: {
+            html: "Description of strike pay, the start date, how often it is paid, how much it is and the end date if there is one"            },
+          hint: {
+            text: ""
+          },
+          id: "other-income-strike-pay-yes",
+          name: "other-income-strike-pay-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!-------------- Check ---------------------->
+
+        {% set otherYes %}
+        {{ govukTextarea({
+          label: {
+            html: "Description of other income, the start date, how often it is paid, how much it is and the end date if there is one"            },
+          hint: {
+            text: ""
+          },
+          id: "other-income-all-other-yes",
+          name: "other-income-all-other-yes",
+          classes: "govuk-input--width-30",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+        {% endset %}
+
+        <!------------------------------------>
+
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "Select all that apply",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              idPrefix: "other-income-trusts-yn",
+              name: "other-income-trusts-yn",
+              value: "BB",
+              html: "Discretionary payments from a trust",
+              conditional: {
+                html: BBYes
+              }
+            },
+            {
+              idPrefix: "other-income-redundancy-yn",
+              name: "other-income-redundancy-yn",
+              value: "Income from creditors/redundancy or disability insurance",
+              html: "Personal injury awards or payments from a trust relating to an award for a personal injury",
+              conditional: {
+                html: CCYes
+              }
+            },
+            {
+              idPrefix: "other-income-spouse-yn",
+              name: "other-income-spouse-yn",
+              value: "DD",
+              html: "Maintenance from a spouse or civil partner or former spouse or civil partner",
+              conditional: {
+                html: DDYes
+              }
+            },
+
+
+            {
+              idPrefix: "other-income-strike-yn",
+              name: "other-income-strike-yn",
+              value: "FF",
+              html: "Strike pay",
+              conditional: {
+                html: FFYes
+              }
+            },
+            {
+              idPrefix: "other-income-other-yn",
+              name: "other-income-other-yn",
+              value: "Other money",
+              html: "Any other income",
+              conditional: {
+                html: otherYes
+              }
+            }
+          ]
+        }) }}
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

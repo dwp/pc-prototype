@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent: Check and discuss the pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Private and workplace pensions</h1>
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">Name of provider</td>
+            <td class="govuk-table__cell">Payment made</td>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__cell">Standard Life Assurance Plc</th>
+            <td class="govuk-table__cell">Monthly</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Hargreaves Lansdown</th>
+            <td class="govuk-table__cell">Monthly</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">True Potential Investor</th>
+            <td class="govuk-table__cell">Annual</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+<br>
+
+<a href="pensions-display-pension-continue" type="submit" class="govuk-button">
+    Continue
+</a>
+
+  <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+
+
+  </div>
+</div>
+{% endblock %}

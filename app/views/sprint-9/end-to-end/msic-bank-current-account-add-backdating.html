@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-bank-current-account-backdating-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Add multiple dates  and balances for this account
+
+      </h1>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Date of balance"
+            },
+            id: "msic-bank-current-account-amount-backdating-date-1",
+            name: "msic-bank-current-account-amount-backdating-date-1",
+            classes: "govuk-input--width-20"
+          }) }}
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          {{ govukInput({
+            label: {
+              text: "Account balance"
+            },
+            id: "msic-bank-current-account-amount-backdating-1",
+            name: "msic-bank-current-account-amount-backdating-1",
+            classes: "govuk-input--width-20"
+          }) }}
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-body">
+            <a href="msic-bank-current-account-add-backdating" class="govuk-link">
+              <br>Remove
+            </a>
+          </p>
+        </div>
+      </div>
+
+    <p class="govuk-body">
+      <a href="msic-bank-current-account-add-backdating" class="govuk-link">
+        Add more entries
+      </a>
+    </p>
+
+
+<br><br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+    </div>
+
+{% endblock %}

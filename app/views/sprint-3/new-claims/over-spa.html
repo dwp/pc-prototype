@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Establish eligibility - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa-router" method="post">
+        <h1 class="govuk-heading-xl">
+          Check your State Pension age
+        </h1>
+
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1948"
+          }
+        }) }}
+
+<!------------      {{ govukRadios({
+          classes: "govuk-radios--inline",
+          idPrefix: "sex",
+          name: "sex",
+          fieldset: {
+            legend: {
+              text: "Are you a man or a woman?"
+            }
+          },
+          items: [
+            {
+              value: "Woman",
+              text: "Woman"
+            },
+            {
+              value: "Man",
+              text: "Man"
+            }
+          ]
+        }) }}  ---- ------------>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

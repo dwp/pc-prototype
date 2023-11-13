@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-second-property-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Add details of other property or land you own
+      </h1>
+
+      <p class="govuk-body">
+        1007 <br>Mountain Drive<br>Gotham<br>New York State (US)
+      </p>
+      <p class="govuk-body">
+        <a href="">Change</a>
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Value based on the outcome of the A64a
+      </h2>
+
+
+      {{ govukInput({
+        label: {
+          text: "Property Vaule"
+        },
+        id: "msic-second-property-value",
+        name: "msic-second-property-value",
+        classes: "govuk-input--width-10"
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

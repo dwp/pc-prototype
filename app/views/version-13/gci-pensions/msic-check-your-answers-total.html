@@ -1,0 +1,42 @@
+Account with: {% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <form action="msic-sp-payment-choose" method="post" class="form">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <input type="hidden" name="money-you-have-complete" value="true"/>
+
+        <h1 class="govuk-heading-xl">Money, savings and investments summary</h1>
+
+        <!-- {% if data["claim-filter"] == "Backdating" %} since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}{% endif %} -->
+        <p class="govuk-body govuk-!-font-size-24"></p>
+    </div></div>
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {% include "version-13/gci-pensions/msic-rolling-summary.html" %}
+
+    {{ govukButton({
+    text: "Confirm"
+  }) }}
+
+
+</form>
+<p class="govuk-body govuk-!-padding-top-3"><a href="eject-error-reason">Save claim and exit</a></p>
+
+</div>
+
+{% endblock %}

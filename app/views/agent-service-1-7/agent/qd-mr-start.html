@@ -1,0 +1,90 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-mr-router" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Let me explain what happens when we request a Mandatory Reconsideration</h1>
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">If you’re unhappy with our decision we will:
+          <ol class="govuk-list govuk-list--number">
+            <li>Raise a complaint and fill in a form called the DR6.</li>
+            <li>A senior member of staff will then look at your information and the DR6 form.</li>
+          </ol>
+
+        <p class="govuk-body">You will receive another decision letter within 30 days.
+        </p>
+      </div>
+
+      <p class="govuk-body govuk-!-font-weight-bold">Would you like to continue with the Mandatory Reconsideration?</p>
+
+      {{ govukRadios({
+        idPrefix: "qd-mr-start",
+        name: "qd-mr-start",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "dispute",
+            text: "Yes",
+            checked: (data["qd-mr-start"] == "yes")
+
+          },
+          {
+            value: "help",
+            text: "No - citizen would like to know about other help",
+            checked: (data["qd-mr-start"] == "help")
+
+          },
+          {
+            value: "exit",
+            text: "No - exit record",
+            checked: (data["qd-mr-start"] == "exit")
+
+          }
+          ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

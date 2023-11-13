@@ -1,0 +1,315 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Pensions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="pensions-summary" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+        <h1 class="govuk-heading-xl">Do you have any other pensions or annuities that you don't have in payment or have taken a lump sum from?</h1>
+
+  {% set pensionsOtherYes %}
+    {{ govukTextarea({
+      label: {
+        html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>PPR1 form may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+      hint: {
+        text: ""
+      },
+      id: "pensions-foreign-yes",
+      name: "pensions-foreign-yes",
+      classes: "govuk-input--width-30",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+    <!-------------- Check ---------------------->
+    {% set pensionsForeignYes %}
+      {{ govukTextarea({
+        label: {
+          html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>PPR1 form may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+        hint: {
+          text: ""
+        },
+        id: "pensions-foreign-yes",
+        name: "pensions-foreign-yes",
+        classes: "govuk-input--width-30",
+        attributes: {
+          maxlength: 200
+        }
+      }) }}
+    {% endset %}
+
+<!-------------- Check ---------------------->
+
+
+            {% set annuitiesYes %}
+              {{ govukTextarea({
+                label: {
+                  html: "<strong>Name</strong> XXX<br><br><strong>LumpSum or regular</strong> XXX<br><br><strong>Date of payment</strong> XXX<br><br><strong>Value</strong> XXX<br><br><strong>PPR1 form may be needed</strong> XXX<br><br><strong>Evidence may be needed</strong> XXX"            },
+                hint: {
+                  text: ""
+                },
+                id: "pensions-anuities-yes",
+                name: "pensions-anuities-yes",
+                classes: "govuk-input--width-30",
+                attributes: {
+                  maxlength: 200
+                }
+              }) }}
+            {% endset %}
+
+  <!------------------------------------>
+
+  {% set council %}
+    {{ govukTextarea({
+      label: {
+        html: "<strong>Payments from the local authority related to Council Tax Reduction, other that the 25 percent single occupier reduction</strong><br> Disregard for 52 weeks<br><br>"            },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-council-yes",
+      name: "disregards-council-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set warPaymentYes %}
+    {% set label %}
+      <p><strong>Payments (other than War Disablement Pension or War Widow(er)'s Pension) to compensate for the fact that during the second world war you:</strong></p>
+      <ul>
+        <li><strong>were a slave labourer or forced labourer</strong></li>
+        <li><strong>suffered property loss or personal injury</strong></li>
+        <li><strong>were a parent of a child who died</strong></li>
+          </ul>
+      <br><strong>Payments made to Far East Prisoners of War or their partners
+      <br><br>Armed Forces Independence Payment<br><br>
+      </strong> Disregard indefinitely<br><br>
+    {% endset %}
+    {{ govukTextarea({
+      label: {
+        html: label
+      },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-warpayment-yes",
+      name: "disregards-warpayment-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set compensationInjury %}
+    {{ govukTextarea({
+      label: {
+        html: "Disregard indefinitely<br><br>"                },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-compensation-for-injury-yes",
+      name: "disregards-compensation-for-injury-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set ContentsInsurance %}
+    {{ govukTextarea({
+      label: {
+        html: "Disregard for 52 weeks<br><br>"
+      },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-contents-insurance-yes",
+      name: "disregards-contents-insurance-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set moneyForProperty %}
+    {{ govukTextarea({
+      label: {
+        html: "Disregard for 52 weeks<br><br>"                    },
+      hint: {
+        text: "Enter a description of the money, the date to consider it from and amount."
+      },
+      id: "disregards-money-for-property-yes",
+      name: "disregards-money-for-property-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set independentlyLiving %}
+    {{ govukTextarea({
+      label: {
+          html: "<strong>Payments from The Independent Living Fund</strong><br> Disregard indefinitely<br><br><strong>Local Authority payments to help you to continue to live independently in your own home</strong><br> Disregard for 52 weeks<br><br><strong>Welfare Assistance grants from the Local Authority</strong><br> Disregard for 52 weeks<br><br>"                      },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-independently-living-yes",
+      name: "disregards-independently-living-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set incidentPayment %}
+    {{ govukTextarea({
+      label: {
+        html: "<strong>London emergency trust</strong><br><strong>The We Love Manchester Emergency Fund</strong> <br><strong>The London bombing charitable trust</strong><br><strong>The Rugby Portobello trust</strong><br><strong>The Grenfell residents discretionary fund</strong><br><br>Disregard indefinitely<br><br>"                        },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-incident-payment-yes",
+      name: "disregards-incident-payment-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set windrushYes %}
+    {{ govukTextarea({
+      label: {
+        html: "Disregard indefinitely<br><br>"                          },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-windrush-yes",
+      name: "disregards-windrush-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {% set infectedBlood %}
+    {{ govukTextarea({
+      label: {
+        html: "<strong>The McFarlane Trust</strong><br><strong>McFarlane (Special Payments) Trust</strong><br><strong>Trust MFET Limited </strong><br><strong>The Skipton Fund </strong><br><strong>The Caxton Foundation </strong><br><strong>The Scottish Infected Blood Support Scheme or an approved blood scheme</strong><br><br>Disregard indefinitely<br><br>"
+       },
+      hint: {
+        text: "Enter a description of the payment, the date it was paid and amount."
+      },
+      id: "disregards-blood-yes",
+      name: "disregards-blood-yes",
+      classes: "govuk-input--width-100",
+      attributes: {
+        maxlength: 200
+      }
+    }) }}
+  {% endset %}
+
+  {{ govukCheckboxes({
+    name: "disregards",
+    fieldset: {
+      legend: {
+        text: "",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+    {
+        id: "pensions-foreign-yes",
+        name: "pensions-foreign-yes",
+        value: "Foreign Pensions",
+        html: "Foreign Pensions",
+        conditional: {
+          html: pensionsForeignYes
+        }
+      },
+      {
+        idPrefix: "pensions-foreign-yn",
+        name: "pensions-foreign-yn",
+        value: "Other Pensions",
+        html: "Other Pensions",
+        conditional: {
+          html: pensionsOtherYes
+        }
+      },
+      {
+        idPrefix: "pensions-annuities-yn",
+        name: "pensions-anuities-yn",
+        value: "Annuities",
+        html: "Annuities",
+        conditional: {
+          html: annuitiesYes
+        }
+      }
+    ]
+  }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

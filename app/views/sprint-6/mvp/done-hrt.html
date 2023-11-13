@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "A habitual residence test (HRT) is needed. Switch to CAM to contine this claim",
+        html: ""
+      }) }}
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">
+        @Pete Unfortunately, due to X you will not be entitled to Pension Credit.
+        <br><strong>We </strong> .
+      </p>
+
+      <h3 class="govuk-heading-m">Further help...</h3>
+
+      <p class="govuk-body">
+        The following services could help you with your current circumstances:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Tast item A</li>
+        <li>Tast item B</li>
+        <li>Tast item C</li>
+        <li>Tast item D</li>
+        <li>Tast item E</li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Agent: Next steps, download PDF outcome</h3>
+
+      <p class="govuk-body">Finish button locked until PDF sucessfully downloaded.<br>
+        <a href="/get-eligibility-pdf" class="govuk-link">
+           Download (PDF)
+        </a>
+      </p>
+      <br>
+
+      {{ govukButton({
+        text: "Finish and close",
+        href: "start"
+      }) }}
+
+
+
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+      </p>
+
+
+    </div>
+  </div>
+{% endblock %}

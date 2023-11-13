@@ -1,0 +1,258 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Mainstream guide example
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for this page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">Section</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">Subsection</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        The State Pension
+      </h1>
+
+      <aside class="app-mainstream-guide-contents-list" role="complementary">
+        <nav class="app-contents-list" aria-label="Pages in this guide" role="navigation">
+          <h2 class="app-contents-list__title">
+            Contents
+          </h2>
+          <ol class="app-contents-list__list">
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed app-contents-list__list-item--active">
+              <a href="state-pension.html">
+                Overview
+              </a>
+            </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="who-gets-state-pension.html">
+              Who gets the State Pension?
+            </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="how-much-is-the-state-pension.html">
+                How much is the State Pension?
+              </a>
+            </li>
+            <li class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="why-people-get-more-or-less-than-the-full-new-state-pension.html">
+                Why people get more or less than the full new State Pension
+              </a>
+            </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="how-to-claim.html">
+                How to claim
+              </a>
+            </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="when-youre-paid.html">
+                When you're paid
+              </a>
+            </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="inheriting-or-increasing-state-pension-from-a-spouse-or-civil-partner.html">
+                Increasing or inheriting State Pension from your spouse or civil partner
+              </a>
+              </li>
+              <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+                <a href="living-and-working-overseas.html">
+                  Living and working overseas
+                </a>
+                </li>
+                <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+                  <a href="ways-to-increase-your-retirement-income.html">
+                    Ways to increase your retirement income
+                  </a>
+                  </li>
+            <li aria-current="true" class="app-contents-list__list-item app-contents-list__list-item--dashed">
+              <a href="change-of-circumstances.html">
+                Change of circumstances
+            </a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds app-mainstream-guide-body">
+
+  <h2 class="govuk-heading-m">
+    Why people get more or less than the full new State Pension
+        </h2>
+    
+        <div class="govuk-inset-text">
+          This page is only relevant to people who reach State Pension age on or after 6 April 2016 and get the new State Pension
+        </div>
+        <p class=govuk-body>If you have 35 qualifying years of National Insurance you could still get more or less than the full amount of new State Pension if you either:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+         <li>were born before the year 2000</li>
+         <li>became a resident of the UK before 2015</li>
+</ul>
+
+<p class=govuk-body>This is because you might have qualifying years under the old State Pension rules, which changed on 6 April 2016.</p>
+
+<p class=govuk-body>Under the old rules, some people paid more National Insurance towards the Additional State Pension. Others did not because they were ‘contracted out’.</p>
+
+<p class=govuk-body>If you’re <a href="/dna-new-state-pension">eligible for the new State Pension</a> you do not get the Additional State Pension, but whether you paid National Insurance towards it is used to calculate your ‘starting amount’. This is part of your new State Pension.</p>
+
+<h2 class="govuk-heading-m" id="how-your-starting-amount-is-calculated">How your starting amount is calculated</h2>
+
+<p class=govuk-body>Your starting amount will be the higher of either:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>the amount you would get under the old State Pension rules (which includes <a href="/state-pension">basic State Pension</a>, Additional State Pension and whether you were contracted out) </li>
+  <li>the amount you would get if the new State Pension had been in place at the start of your working life</li>
+</ul>
+
+<h3 class="govuk-heading-s" id="if-you-were-contracted-out">If you were contracted out</h3>
+
+<p class=govuk-body>Your employer might have chosen to pay more into your workplace pension and not pay the amount for your Additional State Pension. This means you were ‘contracted out’ of the Additional State Pension - you would have paid less National Insurance.</p>
+
+<p class=govuk-body>Your starting amount will include a deduction if you were contracted out of the Additional State Pension.</p>
+
+<p class=govuk-body><a href="/contracted-out/check-if-you-were-contracted-out">Check if you were contracted out</a>.</p>
+
+<h2 class="govuk-heading-m" id="if-your-starting-amount-is-less-than-the-full-new-state-pension-18515-per-week">If your starting amount is less than the full new State Pension (£185.15 per week)</h2>
+
+<p class=govuk-body>You can get more State Pension by <a href="/dna-new-state-pension/ways-to-increase-your-retirement-income">adding more qualifying years to your National Insurance record after 5 April 2016</a>. You can do this until you reach the full new State Pension amount or reach State Pension age - whichever is first.</p>
+
+<p class=govuk-body>Each qualifying year on your National Insurance record after 5 April 2016 will add about £5.29 a week to your new State Pension. The exact amount you get is calculated by dividing £185.15 by 35 and then multiplying by the number of qualifying years after 5 April 2016.</p>
+
+<div class="example">
+<p class=govuk-body>Example</p>
+
+<p class=govuk-body>You had a starting amount from your National Insurance record before 6 April 2016 of £120 a week.</p>
+
+<p class=govuk-body>You have another 6 qualifying years on your National Insurance record after 5 April 2016 (each year adding about £5.29 a week to your State Pension) equalling £31.74 a week.</p>
+
+<p class=govuk-body>This adds up to about £151.74 a week for your State Pension. This figure may change as the starting amount is adjusted to account for inflation.</p>
+</div>
+
+<h2 class="govuk-heading-m" id="if-your-starting-amount-is-more-than-the-full-new-state-pension-18515-per-week">If your starting amount is more than the full new State Pension (£185.15 per week)</h2>
+
+<p class=govuk-body>The part of your starting amount which is above the full new State Pension is called your ‘protected payment’. This is paid on top of the full new State Pension.</p>
+
+<p class=govuk-body>Any qualifying years you have after 5 April 2016 will not add more to your State Pension.</p>
+
+<p class=govuk-body>Your protected payment increases each year in line with the Consumer Prices Index (<abbr title="Consumer Prices Index">CPI</abbr>).</p>
+
+
+
+
+
+
+ 
+      <nav class="app-pagination" role="navigation" aria-label="Pagination">
+        <ul class="app-pagination__list">
+          <li class="app-pagination__item app-pagination__item--previous">
+            <a href="how-much-is-the-state-pension.html" class="govuk-link app-pagination__link" rel="prev">
+              <span class="app-pagination__link-title">
+                <svg class="app-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                  <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                </svg>
+                <span class="app-pagination__link-text">
+                  Previous
+                </span>
+              </span>
+              <span class="app-pagination__link-divider visually-hidden">:</span>
+              <span class="app-pagination__link-label">
+                How much is the State Pension?
+              </span>
+            </a>
+          </li>
+          <li class="app-pagination__item app-pagination__item--next">
+            <a href="how-to-claim.html" class="govuk-link app-pagination__link" rel="next">
+              <span class="app-pagination__link-title">
+                <svg class="app-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+                  <path d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                </svg>
+                <span class="app-pagination__link-text">
+                  Next
+                </span>
+              </span>
+              <span class="app-pagination__link-divider visually-hidden">:</span>
+              <span class="app-pagination__link-label">
+                How to claim
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+       <p class="govuk-body">
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Related link
+              </a>
+            </li>
+            <li>
+              <a href="#" class="govuk-!-font-weight-bold">
+                More <span class="govuk-visually-hidden">in Subsection</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+
+  </main>
+</div>
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

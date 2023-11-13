@@ -1,0 +1,22 @@
+{% if data['nino-known'] === 'yes' %}
+
+  {% set qdNameTemplate = "Jeff Bridges" %}
+  <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">10 August 1955</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">QQ 12 34 56 C</</p>
+
+{% else %}
+
+{% set qdNameTemplate = "Oliver Stone" %}
+  <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">21 February 1952</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">QQ 45 77 41 A</p>
+
+{% endif %}
+
+
+<!--
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["query-search-nino"]}}</p>
+
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob"]}}</p>
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob-day"]  ["search-dob-month"]  ["search-dob-year"] }}</p>-->

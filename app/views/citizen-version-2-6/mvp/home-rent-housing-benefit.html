@@ -1,0 +1,70 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-rent-housing-benefit-router" method="post" class="form">
+
+
+      {% set legendHint %}
+
+      {% if data["home-ownership"] == "You live in a caravan houseboat or mobile home"%}
+      <p class="govuk-hint">Housing Benefit can help you pay your site or mooring fees if you’re on a low income or claiming benefits.</p>
+      {% else %}
+        <p class="govuk-hint">Housing Benefit can help you pay your rent if you’re on a low income or claiming benefits.</p>
+      {% endif %}
+
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "home-rent-housing-benefit",
+        name: "home-rent-housing-benefit",
+        fieldset: {
+          legend: {
+            text: "Do you get Housing Benefit?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: legendHint
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-rent-housing-benefit"] == "Yes")
+
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-rent-housing-benefit"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

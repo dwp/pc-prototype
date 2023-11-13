@@ -1,0 +1,229 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="pensions-summary" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+
+{% set pensionHint %}
+<p class=govuk-hint>Include:</p>
+<ul class="govuk-hint govuk-list govuk-list--bullet">
+  <li>whether it is in payment</li>
+  <li>the name of the provider</li>
+  <li>the amount after tax</li>
+  <li>the start date</li>
+  <li>how often it is paid</li>
+  <li>how it is increased each year (RPI, fixed or other)</li>
+</ul>
+{% endset %}
+
+        {% set foreignPensionsYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of pensions from employers in another country"
+            },
+            hint: {
+              html: pensionHint},
+            id: "foreign-pensions-yes",
+            name: "foreign-pensions-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set foreignPrivatePensionYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of private pensions from another country"
+            },
+            hint:{
+              html: pensionHint
+            },
+            id: "foreign-private-pension-yes",
+            name: "foreign-private-pension-yes",
+            classes: "govuk-input--width-1}00",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set foreignStatePensionYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of state pensions from another country"
+            },
+            hint: {
+              html: pensionHint},
+            id: "foreign-state-pension-yes",
+            name: "foreign-state-pension-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set pensionNotClaimedYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of pensions you have not claimed yet"
+            },
+            hint: {
+              html: pensionHint},
+            id: "pension-not-claimed-yes",
+            name: "pension-not-claimed-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set otherPensionYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of other any other pensions"
+            },
+            hint: {
+              html: pensionHint},
+            id: "other-pension-yes",
+            name: "other-pension-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+        <!-------------------------------------->
+
+        {% set annuitiesYes %}
+
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Details of income from annuities"
+            },
+            hint: {
+              html: pensionHint},
+            id: "annuities-yes",
+            name: "annuities-yes",
+            classes: "govuk-input--width-100",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+        {% endset %}
+
+
+        <!-------------------------------------->
+
+        {{ govukCheckboxes({
+          name: "pensions-monolith",
+          fieldset: {
+            legend: {
+              text: "Do you have any other pensions or annuities that are not in payment or that you have taken a lump sum from?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: [
+          {
+              name: 'foreign-pensions-yn',
+              value: "foreign-pensions-yn",
+              html: "Pensions from employers in another country",
+              conditional: {
+                html: foreignPensionsYes
+              }
+            },
+            {
+                name: 'foreign-private-pension-yn',
+                value: "foreign-private-pension-yn",
+                html: "Private pensions from another country",
+                conditional: {
+                  html: foreignPrivatePensionYes
+                }
+              },
+              {
+                  name: 'foreign-state-pension-yn',
+                  value: "foreign-state-pension-yn",
+                  html: "State pensions from another country",
+                  conditional: {
+                    html: foreignStatePensionYes
+                  }
+                },
+                {
+                    name: 'pension-not-claimed-yn',
+                    value: "pension-not-claimed-yn",
+                    html: "Pensions that you have not claimed yet",
+                    conditional: {
+                      html: pensionNotClaimedYes
+                    }
+                  },
+                  {
+                    name: 'annuities-yn',
+                    value: "annuities-yn",
+                    html: "Income from annuities",
+                    conditional: {
+                      html: annuitiesYes
+                      }
+                    },
+              {
+                name: 'other-pension-yn',
+              value: "other-pension-yn",
+              html: "Any other pensions",
+              conditional: {
+                html: otherPensionYes
+                  }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}

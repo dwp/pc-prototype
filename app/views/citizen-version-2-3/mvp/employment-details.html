@@ -1,0 +1,51 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  claimant-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-post-code-lookup" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {% set legendName %}
+
+    {% if data["employment-you-or-partner"] == "Partner" %}  <h3 class="govuk-heading-xl govuk-!-margin-bottom-0">What is the name of your partner's employer?</h3>
+      {% else %}    <h3 class="govuk-heading-xl govuk-!-margin-bottom-0">What is the name of your employer?</h3>{% endif %}
+      {% endset %}
+
+      {{ govukInput({
+        label: {
+          html: legendName
+        },
+        hint: {
+          text: "You can find this on your P60 or payslip."
+        },
+        id: "employment-details",
+        name: "employment-details",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+        value: data["employment-details"]
+      }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

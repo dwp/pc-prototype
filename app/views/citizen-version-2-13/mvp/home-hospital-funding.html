@@ -1,0 +1,70 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  XXX - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <form action="home-care-home-check-router" method="post" class="form"> -->
+    <form action="home-care-home-check" method="post" class="form">
+
+      {% set dynamicH1 %}
+
+      {% if data["claim-filter"] == "Normal" %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        Was the hospital treatment provided by the NHS?
+      </h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+          Is the hospital treatment being provided by the NHS?
+        </h1>
+      {% endif %}
+
+      {% endset %}
+
+{{ govukRadios({
+  idPrefix: "home-hospital-funding",
+  name: "home-hospital-funding",
+  fieldset: {
+    legend: {
+      html: dynamicH1,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  classes: "govuk-radios",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["home-hospital-funding"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["home-hospital-funding"] == "No")
+    }
+  ]
+}) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

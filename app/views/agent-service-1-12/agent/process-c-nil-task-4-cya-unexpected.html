@@ -1,0 +1,45 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="ur-home" method="post" class="form">
+        <input type="hidden" name="outcome-nil" value="false"/>
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">This application needs further action</p>
+
+        <p class="govuk-body-m govuk-!-margin-bottom-2">This is because:</p>
+        <ul class="govuk-body-m govuk-list govuk-list--bullet">
+          <li>there are one or more identity mismatches</li>
+          <li>an IDOC or open applications were found</li>
+          <li>one or more automated checks were inaccurate</li>
+          <li>one or more OCC pensions was too complex</li>
+          <li>[need to define what would cause a workplace pen to go to BAU]</li>
+        </ul>
+
+    </div>
+  </div>
+
+
+    {{ govukButton({
+      text: "Confirm and reject",
+      classes: "govuk-!-margin-top-4"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

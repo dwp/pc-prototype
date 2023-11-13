@@ -1,0 +1,68 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  claimant-sight-impaired - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <!---- Single/Partner router ---->
+      {% if data['partner-check-yn'] == 'No, I do not have a partner' or data['partner-check-yn'] == 'Yes, but we do not live together'%}
+      <form action="home-care-home-check" method="post" class="form">
+      {% elif data["partner-check-yn"] == "Yes, we live together" %}
+      <form action="partner-national-insurance" method="post" class="form">
+      {% else %}
+      <form action="single-joint-check" method="post" class="form">
+      {% endif %}
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {% set legendH1 %}
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are you registered blind or severely sight impaired?</h1>
+      {% endset -%}
+
+      {{ govukRadios({
+        idPrefix: "contact-blind-check",
+        name: "contact-blind-check",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-margin-bottom-4"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-blind-check"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-blind-check"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

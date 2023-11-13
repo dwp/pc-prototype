@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bank current account - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-has-credit-union-account-yn" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Post Office Card Account details
+      </h1>
+
+            <br>
+            <p class="govuk-body">Amount in this account <strong>today</strong></p>
+
+          {{ govukInput({
+        label: {
+          text: ""
+        },
+        id: "msic-post-office-card-account-amount",
+        name: "msic-post-office-card-account-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Amount of money that is yours"
+          },
+          id: "msic-post-office-card-account-stake",
+          name: "msic-post-office-card-account-stake",
+          classes: "govuk-input--width-10"
+        }) }}
+      {% endset %}
+
+<!--
+      {{ govukRadios({
+        idPrefix: "msic-post-office-card-account-read-from-statement",
+        name: "msic-post-office-card-account-read-from-statement",
+        fieldset: {
+          legend: {
+            text: "Did you read these details from a statement?"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

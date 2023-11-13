@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="task-list" method="post">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="mvp-kickout-summary" value="true"/>
+
+      <h1 class="govuk-heading-xl">What tool to use next summary</h1>
+
+      <p class="govuk-body">
+        Details of kick out questions, this will also give us an idea of what tool to continue with, CAM our MyPC
+      </p>
+
+
+          <p class="govuk-body">
+            @pete, do we need any copy in here to explain the need?<br>
+            <a href="add-benefit" class="govuk-link">
+              Download eligibility outcome (PDF)
+            </a>
+          </p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

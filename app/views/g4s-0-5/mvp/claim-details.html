@@ -1,0 +1,300 @@
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "What is your full name?"
+            },
+            value: {
+              html: data["full-name"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-name",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-name"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+{% if data["resides-in-uk"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Which country do you live in?"
+            },
+            value: {
+              html: data["resides-in-uk"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "resides-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "resides-in-uk"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+{% if data["dob"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+          {
+            key: {
+              text: "Your date of birth"
+            },
+            value: {
+              text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-dob",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-dob"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+{% if data["children-check-yn"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Do any children or qualifying young people live with you?"
+            },
+            value: {
+              html: data["children-check-yn"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "children-check-yn",
+                  text: "Change",
+                  visuallyHiddenText: "children-check-yn"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+{% if data["nino"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "What is your National Insurance number?"
+            },
+            value: {
+              html: data["nino"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-national-insurance",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-national-insurance"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+       {% endif %}
+
+      {% if data["housing-costs"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Do you pay any service charges or ground rent?"
+            },
+            value: {
+              html: data["housing-costs"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "housing-costs",
+                  text: "Change",
+                  visuallyHiddenText: "housing-costs"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+  {% if data["state-pension-amount"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "State Pensions amount"
+            },
+            value: {
+              html: data["state-pension-amount"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "state-pension-amount",
+                  text: "Change",
+                  visuallyHiddenText: "state-pension-amount"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+        {% if data["Benefits"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Benefits in payment"
+            },
+            value: {
+              html: data["Benefits"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "Benefits",
+                  text: "Change",
+                  visuallyHiddenText: "Benefits"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+        {% endif %}
+
+        {% if data["pensions"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Pension"
+            },
+            value: {
+              html: data["pensions"] or data["pensions-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "pensions",
+                  text: "Change",
+                  visuallyHiddenText: "pensions"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+        {% endif %}
+
+        {% if data["pensions-value"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Pension"
+            },
+            value: {
+              html: data["pensions-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "pensions",
+                  text: "Change",
+                  visuallyHiddenText: "pensions"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+        {% endif %}
+
+{% if data["earnings"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Earnings"
+            },
+            value: {
+              html: data["earnings"] or data ["earnings-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "Earnings",
+                  text: "Change",
+                  visuallyHiddenText: "Earnings"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+
+      {% if data["earnings-value"] %}
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "Earnings"
+                  },
+                  value: {
+                    html: data["earnings-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "Earnings",
+                        text: "Change",
+                        visuallyHiddenText: "Earnings"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+            {% endif %}

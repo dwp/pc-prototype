@@ -1,0 +1,211 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-c-nil-task-4-c-router" method="post" class="form">
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        {% set USED %}
+        {{govukTag({
+          text: "Selected",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+        <span class="govuk-caption-m">Calendar Month</span>
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Check pension payments formm<br>MetroLand LTD</p>
+
+
+        {{ govukTable({
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-6",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Payment date",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Frquency (Days between payment)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Net payment amount",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Tax (20%)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              html: "Payment selected<br>by the system",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 June 2022"
+              },
+              {
+                text: "Monthly (31)"
+              },
+              {
+                text: "£1,100.00"
+              },
+              {
+                text: "£220.00"
+              },
+              {
+                html: USED
+              }
+              ],
+              [
+                {
+                  text: "1 May 2022"
+                },
+                {
+                  text: "Monthly (30)"
+                },
+                {
+                  text: "£1,100.00"
+                },
+                {
+                  text: "£220.00"
+                },
+                {
+                  html: NOTUSED
+                }
+              ],
+            [
+              {
+                text: "1 April 2022"
+              },
+              {
+                text: "Monthly (31)"
+              },
+              {
+                text: "£1,101.22"
+              },
+              {
+                text: "£221.22"
+              },
+              {
+                html: NOTUSED
+              }
+            ],
+              [
+                {
+                  text: "1 March 2022"
+                },
+                {
+                  text: "Monthly (28)"
+                },
+                {
+                  text: "£880.00"
+                },
+                {
+                  text: "£176.00"
+                },
+                {
+                  html: NOTUSED
+                }
+              ]
+          ]
+        }) }}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-c",
+          name: "process-c-nil-task-4-c",
+          fieldset: {
+            legend: {
+              text: "One payment have been selected these payments will be used to get a weekly amount of £253.84. You happy with that yeah?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Selection will be multiplied by 12 (Months) divided by 52 (Weeks) equals and average payment per week"
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-c"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-c"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+</form>
+
+{% endblock %}

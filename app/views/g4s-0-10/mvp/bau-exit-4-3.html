@@ -1,0 +1,52 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['bau-exit-4'] == 'Yes' %}
+      <!-- <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/introduction"> -->
+        <form method="post" action="wrap-up">
+        {% else %}
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/introduction">
+        {% endif %}
+
+
+        <span class="govuk-caption-m">[4-3 &9]</span>
+
+          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">As you are already getting Pension Credit, you will need to contact the DWP Changes line on 0800 731 0469</h1>
+          <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">[MM: Might have to be a number]</p> -->
+
+          {{ govukButton({
+          text: "Continue",
+          classes: "govuk-button dont-print govuk-!-margin-top-6"
+          }) }}
+
+
+
+
+
+
+
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

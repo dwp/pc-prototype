@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you get housing benefit or council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="who-lives-with-you-router" method="post" class="form">
+
+
+
+
+
+
+              {% set moreThanOneChild %}
+              {{ govukInput({
+                label: {
+                  text: "How many?"
+                },
+                classes: "govuk-input--width-5",
+                id: "who-lives-with-you-child",
+                name: "who-lives-with-you-child"
+              }) }}
+              {% endset -%}
+
+              {% set moreThanOneSomeoneElse %}
+              {{ govukInput({
+                label: {
+                  text: "How many?"
+                },
+                classes: "govuk-input--width-5",
+                id: "who-lives-with-you-someone-else",
+                name: "who-lives-with-you-someone-else"
+              }) }}
+              {% endset -%}
+
+
+              {{ govukRadios({
+                classes: "govuk-radios",
+                idPrefix: "who-lives-with-you",
+                name: "who-lives-with-you",
+                fieldset: {
+                  legend: {
+                    text: "Does anyone else live with you?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--xl"
+                  }
+                },
+                hint: {
+                  text: ""
+                },
+                items: [
+                  {
+                    value: "Live with others",
+                    text: "Yes",
+                    checked: (data["who-lives-with-you"] == "Live with others")
+
+                },
+                  {
+                    value: "Live alone",
+                    text: "No",
+                    checked: (data["who-lives-with-you"] == "Live alone")
+                }
+                ]
+              }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

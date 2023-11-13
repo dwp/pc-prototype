@@ -1,0 +1,55 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-disregards-all" method="post" class="form">
+
+{% if data["user-full-name"] == "Admin" %}{% endif %}
+
+      {{ govukRadios({
+        name: "money-bonds",
+        fieldset: {
+          legend: {
+            text: "Is any of your money invested in income or capital bonds?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["money-bonds"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["money-bonds"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="#" method="post" class="form">
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        {% set USED %}
+        {{govukTag({
+          text: "System",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+        <!--<strong class="govuk-tag govuk-tag--date govuk-!-margin-bottom-2 govuk-!-margin-bottom-4" id="company-information-completed">Date of cliam: 2 June 2022</strong>-->
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Check the pension payments from Tesco</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4 govuk-!-margin-top-2">Application submitted on the 29 May 2023.</p>
+
+
+        {{ govukTable({
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-6",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Payment date (monthly)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Net pay",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "1 June 2022"
+              },
+              {
+                text: "£120"
+              }
+              ],
+              [
+                {
+                  text: "1 July 2022"
+                },
+                {
+                  text: "£120"
+                }
+              ],
+            [
+              {
+                text: "1 August 2022"
+              },
+              {
+                text: "£120"
+              }
+            ]
+          ]
+        }) }}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-list",
+          name: "process-c-nil-task-list",
+          fieldset: {
+            legend: {
+              text: "Do the payment dates, frequency and net pay match what is in Searchlight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-list-data"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-list-data"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+</form>
+
+{% endblock %}

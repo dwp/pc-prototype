@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-you-have-router" method="post" class="form">
+      {% set cashAmount %}
+        {{ govukInput({
+          id: "total-amount",
+          name: "total-amount",
+          classes: "govuk-input--width-10",
+          label: {
+            text: "How much money do you have?"
+          },
+          value: data["total-amount"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "over-10k",
+        name: "over-10k",
+        fieldset: {
+          legend: {
+            text: "Do you have money, savings or investments of more than £10,000?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["over-10k"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: cashAmount
+            },
+            checked: (data["over-10k"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

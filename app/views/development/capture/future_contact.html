@@ -1,0 +1,194 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+    {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start / Back section -->
+
+
+
+<!------------ Section ------------>
+
+
+
+
+{{ govukBackLink({
+  "href": "#",
+  "text": "Back"
+}) }}
+
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-xl">
+  Future contact
+</h1>
+
+<!-- only add a heading for a list if there is more than one list -->
+<h2 class="govuk-heading-m">
+  Personal details
+</h2>
+
+<!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+<!--   * `govuk-summary-list--short` for short questions -->
+<!--   * `govuk-summary-list__keys-long` for long questions -->
+<!--   * none for single group of q&a -->
+<dl class="govuk-summary-list govuk-summary-list--short">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Alex Smith
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="govuk-summary-list__value">
+      1 February 1953 / 65
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> date of birth</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Home address
+    </dt>
+    <dd class="govuk-summary-list__value">
+      221B Baker Street<br>
+      Marylebone<br>
+      London<br>
+      NW1 6XE
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> home address</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Contact details
+    </dt>
+    <dd class="govuk-summary-list__value">
+      07960 005 431<br>
+      alex.smiths@nongov.com
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> contact details</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+
+<h2 class="govuk-heading-m">
+  Contcat form
+</h2>
+
+<dl class="govuk-summary-list govuk-summary-list--short">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Blind etc
+    </dt>
+    <dd class="govuk-summary-list__value">
+      XXX
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Information<span class="govuk-visually-hidden"> Information</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Benfit one
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Benefit type two
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Information<span class="govuk-visually-hidden"> Information</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Title 3
+    </dt>
+    <dd class="govuk-summary-list__value">
+      XXX<br>
+      XXX<br>
+      XXX
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> Change</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Open text field
+    </dt>
+    <dd class="govuk-summary-list__value">
+      This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received. <br><br>
+      This is appropriate dummy text that is being employed in order to ascertain an approximate length.
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> licence period</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+
+<h2 class="govuk-heading-m">Confident this is the person you are talking too?</h2>
+
+<p>
+  This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received.
+</p>
+
+<a class="govuk-button" href="https://govuk-prototype-kit.herokuapp.com/docs/templates/confirmation-page" role="button">
+  Accept and continue
+</a>
+
+</div>
+</div>
+
+  </main>
+</div>
+
+
+{% endblock %}

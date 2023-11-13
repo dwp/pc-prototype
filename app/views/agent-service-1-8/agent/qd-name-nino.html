@@ -1,0 +1,59 @@
+{% if data['qd-search-nino'] === 'EO972577M' %}
+
+  {% set qdNameTemplate = "Kenneth Green" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">28 February 1943</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">EO 97 25 77 M</p>
+
+{% elif data['qd-search-nino'] === 'EO972577N' %}
+
+  {% set qdNameTemplate = "Kenneth Green" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">28 February 1943</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">EO 97 25 77 M</p>
+
+
+{% elif data['qd-search-nino'] === 'ZZ439386T' %}
+
+  {% set qdNameTemplate = "Rachel Simpson" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">23 December 1953</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">ZZ 43 93 86 T</p>
+
+
+{% elif data['qd-search-nino'] === 'AB987654C' %}
+
+  {% set qdNameTemplate = "Randolf Hughes" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">21 February 1949</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">AB 98 76 54 C</p>
+
+{% elif data['qd-search-nino'] === 'BB668734F' %}
+
+  {% set qdNameTemplate = "Elizabeth Jones" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">21 February 1947</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">BB 66 87 34 F</p>
+
+{% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+  {% set qdNameTemplate = "Oliver Stone" %}
+    <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">21 February 1952</p>
+    <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">QQ 45 77 41 A</p>
+
+
+{% else %}
+
+  {% set qdNameTemplate = "Jeff Bridges" %}
+  <p class="govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-0">{{ qdNameTemplate }}</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-0">10 August 1955</p>
+  <p class="govuk-!-font-size-19 govuk-!-margin-bottom-4">QQ 12 34 56 C</</p>
+{% endif %}
+
+
+<!--
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["query-search-nino"]}}</p>
+
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob"]}}</p>
+<p class="govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["search-dob-day"]  ["search-dob-month"]  ["search-dob-year"] }}</p>-->

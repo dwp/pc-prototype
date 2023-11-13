@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings and investments - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <span class="govuk-caption-m">Money, savings and investments</span>
+  <h1 class="govuk-heading-xl">
+    Premium bonds summary<br>
+  </h1>
+  <!----Headline---->
+  <form action="msic-has-isa-savings-account-yn" method="post">
+
+
+    <h3 class="govuk-heading-m">
+      Accounts (1)
+    </h3>
+
+<br><br>
+{% if data["msic-premium-bond-account-name"] %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+    <!------>  <h3 class="govuk-heading-s">
+        {{ data["msic-premium-bond-account-name"] }}<p class="govuk-body"><!---<a href="msic-bank-current-account" class="govuk-link">Remove</a>---></p>
+      </h3></div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Value of Premium Bonds"
+          },
+          value: {
+            text: data['msic-premium-bond-account-total-bonds']
+          },
+          actions: {
+            items: [
+              {
+                href: "msic-premium-bond-account",
+                html: "Change",
+                visuallyHiddenText: "XXX"
+              },
+              {
+                href: "msic-remove",
+                html: "Remove",
+                visuallyHiddenText: "XXX"
+              }
+            ]
+          }
+        },
+
+        {
+          classes: 'govuk-summary-list--no-border',
+          key: {
+            text: "Evidence needed:"
+          },
+          value: {
+            text: data['msic-premium-bond-account-read-from-statement']
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "",
+                visuallyHiddenText: "XXXX"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+  </div></div>
+{% endif %}
+
+
+
+<!--------------------------------------------------------------------------------->
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+  <br><br>
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "changed-name",
+    name: "changed-name",
+    fieldset: {
+      legend: {
+        text: "Do you have any more another Premium Bonds?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

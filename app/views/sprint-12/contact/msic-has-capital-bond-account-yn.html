@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Do you have any capital bonds? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-has-capital-bond-account-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+  <!------------HEADLINE------------>
+    {% set legend %}
+    {% if data["claim-filter"] == "Advanced or Today" %} Do you have any income or capital bonds? {% endif %}
+    {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any income or capital bonds?{% endif %}
+    {% endset %}
+  <!------------HEADLINE------------>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+  {{ govukRadios({
+    idPrefix: "msic-has-capital-bond-account-yn",
+    name: "msic-has-capital-bond-account-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">
+                An income or capital bond is an investment bond where you invest a lump sum of money into a fund. The minimum amount invested is usually £5,000.
+                </p>"
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-has-capital-bond-account-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-has-capital-bond-account-yn"] == "no")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+
+  {% include "sprint-11/mvp/msic-rolling-summary.html" %}
+
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+
+  <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+
+{% endblock %}

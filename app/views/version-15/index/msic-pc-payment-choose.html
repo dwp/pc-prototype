@@ -1,0 +1,62 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-choose-router" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment-choose",
+        name: "msic-pc-payment-choose",
+        fieldset: {
+          legend: {
+            text: "Where do you want your Pension Credit paid if your claim is successful?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">We know about the account your State Pension is paid into."
+            },
+        items: [
+          {
+            value: "Same account as State Pension",
+            text: "Same account as State Pension",
+            checked: (data["msic-pc-payment-choose"] == "Same account as State Pension")
+          },
+          {
+            value: "Bank name A / £100.00",
+            html: "<strong> " + data['msic-all-current-account-name-' + 0] + "</strong> " + "with a balance of" + "<strong> " + data['msic-all-current-account-amount-' + 0] + "</strong>",
+            checked: (data["msic-pc-payment-choose"] == "Bank name A / £100.00")
+          },
+          {
+            value: "A different account",
+            text: "A different account",
+            checked: (data["msic-pc-payment-choose"] == "A different account")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+    </div>
+{% endblock %}

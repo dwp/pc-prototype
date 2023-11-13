@@ -1,0 +1,96 @@
+<ul class="govuk-list govuk-list--bullet">
+
+
+{% if data["eu-filter"] == "Call" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>[applicant] the immigration status of anyone included in the application. </strong>We will need to ask you some more questions about their right to live and work in the UK</li>
+
+<li class="govuk-!-margin-bottom-4"><strong>[POA/Someone else] the immigration status of anyone included in the application. </strong>the applicant’s immigration status. We will need to ask you some more questions about their right to live and work in the UK</li>
+
+<li class="govuk-!-margin-bottom-4"><strong>[POA/Someone else] the applicant’s partner’s immigration status. </strong>We will need to ask you some more questions about their right to live and work in the UK</li>
+
+
+{% if data["state-pension-status"] == "NoBank" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>bank details. </strong>We will ask for the sort code and account number of an account to pay Pension Credit into</li>
+
+{% if data["doc-absence"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> time spent outside the UK. </strong>We might be able to backdate the application by up to 3 months, but we will need to ask about the dates and reasons for time spent outside the UK</li>
+
+{% if data["claimant-sight-impaired-check"] == "Yes" or data["partner-sight-impaired-check"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> the date anyone included in the application was registered blind or severely sight impaired. </strong>This could affect the amount of Pension Credit we can pay you</li>
+
+{% if data["home-care-home-check"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>living in a care home. </strong>We will ask the moving-in date, how the stay there is funded and whether the stay is permanent</li>
+
+{% if data["home-equity-release"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> equity release.</strong>  We will ask for information from an annual statement from the provider. We will also ask for details of any loan taken to buy the equity release product</li>
+
+{% if data["children-ctc"] == "No" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>the children or young people that live in the household. </strong>We will ask for their names, dates of birth and the date you became responsible for them</li>
+
+{% if data["non-deps-living-with-you"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>the other people that live in the household. </strong>We will ask their names, dates of birth and any earnings they have</li>
+
+{% if data["self-employed"] == "Yes"%}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>self-employment.</strong> We will ask about dates worked, details of last year's profit and loss accounts and any business assets or buildings</li>
+
+{% if data["pension-foreign-check"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>non-UK pensions.</strong> We will ask for details from annual illustrations or statements to work out how much they are worth</li>
+
+{% if data["pension-check"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>personal pensions. </strong> We will ask for details from annual illustrations or statements to work out how much they are worth</li>
+
+{% if data["employment-other-money"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> other income. </strong> We will ask how much this is and how often it is paid</li>
+
+{% if data["money-total-risk-check"] == "High" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> shares.</strong>  We will ask the number of shares and what company they are in</li>
+
+{% if data["money-total-risk-check"] == "High" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> income or capital bonds. </strong>We will ask for details from a letter or statement from the provider</li>
+
+{% if data["money-total-risk-check"] == "High" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>  money overseas. </strong> We will ask the amount and what currency it is in</li>
+
+{% if data["money-total-risk-check"] == "High" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> other accounts or investments.</strong> We will ask for details of these including what the value is and whether they can be accessed</li>
+
+{% if data["money-total-risk-check"] == "nothing selected" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> money.</strong> We will ask a few more questions about the money you have </li>
+
+{% if data["money-second-property-check"] == "Yes" or data["home-care-home-check-still-own"] == "Yes"%}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong> property or land.</strong> We will ask who lives there, what share of the property is owned and details of any mortgage</li>
+
+{% if data["money-disregards-all"] == "Yes" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>[Applicant] the money that you plan to use to buy or carry out essential work on your main home</strong><br>Please have details of what you plan to use the money for to hand</li>
+<li class="govuk-!-margin-bottom-4"><strong>[POA] the money that the applicant plans to use to buy or carry out essential work on their main home</strong><br>Please have details of what they plan to use the money for to hand</li>
+<li class="govuk-!-margin-bottom-4"><strong>[Someone else] the money that the applicant plans to use to buy or carry out essential work on their main home</strong><br>Please ask them to have details of what they plan to use the money for to hand</li>
+
+
+{% if data["money-disregards-payments-options"] == "Option" %}
+{% endif %}
+<li class="govuk-!-margin-bottom-4"><strong>[Applicant]the money you have from payouts or payments</strong><br>Please have details of this to hand</li>
+<li class="govuk-!-margin-bottom-4"><strong>[POA]the money the applicant has from payouts or payments</strong><br>Please have details of this to hand</li>
+<li class="govuk-!-margin-bottom-4"><strong>[Someone else]the money the applicant has from payouts or payments</strong><br>Please  ask them to have details of this to hand</li>
+
+
+
+</ul>

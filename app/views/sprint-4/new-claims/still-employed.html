@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you still employed now? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="still-employed-router" method="post" class="form">
+      {% set workEndDate %}
+      {{ govukDateInput({
+        id: "employment-end-date",
+        namePrefix: "employment-end-date",
+        fieldset: {
+          legend: {
+            text: "When did you stop working?"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data["employment-end-date-day"]
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data["employment-end-date-month"]
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data["employment-end-date-year"]
+          }
+        ]
+      }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "still-employed",
+        name: "still-employed",
+        fieldset: {
+          legend: {
+            text: "Are you still employed now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["still-employed"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: workEndDate
+            },
+            checked: (data["still-employed"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

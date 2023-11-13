@@ -1,0 +1,61 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="#" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+
+
+
+                {% include "agent-service-1-2/agent/navigation-4.html" %}
+
+                <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+                  <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Overview</h3>
+
+                  <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-one-half">
+                        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+                          <li>Applied online</li>
+                          <li>Award</li>
+                          <li>State Pension Ammount</li>
+                          <li>Backdating Period</li>
+                          <li>Timeline</li>
+                        </ul>
+                      </div>
+
+                      <div class="govuk-grid-column-two-third">
+                        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+                          <li>28/02/2022</li>
+                          <li>Nil</li>
+                          <li>£182</li>
+                          <li>10/01/2022 - 28/02/2022</li>
+                          <li>Award letter sent on 01/03/2022 <br><a href="case-timeline">View more</a> </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                </div>
+
+  </div>
+
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="hospital-check-yn-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+        <h1 class="govuk-heading-l">Agent: Does Searchlight or the PIP server show that {{ data["full-name"] }} receives any of the following benefits:</h1>
+
+        <ul class="govuk-body-l govuk-list govuk-list--bullet">
+          <li><strong>Attendance Allowance</strong> (AA)</li>
+          <li><strong>Disability Living Allowance </strong> (DLA) <br>Care component at the middle or higher rate</li>
+          <li><strong>Constant Attendance Allowance</strong> (CAA)</li>
+          <li><strong>Daily Living Component of Personal Independence Payment</strong> (PIP)</li>
+        </ul>
+
+      {{ govukRadios({
+        idPrefix: "hospital-check-yn",
+        name: "hospital-check-yn",
+        fieldset: {
+          legend: {
+            html: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["hospital-check-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["hospital-check-yn"] == "No")
+          }
+        ]
+      }) }}
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+</div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

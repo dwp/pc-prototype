@@ -1,0 +1,205 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+    {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start / Back section -->
+
+
+
+<!------------ Section ------------>
+
+
+
+
+{{ govukBackLink({
+  "href": "#",
+  "text": "Back"
+}) }}
+
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-xl">
+  Alex Smith <br>
+  AB 11 22 33 C <br>
+</h1>
+
+<!-- only add a heading for a list if there is more than one list -->
+<h2 class="govuk-heading-m">
+  Personal details
+</h2>
+
+<!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
+<!--   * `govuk-summary-list--short` for short questions -->
+<!--   * `govuk-summary-list__keys-long` for long questions -->
+<!--   * none for single group of q&a -->
+<dl class="govuk-summary-list govuk-summary-list--short">
+  <!------------ ---- ------------>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        National insurance
+      </dt>
+      <dd class="govuk-summary-list__value">
+        AB 11 22 33 C
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="/development/capture/about_claimant_capture.html">
+          Change<span class="govuk-visually-hidden"> name</span>
+        </a>
+      </dd>
+    </div>
+  <!------------ ---- ------------>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Alex Smith
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="/development/capture/about_claimant_capture.html">
+        Change<span class="govuk-visually-hidden"> name</span>
+      </a>
+    </dd>
+  </div>
+<!------------ ---- ------------>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="govuk-summary-list__value">
+      1 February 1953 / 65
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        Change<span class="govuk-visually-hidden"> date of birth</span>
+      </a>
+    </dd>
+  </div>
+<!------------ ---- ------------>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      .
+    </dt>
+    <dd class="govuk-summary-list__value">
+      .
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="/development/capture/about_claimant_capture.html">
+        Change<span class="govuk-visually-hidden"> home address</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      .
+    </dt>
+    <dd class="govuk-summary-list__value">
+      .
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="/development/capture/about_claimant_capture.html">
+        Change<span class="govuk-visually-hidden"> contact details</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+
+<h2 class="govuk-heading-m">
+  Further details
+</h2>
+
+<dl class="govuk-summary-list govuk-summary-list--short">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Disability
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Disability type
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="/development/capture/about_claimant_capture.html">
+        Change<span class="govuk-visually-hidden"> .</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      .
+    </dt>
+    <dd class="govuk-summary-list__value">
+      .
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        .<span class="govuk-visually-hidden"> .</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      .
+    </dt>
+    <dd class="govuk-summary-list__value">
+      .
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        .<span class="govuk-visually-hidden"> .</span>
+      </a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      .
+    </dt>
+    <dd class="govuk-summary-list__value">
+      .
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a href="https://govuk-prototype-kit.herokuapp.com/docs/templates/check-your-answers#">
+        .<span class="govuk-visually-hidden"> licence period</span>
+      </a>
+    </dd>
+  </div>
+</dl>
+
+
+<h2 class="govuk-heading-m">Confident this is the person you are talking too?</h2>
+
+<p>
+  This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received.
+</p>
+
+<!------------ Button ------------>
+<a href="/development/capture/about_claimant.html" role="button" draggable="false" class="govuk-button">
+  Accept and continue
+</a>
+<!------------ ---- ------------>
+
+</div>
+</div>
+
+  </main>
+</div>
+
+
+{% endblock %}

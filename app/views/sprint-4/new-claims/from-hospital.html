@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Did you go straight into the care home from hospital? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="address-summary" method="post" class="form">
+      {% set hospitalDate %}
+        {{ govukDateInput({
+          id: "hospital-entry-date",
+          namePrefix: "hospital-entry-date",
+          fieldset: {
+            legend: {
+              text: "What date did you go into hospital?"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2017"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["hospital-entry-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["hospital-entry-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["hospital-entry-date-year"]
+            }
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "from-hospital",
+        name: "from-hospital",
+        fieldset: {
+          legend: {
+            text: "Did you go straight into the care home from hospital?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            conditional: {
+              html: hospitalDate
+            },
+            checked: (data["from-hospital"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["from-hospital"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

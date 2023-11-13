@@ -1,0 +1,40 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form method="post" action="/session-clear-route">
+ <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-5/mvp/landing">
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Clear session and start again</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">XXX</p>
+
+
+
+      {{ govukButton({
+        text: "Clear session",
+        classes: "govuk-button--warning"
+      }) }}
+
+
+    </div>
+  </div>
+ </form>
+
+{% endblock %}

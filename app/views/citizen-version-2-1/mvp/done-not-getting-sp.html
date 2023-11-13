@@ -1,0 +1,59 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply for Pension Credit online</h1>
+
+
+    <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You should <a href="https://www.nidirect.gov.uk/articles/ways-claim-state-pension">claim your State Pension</a> first if you are entitled to one.</p>
+
+      <p class="govuk-heading-m govuk-!-margin-bottom-2">If you are not entitled to a State Pension call the Pension Credit Application Line.</p>
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0808 100 6165</li>
+        <li>Textphone (Text Relay): 0808 100 2198</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 10:00am to 4:00pm (closed on bank holidays).<br><a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers</a></p>
+
+
+      <!---- UK ---->{% else %}
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You should <a href="https://www.gov.uk/new-state-pension/how-to-claim">claim your State Pension</a> first if you are entitled to one.</p>
+
+        <p class="govuk-heading-m govuk-!-margin-bottom-2">If you are not entitled to a State Pension call the<br>Pension Credit claim line.</p>
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Telephone: 0800 99 1234</li>
+          <li>Textphone: 0800 169 0133</li>
+        </ul>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 9:30am to 6pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+        <!---- COUNTRY END ---->{% endif %}
+
+
+      {% include "citizen-version-2-1/mvp/survey.html" %}
+
+
+    </div>
+  </div>
+{% endblock %}

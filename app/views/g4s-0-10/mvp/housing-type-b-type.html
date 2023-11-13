@@ -1,0 +1,61 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="housing-type-b-type-router" method="post" class="form">
+
+
+
+      {{ govukRadios({
+        name: "housing-type-b-type",
+        fieldset: {
+          legend: {
+            text: "What is your housing situation?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "You own it",
+            text: "You own it",
+            checked: (data["housing-type-b-type"] == "You own it")
+          },
+          {
+            value: "Live in someone elses home",
+            text: "You live in someone else’s home without paying towards the rent or mortgage",
+            checked: (data["housing-type-b-type"] == "Live in someone elses home")
+          },
+          {
+            value: "Other accommodation",
+            text: "Other",
+            checked: (data["housing-type-b-type"] == "Other accommodation")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

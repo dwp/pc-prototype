@@ -1,0 +1,74 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Do you have any ISAs, TESSA, TOISAs and PEPs)? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<form action="msic-has-isa-savings-account-yn-router" method="post" class="form">
+  <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <!------------HEADLINE------------>
+      {% set legend %}
+      {% if data["claim-filter"] == "Advanced or Today" %} Do you have any ISAs? {% endif %}
+      {% if data["claim-filter"] == "Backdating" %} Since {{ data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] }}, have you had any ISAs?{% endif %}
+      {% endset %}
+    <!------------HEADLINE------------>
+
+
+  {{ govukRadios({
+    idPrefix: "msic-has-isa-savings-account-yn",
+    name: "msic-has-isa-savings-account-yn",
+    fieldset: {
+      legend: {
+        html: legend,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+        },
+        hint: {
+          html: "<p class=\"hint\">An ISA works like a normal savings account, except you don’t pay any UK income or capital gains tax."
+        },
+    classes: "govuk-radios--inline",
+    items: [
+      {
+        value: "yes",
+        text: "Yes",
+        checked: (data["msic-has-isa-savings-account-yn"] == "yes")
+      },
+      {
+        value: "no",
+        text: "No",
+        checked: (data["msic-has-isa-savings-account-yn"] == "no")
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+  </div></div><br><br>
+
+  {% include "version-15/index/msic-rolling-summary.html" %}
+
+    <input type="hidden" name="money-complete" value="true"/>
+
+  </form>
+
+
+  <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+{% endblock %}

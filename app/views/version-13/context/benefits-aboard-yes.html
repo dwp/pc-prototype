@@ -1,0 +1,310 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  benefits-aboard-yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="benefits-summary" method="post" class="form">
+
+      <input type="hidden" name="benefits-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">benefits-aboard-yes</h1>
+
+<p class="govuk-body">govuk-body</p>
+
+<br>
+
+        {{ govukRadios({
+          idPrefix: "HH-disability-yn",
+          name: "HH-disability-yn",
+          fieldset: {
+            legend: {
+            html: "Is it paid into a disability benefit?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "XXX"
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["HH-disability-yn"] == "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["HH-disability-yn"] == "No")
+            }
+          ]
+        }) }}
+
+
+        <br><!---------------------------->
+
+        {{ govukDateInput({
+          id: "BB-date",
+          namePrefix: "BB-date",
+          fieldset: {
+            legend: {
+              html: "<strong>The date the benefit was awarded</strong>"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["BB-date-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["BB-date-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["BB-date-year"]
+            }
+          ]
+        }) }}
+
+
+        <br><!---------------------------->
+
+        {% set ccFrequencyOther %}
+        {{ govukInput({
+        label: {
+          html: "How often is this paid?"
+        },
+        id: "cc-frequency-other",
+        name: "cc-frequency-other",
+        classes: "govuk-input--width-20"
+        }) }}
+        {% endset -%}
+
+
+
+        {{ govukRadios({
+          idPrefix: "cc-frequency-yes",
+          name: "cc-frequency-yes",
+          fieldset: {
+            legend: {
+              html: "<strong>How often is this paid?</strong>",
+              isPageHeading: true,
+              classes: "<!--govuk-fieldset__legend--s-->"
+              }
+              },
+
+          items: [
+            {
+              value: "Every week",
+              text: "Every week",
+              checked: (data["cc-frequency-yes"] == "Every week")
+            },
+            {
+              value: "Every two weeks",
+              text: "Every two weeks",
+              checked: (data["cc-frequency-yes"] == "Every two weeks")
+            },
+            {
+              value: "Monthly",
+              text: "Every month",
+              checked: (data["cc-frequency-yes"] == "Monthly")
+            },
+            {
+              value: "Other payment frequency",
+              text: "Other",
+              checked: (data["cc-frequency-yes"] == "Other payment frequency")                      ,
+                    conditional: {
+                      html: ccFrequencyOther
+                    }
+                  }
+                ]
+              }) }}
+
+
+
+<!--------------------->
+
+
+{{ govukRadios({
+  idPrefix: "DD-payday",
+  name: "DD-payday",
+  fieldset: {
+    legend: {
+    html: "When it is paid (Payday)",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+      }
+      },
+      items: [
+    {
+      value: "Monday",
+      text: "Monday",
+      checked: (data["DD-payday"] == "Monday")
+    },
+    {
+      value: "Tuesday",
+      text: "Tuesday",
+      checked: (data["DD-payday"] == "Tuesday")
+    },
+    {
+      value: "Wednesday",
+      text: "Wednesday",
+      checked: (data["DD-payday"] == "Wednesday")
+    },
+    {
+      value: "Thursday",
+      text: "Thursday",
+      checked: (data["DD-payday"] == "Thursday")
+    },
+    {
+      value: "Friday",
+      text: "Friday",
+      checked: (data["DD-payday"] == "Friday")
+    },
+    {
+      value: "Saturday",
+      text: "Saturday",
+      checked: (data["DD-payday"] == "Saturday")
+    },
+    {
+      value: "Sunday",
+      text: "Sunday",
+      checked: (data["DD-Sunday"] == "Sunday")
+    }
+  ]
+}) }}
+
+
+
+
+<!---------------------------->
+
+        {{ govukInput({
+        label: {
+          html: "<strong>Currency?</strong>"
+        },
+        id: "EE-currency",
+        name: "EE-currency",
+        classes: "govuk-input--width-20"
+      }) }}
+
+<!---------------------------->
+
+        {{ govukInput({
+        label: {
+          html: "<strong>The amount being paid?</strong>"
+        },
+        id: "EE-amount",
+        name: "EE-amount",
+        classes: "govuk-input--width-20"
+      }) }}
+
+<!---------------------------->
+
+
+{{ govukRadios({
+  idPrefix: "FF-type-yn",
+  name: "FF-type-yn",
+  fieldset: {
+    legend: {
+    html: "Is it paid into a foreign account?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "XXX"
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (data["FF-foreign-account-yn"] == "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (data["FF-foreign-account-yn"] == "No")
+    }
+  ]
+}) }}
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+{% set ggmoreYes %}
+{{ govukTextarea({
+  name: "GG-more-yes-detail",
+  id: "GG-more-yes-detail",
+  label: {
+    text: "Add same details as above if there is more payments?"
+  },
+  hint: {
+    text: "XXX"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "GG-more-yn",
+  name: "GG-more-yn",
+  fieldset: {
+    legend: {
+      html: "Add another entry",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "Same as above"
+  },
+  items: [
+  {
+    value: "yes-date",
+    text: "Yes",
+    checked: (data["GG-more-yn"] == "Yes"),
+    conditional: {
+      html: ggmoreYes
+    }
+  },
+    {
+      value: "no-date",
+      text: "No",
+      checked: (data["GG-more-yn"] == "No")
+    }
+    ]
+  }) }}
+
+
+
+
+
+
+
+      <br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

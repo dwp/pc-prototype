@@ -1,0 +1,80 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-dob" method="post" class="form">
+
+
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">What is your name?</h1>
+
+
+        {{ govukInput({
+          label: {
+            html: "<strong>First name</strong>"
+          },
+          hint: {
+            text: ""
+          },
+          id: "first-name",
+          name: "First name",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          value: data["first-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            html: "<strong>Middle names (optional)</strong>"
+          },
+          hint: {
+            text: ""
+          },
+          id: "second-name",
+          name: "Second-name",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          value: data["second-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            html: "<strong>Last name</strong>"
+          },
+          hint: {
+            text: ""
+          },
+          id: "second-name",
+          name: "Second-name",
+          classes: "govuk-input--width-20 govuk-!-margin-bottom-2",
+          value: data["second-name"]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

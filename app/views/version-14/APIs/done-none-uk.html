@@ -1,0 +1,55 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">We can only accept claims from people who live in England, Scotland or Wales</h1>
+
+
+      <br>
+
+      <h3 class="govuk-heading-m">We cannot take your claim for Pension Credit as you have told us you do not live in England, Scotland or Wales.</h3>
+
+<br>
+
+      <p class="govuk-body">
+        <strong>If you live in Northern Ireland, you can apply through the Northern Ireland Pension Centre on 0808 100 6165.</strong><br><br>Monday to Friday, 8am to 6pm (closed on bank holidays).<br>Calls to this number are free from landlines and mobiles.
+      </p>
+
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-s"><span class="agent-action">Adviser: </span> Use the back link to go back to the previous page if the claimant decides to continue the application.</h2>
+
+
+        <p class="govuk-body">Finish and close to go back to the start page to take another application.</p>
+
+      </div>
+
+      <br>
+
+
+      {{ govukButton({
+        text: "Finish and close",
+        href: "start"
+      }) }}
+
+
+
+    </div>
+  </div>
+{% endblock %}

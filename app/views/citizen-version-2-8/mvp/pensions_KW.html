@@ -1,0 +1,117 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  What pensions have you paid into? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-risk-check-router" method="post" class="form">
+
+
+
+      {% set pensionsTaken %}
+      {{ govukInput({
+        id: "money-2-total-now-value",
+        name: "money-2-total-now-value",
+        label: {
+          html: "Are all of your personal or private pensions now in payment?",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        },
+        prefix: {
+          text: "Yes or No"
+        },
+        value: data["money-2-total-now-value"],
+        classes: "govuk-input--width-0 govuk-!-margin-bottom-4",
+        spellcheck: false
+      }) }}
+      {% endset %}
+
+
+
+{{ govukCheckboxes({
+  idPrefix: "pensions-check",
+  name: "pensions-check",
+  fieldset: {
+    legend: {
+      text: "What pensions have you paid into?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: "Select all that apply. You do not need to tell us about your UK State Pension.",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "High",
+      text: "Workplace pensions - set up by an employer",
+      checked: (data["pensions-check"] == "Workplace or employer pensions")
+    },
+    {
+      value: "High",
+      text: "Personal or private pensions - set up by you",
+      checked: (data["pensions-check"] == "Personal or private pensions"),
+      conditional: {
+        html: pensionsTaken }
+    },
+    {
+      value: "High",
+      text: "Non-UK pensions",
+      checked: (data["money-total-risk-check"] == "Non-UK pensions")
+    }
+  ]
+}) }}
+
+<p class="govuk-!-font-size-19 govuk-!-padding-left-2 govuk-!-margin-top-0 govuk-!-margin-bottom-0">or</p>
+
+{{ govukCheckboxes({
+  idPrefix: "None",
+  name: "None",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-8 govuk-!-padding-top-0"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+  {
+    value: "Low",
+    text: "I have none of these",
+    checked: (data["pension-check"] == "None of these")
+  }
+  ]
+}) }}
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

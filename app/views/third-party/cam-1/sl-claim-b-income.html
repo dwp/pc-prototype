@@ -1,0 +1,182 @@
+{% extends "layout-fake-searchlight.html" %}
+
+{% block pageTitle %}
+  SearchLight
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="find-a-claim" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-font-size-36 govuk-!-margin-bottom-2">Finlay Mason</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-2">{{ data ["sl-find-a-claim"]}}</h1>
+      <h1 class="govuk-body govuk-!-font-size-36 govuk-!-margin-bottom-8">28 August 1950</h1>
+
+
+
+
+      <nav class="navigation-secondary govuk-!-margin-bottom-8">
+          <ul>
+            <li>
+              <a href="sl-claim-b">Personal details</a>
+              <!-- <a href="case-load">Pension Credit claims</a> -->
+            </li>
+            <li>
+              <!-- <a href="find-a-claim" class="active" aria-current="section">Find a claim</a> -->
+              <a href="sl-claim-b-benefits">Benefits</a>
+            </li>
+            <li>
+              <!-- <a href="stats" class="active" aria-current="section">Hot hot stats</a> -->
+              <a href="sl-claim-b-income"class="active" aria-current="section">Income</a>
+            </li>
+
+
+          </ul>
+        </nav>
+
+
+
+                                <p class="govuk-body govuk-!-font-size-36 govuk-!-margin-top-8 govuk-!-margin-bottom-6"><strong>Income</p>
+
+
+
+                      <ul class="sl-tags govuk-!-margin-top-8">
+                          <li><h1 class="govuk-heading-m">Scottish Widows</h1></li>
+                          <li><strong class="govuk-tag">PENSION</strong></li>
+                      </ul>
+
+                                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                    <thead class="govuk-table__head">
+                                      <tr class="govuk-table__row">
+                                        <th class="govuk-table__cell govuk-25-percent">Paid</th>
+                                        <th class="govuk-table__cell govuk-25-percent">Frequency</th>
+                                        <th class="govuk-table__cell govuk-25-percent">Taxable pay</th>
+                                        <th class="govuk-table__cell govuk-25-percent"></th>
+                                      </tr>
+                                      </thead>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">June 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Monthly</td>
+                                        <td class="govuk-table__cell table-spacer">£23.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">May 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Monthly</td>
+                                        <td class="govuk-table__cell table-spacer">£23.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">April 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Monthly</td>
+                                        <td class="govuk-table__cell table-spacer">£23.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      </table>
+
+                                      <ul class="sl-tags govuk-!-margin-top-8">
+                                          <li><h1 class="govuk-heading-m">Brandling Villa Hotel Lets</h1></li>
+                                          <li><strong class="govuk-tag">PENSION</strong></li>
+                                      </ul>
+
+                                                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                                    <thead class="govuk-table__head">
+                                                      <tr class="govuk-table__row">
+                                                        <th class="govuk-table__cell govuk-25-percent">Paid</th>
+                                                        <th class="govuk-table__cell govuk-25-percent">Frequency</th>
+                                                        <th class="govuk-table__cell govuk-25-percent">Taxable pay</th>
+                                                        <th class="govuk-table__cell govuk-25-percent"></th>
+                                                      </tr>
+                                                      </thead>
+
+                                                      <tr class="govuk-table__row">
+                                                        <td class="govuk-table__cell table-spacer">28 June 2021</td>
+                                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                                        <td class="govuk-table__cell table-spacer">£400.00</td>
+                                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                                      </tr>
+
+                                                      <tr class="govuk-table__row">
+                                                        <td class="govuk-table__cell table-spacer">21 June 2021</td>
+                                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                                        <td class="govuk-table__cell table-spacer">£400.00</td>
+                                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                                      </tr>
+
+                                                      <tr class="govuk-table__row">
+                                                        <td class="govuk-table__cell table-spacer">14 June 2021</td>
+                                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                                        <td class="govuk-table__cell table-spacer">£400.00</td>
+                                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                                      </tr>
+
+                                                      </table>
+
+
+                                      <ul class="sl-tags govuk-!-margin-top-8">
+                                          <li><h1 class="govuk-heading-m">Pizza Italia Longbenton LTD</h1></li>
+                                          <li><strong class="govuk-tag govuk-tag--grey">Employment</strong></li>
+                                      </ul>
+
+                                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><table class="govuk-table">
+                                    <thead class="govuk-table__head">
+                                      <tr class="govuk-table__row">
+                                        <th class="govuk-table__cell govuk-25-percent">Paid</th>
+                                        <th class="govuk-table__cell govuk-25-percent">Frequency</th>
+                                        <th class="govuk-table__cell govuk-25-percent">Taxable pay</th>
+                                        <th class="govuk-table__cell govuk-25-percent"></th>
+                                      </tr>
+                                      </thead>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">28 June 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                        <td class="govuk-table__cell table-spacer">£20.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">21 June 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                        <td class="govuk-table__cell table-spacer">£20.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell table-spacer">14 June 2021</td>
+                                        <td class="govuk-table__cell table-spacer">Weekly</td>
+                                        <td class="govuk-table__cell table-spacer">£20.00</td>
+                                        <td class="govuk-table__cell table-spacer"></td>
+
+                                      </tr>
+
+                                      </table>
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

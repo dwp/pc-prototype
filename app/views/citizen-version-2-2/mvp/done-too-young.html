@@ -1,0 +1,77 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">You cannot apply for Pension Credit yet</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">You can apply for Pension Credit up to 4 months before you reach your State Pension age.</p>
+
+      <h2 class="govuk-heading-m govuk-list govuk-!-margin-bottom-2">You might be able to apply for Universal Credit.</h2>
+
+      <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+    <p><a href="www.nidirect.gov.uk/campaigns/universal-credit">Apply online for Universal Credit (opens in a new window or tab)</a></p>
+    <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-list govuk-!-margin-bottom-2">If you need to speak to us, call the<br>Pension Credit Application Line.</h2>
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0808 100 6165</li>
+        <li>Textphone (Text Relay): 0808 100 2198</li>
+      </ul>
+
+      <p>Monday to Friday, 10:00am to 4:00pm (closed on bank holidays).<br><a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers.</a></p>
+
+
+
+        <!---- UK ---->{% else %}
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Telephone: 0800 328 5644</li>
+          <li>Textphone: 0800 328 1344</li>
+        </ul>
+        <div class="govuk-!-margin-bottom-6"><p>Monday to Friday, 8am to 6pm (closed on bank holidays). <br>Calls to 0800 numbers are free from landlines and mobiles.</p></div>
+
+        <h2 class="govuk-heading-m govuk-!-margin-top-6 govuk-list govuk-!-margin-bottom-2">If you need to speak to us, call the<br>Pension Credit claim line.</h2>
+
+        <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+          <li>Telephone: 0800 99 1234</li>
+          <li>Textphone: 0800 169 0133</li>
+        </ul>
+
+        <p>Monday to Friday, 9:30am to 6pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+
+        <!---- COUNTRY END ---->{% endif %}
+
+
+
+
+
+
+
+      {% include "citizen-version-2-2/mvp/survey.html" %}
+
+      <!-- {{ govukButton({
+        text: "Finish and close",
+        classes: "govuk-!-margin-top-6"
+      }) }} -->
+
+
+
+    </div>
+  </div>
+{% endblock %}

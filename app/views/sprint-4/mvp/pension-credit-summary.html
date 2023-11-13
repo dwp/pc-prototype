@@ -1,0 +1,1382 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Pension Credit claim summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<h1 class="govuk-heading-xl">
+  Pension Credit claim summary.<br>
+  Check your answers
+</h1>
+<!----Headline---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Eligibility<br>information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Who are you claiming pension credit for?"
+            },
+            value: {
+              text: data['claiming-for']
+            },
+            actions: {
+              items: [
+                {
+                  href: "who-is-caller",
+                  text: "Change",
+                  visuallyHiddenText: "who the caller is"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "PC1 notepad"
+            },
+            value: {
+              text: data['pc1-more-detail']
+            },
+            actions: {
+              items: [
+                {
+                  href: "who-is-caller",
+                  text: "Change",
+                  visuallyHiddenText: "PC1 Detials"
+                }
+              ]
+            }
+          },
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: data["full-name"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "National Insurance number"
+              },
+              value: {
+                text: data["nino"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "National Insurance number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Telephone number"
+              },
+              value: {
+                text: data["telephone-number"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "telephone number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "over-spa",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you live in the UK?"
+              },
+              value: {
+                text: data['resides-in-uk']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "resides-in-uk",
+                    text: "Change",
+                    visuallyHiddenText: "UK residence"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Have you lived permanently in the UK for the last 2 years?"
+              },
+              value: {
+                text: data['lived-abroad']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "lived-abroad",
+                    text: "Change",
+                    visuallyHiddenText: "abroad"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Are you a UK national?"
+              },
+              value: {
+                text: data['uk-national']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "uk-national",
+                    text: "Change",
+                    visuallyHiddenText: "uk national"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you have a partner?"
+              },
+              value: {
+                text: data["has-partner"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "partner-under-spa",
+                    text: "Change",
+                    visuallyHiddenText: "the fact they have a partner under spa"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["otherIncome-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Claim date<br>information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+  <dl class="govuk-summary-list govuk-summary-list--short">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Date
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if data["claim-date"] == "Today" %}
+          {% set today = '' | formatDate %}
+          {{ today }}
+        {% elif data["claim-date"] == "SPA Entitlement" %}
+          {{ data['back-dating-date'] | formatDate }}
+        {% elif data["claim-date"] == "Alternative date" %}
+          {{ data['alternate-date-day'] + ' ' + (data['alternate-date-month'] | getMonth) + ' ' + data['alternate-date-year'] }}
+        {% endif %}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a href="claim-date">
+          Change
+        </a>
+      </dd>
+    </div>
+  </dl>
+
+<!-------->
+
+
+
+
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Contact preferences, accessability, and disablities
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact preferences
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["contact-options"] %}
+            {{ data["contact-options"].join(", ") }}
+          {% else %}
+            No means
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="can-contact">
+            Change
+          </a>
+        </dd>
+      </div>
+      {% if data["mobile"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Mobile phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["mobile"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["mobile"]%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Can text the mobile
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["can-text"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-text">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["landline"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["landline"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      {% if data["email"]%}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["email"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="can-contact">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Accessability
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["disabilities"] %}
+            {{ data["disabilities"].join(", ") }}
+          {% else %}
+            None
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="disability">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Disabilities
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["accessability"] %}
+            {{ data["accessability"].join(", ") }}
+          {% else %}
+            None
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="accessability">
+            Change
+          </a>
+        </dd>
+      </div>
+
+    </dl>
+
+
+
+
+
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+Address
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              221B Baker Street<br>
+              Marylebone<br>
+              London<br>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="address-choice">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Postcode
+            </dt>
+            <dd class="govuk-summary-list__value">
+              NW1 5RT
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="postcode-lookup">
+                Change
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home ownership
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["home-ownership"] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="home-ownership">
+                Change
+              </a>
+            </dd>
+          </div>
+          {% if data["home-ownership"] == "Owned" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Ground rent
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["ground-rent"] or "None "}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="ground-rent">
+                  Change
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Service charges
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["service-charges"] or "None "}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="service-charges">
+                  Change
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Mortgage
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["has-mortgage"] or "No "}}
+                {% if data["has-mortgage"] === "Yes" %}
+                  - <strong>Sign post to SMI</strong>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="mortgage-yn">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% elif data["home-ownership"] == "Care Home" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Care home notes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["carehome-more-detail"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="notepad-carehome">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% elif data["home-ownership"] == "Sheltered Accommodation" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Sheleterd accomdation notes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["sheltered-more-detail"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="notepad-sheltered">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% elif data["home-ownership"] == "Someone Else" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Someone else notes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["someone-else-more-detail"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="notepad-someoneelse">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% elif data["home-ownership"] == "Other" %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Other place notes
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data["other-res-more-detail"] }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="notepad-otherres">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          {% if data["owns-council-tax"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Council tax reduction
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data["owns-council-tax"]}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="owns-council-tax">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+          {% if data["rent-housing-council-tax"] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                In receipt housing benefit and council tax reduction
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data["rent-housing-council-tax"]}}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a href="rent-housing-council-tax">
+                  Change
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+        </dl>
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Partner<br>information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-partner" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["partner-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+{% if data["household-more-detail"] %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Others in<br>the household
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-household-composition" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["household-more-detail"] }}
+  </p>
+
+
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Hospital<br>admissions
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+
+          <th class="govuk-table__header" scope="col">Have you spent any time in hospital since: {{ data["hospital-yn"] }}</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-hospital-dates" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  <p class="govuk-body">
+    {{ data["hospital-more-detail"] }}
+  </p>
+
+
+</div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Other pensions and notional income
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-temporary" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["otherPension-more-detail"] }}
+  </p>
+
+</div></div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Money / Cash
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["MoneyOver10k-savings-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div></div>
+
+<!----End 1/3 + 2/3 ---->
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Savings
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-savings-more-detail"] }}
+  </p>
+
+  </div></div>
+
+
+<!----End 1/3 + 2/3 ---->
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["MoneyOver10k-investments-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Investments
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-MoneyOver10k" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["MoneyOver10k-investments-more-detail"] }}
+  </p>
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<!----Headline---->
+
+
+<!----Headline---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Were you self-employed<br>on this date: 00.00.2018
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Yes/No</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-selfEmployment" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+
+</div>
+</div>
+<!----End 1/3 + 2/3 ---->
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Self-employment information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-selfEmployment" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["selfEmployment-more-detail"] }}
+  </p>
+
+
+<!----End 1/3 + 2/3 ----></div>
+</div>
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+{% if data["otherIncome-more-detail"] %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p></p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Other income
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-otherIncome" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["otherIncome-more-detail"] }}
+  </p>
+
+  </div></div>
+
+<!----End 1/3 + 2/3 ---->
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+Payment<br>details
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Bank account
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name on account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["name-on-account"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["sort-code"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{ data["account-number"] }}
+        </dd>
+
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      {% if data["roll-number"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Roll number
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {{ data["roll-number"] }}
+          </dd>
+
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      </dl>
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+<!----
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Temporary<br>notepad details
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Note pad information:</th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="notepad-temporary" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+
+  <p class="govuk-body">
+    {{ data["temporary-more-detail"] }}
+  </p>
+
+</div></div>
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p> </p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Claimant<br>declaration
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+      By submitting this claim you agree that the information you’ve given is
+      complete and correct. <br><br>While you’re receiving Pension Credit,
+      you’ll report changes to your circumstances straight away by calling
+      0800&nbsp;731&nbsp;7898. <br> If you give wrong or incomplete information, or
+      you don’t report changes, you might:
+    </p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>be paid too much Pension Credit and have to pay the money back</li>
+      <li>have your Pension Credit reduced or stopped</li>
+      <li>need to pay a financial penalty</li>
+      <li>be prosecuted</li>
+    </ul>
+
+  </div></div>
+
+<!----Add more
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+---->
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<br>
+<h2 class="govuk-heading-m">Pension Credit claim outcome</h2>
+
+<p class="govuk-body">
+  Based on the answers above, which tool do you need to use?<br>
+  Continue with MyPC or business as usual (PTP CAM)<br>
+  <a href="/get-eligibility-pdf" class="govuk-link">
+    Download (PDF)
+  </a>
+</p>
+<br>
+
+<br><br>
+
+    <form action="done" method="post">
+      <input type="hidden" name="earnings-and-other-summary" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Submit claim"
+        }) }}
+      </p>
+    </form>
+
+
+  </div>
+</div>
+<!----Break---->
+
+{% endblock %}

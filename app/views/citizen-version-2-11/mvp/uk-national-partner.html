@@ -1,0 +1,65 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% set ResideHint %}
+{% endset %}
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="state-pension-status" method="post">
+
+
+        {{ govukRadios({
+          idPrefix: "uk-national-partner",
+          name: "uk-national-partner",
+          fieldset: {
+            legend: {
+              text: "What is your partner's nationality as shown on their passport or travel document?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+
+          },
+          hint: {
+            text: ""
+
+
+          },
+          classes: "govuk-radios",
+          items: [
+            {
+              value: "British Partner",
+              text: "British",
+              checked: (data["uk-national-partner"] == "British Partner")
+            },
+            {
+              value: "EEA Partner",
+              text: "European Economic area (EEA) or Swiss national",
+              checked: (data["uk-national-partner"] == "EEA Partner")
+            },
+            {
+              value: "Something else",
+              text: "Something else",
+              checked: (data["uk-national-partner"] == "Something else Partner")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

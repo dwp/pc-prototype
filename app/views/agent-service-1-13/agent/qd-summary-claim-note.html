@@ -1,0 +1,152 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Phil Collins 
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-three-quarters">
+    <form action="home-user-0" method="post" class="form">
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+ </div>
+<div class="govuk-grid-column-full">
+ <nav class="moj-sub-navigation" aria-label="Sub navigation">
+
+   <ul class="moj-sub-navigation__list">
+     <li class="moj-sub-navigation__item">
+       <a class="moj-sub-navigation__link" href="qd-summary">Claim summary</a>
+     </li>
+
+     <li class="moj-sub-navigation__item">
+       <a class="moj-sub-navigation__link"  href="qd-summary-state-pension">State Pension </a>
+     </li>
+
+     <li class="moj-sub-navigation__item">
+       <a class="moj-sub-navigation__link" href="qd-summary-non-state-pension">Non-State Pension</a>
+     </li>
+     <li class="moj-sub-navigation__item">
+       <a class="moj-sub-navigation__link"  aria-current="page"  href="qd-summary-claim-note">Claim notes</a>
+     </li>
+     <li class="moj-sub-navigation__item">
+       <a class="moj-sub-navigation__link" href="qd-summary-other-help">Other help</a>
+     </li>
+   </ul>
+
+ </nav>
+ </div>
+<div class="govuk-grid-column-full">
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-7">Claim notes</h1>
+
+</div>
+
+            <div class="govuk-form-group">
+
+
+  <div class="govuk-radios" data-module="govuk-radios">
+
+
+
+
+
+<div class="govuk-grid-column-two-thirds">
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="summary-notes">
+      Notes about the claim
+    </label>
+    </h1>
+
+
+
+  <div id="summary-notes-hint" class="govuk-hint">
+
+  </div>
+
+
+  <textarea class="govuk-textarea" id="summary-notes" name="summary-notes" rows="4" aria-describedby="summary-notes-hint"></textarea>
+</div>
+
+
+
+        <button class="govuk-button" data-module="govuk-button">
+        Save
+      </button>
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+</div>
+<div class="govuk-grid-column-full">
+            <table class="govuk-table">
+
+
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Date and time</th>
+
+                  <th scope="col" class="govuk-table__header govuk-!-width-three-quarters">Notes</th>
+
+                </tr>
+              </thead>
+
+              <tbody class="govuk-table__body">
+
+
+                    <tr class="govuk-table__row">
+
+
+
+                      <th scope="row" class="govuk-table__header">&nbsp;</th>
+
+
+
+
+                      <td class="govuk-table__cell"></td>
+
+
+                    </tr>
+
+
+              </tbody>
+            </table>
+
+
+  </div>
+
+</div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

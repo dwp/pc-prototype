@@ -1,0 +1,1169 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  disregards-types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="disregards-type-more-yn" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+        <h1 class="govuk-heading-xl">Benefits and council tax</h1>
+
+        {% if data["disregards-type-select"] == "disregards-type-1" %}
+
+
+
+
+          {% set arrearsOver %}
+            {{ govukTextarea({
+              label: {
+                text: "Enter details for this disregard, the details we need for this are X"
+              },
+              hint: {
+                text: "This is disregsarded for X amount of months."
+              },
+              id: "contact-text-yn-number",
+              name: "contact-text-yn-number",
+              classes: "govuk-input--width-30",
+              attributes: {
+                maxlength: 20
+              }
+            }) }}
+          {% endset %}
+
+          {{ govukRadios({
+            name: "arrearsOver-set",
+            fieldset: {
+              legend: {
+                html: "Arrears of benefits over £5,000",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "XXX"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["contact-text-yn"] == "Mobile"),
+                conditional: {
+                  html: arrearsOver
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["contact-text-yn"] == "I don't have a mobile")
+              }
+            ]
+          }) }}
+
+          <!-------------->
+          {% set arrearsUnder %}
+            {{ govukTextarea({
+              label: {
+                text: "Enter details for this disregard, the details we need for this are X"
+              },
+              hint: {
+                text: "This is disregsarded for X amount of months."
+              },
+              id: "contact-text-yn-number",
+              name: "contact-text-yn-number",
+              classes: "govuk-input--width-30",
+              attributes: {
+                maxlength: 20
+              }
+            }) }}
+          {% endset %}
+
+          {{ govukRadios({
+            name: "arrearsUnder-set",
+            fieldset: {
+              legend: {
+                html: "Arrears of benefits under £5,000",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "XXX"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["contact-text-yn"] == "Mobile"),
+                conditional: {
+                  html: arrearsUnder
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["contact-text-yn"] == "I don't have a mobile")
+              }
+            ]
+          }) }}
+
+          <!-------------->
+          {% set compensatePayment %}
+            {{ govukTextarea({
+              label: {
+                text: "Enter details for this disregard, the details we need for this are X"
+              },
+              hint: {
+                text: "This is disregsarded for X amount of months."
+              },
+              id: "contact-text-yn-number",
+              name: "contact-text-yn-number",
+              classes: "govuk-input--width-30",
+              attributes: {
+                maxlength: 20
+              }
+            }) }}
+          {% endset %}
+
+          {{ govukRadios({
+            name: "compensatePayment-set",
+            fieldset: {
+              legend: {
+                html: "Payments of £5,000 or more to correct or compensate for official errors on benefit payments",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "XXX"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["contact-text-yn"] == "Mobile"),
+                conditional: {
+                  html: compensatePayment
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["contact-text-yn"] == "I don't have a mobile")
+              }
+            ]
+          }) }}
+
+          <!-------------->
+          {% set latePayment %}
+            {{ govukTextarea({
+              label: {
+                text: "Enter details for this disregard, the details we need for this are X"
+              },
+              hint: {
+                text: "This is disregsarded for X amount of months."
+              },
+              id: "contact-text-yn-number",
+              name: "contact-text-yn-number",
+              classes: "govuk-input--width-30",
+              attributes: {
+                maxlength: 20
+              }
+            }) }}
+          {% endset %}
+
+          {{ govukRadios({
+            name: "latePayment-set",
+            fieldset: {
+              legend: {
+                html: "Arrears of benefit, compensation for late payment of benefit or payment in lieu of benefit",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "XXX"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["contact-text-yn"] == "Mobile"),
+                conditional: {
+                  html: latePayment
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["contact-text-yn"] == "I don't have a mobile")
+              }
+            ]
+          }) }}
+
+          <!-------------->
+          {% set localAuthority %}
+            {{ govukTextarea({
+              label: {
+                text: "Enter details for this disregard, the details we need for this are X"
+              },
+              hint: {
+                text: "This is disregsarded for X amount of months."
+              },
+              id: "contact-text-yn-number",
+              name: "contact-text-yn-number",
+              classes: "govuk-input--width-30",
+              attributes: {
+                maxlength: 20
+              }
+            }) }}
+          {% endset %}
+
+          {{ govukRadios({
+            name: "localAuthority-set",
+            fieldset: {
+              legend: {
+                html: "Local Authority payments related to Council Tax Reduction",
+
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "XXX"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (data["contact-text-yn"] == "Mobile"),
+                conditional: {
+                  html: localAuthority
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (data["contact-text-yn"] == "I don't have a mobile")
+              }
+            ]
+          }) }}
+          <!-------------->
+        {% endif %}
+
+  <!------------------------------------>
+  {% if data["disregards-type-select"] == "disregards-type-2" %}
+
+
+  <p class="govuk-body govuk-!-font-weight-regular">
+    <strong>Payments (other than War Disablement Pension or War Widow(er)s Pension) to compensate for the fact that during World War II you:</strong>
+    <br>- were a slave labourer or forced labourer
+    <br>- suffered property loss or personal injury
+    <br>Disregarded for XX weeks
+  </p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  <p class="govuk-body govuk-!-font-weight-regular">
+    <strong>Payments made to Far East Prisoners of War or their partners</strong>
+    <br>Disregarded for XX weeks
+  </p>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+  <p class="govuk-body govuk-!-font-weight-regular"></strong>
+    <strong>Armed Forces Independence Payment
+      <br>Disregarded for XX weeks
+    </p>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    {{ govukTextarea({
+      name: "more-detail",
+      id: "more-detail",
+      label: {
+        text: "Add in the detials for the above?"
+      },
+      hint: {
+        text: "Remember to not just say yes, no. Add in the title of the thing and the detials"
+      }
+    }) }}
+
+
+
+
+
+
+
+
+
+<!--
+  {{ govukRadios({
+    idPrefix: "disregards-types-all",
+    name: "disregards-types-all",
+    fieldset: {
+      legend: {
+        text: "War and military compensation",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+      text: "XXXX."
+    },
+    items: [
+    {
+      value: "govuk-verify",
+      text: "Arrears of benefits over £5,000",
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "XXXX."
+      },
+      checked: (data["disregards-types-all"] == "Yes")
+    },
+
+      {
+        value: "govuk-verify",
+        text: "Arrears of benefits under £5,000",
+        label: {
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "XXXX."
+        },
+        checked: (data["disregards-types-all"] == "Yes")
+      },
+
+
+      {
+        value: "govuk-verify",
+        text: "Payments of £5,000 or more to rectify of compensate for official error on payment of benefits",
+        label: {
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "XXXX."
+        },
+        checked: (data["disregards-types-all"] == "Yes")
+      },
+
+      {
+        value: "govuk-verify",
+        text: "4",
+        label: {
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "XXXX."
+        },
+        checked: (data["disregards-types-all"] == "Yes")
+      },
+
+      {
+        value: "govuk-verify",
+        text: "5",
+        label: {
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "XXXX."
+        },
+        checked: (data["disregards-types-all"] == "Yes")
+      },
+      {
+        value: "None",
+        text: "None",
+        label: {
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "XXXX."
+        },
+        checked: (data["disregards-types-all"] == "None")
+      }
+
+    ]
+  }) }}
+
+
+-->
+
+  {% endif %}
+
+  <!------------------------------------>
+
+  {% if data["disregards-type-select"] == "disregards-type-3" %}
+
+                  {{ govukRadios({
+                    idPrefix: "disregards-types-all",
+                    name: "disregards-types-all",
+                    fieldset: {
+                      legend: {
+                        text: "Compensation for injury",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                      }
+                    },
+                    hint: {
+                      text: "XXXX."
+                    },
+                    items: [
+                    {
+                      value: "govuk-verify",
+                      text: "1",
+                      label: {
+                        classes: "govuk-label--s"
+                      },
+                      hint: {
+                        text: "XXXX."
+                      },
+                      checked: (data["disregards-types-all"] == "Yes")
+                    },
+
+                      {
+                        value: "govuk-verify",
+                        text: "2",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+
+                      {
+                        value: "govuk-verify",
+                        text: "3",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "4",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "5",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+                      {
+                        value: "None",
+                        text: "None",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "None")
+                      }
+
+                    ]
+                  }) }}
+
+                  {% endif %}
+      <!------------------------------------>
+      {% if data["disregards-type-select"] == "disregards-type-4" %}
+
+                  {{ govukRadios({
+                    idPrefix: "disregards-types-all",
+                    name: "disregards-types-all",
+                    fieldset: {
+                      legend: {
+                        text: "Contents insurance",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                      }
+                    },
+                    hint: {
+                      text: "XXXX."
+                    },
+                    items: [
+                    {
+                      value: "govuk-verify",
+                      text: "1",
+                      label: {
+                        classes: "govuk-label--s"
+                      },
+                      hint: {
+                        text: "XXXX."
+                      },
+                      checked: (data["disregards-types-all"] == "Yes")
+                    },
+
+                      {
+                        value: "govuk-verify",
+                        text: "2",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+
+                      {
+                        value: "govuk-verify",
+                        text: "3",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "4",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "5",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+                      {
+                        value: "None",
+                        text: "None",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "None")
+                      }
+
+                    ]
+                  }) }}
+
+                  {% endif %}
+      <!------------------------------------>
+      {% if data["disregards-type-select"] == "disregards-type-5" %}
+
+                  {{ govukRadios({
+                    idPrefix: "disregards-types-all",
+                    name: "disregards-types-all",
+                    fieldset: {
+                      legend: {
+                        text: "Money for buying or improving property",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                      }
+                    },
+                    hint: {
+                      text: "XXXX."
+                    },
+                    items: [
+                    {
+                      value: "govuk-verify",
+                      text: "1",
+                      label: {
+                        classes: "govuk-label--s"
+                      },
+                      hint: {
+                        text: "XXXX."
+                      },
+                      checked: (data["disregards-types-all"] == "Yes")
+                    },
+
+                      {
+                        value: "govuk-verify",
+                        text: "2",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+
+                      {
+                        value: "govuk-verify",
+                        text: "3",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "4",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                      {
+                        value: "govuk-verify",
+                        text: "5",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+                      {
+                        value: "None",
+                        text: "None",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "None")
+                      }
+
+                    ]
+                  }) }}
+
+                  {% endif %}
+      <!------------------------------------>
+      {% if data["disregards-type-select"] == "disregards-type-6" %}
+
+                    {{ govukRadios({
+                      idPrefix: "disregards-types-all",
+                      name: "disregards-types-all",
+                      fieldset: {
+                        legend: {
+                          text: "Money to help you live independently in the community",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--xl"
+                        }
+                      },
+                      hint: {
+                        text: "XXXX."
+                      },
+                      items: [
+                      {
+                        value: "govuk-verify",
+                        text: "1",
+                        label: {
+                          classes: "govuk-label--s"
+                        },
+                        hint: {
+                          text: "XXXX."
+                        },
+                        checked: (data["disregards-types-all"] == "Yes")
+                      },
+
+                        {
+                          value: "govuk-verify",
+                          text: "2",
+                          label: {
+                            classes: "govuk-label--s"
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          checked: (data["disregards-types-all"] == "Yes")
+                        },
+
+
+                        {
+                          value: "govuk-verify",
+                          text: "3",
+                          label: {
+                            classes: "govuk-label--s"
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          checked: (data["disregards-types-all"] == "Yes")
+                        },
+
+                        {
+                          value: "govuk-verify",
+                          text: "4",
+                          label: {
+                            classes: "govuk-label--s"
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          checked: (data["disregards-types-all"] == "Yes")
+                        },
+
+                        {
+                          value: "govuk-verify",
+                          text: "5",
+                          label: {
+                            classes: "govuk-label--s"
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          checked: (data["disregards-types-all"] == "Yes")
+                        },
+                        {
+                          value: "None",
+                          text: "None",
+                          label: {
+                            classes: "govuk-label--s"
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          checked: (data["disregards-types-all"] == "None")
+                        }
+
+                      ]
+                    }) }}
+
+
+                    {% endif %}
+        <!------------------------------------>
+        {% if data["disregards-type-select"] == "disregards-type-7" %}
+
+                          {{ govukRadios({
+                            idPrefix: "disregards-types-all",
+                            name: "disregards-types-all",
+                            fieldset: {
+                              legend: {
+                                text: "Payments to help you if you have been involved in an inident or emergency",
+                                isPageHeading: true,
+                                classes: "govuk-fieldset__legend--xl"
+                              }
+                            },
+                            hint: {
+                              text: "XXXX."
+                            },
+                            items: [
+                            {
+                              value: "govuk-verify",
+                              text: "1",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                              {
+                                value: "govuk-verify",
+                                text: "2",
+                                label: {
+                                  classes: "govuk-label--s"
+                                },
+                                hint: {
+                                  text: "XXXX."
+                                },
+                                checked: (data["disregards-types-all"] == "Yes")
+                              },
+
+
+                              {
+                                value: "govuk-verify",
+                                text: "3",
+                                label: {
+                                  classes: "govuk-label--s"
+                                },
+                                hint: {
+                                  text: "XXXX."
+                                },
+                                checked: (data["disregards-types-all"] == "Yes")
+                              },
+
+                              {
+                                value: "govuk-verify",
+                                text: "4",
+                                label: {
+                                  classes: "govuk-label--s"
+                                },
+                                hint: {
+                                  text: "XXXX."
+                                },
+                                checked: (data["disregards-types-all"] == "Yes")
+                              },
+
+                              {
+                                value: "govuk-verify",
+                                text: "5",
+                                label: {
+                                  classes: "govuk-label--s"
+                                },
+                                hint: {
+                                  text: "XXXX."
+                                },
+                                checked: (data["disregards-types-all"] == "Yes")
+                              },
+                              {
+                                value: "None",
+                                text: "None",
+                                label: {
+                                  classes: "govuk-label--s"
+                                },
+                                hint: {
+                                  text: "XXXX."
+                                },
+                                checked: (data["disregards-types-all"] == "None")
+                              }
+
+                            ]
+                          }) }}
+
+
+                          {% endif %}
+              <!------------------------------------>
+              {% if data["disregards-type-select"] == "disregards-type-8" %}
+
+                        {{ govukRadios({
+                          idPrefix: "disregards-types-all",
+                          name: "disregards-types-all",
+                          fieldset: {
+                            legend: {
+                              text: "Windrush",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--xl"
+                            }
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          items: [
+                          {
+                            value: "govuk-verify",
+                            text: "1",
+                            label: {
+                              classes: "govuk-label--s"
+                            },
+                            hint: {
+                              text: "XXXX."
+                            },
+                            checked: (data["disregards-types-all"] == "Yes")
+                          },
+
+                            {
+                              value: "govuk-verify",
+                              text: "2",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+
+                            {
+                              value: "govuk-verify",
+                              text: "3",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "4",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "5",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+                            {
+                              value: "None",
+                              text: "None",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "None")
+                            }
+
+                          ]
+                        }) }}
+
+
+                        {% endif %}
+            <!------------------------------------>
+            {% if data["disregards-type-select"] == "disregards-type-9" %}
+
+                        {{ govukRadios({
+                          idPrefix: "disregards-types-all",
+                          name: "disregards-types-all",
+                          fieldset: {
+                            legend: {
+                              text: "Money paid to you for blood infection or CJD",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--xl"
+                            }
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          items: [
+                          {
+                            value: "govuk-verify",
+                            text: "1",
+                            label: {
+                              classes: "govuk-label--s"
+                            },
+                            hint: {
+                              text: "XXXX."
+                            },
+                            checked: (data["disregards-types-all"] == "Yes")
+                          },
+
+                            {
+                              value: "govuk-verify",
+                              text: "2",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+
+                            {
+                              value: "govuk-verify",
+                              text: "3",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "4",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "5",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+                            {
+                              value: "None",
+                              text: "None",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "None")
+                            }
+
+                          ]
+                        }) }}
+
+                        {% endif %}
+            <!------------------------------------>
+            {% if data["disregards-type-select"] == "disregards-type-10" %}
+
+                        {{ govukRadios({
+                          idPrefix: "disregards-types-all",
+                          name: "disregards-types-all",
+                          fieldset: {
+                            legend: {
+                              text: "Money paid to you for blood infection or CJD",
+                              isPageHeading: true,
+                              classes: "govuk-fieldset__legend--xl"
+                            }
+                          },
+                          hint: {
+                            text: "XXXX."
+                          },
+                          items: [
+                          {
+                            value: "govuk-verify",
+                            text: "1",
+                            label: {
+                              classes: "govuk-label--s"
+                            },
+                            hint: {
+                              text: "XXXX."
+                            },
+                            checked: (data["disregards-types-all"] == "Yes")
+                          },
+
+                            {
+                              value: "govuk-verify",
+                              text: "2",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+
+                            {
+                              value: "govuk-verify",
+                              text: "3",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "4",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+
+                            {
+                              value: "govuk-verify",
+                              text: "5",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "Yes")
+                            },
+                            {
+                              value: "None",
+                              text: "None",
+                              label: {
+                                classes: "govuk-label--s"
+                              },
+                              hint: {
+                                text: "XXXX."
+                              },
+                              checked: (data["disregards-types-all"] == "None")
+                            }
+
+                          ]
+                        }) }}
+
+                        {% endif %}
+
+        <!------------------------------------>
+
+
+  <br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+  </div>
+{% endblock %}

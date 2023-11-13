@@ -1,0 +1,59 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="" method="post" class="form">
+
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-8">Ask a second security question. Use the current process.</h1>
+
+
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Security passed",
+          href: "qd-summary"
+        }) }}
+
+        {{ govukButton({
+          text: "Failed second question",
+          classes: "govuk-button--secondary",
+          href: "#"
+        }) }}
+      </div>
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

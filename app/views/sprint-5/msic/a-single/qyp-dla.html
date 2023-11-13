@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About the child’s Disablity Living Allowance - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="household-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        About the child’s Disablity Living Allowance
+      </h1>
+
+      {{ govukRadios({
+        idPrefix: "qyp-dla-care",
+        name: "qyp-dla-care",
+        fieldset: {
+          legend: {
+            html: "<h2 class=\"govuk-heading-s govuk-!-margin-bottom-1\">Do they get the care component?</h2>"
+          }
+        },
+        items: [
+          {
+            value: "Highest rate",
+            text: "Highest rate",
+            checked: (data["qyp-dla-care"] == "Highest rate")
+          },
+          {
+            value: "Middle rate",
+            text: "Middle rate",
+            checked: (data["qyp-dla-care"] == "Middle rate")
+          },
+          {
+            value: "Lowest rate",
+            text: "Lowest rate",
+            checked: (data["qyp-dla-care"] == "Lowest rate")
+          },
+          {
+            value: "None",
+            text: "None",
+            checked: (data["qyp-dla-care"] == "None")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "qyp-dla-mobility",
+        name: "qyp-dla-mobility",
+        fieldset: {
+          legend: {
+            html: "<h2 class=\"govuk-heading-s\ govuk-!-margin-bottom-1\">Do they get the mobility component?</h2>"
+          }
+        },
+        items: [
+          {
+            value: "Higher rate",
+            text: "Higher rate",
+            checked: (data["qyp-dla-mobility"] == "Higher rate")
+          },
+          {
+            value: "Lower rate",
+            text: "Lower rate",
+            checked: (data["qyp-dla-mobility"] == "Lower rate")
+          },
+          {
+            value: "None",
+            text: "None",
+            checked: (data["qyp-dla-mobility"] == "None")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

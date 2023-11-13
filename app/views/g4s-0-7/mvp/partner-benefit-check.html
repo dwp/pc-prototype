@@ -1,0 +1,86 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form action="partner-benefit-aa-dla-pip" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-8">
+        I'm just going to check any benefits your partner gets
+      </h1>
+
+      {{ govukCheckboxes({
+        idPrefix: "partner-benefit-check",
+        name: "partner-benefit-check",
+        fieldset: {
+          legend: {
+            text: "Select any benefits the partner gets:",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "",
+                classes: "govuk-fieldset__legend--xl"
+        },
+        items: [
+
+          {
+            value: "B",
+            text: "Attendance Allowance",
+            checked: (data["partner-benefit-check"] == "B")
+          },
+          {
+            value: "B",
+            text: "Disability living Allowance: Middle or highest rate",
+            checked: (data["partner-benefit-check"] == "B")
+          },
+          {
+            value: "B",
+            text: "The daily living component of Personal Independence Payment",
+            checked: (data["partner-benefit-check"] == "B")
+          },
+          {
+            value: "B",
+            text: "Armed Forces Independence Payment",
+            checked: (data["partner-benefit-check"] == "B")
+          },
+          {
+            value: "CA",
+            text: "Carer's Allowance: Including an underlying entitlement",
+            checked: (data["partner-benefit-check"] == "CA")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "None",
+            text: "None of these",
+            checked: (data["partner-benefit-check"] == "None"),
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "layout-work-list-id-bar-stats.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <form action="case-next-claim" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Overview of Pension Credit claims</h1>
+
+      <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-8">Updated: Today 09:12:00</p>
+
+
+      <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">There are <strong>13</strong> claims to download.</p> -->
+
+            <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">https://jira.service.dwpcloud.uk/browse/AFPC-134</p> -->
+
+    </div>
+  </div>
+
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Total claims</strong></p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">To download</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">1,000</p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Downloaded</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">500</p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarters">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Oldest to download</p>
+      <p class="govuk-body govuk-!-font-size-48 govuk-!-margin-bottom-2"><strong>37</strong> days</p>
+      <!-- <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">37 days</p> -->
+        <!-- <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">days</p> -->
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Received</strong></p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Today</p>
+
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">110</p>
+        <!-- <p class="govuk-hint govuk-!-font-size-14 govuk-!-margin-bottom-2">Updated: 09:12 AM</p> -->
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Yesterday</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">390</p>
+      <!-- <p class="govuk-hint govuk-!-font-size-14 govuk-!-margin-bottom-2">Updated: 1 Jan / 09:12:00</p> -->
+    </div>
+
+    <div class="govuk-grid-column-one-quarters">
+      <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Average daily received</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">66.6</p> -->
+      .
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><strong>Downloaded</strong></p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Today</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">10</p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Yesterday</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">400</p>
+    </div>
+
+    <div class="govuk-grid-column-one-quarters">
+      <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Average daily downloads</p>
+      <p class="govuk-!-font-weight-bold govuk-!-font-size-48 govuk-!-margin-bottom-2">25</p> -->
+      .
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

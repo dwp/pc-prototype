@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <span class="govuk-caption-m">Money, savings and investments</span>
+  <h1 class="govuk-heading-xl">
+    Property and land summary (1)<br>
+  </h1>
+  <!----Headline---->
+  <form action="msic-all-money-accounts-pre-summary" method="post">
+
+      {% if data["msic-second-property-value"] %}
+
+    <br><br>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          Property 1<p class="govuk-body"><!--<a href="msic-trust-account" class="govuk-link">Remove</a>--></p>
+        </h3></div>
+
+
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "1007"
+            },
+            actions: {
+              items: [
+                {
+                  href: "msic-second-property",
+                  text: "Change / Remove",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: ""
+            },
+            value: {
+              text: "Mountain Drive"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: ""
+            },
+            value: {
+              text: "Gotham "
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: ""
+            },
+            value: {
+              text: "New York State (US)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: ""
+            },
+            value: {
+              text: "."
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Value"
+            },
+            value: {
+              text: data['msic-second-property-value']
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "",
+                  visuallyHiddenText: "XXX"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+
+    </div></div>
+    {% endif %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Do you want to add more property or land?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+  <br><br>
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

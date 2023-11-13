@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="task-2" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find someone</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-top-2 govuk-!-margin-bottom-0">Enter a National Insurance number</p>
+      <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-top-0 govuk-!-margin-bottom-4">For example, QQ 12 34 56 C</p>
+
+
+                {{ govukInput({
+                  label: {
+                    html: legendName
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  id: "search",
+                  name: "search",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["search"]
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+                <!-- {{ govukButton({
+                   text: "Clear",
+                   classes: "govuk-button--secondary-clear",
+                   href: "find-a-claim"
+                 }) }} -->
+
+
+                {% if data["search"] == "NA112233c" %}
+
+
+
+
+                                {% endif %}
+
+                                <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="find-a-claim-not-found">No claims found</a></p> -->
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

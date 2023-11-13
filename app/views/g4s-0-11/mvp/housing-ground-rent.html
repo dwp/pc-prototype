@@ -1,0 +1,58 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Do you pay any service charges? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="housing-costs-router" method="post" class="form">
+
+      {{ govukRadios({
+        idPrefix: "housing-costs",
+        name: "housing-costs",
+        fieldset: {
+          legend: {
+            text: "Do you pay ground rent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          html: "You might pay ground rent if you are the leaseholder of your home."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["housing-costs"] == "Yes")
+            },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["housing-costs"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

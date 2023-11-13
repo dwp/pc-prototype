@@ -1,0 +1,126 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'history' %}
+
+{% block date %}
+{% endblock %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-7/agent/side-nav.html" %}
+      </div>
+
+
+
+            {% set notes %}
+
+              {% if data["benefits-notes"] %}
+              Changes recorded for qualifying benefits during the backdating period. Notes:
+              {{ data ["benefits-notes"]}}
+              {% else %}
+              Changes recorded for qualifying benefits during the backdating period
+              {% endif %}
+
+            {% endset -%}
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">History</h1>
+        </div>
+          <div class="govuk-grid-column-three-quarters">
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "Date and time",
+                        classes: 'govuk-!-width-one-third'
+
+                },
+                {
+                  text: "Update",
+                    classes: 'govuk-!-width-two-thirds'
+
+                }
+              ],
+              rows: [
+              [
+                {
+                  text: "5 May 2022"
+                },
+                {
+                  text: "Claim created on CAM"
+                }
+              ],
+              [
+                {
+                  text: "5 May 2022"
+                },
+                {
+                  html: notes
+                }
+              ],
+              [
+                {
+                  text: "5 May 2022"
+                },
+                {
+                  text: "Contact with customer - security passed to view record"
+                }
+              ],
+                [
+                  {
+                    text: "01 March 2022"
+                  },
+                  {
+                    text: "Entitlement letter sent"
+                  }
+                ],
+                [
+                  {
+                    text: "1 March 2022"
+                  },
+                  {
+                    text: "Processed by Hazel Littlefair (Senior Processor in Pension Credit Pilot)"
+                  }
+                ],
+                [
+                  {
+                    text: "28 February 2022 6am"
+                  },
+                  {
+                    text: "Online application received"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

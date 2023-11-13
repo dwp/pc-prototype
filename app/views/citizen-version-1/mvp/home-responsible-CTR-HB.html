@@ -1,0 +1,63 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-ownership" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are you or your partner responsible for paying the rent or Council Tax for the place where you live?</h1>
+        {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Are you responsible for paying the rent or Council Tax for the place where you live?</h1>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        idPrefix: "home-responsible-CTR-HB",
+        name: "home-responsible-CTR-HB",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: "This includes if they are paid through Housing Benefit or Council Tax Reduction."
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-responsible-CTR-HB"] == "Council tax rediction")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-responsible-CTR-HB"] == "Housing benefit")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

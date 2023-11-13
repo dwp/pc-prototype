@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What's your mobile number? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="mobile-call-router" method="post" class="form">
+      {% call govukFieldset({
+        legend: {
+          text: "What's your mobile number?",
+          classes: "govuk-fieldset__legend--xl",
+          isPageHeading: true
+        }
+      }) %}
+        {{ govukInput({
+          id: "mobile",
+          name: "mobile",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: "<span class=\"govuk-visually-hidden\">Mobile number</span>",
+            classes: "govuk-fieldset__legend--xl"
+          },
+          value: data["mobile"]
+        }) }}
+      {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

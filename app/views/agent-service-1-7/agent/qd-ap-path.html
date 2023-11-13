@@ -1,0 +1,90 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-ap-router" method="post" class="form">
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Which best reflects the caller's words/intention/feelings? </h1>
+
+
+
+      {{ govukRadios({
+        idPrefix: "ap-path",
+        name: "ap-path",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "happy",
+            text: "They're satisfied with the explanation and that automated processing was used",
+            checked: (data["ap-path"] == "happy")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "more-ap",
+            text: "They want to know more about how automated processing was used to make a decision",
+            checked: (data["ap-path"] == "more-ap")
+          },
+          {
+            value: "unhappy",
+            text: "They asked for a human to review their decision",
+            checked: (data["ap-path"] == "unhappy")
+          },
+          {
+            value: "mr",
+            text: "They want to dispute the decision",
+            checked: (data["ap-path"] == "mr")
+          }
+
+        ]
+      }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

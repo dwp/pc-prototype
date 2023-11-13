@@ -1,0 +1,36 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Sign in - Pension Credit
+{% endblock %}
+
+{% block header %}
+{% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="ur-home" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">There are currently no claims left in the queue to process</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><br>Try again later. </p>
+
+  {{ govukButton({
+    text: "Return to My home page"
+  }) }}
+
+
+  </div>
+
+
+    </div>
+  </div>
+
+
+
+
+  </div>
+    </form>
+{% endblock %}

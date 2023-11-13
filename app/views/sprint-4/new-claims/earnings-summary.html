@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Earnings - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <h1 class="govuk-heading-xl">
+    Earnings and employment summary
+  </h1>
+
+  {% if data["work-name"] %}
+    <h2 class="govuk-heading-m">
+      {{ data["employment-type"] }}
+    </h2>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s">
+          {{ data["work-name"] }}
+        </h3>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <dl class="govuk-summary-list govuk-summary-list--long">
+          {% if data["work-payroll"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payroll ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-payroll"] }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-start-day"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Start / End date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-start-day"] }}
+              {{ data["work-start-month"] | getMonth }}
+              {{ data["work-start-year"] }} —
+              {{ data["work-end-day"] }}
+              {{ data["work-end-month"] | getMonth }}
+              {{ data["work-end-year"] }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-gross"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Taxable pay (gross)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-gross"] | formatMoney }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-frequency"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Payment day / frequency
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-frequency"] }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-tax"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Tax
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-tax"] | formatMoney }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-ni"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              National insurance contributions
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-ni"] | formatMoney }}
+            </dd>
+          </div>
+          {% endif %}
+          {% if data["work-pensions"] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Pensions
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data["work-pensions"] | formatMoney }}
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+      </div>
+    </div>
+{% endif %}
+{% if data["self-name"] %}
+  <h2 class="govuk-heading-m">
+    Self employment
+  </h2>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <h3 class="govuk-heading-s">
+        {{ data["self-name"] }}
+      </h3>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <dl class="govuk-summary-list govuk-summary-list--long">
+        {% if data["self-profit"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Profit
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-profit"] | formatMoney }}
+          </dd>
+        </div>
+        {% endif %}
+        {% if data["self-loss"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Loss
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-loss"] | formatMoney }}
+          </dd>
+        </div>
+        {% endif %}
+        {% if data["self-total"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Total amount in business account
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["self-total"] | formatMoney }}
+          </dd>
+        </div>
+        {% endif %}
+      </dl>
+    </div>
+  </div>
+{% endif %}
+
+  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+  <h2 class="govuk-heading-m">Any other employment missing?</h2>
+  <p class="govuk-body">
+    <a href="add-employment" class="govuk-link">
+      Add an employment
+    </a>
+  </p>
+
+  <form action="task-list" method="post">
+    <input type="hidden" name="earnings-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+  </form>
+{% endblock %}

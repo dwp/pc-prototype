@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data["has-partner"] == "yes" %}
+      {% set legend = "Do you and your partner have money, savings or investments that add up to more than £10,000?" %}
+    {% else %}
+      {% set legend = "Do you have money, savings or investments that add up to more than £10,000?" %}
+    {% endif %}
+
+    <form action="money-you-have-router" method="post" class="form">
+      {% set cashAmount %}
+        {{ govukInput({
+          id: "total-amount",
+          name: "total-amount",
+          classes: "govuk-input--width-10",
+          label: {
+            text: "How much money do you have?"
+          },
+          value: data["otal-amount"]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "has-money",
+        name: "has-money",
+        fieldset: {
+          legend: {
+            text: legend,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-money"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: cashAmount
+            },
+            checked: (data["has-money"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

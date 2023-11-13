@@ -1,0 +1,62 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" action="/session-clear-route">
+        <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-10/mvp/exit">
+
+
+      {{ govukRadios({
+        idPrefix: "clear-filter",
+        name: "clear-filter",
+        fieldset: {
+          legend: {
+            text: "Do you want to end this call and restart?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This will clear the information from the current call and take you back to the start ready to take the next call."
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["clear-filter"] == "Yes")
+                    },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["clear-filter"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+      text: "Continue",
+      classes: "govuk-button dont-print govuk-!-margin-top-0"
+      }) }}
+
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

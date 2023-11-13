@@ -1,0 +1,63 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+Total amount of money you have today - Apply for Pension Credit - GOV.UK
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-2-total-now-confirm-router" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Total amount of money you have today</h1>
+
+           <!------------Legend--------------->
+
+           <p class="govuk-heading-l govuk-!-margin-bottom-2">{{ data['money-2-total-now-value'] | formatMoney }}</p>
+           <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">{{ data['money-2-total-now-value'] | formatMoneyToWords }}</p>
+
+           {{ govukRadios({
+             idPrefix: "money-2-total-now-confirm",
+             name: "money-2-total-now-confirm",
+             fieldset: {
+               legend: {
+                 text: "Have you entered the right amount?",
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["money-2-total-now-confirm"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No - I want to go back and change the amount",
+                 checked: (data["money-2-total-now-confirm"] == "No")
+               }
+             ]
+           }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

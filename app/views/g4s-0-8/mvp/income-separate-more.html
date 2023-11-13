@@ -1,0 +1,213 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+Income - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="income-separate-check" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Do you have any income from employment or workplace or personal pensions?
+      </h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Enter each income and payment frequency separately.</p>
+
+
+
+{{ govukInput({
+  id: "income-1-value",
+  name: "income-1-value",
+  label: {
+    text: "Income 1",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example, 100.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["income-1-value"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  spellcheck: false
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  idPrefix: "income-1-frequency",
+  name: "income-1-frequency",
+  fieldset: {
+    legend: {
+      text: "Income 1 payment frequency",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Monthly",
+      text: "Monthly"
+    },
+    {
+      value: "Weekly",
+      text: "Weekly"
+    }
+  ]
+}) }}
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+{{ govukInput({
+  id: "income-2-value",
+  name: "income-2-value",
+  label: {
+    text: "Income 2",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example, 100.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["income-2-value"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  spellcheck: false
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  idPrefix: "income-2-frequency",
+  name: "income-2-frequency",
+  fieldset: {
+    legend: {
+      text: "Income 2 payment frequency",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Monthly",
+      text: "Monthly"
+    },
+    {
+      value: "Weekly",
+      text: "Weekly"
+    }
+  ]
+}) }}
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+{{ govukInput({
+  id: "income-3-value",
+  name: "income-3-value",
+  label: {
+    text: "Income 3",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example, 100.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["income-3-value"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  spellcheck: false
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  idPrefix: "income-3-frequency",
+  name: "income-3-frequency",
+  fieldset: {
+    legend: {
+      text: "Income 3 payment frequency",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Monthly",
+      text: "Monthly"
+    },
+    {
+      value: "Weekly",
+      text: "Weekly"
+    }
+  ]
+}) }}
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+{{ govukInput({
+  id: "income-4-value",
+  name: "income-4-value",
+  label: {
+    text: "Income 4",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter an amount in pounds and pence, for example, 100.00"
+  },
+  prefix: {
+    text: "£"
+  },
+  value: data["income-4-value"],
+  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+  spellcheck: false
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  idPrefix: "income-4-frequency",
+  name: "income-4-frequency",
+  fieldset: {
+    legend: {
+      text: "Income 4 payment frequency",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Monthly",
+      text: "Monthly"
+    },
+    {
+      value: "Weekly",
+      text: "Weekly"
+    }
+  ]
+}) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

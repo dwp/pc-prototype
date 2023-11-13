@@ -1,0 +1,69 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-phone-log" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+
+          {% include "agent-service-1-3/agent/query-primary-nav2.html" %}
+
+        </div>
+
+          <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+
+            <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">History</h3>
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+                  <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+                    <li><a href="query-case-history-b">Case history</a></li>
+                    <li><a href="#">Case application</a></li>
+                    <li><a href="query-customer-history-b">Customer history</a></li>
+                  </ul>
+                </div>
+
+                <div class="govuk-grid-column-two-third">
+                  <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+                    <li>Award letter sent on 01 Mar 2022</li>
+                    <li>Applied on 28 February 2022</li>
+                    <li>None</li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+
+          </div>
+
+          </div>
+
+
+
+
+    </div>
+  </div>
+
+
+
+    </form>
+{% endblock %}

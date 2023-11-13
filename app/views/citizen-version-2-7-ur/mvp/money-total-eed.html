@@ -1,0 +1,113 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-eed-router" method="post" class="form">
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+      {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">About the money, savings and investments you and your partner had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}</h1>
+      {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">About the money, savings and investments you had on 19 November 2020</h1>{% endif %}
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">If you have money in accounts shared with someone other than your partner, only tell us about the amount of money that belongs to you and your partner.</p>
+      {% else %}  <p class="govuk-!-font-size-24">If you have money in accounts shared with someone else, only tell us about the amount of money that belongs to you.</p>{% endif %}
+
+      <p class="govuk-heading-s govuk-!-margin-bottom-2">This includes:</p>
+<ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>money in current, savings or deposit accounts with a bank, building society, credit union or the Post Office</li>
+      <li>National Savings and Investment products like Savings Certificates, Premium Bonds, Income Bonds and residual accounts</li>
+      <li>money at home in cash</li>
+      <li>investments like ISAs</li>
+      <li>shares</li>
+      <li>money invested in unit trusts</li>
+      <li>income or capital bonds</li>
+      <li>any other money in this country or overseas</li>
+</ul>
+
+
+
+{% set moneyTotalEEDValue %}
+
+{% set LegendAmount %}
+<strong>What is the total amount of money you had on 19 November 2020?<strong>
+{% endset -%}
+
+      {{ govukInput({
+        id: "money-total-eed-value",
+        name: "money-total-eed-value",
+        label: {
+          html: LegendAmount,
+          classes: "govuk-label--s",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter an amount in pounds and pence, for example, 100.00"
+        },
+        prefix: {
+          text: "£"
+        },
+        value: data["money-total-eed-value"],
+        classes: "govuk-input--width-10",
+        spellcheck: false
+      }) }}
+{% endset %}
+
+{% set LegendAmount %}
+<strong>How much money did you have on 19 November 2020?<strong>
+{% endset -%}
+
+{{ govukRadios({
+  name: "money-total-eed",
+  fieldset: {
+    legend: {
+      html: LegendAmount,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Less than £7,000",
+      text: "Less than £7,000",
+      checked: (data["money-total-eed"] == "Less than £7,000")
+    },
+    {
+      value: "£7,000 to £10,000",
+      text: "£7,000 to £10,000",
+      checked: (data["money-total-eed"] == "££7,000 to £10,000")
+    },
+    {
+      value: "10",
+      text: "More than £10,000",
+      checked: (data["money-total-eed"] == "More that £10,000"),
+      conditional: {
+        html: moneyTotalEEDValue
+      }
+    }
+  ]
+}) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

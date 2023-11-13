@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Money, savings and capital
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="msic-has-cash-lump-sum-yn" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-l">Money held in other countries</h1>
+
+
+<p class="govuk-body govuk-!-font-size-19">Money held in other countries is treat as capital of its type in the UK. For example, a Spanish ISA is the same as a UK ISA for PC purposes.
+<br><br>To record the amount we need to know the currency of the money. The exchange rate is worked using the XE currency converter
+<br><br>Any capital spent to transfer the money to a UK account is disregarded.
+
+        <p class="govuk-body govuk-!-font-size-19">To record these accounts we would need:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li> The account type</li>
+          <li> Bank name and last 4 digits of the (foreign equivalent) account number. </li>
+          <li> Plus any additional details that the type of account requires.</li>
+        </ul>
+
+        {{ govukTextarea({
+          name: "msic-cash-other-abroad-detail",
+          id: "msic-cash-other-abroad-detail",
+          value: data["msic-cash-other-abroad-detail"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

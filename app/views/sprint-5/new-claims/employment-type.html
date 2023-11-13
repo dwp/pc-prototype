@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-type-router" method="post" class="form">
+      {% set tamDate =
+        (data['claim-date-day'] or 11) + " " +
+        (data['claim-date-month'] or 11 | getMonth) + " " +
+        (data['claim-date-year'] or 2018)
+      %}
+
+      {{ govukRadios({
+        idPrefix: "employment-type",
+        name: "employment-type",
+        fieldset: {
+          legend: {
+            text: "Where you employed on this date " + tamDate,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select what best discribles your status on the " + tamDate + "."
+        },
+        items: [
+          {
+            value: "Full time employment",
+            text: "Full time employment",
+            checked: (data["employment-type"] == "Full time employment")
+          },
+          {
+            value: "Part time employment",
+            text: "Part time employment",
+            checked: (data["employment-type"] == "Part time employment")
+          },
+          {
+            value: "Self employed",
+            text: "Self employed",
+            checked: (data["employment-type"] == "Self employed")
+          },
+          {
+            value: "Employed and Self employed",
+            text: "Employed and Self employed",
+            checked: (data["employment-type"] == "Employed and Self employed")
+          },
+          {
+            value: "Could be zero hours?",
+            text: "Could be zero hours?",
+            checked: (data["employment-type"] == "Could be zero hours?")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

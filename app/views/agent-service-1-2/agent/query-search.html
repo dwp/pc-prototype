@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-security" method="post" class="form">
+
+      <!-- {% include "citizen-version-1/work-list-1-2/admin-navigation.html" %} -->
+
+
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find someone</h1>
+
+
+
+
+                {{ govukInput({
+                  label: {
+                    text: "Enter a National Insurance number"
+                  },
+                  hint: {
+                    text: "For example, QQ 12 34 56 C"
+                  },
+                  id: "query-search-nino",
+                  name: "query-search-nino",
+                  classes: "govuk-input--width-10 govuk-!-margin-bottom-0",
+                  value: data["query-search-nino"]
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Enter name"
+                  },
+                  hint: {
+                    text: "For example, Lynn Lisa Smith"
+                  },
+                  id: "search-name",
+                  name: "search-name",
+                  classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+                  value: data["search-name"]
+                }) }}
+
+
+                {{ govukDateInput({
+                  id: "dob",
+                  namePrefix: "dob",
+                  fieldset: {
+                    legend: {
+                      text: "Enter date of birth"
+                    }
+                  },
+                  hint: {
+                    text: "For example, 27 3 1950"
+                  }
+                }) }}
+
+                {{ govukButton({
+                  text: "Find",
+                  classes: "govuk-!-margin-right-1"
+                }) }}
+
+                <!-- {{ govukButton({
+                   text: "Clear",
+                   classes: "govuk-button--secondary-clear",
+                   href: "find-a-claim"
+                 }) }} -->
+
+
+
+
+
+
+
+                                <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="find-a-claim-not-found">No claims found</a></p> -->
+
+                  </div>
+                </div>
+
+
+
+
+{% endblock %}

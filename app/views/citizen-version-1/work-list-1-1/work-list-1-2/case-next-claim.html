@@ -1,0 +1,68 @@
+{% extends "layout-id-bar-temp.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+        <form action="case-next-claim-2" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Forename and surname</strong></h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">NI: <strong>NA 11 22 33 C</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Received: <strong>00 May 2020</strong></p>
+
+
+            {{ govukButton({
+              text: "Download PDF",
+              classes: "govuk-button--secondary govuk-!-margin-bottom-8"
+            }) }}
+
+            <p class="govuk-heading-m govuk-!-margin-bottom-2">Before leaving this page</p>
+             <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Before trying to get <strong>next claim</strong> make sure you<br> have added the claim to DRS successfully.</h3>
+
+
+<!--
+      {% set legendDRS %}
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Enter PTP CAM case ID</h3>
+      {% endset -%}
+
+      {{ govukInput({
+        label: {
+          html: legendDRS
+        },
+        hint: {
+          text: "You will get this from DRS / CAM"
+        },
+        id: "drs-id",
+        name: "drs-id",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+        value: data["drs-id"]
+      }) }} -->
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-4",
+        text: "Get next claim"
+      }) }}
+
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Return to work list</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-clear">...</a></p>
+
+</form>
+    </div>
+  </div>
+{% endblock %}

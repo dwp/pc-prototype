@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which account do you want us to pay any Pension Credit into? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="bank-account-summary" method="post" class="form">
+      <h1 class="govuk-heading-xl">
+        Which account do you want us to pay any Pension Credit into?
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name on account"
+        },
+        id: "name-on-account",
+        name: "name-on-account",
+        classes: "govuk-input--width-20",
+        value: data["name-on-account"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Sort code"
+        },
+        id: "sort-code",
+        name: "sort-code",
+        classes: "govuk-input--width-10",
+        value: data["sort-code"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Account number"
+        },
+        id: "account-number",
+        name: "account-number",
+        classes: "govuk-input--width-20",
+        value: data["account-number"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Roll number"
+        },
+        id: "roll-number",
+        name: "roll-number",
+        classes: "govuk-input--width-20",
+        value: data["roll-number"]
+      }) }}
+
+      <input type="hidden" name="bank-complete" value="true"/>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+  </div>
+</div>
+{% endblock %}

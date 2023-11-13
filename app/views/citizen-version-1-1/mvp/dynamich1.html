@@ -1,0 +1,13 @@
+<!-- Paste this in above the old H1  -->
+
+<!------------H1 LEGEND------------>
+  {% set dynamicH1 %}
+  {% if data["single-joint-check"] == "Single" %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">"@pete Signle Single person H1</h1>{% endif %}
+  {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">@pete joint Partner h1</h1>{% endif %}
+  {% endset %}
+<!------------Legend--------------->
+
+
+<!-- Then where the old h1 was replace it with -->
+dynamicH1
+<!-- It may or maynot need the , (comma) depending on if it's the last thing, start with the comma  -->

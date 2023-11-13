@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tick - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .verified-badge {
+    color: #6f777b;
+    float: right;
+    font-size: .7em;
+    font-weight: 400;
+    margin: .4em 0 0;
+    position: relative;
+  }
+
+  .verified::before {
+    background-image: url("/public/images/icon-verified.svg");
+    background-repeat: no-repeat;
+    content: '';
+    height: 1.1em;
+    left: -1.3em;
+    position: absolute;
+    top: 0;
+    width: 1em;
+  }
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m">
+        Do a tick
+        <span class="verified-badge verified">
+          Verified
+        </span>
+      </h2>
+
+    </div>
+  </div>
+
+{% endblock %}

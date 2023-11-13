@@ -1,0 +1,233 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-c-nil-task-4-1-router" method="post" class="form">
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+
+        {% set USED %}
+        {{govukTag({
+          text: "Selected",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+        <span class="govuk-caption-m">Occupational pension one</span>
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Review [Weekly]</p>
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-6",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Payment date",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Frquency (Days between payment)",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Payment amount",
+              classes: 'govuk-20-percent'
+            },
+            {
+              text: "Tax",
+              classes: 'govuk-20-percent'
+            },
+            {
+              html: "Calculation<br>selection",
+              classes: 'govuk-20-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "14 April 2022"
+              },
+              {
+                text: "Weekly (6)"
+              },
+              {
+                text: "£68.00"
+              },
+              {
+                html: "£0.90"
+              },
+              {
+                html: USED
+              }
+            ],
+            [
+              {
+                text: "8 April 2022"
+              },
+              {
+                text: "Weekly (7)"
+              },
+              {
+                text: "£69.10"
+              },
+              {
+                text: "£0.90"
+              },
+              {
+                html:   USED
+              }
+            ],
+            [
+              {
+                text: "1 April 2022"
+              },
+              {
+                text: "Weekly (7)"
+              },
+              {
+                text: "£59.10"
+              },
+              {
+                text: "£0.90"
+              },
+              {
+                html: NOTUSED
+              }
+            ],
+            [
+              {
+                text: "24 March 2022"
+              },
+              {
+                text: "Weekly (6)"
+              },
+              {
+                text: "£59.10"
+              },
+              {
+                text: "£0.90"
+              },
+              {
+                html: NOTUSED
+              }
+              ],
+              [
+                {
+                  text: "18 March 2022"
+                },
+                {
+                  text: "Weekly (6)"
+                },
+                {
+                  text: "£59.10"
+                },
+                {
+                  text: "£0.90"
+                },
+                {
+                  html: NOTUSED
+                }
+              ]
+          ]
+        }) }}
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {% set LegendQualifingBenefits %}
+        <p class=" govuk-!-margin-bottom-2">Qualifying benefits for premiums include:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+          <li>Adult Disability Payment daily living component</li>
+          <li>Armed Forces Independence Payment</li>
+          <li>Attendance Allowance</li>
+          <li>Carer's Allowance, including an underlying entitlement</li>
+          <li>Constant Attendance Allowance</li>
+          <li>Disability Living Allowance care component (middle or highest rate)</li>
+          <li>Personal Independence Payment daily living component</li>
+
+        </ul>
+
+        {% endset -%}
+
+        <!-- {{ govukDetails({
+          summaryText: "Qualifying benefits for premiums",
+          html: LegendQualifingBenefits
+        }) }} -->
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-4-1",
+          name: "process-c-nil-task-4-1",
+          fieldset: {
+            legend: {
+              text: "Two payments have been selected these payments will be used to get a weekly amount",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Selection will be worked out as a weekly payment"
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["process-c-nil-task-4-1"] == "Yes")
+          },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["process-c-nil-task-4-1"] == "No")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-1" class="govuk-link" rel="noreferrer noopener">Weekly</a></p>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-2" class="govuk-link" rel="noreferrer noopener">Monthy</a></p>
+  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-3" class="govuk-link" rel="noreferrer noopener">Annual</a></p>
+
+</form>
+
+{% endblock %}

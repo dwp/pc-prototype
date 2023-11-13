@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="can-contact-router" method="post" class="form">
+
+      <h1 class="govuk-heading-xl">How can we contact you?</h1>
+      <p class="govuk-body">We will send some parts of your claim by post. We will use any other contact details you give us if we need to ask you for more information. </p>
+
+      {{ govukInput({
+        label: {
+          text: "Landline"
+        },
+        name: "landline",
+        classes: "govuk-input--width-10",
+        value: data["landline"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Mobile"
+        },
+        name: "mobile",
+        classes: "govuk-input--width-10",
+        value: data["mobile"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Email"
+        },
+        id: "email-address",
+        name: "email-address",
+        classes: "govuk-input--width-20",
+        value: data["email-address"]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

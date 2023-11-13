@@ -1,0 +1,75 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-phone-log" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search-query"]}}</p>
+
+
+
+      {{ govukTable({
+        caption: "Case history",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Date and time",
+                  classes: 'govuk-!-width-one-third'
+
+          },
+          {
+            text: "Update",
+              classes: 'govuk-!-width-two-thirds'
+
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "01 March 2022"
+            },
+            {
+              text: "Award letter sent"
+            }
+          ],
+          [
+            {
+              text: "28 February 2022  3:00pm"
+            },
+            {
+              text: "Processed by Hazel Littlefair (Senior Processor in Pension Credit Pilot)"
+            }
+          ],
+          [
+            {
+              text: "28 February 2022  6:00am"
+            },
+            {
+              text: "Application submited online"
+            }
+          ]
+        ]
+      }) }}
+
+
+  </div>
+
+
+
+    </form>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Can't continue - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">We can only start your Pension Credit claim from your State Pension age</h1>
+
+      <h2 class="govuk-heading-m">You reach State Pension age on 1 July 2019.</h2>
+
+
+
+
+        <div class="govuk-panel--agent">
+
+<h3 class="govuk-heading-m"><span class="agent-action">Agent: </span> Use the back link to go back to the previous page if the claimant has answered the questions incorrectly, or wishes to change their mind. <br><br>Finish and close to go back to the start page to take another application.</h3>
+
+
+            </div>
+
+<br>
+
+      {{ govukButton({
+        text: "Finish and close",
+        href: "start"
+      }) }}
+
+
+
+    </div>
+  </div>
+{% endblock %}

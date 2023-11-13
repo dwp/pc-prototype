@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add a ISAs (including TESSA, TOISA & PEP) - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-isa-savings-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        ISA details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of ISA"
+        },
+        id: "msic-isa-savings-account-name",
+        name: "msic-isa-savings-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+      <!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // BALANCE ONLY  ----------------------------------------------------------------------------------------->
+
+{% set balanceEED %}
+      {{ govukInput({
+        label: {
+          html: "How much was in this ISA on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+        },
+        id: "msic-isa-savings-account-amount-EED",
+        name: "msic-isa-savings-account-amount-EED",
+        classes: "govuk-input--width-20"
+      }) }}
+{% endset -%}
+
+<!--------------- (2) EARLIEST ENTITLEMENT DATE (EED) // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+
+{% set balanceDateEED %}
+{{ govukDateInput({
+  id: "msic-isa-savings-account-amount-EED-date-evidence",
+  namePrefix: "msic-isa-savings-account-amount-EED-date-evidence",
+  fieldset: {
+    legend: {
+      html: "<strong>Date this figure is from</strong>"
+    }
+  },
+  items: [
+    {
+      name: "day",
+      classes: "govuk-input--width-2",
+      value: data["msic-isa-savings-account-amount-EED-date-evidence-day"]
+    },
+    {
+      name: "month",
+      classes: "govuk-input--width-2",
+      value: data["msic-isa-savings-account-amount-EED-date-evidence-month"]
+    },
+    {
+      name: "year",
+      classes: "govuk-input--width-4",
+      value: data["msic-isa-savings-account-amount-EED-date-evidence-year"]
+    }
+  ]
+}) }}
+
+{{ govukInput({
+  label: {
+    html: "How much was in this ISA on this date?"
+  },
+  classes: "govuk-input--width-20",
+  id: "msic-isa-savings-account-amount-EED",
+  name: "msic-isa-savings-account-amount-EED"
+}) }}
+{% endset -%}
+
+
+
+<!--------------- (1) EARLIEST ENTITLEMENT DATE // CHECK ----------------------------------------------------------------------------------------->
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "msic-isa-savings-account-amount-balanceEED-check",
+        name: "msic-isa-savings-account-amount-balanceEED-check",
+        fieldset: {
+          legend: {
+            html: "Do you know how much was in this ISA on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["msic-isa-savings-account-amount-balanceEED-check"] == "Yes"),
+          conditional: {
+            html: balanceEED
+          }
+        },
+          {
+            value: "No",
+            text: "No, I know how much was in this ISA on a different date",
+            checked: (data["msic-isa-savings-account-amount-balanceEED-check"] == "No"),
+            conditional: {
+              html: balanceDateEED
+            }
+          }
+        ]
+      }) }}
+
+
+      <!--------------- (2) TODAY // BALANCE ONLY ----------------------------------------------------------------------------------------->
+
+
+      {% set balanceToday %}
+
+        {{ govukInput({
+          label: {
+          html: "How much was in this ISA on <strong>" + '' | formatDate + "?</strong>"
+          },
+          classes: "govuk-input--width-20",
+          id: "msic-isa-savings-account-amount-TODAY",
+          name: "msic-isa-savings-account-amount-TODAY"
+        }) }}
+
+      {% endset -%}
+
+      <!--------------- (2) TODAY // ENTER DATE AND BALANCE  ----------------------------------------------------------------------------------------->
+
+        {% set balanceDateToday %}
+
+          {{ govukDateInput({
+            id: "msic-isa-savings-account-amount-TODAY-date-evidence",
+            namePrefix: "msic-isa-savings-account-amount-TODAY-date-evidence",
+            fieldset: {
+              legend: {
+                html: "<strong>Date this figure is from</strong>"
+              }
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["msic-isa-savings-account-amount-TODAY-date-evidence-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["msic-isa-savings-account-amount-TODAY-date-evidence-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["msic-isa-savings-account-amount-TODAY-date-evidence-year"]
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: "How much was in this ISA on this date?"
+            },
+            classes: "govuk-input--width-20",
+            id: "msic-isa-savings-account-amount-TODAY",
+            name: "msic-isa-savings-account-amount-TODAY"
+          }) }}
+
+        {% endset -%}
+
+
+
+        <!--------------- (2) TODAY CHECK  ----------------------------------------------------------------------------------------->
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      idPrefix: "msic-isa-savings-account-amount-balanceTODAY-check",
+      name: "msic-isa-savings-account-amount-balanceTODAY-check",
+      fieldset: {
+        legend: {
+          html: "Do you know how much was in this ISA on <strong>" + '' | formatDate + "?</strong>"
+        }
+      },
+      hint: {
+        text: ""
+      },
+      items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        checked: (data["msic-isa-savings-account-amount-balanceTODAY-check"] == "Yes"),
+        conditional: {
+          html: balanceToday
+        }
+      },
+        {
+          value: "No",
+          text: "No, I know how much was in this ISA on a different date",
+          checked: (data["msic-isa-savings-account-amount-balanceTODAY-check"] == "No"),
+          conditional: {
+            html: balanceDateToday
+          }
+        }
+      ]
+    }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

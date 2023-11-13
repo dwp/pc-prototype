@@ -1,0 +1,84 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Do you get housing benefit or council tax reduction - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="partner-under-spa-router" method="post" class="form">
+      {% set partnerDob %}
+        {{ govukDateInput({
+          id: "partner-date-of-birth",
+          namePrefix: "partner-date-of-birth",
+          fieldset: {
+            legend: {
+              text: "Partner's date of birth"
+            }
+          },
+          hint: {
+            text: "For example, 31 12 1955"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["partner-date-of-birth-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["partner-date-of-birth-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["partner-date-of-birth-year"]
+            }
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "has-partner",
+        name: "has-partner",
+        fieldset: {
+          legend: {
+            text: "Do you live with a partner?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "A partner is a husband, wife, civil partner or someone that you live with as a couple. If your partner lives permanently in a care home, we will not include them on this claim."
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["has-partner"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["has-partner"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

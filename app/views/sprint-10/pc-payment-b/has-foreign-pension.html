@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Private pension scheme which you are yet to receive any money from? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-foreign-pension-router" method="post" class="form">
+
+      <input type="hidden" name="has-foreign-pension-complete" value="in-progress"/>
+
+      {{ govukRadios({
+        idPrefix: "has-foreign-pension",
+        name: "has-foreign-pension",
+        fieldset: {
+          legend: {
+            text: "Do you have a foreign pension?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "This can be both a state and a private pension"
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["foreignPension"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["foreignPension"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

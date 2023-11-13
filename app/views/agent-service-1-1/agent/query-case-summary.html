@@ -1,0 +1,85 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+{% block bodyStart %}
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+<form method="POST">
+  {{ govukCookieBanner({
+    ariaLabel: "Cookies on [name of service]",
+    messages: [
+      {
+        html: acceptHtml,
+        actions: [
+        {
+          text: "End call",
+          classes: "govuk-button--warning",
+          href: "#",
+          type: "button"
+        }
+        ]
+      }
+    ]
+  }) }}
+</form>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="query-phone-log" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search-query"]}}</p>
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+      <ol class="app-task-list">
+      <li>
+      <h2 class="app-task-list__section">
+        <span class="app-task-list__section-number">1.</span>Benefits
+      </h2>
+      <ul class="app-task-list__items">
+        <li class="app-task-list__item">
+          <a class="app-task-list__task-name" href="process-b-nil-task-1" aria-describedby="task-1">
+            View benefits
+          </a>
+          <!--
+
+          {% if data["process-b-nil-task-1"]  == "Matched" %}
+            <strong class="govuk-tag app-task-list__nil-task-passed">Matched</strong>
+            {% elif data["process-b-nil-task-1"]  == "Not matched" %}
+            <strong class="govuk-tag app-task-list__nil-task-failed">Not matched</strong>
+          {% elif data["process-b-nil-task-1"]  == "Unfinished" %}
+            <strong class="govuk-tag app-task-list__nil-task-not-done">Unfinished</strong>
+          {% else %}
+            <strong class="govuk-tag app-task-list__nil-task-not-done" id="eligibility-completed">Not done</strong>
+          {% endif %}
+        -->
+
+        </li>
+
+      </ul>
+      </li>
+
+      </ol>
+
+    </div>
+  </div>
+
+
+
+    </form>
+{% endblock %}

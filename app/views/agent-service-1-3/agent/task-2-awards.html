@@ -1,0 +1,94 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search"]}}</p>
+
+    </div>
+  </div>
+
+
+  {% include "agent-service-1/agent/navigation-1.html" %}
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Awards and decisions</h3>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"> This is appropriate dummy text that is being employed in order to ascertain an approximate length because the actual copy has not yet been received.</p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+                  <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2 govuk-!-margin-top-2"><table class="govuk-table">
+
+                    <thead class="govuk-table__head">
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-30-percent">Date?</td>
+                        <td class="govuk-table__cell govuk-40-percent">Calim ID</td>
+                        <td class="govuk-table__cell govuk-30-percent">Nil award outcome</td>
+                      </tr>
+                      </thead>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell table-spacer"> 19 / 03 / 2022</td>
+                        <td class="govuk-table__cell table-spacer"><a href="task-2-award-0001">0001</a></td>
+                          <!-- {{data["api-claim-outcome-details"]}} -->
+
+                      <td class="govuk-table__cell table-spacer">
+
+                          {% if data["nil-task-1-outcome"] %}      <strong class="govuk-tag app-task-list__nil-case-failed" id="eligibility-completed">Failed</strong>
+                          {% elif data["nil-task-1-passed"] %}     <strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                          {% endif %}
+                          <!-- <strong class="govuk-tag app-task-list__nil-task-failed" id="eligibility-completed">Failed</strong> -->
+                          <!-- <strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong> -->
+
+                        </td>
+                        </tr>
+
+                      <tr class="govuk-table__row">
+                        <td class="govuk-table__cell table-spacer"> 10 / 01 / 2022</td>
+                        <td class="govuk-table__cell table-spacer"><a href="task-2-award-0001">0002</a></td>
+
+                        <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                        </tr>
+
+
+
+                      <!-- <tr class="govuk-table__row">
+                        <td class="govuk-table__cell table-spacer"> 20 / 05 / 2021</td>
+                        <td class="govuk-table__cell table-spacer"><a href="#">000X</a></td>
+                        <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-passed" id="eligibility-completed">Passed</strong>
+                        </tr> -->
+
+                      </table>
+
+
+
+
+
+        </div>
+      </div>
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

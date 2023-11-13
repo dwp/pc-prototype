@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you a UK national? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% set ResideHint %}
+{% endset %}
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="uk-national-router" method="post">
+
+<!------------HEADLINE------------>
+  {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Do you have the right to live or work in the UK without any immigration restrictions?</h1>{% endif %}
+  {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Does {{ data["full-name"] }} have the right to live or work in the UK without any immigration restrictions?</h1>{% endif %}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "uk-national",
+          name: "uk-national",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            html: "<p class=\"hint\">You have this right if have a British passport or are a British citizen or British subject with right of abode."
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  🗼 Admissions - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p>
+        {{ govukBackLink({
+          href: "/sprint-2/monolith/index#investments"
+        }) }}
+      </p>
+
+      <form method="post" class="form">
+        <h1 class="govuk-heading-xl">
+          Add investment
+        </h1>
+
+        {{ govukInput({
+          label: {
+            text: "Account name"
+          },
+          id: "investment-name",
+          name: "investment-name",
+          classes: "govuk-input--width-20",
+          value: investment["investment-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Value of investment"
+          },
+          id: "investment-value",
+          name: "investment-value",
+          classes: "govuk-input--width-20",
+          value: investment["investment-value"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

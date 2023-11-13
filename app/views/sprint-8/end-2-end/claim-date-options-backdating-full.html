@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-yes" method="post">
+
+        {% set altBackdatedDate %}
+          {{ govukDateInput({
+            id: "alternate-date",
+            namePrefix: "alternate-date",
+            fieldset: {
+              legend: {
+                text: "What is the differnt to xx/xx/xxxx?"
+              }
+            },
+            hint: {
+              text: "For example, 31 12 2018."
+            },
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-day"]
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data["alternate-date-month"]
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data["alternate-date-year"]
+              }
+            ]
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "alt-backdated-date",
+          name: "alt-backdated-date",
+          fieldset: {
+            legend: {
+              text: "Would you like to start your claim from 01/02/2019?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "This date is calculated using your date of birth and Todays date and is currently the maximum backdating avable to you."
+          },
+          items: [
+          {
+            value: "alt-backdated-date-yes",
+            text: "Yes",
+            checked: (data["alt-backdated-date-yn"] == "yes")
+          },
+            {
+              value: "alt-backdated-date-no",
+              text: "No",
+              checked: (data["alt-backdated-date-yn"] == "No"),
+              conditional: {
+                html: altBackdatedDate
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

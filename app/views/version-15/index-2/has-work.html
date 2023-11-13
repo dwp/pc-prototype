@@ -1,0 +1,56 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Are you in paid employment? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "xxx"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="has-work-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-work",
+        name: "has-work",
+        fieldset: {
+          legend: {
+            text: "Are you in paid employment?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-work"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["has-work"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

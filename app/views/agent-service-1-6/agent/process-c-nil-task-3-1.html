@@ -1,0 +1,82 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-3-1"] %}
+      <form action="process-c-nil-task-list" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-3-1-router" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-6/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">Task 3-1</span> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">No date of death</p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Systems to check:</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>SearchLight</strong></p>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        {{ govukRadios({
+          idPrefix: "process-c-nil-task-3-1",
+          name: "process-c-nil-task-3-1",
+          fieldset: {
+            legend: {
+              text: "Is there a date of death in SeachLight?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Not matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-3-1"] == "Not matched")
+          },
+            {
+              value: "Matched",
+              text: "No",
+              checked: (data["process-c-nil-task-3-1"] == "Matched")
+            }
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

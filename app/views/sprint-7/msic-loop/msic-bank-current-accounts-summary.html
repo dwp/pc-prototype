@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings and investments - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-m">Money, savings and investments</span>
+    Current, savings and post office account summary<br>
+  </h1>
+  <!----Headline---->
+
+  <form action="msic-bank-current-accounts-summary-router" method="post">
+
+    {% set count = data["account-count"] or 0 %}
+
+    {% for i in range(0, count) -%}
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        <div class="govuk-grid-column-one-third">
+          <h3 class="govuk-heading-s pc-row-head-10">
+          {{ data["msic-bank-current-account-name-" + i] }}
+          </h3>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          {{ govukSummaryList({
+            rows: [
+            {
+              key: {
+                text: "Bank, Building society or Post Office?"
+              },
+              value: {
+                text: data['who-is-account-with']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "Change or Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Account type"
+              },
+              value: {
+                text: data['type-of-account']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Last four digits of account or roll number"
+              },
+              value: {
+                text: data['msic-bank-current-account-last-digits-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Total"
+              },
+              value: {
+                text: data['msic-bank-current-account-amount-' + i] | formatMoney
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "",
+                    visuallyHiddenText: "XXX"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Whose is this account?"
+              },
+              value: {
+                text: data['current-owner-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Stake in joint account"
+              },
+              value: {
+                text: data['msic-bank-current-account-stake-' + i]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account-stake",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            },
+            {
+              classes: 'govuk-summary-list--no-border',
+              key: {
+                text: "Is evidence needed for this account"
+              },
+              value: {
+                text: "Yes/No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "msic-bank-current-account-need-evidence",
+                    text: "",
+                    visuallyHiddenText: "XXXX"
+                  }
+                ]
+              }
+            }
+            ]
+          }) }}
+        </div>
+      </div>
+    {%- endfor %}
+
+<!---------------------------------s------------------------------------------------>
+
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+  <br><br>
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "add-another-current",
+    name: "add-another-current",
+    fieldset: {
+      legend: {
+        text: "Do you have any more current or savings accounts with a bank, building society or the Post Office?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="household-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about other people that live in your home.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Ask the claimant for all the information you need about people that live in their home, including:</p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+          their full names
+          </li>
+          <li>
+            their National insurance number, or Child Benefit Number if they are under 16
+          </li>
+          <li>
+            their Dates of birth
+          </li>
+          <li>
+            whether they are registered blind or severely sight impaired
+          </li>
+          <li>
+            whether they claim DLA or PIP
+          </li>
+        </ul>
+
+<br>
+
+        <p class="govuk-body govuk-!-font-size-19">If the person they live with is a boarder or lodger, ask:</p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+          how much they pay the claimant and how often
+          </li>
+          <li>
+            whether the claimant provides cooked meals for them
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "household-more-detail",
+          id: "household-more-detail",
+
+          value: data["household-more-detail"]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

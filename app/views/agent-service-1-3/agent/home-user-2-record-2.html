@@ -1,0 +1,42 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-find-someone.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% if data["search"]  %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["search"]}}</p>
+      {% else %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+      {% endif %}
+      </div>
+  </div>
+
+  {% include "agent-service-1/agent/navigation-1.html" %}
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-8">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-6">Overview</h3>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Applied for Pension Credit on DD MM YYYY, the outcome was a nil because their State Pension of £180.55 exceeded the Pension Credit threshold.
+  </p>
+  </div>
+
+  </div>
+
+
+    </form>
+{% endblock %}

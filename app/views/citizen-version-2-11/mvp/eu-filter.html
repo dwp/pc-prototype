@@ -1,0 +1,76 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="eu-filter-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <div class="govuk-panel--agent">
+
+
+      {{ govukRadios({
+        idPrefix: "eu-filter",
+        name: "eu-filter",
+        fieldset: {
+          legend: {
+            text: "System: EU Status",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Accept",
+            text: "Accept claim online",
+            checked: (data["eu-filter"] == "Accept")
+          },
+{
+            value: "Call",
+            text: "Call",
+            checked: (data["eu-filter"] == "Call")
+                    },
+          {
+            value: "HO",
+            text: "Home Office",
+            checked: (data["eu-filter"] == "HO")
+          },
+          {
+            value: "Applied for settlement",
+            text: "Applied for EU settlement",
+            checked: (data["eu-filter"] == "Applied for settlement")
+          }
+        ]
+      }) }}
+
+
+
+</div>
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-cam-start" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Check your answers</h1>
+
+            {% if data['nino-known'] === 'yes' %}
+
+            {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-9',
+                    rows: [
+                      {
+                        classes: "",
+                        key: {
+                          text: "What has changed?"
+                        },
+                        value: {
+                          text: "Qualifying benefits"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-changes-type",
+                              text: "Change",
+                              visuallyHiddenText: "name"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        classes: "govuk-summary-list__row--no-border",
+                        key: {
+                          text: "Which qualifying benefit is Jeff getting?"
+                        },
+                        value: {
+                          text: "Attendance Allowance"
+                        },
+                        actions: {
+                          items: [
+                            {
+                              href: "qd-changes-benefits",
+                              text: "Change",
+                              visuallyHiddenText: "date of birth"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        key: {
+                          text: "When did this benefit start?"
+                        },
+                        value: {
+                          html: "29 November 2021"
+                        }
+
+                      }
+                    ]
+                  }) }}
+
+
+              {% else %}
+
+              {{ govukSummaryList({
+                      classes: 'govuk-!-margin-bottom-9',
+                      rows: [
+                        {
+                          classes: "",
+                          key: {
+                            text: "What has changed?"
+                          },
+                          value: {
+                            text: "Qualifying benefits"
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "qd-changes-type",
+                                text: "Change",
+                                visuallyHiddenText: "name"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          classes: "govuk-summary-list__row--no-border",
+                          key: {
+                            text: "Which qualifying benefit is Oliver getting?"
+                          },
+                          value: {
+                            text: "Attendance Allowance"
+                          },
+                          actions: {
+                            items: [
+                              {
+                                href: "qd-changes-benefits",
+                                text: "Change",
+                                visuallyHiddenText: "date of birth"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          key: {
+                            text: "When did this benefit start?"
+                          },
+                          value: {
+                            html: "29 November 2021"
+                          }
+
+                        }
+                      ]
+                    }) }}
+
+
+
+            {% endif %}
+
+
+
+
+                  <div class="govuk-!-margin-top-4">
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+                  </div>
+
+        </div>
+    </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+
+
+
+{% endblock %}

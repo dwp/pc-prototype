@@ -1,0 +1,153 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  non-deps-summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+
+
+  <style>
+
+</style>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="non-deps-summary-router" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+        {% if data["single-joint-check"] == "Joint" %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">You have told us about 2 people who live with you and your partner</h2>
+
+        {% else %}
+        <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">You have told us about 2 people who live with you</h2>
+        {% endif %}
+
+
+        {% if data["non-deps-member-full-name"] %}
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-padding-top-0',
+            rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                html: data['non-deps-member-full-name']
+              },
+              actions: {
+                items: [
+                {
+                  href: "non-deps-member-category",
+                  html: "Change",
+                  visuallyHiddenText: "XXX"
+                },
+                {
+                  href: "non-deps-member-remove",
+                  html: "Remove",
+                  visuallyHiddenText: "XXX"
+                }
+                ]
+              }
+            }
+            ]
+          }) }}
+          {% endif %}
+
+          {% if data["non-deps-member-full-name-2"] %}
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-padding-top-0',
+              rows: [
+              {
+                key: {
+                  text: "Name"
+                },
+                value: {
+                  html: data['non-deps-member-full-name-2']
+                },
+                actions: {
+                  items: [
+                  {
+                    href: "non-deps-member-category-Loop",
+                    html: "Change",
+                    visuallyHiddenText: "XXX"
+                  },
+                  {
+                    href: "non-deps-member-remove-loop",
+                    html: "Remove",
+                    visuallyHiddenText: "XXX"
+                  }
+                  ]
+                }
+              }
+              ]
+            }) }}
+            {% endif %}
+
+
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicQ %}
+        {% if data["single-joint-check"] == "Joint" %}<h2 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-0">Do any more people live with you and your partner?</h2>
+        {% else %}  <h2 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-0">Do any more people live with you?</h2>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+
+      <!------------Legend------------>
+        {% set legendHint %}
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">You need to tell us about all the people who live with you.</p>
+        {% endset %}
+      <!------------Legend------------>
+
+
+             {{ govukRadios({
+               idPrefix: "non-deps-summary",
+               name: "non-deps-summary",
+               fieldset: {
+                 legend: {
+                   html: dynamicQ,
+                   isPageHeading: true,
+                   classes: "govuk-fieldset__legend--l"
+                 }
+                   },
+                   hint: {
+                     html: legendHint
+                   },
+
+               classes: "govuk-radios",
+               items: [
+                 {
+                   value: "Yes",
+                   text: "Yes",
+                   checked: (data["non-deps-summary"] == "Yes")
+                 },
+                 {
+                   value: "No",
+                   text: "No",
+                   checked: (data["non-deps-summary"] == "No")
+                 }
+               ]
+             }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

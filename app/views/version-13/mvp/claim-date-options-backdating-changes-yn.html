@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Backdating: Outside of UK - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-changes-yn-router" method="post" class="form">
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Agent: Have a conversation with the claimant about any changes that might affect the amount of their claim.
+          </strong>
+        </div>
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          idPrefix: "claim-date-options-backdating-changes-yn",
+          name: "claim-date-options-backdating-changes-yn",
+          fieldset: {
+            legend: {
+              html: "Since 16 April 2019, have there been any changes that could affect your claim?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "Pete, From UR: can we add in what you had about the types of changes"
+          },
+
+          items: [
+          {
+              value: "Yes",
+              text: "Yes",
+              checked: (data["claim-date-options-backdating-changes-yn"] == "No")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (data["claim-date-options-backdating-changes-yn"] == "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

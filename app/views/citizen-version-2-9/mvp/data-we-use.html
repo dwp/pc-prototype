@@ -1,0 +1,47 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claimant-national-insurance" method="post" class="form">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">How we will use your information</h1>
+
+    {% if data["partner-check-yn"] == "No"
+    %}
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">As well as the details you provide in your application, we will also use information we already hold about you.</p>
+    {% else %}
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">As well as the details you provide in your application, we will also use information we already hold about you and your partner.</p>
+    {% endif %}
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold govuk-!-margin-bottom-2">We will use information:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>that we already have about your State Pension and any benefits you receive</li>
+      <li>that we get from HMRC about your income and earnings</li>
+    </ul>
+
+<p class="govuk-body">To find out more about how we use information and your information rights, read our <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal Information Charter</a>.</p>
+<!-- <p class="govuk-body">You will need to complete your application all in one go. You will not be able to save it and come back later.</p>
+<p class="govuk-body">To keep your information secure, if you do not enter any information for more than an hour, your application will time out and you'll have to start again.</p>
+ -->
+
+
+     {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4"
+     }) }}
+
+
+</form>
+</div>
+{% endblock %}

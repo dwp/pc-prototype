@@ -1,0 +1,46 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  I am a PDF - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="pension-credit-summary" method="post" class="form">
+
+      <input type="hidden" name="pensions-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h1 class="govuk-heading-l">I am the M.Y.P.C 9000 computer.<br> You may call me Mal </h1>
+        <h2 class="govuk-heading-m">I am completely operational, and the PDF and all my other circuits are functioning perfectly</h2>
+        <h2 class="govuk-heading-m">Check that the PDF is okay, this mission is too important for me to allow you to jeopardise it</h2>
+
+      </div>
+
+
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

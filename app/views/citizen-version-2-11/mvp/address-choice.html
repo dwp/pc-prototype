@@ -1,0 +1,117 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  What is your home address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-responsible-CTR-HB" method="post" class="form">
+
+      <!------------H1 LEGEND------------>
+        {% if data["home-care-home-check"] == "Yes" %}<h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Select your care home address</h2>
+        {% else %}<h2 class="govuk-heading-xl govuk-!-margin-bottom-6">Select your address</h2>{% endif %}
+      <!------------Legend--------------->
+
+
+      <p class="govuk-!-font-size-24 govuk-body govuk-!-font-weight-regular govuk-!-margin-bottom-2">3 address found for: <strong>{{data["property-number-name"]}}</strong> and <strong>{{data["postcode"]}}</strong></p>
+      <p class=" govuk-body govuk-!-margin-bottom-6"><a class="govuk-link" href="address-post-code-lookup">Change</a></p>
+
+
+
+      <!-- {{ govukSelect({
+        id: "address",
+        name: "address",
+        label: {
+          text: "Select an address"
+        },
+        items: [
+          {
+            value: "address-count",
+            text: "3 addresses found",
+            selected: (data["address"] == "address-count")
+          },
+          {
+            value: "221a",
+            text: "221A Baker Street",
+            selected: (data["address"] == "221a")
+          },
+          {
+            value: "221b",
+            text: "221B Baker Street",
+            selected: (data["address"] == "221b")
+          },
+          {
+            value: "222",
+            text: "222 Baker Street",
+            selected: (data["address"] == "222")
+          }
+        ]
+      }) }} -->
+
+      {% set dynamicAddressLineA %}
+      <p class=" govuk-body govuk-!-margin-bottom-1">221A, BAKER STREET, LONDON</p>
+      {% endset %}
+
+      {% set dynamicAddressLineB %}
+      <p class=" govuk-body govuk-!-margin-bottom-1">221B, BAKER STREET, LONDON</p>
+      {% endset %}
+
+      {% set dynamicAddressLineC %}
+      <p class=" govuk-body govuk-!-margin-bottom-1">221C, BAKER STREET, LONDON</p>
+      {% endset %}
+
+
+      {{ govukRadios({
+        name: "address-found",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "A",
+            html: dynamicAddressLineA,
+            checked: (data["baddress-found"] == "A")
+          },
+          {
+            value: "B",
+            html: dynamicAddressLineB,
+            checked: (data["address-found"] == "B")
+          },
+          {
+            value: "C",
+            html: dynamicAddressLineC,
+            checked: (data["address-found"] == "C")
+          }
+        ]
+      }) }}
+
+
+      <br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <ul class="govuk-list">
+      <li>
+        <a class="govuk-link" href="address-manual">I can't see my address, enter address manually</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+{% endblock %}

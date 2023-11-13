@@ -1,0 +1,109 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-total-risk-check-router" method="post" class="form">
+
+
+{{ govukCheckboxes({
+  idPrefix: "money-total-risk-check",
+  name: "money-total-risk-check",
+  fieldset: {
+    legend: {
+      text: "What accounts or investments do you have?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: "Select all that apply.",
+          classes: "govuk-fieldset__legend--xl govuk-!-padding-top-4"
+  },
+  items: [
+
+    {
+      value: "Low",
+      text: "National Savings and Investment products, such as Premium Bonds or Savings Certificates",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Investments, including shares ISAs",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Shares",
+      checked: (data["money-total-risk-check"] == "Shares")
+    },
+    {
+      value: "High",
+      text: "Money invested in unit trusts",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Income or capital bonds",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    },
+    {
+      value: "High",
+      text: "Money overseas",
+      checked: (data["money-total-risk-check"] == "Savings Accounts")
+    }
+  ]
+}) }}
+
+<p class="govuk-!-font-size-19 govuk-!-padding-left-2 govuk-!-margin-top-0 govuk-!-margin-bottom-0">or</p>
+
+{{ govukCheckboxes({
+  idPrefix: "None",
+  name: "None",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-8 govuk-!-padding-top-0"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+  {
+    value: "Low",
+    text: "I have none of these",
+    checked: (data["money-total-risk-check"] == "None of these")
+  }
+  ]
+}) }}
+
+
+
+
+{{ govukButton({
+  text: "Continue",
+  classes: "govuk-!-margin-top-4"
+}) }}
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-number-using-yn-router" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+        <h2 class="govuk-heading-m"><span class="agent-action"></span>The number the claimant is calling from <strong>{{ data["telephone-number"] }}</strong>.</h2>
+      </div>
+
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-number-using-yn",
+        name: "contact-number-using-yn",
+        fieldset: {
+          legend: {
+            html: "Can we call you on " + data["telephone-number"] + "?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "We will use any other contact details you give us if we need to ask you for more information."
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["contact-number-using-yn"] == "No")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["contact-number-using-yn"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About you - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <p class="govuk-body govuk--version-control">B.1.0 / Short claim</p>
+
+    <h1 class="govuk-heading-xl">
+      About you
+    </h1>
+
+    <form action="about-you-router" method="post" class="form">
+      {{ govukInput({
+        label: {
+          text: "What is your full name?"
+        },
+        id: "full-name",
+        name: "full-name",
+        classes: "govuk-input--width-20",
+        value: data["full-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "What is your National Insurance number?"
+        },
+        id: "nino",
+        name: "nino",
+        classes: "govuk-input--width-20",
+        value: data["nino"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "What is your home telephone number?"
+        },
+        id: "nino",
+        name: "nino",
+        classes: "govuk-input--width-20",
+        value: data["telephone-number"]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "self-employed",
+        name: "self-employed",
+        fieldset: {
+          legend: {
+            text: "Are you self-employed?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["self-employed"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["self-employed"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "right-to-abode",
+        name: "right-to-abode",
+        fieldset: {
+          legend: {
+            text: "Are you allowed to live or work in the UK without any immigration restrictions?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["right-to-abode"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["right-to-abode"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

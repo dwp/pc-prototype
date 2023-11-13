@@ -1,0 +1,40 @@
+{% extends "layout-work-list-id-bar.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-notifications" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Looks like Mel Gibson Will get Pension Credit</strong></h1>
+
+
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Amount: <strong>£175.00</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Premiums: <strong>£25.00</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Total including premiums: <strong>£200.00</strong></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Continue"
+      }) }}
+
+</form>
+    </div>
+  </div>
+{% endblock %}

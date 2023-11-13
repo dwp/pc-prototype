@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-today-yn-router" method="post">
+
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  idPrefix: "claim-date-options-today-yn",
+                  name: "claim-date-options-today-yn",
+                  fieldset: {
+                    legend: {
+                      text: "Would you like to start your claim from Today? (01 March 2019)",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--xl"
+                    }
+                  },
+                  hint: {
+                    text: "This date is calculated using your date of birth and Todays date and is currently the maximum backdating avable to you."
+                  },
+                  items: [
+                    {
+                      value: "Yes",
+                      text: "Yes",
+                      checked: (data["claim-date-options-today-yn"] == "No")
+                    },
+                    {
+                      value: "No",
+                      text: "No",
+                      checked: (data["claim-date-options-today-yn"] == "No")
+                    }
+                  ]
+                }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+        {% if data['doc-absence-plural'] == 'Yes' %}
+        <form action="doc-absence-medical-plural-router" method="post" class="form">
+        {% else %}
+          <form action="doc-absence-medical-single-router" method="post" class="form">
+        {% endif %}
+
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <!------------Hint LEGEND------------>
+        {% set legendH1 %}
+
+      {% if data["doc-absence-plural"] == "Yes" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Were any of the periods you spent outside the UK connected to medical treatment or the death of a partner or child?</h1>
+      {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Was the period you spent outside the UK connected to medical treatment or the death of a partner or child?</h1>{% endif %}
+
+        {% endset %}
+      <!------------Legend--------------->
+
+
+      {{ govukRadios({
+        idPrefix: "doc-absence-medical",
+        name: "doc-absence-medical",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: ""
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["doc-absence-medical"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["doc-absence-medical"] == "No")
+          }
+        ]
+      }) }}
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

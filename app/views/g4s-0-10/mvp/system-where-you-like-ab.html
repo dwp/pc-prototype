@@ -1,0 +1,73 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Have you spent any time in hospital recently? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-where-you-like-ab-router" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+      <div class="govuk-panel--agent">
+
+        <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-6">Where you live</h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">We are looking to get your feedback on changes to help with citizens understanding about Service charges and ground rent. </p>
+
+
+      {{ govukRadios({
+        idPrefix: "system-where-you-like-ab",
+        name: "system-where-you-like-ab",
+        fieldset: {
+          legend: {
+            text: "Select a scenarios to test",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        classes: "govuk-radios",
+        items: [
+        {
+          value: "A",
+          text: "A",
+          checked: (data["system-where-you-like-ab"] == "B")
+                  },
+          {
+            value: "B",
+            text: "B",
+            checked: (data["system-where-you-like-ab"] == "B")
+          }
+        ]
+      }) }}
+
+
+</div>
+
+
+
+
+      <!--text: "Have you spent any time in hospital since " + (data['back-dating-date'] | formatDate),--->
+
+
+      {{ govukButton({
+        text: "Start"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

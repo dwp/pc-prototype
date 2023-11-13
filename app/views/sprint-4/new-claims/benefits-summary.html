@@ -1,0 +1,224 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      Benefit details for Alex Smith
+    </h1>
+
+  </div>
+</div>
+<!----Headline---->
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h3 class="govuk-heading-m">
+      In payment
+    </h3>
+    <p>This means that you have been receiving this benefit for a while</p>
+  </div>
+
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+    <caption class="govuk-table__caption"> </caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header my-custom-class" scope="col">Attendance allowance (AA)</th>
+        <th class="govuk-table__header my-custom-class" scope="col"><strong></strong></th>
+        <th class="govuk-table__header my-custom-class" scope="col"><p class="govuk-body"><a href="add-benefit"></a></p></th>
+
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Value</th>
+        <td class="govuk-table__cell">£100.00</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Rate</th>
+        <td class="govuk-table__cell">Lower</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Payment day / frequency</th>
+        <td class="govuk-table__cell">Monday / weekly</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Start date / end date</th>
+        <td class="govuk-table__cell">01 01 2018 -</td>
+        <td class="govuk-table__cell"></td>
+
+
+      </tr>
+    </tbody>
+  </table>
+<!----End 1/3 + 2/3 ----></div>
+</div>
+{% if data["benefit-name"] %}
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <table class="govuk-table">
+    <caption class="govuk-table__caption"> </caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header my-custom-class" scope="col">{{ data["benefit-name"] }}</th>
+        <th class="govuk-table__header my-custom-class" scope="col"><strong></strong></th>
+        <th class="govuk-table__header my-custom-class" scope="col"><p class="govuk-body"><a href="add-benefit">Change</a></p></th>
+
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Value</th>
+        <td class="govuk-table__cell">{{ data["benefit-value"] | formatMoney }}</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Rate</th>
+        <td class="govuk-table__cell">Lower</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Payment day / frequency</th>
+        <td class="govuk-table__cell">{{ data["benefit-day"] }} / {{ data["benefit-frequency"] }}</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Start date / end date</th>
+        <td class="govuk-table__cell">01 01 2018 -</td>
+        <td class="govuk-table__cell"></td>
+
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+{% endif %}
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <h3 class="govuk-heading-m">
+      An interest
+    </h3>
+    <!--<p>All benefits are in payment, no awaiting benefits to be issued (Correct as of 01.01.2019)</p>
+    <p>This means that a benefit if showing on the account but may, or may not be in payment</p> -->
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <p>All benefits are in payment, no awaiting benefits to be issued (Correct as of 01.01.2019)</p>
+
+    <!--<table class="govuk-table">
+    <caption class="govuk-table__caption"> </caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header my-custom-class" scope="col">{{ data["benefit-name"] }}</th>
+        <th class="govuk-table__header my-custom-class" scope="col"><strong></strong></th>
+        <th class="govuk-table__header my-custom-class" scope="col"><regular>Change</regular></th>
+
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Value</th>
+        <td class="govuk-table__cell">{{ data["benefit-value"] | formatMoney }}</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Rate</th>
+        <td class="govuk-table__cell">Lower</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Payment day / frequency</th>
+        <td class="govuk-table__cell">{{ data["benefit-day"] }} / {{ data["benefit-frequency"] }}</td>
+        <td class="govuk-table__cell"></td>
+
+      </tr>
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row">Start date / end date</th>
+        <td class="govuk-table__cell">01 01 2018 -</td>
+        <td class="govuk-table__cell"></td>
+
+
+      </tr>
+    </tbody>
+  </table>-->
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+<!----Add more---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="benefits-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+
+  </div>
+</div>
+<!----Break---->
+  {% endblock %}

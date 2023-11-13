@@ -1,0 +1,123 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="start-check-router" method="post" class="form">
+
+    <h2 class="govuk-heading-xl govuk-!-margin-bottom-6">How we will use your information</h2>
+
+    <p class="govuk-body govuk-!-font-size-24">As well as the details you provide in your application, we will also use information that DWP and HMRC know about you (and your partner, if you live with one).</p>
+
+    {% if data["resides-in-uk"] == "Northern-Ireland"%}
+    <p class="govuk-body ">To find out more about how we use information and your information rights, read our <a href="https://www.communities-ni.gov.uk/sites/default/files/publications/communities/dfc-gdpr-privacy-notice-wig.pdf">Personal Information Charter (opens in a new tab)</a>.</p>
+   {% else %}
+   <p class="govuk-body">To find out more about how we use information and your information rights, read our <a href="https://www.gov.uk/government/organisations/department-for-work-pensions/about/personal-information-charter">Personal Information Charter (opens in a new tab)</a>.</p>
+   {% endif %}
+
+    <h3 class="govuk-heading-m govuk-!-margin-top-8">We will not need to ask you about things we already know, such as:</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>your UK State Pension and any benefits you receive from DWP</li>
+      <li>your UK income and earnings</li>
+    </ul>
+
+
+
+    <h3 class="govuk-heading-m">We will need to ask you about (for you and your partner, if you live with one):</h3>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>National Insurance number</li>
+      <li>information about UK personal pensions you have not taken yet</li>
+      <li>information about income and pensions from overseas</li>
+      <li>details of money, savings and investments, usually for the last 3 months</li>
+    </ul>
+
+
+
+    {{ govukRadios({
+      idPrefix: "start-check",
+      name: "start-check",
+      fieldset: {
+        legend: {
+          text: "Do you have the right information to make an online application for Pension Credit?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m govuk-!-padding-top-4"
+        }
+      },
+      hint: {
+        html: DynamicHint
+      },
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["start-check"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["start-check"] == "No")
+        }
+      ]
+    }) }}
+
+
+<!-- {{ govukCheckboxes({
+  idPrefix: "start-check",
+  name: "start-check",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m govuk-!-padding-top-2"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+
+    {
+      value: "confirm",
+      text: "I confirm I have this information ready",
+      checked: (data["start-check"] == "confirm")
+
+    }
+  ]
+}) }} -->
+
+
+
+     <!--  {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-top-4 govuk-!-margin-bottom-8",
+       isStartButton: true
+     }) }} -->
+
+
+     <button class="govuk-button" data-module="govuk-button">
+      Continue
+    </button>
+
+
+<!--
+     {{ govukButton({
+       text: "Continue"
+     }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

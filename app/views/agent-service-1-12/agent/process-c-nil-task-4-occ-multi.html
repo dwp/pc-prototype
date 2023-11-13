@@ -1,0 +1,133 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="process-nil-task-list-s4" method="post" class="form">
+        <input type="hidden" name="outcome-nil" value="true"/>
+
+
+        {% include "agent-service-1-12/agent/record-id.html" %}
+
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Workplace pension[s]</p>
+
+        {% set USED %}
+        {{govukTag({
+          text: "System",
+          classes: "govuk-tag--green"
+        })}}
+        {% endset -%}
+
+        {% set MANUAL %}
+        {{govukTag({
+          text: "Manual",
+          classes: "govuk-tag--blue"
+        })}}
+        {% endset -%}
+
+        {% set NOTUSED %}
+        {{govukTag({
+          text: "Not selected",
+          classes: "govuk-tag--grey"
+        })}}
+        {% endset -%}
+
+{% set legendChange %}
+<a href="process-c-nil-task-4-c" class="govuk-link" rel="noreferrer noopener">Change</a>
+{% endset -%}
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--xl govuk-!-margin-bottom-8",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Pension provider",
+              classes: 'govuk-10-percent'
+            },
+            {
+              text: "Payment frequency",
+              classes: 'govuk-10-percent'
+            },
+            {
+              text: "Selection method",
+              classes: 'govuk-10-percent'
+            },
+            {
+              html: "Weekly net income",
+              classes: 'govuk-10-percent'
+            },
+            {
+              html: "",
+              classes: 'govuk-10-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "Woolworths INC"
+              },
+              {
+                text: "Weekly"
+              },
+              {
+                html: USED
+              },
+              {
+                text: "£50.25"
+              },
+              {
+                html: legendChange
+              }
+            ],
+            [
+              {
+                text: "Metroland LTD"
+              },
+              {
+                text: "Monthly"
+              },
+              {
+                html: MANUAL
+              },
+              {
+                text: "£253.84"
+              },
+              {
+                html: legendChange
+              }
+            ]
+          ]
+        }) }}
+
+
+
+
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+
+
+    {{ govukButton({
+      text: "Continue",
+      classes:"govuk-!-margin-top-4"
+    }) }}
+  <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2"><a href="process-c-nil-task-list" class="govuk-link" rel="noreferrer noopener">☒</a></p> -->
+</form>
+
+{% endblock %}

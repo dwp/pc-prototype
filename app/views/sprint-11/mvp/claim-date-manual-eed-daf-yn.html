@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-cam-date-reason" method="post">
+
+
+
+        <div class="govuk-panel--agent">
+          <h1 class="govuk-heading-m"><span class="agent-action">Agent: </span> The earliest date that XXX claim from is {{ data['claim-date-manual-eed-date-day'] + ' ' + (data['claim-date-manual-eed-date-month'] | getMonth) + ' ' + data['claim-date-manual-eed-date-year'] }}. </h1>
+
+          <p class="govuk-body">Discuss how any of the following changes, they may affect the claim and ask whether they want to make a claim from this date or choose a different date.</p>
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Important changes to discuss are:</h2>
+          <ul class="govuk-list govuk-list--bullet">
+             <!--<li>previous Pension Credit claims</li>-->
+              <li>changes to who lives with the claimant</li>
+              <li>changes to where they live</li>
+              <li>changes to income</li>
+              </ul>
+
+<br>
+
+{{ govukDateInput({
+  id: "claim-date-cam-date-entry",
+  namePrefix: "claim-date-cam-date-entry",
+  fieldset: {
+    legend: {
+      html: "Discuss and enter agreed date of claim",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "For example, 12 11 2019"
+  }
+}) }}
+
+      </div>
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

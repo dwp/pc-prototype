@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you agree with the way we will use your information? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<form action="msic-has-current-account-yn" method="post" class="form">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+<h1 class="govuk-heading-xl">@pete? This person may need help to get their State Pension</h1>
+
+<div class="govuk-panel--agent">
+
+<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Agent: State Pension not in payment</h2>
+<p class="govuk-!-margin-bottom-6">XXX</p>
+<p class="govuk-!-margin-bottom-6">XXX</p>
+
+</div>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

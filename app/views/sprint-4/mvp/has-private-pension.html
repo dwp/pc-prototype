@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you get a private, workplace or any other pension? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "property"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="notepad-otherPensions" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "has-private-pensions",
+        name: "has-private-pensions",
+        fieldset: {
+          legend: {
+            text: "(Notional income??) (Have you paid into any occ, or private pensions scheme that you have not yet claimed) Do you get a private, workplace or any other pension? ",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "@nick/@pete: What are we trying to find out here. Is it anything that we have no visablity of within NIRS? How do we phrase this question. // This does not include your State Pension"
+        },
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["otherPensions"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["otherPensions"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

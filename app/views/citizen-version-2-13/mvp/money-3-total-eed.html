@@ -1,0 +1,102 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Money you had - Apply for Pension Credit - GOV.UK
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="money-3-total-eed-confirm" method="post" class="form">
+
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+
+     <!--  {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Money you and your partner had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}</h1>
+      {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Money you had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}</h1>{% endif %} -->
+
+      {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We now need to know about the money you and your partner had on [EED]</h1>
+      {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We now need to know about the money you had on [EED]</h1>{% endif %}
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">If you had money that is shared with someone other than your partner, only tell us about the amount of money that belonged to you and your partner.</p>
+      {% else %}  <p class="govuk-!-font-size-24">If you had money that is shared with someone else, only tell us about the amount of money that belonged to you.</p>{% endif %}
+
+      <p class="govuk-heading-s govuk-!-margin-bottom-2">You should include the total you have in:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>current, savings or deposit accounts with a bank, building society, credit union or the Post Office</li>
+            <li>investment ISAs or cash ISAs</li>
+            <li>National Savings and Investments products, such as Premium Bonds or Savings Certificates</li>
+            <li>money invested in unit trusts</li>
+            <li>income or capital bonds</li>
+            <li>cash at home</li>
+      </ul>
+
+
+     {% if data["single-joint-check"] == "Joint" %}
+{% set LegendAmount %}
+<strong>What is the total amount of money you and your partner had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}?<strong>
+{% endset -%}
+
+      {{ govukInput({
+        id: "money-3-total-eed-value",
+        name: "money-3-total-eed-value",
+        label: {
+          html: LegendAmount,
+          classes: "govuk-label--m ",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter an amount in pounds and pence, for example, 100.00"
+        },
+        prefix: {
+          text: "£"
+        },
+        value: data["money-3-total-eed-value"],
+        classes: "govuk-input--width-10",
+        spellcheck: false
+      }) }}
+
+      {% else %}
+
+      {% set LegendAmount %}
+      <strong>What is the total amount of money you had on {{ data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']}}?<strong>
+      {% endset -%}
+
+    {{ govukInput({
+        id: "money-3-total-eed-value",
+        name: "money-3-total-eed-value",
+        label: {
+          html: LegendAmount,
+          classes: "govuk-label--m ",
+          isPageHeading: true
+        },
+        hint: {
+          text: "Enter an amount in pounds and pence, for example, 100.00"
+        },
+        prefix: {
+          text: "£"
+        },
+        value: data["money-3-total-eed-value"],
+        classes: "govuk-input--width-10",
+        spellcheck: false
+      }) }}
+
+{% endif %}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="notional-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about pensions that the claimant has not claimed.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Have a conversation with the claimant to:</p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            tell the claimant that any notional income will affect their eligibility for and entitlement to Pension Credit
+            </li>
+          <li>ask for documents from the claimant or a conference call with the pension provider to show the maximum annual pension payable
+            </li>
+            </ul>
+
+          <p>If documents are not available and the information cannot be gathered conference call:
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+          <li>send form PPR1 for each pension scheme that may be potentially classed as a notional income
+            </li>
+          <li>set a 6 week task from the date form PPR1 is issued
+            </li>
+          <li>take notional income into consideration when the task matures, or when the PPR1 has been returned
+            </li>
+            <li>ask an appropriate person to make a notional income decision where needed
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "otherPension-more-detail",
+          id: "otherPension-more-detail",
+          label: {
+            text: "Make notes about the outcome of this converation"
+          }
+        }) }}
+
+        <!-- Hidden input to set task to complete on task-list -->
+        <input type="hidden" name="notepad-otherPensions" value="true"/>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

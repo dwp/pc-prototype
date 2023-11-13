@@ -1,0 +1,38 @@
+
+  <div class="govuk-!-margin-bottom-8">
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi" class="govuk-link" rel="noreferrer noopener">Overview of online applications</a></p>
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-cohorts" class="govuk-link" rel="noreferrer noopener">Cohorts</a></p> -->
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-4" class="govuk-link" rel="noreferrer noopener" target="">Average processing times</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-6" class="govuk-link" rel="noreferrer noopener" target="">Monthly data</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-8" class="govuk-link" rel="noreferrer noopener" target="">OIDV data</a></p>
+
+
+
+    <form action="process-c-nil-task-list" method="post" class="form">
+
+    {% if data["system-ur-process-ab"] == "A"%}
+
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-padding-top-4 govuk-!-margin-bottom-3">Why applications required <br> further action </h3>
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-0" class="govuk-link" rel="noreferrer noopener">Identity mismatches</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-1" class="govuk-link" rel="noreferrer noopener" target="">Previous contact and<br>open applications</a></p>
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-2" class="govuk-link" rel="noreferrer noopener" target="">Automated check was<br> inaccurate</a></p>
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="ur-mi-5" class="govuk-link" rel="noreferrer noopener" target="">Combinations</a></p> -->
+
+
+    {% else %}
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-3"><a href="ur-mi-7" class="govuk-link" rel="noreferrer noopener">Why applications required<br>further action</a></p>
+    {% endif %}
+
+    {% if data["system-ur-process-ab"] == "A"%}
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-19 govuk-!-padding-top-4 govuk-!-margin-bottom-2 ">Queries and disputes</h3>
+    {% else %}
+    {% endif %}
+
+    <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1"><a href="ur-mi-3" class="govuk-link" rel="noreferrer noopener" target="">Overview of call outcomes</a></p>
+
+    <!-- <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-mi-3" class="govuk-link" rel="noreferrer noopener" target="">Changes</a></p> -->
+
+  </div>

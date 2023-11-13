@@ -1,0 +1,383 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Post Pension Credit index - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- PRINT SCREEN DETAILS -->
+
+<style>
+
+  p {
+    color: black;
+  }
+  /* #main-content > div > div > form > button {display: none} */
+  /* #main-content > div > div > form > h1:nth-child(2) {display: none} */
+  /* #main-content > div > div > button {display: none} */
+
+  /* This is set to 0 globally for some reason, setting it back for this example */
+  .govuk-summary-list {
+    margin-bottom: 30px !important;
+  }
+
+  @media print {
+
+    #main-content > div > div > form > div.govuk-panel.govuk-panel--confirmation.govuk-\!-margin-top-8.govuk-\!-margin-bottom-6 {
+      margin:0%;
+      padding:0%;
+    }
+
+    #main-content > div > div > form > div.govuk-panel.govuk-panel--confirmation.govuk-\!-margin-top-8.govuk-\!-margin-bottom-6 > h1 {
+      color: black;
+      text-align:left;
+    }
+
+    #main-content > p > span {display: none}
+    body > div > div {display: none}
+    body > div > div {display: none}
+
+
+    .dont-print,
+    .govuk-header__logo,
+    .govuk-footer,
+    .govuk-summary-list__actions {
+      display: none;
+    }
+    .govuk-header__container {
+      border: 0;
+    }
+
+    /* Use desktop layout for summary list */
+    .govuk-summary-list {
+      display:table;
+      width:100%;
+      table-layout:fixed;
+      margin-bottom:30px
+    }
+    .govuk-summary-list__row {
+      display:table-row
+    }
+    .govuk-summary-list__key,
+    .govuk-summary-list__value {
+      display:table-cell;
+      padding-right:20px;
+      padding-top:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid #b1b4b6
+    }
+    .govuk-summary-list__key {
+      width:30%
+    }
+    .govuk-summary-list__value {
+      width:50%
+    }
+    .govuk-summary-list__value:last-child {
+      width:70%
+    }
+  }
+</style>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pdf" method="post" class="form">
+
+
+<!-- -- -- -- -- -- -- Application sent -- -- -- -- -- -- -->
+<div>
+      {{ govukPanel({
+        titleText: "Application sent [POA]",
+          html: "Your reference number is the applicant's National Insurance number<br>",
+          classes:"govuk-!-margin-top-8"
+        }) }}
+</div>
+
+<!-- -- -- -- -- -- -- WHAT HAPPENS NEXT -- -- -- -- -- -- -->
+
+{% if
+  data["doc-absence"] == "Yes" or
+  data["uk-residence-status"] == "Something else" or
+  data["uk-residence-status-partner"] == "Something else" or
+  data["claimant-sight-impaired-check"] == "Yes" or
+  data["partner-sight-impaired-check"] == "Yes" or
+  data["home-care-home-check"] == "Yes" or
+  data["home-equity-release"] == "Yes" or
+  data["non-deps-living-with-you"] == "Yes" or
+  data["self-employed"] == "Yes" or
+  data["pension-foreign-check"] == "Yes" or
+  data["pension-check"] == "Yes" or
+  data["employment-other-money"] == "Yes" or
+  data["money-total-risk-check"] == "High" or
+  data["money-total-risk-check"] == "High" or
+  data["money-total-risk-check"] == "High" or
+  data["money-second-property-check"] == "Yes" or
+  data["home-care-home-check-still-own"] == "Yes
+  "%}
+
+          <h3 class="govuk-heading-l govuk-!-margin-top-8 govuk-!-margin-bottom-3">What happens next</h3>
+          <p class="govuk-!-font-size-24">
+            We need some more information for the application.
+            We will contact you from {% if data['resides-in-uk'] == 'Northern-Ireland' %} 0800 012 1713 {% else %} 0800 023 2076 {% endif %} by <strong>DD / Month / Year (4 weeks) </strong>to ask you for more information about:</p>
+
+          {% include "citizen-version-2-12/mvp/callback-list.html" %}
+
+          {% elif data["terminally-ill"] == "Yes" %}
+          <h3 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">What happens next</h3>
+          <p class="govuk-!-font-size-24">We will contact you by <strong>DD / Month / Year (Timescale TBC) </strong>. We will contact you by phone if you have provided a contact number, or by letter if you have only provided an address.</p>
+
+
+          {% elif data["eu-filter"] == "Applied for settlement" %}
+
+          <h3 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">What happens next</h3>
+          <p class="govuk-!-font-size-24">The EU Settlement Scheme will tell us once the applicant’s status has been awarded. We will then contact you to check the details of their application.</p>
+          <p class="govuk-!-font-size-24">If you or the applicant hear from the EU Settlement Scheme before we contact you, you can call the Pension Credit claim line.</p>
+          <h2 class="govuk-heading-m govuk-!-margin-top-4">Pension Credit claim line</h2>
+
+
+          <!---- NORTHERN IDRLAND ---->{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+
+          <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+            <li>Telephone: 0808 100 6165</li>
+            <li>Textphone (Text Relay): 0808 100 2198</li>
+          </ul>
+
+          <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 10:00am to 4:00pm (closed on bank holidays).<br><a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers.</a></p>
+
+
+          <!---- UK ---->{% else %}
+            {% include "contact-deails-ni" %}
+          <!---- COUNTRY END ---->{% endif %}
+
+{% else %}
+
+          <h3 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">What happens next</h3>
+          <p class="govuk-!-font-size-24">(Backdated or today) We are doing some final checks on the application.</p>
+          <p class="govuk-!-font-size-24">We will contact you by <strong>DD / Month / Year (4 weeks) </strong>. </p>
+          <p class="govuk-!-font-size-24">We will contact you by letter if we can award the applicant Pension Credit. If we need more information, we will contact you by phone if you have provided a contact number, or letter if you have only provided an address.</p>
+<!--
+          <p class="govuk-!-font-size-24">(Advance) We will need to ask you for some more information close to the date the claim is due to start.</p>
+          <p class="govuk-!-font-size-24">We will contact you by <strong>DD / Month / Year</strong> (Claim start date if more than 4 weeks in advance, 4 weeks if less than 4 weeks in advance)</strong>. </p>
+          <p class="govuk-!-font-size-24">We will contact you by phone if you have provided a contact number, or letter if you have only provided an address.</p>
+-->
+{% endif %}
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+
+
+
+<!-- -- -- -- -- -- -- TASKS -- -- -- -- -- -- -->
+
+<div>
+  {% if
+    data["home-rent-ground-rent"] == "Yes" or
+    data["home-shared-ground-rent"] == "Yes" or
+    data["home-other-ground-rent"] == "Yes" or
+    data["home-own-ground-rent"] == "Yes" or
+    data["home-own-service-charges"] == "Yes" or
+    data["home-other-service-charges"] == "Yes" or
+    data["del-auth-secure-access-code-check"] == "No"
+  %}
+        <h2 class="govuk-heading-xm">What you need to do next</h2>
+
+
+
+        <!-- -- -- -- -- -- -- LPA [POA] -- -- -- -- -- -- -->
+        {% if data["del-auth-secure-access-code-check"] == "No"%}
+
+        <div>
+
+          <h3 class="govuk-heading-s">Provide us with details of your lasting power of attorney (LPA)</h3>
+          <p class="govuk-body">The quickest way to do this is to phone us with your LPA access code.</p>
+          <p class="govuk-body">If your LPA is for England or Wales, you can <a href="https://www.gov.uk/use-lasting-power-of-attorney">use a lasting power of attorney</a> to get an LPA access code.</p>
+          <p class="govuk-body">Telephone: 0800 99 1234<br>Textphone: 0800 169 0133</p>
+          <p class="govuk-body">Monday to Friday, 9:30am to 6pm (closed on bank holidays).<br>Calls to 0800 numbers are free from landlines and mobiles.</p>
+          <p class="govuk-body">You can also send us the LPA documentation. You should send the full document. You can send us the original documentation or a <a href="https://www.gov.uk/power-of-attorney/certify">certified copy</a>.</p>
+        </div>
+        {% endif %}
+        <!-- -- -- -- -- -- -- SERVICE CHARGES GROUND RENT INSTRUCTIONS -- -- -- -- -- -- -->
+        <div>
+        {% if
+          data["home-rent-ground-rent"] == "Yes" or
+          data["home-shared-ground-rent"] == "Yes" or
+          data["home-other-ground-rent"] == "Yes" or
+          data["home-own-ground-rent"] == "Yes" or
+          data["home-own-service-charges"] == "Yes" or
+          data["home-other-service-charges"] == "Yes"
+          %}
+
+                      <!---- SERVICE CHARGE ONLY ---->
+                      {% if
+                        data["home-other-service-charges"] == "Yes" and
+                        data["home-other-ground-rent"] == "No" or
+                        data["home-own-service-charges"] == "Yes" and
+                        data["home-own-ground-rent"] == "No"
+                        %}
+                        <h3 class="govuk-heading-s">Send us information about the applicant’s service charges</h3>
+                        <p class="govuk-body">Send us a copy of the most recent service charge invoice, with an itemised breakdown of charges.</p>
+                      {% endif %}
+
+                      <!---- GROUND RENT ONLY ---->
+                      {% if
+                        data["home-own-ground-rent"] == "Yes" and
+                        data["home-own-service-charges"] == "No" or
+                        data["home-rent-ground-rent"] == "Yes" or
+                        data["home-shared-ground-rent"] == "Yes" or
+                        data["home-other-ground-rent"] == "Yes" and
+                        data["home-other-service-charges"] == "No"
+                      %}
+                      <h3 class="govuk-heading-s">Send us information about the applicant’s ground rent</h3>
+                      <p class="govuk-body">Send us a copy of the most recent ground rent invoice.</p>
+                      {% endif %}
+
+                      <!---- BOTH GROUND AND SERVICE ---->
+                      {% if
+                        data["home-own-service-charges"] == "Yes" and
+                        data["home-own-ground-rent"] == "Yes" or
+                        data["home-other-service-charges"] == "Yes" and
+                        data["home-other-ground-rent"] == "Yes"
+                      %}
+                      <h3 class="govuk-heading-s">Send us information about the applicant’s service charges and ground rent</h3>
+                      <p class="govuk-body">Send us a copy of the most recent ground rent invoice and the most recent service charge invoice, with an itemised breakdown of charges.</p>
+                      {% endif %}
+
+        {% endif %}
+        </div>
+        </ul>
+
+        <!---- POSTAL ADDRESS / UK / NI ---->
+
+        <h3 class="govuk-heading-s">Post any requested documents to:</h3>
+
+          {% if data["resides-in-uk"] == "Northern-Ireland" %}
+              <div class="govuk-panel--address govuk-!-margin-top-2">
+                <p class="govuk-body">
+                  Northern Ireland Pension Centre<br>
+                  Mail Opening Unit<br>
+                  PO Box 42<br>
+                  Limavady<br>
+                  BT49 4AW</p>
+            </div>
+
+          {% else %}
+              <div class="govuk-panel--address govuk-!-margin-top-2">
+                <p class="govuk-body">
+                  The Pension Service 4<br>
+                  Mail Handling Site A<br>
+                  Wolverhampton<br>
+                  WV98 1AG</p>
+              </div>
+          {% endif %}
+
+          <p class="govuk-body">Include the applicant's name and National Insurance number with anything you send. Any original documents will be returned to the address you have asked us to send any letters to.</p>
+
+{% endif %}
+</div>
+
+<!-- -- -- -- -- -- -- PAYMENT ACCOUNT -- -- -- -- -- -- -->
+{% if data["state-pension-status"] == "NoBank"%}
+
+{% else %}
+
+<div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+
+<p class="govuk-heading-m govuk-!-margin-bottom-4">If the application is successful we will pay the applicant’s Pension Credit into the same account as their State Pension.</p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">You will be able to change this to a different account once their Pension Credit is in payment.</p>
+</div>
+{% endif %}
+<!-- -- -- -- -- -- -- HOUSING BENEFIT + NI -- -- -- -- -- -- -->
+<div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+{% if
+  data["home-rent-housing-benefit"] == "Yes HB" or
+  data["home-other-housing-benefit"] == "Yes HB" or
+  data["home-shared-housing-benefit"] == "Yes HB"
+%}
+
+<div class="govuk-!-margin-top-6">
+<h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Housing Benefit</h2>
+<p class="govuk-body">You told us the applicant is currently getting Housing Benefit. If their application for Pension Credit is successful, they will continue to get Housing Benefit as long as they are eligible. Their local authority will get in touch if anything changes.</p>
+</div>
+
+{% elif data["home-rent-housing-benefit-apply"] == "Yes" or
+data["home-other-housing-benefit-apply"] == "Yes" or
+data["home-shared-housing-benefit-apply"] == "Yes"
+%}
+
+<div class="govuk-!-margin-top-6">
+<h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Housing Benefit</h2>
+<p class="govuk-body">If the applicant pays rent for the place where they live, they might qualify for Housing Benefit. We will make this application for them using the details from their Pension Credit application. Their local authority will contact you.</p>
+</div>
+{% endif %}
+</div>
+
+
+<!-- -- -- -- -- -- -- COUNCIL TAX REDUCTION (UK) + RATES RELIEF (NI)-- -- -- -- -- -- -->
+<div>
+{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+  <div class="govuk-!-margin-top-6">
+    <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Rate Relief</h2>
+    <p class="govuk-body">If this application is successful, the applicant might be able to claim Rate Relief. You should contact their local authority to apply.</p>
+  </div>
+{% else %}
+  <div class="govuk-!-margin-top-6">
+    <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Council Tax Reduction</h2>
+    <p class="govuk-body">If this application is successful, the applicant might be able to claim Council Tax Reduction. You should contact their local authority to apply.</p>
+  </div>
+{% endif %}
+</div>
+
+<!-- -- -- -- -- -- -- CARERS ALLOWANCE (UK) + (NI)-- -- -- -- -- -- -->
+<div>
+{% if data['resides-in-uk'] == 'Northern-Ireland' %}
+  <div class="govuk-!-margin-top-6">
+    <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Carer's Allowance</h2>
+    <p class="govuk-body">The applicant might be able to claim <a href="https://www.nidirect.gov.uk/articles/carers-allowance">Carer's Allowance</a> if they care for someone for 35 hours or more a week.</p>
+  </div>
+
+{% else %}
+  <div class="govuk-!-margin-top-6">
+    <h2 class="govuk-heading-xm govuk-!-margin-bottom-3">Carer's Allowance</h2>
+    <p class="govuk-body">The applicant might be able to claim <a href="https://www.gov.uk/carers-allowance">Carer's Allowance</a> if they care for someone for 35 hours or more a week.</p>
+  </div>
+{% endif %}
+</div>
+
+<!-- -- -- -- -- -- -- PRINT / SAVE -- -- -- -- -- -- -->
+<div>
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+    <h2 class="govuk-heading-xm govuk-!-margin-top-8 govuk-!-margin-bottom-3">Print or save</h2>
+
+      <p class="govuk-body govuk-!-margin-bottom-2"><a href="#" onClick="window.print();return false">Print this page</a></p>
+      <p class="govuk-body govuk-!-margin-bottom-6"><a href="#" onClick="window.print();return false">Save this page</a> (PDF, 100KB)</p>
+</div>
+
+<!-- -- -- -- -- -- -- SURVEY -- -- -- -- -- -- -->
+<div>
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+  <div class="govuk-!-margin-top-6 dont-print">
+    <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Help us improve Pension Credit</h2>
+      <p class="govuk-body govuk-!-margin-bottom-8"><a href="https://getinvolved.dwp.gov.uk/digital/fa743129/start_preview?token=721b98c7019344093611254c9ffe7a1d4807b86f">Take a short survey</a></p>
+  </div>
+</div>
+
+
+
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

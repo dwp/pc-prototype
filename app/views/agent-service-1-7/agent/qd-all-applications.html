@@ -1,0 +1,86 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+{% set nav = 'applications' %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="query-case-summary" method="post" class="form">
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter ">
+        {% include "agent-service-1-7/agent/side-nav.html" %}
+      </div>
+
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Past applications </h1>
+
+            <table class="govuk-table">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-30-percent">Date</td>
+                <td class="govuk-table__cell govuk-40-percent">Claim reference</td>
+                <td class="govuk-table__cell govuk-30-percent">Award outcome</td>
+              </tr>
+              </thead>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell table-spacer"> 19 March 2022</td>
+                <td class="govuk-table__cell table-spacer"><a href="query-case-summary">20220110</a></td>
+
+              <td class="govuk-table__cell table-spacer">
+
+                  <strong class="govuk-tag app-task-list__nil-case-not-done" id="eligibility-completed">To do</strong>
+
+                </td>
+                </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell table-spacer"> 18 March 2022</td>
+                <td class="govuk-table__cell table-spacer"><a href="#">2022007</a></td>
+
+                <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-not-done" id="#">Unfinished</strong>
+                </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell table-spacer"> 10 January 2022</td>
+                  <td class="govuk-table__cell table-spacer"><a href="#">20220708</a></td>
+
+                  <td class="govuk-table__cell table-spacer"><strong class="govuk-tag app-task-list__nil-case-failed" id="eligibility-completed">Not eligible</strong>
+                  </tr>
+
+              </table>
+
+
+
+        </div>
+      </div>
+  </div>
+
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

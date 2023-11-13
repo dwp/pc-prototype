@@ -1,0 +1,58 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Do you want to apply for support with interest on a mortgage or loan secured against your home? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="ground-rent-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "rent-router",
+        name: "rent-router",
+        fieldset: {
+          legend: {
+            text: "Do you or your partner pay ground rent for the place where you live?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+            },
+            hint: {
+              html: "<br><p class=\"hint\">
+                In Scotland this is called ground annual.</p>
+
+                    "
+            },
+
+        classes: "govuk-radios",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["rent-router"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["rent-router"] == "No")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="national-insurance-router" method="post"><!--existing-claim-yn-->
+
+
+        <div class="govuk-panel--agent">
+
+        <!------------HEADLINE------------>
+          <!-- {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What is {{ data | getPronoun }} National Insurance number?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What is {{ data ["who-is-caller-name"]}}'s National Insurance number?</h1>{% endif %} -->
+
+          <!------------ if only one headline on a page swap the headline for legend, ask Niall------------>
+
+          <!-- {% set legend %}
+          {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What are {{ data | getPronoun }} details?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What is ["who-is-caller-name"]'s details?</h1>{% endif %}
+          {% endset %} -->
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Find a person</h1>
+
+
+        {{ govukInput({
+          label: {
+            html: "<strong>Enter the claimant's National Insurance number</strong>"
+          },
+            hint: {
+              html: ""
+            },
+          id: "nino",
+          name: "nino",
+          classes: "govuk-input--width-10",
+          value: data["nino"]
+        }) }}
+
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+              text: "Enter the claimant's date of birth",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["dob-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["dob-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["dob-year"]
+            }
+          ]
+        }) }}
+
+        </div>
+
+        {{ govukButton({
+          classes: "govuk-!-margin-bottom-0",
+          text: "Continue"
+        }) }}
+
+
+
+
+
+      </form>
+      <!-- <p class="govuk-body govuk-!-padding-top-8"><a href="eject-error-reason">Save claim and exit</a></p> -->
+
+      <div class="govuk-panel--agent-alert govuk-!-margin-top-6">
+        {% set AddName %}
+
+        <p class="govuk-body">NI router: NN 11 22 33 P = Refined benefits (Name only)</p>
+        <p class="govuk-body">NI router: NN 11 22 33 M = Details don't match</p>
+        <p class="govuk-body">NI router: NN 11 22 33 Y = Too young</p>
+        <p class="govuk-body">NI router: NN 11 22 33 F = 500 error / broken</p>
+        <p class="govuk-body">NI router: NN 11 22 33 B = Benefits (All data)</p>
+
+        {% endset %}
+      </div>
+
+      {{ govukDetails({
+        classes: "PC-router",
+        summaryText: "Router and API errors",
+        html: AddName
+
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

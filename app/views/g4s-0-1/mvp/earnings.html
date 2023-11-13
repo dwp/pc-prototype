@@ -1,0 +1,98 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="earnings-router" method="post" class="form">
+
+    <div class="moj-banner">
+    <div class="moj-banner__message">
+    <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Use SeachLight, do not ask citizen</h2>
+    </div>
+    </div>
+
+     <!------------H1 LEGEND------------>
+     {% set dynamicH1 %}
+     {% if data["benefit-check"] == "CA" %}
+     <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Does their earnings income add up to more than £52.50 a week</h1>
+
+     {% elif data["benefit-check"] == "B" %}
+     <p class="govuk-heading-xl govuk-!-margin-bottom-0">Does if their earnings income add up to more than £81.95 a week</p>
+     {% else %}
+     <p class="govuk-heading-xl govuk-!-margin-bottom-0">Does if their earnings income add up to more than £20.00 a week</p>
+     {% endif %}
+     {% endset %}
+
+     <!------------ LEGEND END --------------->
+
+     {% set earningsHowMuch %}
+     {{ govukInput({
+       id: "earnings-howMuch-value",
+       name: "earnings-howMuch-value",
+       label: {
+         html: "Enter earnings amount per week",
+         classes: "govuk-label--s",
+         isPageHeading: true
+       },
+       hint: {
+         text: "Enter an amount in pounds and pence, for example, 100.00"
+       },
+       prefix: {
+         text: "£"
+       },
+       value: data["earnings-howMuch-value"],
+       classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+       spellcheck: false
+     }) }}
+     {% endset %}
+
+
+           {{ govukRadios({
+             idPrefix: "earnings",
+             name: "earnings",
+             fieldset: {
+               legend: {
+                 html: dynamicH1,
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["earnings"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No",
+                 checked: (data["earnings"] == "No")
+               }
+             ]
+           }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

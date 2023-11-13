@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What's your email address? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="disability" method="post" class="form">
+      {% call govukFieldset({
+        legend: {
+          text: "What is your email address?",
+          classes: "govuk-fieldset__legend--xl",
+          isPageHeading: true
+        }
+      }) %}
+        {{ govukInput({
+          id: "email",
+          name: "email",
+          type: "tel",
+          classes: "govuk-!-width-one-half",
+          label: {
+            html: "<span class=\"govuk-visually-hidden\">Email address</span>",
+            classes: "govuk-fieldset__legend--xl"
+          },
+          value: data["email"]
+        }) }}
+      {% endcall %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

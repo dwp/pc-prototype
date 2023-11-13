@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a current account? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-bank-current-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl">
+        Add a current account
+      </h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank"
+        },
+        id: "msic-bank-current-account-name",
+        name: "msic-bank-current-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Last 4 digits of account number"
+        },
+        id: "msic-bank-current-account-last-digits",
+        name: "msic-bank-current-account-last-digits",
+        classes: "govuk-input--width-4",
+        attributes: {
+          maxlength: 4
+        }
+      }) }}
+
+      <br>
+
+      <h2 class="govuk-heading-m">
+        Balance entries
+      </h2>
+
+      <dl class="govuk-summary-list govuk-summary-list--short ">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__value">
+            01 January 2019
+          </dt>
+          <dd class="govuk-summary-list__key">
+            £100.00
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="msic-bank-current-account-add-backdating">
+              Change
+            </a>
+          </dd>
+        </div>
+
+        <dt class="govuk-summary-list__value">
+          02 February 2019
+        </dt>
+        <dd class="govuk-summary-list__key">
+          £100.00
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="msic-bank-current-account-add-backdating">
+            Change
+          </a>
+        </dd>
+
+
+        <div class="govuk-summary-list__row">
+
+          <dt class="govuk-summary-list__value">
+            03 March 2019
+          </dt>
+          <dd class="govuk-summary-list__key">
+            £100.00
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="msic-bank-current-account-add-backdating">
+              Change
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+        </div>
+
+      </dl>
+
+    <p class="govuk-body">
+      <a href="msic-bank-current-account-add-backdating" class="govuk-link">
+        Add entries over multiple dates
+      </a>
+    </p>
+
+
+
+<br>
+
+      {% set percentageField %}
+        {{ govukInput({
+          label: {
+            text: "Percentage stake"
+          },
+          id: "msic-bank-current-account-stake",
+          name: "msic-bank-current-account-stake",
+          classes: "govuk-input--width-10"
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "current-owner",
+        name: "current-owner",
+        fieldset: {
+          legend: {
+            text: "Who does account belong to?"
+          }
+        },
+        items: [
+          {
+            value: "You",
+            text: "You"
+          },
+          {
+            value: "Joint account",
+            text: "Joint account",
+            conditional: {
+              html: percentageField
+            }
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+
+
+
+
+{% endblock %}

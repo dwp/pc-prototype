@@ -1,0 +1,71 @@
+{% extends "layout-id-bar-temp.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="case-load" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6"><strong>You have selected a case outside of the Queue</strong></h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Name: <strong>Forename and surname</strong></p>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">NI: <strong>NA 11 22 33 C</strong></p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Received: <strong>00 May 2020</strong></p>
+
+
+            {{ govukButton({
+              text: "Download PDF",
+              classes: "govuk-button--secondary govuk-!-margin-bottom-8"
+            }) }}
+
+            {% set legendDRS %}
+            <h3 class="govuk-heading-m govuk-!-margin-bottom-0">Why have you downloaded this case?</h3>
+            {% endset -%}
+
+            {{ govukTextarea({
+              name: "downlaod-early",
+              id: "downlaod-early",
+              classes: "govuk-input--width-30 govuk-!-margin-bottom-8",
+               rows: "2",
+              label: {
+                html: legendDRS
+              },
+              hint: {
+                text: "EG, I had to download this for a fast tracked case"
+              }
+            }) }}
+
+            <p class="govuk-heading-m govuk-!-margin-bottom-2">Before leaving this page</p>
+             <h3 class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">Before trying to get <strong>next claim</strong> make sure you<br> have added the claim to DRS successfully.</h3>
+
+
+
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-4",
+        text: "Return to the Work list"
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Return to work list</a></p> -->
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-inprogress">...</a></p> -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

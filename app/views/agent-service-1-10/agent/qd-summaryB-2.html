@@ -1,0 +1,317 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form action="qd-actions" method="post" class="form">
+      {% include "agent-service-1-10/agent/qd-name-nino.html" %}
+
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-three-quarters">
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-8">Check information is right and expalin entitlement</h1>
+
+
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Open Searchlight and check the information on qualifying benefits and State Pension match</h2>
+
+
+
+
+            {% if data['qd-search-nino'] === 'EO972577M' %}
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                  {
+                    text: "Qualifying benefits",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "No",
+                    classes: 'govuk-table--no-border'
+                  }
+                  ],
+                  [
+                  {
+                    text: "Weekly State Pension amount",
+                    classes: 'govuk-table--no-border'
+
+                  },
+                  {
+                    text: "£198",
+                    classes: 'govuk-table--no-border'
+                  }
+                ]
+              ]
+            }) }}
+
+
+
+            {% elif data['qd-search-nino'] === 'AB987654C' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£191",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% elif data['qd-search-nino'] === 'BB668734F' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£183",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% elif data['qd-search-nino'] === 'QQ457741A' %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£184",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+
+            {% else %}
+
+              {{ govukTable({
+                caption: "",
+                captionClasses: "govuk-table__caption--m",
+                firstCellIsHeader: true,
+                head: [
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                  },
+                  {
+                    text: "",
+                    classes: 'govuk-!-width-one-half govuk-table--no-border'
+                  }
+                ],
+                rows: [
+                  [
+                    {
+                      text: "Qualifying benefits",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "No",
+                      classes: 'govuk-table--no-border'
+                    }
+                    ],
+                    [
+                    {
+                      text: "Weekly State Pension amount",
+                      classes: 'govuk-table--no-border'
+
+                    },
+                    {
+                      text: "£188",
+                      classes: 'govuk-table--no-border'
+                    }
+                  ]
+                ]
+              }) }}
+
+            {% endif %}
+
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-8 govuk-!-margin-bottom-0">Ask the citizen to confirm if they live with a partner and if they have any housing costs</h2>
+
+            {{ govukTable({
+              caption: "",
+              captionClasses: "govuk-table__caption--m",
+              firstCellIsHeader: true,
+              head: [
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-quarter govuk-table--no-border'
+                },
+                {
+                  text: "",
+                  classes: 'govuk-!-width-one-half govuk-table--no-border'
+                }
+              ],
+              rows: [
+                [
+                {
+                  text: "Living with partner",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "No",
+                  classes: 'govuk-table--no-border'
+                }
+                ],
+                [
+                {
+                  text: "Housing costs",
+                  classes: 'govuk-table--no-border'
+
+                },
+                {
+                  text: "None",
+                  classes: 'govuk-table--no-border'
+                }
+                ]
+              ]
+            }) }}
+
+
+
+
+
+            <p> <a href="qd-application" class="govuk-link ">View application if the claim needs to be moved to CAM</a> </p>
+
+            {{ govukButton({
+              text: "Record notes",
+              href: "qd-summaryB-3",
+              classes: "govuk-!-margin-top-4"
+            }) }}
+
+
+        </div>
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout-oidv.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="gov-uk-overview" method="post" class="form">
+
+      <!-- <p class="govuk-body govuk--version-control">OIDV</p> -->
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Thank you for your participation, your answers have been submitted</h1>
+
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">You can return to the <a href="what-happens-next-applicant">What happens next page</a> or close this window. </p>
+
+
+
+    <!-- <div>
+      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible dont-print">
+      <div class="govuk-!-margin-top-6 dont-print">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-3">Help us improve Pension Credit</h2>
+          <p class="govuk-body govuk-!-margin-bottom-8"><a href="https://getinvolved.dwp.gov.uk/digital/fa743129/start_preview?token=721b98c7019344093611254c9ffe7a1d4807b86f">Take a short survey</a></p>
+      </div>
+    </div> -->
+
+<!--
+    {{ govukButton({
+      text: "CTA"
+    }) }} -->
+
+
+
+</form>
+</div>
+{% endblock %}

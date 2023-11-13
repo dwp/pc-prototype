@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Why were you outside of the UK - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-outside-reason-router" method="post">
+
+
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "claim-date-options-backdating-outside-reason",
+  name: "claim-date-options-backdating-outside-reason",
+  fieldset: {
+    legend: {
+      html: "Why were you outide of the UK?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+
+  items: [
+    {
+      value: "Medical treatment",
+      text: "You, a partner, child or qualifying young person was receiving medical treatment or convalescence"
+    },
+    {
+      value: "Bereavement",
+      text: "In connection with the death of a partner, child or qualifying young person"
+    },
+
+    {
+      value: "Something else",
+      text: "Something else"
+    }
+  ]
+}) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

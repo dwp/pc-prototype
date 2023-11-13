@@ -1,0 +1,188 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-letter-language" method="post" class="form">
+      
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% elif data["del-auth-who-made-claim-2"]%}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-2"]}}</span>
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim-3"]}}</span>
+      {% endif %}
+
+      <input type="hidden" name="del-auth-contact-call-formats-complete" value="in-progress"/>
+      {% set disabilities = data["disabilities"] or [] %}
+      {% set accessability = data["accessibility"] or [] %}
+
+      {% set textPhoneNumber %}
+
+      {% set legendTextphone %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Textphone or Relay UK number</h4>
+
+        {% elif data["del-auth-who-made-claim"] == "Friend or family member" %}
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Textphone or Relay UK number</h4>
+
+
+      {% else %}
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-0">Textphone or Relay UK number</h4>
+      {% endif %}
+
+      {% endset -%}
+
+      {{ govukInput({
+    label: {
+      html: legendTextphone
+    },
+    id: "del-auth-contact-call-formats-text-phone-number",
+    name: "del-auth-contact-call-formats-text-phone-number",
+    classes: "govuk-input--width-20 "
+  }) }}
+      {% endset -%}
+
+      {% set other %}
+
+      {% set legendOtherDetails %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">How can we help when we call you?</h1>
+
+
+                {% elif data["del-auth-who-made-claim"] == "Friend or family member" %}
+                <h1 class="govuk-heading-s govuk-!-margin-bottom-0">How can we help when we call?</h1>
+      {% else %}
+        <h1 class="govuk-heading-s govuk-!-margin-bottom-0">How can we help the applicant when we call them?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+      {% set legendOtherDetailsHint %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h4 class="govuk-hint govuk-!-margin-top-0"></h4>
+
+        {% elif data["del-auth-who-made-claim"] == "Friend or family member" %}
+        <h4 class="govuk-hint govuk-!-margin-top-0"></h4>
+      {% else %}
+        <h4 class="govuk-hint govuk-!-margin-top-0"></h4>
+      {% endif %}
+
+      {% endset -%}
+
+      {{ govukTextarea({
+        id: "contact-other-details",
+        name: "contact-other-details",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+        label: {
+          html: legendOtherDetails
+        },
+        hint: {
+          html: legendOtherDetailsHint
+        }
+      }) }}
+
+      {% endset -%}
+
+
+      {% set legendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal Acting Body"
+         or data["del-auth-who-made-claim"] == "Corporate Acting Body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you need us to use any different formats when we contact you by letter or phone?</h1>
+        {% elif data["del-auth-who-made-claim"] == "Friend or family member" %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you need us to use any different formats when we contact you by letter or phone?</h1>
+
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you need us to use any different formats when we contact the applicantyou by letter or phone</h1>
+      {% endif %}
+
+      {% endset -%}
+
+
+      {{ govukRadios({
+        classes: "govuk-!-margin-bottom-4",
+        idPrefix: "del-auth-contact-call-formats",
+        name: "del-auth-contact-call-formats",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-2"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Textphone or Relay UK",
+            text: "Textphone or Relay UK",
+            checked: (data["del-auth-contact-call-formats"] == "Textphone"),
+                  conditional: {
+                    html: textPhoneNumber
+                  }
+          },
+
+          {
+            value: "Typetalk",
+            text: "Typetalk",
+            checked: (data["del-auth-contact-call-formats"] == "Sign language (Loop)")
+          },
+
+
+          {
+            value: "Other",
+            text: "Something else",
+            checked: (data["contact-other-check"] == "Other call"),
+                  conditional: {
+                    html: other
+                  }
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+  </div>
+</div>
+{% endblock %}

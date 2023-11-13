@@ -1,0 +1,144 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-who-check" method="post" class="form">
+      {% if data["del-auth-who-made-claim"] == "Yourself" %}
+      {% else %}  <span class="govuk-caption-l">{{data["del-auth-who-made-claim"]}}</span>{% endif %}
+
+      <input type="hidden" name="del-auth-contact-formats-complete" value="in-progress"/>
+
+      {% set disabilities = data["disabilities"] or [] %}
+      {% set accessability = data["accessibility"] or [] %}
+
+      {% set textPhoneNumber %}
+      {{ govukInput({
+    label: {
+      html: "What is your textphone (Text Relay) number?"
+    },
+    id: "del-auth-contact-formats-text-phone-number",
+    name: "del-auth-contact-formats-text-phone-number",
+    classes: "govuk-input--width-20 "
+  }) }}
+      {% endset -%}
+
+      {% set other %}
+
+      {{ govukTextarea({
+        id: "contact-other-details",
+        name: "contact-other-details",
+        classes: "govuk-input--width-20 govuk-!-margin-bottom-4",
+        label: {
+          html: legendPreviousName
+        },
+        hint: {
+          text: "Tell us any other ways we can help you when we contact you."
+        }
+      }) }}
+
+      {% endset -%}
+
+
+      {% set legendH1 %}
+
+      {% if data["del-auth-who-made-claim"] == "Yourself"
+         or data["del-auth-who-made-claim"] == "Power of attorney"
+         or data["del-auth-who-made-claim"] == "Appointee"
+         or data["del-auth-who-made-claim"] == "Personal acting body"
+         or data["del-auth-who-made-claim"] == "Corporate acting body"
+       %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you need us to contact you in any different formats?</h1>
+      {% else %}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Does the claimant need us to contact them in any different formats?</h1>
+      {% endif %}
+
+      {% endset -%}
+
+
+      {{ govukCheckboxes({
+        classes: "govuk-!-margin-bottom-4",
+        idPrefix: "del-auth-contact-formats",
+        name: "del-auth-contact-formats",
+        fieldset: {
+          legend: {
+            html: legendH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+          }
+        },
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+{
+          value: "Audio",
+          text: "Audio",
+          checked: (data["del-auth-contact-formats"] == "Audio")
+        },
+          {
+            value: "Braille",
+            text: "Braille",
+            checked: (data["del-auth-contact-formats"] == "Braille")
+          },
+
+          {
+            value: "Large print",
+            text: "Large print",
+            checked: (data["del-auth-contact-formats"] == "Large print")
+          },
+
+          {
+            value: "Sign language",
+            text: "Sign language",
+            checked: (data["del-auth-contact-formats"] == "Sign language")
+          },
+          {
+            value: "TextPhone",
+            text: "TextPhone (Text Relay)",
+            checked: (data["del-auth-contact-formats"] == "TextPhone"),
+                  conditional: {
+                    html: textPhoneNumber
+                  }
+          },
+          {
+            value: "TypeTalk",
+            text: "TypeTalk",
+            checked: (data["del-auth-contact-formats"] == "Sign language (Loop)")
+          },
+          {
+            value: "Other",
+            text: "Something else",
+            checked: (data["contact-other-check"] == "Other"),
+                  conditional: {
+                    html: other
+                  }
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,196 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="disregards-types-router" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+
+                {{ govukRadios({
+                  idPrefix: "disregards-type-select",
+                  name: "disregards-type-select",
+                  fieldset: {
+                    legend: {
+                      text: "Read this list?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--xl"
+                    }
+                  },
+                  hint: {
+                    text: "XXXX."
+                  },
+                  items: [
+                    {
+                      value: "disregards-type-1",
+                      text: "Payments for arrears of benefits or Council Tax Reduction, or any payments to correct or compensate you for an official error",
+                      label: {
+                        classes: ""
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      checked: (data["disregards-type-select"] == "disregards-type-1")
+                    },
+
+
+                    {
+                      value: "disregards-type-2",
+                      text: "Compensation payments related to the second world war or service in the armed forces",
+                      label: {
+                        classes: ""
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      checked: (data["disregards-type-select"] == "disregards-type-2")
+                    },
+
+
+                    {
+                      value: "disregards-type-3",
+                      text: "Personal injury claim payments",
+                      label: {
+                        classes: ""
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      checked: (data["disregards-type-select"] == "disregards-type-3")
+                    },
+
+
+                    {
+                      value: "disregards-type-4",
+                      text: "Payments from a home insurance policy to covered lost or damaged personal possessions",
+                      label: {
+                        classes: ""
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      checked: (data["disregards-type-select"] == "disregards-type-4")
+                    },
+
+                    {
+                        value: "disregards-type-5",
+                        text: "Money that you intend to use to buy or make essential repairs to your main home",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        checked: (data["disregards-type-select"] == "disregards-type-5")
+                    },
+
+
+                      {
+                        value: "disregards-type-6",
+                        text: "Payments made to you to help you live independently in your own home or the community",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        checked: (data["disregards-type-select"] == "disregards-type-6")
+                    },
+
+
+                    {
+                        value: "disregards-type-7",
+                        text: "Payments made to you by a trust or discretionary fund follwing an incident or emergency",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        checked: (data["disregards-type-select"] == "disregards-type-7")
+                      },
+
+                      {
+                        value: "disregards-type-8",
+                        text: "Windrush child compensation",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        checked: (data["disregards-type-select"] == "disregards-type-8")
+                    },
+
+
+                    {
+                        value: "disregards-type-9",
+                        text: "Money paid to you to support you with the effects of a blood infection or vCJD",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: ""
+                        },
+                        checked: (data["disregards-type-select"] == "disregards-type-9")
+                    },
+
+
+                    {
+                        value: "No",
+                        text: "(TBC) Not asked currently",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: "XXXX"
+                        },
+                        checked: (data["disregards-type-select"] == "No")
+                    },
+
+
+                    {
+                        value: "No",
+                        text: "None of these",
+                        label: {
+                          classes: ""
+                        },
+                        hint: {
+                          text: "XXXX"
+                        },
+                        checked: (data["disregards-type-select"] == "No")
+                      }
+
+                  ]
+                }) }}
+
+
+
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

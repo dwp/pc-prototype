@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Agent: Check and discuss the pensions Alex Smith's has - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-prompt" method="post" class="form">
+
+      <input type="hidden" name="pensions-complete" value="in-progress"/>
+
+<h1 class="govuk-heading-xl"> Peter Johnson has a State Pension {{ data["full-name"] }} in payment</h1>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">First payment: <strong>6 May 2019</strong></p>
+<p class="govuk-body govuk-!-font-size-24">Weekly amount: <strong>£156.70</strong></p>
+
+
+
+
+
+
+<br>
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+  </div>
+</div>
+{% endblock %}

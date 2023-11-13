@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="address-summary" method="post">
+
+        <span class="govuk-caption-m">About where you live</span>
+        <h1 class="govuk-heading-xl">Information about the Shared Ownership that the claimant lives in.</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Collect all the information you need, including:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            whether they part own and rent the property
+          </li>
+          <li>
+            Is there equity release scheme?
+          </li>
+          <li>
+            Is there a loan?
+          </li>
+          <li>
+            Anything else? (nick)
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "shared-ownership-more-detail",
+          id: "shared-ownership-more-detail",
+
+          value: data['shared-ownership-more-detail']
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+    </div>
+  </div>
+{% endblock %}

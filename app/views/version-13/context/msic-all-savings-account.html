@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add bulding society XXX - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-all-savings-accounts-summary" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      {% set count = (data["account-count"] or 0) | int %}
+
+      <input type="hidden" name="account-count" value="{{ count + 1 }}"/>
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Savings account details
+      </h1>
+
+      <!--------------- NAME ----------------------------------------------------------------------------------------->
+
+
+      {{ govukInput({
+        label: {
+          text: "Name of bank or building society"
+        },
+        id: "msic-all-savings-account-name",
+        name: "msic-all-savings-account-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+
+
+      <!--------------- OTHER DETIALS ----------------------------------------------------------------------------------------->
+                <p class="govuk-body govuk-!-font-weight-bold">
+                  If this account is shared with someone else, only tell<br>us about the amount of money that is yours.
+                </p>
+
+              {{ govukInput({
+                label: {
+                  html: "How much money did you have in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+                },
+                id: "msic-all-savings-account-amount-EED",
+                name: "msic-all-savings-account-amount-EED",
+                classes: "govuk-input--width-20"
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  html: "How much money did you have in this account on <strong>" + data['claim-date-cam-date-entry-day'] + ' ' + (data['claim-date-cam-date-entry-month'] | getMonth) + ' ' + data['claim-date-cam-date-entry-year'] + "?</strong>"
+                },
+                id: "msic-all-savings-account-amount-TODAY",
+                name: "msic-all-savings-account-amount-TODAY",
+                classes: "govuk-input--width-20"
+              }) }}
+
+      <!--------------- CONTINUE ----------------------------------------------------------------------------------------->
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

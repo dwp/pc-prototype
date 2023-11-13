@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you in paid employment? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-income-royalties-yn-router" method="post" class="form">
+
+      <input type="hidden" name="employment-complete" value="in-progress"/>
+
+      {% set tamDate = (data['claim-date-day'] or 11) + " " +
+        (data['claim-date-month'] or 11 | getMonth) + " " +
+        (data['claim-date-year'] or 2018) %}
+
+
+<h1 class="govuk-heading-xl">Do you recieved royalties for something, music etc</h1>
+
+
+      {{ govukRadios({
+        idPrefix: "other-income-royalties-yn",
+        name: "other-income-royalties-yn",
+        fieldset: {
+          legend: {
+            html: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["other-income-royalties-yn"] == "Yes")
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["other-income-royalties-yn"] == "No")
+          }
+        ]
+      }) }}
+<!--            text: "Were you self-employed between Monday, 15 April 2019 and Today? " + tamDate,-->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

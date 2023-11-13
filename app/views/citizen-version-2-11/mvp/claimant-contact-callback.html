@@ -1,0 +1,43 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="del-auth-contact-number" method="post" class="form">
+
+
+
+   <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">We will need to ask for more information</h1>
+
+    <!------------Legend--------------->
+    <p class="govuk-bold govuk-!-font-size-24 govuk-!-margin-bottom-6">The quickest way to do this is to provide a contact number so we can get in touch by phone.</p>
+
+    <p class="govuk-heading-m govuk-!-margin-bottom-4">We will ask about:</p>
+
+
+    {% include "citizen-version-2-11/mvp/callback-list.html" %}
+
+
+
+      {{ govukButton({
+        text: "Continue",
+          classes: "govuk-!-margin-top-6"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

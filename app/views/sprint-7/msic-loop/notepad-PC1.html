@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NotePad - PC1
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="name-and-nino" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">PC1 details</h1>
+
+        <p class="govuk-body govuk-!-font-size-19">Add in any detials which look out of the ordenary.</p>
+
+<br>
+
+        {{ govukTextarea({
+          name: "pc1-more-detail",
+          id: "pc1-more-detail",
+
+          value: data["pc1-more-detail"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

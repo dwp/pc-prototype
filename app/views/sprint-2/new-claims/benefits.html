@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Benefits - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "has-partner"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="care-home" method="post" class="form">
+      {{ govukCheckboxes({
+        idPrefix: "benefits",
+        name: "benefits",
+        fieldset: {
+          legend: {
+            text: "Check Benefits",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply, a total of 25 other benefits effect pension credit."
+        },
+        items: [
+          {
+            name: "sp",
+            value: "yes",
+            text: "State Pension",
+            checked: (data["sp"] == "yes")
+          },
+          {
+            name: "ca",
+            value: "yes",
+            text: "Carer’s Allowance",
+            checked: (data["ca"] == "yes")
+          },
+          {
+            name: "dla",
+            value: "yes",
+            text: "Disability Living Allowance",
+            checked: (data["dla"] == "yes")
+          },
+          {
+            name: "iidb",
+            value: "yes",
+            text: "Industrial Injuries Disablement Benefit ",
+            checked: (data["iidb"] == "yes")
+          },
+          {
+            name: "pip",
+            value: "yes",
+            text: "Personal Independence Payment",
+            checked: (data["pip"] == "yes")
+          },
+          {
+            name: "aa",
+            value: "yes",
+            text: "Attendance Allowance",
+            checked: (data["aa"] == "yes")
+          },
+          {
+            name: "jsa",
+            value: "yes",
+            text: "Job Seeker’s Allowance",
+            checked: (data["jsa"] == "yes")
+          },
+          {
+            name: "wb",
+            value: "yes",
+            text: "War benefits",
+            checked: (data["wb"] == "yes")
+          },
+          {
+            name: "ob1",
+            value: "yes",
+            text: "Other benefit 1",
+            checked: (data["ob1"] == "yes")
+          },
+        {
+            name: "ob2",
+            value: "yes",
+            text: "Other benefit 2",
+            checked: (data["ob2"] == "yes")
+          },
+          {
+            name: "ob3",
+            value: "yes",
+            text: "Other benefit",
+            checked: (data["ob3"] == "yes")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+<!------------ ---- ------------>
+ <div class="govuk-grid-row">
+   <div class="govuk-grid-column-full">
+     <form action="care-home-router" method="post" class="form">
+       {% set careHomeDate %}
+         {{ govukDateInput({
+           id: "care-home-date",
+           namePrefix: "care-home-date",
+           fieldset: {
+             legend: {
+               text: ""
+             }
+           },
+           hint: {
+             text: ""
+           },
+           items: [
+             {
+               name: "Value / Weekly",
+               classes: "govuk-input--width-10",
+               value: data["care-home-date-day"]
+             },
+             {
+               name: "Pay date",
+               classes: "govuk-input--width-10",
+               value: data["care-home-date-month"]
+             }
+           ]
+         }) }}
+       {% endset %}
+
+       {{ govukRadios({
+         idPrefix: "care-home",
+         name: "care-home",
+         fieldset: {
+           legend: {
+             text: "",
+             isPageHeading: true,
+             classes: "govuk-fieldset__legend--xl"
+           }
+         },
+         classes: "govuk-radios--inline",
+         items: [
+           {
+             value: "yes",
+             text: "State Pension",
+             conditional: {
+               html: careHomeDate
+             },
+             checked: (data["care-home"] == "yes")
+           },
+           {
+             value: "",
+             text: "",
+             checked: (data["care-home"] == "no")
+           }
+         ]
+       }) }}
+
+     </form>
+   </div>
+ </div>
+<!------------ ---- ------------>
+
+
+
+    </form>
+  </div>
+</div>
+{% endblock %}

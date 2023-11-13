@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check for previous Pension Credit cliam - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-advanced-yn-router" method="post">
+
+        <h1 class="govuk-heading-xl">Your Pension Credit can only start from 01 July 2019, the date of your 68th birthday</h1>
+
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  idPrefix: "claim-date-options-advanced-yn",
+                  name: "claim-date-options-advanced-yn",
+                  fieldset: {
+                    legend: {
+                      text: "Do you agree with 01 July 2019 as your start date",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+                  },
+                  hint: {
+                    text: "This is an advanced claim: This date is calculated using your date of birth and Todays date and is currently the the earliest you can apply from."
+                  },
+                  items: [
+                    {
+                      value: "Yes",
+                      text: "Yes",
+                      checked: (data["claim-date-options-advanced-yn"] == "Yes")
+                    },
+                    {
+                      value: "No",
+                      text: "No",
+                      checked: (data["claim-date-options-advanced-yn"] == "No")
+                    }
+                  ]
+                }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+    <p class="govuk-body govuk--version-control">Survey</p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="survey-journey-router" method="post">
+
+        {{ govukRadios({
+          idPrefix: "survey-journey",
+          name: "survey-journey",
+          fieldset: {
+            legend: {
+              text: "Service survey",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "A",
+              text: "Adviser survey",
+              checked: data['start'] == "A"
+            },
+            {
+            value: "B",
+            text: "View feedback",
+            checked: data['feedback-list'] == "B"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+{% endblock %}

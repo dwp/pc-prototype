@@ -1,0 +1,150 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="employment-check" method="post" class="form">
+
+      {% set fieldLabel %}
+      {% if data["single-joint-check"] == "Joint" %}<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Benefits that you or your partner have applied for</h2>
+      {% else %}<h2 class="govuk-heading-m govuk-!-margin-bottom-2">Benefits that you have applied for</h2>{% endif %}
+      {% endset %}
+
+      {% set benefitDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: fieldLabel
+          },
+          hint: {
+            text: ""
+          },
+          id: "benefit-check-details",
+          name: "benefit-check-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Have you or your partner applied for any benefits that you are waiting to hear about?</h1>
+        {% else %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Have you applied for any benefits that you are waiting to hear about?</h1>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+
+
+      {{ govukCheckboxes({
+        idPrefix: "benefit-check",
+        name: "benefit-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Select any that apply",
+                classes: "govuk-fieldset__legend--xl"
+        },
+        items: [
+        {
+          value: "B",
+          text: "Armed Forces Independence Payment",
+          checked: (data["benefit-check"] == "B")
+        },
+          {
+            value: "B",
+            text: "Attendance Allowance (AA)",
+            checked: (data["benefit-check"] == "B")
+          },
+          {
+            value: "CA",
+            text: "Carer's Allowance",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "B",
+            text: "Disability living Allowance (DLA)",
+            checked: (data["benefit-check"] == "B")
+          },
+          {
+            value: "CA",
+            text: "Incapacity Benefit",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "CA",
+            text: "Industrial Injuries Disablement Benefit",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "B",
+            text: "Personal Independence Payment (PIP)
+            ",
+            checked: (data["benefit-check"] == "B")
+          },
+          {
+            value: "CA",
+            text: "Severe Disablement Allowance",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "CA",
+            text: "War disablement pension",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "CA",
+            text: "War Widow(er) Pension",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            value: "CA",
+            text: "Working Tax Credit",
+            checked: (data["benefit-check"] == "CA")
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "None",
+            text: "None of these",
+            checked: (data["partner-benefit-check"] == "None"),
+            behaviour: "exclusive"
+          }
+
+        ]
+      }) }}
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

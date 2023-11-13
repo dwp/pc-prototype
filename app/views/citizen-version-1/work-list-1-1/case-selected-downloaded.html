@@ -1,0 +1,42 @@
+{% extends "layout-id-bar-temp.html" %}
+
+{% block pageTitle %}
+Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+        <form action="you-have-downloaded-this-claim" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Selected claim</h1>
+
+        <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Status:  <strong class="govuk-tag govuk-!-font-size-19 govuk-tag--covid19-downloaded govuk-phase-banner__content__tag">downloaded</strong></h1>
+
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Claim received: <strong>00 May 2020</strong></h1>
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National Insurance number: <strong>NA 11 22 33 C</strong></h1>
+            <h1 class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Name: <strong>Emma Nicol</strong></h1>
+
+
+          {{ govukButton({
+            classes: "govuk-!-margin-top-4",
+            text: "Download"
+          }) }}
+      </form>
+
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Return to work list</a></p>
+
+
+    </div>
+  </div>
+{% endblock %}

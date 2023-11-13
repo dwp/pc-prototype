@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  eject-pension-credit-summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+<!----Headline---->
+
+<h1 class="govuk-heading-xl">Housing benefit: Check your answers</h1>
+
+<h2 class="govuk-heading-xm">Details</h2>
+
+{{ govukSummaryList({
+  classes: 'govuk-!-margin-bottom-9',
+  rows: [
+  {
+    key: {
+      text: "Item one"
+    },
+    value: {
+      text: data
+    },
+    actions: {
+      items: [
+        {
+          href: "x",
+          text: "Change",
+          visuallyHiddenText: "○ agreement to privacy policy"
+        }
+      ]
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Item two"
+    },
+    value: {
+      text: data
+    },
+    actions: {
+      items: [
+        {
+          href: "x",
+          text: "Change",
+          visuallyHiddenText: "○ agreement to privacy policy"
+        }
+      ]
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Item three"
+    },
+    value: {
+      text: data
+    },
+    actions: {
+      items: [
+        {
+          href: "x",
+          text: "Change",
+          visuallyHiddenText: "○ agreement to privacy policy"
+        }
+      ]
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Item four"
+    },
+    value: {
+      text: data
+    },
+    actions: {
+      items: [
+        {
+          href: "x",
+          text: "Change",
+          visuallyHiddenText: "○ agreement to privacy policy"
+        }
+      ]
+    }
+  },
+
+  {
+    classes: 'govuk-summary-list',
+    key: {
+      text: "Item five"
+    },
+    value: {
+      text: data
+    },
+    actions: {
+      items: [
+        {
+          href: "x",
+          text: "Change",
+          visuallyHiddenText: "○ agreement to privacy policy"
+        }
+      ]
+    }
+  }
+
+
+  ]
+}) }}
+
+
+
+  <!------------------------------------------------------------------------------- End ------------------------------------------------------------>
+
+</div></div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+<form action="start" method="post" class="form">
+
+  <div class="govuk-panel--agent govuk-!-margin-top-9">
+<h2 class="govuk-heading-m">Agent: before leaving this screen:</h2>
+
+<ul class="govuk-list govuk-list--number">
+<li>Download Housing Benefit claim</li>
+<li>Upload claim to DRS and tag as the following:</li>
+
+<ul class="govuk-list govuk-list">
+  <li>Business unit: <strong>Pension Service</strong></li>
+  <li>Classification: <strong>Supporting</strong></li>
+  <li>Issue date (Date of call): <strong>{{ data['claim-date-idoc-yn-date-day'] + ' ' + (data['claim-date-idoc-yn-date-month'] | getMonth) + ' ' + data['claim-date-idoc-yn-date-year'] }}</strong></li>
+
+  <li>Document type: <strong>HCTB1 (PC)</strong></li>
+</ul>
+
+<li>Process business as usual (BAU)</li>
+</ul>
+
+
+<br>
+
+      {{ govukButton({
+        text: "Download claim",
+        classes: "govuk-button--secondary",
+        href: "pdf-download-complete"
+      }) }}
+
+      {{ govukCheckboxes({
+      idPrefix: "download-pdf-checkbox",
+      name: "download-pdf-checkbox",
+      fieldset: {
+      legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+      }
+      },
+      items: [
+      {
+      value: "download-pdf",
+      text: "Confirm that you have downloaded the claim"
+      }
+      ]
+      }) }}
+
+  {{ govukButton({
+    text: "Finish and close"
+  }) }}
+</form>
+</div>
+<br><br>
+<p class="govuk-body govuk-!-padding-top-9"><a href="eject-database">Eject database</a></p>
+
+</div>
+
+<!----Break---->
+
+{% endblock %}

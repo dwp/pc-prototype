@@ -1,0 +1,86 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="g4s-partner-check" method="post" class="form">
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4 govuk-!-padding-top-4">Hello, you have reached Pension Credit</h1>
+
+
+    {{ govukRadios({
+      idPrefix: "type-of-claim",
+      name: "type-of-claim",
+      fieldset: {
+        legend: {
+          text: "What is the reason for your call today?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m "
+        }
+      },
+      classes: "govuk-radios",
+      hint: {
+        html: ""
+      },
+      items: [
+      {
+          value: "1",
+          text: "Check eligibility for Pension Credit",
+          checked: (data["type-of-claim"] == "1")
+        },
+        {
+          value: "2",
+          text: "Check progress of a claim",
+          checked: (data["type-of-claim"] == "2")
+        },
+        {
+          value: "3",
+          text: "I was given an IDOC",
+          checked: (data["type-of-claim"] == "3")
+        },
+        {
+          value: "4",
+          text: "I was asked by DWP to call",
+          checked: (data["type-of-claim"] == "3")
+        },
+        {
+          value: "5",
+          text: "General enquiry",
+          checked: (data["type-of-claim"] == "4")
+        },
+        {
+          value: "6",
+          text: "Something else",
+          checked: (data["type-of-claim"] == "5")
+        }
+      ]
+    }) }}
+
+<!--
+    {
+      value: "A",
+      text: "A",
+      checked: (data["ab-check"] == "A")
+    },
+-->
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-bottom-8"
+     }) }}
+
+
+
+
+
+</form>
+</div>
+{% endblock %}

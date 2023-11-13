@@ -1,0 +1,60 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- PRINT SCREEN DETAILS -->
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form method="post" action="/session-clear-route">
+       <input type="hidden" name="session-clear-redirect-url" value="/g4s-0-6/mvp/landing">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">I'm going to pass you to a colleague in the pension centre who will be able to give you that information</h1>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div>
+
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">They will ask you a few more questions and will be able to tell you the figures we used in your calculation.</p>
+
+
+<!-- <p><strong>USER MARGINALLY OVER THRESHOLDS</strong></p>
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">I have asked the applicant the basic eligibility questions and determined that they do not meet the criteria for Pension Credit - but they are only marginally over the thresholds.</p>
+
+<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">So I am passing them over to you to guide them through a full application for Pension Credit.</p> -->
+
+
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+{% include "g4s-0-6/mvp/claim-details.html" %}
+
+
+{{ govukButton({
+text: "Finish and close",
+classes: "govuk-button--warning dont-print govuk-!-margin-top-8"
+}) }}
+
+</form>
+<div><div>
+
+{% endblock %}

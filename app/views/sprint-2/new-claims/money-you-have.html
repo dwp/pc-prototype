@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money you have - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {% if data["people-in-home"] == "yes" %}
+    {% set backLink = "relationship-to-claimant" %}
+  {% else %}
+    {% set backLink = "other-people-you-live-with" %}
+  {% endif %}
+
+  {{ govukBackLink({
+    href: backLink
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data["has-partner"] == "yes" %}
+      {% set legend = "Do you and your partner have money, savings or investments that add up to more than £10,000?" %}
+    {% else %}
+      {% set legend = "Do you have money, savings or investments that add up to more than £10,000?" %}
+    {% endif %}
+
+    <form action="money-you-have-router" method="post" class="form">
+      {% set cashAmount %}
+        {{ govukInput({
+          id: "total-amount",
+          name: "total-amount",
+          classes: "govuk-input--width-10",
+          label: {
+            text: "How much money do you have?"
+          },
+          value: data["total-amount"]
+        }) }}
+      {% endset %}
+
+      {% set hintText %}
+       <p>This includes:</p>
+       <ul class="govuk-list govuk-list--bullet">
+         <li>money in current, savings or deposit accounts with a bank, building society or the Post Office</li>
+         <li>National Savings and Investment products like Savings Certificates, Premium Bonds, Income Bonds and residual accounts</li>
+         <li>cash saved for something</li>
+         <li>investments like ISAs, PEPs and TOISAs</li>
+         <li>unit trust funds</li>
+         <li>any other money or investments in this country or abroad</li>
+       </ul>
+      {% endset %}
+
+      {{ govukRadios({
+        idPrefix: "has-money",
+        name: "has-money",
+        fieldset: {
+          legend: {
+            text: legend,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          html: hintText
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["has-money"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            conditional: {
+              html: cashAmount
+            },
+            checked: (data["has-money"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

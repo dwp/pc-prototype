@@ -1,0 +1,94 @@
+{% extends "layout-covid19-ur.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="home-responsible-CTR-HB" method="post" class="form">
+
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<p class="govuk-heading-xl govuk-!-margin-bottom-2">Does anyone else live with you apart from your partner?</p>
+        {% else %}<p class="govuk-heading-xl govuk-!-margin-bottom-2">Does anyone else live with you?</p>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+
+      <!------------Legend------------>
+        {% set legendEmployment %}
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2"><strong>What we need to know:</strong></p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">Name</p>
+        <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-2">Relationship</p>
+
+        {% endset %}
+      <!------------Legend------------>
+
+      {% set employmentDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: "Tell us the name of anyone else that lives with you their relationship to you and whether they are dependent on you."
+          },
+          hint: {
+            text: ""
+          },
+          id: "home-living-with-you-yes-details",
+          name: "home-living-with-you-yes-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "home-living-with-you",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["home-living-with-you"] == "Yes"),
+                  conditional: {
+                    html: employmentDetails
+        }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["home-living-with-you"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

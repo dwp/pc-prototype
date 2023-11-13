@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Other people who live with you - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-people-who-live-with-you-router" method="post" class="form">
+      {{ govukRadios({
+        idPrefix: "person-type",
+        name: "person-type",
+        fieldset: {
+          legend: {
+            text: "Type of person",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "Child under 16",
+            text: "Child under 16",
+            checked: (data["person-type"] == "Child under 16")
+          },
+          {
+            value: "Qualifying young person, 17-19",
+            text: "Qualifying young person",
+            checked: (data["person-type"] == "Qualifying young person")
+          },
+          {
+            value: "Boarder or Lodger",
+            text: "Boarder or Lodger",
+            checked: (data["person-type"] == "Boarder or Lodger")
+          },
+          {
+            value: "Other member",
+            text: "Anyone one else (Daughter/Son or sun over 19 for example)",
+            checked: (data["person-type"] == "Boarder or Lodger")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

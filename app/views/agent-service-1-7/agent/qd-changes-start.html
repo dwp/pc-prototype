@@ -1,0 +1,88 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-changes-start-router" method="post" class="form">
+
+      {% include "agent-service-1-7/agent/qd-name-nino.html" %}
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">Did the changes happen within the backdating period?</h1>
+
+
+      {% if data['nino-known'] === 'no' %}
+        <div class="govuk-inset-text">
+          <p class="govuk-body">Backdating period: 11 January 2022 to 11 April 2022.</p>
+        </div>
+
+      {% else %}
+
+        <div class="govuk-inset-text">
+          <p class="govuk-body">Backdating period: 28 November 2021 to 28 February 2022.</p>
+        </div>
+      {% endif %}
+
+
+
+      {{ govukRadios({
+        idPrefix: "qd-changes-start",
+        name: "qd-changes-start",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes:""
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["qd-changes-start"] == "yes")
+
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["qd-changes-start"] == "no")
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

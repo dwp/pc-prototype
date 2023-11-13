@@ -1,0 +1,339 @@
+{% extends "layout-covid19.html" %}
+
+{% block pageTitle %}
+  Done, a habitual residence test needed - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+
+<!----Headline---->
+
+{% include "includes/js-back-link.html" %}
+
+
+{{ govukPanel({
+  titleText: "Switch to CAM. A habitual residence test (HRT) is needed",
+  html: ""
+}) }}
+
+<br><br>
+
+<h2 class="govuk-heading-l">
+  Ansers given<br>
+</h2>
+<!----Headline---->
+<form action="done-hrt" method="post">
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Agreements, How we use your personal information
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Personal information consent"
+            },
+            value: {
+              text: data['agrees-privacy']
+            },
+            actions: {
+              items: [
+                {
+                  href: "start",
+                  text: "Change",
+                  visuallyHiddenText: "Agreed to pre-declaration"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Pre-declaration"
+            },
+            value: {
+              text: data['pre-declaration']
+            },
+            actions: {
+              items: [
+                {
+                  href: "pre-declaration",
+                  text: "Change",
+                  visuallyHiddenText: "Agreed to pre-declaration"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Method of claim
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+
+          {
+            key: {
+              text: "Claimant / Representative"
+            },
+            value: {
+              text: data['claiming-for']
+            },
+            actions: {
+              items: [
+                {
+                  href: "who-is-caller",
+                  text: "Change",
+                  visuallyHiddenText: "who the caller is"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      About the claimant
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: data["full-name"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "National Insurance number"
+              },
+              value: {
+                text: data["nino"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "National Insurance number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Telephone number"
+              },
+              value: {
+                text: data["telephone-number"]
+              },
+              actions: {
+                items: [
+                  {
+                    href: "name-and-nino",
+                    text: "Change",
+                    visuallyHiddenText: "telephone number"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "over-spa",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+      Eligibility
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+        {{ govukSummaryList({
+          rows: [
+          {
+            key: {
+              text: "Do you live in the UK?"
+            },
+            value: {
+              text: data['resides-in-uk']
+            },
+            actions: {
+              items: [
+                {
+                  href: "reside-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "UK residence"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Have you lived permanently in the UK for the last 2 years?"
+            },
+            value: {
+              text: data['lived-abroad']
+            },
+            actions: {
+              items: [
+                {
+                  href: "lived-abroad",
+                  text: "Change",
+                  visuallyHiddenText: "abroad"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Are you a UK national?"
+            },
+            value: {
+              text: data['uk-national']
+            },
+            actions: {
+              items: [
+                {
+                  href: "uk-national",
+                  text: "Change",
+                  visuallyHiddenText: "uk national"
+                }
+              ]
+            }
+          }
+          ]
+        }) }}
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+<br><br>
+
+<h3 class="govuk-heading-m">Adviser: Next steps what does an agent need to do</h3>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>Switch to PTP CAM to contine this claim</li>
+  <li>Add this outcome to MyPC spread sheet</li>
+  <li>Tast item C</li>
+  <li>Tast item D</li>
+  <li>Tast item E</li>
+</ul>
+
+<br>
+
+{{ govukButton({
+  text: "Finish and close",
+  href: "start"
+}) }}
+
+<!----Break---->
+
+{% endblock %}

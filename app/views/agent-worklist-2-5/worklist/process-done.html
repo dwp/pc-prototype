@@ -1,0 +1,35 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="case-load" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6"><strong>All done</strong></h1>
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Make sure you have downlaoded all your bits</p>
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Process next claim"
+      }) }}
+
+</form>
+    </div>
+  </div>
+{% endblock %}

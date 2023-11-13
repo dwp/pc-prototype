@@ -1,0 +1,56 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="XXX" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">You will need to contact the Northern Ireland Pension Centre</h1>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">You can check your eligibility and apply for Pension Credit online by visiting <a href="https://www.nidirect.gov.uk/">nidirect.gov.uk</a> and searching for Pension Credit. It is quick, easy and secure.</p>
+
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">If you cannot go online, you can contact the Pension Centre by phone.</p>
+
+      <ul class="govuk-list govuk-list govuk-!-margin-bottom-4">
+        <li>Telephone: 0808 100 6165</li>
+        <li>Textphone (freephone) (for deaf or hard of hearing users and customers with speech difficulties): 0808 100 2198</li>
+      </ul>
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">Monday to Friday, 9am to 4pm (closed on bank holidays).<br><a href="https://www.nidirect.gov.uk/articles/contacting-08-and-03-numbers">Contacting 08 and 03 numbers</a></p>
+
+
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">If you need to email the Northern Ireland Pension centre: <a href="pensionservice@dfcni.gov.uk">pensionservice@dfcni.gov.uk</a></p>
+
+
+
+
+
+
+
+
+      {{ govukButton({
+        text: "Finish and close",
+        classes: "dont-print"
+      }) }}
+
+    </form>
+    </div>
+    </div>
+
+{% endblock %}

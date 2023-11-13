@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you ringing or applying on your own behalf? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="pensions-scenarios-router" method="post">
+
+        {{ govukRadios({
+          idPrefix: "pensions-scenarios",
+          name: "pensions-scenarios",
+          fieldset: {
+            legend: {
+              text: "Private and workplace pensions scenarios",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "A",
+              text: "A",
+              checked: data['pensions-scenarios'] == "A"
+            },
+            {
+            value: "B",
+            text: "B",
+            checked: data['pensions-scenarios'] == "B"
+          }
+          ]
+        }) }}
+
+<br>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

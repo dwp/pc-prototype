@@ -1,0 +1,1178 @@
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "What is your full name?"
+            },
+            value: {
+              html: data["full-name"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-name",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-name"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+{% if data["resides-in-uk"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Which country do you live in?"
+            },
+            value: {
+              html: data["resides-in-uk"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "resides-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "resides-in-uk"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+         {% if data["partner-check-yn"] %}
+                 {{ govukSummaryList({
+                   classes: 'govuk-!-margin-bottom-2',
+                   rows: [
+                 {
+                     key: {
+                       text: "Do you have a partner"
+                     },
+                     value: {
+                       html: data["partner-check-yn"]
+                     },
+                     actions: {
+                       items: [
+                         {
+                           href: "claimant-national-insurance",
+                           text: "Change",
+                           visuallyHiddenText: "claimant-national-insurance"
+                         }
+                       ]
+                     }
+                   }
+                 ]
+                 }) }}
+              {% endif %}
+
+{% if data["dob-day"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+          {
+            key: {
+              text: "Your date of birth"
+            },
+            value: {
+              text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-dob",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-dob"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+         {% if data["claimant-gender"] %}
+                 {{ govukSummaryList({
+                   classes: 'govuk-!-margin-bottom-2',
+                   rows: [
+                   {
+                     key: {
+                       text: "Gender"
+                     },
+                     value: {
+                       text: data['claimant-gender']
+                     },
+                     actions: {
+                       items: [
+                         {
+                           href: "claimant-dob",
+                           text: "Change",
+                           visuallyHiddenText: "claimant-dob"
+                         }
+                       ]
+                     }
+                   }
+                 ]
+                 }) }}
+                  {% endif %}
+
+{% if data["children-check-yn"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Do any children or qualifying young people live with you?"
+            },
+            value: {
+              html: data["children-check-yn"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "children-check-yn",
+                  text: "Change",
+                  visuallyHiddenText: "children-check-yn"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+         {% endif %}
+
+         {% if data["children-ctc"] %}
+                 {{ govukSummaryList({
+                   classes: 'govuk-!-margin-bottom-2',
+                   rows: [
+                 {
+                     key: {
+                       text: "Do you get Child Tax Credit for the children that live with you?"
+                     },
+                     value: {
+                       html: data["children-ctc"]
+                     },
+                     actions: {
+                       items: [
+                         {
+                           href: "children-ctc",
+                           text: "Change",
+                           visuallyHiddenText: "XXX"
+                         }
+                       ]
+                     }
+                   }
+                 ]
+                 }) }}
+                  {% endif %}
+
+
+          {% if data["claimant-national-insurance"] == "None" or data["claimant-national-insurance"] == "Lost"  %}
+                  {{ govukSummaryList({
+                    classes: 'govuk-!-margin-bottom-2',
+                    rows: [
+                  {
+                      key: {
+                        text: "Do you have a National Insurance Number?"
+                      },
+                      value: {
+                        html: data["claimant-national-insurance"]
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "claimant-national-insurance",
+                            text: "Change",
+                            visuallyHiddenText: "claimant-national-insurance"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                  }) }}
+                 {% endif %}
+
+{% if data["nino"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "What is your National Insurance number?"
+            },
+            value: {
+              html: data["nino"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "claimant-national-insurance",
+                  text: "Change",
+                  visuallyHiddenText: "claimant-national-insurance"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+       {% endif %}
+
+       {% if data["partner-mac-yn"] %}
+
+               {{ govukSummaryList({
+                 classes: 'govuk-!-margin-bottom-2',
+                 rows: [
+               {
+                   key: {
+                     text: "Do you and your partner get pension age Housing Benefit?"
+                   },
+                   value: {
+                     html: data["partner-mac-yn"]
+                   },
+                   actions: {
+                     items: [
+                       {
+                         href: "partner-name",
+                         text: "Change",
+                         visuallyHiddenText: "X"
+                       }
+                     ]
+                   }
+                 }
+               ]
+               }) }}
+               {% endif %}
+
+      {% if data["housing-costs"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Do you pay any service charges?"
+            },
+            value: {
+              html: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "housing-costs",
+                  text: "Change",
+                  visuallyHiddenText: "housing-costs"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+      {% if data["housing-costs"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Do you pay any ground rent?"
+            },
+            value: {
+              html: data["housing-costs"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "housing-costs",
+                  text: "Change",
+                  visuallyHiddenText: "housing-costs"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+  {% if data["state-pension-amount"] %}
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "State Pensions amount"
+            },
+            value: {
+              html: data["state-pension-amount"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "state-pension-amount",
+                  text: "Change",
+                  visuallyHiddenText: "state-pension-amount"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+      {% if data["state-pension-amount"] %}
+
+      {% set BenefitList %}
+
+        <ul class="govuk-list">
+              <li>Attendance Allowance (AA)</li>
+              <li>Disability living Allowance (DLA): Middle or highest rate</li>
+              <li>Personal Independence Payment (PIP)</li>
+              <li>Armed Forces Independence Payment (AFIP)</li>
+              <li>Carers Allowance (CA): Including an underlying entitlement</li>
+              <li>None of these</li>
+        </ul>
+
+      {% endset %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "Benefits in payment"
+            },
+            value: {
+              html: BenefitList
+            },
+            actions: {
+              items: [
+                {
+                  href: "Benefits",
+                  text: "Change",
+                  visuallyHiddenText: "Benefits"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+        {% endif %}
+
+
+      {% if data["income-1-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-1-value"
+            },
+            value: {
+              html: data["income-1-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-1-frequency"
+            },
+            value: {
+              html: data["income-1-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+      {% endif %}
+
+
+      {% if data["income-2-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-2-value"
+            },
+            value: {
+              html: data["income-2-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-2-frequency"
+            },
+            value: {
+              html: data["income-2-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {% endif %}
+
+
+        {% if data["income-3-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-3-value"
+            },
+            value: {
+              html: data["income-3-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-3-frequency"
+            },
+            value: {
+              html: data["income-3-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {% endif %}
+
+
+        {% if data["income-4-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-4-value"
+            },
+            value: {
+              html: data["income-4-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-4-frequency"
+            },
+            value: {
+              html: data["income-4-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {% endif %}
+
+
+        {% if data["income-5-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-5-value"
+            },
+            value: {
+              html: data["income-5-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-5-frequency"
+            },
+            value: {
+              html: data["income-5-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {% endif %}
+
+
+        {% if data["income-6-value"] %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-6-value"
+            },
+            value: {
+              html: data["income-6-value"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-2',
+          rows: [
+        {
+            key: {
+              text: "income-6-frequency"
+            },
+            value: {
+              html: data["income-6-frequency"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "income-separate",
+                  text: "Change",
+                  visuallyHiddenText: "income-separate"
+                }
+              ]
+            }
+          }
+        ]
+        }) }}
+
+        {% endif %}
+
+
+
+        {% if data["partner-check-yn"] == "Yes, we live together" %}
+
+
+        <h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Partner details</h2>
+
+
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-2',
+                  rows: [
+                {
+                    key: {
+                      text: "What is your partners full name?"
+                    },
+                    value: {
+                      html: data["partner-full-name"]
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "partner-name",
+                          text: "Change",
+                          visuallyHiddenText: "X"
+                        }
+                      ]
+                    }
+                  }
+                ]
+                }) }}
+                 {% endif %}
+
+                 {% if data["partner-dob-day"] %}
+                         {{ govukSummaryList({
+                           classes: 'govuk-!-margin-bottom-2',
+                           rows: [
+                           {
+                             key: {
+                               text: "What is your partners date of birth"
+                             },
+                             value: {
+                               text: data['partner-dob-day'] + ' ' + (data['partner-dob-month'] | getMonth) + ' ' + data['partner-dob-year']
+                             },
+                             actions: {
+                               items: [
+                                 {
+                                   href: "partner-dob",
+                                   text: "Change",
+                                   visuallyHiddenText: "partner"
+                                 }
+                               ]
+                             }
+                           }
+                         ]
+                         }) }}
+                          {% endif %}
+
+                          {% if data["partner-gender"] %}
+                                  {{ govukSummaryList({
+                                    classes: 'govuk-!-margin-bottom-2',
+                                    rows: [
+                                    {
+                                      key: {
+                                        text: "Gender"
+                                      },
+                                      value: {
+                                        text: data['partner-gender']
+                                      },
+                                      actions: {
+                                        items: [
+                                          {
+                                            href: "partner-gender",
+                                            text: "Change",
+                                            visuallyHiddenText: "partner-dob"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                  }) }}
+                                   {% endif %}
+
+                          {% if data["partner-national-insurance"] %}
+                                  {{ govukSummaryList({
+                                    classes: 'govuk-!-margin-bottom-2',
+                                    rows: [
+                                    {
+                                      key: {
+                                        text: "Does you partner have National Insurance number?"
+                                      },
+                                      value: {
+                                        text: data['partner-national-insurance']
+                                      },
+                                      actions: {
+                                        items: [
+                                          {
+                                            href: "partner-national-insurance",
+                                            text: "Change",
+                                            visuallyHiddenText: "partner-national-insurance"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                  }) }}
+                                   {% endif %}
+
+                                   {% if data["partner-nino"] %}
+                                           {{ govukSummaryList({
+                                             classes: 'govuk-!-margin-bottom-2',
+                                             rows: [
+                                             {
+                                               key: {
+                                                 text: "Parnters National Insurance number"
+                                               },
+                                               value: {
+                                                 text: data['partner-nino']
+                                               },
+                                               actions: {
+                                                 items: [
+                                                   {
+                                                     href: "partner-national-insurance",
+                                                     text: "Change",
+                                                     visuallyHiddenText: "partner-national-insurance"
+                                                   }
+                                                 ]
+                                               }
+                                             }
+                                           ]
+                                           }) }}
+                                            {% endif %}
+
+                                            {% if data["partner-state-pension-amount"] %}
+                                                  {{ govukSummaryList({
+                                                    classes: 'govuk-!-margin-bottom-2',
+                                                    rows: [
+                                                  {
+                                                      key: {
+                                                        text: "Partner State Pensions amount"
+                                                      },
+                                                      value: {
+                                                        html: data["partner-state-pension-amount"]
+                                                      },
+                                                      actions: {
+                                                        items: [
+                                                          {
+                                                            href: "partner-state-pension-amount",
+                                                            text: "Change",
+                                                            visuallyHiddenText: "partner-state-pension-amount"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                  }) }}
+                                                {% endif %}
+
+                                                {% if data["partner-state-pension-amount"] %}
+
+                                                {% set PartnerBenefitList %}
+
+                                                  <ul class="govuk-list">
+                                                        <li>Attendance Allowance (AA)</li>
+                                                        <li>Disability living Allowance (DLA): Middle or highest rate</li>
+                                                        <li>Personal Independence Payment (PIP)</li>
+                                                        <li>Armed Forces Independence Payment (AFIP)</li>
+                                                        <li>Carers Allowance (CA): Including an underlying entitlement</li>
+                                                        <li>None of these</li>
+                                                  </ul>
+
+                                                {% endset %}
+
+                                                  {{ govukSummaryList({
+                                                    classes: 'govuk-!-margin-bottom-2',
+                                                    rows: [
+                                                  {
+                                                      key: {
+                                                        text: "Parnter benefits in payment"
+                                                      },
+                                                      value: {
+                                                        html: PartnerBenefitList
+                                                      },
+                                                      actions: {
+                                                        items: [
+                                                          {
+                                                            href: "Benefits",
+                                                            text: "Change",
+                                                            visuallyHiddenText: "Benefits"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                  }) }}
+                                                {% endif %}
+
+
+
+
+
+        {% if data["partner-income-1-value"] %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-1-value"
+                  },
+                  value: {
+                    html: data["partner-income-1-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-1-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-1-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}
+
+
+              {% if data["partner-income-2-value"] %}
+
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-2-value"
+                  },
+                  value: {
+                    html: data["partner-income-2-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-2-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-2-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}
+
+
+              {% if data["partner-income-3-value"] %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-3-value"
+                  },
+                  value: {
+                    html: data["partner-income-3-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-3-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-3-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}
+
+
+              {% if data["partner-income-4-value"] %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-4-value"
+                  },
+                  value: {
+                    html: data["partner-income-4-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-4-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-4-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}
+
+
+              {% if data["partner-income-5-value"] %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-5-value"
+                  },
+                  value: {
+                    html: data["partner-income-5-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-5-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-5-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}
+
+
+              {% if data["partner-income-6-value"] %}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-6-value"
+                  },
+                  value: {
+                    html: data["partner-income-6-value"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {{ govukSummaryList({
+                classes: 'govuk-!-margin-bottom-2',
+                rows: [
+              {
+                  key: {
+                    text: "partner-income-6-frequency"
+                  },
+                  value: {
+                    html: data["partner-income-6-frequency"]
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "partner-income-separate",
+                        text: "Change",
+                        visuallyHiddenText: "partner-income-separate"
+                      }
+                    ]
+                  }
+                }
+              ]
+              }) }}
+
+              {% endif %}

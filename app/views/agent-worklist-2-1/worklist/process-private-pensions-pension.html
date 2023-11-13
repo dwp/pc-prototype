@@ -1,0 +1,161 @@
+{% extends "layout-work-list-id-bar.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+      <form action="process-employment" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+          How much does Mel get a week from private or workplace pensions?
+        </h1>
+
+
+        {% set pensionDetails %}
+
+        {% set LegendName %}
+        <strong>Pension Name<strong>
+        {% endset -%}
+
+        {{ govukInput({
+          label: {
+            html: LegendName
+          },
+          hint: {
+            text: "For example, £100.00 or £1,000.00"
+          },
+          id: "money-total-then",
+          name: "money-total-then",
+          classes: "govuk-input--width-20",
+          value: data["money-total-then"]
+        }) }}
+
+        <br>
+
+        {% set LegendAmount %}
+        <strong>Pension amount weekly<strong>
+        {% endset -%}
+
+              {{ govukInput({
+                label: {
+                  html: LegendAmount
+                },
+                hint: {
+                  text: "For example, £100.00 or £1,000.00"
+                },
+                id: "money-total-then",
+                name: "money-total-then",
+                classes: "govuk-input--width-20",
+                value: data["money-total-then"]
+              }) }}
+
+        {% endset %}
+
+
+        {{ govukCheckboxes({
+          name: "disregards",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            name: 'pension-details-a',
+            value: "Pension A",
+            html: "Pension A",
+            conditional: {
+              html: pensionDetails
+            }
+          },
+          {
+            name: 'pension-details-a',
+            value: "Pension B",
+            html: "Pension B",
+            conditional: {
+              html: pensionDetails
+            }
+          },
+          {
+            name: 'pension-details-a',
+            value: "Pension C",
+            html: "Pension C",
+            conditional: {
+              html: pensionDetails
+            }
+          },
+          {
+            name: 'pension-details-a',
+            value: "Pension D",
+            html: "Pension D",
+            conditional: {
+              html: pensionDetails
+            }
+          },
+          {
+            name: 'pension-details-a',
+            value: "Pension E",
+            html: "Pension E",
+            conditional: {
+              html: pensionDetails
+            }
+          },
+          {
+            name: 'pension-details-a',
+            value: "Pension F",
+            html: "Pension F",
+            conditional: {
+              html: pensionDetails
+            }
+          }
+          ]
+        }) }}
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+  Four private / workplace pensions were found for Mel Gibson
+</h1>
+
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Pension one: <strong>Name / £100.00 a week</strong></p>
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Pension two: <strong>Name / £80.00 a week</strong></p>
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Pension three: <strong>Name / £450.00 a week</strong></p>
+    <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Pension four: <strong>Name / £90.00 a week</strong></p>
+
+    <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Add a missing pension that are not shown in Searchlight</a></p>
+
+
+
+      {{ govukButton({
+        classes: "govuk-!-margin-top-0",
+        text: "Continue"
+      }) }}
+
+      <!-- <p class="govuk-body govuk-!-margin-top-4"><a href="case-load">Back to start</a></p>
+      <p class="govuk-body govuk-!-margin-top-4"><a href="case-load-clear">...</a></p> -->
+
+</form>
+    </div>
+  </div>
+{% endblock %}

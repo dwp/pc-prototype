@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Second property details? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="msic-missing-account-yn" method="post" class="form">
+      <input type="hidden" name="money-you-have-complete" value="in-progress"/>
+
+      <div class="govuk-panel--agent">
+
+      <h1 class="govuk-heading-xl">Agent: Complete form A64a</h1>
+      <p class="govuk-body">{{ data["full-name"] }} told you they own property or land other than their home.</p>
+        <!--<p class="govuk-body">Complete form <a href="https://intranet.dwp.gov.uk/manual/single-source-guidance/telephone-completion-form-a64apc-valuation-property-uk-or-abroad">A64a (opens in a new window or tab)</a> and upload the PDF to PTPCAM or DRS.</p>-->
+
+<ul class="govuk-list govuk-list--number">
+<li>Upload A64a to DRS and tag as the following:</li>
+
+<ul class="govuk-list govuk-list">
+<li>Business unit: <strong>Pension Service</strong></li>
+<li>Classification: <strong>Supporting</strong></li>
+<li>Issue date (Date of call): <strong>{{ data['claim-date-idoc-yn-date-day'] + ' ' + (data['claim-date-idoc-yn-date-month'] | getMonth) + ' ' + data['claim-date-idoc-yn-date-year'] }}</strong></li>
+
+<li>Document type: <strong>A64a</strong></li>
+</ul>
+
+<li>Process business as usual (BAU)</li>
+</ul>
+
+
+</div><br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

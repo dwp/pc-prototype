@@ -1,0 +1,76 @@
+{% extends "layout-assisted-digital-ur.html" %}
+
+{% block pageTitle %}
+  Date of claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <form action="claimant-national-insurance" method="post">
+
+
+
+
+          {% set claimdate %}
+
+          <p class="govuk-body">Based on your circumstances, this is the earliest date we can consider backdating your application to.</p>
+          <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">If your circumstance have changed since [Calculated EED], you might want us to consider your application from the date that change took place. For example, if you have:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>been part of a previous claim for Pension Credit</li>
+            <li>started or stopped living with a partner</li>
+              </ul>
+
+          {% endset %}
+
+        {{ govukDateInput({
+          id: "claim-date-of-claim",
+          namePrefix: "claim-date-of-claim",
+          fieldset: {
+            legend: {
+              html: "Do you want us to consider backdating your application to [Calculated EED]?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+            }
+          },
+          hint: {
+            html: claimdate
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data["claim-date-of-claim-day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data["claim-date-of-claim-month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data["claim-date-of-claim-year"]
+            }
+          ]
+        }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Continue",
+          classes: "govuk-!-margin-top-4"
+        }) }}
+      </form>
+        <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+    </div>
+  </div>
+{% endblock %}

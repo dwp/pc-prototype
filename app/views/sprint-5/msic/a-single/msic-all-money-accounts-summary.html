@@ -1,0 +1,213 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <!----Headline---->
+  <h1 class="govuk-heading-xl">
+    Combined money, savings and investments summary<br>
+  </h1>
+  <!----Headline---->
+  <form action="task-list" method="post">
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-third">
+  <h3 class="govuk-heading-s">
+    Accounts breakdown:
+  </h3></div>
+
+
+<div class="govuk-grid-column-two-thirds">
+
+  {{ govukSummaryList({
+    rows: [
+    {
+      key: {
+        text: "Current accounts"
+      },
+      value: {
+        text: "2"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-bank-current-accounts-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Savings accounts"
+      },
+      value: {
+        text: "1"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-savings-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Shares and unit trusts"
+      },
+      value: {
+        text: "0"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-shares-trusts-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Cash at home or recived as a lump sum"
+      },
+      value: {
+        text: "1"
+      },
+      actions: {
+        items: [
+          {
+            href: "msic-cash-summary",
+            text: "Change",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: ""
+      },
+      value: {
+        text: "."
+      },
+      actions: {
+        items: [
+          {
+            href: "@Niall add in total number of accouts?",
+            text: "",
+            visuallyHiddenText: "XXX"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Combined total"
+      },
+      value: {
+        text: "£5,000.00"
+      },
+      actions: {
+        items: [
+          {
+            href: "money-you-have",
+            text: "",
+            visuallyHiddenText: "XXXX"
+          }
+        ]
+      }
+    }
+    ]
+  }) }}
+
+
+</div></div>
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-s">
+Notes
+    </h3>
+    <p></p>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <table class="govuk-table ">
+      <thead class="govuk-table__head govuk-table--no-border">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"><p class="govuk-body"><a href="msic-notepad" class="govuk-link">Add money notes</a></p></th>
+          <th class="govuk-table__header govuk-table__header--numeric govuk-table__regular" scope="col"><a href="msic-notepad" class="govuk-link">Change</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      </tbody>
+    </table>
+    {% if data["msic-all-money-detail"] %}
+
+
+  <p class="govuk-body">
+    {{ data["msic-all-money-detail"] }}
+  </p>
+{% endif %}
+</div></div>
+
+
+
+
+
+
+<!--------------------------------------------------------------------------------->
+  <!----Break---->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    </div>
+  </div>
+  <!----Break---->
+
+
+  <br><br>
+
+    <input type="hidden" name="money-you-have-complete" value="true"/>
+    <p>
+      {{ govukButton({
+        text: "Confirm"
+      }) }}
+    </p>
+
+
+{% endblock %}

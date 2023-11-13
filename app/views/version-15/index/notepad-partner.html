@@ -1,0 +1,83 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  NotePad - Area
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="mvp-eligibility-summary" method="post">
+
+        <span class="govuk-caption-m">Agent notes page</span>
+        <h1 class="govuk-heading-xl">Information about the claimant's partner.</h1>
+
+
+
+        <p class="govuk-body govuk-!-font-size-19">Ask the claimant for all the information you need, including:</p>
+
+
+        <ul class="govuk-list govuk-list--bullet">
+
+          <li>
+            their partner's name
+          </li>
+          <li>
+            their partner's date of birth
+          </li>
+          <li>their partner's Nationality
+            </li>
+          <li>
+            their partner's National Insurance number
+          </li>
+          <li>
+            whether their partner has agreed to this application
+          </li>
+          <li>
+            whether their partner is registered blind and the date they were registered
+          </li>
+          </ul>
+
+          <p class="govuk-body govuk-!-font-size-19">
+            If their partner was sponsored to come to the UK in last 5 years ask for:
+          </p>
+
+          <ul class="govuk-list govuk-list--bullet"">
+          <li>the start and end dates of any periods their partner has spent abroad in the last 5 years
+          </li>
+          <li>their partner's reason for leaving the UK
+          </li>
+          <li>whether their partner's sponsor is still alive
+          </li>
+        </ul>
+
+<br>
+
+        {{ govukTextarea({
+          name: "partner-more-detail",
+          id: "partner-more-detail",
+
+          value: data["partner-more-detail"]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

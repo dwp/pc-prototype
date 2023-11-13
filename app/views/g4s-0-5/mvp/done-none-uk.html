@@ -1,0 +1,40 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Application complete - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="XXX" method="post" class="form">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">We can only accept applications from people who live in the UK</h1>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">We cannot take your application for Pension Credit.</p>
+
+
+
+      {% include "g4s-0-5/mvp/claim-details.html" %}
+
+
+      {{ govukButton({
+        text: "Finish and close",
+        classes: "dont-print govuk-!-margin-top-8"
+      }) }}
+
+    </form>
+    </div>
+    </div>
+
+{% endblock %}

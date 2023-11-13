@@ -1,0 +1,155 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="pensions-router" method="post" class="form">
+
+
+    <div class="moj-banner">
+    <div class="moj-banner__message">
+    <h2 class="govuk-heading-m govuk-!-margin-top-0">Agent: Find this information in SearchLight. Do not ask caller.</h2>
+    </div>
+    </div>
+
+
+    <!------------H1 LEGEND------------>
+    {% set dynamicH1 %}
+
+       <h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Do they have workplace or personal pension income of
+
+          {% if data["nino"] == "S2 11 22 33 B" or data["nino"] == "S2112233B" %}
+
+              <!------------Benefit values ------------>
+
+              {% if data["benefit-check"] == "B" %}
+              £62.50  <!--[S2+£37.50]-->
+
+              {% elif data['benefit-check'] == 'CA' %}
+              £91.95  <!--[S2 +£66.95 ]-->
+
+              {% else %}£25.00 <!---[S2]--> {% endif %}
+              <!------------Benefit values ------------>
+
+          {% elif data['nino'] == 'S3 11 22 33 C' %}
+
+              <!------------Benefit values ------------>
+
+              {% if data["benefit-check"] == "B" %}
+              £62.50  <!--[S3+£37.50]-->
+
+              {% elif data['benefit-check'] == 'CA' %}
+              £91.95  <!--[S3 +£66.95 ]-->
+
+              {% else %}£25.00 <!--[S3]-->{% endif %}
+              <!------------Benefit values ------------>
+
+              {% else %}
+
+              <!------------Benefit values ------------>
+
+              {% if data["benefit-check"] == "B" %}
+              £62.50  <!--[S3+£37.50]-->
+
+              {% elif data['benefit-check'] == 'CA' %}
+              £91.95  <!--[S3 +£66.95 ]-->
+
+              {% else %}£25.00 <!--[S3]-->{% endif %}
+              <!------------Benefit values ------------>
+
+              {% endif %}
+
+        a week or more?</h1>
+
+          {% endset %}
+
+     <!------------ LEGEND END --------------->
+
+
+
+
+     <!------------ LEGEND END --------------->
+
+     {% set pensionHowMuch %}
+     {{ govukInput({
+       id: "pensions-howMuch-value",
+       name: "pensions-howMuch-value",
+       label: {
+         html: "How much is their weekly pension income?",
+         classes: "govuk-label--s",
+         isPageHeading: true
+       },
+       hint: {
+         text: "Enter an amount in pounds and pence, for example, 100.00"
+       },
+       prefix: {
+         text: "£"
+       },
+       value: data["pensions-howMuch-value"],
+       classes: "govuk-input--width-10 govuk-!-margin-bottom-4",
+       spellcheck: false
+     }) }}
+     {% endset %}
+
+
+           {{ govukRadios({
+             idPrefix: "pensions",
+             name: "pensions",
+             fieldset: {
+               legend: {
+                 html: dynamicH1,
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--m"
+               }
+             },
+             hint: {
+               text: ""
+             },
+             classes: "govuk-radios",
+             items: [
+               {
+                 value: "Yes",
+                 text: "Yes",
+                 checked: (data["pensions"] == "Yes")
+               },
+               {
+                 value: "No",
+                 text: "No",
+                 checked: (data["pensions"] == "No"),
+                 conditional: {
+                   html: pensionHowMuch
+                 }
+               }
+             ]
+           }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+
+<!-- <br><br>
+    <br>[+CP]  £25.00 +£37.50]
+    <br>[+DB] £25.00 +£66.95]
+    <br>[CP+DB] £104.45
+
+    Use £5 if no benefits, use £10 for CP or DB -->
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

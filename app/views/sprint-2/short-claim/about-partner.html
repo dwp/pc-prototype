@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  About your partner - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<p>
+  {{ govukBackLink({
+    href: "has-partner"
+  }) }}
+</p>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      About your partner
+    </h1>
+
+    <form action="about-partner-router" method="post" class="form">
+      {{ govukInput({
+        label: {
+          text: "What is your partner's full name?"
+        },
+        id: "partner-full-name",
+        name: "partner-full-name",
+        classes: "govuk-input--width-20",
+        value: data["partner-full-name"]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "What is your partner’s National Insurance number?"
+        },
+        id: "partner-nino",
+        name: "partner-nino",
+        classes: "govuk-input--width-20",
+        value: data["partner-nino"]
+      }) }}
+
+      {{ govukRadios({
+        idPrefix: "partner-self-employed",
+        name: "partner-self-employed",
+        fieldset: {
+          legend: {
+            text: "Is your partner self-employed?"
+          }
+        },
+        classes: "govuk-radios--inline",
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: (data["partner-self-employed"] == "yes")
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: (data["partner-self-employed"] == "no")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+a{% extends "layout-assisted-digital-removed.html" %}
+
+{% block pageTitle %}
+  Error: Cannot sign in
+        {{ data['service-name']  }}
+    - GOV.UK 
+{% endblock %}
+
+{% block beforeContent %}
+    {% include 'includes/phase-banner.njk' %}
+    {% include 'includes/language-toggle.njk' %}
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            
+                {{ govukFieldset({
+                    legend: {
+                        html: 'Sorry, you cannot sign in to this service',
+                        classes: "govuk-fieldset__legend--l",
+                        isPageHeading: true
+                    }
+                })}}
+
+               <p>This is because we do not have enough information in our records to check who you are.</p>
+                <p>Select 'Continue' for other ways to use this service.</p>
+               
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+
+                
+        </div>
+    </div>
+{% endblock %}

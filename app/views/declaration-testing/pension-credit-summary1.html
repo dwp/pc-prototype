@@ -1,0 +1,220 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Pension Credit claim summary - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!----Headline---->
+<p class="govuk-body govuk--version-control">declaration.0.2</p>
+
+<h1 class="govuk-heading-xl">
+  Pension Credit claim summary.<br>
+  Check your answers
+</h1>
+<!----Headline---->
+
+
+
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+Payment details
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Bank account
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name on account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["name-on-account"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["sort-code"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{ data["account-number"] }}
+        </dd>
+
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      {% if data["roll-number"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Roll number
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {{ data["roll-number"] }}
+          </dd>
+
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      </dl>
+
+  </div>
+</div>
+<!----End 1/3 + 2/3 ---------------------------------------------------------------------------------->
+
+
+<
+
+
+
+
+<!----Break---->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+  </div>
+</div>
+<!----Break---->
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+
+    </h3>
+    <p> </p>
+  </div>
+
+<!----End 1/3 + 2/3 ----></div>
+
+
+<!----Break---->
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">
+      Claimant declaration
+    </h3>
+    <p></p>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">
+
+    <p class="govuk-body">The information you have given will be used to update benefit records.</p>
+
+    <p class="govuk-body">By submitting this claim you agree that the information you have given is
+    correct and complete as far as you know.</p>
+    <p class="govuk-body">You agree that you’ll pay back any money you are overpaid if you’re asked to.<?p>
+
+    <p class="govuk-body">You could be prosecuted or face other action if you knowingly give false information.</p>
+
+      <h3 class="govuk-heading-m">Confirm that you have read this to the claimant</h3>
+      {{ govukCheckboxes({
+        idPrefix: "citizenship-conditional",
+        name: "confirm",
+
+        items: [
+          {
+            value: "confirm",
+            text: "I have read this to the claimant"
+
+          }
+
+        ]
+      }) }}
+
+  </div></div>
+
+<!----Add more
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Any other benefit missing?</h2>
+    <p class="govuk-body">
+      <a href="add-benefit" class="govuk-link">
+        Add benefit
+      </a>
+    </p>
+---->
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+<br><br>
+
+    <form action="done" method="post">
+      <input type="hidden" name="earnings-and-other-summary" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Submit claim"
+        }) }}
+      </p>
+    </form>
+
+
+  </div>
+</div>
+<!----Break---->
+
+{% endblock %}

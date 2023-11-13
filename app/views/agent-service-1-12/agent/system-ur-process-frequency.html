@@ -1,0 +1,98 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  Pension Selector - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="system-ur-process-frequency-router" method="post" class="form">
+
+      <div class="govuk-panel--agent govuk-!-margin-top-6">
+
+
+        {{ govukRadios({
+          idPrefix: "system-ur-process-frequency",
+          name: "system-ur-process-frequency",
+          fieldset: {
+            legend: {
+              text: "Welcome to the turbo pension processor. Select a scenario",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "A",
+            text: "A [every week]",
+            checked: (data["system-ur-process-frequency"] == "A")
+            },
+            {
+              value: "A1",
+              text: "A1 [every week]: Amounts changed, but the frequency is regular, but a one off payment is visible",
+              checked: (data["system-ur-process-frequency"] == "A1")
+            },
+            {
+              value: "B",
+              text: "B [every four weeks]",
+              checked: (data["system-ur-process-frequency"] == "B")
+            },
+            {
+              value: "C",
+              text: "C [every calendar month]: Established pattern",
+              checked: (data["system-ur-process-frequency"] == "C")
+            },
+            {
+              value: "C1",
+              text: "C [Every calendar month]: Amounts changed, but the frequency is regular, but a one off payment is visible",
+              checked: (data["system-ur-process-frequency"] == "C1")
+            },
+            {
+              value: "D",
+              text: "D [every quarter]",
+              checked: (data["system-ur-process-frequency"] == "D")
+            },
+            {
+              value: "E",
+              text: "E [twice a year]",
+              checked: (data["system-ur-process-frequency"] == "E")
+            },
+            {
+              value: "F",
+              text: "F [every year]",
+              checked: (data["system-ur-process-frequency"] == "F")
+            }
+          ]
+        }) }}
+
+      <!-- <h1 class="govuk-heading-xl govuk-!-margin-top-4">Turbo pensions processor</h1>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-w" class="govuk-link" rel="">Every weekly</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-fw" class="govuk-link" rel="">Every four weeks</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-2" class="govuk-link" rel="">Every calendar month</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-q" class="govuk-link" rel="">Every quarter</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-t" class="govuk-link" rel="">Twice a year</a></p>
+      <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="process-c-nil-task-4-y" class="govuk-link" rel="">Every year</a></p> -->
+
+
+
+    </form>
+
+    {{ govukButton({
+      text: "Continue",
+      classes: "govuk-!-margin-bottom-2"
+    }) }}
+
+  </div>
+</div>
+{% endblock %}

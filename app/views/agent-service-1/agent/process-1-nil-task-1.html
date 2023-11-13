@@ -1,0 +1,244 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  WorkLlist - Pension Credit
+{% endblock %}
+
+{% block header %}
+  <!-- {% include "includes/internal-header.html" %} -->
+  {% include "explore-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="process-1-nil-task-list" method="post" class="form">
+        <input type="hidden" name="process-1-nil-task-1-passed" value="passed">
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">NA 11 22 33 c</p>
+
+      <p class="govuk-heading-xl govuk-!-margin-bottom-4">[Task 1] Identity and contact</p>
+
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">Cross referece citizens provided details using AfPC with what was found in CIZ</p>
+
+    </div>
+  </div>
+
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        <!------------Legend------------>
+          {% set legendProcess %}
+
+        {{ govukCheckboxes({
+          idPrefix: "process-1-nil-task-1-fail",
+          name: "process-1-nil-task-1-fail",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s govuk-!-padding-top-0 govuk-!-margin-top-0"
+            }
+          },
+          items: [
+            {
+              classes: "govuk-!-padding-top-0 govuk-!-margin-top-0",
+              value: "1",
+              text: " ",
+              checked: data['process-1-nil-task-1-fail'] == "1"
+            }
+          ]
+        }) }}
+
+        {% endset %}
+      <!------------Legend------------>
+
+      <!------------Legend------------>
+        {% set tagSL %}
+
+        {{govukTag({
+           text: "SEARCHLIGHT",
+           classes: "govuk-tag--blue"
+         })}}
+
+      {% endset %}
+
+        {% set tagCPS %}
+
+        {{govukTag({
+           text: "CPS",
+           classes: "govuk-tag--yellow"
+         })}}
+
+      {% endset %}
+
+      {% set tagCAM %}
+
+      {{govukTag({
+         text: "CAM",
+         classes: "govuk-tag--red"
+       })}}
+
+    {% endset %}
+    <!------------Legend------------>
+
+
+
+        {{ govukTable({
+          caption: "",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "What to check",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "Citizen supplied [AfPC]",
+              classes: 'govuk-30-percent'
+            },
+            {
+              html: "System data or where to find it",
+              classes: 'govuk-30-percent'
+            },
+            {
+              text: "Mark as incorrect",
+              classes: 'govuk-10-percent'
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "Applicant Name"
+              },
+              {
+                text: "Name A"
+              },
+              {
+                html: "Name A"
+              },
+              {
+                html: legendProcess
+              }
+            ],
+            [
+              {
+                text: "Applicant DOB/age"
+              },
+              {
+                text: "DD/MM/YYYY [Age]"
+              },
+              {
+                html: "DD/MM/YYYY [Age]"
+              },
+              {
+                html: legendProcess              }
+            ],
+            [
+              {
+                text: "Telephone"
+              },
+              {
+                text: "07960 009 014"
+              },
+              {
+                text: "07960 009 014"
+              },
+              {
+                html: legendProcess              }
+                ],
+                [
+                  {
+                    text: "Address"
+                  },
+                  {
+                    html: "Address one <br>Address one <br>Address one <br>POST CODE"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "Bank details"
+                  },
+                  {
+                    text: "**** **** **** 0124"
+                  },
+                  {
+                    html: tagCPS
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "Reg blind"
+                  },
+                  {
+                    text: "NA"
+                  },
+                  {
+                    html: tagCAM
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "Commnication needs"
+                  },
+                  {
+                    text: "None"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ],
+                [
+                  {
+                    text: "Helper"
+                  },
+                  {
+                    text: "None"
+                  },
+                  {
+                    html: tagSL
+                  },
+                  {
+                    html: legendProcess
+                  }
+                ]
+          ]
+        }) }}
+
+
+
+        <!------------ ––– ------------>
+
+    </div>
+  </div>
+
+
+
+    {{ govukButton({
+      text: "Contine"
+    }) }}
+  </form>
+
+{% endblock %}

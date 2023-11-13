@@ -1,0 +1,98 @@
+
+
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+
+{% if data["create-claim"] === 'yes'%}
+
+{{ mojSideNavigation({
+  label: 'Side navigation',
+  items: [{
+    text: 'Summary',
+    href: 'qd-summary',
+    active: nav == 'summary'
+  }, {
+    text: 'Other help',
+    href: 'qd-help',
+    active: nav == 'help'
+  }, {
+    text: 'History',
+    href: 'qd-history-2',
+    active: nav == 'history'
+  }, {
+    text: 'Make a change',
+    href: 'qd-create-claim',
+    active: nav == 'changes'
+  }, {
+    text: 'Request Mandatory Reconsideration',
+    href: 'qd-mr',
+    active: nav == 'mr'
+  }, {
+    text: 'Query Automated Processing',
+    href: 'qd-ap',
+    active: nav == 'ap'
+  }]
+}) }}
+
+{% elif data["benefits"]%}
+
+{{ mojSideNavigation({
+  label: 'Side navigation',
+  items: [{
+    text: 'Summary',
+    href: 'qd-summary',
+    active: nav == 'summary'
+  }, {
+    text: 'Other help',
+    href: 'qd-help',
+    active: nav == 'help'
+  }, {
+    text: 'History',
+    href: 'qd-history',
+    active: nav == 'history'
+  }, {
+    text: 'Make a change',
+    href: 'qd-changes-changed',
+    active: nav == 'changes'
+  }, {
+    text: 'Request Mandatory Reconsideration',
+    href: 'qd-mr',
+    active: nav == 'mr'
+  }, {
+    text: 'Query Automated Processing',
+    href: 'qd-ap',
+    active: nav == 'ap'
+  }]
+}) }}
+
+{% else %}
+
+{{ mojSideNavigation({
+  label: 'Side navigation',
+  items: [{
+    text: 'Summary',
+    href: 'qd-summary',
+    active: nav == 'summary'
+  }, {
+    text: 'Other help',
+    href: 'qd-help',
+    active: nav == 'help'
+  }, {
+    text: 'History',
+    href: 'qd-history',
+    active: nav == 'history'
+  }, {
+    text: 'Make a change',
+    href: 'qd-changes',
+    active: nav == 'changes'
+  }, {
+    text: 'Request Mandatory Reconsideration',
+    href: 'qd-mr',
+    active: nav == 'mr'
+  }, {
+    text: 'Query Automated Processing',
+    href: 'qd-ap',
+    active: nav == 'ap'
+  }]
+}) }}
+
+{% endif %}

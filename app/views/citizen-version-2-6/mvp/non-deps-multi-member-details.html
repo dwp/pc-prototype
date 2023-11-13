@@ -1,0 +1,61 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Disregard types - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="benefit-UC" method="post" class="form">
+
+        <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+         <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Details of other people that live with you</h1>
+
+         <!------------Legend------------>
+           {% set legendMemberDetials %}
+           <p class="govuk-hint"><strong>For each person, tell us their:</strong></p>
+           <ul class="govuk-hint govuk-list govuk-list--bullet">
+           <li>name</li>
+           <li>date of birth</li>
+           <li>relationship to you</li>
+           <li>weekly income from employment or self-employment, before taxes are taken off</li>
+           </ul>
+           {% endset %}
+         <!------------Legend------------>
+
+           {{ govukTextarea({
+             label: {
+               classes: "govuk-label--s",
+               html: ""
+                    },
+             hint: {
+               html: legendMemberDetials
+             },
+             id: "non-deps-multi-member-details",
+             name: "non-deps-multi-member-details",
+             classes: "govuk-input--width-100",
+             attributes: {
+               maxlength: 3000
+             }
+           }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

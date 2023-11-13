@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Add start date - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claim-date-options-backdating-changes-out" method="post">
+
+
+        <div class="govuk-panel--agent">
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  idPrefix: "claim-date-manual-eed-daf-reason",
+  name: "claim-date-manual-eed-daf-reason",
+  fieldset: {
+    legend: {
+      html: "<span class=\"agent-action\">Agent: </span>Why does the claimant want to start the claim from a different date?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+
+  items: [
+    {
+      value: "Customer stopped working",
+      text: "Customer stopped working"
+    },
+    {
+      value: "Bereavement",
+      text: "Bereavement"
+    },
+    {
+      value: "Living on own or separated",
+      text: "Living on own or separated"
+    },
+    {
+      value: "Customer’s request",
+      text: "Customer’s request"
+    },
+    {
+      value: "Arriving/returning to UK",
+      text: "Arriving/returning to UK"
+    },
+    {
+      value: "Moved into care home",
+      text: "Moved into care home"
+    },
+    {
+      value: "Reduction of savings/income",
+      text: "Reduction of savings/income"
+    },
+    {
+      value: "Carers Allowance awarded",
+      text: "Carers Allowance awarded"
+    },
+    {
+      value: "AA/DLA or PIP claimed/awarded",
+      text: "AA/DLA or PIP claimed/awarded"
+    },
+    {
+      value: "Change of address",
+      text: "Change of address"
+    },
+    {
+      value: "Re-applying for Pension Credit",
+      text: "Re-applying for Pension Credit"
+    },
+    {
+      value: "Hospital admission/discharge",
+      text: "Hospital admission/discharge"
+    },
+    {
+      value: "Released from prison / HMP",
+      text: "Released from prison / HMP"
+    }
+  ]
+}) }}
+
+</div>
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "layout-g4s.html" %}
+
+{% block pageTitle %}
+  Apply for Pension Credit - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="type-of-claim-router" method="post" class="form">
+      <p class="govuk-body govuk--version-control govuk-!-padding-top-4">G4s version 0.10 / MVP</p>
+
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6 govuk-!-padding-top-4">Thanks for that. How can I help you today?</h1>
+
+
+    {{ govukRadios({
+      idPrefix: "type-of-claim",
+      name: "type-of-claim",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m "
+        }
+      },
+      classes: "govuk-radios",
+      items: [
+      {
+          value: "eligibility",
+          text: "Check eligibility for Pension Credit",
+          checked: (data["type-of-claim"] == "eligibility")
+        },
+        {
+          value: "bau-exit-1",
+          text: "Check application progress",
+          checked: (data["type-of-claim"] == "bau-exit-1")
+        },
+        {
+          value: "bau-exit-2",
+          text: "Has an initial date of contact (IDOC)",
+          checked: (data["type-of-claim"] == "bau-exit-2")
+        },
+        {
+          value: "bau-exit-3",
+          text: "Asked to call back with more information",
+          checked: (data["type-of-claim"] == "bau-exit-3")
+        },
+        {
+          value: "bau-exit-4",
+          text: "Edit a new claim",
+          checked: (data["type-of-claim"] == "bau-exit-4")
+        },
+        {
+          value: "bau-exit-9",
+          text: "Edit an existing claim",
+          checked: (data["type-of-claim"] == "bau-exit-4")
+        },
+        {
+          value: "bau-exit-8",
+          text: "Discuss an award outcome",
+          checked: (data["type-of-claim"] == "bau-exit-8")
+        },
+        {
+          value: "bau-exit-10",
+          text: "Check Pension Credit amount",
+          checked: (data["type-of-claim"] == "bau-exit-10")
+        },
+        {
+          value: "bau-exit-5",
+          text: "Issue a new letter",
+          checked: (data["type-of-claim"] == "bau-exit-5")
+        },
+        {
+          value: "bau-exit-11",
+          text: "Other help",
+          checked: (data["type-of-claim"] == "bau-exit-11")
+        },
+        {
+          value: "bau-exit-7",
+          text: "Something else",
+          checked: (data["type-of-claim"] == "bau-exit-7")
+        }
+      ]
+    }) }}
+
+<!--
+    {
+      value: "A",
+      text: "A",
+      checked: (data["ab-check"] == "A")
+    },
+-->
+
+      {{ govukButton({
+       text: "Continue",
+       classes: "govuk-!-margin-bottom-8"
+     }) }}
+
+
+<p class="govuk-body"><a href="system-outcome-selector-page">Outcome selector</a></p>
+
+     <p class="govuk-body"><a href="bau-savings-credit-exit">Outcome: Savings Credit</a></p>
+     <p class="govuk-body"><a href="bau-exit-default">Outcome: Default follow SWIs [Day one]</a></p>
+
+     <p class="govuk-body"><a href="bau-process-measure">Outcome: Process measure A</a></p>
+     <p class="govuk-body"><a href="bau-process-measure-4">Outcome: Process measure B</a></p>
+
+
+</form>
+</div>
+{% endblock %}

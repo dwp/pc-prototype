@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Bank account detials
+    </h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Bank account
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name on account
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["name-on-account"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data["sort-code"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+            {{ data["account-number"] }}
+        </dd>
+
+        <dd class="govuk-summary-list__actions">
+          <a href="uk-account">
+            Change
+          </a>
+        </dd>
+      </div>
+
+      {% if data["roll-number"] %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Roll number
+          </dt>
+          <dd class="govuk-summary-list__value">
+              {{ data["roll-number"] }}
+          </dd>
+
+          <dd class="govuk-summary-list__actions">
+            <a href="uk-account">
+              Change
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+      </dl>
+
+<br>
+
+    <form action="task-list" method="post">
+      <input type="hidden" name="bank-complete" value="true"/>
+      <p>
+        {{ govukButton({
+          text: "Confirm"
+        }) }}
+      </p>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you prefer to be contacted? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="address-correspondence-yn-router" method="post" class="form">
+
+      <input type="hidden" name="contact-complete" value="in-progress"/>
+
+      <div class="adviser-notice">
+      <h1 class="adviser-notice__heading">Adviser: for your information</h1>
+      <p class="govuk-body"><strong>Address for letters:<strong></p>
+        <h2 class="govuk-heading-s"><br>221B BAKER STREET<br>MARYLEBONE<br>LONDON<br>NW1 5RT</h2>
+      </div>
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "address-correspondence-yn",
+        name: "address-correspondence-yn",
+        fieldset: {
+          legend: {
+            html: "Is your home address the same as the address we use to send you letters?",
+
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+
+        items: [
+        {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["address-correspondence-yn"] == "Yes")
+          },
+          {
+            value: "No - I live at a different address",
+            text: "No - I live at a different address",
+            checked: (data["address-correspondence-yn"] == "No - I live at a different address")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+  </div>
+</div>
+{% endblock %}

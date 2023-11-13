@@ -1,0 +1,132 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+Other regular income and payments - Pension Credit - GOV.UK
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="final-cya" method="post" class="form">
+
+      {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Other regular income and payments</h1>
+      {% else %}  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Other regular income and payments</h1>{% endif %}
+
+      {% if data["single-joint-check"] == "Joint" %}<p class="govuk-!-font-size-24">We need to know about certain types of regular income and payments you or your partner receive. This helps us work out exactly how much Pension Credit you can get.</p>
+      {% else %}  <p class="govuk-!-font-size-24">We need to know about certain types of regular income and payments you receive. This helps us work out exactly how much Pension Credit you can get.</p>{% endif %}
+
+      <!------------Legend------------>
+        {% set legendH2 %}
+        {% if data["single-joint-check"] == "Joint" %}<h2 class="govuk-heading-s govuk-!-margin-bottom-4">Tell us what this income is, how much you or your partner are paid and how often it is paid.</h2>
+        {% else %}  <h2 class="govuk-heading-s govuk-!-margin-bottom-4">Tell us what this income is, how much you are paid and how often it is paid.</h2>{% endif %}
+        {% endset %}
+      <!------------Legend------------>
+
+      {% set otherMoneyDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            html: legendH2
+          },
+          hint: {
+            text: ""
+          },
+          id: "other-money-yes-details",
+          name: "other-money-yes-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+
+
+{% if data["single-joint-check"] == "Joint" %}
+            <p class="govuk-heading-s govuk-!-margin-bottom-2">Tell us about:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>maintenance payments from a former spouse or civil partner</li>
+            <li>work where you or your partner are paid cash in hand</li>
+            <li>royalties</li>
+            <li>awards or payments relating to a personal injury</li>
+            <li>payments from a trust </li>
+            <li>strike pay</li>
+      </ul>
+
+{% else %}
+            <p class="govuk-heading-s govuk-!-margin-bottom-2">Tell us about:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>maintenance payments from a former spouse or civil partner</li>
+            <li>work where you are paid cash in hand</li>
+            <li>royalties</li>
+            <li>awards or payments relating to a personal injury</li>
+            <li>payments from a trust </li>
+            <li>strike pay</li>
+      </ul>
+{% endif %}
+
+            <p class="govuk-heading-s govuk-!-margin-bottom-2">Do not tell us about:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <!-- <li>State Pension</li> -->
+            <li>Attendance Allowance</li>
+            <li>Personal Independence Payment</li>
+            <li>Carer's Allowance</li>
+      </ul>
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<h1 class="govuk-heading-l govuk-!-margin-bottom-0">Do you or your partner receive any other regular income or payments?</h1>
+        {% else %}  <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Do you receive any other regular income or payments?</h1>{% endif %}
+        {% endset %}
+
+      <!------------Legend--------------->
+
+
+      {{ govukRadios({
+        name: "other-money-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: (data["other-money-check"] == "Yes"),
+                  conditional: {
+                    html: otherMoneyDetails
+        }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: (data["other-money-check"] == "No")
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

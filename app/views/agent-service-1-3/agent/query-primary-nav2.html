@@ -1,0 +1,30 @@
+{%- from "moj/components/side-navigation/macro.njk" import mojSideNavigation -%}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full govuk-!-margin-bottom-8">
+
+    {{ mojSideNavigation({
+      label: 'Side navigation',
+      items: [{
+        text: 'Overview',
+        href: 'query-overview-b',
+        active: true
+      }, {
+        text: 'History',
+        href: 'query-history-b'
+      }, {
+        text: 'Tasks',
+        href: 'query-tasks-b'
+      }, {
+        text: 'Correspondence',
+        href: 'query-correspondence-b'
+      }, {
+        text: 'Help',
+        href: 'query-help-b'
+      }]
+    }) }}
+
+  </div>
+
+</div>

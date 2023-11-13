@@ -1,0 +1,67 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Contact formats - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="contact-email-check-router" method="post" class="form">
+
+      <input type="hidden" name="contact-formats-complete" value="in-progress"/>
+
+
+
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you need any additional help when we send you letters or speak to you on the phone?</h1>
+
+
+      {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "contact-email-check-yn",
+        name: "contact-email-check-yn",
+        fieldset: {
+          legend: {
+            html: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes",
+          checked: (data["contact-email-check-yn"] == "Yes")
+        },
+        {
+          value: "No",
+          text: "No",
+          checked: (data["contact-email-check-yn"] == "No")
+        }
+
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+
+  </div>
+</div>
+{% endblock %}

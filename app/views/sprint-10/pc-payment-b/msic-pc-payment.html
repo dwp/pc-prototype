@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Method of payment - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="msic-pc-payment-router" method="post" class="form">
+      <input type="hidden" name="msic-pc-payment-complete" value="in-progress"/>
+
+
+      {{ govukRadios({
+        idPrefix: "msic-pc-payment",
+        name: "msic-pc-payment",
+        fieldset: {
+          legend: {
+            text: "Where do you want your Pension Credit paid?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+            }
+            },
+            hint: {
+              html: "<p class=\"hint\">We know about the account your State Pension is paid into."
+            },
+        items: [
+          {
+            value: "The same account as your State Pension",
+            text: "The same account as your State Pension",
+            checked: (data["msic-pc-payment"] == "The same account as your State Pension")
+          },
+          {
+            value: "A different account",
+            text: "A different account",
+            checked: (data["msic-pc-payment"] == "A different account")
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+
+    </div>
+    </div>
+{% endblock %}

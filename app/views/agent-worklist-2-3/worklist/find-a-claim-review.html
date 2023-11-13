@@ -1,0 +1,68 @@
+{% extends "layout-work-list-api.html" %}
+
+{% block pageTitle %}
+  Selected claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/js-back-link.html" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <form action="api-claims" method="post" class="form">
+
+
+        <!------------HEADLINE------------>
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4"><strong>Jeff Bridges</strong></h1>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">National insurance number: <strong>NA 11 22 33 C</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Claim ID: <strong>70261</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Status: <strong>To do</strong></p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6">Received: <strong>DD Oct 2020</strong></p>
+
+
+        <!------------Legend------------>
+          {% set LegendList %}
+        <p class="govuk-heading-s govuk-!-margin-bottom-2">Checks done on this claim:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+
+
+          {% endset %}
+        <!------------Legend------------>
+
+
+        {{ govukButton({
+          text: "Open PDF claim in new tab",
+          classes: "govuk-button--secondary govuk-!-margin-bottom-9"
+        }) }}
+
+        {% set outcomeDetails %}
+          {{ govukTextarea({
+            label: {
+              classes: "govuk-label--s",
+              html: "Why was the outcome of agent check different to the decision?"
+            },
+            hint: {
+              text: ""
+            },
+            id: "api-claim-outcome-details",
+            name: "api-claim-outcome-details",
+            classes: "govuk-input--width-30",
+            attributes: {
+              maxlength: 200
+            }
+          }) }}
+          {% endset %}
+
+
+
+</form>
+    </div>
+  </div>
+{% endblock %}

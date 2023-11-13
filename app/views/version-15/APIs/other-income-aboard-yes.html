@@ -1,0 +1,243 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  other-income-aboard--yes - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="other-income-equity-release-yn" method="post" class="form">
+
+      <input type="hidden" name="disregards-summary-complete" value="in-progress"/>
+
+      <h1 class="govuk-heading-xl"><span class="agent-action">Details of income or earnings or income from abroad</h1>
+
+
+        {{ govukTextarea({
+          name: "other-income-aboard-yes-detail",
+          id: "eother-income-aboard-yes-detail",
+
+        value: data["employment-yes-more-detail"]
+        }) }}
+
+                {% set howOften %}
+                  {{ govukDateInput({
+                    id: "other-income-aboard-yes-date",
+                    namePrefix: "other-income-aboard-yes-date",
+                    fieldset: {
+                      legend: {
+                        text: "Enter the received"
+                      }
+                    },
+                    items: [
+                      {
+                        name: "day",
+                        classes: "govuk-input--width-2",
+                        value: data["other-income-aboard-yes-date-day"]
+                      },
+                      {
+                        name: "month",
+                        classes: "govuk-input--width-2",
+                        value: data["other-income-aboard-yes-date-month"]
+                      },
+                      {
+                        name: "year",
+                        classes: "govuk-input--width-4",
+                        value: data["other-income-aboard-yes-date-year"]
+                      }
+                    ]
+                  }) }}
+                {% endset -%}
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  idPrefix: "other-income-aboard-lump-yes",
+                  name: "other-income-aboard-lump-yes",
+                  fieldset: {
+                    legend: {
+                      html: "Was this payment made as a lump sum?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  items: [
+                  {
+                      value: "no-date",
+                      text: "Yes",
+                      checked: (data["other-income-aboard-yes-date-yn"] == "Yes"),
+                      conditional: {
+                        html: howOften
+                      }
+                    },
+                      {
+                        value: "No",
+                        text: "No",
+                        checked: (data["other-income-aboard-yes-"] == "No")
+                      }
+                    ]
+                  }) }}
+
+              <!------------------------->
+
+
+
+                {% set howOften %}
+
+                {{ govukRadios({
+                  idPrefix: "other-income-aboard-payment-frequency-yes",
+                  name: "other-income-aboard-payment-frequency-yes",
+                  fieldset: {
+                    legend: {
+                      text: "How often do get this?",
+                      isPageHeading: true,
+                      classes: "<!--govuk-fieldset__legend--s-->"
+                      }
+                      },
+
+                  items: [
+                    {
+                      value: "Every week",
+                      text: "Every week",
+                      checked: (data["other-income-aboard-payment-frequency-yes-period"] == "Every week")
+                    },
+                    {
+                      value: "Every two weeks",
+                      text: "Every two weeks",
+                      checked: (data["other-income-aboard-payment-frequency-yes-period"] == "Every two weeks")
+                    },
+                    {
+                      value: "Every four weeks",
+                      text: "Every four weeks",
+                      checked: (data["other-income-aboard-payment-frequency-yes-period"] == "Every four weeks")
+                    }
+                  ]
+                }) }}
+
+                {{ govukInput({
+                label: {
+                  html: "Other payment frequency<strong></strong>"
+                },
+                id: "other-income-aboard-payment-frequency-yes-other",
+                name: "other-income-aboard-payment-frequency-yes-other",
+                classes: "govuk-input--width-20"
+              }) }}
+                {% endset -%}
+
+
+
+
+                {{ govukRadios({
+                  classes: "govuk-radios",
+                  idPrefix: "other-income-aboard-frequency-date-yes",
+                  name: "other-income-aboard-frequency-date-yes",
+                  fieldset: {
+                    legend: {
+                      html: "Is this a frequency payment",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--s"
+                    }
+                  },
+                  hint: {
+                    text: ""
+                  },
+                  items: [
+                    {
+                      value: "Yes",
+                      text: "Yes",
+                      checked: (data["other-income-aboard-frequency-date-yes"] == "Yes"),
+                      conditional: {
+                        html: howOften
+                      }
+                    },
+                      {
+                        value: "No",
+                        text: "No",
+                        checked: (data["other-income-aboard-frequency-date-yes"] == "No")
+                      }
+                    ]
+                  }) }}
+
+                  <!------------------------->
+
+                {{ govukInput({
+                label: {
+                  html: "<strong>How much money do you get?</strong>"
+                },
+                id: "other-income-aboard-yes-amount",
+                name: "other-income-aboard-yes-amount",
+                classes: "govuk-input--width-20"
+              }) }}
+
+              <!------------------------->
+
+              {% set otherIncomeSpousalMaintenanceYes %}
+              {{ govukTextarea({
+                name: "other-income-aboard-yes-more-detail",
+                id: "other-income-aboard-yes-more-detail",
+                label: {
+                  text: "Add same details as above if there is more payments?"
+                },
+                hint: {
+                  text: "XXX"
+                }
+              }) }}
+              {% endset -%}
+
+              {{ govukRadios({
+                classes: "govuk-radios",
+                idPrefix: "other-income-aboard-yes-more-yn",
+                name: "other-income-aboard-yes-more-yn",
+                fieldset: {
+                  legend: {
+                    html: "Add another entry",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--s"
+                  }
+                },
+                hint: {
+                  text: ""
+                },
+                items: [
+                {
+                  value: "yes-date",
+                  text: "Yes",
+                  checked: (data["other-income-aboard-yes-more-yn"] == "Yes"),
+                  conditional: {
+                    html: otherIncomeSpousalMaintenanceYes
+                  }
+                },
+                  {
+                    value: "no-date",
+                    text: "No",
+                    checked: (data["other-income-aboard-yes-more-yn"] == "No")
+                  }
+                  ]
+                }) }}
+
+                <!------------------------->
+
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Name and National Insurance number - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="over-spa" method="post"><!--existing-claim-yn-->
+
+        <!------------HEADLINE------------>
+          {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What are your details?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What are the claimant's details?</h1>{% endif %}
+
+          <!------------ if only one headline on a page swap the headline for legend, ask Niall------------>
+
+          <!-- {% set legend %}
+          {% if data["who-is-caller"] == "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What are {{ data | getPronoun }} details?</h1>{% endif %}
+          {% if data["who-is-caller"] !== "Yourself" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">What is ["who-is-caller-name"]'s details?</h1>{% endif %}
+          {% endset %} -->
+        <!------------HEADLINE------------>
+
+
+        {{ govukInput({
+          label: {
+            text:"Full name"
+          },
+          hint: {
+            text: "Include any middle names."
+          },
+          id: "full-name",
+          name: "full-name",
+          classes: "govuk-input--width-20",
+          value: data["full-name"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "National Insurance number"
+          },
+          id: "nino",
+          name: "nino",
+          classes: "govuk-input--width-10",
+          value: data["nino"]
+        }) }}
+
+{% if data["who-is-caller"] == "Yourself" %}
+        {{ govukInput({
+          label: {
+            text: "What number are you calling from?"
+          },
+          id: "telephone-number",
+          name: "telephone-number",
+          classes: "govuk-input--width-20",
+          value: data["telephone-number"]
+        }) }}
+{% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>
+    </div>
+  </div>
+{% endblock %}

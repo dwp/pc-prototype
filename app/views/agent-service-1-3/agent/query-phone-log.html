@@ -1,0 +1,57 @@
+{% extends "layout-nav.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header.html" %}
+{% endblock %}
+
+
+{% block content %}
+
+<form
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-half">
+    <form action="login-router" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["query-search-nino"]}}</p>
+  </div>
+
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukTextarea({
+          name: "notes",
+          id: "notes",
+          rows: "10",
+          label: {
+            text: "Test",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Follow guidance on what to include."
+          }
+        }) }}
+      </div>
+    </div>
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </div>
+
+    </div>
+
+</form>
+{% endblock %}

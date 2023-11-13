@@ -1,0 +1,130 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "qd-securityE"
+}) }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-summary" method="post" class="form">
+
+
+      {% include "agent-service-1-11/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      {% if data['qd-search-nino'] === 'ZZ439386T' %}
+
+
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set html %}
+        <p class="govuk-notification-banner__heading">
+          In the past, this citizen failed certain security questions</p>
+        <p class="govuk-body govuk-!-font-weight-bold">
+          Do not ask these questions again:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>What is the name of your bank? </li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+      {% endif %}
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Did they answer a question incorrectly?</h1>
+
+
+      {% set failedKbvE %}
+      {{ govukTextarea({
+        label: {
+          text: "Enter failed security question"
+        },
+        hint: {
+          text: "For example, what is the name of your bank?"
+        },
+        id: "failed-kbvE",
+        rows: "1",
+        name: "failed-kbvE",
+        classes: "",
+        value: data["failed-kbvE"]
+
+      }) }}
+      {% endset -%}
+
+
+      {{ govukRadios({
+        classes: "",
+        idPrefix: "kbv-fail-E-check",
+        name: "kbv-fail-E-check",
+        fieldset: {
+          legend: {
+            text: "",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: ""
+        },
+        items: [
+        {
+          value: "pass",
+          text: "Yes",
+          checked: (data["kbv-fail-E-check"] == "pass"),
+          conditional: {
+                  html: failedKbvE
+                  }
+        },
+          {
+            value: "fail",
+            text: "No",
+            checked: (data["kbv-fail-E-check"] == "fail")
+
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

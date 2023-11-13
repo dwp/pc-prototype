@@ -1,0 +1,195 @@
+/*
+ * This stylesheet contains rules to change the design of any gov.uk page that
+ * is "passed through" by this app (ie, any page except home, topics, subtopics,
+ * and a couple others)
+ */
+
+@import "node_modules/govuk-frontend/govuk/base";
+// @import "colour";
+@import "xpl-link-styles";
+
+$govuk-secondary-text-colour: #505a5f;
+
+.global-bar {
+  border-bottom: none;
+}
+
+.govuk-breadcrumbs {
+  color: $govuk-secondary-text-colour;
+  position: relative;
+  width: calc(100vw - 30px);
+  margin: 0 -15px 0 -15px;
+  padding: 15px;
+  background: govuk-colour("light-grey");
+
+  .govuk-breadcrumbs__list-item {
+    margin:0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    position: relative;
+    margin-right: 35px;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:before {
+      border: none;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -20px;
+      width: 7px;
+      height: 7px;
+      margin: 4px 0 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      border: solid;
+      border-width: 1px 1px 0 0;
+      border-color: $govuk-secondary-text-colour;
+    }
+
+    &:last-child {
+      &:after {
+        border: none;
+      }
+    }
+  }
+
+  &__link:link, &__link:visited, &__link:hover, &__link:active, &__link:focus {
+    color: $govuk-secondary-text-colour;
+  }
+}
+
+.covid__page-header {
+  .govuk-breadcrumbs {
+    background-color: #1d70b8;
+  }
+}
+
+.content.taxon-page {
+  .govuk-breadcrumbs {
+    &__link:link,
+    &__link:visited,
+    &__link:hover,
+    &__link:active,
+    &__link:focus {
+      color: $govuk-secondary-text-colour;
+    }
+  }
+}
+
+
+
+@media (min-width: 40.0625em) {
+  .govuk-breadcrumbs {
+    width: calc(100vw - 60px);
+    padding: 30px 30px 25px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    &__list {
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .govuk-breadcrumbs__list-item:after {
+      margin: auto 0;
+    }
+  }
+}
+
+
+//================================================================
+// Links
+// taken from https://github.com/alphagov/govuk-frontend/pull/2183/files
+
+// $govuk-link-underline-thickness: 0.0625rem !default;
+// $govuk-link-hover-underline-thickness: unquote("max(.1875rem, .12em)") !default;
+// $govuk-link-underline-offset: 0.1em !default;
+// $govuk-text-colour: govuk-colour("black") !default;
+
+.explore-body {
+  a {
+    &:link {
+      @extend %xpl-a-link;
+    }
+    &:hover {
+      @extend %xpl-a-hover;
+    }
+    &:focus {
+      margin-bottom: none;
+    }
+  }
+
+  .explore-header .xpl-nav--desktop .xpl-frame2 .xpl-frame2-inner a:focus {
+    border-bottom: 3px solid !important;
+  }
+
+  .govuk-breadcrumbs__list-item {
+    a {
+      &:link {
+        @extend %xpl-a-link;
+        color: $govuk-secondary-text-colour;
+      }
+
+      &:hover {
+        @extend %xpl-a-hover;
+      }
+    }
+  }
+
+  .govuk-breadcrumbs {
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 40.0525em) {
+    // Breadcrumb fixes on mobile
+    .govuk-breadcrumbs--collapse-on-mobile {
+      padding-top: 30px;
+      padding-bottom: 30px;
+
+      .govuk-breadcrumbs__list-item {
+        display: none;
+
+        &:first-child,
+        &:last-child {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+/*
+margin-bottom: $govuk-heavy-link-underline-thickness * -1;
+border-bottom: $govuk-heavy-link-underline-thickness solid;
+*/
+
+.gem-c-step-nav-header {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 30px;
+  font-size: 16px;
+
+  @media (min-width: 40.0625em) {
+    font-size: 19px;
+  }
+}
+
+.gem-c-step-nav-header__part-of {
+  font-weight: normal;
+}
+
+.gem-c-title.govuk-\!-margin-top-8 {
+  margin-top: 15px !important;
+}

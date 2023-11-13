@@ -1,0 +1,123 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="login-router" method="post" class="form">
+
+{{ data['nav'] == "overview" }}
+      {% if data["ur-search"] == "P1" %}
+
+        {% if data["ur-p1-record-wtl-address-post-code"]  %}
+
+        {% set html %}
+        <p class="govuk-body">Address has been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+      {% if data["ur-search"] == "P2" %}
+
+        {% if data["ur-p2-record-wtl-address-post-code"]  %}
+
+        {% set html %}
+          <p class="govuk-body">Address has been changed</p>
+        {% endset %}
+
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+
+        {% else %}
+        {% endif %}
+      {% else %}
+      {% endif %}
+
+      {% if data["ur-search"] == "P2" %}<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Julianne Moore</h1>
+      {% else %}                        <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">Jeff Bridges</h1>
+      {% endif %}
+      <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-8">{{ data ["ur-search"]}}</p>
+
+    </div>
+  </div>
+
+
+  {% include "agent-service-1/agent/ur-navigation.html" %}
+
+
+  <div class="govuk-grid-column-three-quarters govuk-!-margin-bottom-6">
+    <h3 class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-36 govuk-!-margin-bottom-2">Address</h3>
+
+  </div>
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+
+        {% if data["ur-search"] == "P1" %}
+
+            {% if data["ur-p1-record-wtl-address-post-code"] %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">26 Fore Street</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Polruan</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["ur-p1-record-wtl-address-post-code"]}}</p>
+
+            {% else %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">221b Baker Street</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Marylebone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">NW1 6XE</p>
+            {% endif %}
+
+        {% else %}
+
+            {% if data["ur-p2-record-wtl-address-post-code"] %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">35 Liardet Street</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Tufnel Park</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">{{ data ["ur-p2-record-wtl-address-post-code"]}}</p>
+
+            {% else %}
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">221b Baker Street</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1">Marylebone</p>
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2">London</p>
+
+            <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-4">NW1 6XE</p>
+
+
+
+
+            {% endif %}
+
+        {% endif %}
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-2"><a href="ur-record-wtl-address" class="govuk-link" rel="noreferrer noopener" target="">Change an address</a></p>
+
+
+  </div>
+      </div>
+
+    </form>
+{% endblock %}

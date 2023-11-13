@@ -1,0 +1,148 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+    {{ govukHeader({ serviceName: "Pension Credit" }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start / Back section -->
+
+
+
+<!------------ Section ------------>
+
+
+
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+  
+
+  {{ govukBackLink({
+    "href": "#",
+    "text": "Back"
+  }) }}
+
+
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">Enter claimant personal details</h1>
+
+          <form action="/form-handler" method="post" novalidate>
+  <!------------ ------------>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="national-insurance-number">
+                Full name
+              </label>
+              <span id="national-insurance-number-hint" class="govuk-hint">
+                For example, Alex Smith
+              </span>
+              <input class="govuk-input" id="passport-number" name="passport-number" type="text" aria-describedby="passport-number-hint">
+            </div>
+  <!------------ ------------>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="national-insurance-number">
+                National insurance number
+              </label>
+              <span id="national-insurance-number-hint" class="govuk-hint">
+                For example, AB 11 22 33 c
+              </span>
+              <input class="govuk-input" id="passport-number" name="passport-number" type="text" aria-describedby="passport-number-hint">
+            </div>
+  <!------------ ------------>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="expiry-hint" role="group">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"> Data of birth
+                </legend>
+                <span id="expiry-hint" class="govuk-hint">
+                  For example, 31 3 1980
+                </span>
+                <div class="govuk-date-input" id="expiry">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-day" name="expiry-day" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-month" name="expiry-month" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="expiry-year" name="expiry-year" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+<!------------ ---- ------------>
+
+
+  <!------------ ---- ------------>          
+  <a href="/development/capture/about_claimant.html" role="button" draggable="false" class="govuk-button">
+    Continue
+  </a>
+  <!------------ ---- ------------>
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <h3 class="govuk-heading-m">Links </h3>
+    <p class="govuk-body">This is a paragraph inside a one-third wide column</p>
+
+    
+
+   {{ govukDetails({
+     summaryText: "Notes",
+     text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+   }) }}
+
+   
+
+   {{ govukDetails({
+     summaryText: "Notes B",
+     text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+   }) }}
+
+   
+
+   {{ govukDetails({
+     summaryText: "Notes C",
+     text: "We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post."
+   }) }}
+<!------------ End / Right column ------------>
+  </div>
+</div>
+
+</main>
+</div>
+
+{% endblock %}

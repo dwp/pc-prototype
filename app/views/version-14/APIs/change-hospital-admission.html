@@ -1,0 +1,86 @@
+{% extends "layout-id-bar.html" %}
+
+{% block pageTitle %}
+  Hospital admission and discharge - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Change admission and discharge dates for hospital
+      </h1>
+
+      <form method="post">
+
+        {{ govukDateInput({
+          id: "admission",
+          namePrefix: "admission",
+          fieldset: {
+            legend: {
+              text: "Hospital admission"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: admission["day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: admission["month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: admission["year"]
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "discharge",
+          namePrefix: "discharge",
+          fieldset: {
+            legend: {
+              text: "Hospital discharge"
+            }
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: discharge["day"]
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: discharge["month"]
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: discharge["year"]
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "explore-header-ur.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["process-c-nil-task-1-6"] %}
+      <form action="process-c-nil-task-list-data" method="post" class="form">
+      {% else %}
+      <form action="process-c-nil-task-list-data" method="post" class="form">
+      {% endif %}
+
+        {% include "agent-service-1-14/agent/record-id.html" %}
+
+        <!-- <span class="govuk-caption-m">[Task 1-9]</span> -->
+        <p class="govuk-heading-xl govuk-!-margin-bottom-6">Julianne Moore's HMRC data</p>
+
+        <!--<p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Given in the application:</p>
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>Barclays</strong></p>-->
+
+        <!--<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-2">Systems to check:</p>-->
+        <!-- <p class="govuk-hint govuk-!-font-size-19 govuk-!-margin-bottom-4">CPS will show a sort code and account number, then use Check payment account details (CPAD), formally Bank Wizard 🧙 to get the bank name</p> -->
+
+
+       <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and </strong> <a href="/bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>Check Payment Account Details<br>(opens in a new tab)</strong></a></p> -->
+
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and</strong> <a href="/bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>Customer Payment Account Details</strong> (Opens in new tab)</a></p> -->
+        <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-6"><strong>CPS and</strong> <a href="bankval-prod.payments-prod-live.dwpcloud.uk" class="govuk-link" rel="noreferrer noopener"><strong>CPAD</strong> (Opens in new tab)</a>, formally Bank Wizard 🧙 </p> -->
+
+       <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"> -->
+
+    </div>
+  </div>
+
+    <!------------ ––– ------------>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-top-2">
+
+        <p>{
+          "jsonapi": {
+              "version": "1.0"
+          },
+          "links": {
+              "self": "https://pension.income.dev.citizen-information-nonprod.dwpcloud.uk:443/v1/citizens/b3334108399b427b7e09808246066d330c8b025f58555082aa721827e4b9b9d7/pension-income?startDate=2010-04-06&endDate=2020-04-06"
+          },
+          "data": {
+              "citizen": {
+                  "dwpGuid": {
+                      "value": "b3334108399b427b7e09808246066d330c8b025f58555082aa721827e4b9b9d7",
+                      "metadata": {
+                          "isPersonalIdentifier": true
+                      }
+                  },
+                  "pensionAccounts": [
+                      {
+                          "pensionProviderPayeScheme": {
+                              "pensionProviderName1": "Standard Life",
+                              "pensionProviderTradeName1": "Standard Life",
+                          },
+                          "pensionIncome": [
+                              {
+                                  "paymentDate": "2020-01-01",
+                                  "payFrequency": "W2",
+                                  "paymentConfidenceStatus": "1",
+                                  "taxablePayInPeriod": 100.00,
+                                  "taxablePayToDate": 1600.00,
+                                  "taxDeductedOrRefunded": 1.00,
+                                  "totalTaxToDate": 16.00
+                              },
+                              {
+                                  "paymentDate": "2020-02-01",
+                                  "payFrequency": "W2",
+                                  "paymentConfidenceStatus": "1",
+                                  "taxablePayInPeriod": 100.00,
+                                  "taxablePayToDate": 1700.00,
+                                  "taxDeductedOrRefunded": 1.00,
+                                  "totalTaxToDate": 17.00
+                              }
+                          ]
+                      },
+                      {
+                          "pensionProviderPayeScheme": {
+                              "pensionProviderName1": "Aviva Pension",
+                              "pensionProviderName2": "Aviva Pension 2",
+                              "pensionProviderTradeName1": "Aviva Pension",
+                              "pensionProviderTradeName2": "Aviva Pension 2"
+                          },
+                          "pensionIncome": [
+                              {
+                                  "paymentDate": "2021-02-01",
+                                  "payFrequency": "W2",
+                                  "paymentConfidenceStatus": "1",
+                                  "taxablePayInPeriod": 200.00,
+                                  "taxablePayToDate": 2600.00,
+                                  "taxDeductedOrRefunded": 100.00,
+                                  "totalTaxToDate": 2600.00
+                              },
+                              {
+                                  "paymentDate": "2021-03-01",
+                                  "payFrequency": "W2",
+                                  "paymentConfidenceStatus": "1",
+                                  "taxablePayInPeriod": 200.00,
+                                  "taxablePayToDate": 2700.00,
+                                  "taxDeductedOrRefunded": 100.00,
+                                  "totalTaxToDate": 2700.00
+                              }
+                          ]
+                      }
+                  ],
+                  "metadata": {
+                      "isPersonalData": true
+                  }
+              },
+              "observations": [
+                  {
+                      "code": "0",
+                      "description": "All data is good"
+                  }
+              ],
+              "metadata": {
+                  "description": "Provides Pay As You Earn (PAYE) pension income, one record for each Full Payment Submission.",
+                  "channel": "Third-party",
+                  "veracityLevel": "Level 4 - Very High confidence",
+                  "veracityReason": "Authoritative source",
+                  "veracitySource": "National government",
+                  "identityLevelOfConfidence": "very high confidence"
+              }
+          }
+      }</p>
+
+       <!-- {{ govukRadios({
+          idPrefix: "process-c-nil-task-1-6",
+          name: "process-c-nil-task-1-6",
+          fieldset: {
+            legend: {
+              html: "Does the bank name given in the application<br>match what is in Check Payment Account Details?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-radios",
+          items: [
+          {
+            value: "Matched",
+            text: "Yes",
+            checked: (data["process-c-nil-task-1-6"] == "Matched")
+          },
+            {
+              value: "Not matched",
+              text: "No",
+              checked: (data["process-c-nil-task-1-6"] == "Not matched")
+            }
+          ]
+        }) }} -->
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+
+    </div>
+  </div>
+
+
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Money, savings, investments and capital - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <style>
+    .govuk-summary-list {
+      margin-bottom: 10;
+    }
+    .govuk-summary-list__row:last-child > * {
+      border: 0;
+    }
+  </style>
+
+  <!----Headline---->
+  <h1 class="govuk-heading-xl">
+    <span class="govuk-caption-m">Money, savings and investments</span>
+    Cash and lum sums<br>
+  </h1>
+  <!----Headline---->
+
+
+
+  <h3 class="govuk-heading-m">
+    Cash at home
+  </h3>
+
+  <br><br>
+
+  {% if data["msic-cash-at-home-amount"] %}
+
+
+  <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">{{ data["msic-cash-at-home-amount"] }}</p>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <p class="govuk-body"><a href="msic-cash-at-home" class="govuk-link">Change / Remove</a></p>
+        </div>
+      </div>
+
+  {% endif %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-5">
+    <div class="govuk-grid-column-full">
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+    </div>
+  </div>
+  <div class="govuk-grid-row govuk-!-margin-bottom-9">
+    <div class="govuk-grid-column-one-third">
+      <p class="govuk-body"><a href="msic-cash-at-home" class="govuk-link">Add details</a></p>
+    </div>
+  </div>
+
+<!------------------------------- ---------------------------------->
+
+<h3 class="govuk-heading-m">
+  Any other money held in this country or abroad (1)
+</h3>
+
+<br><br>
+
+{% if data["msic-cash-other-abroad-detail"] %}
+
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">{{ data["msic-cash-other-abroad-detail"] }}</p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <p class="govuk-body"><a href="msic-cash-other-abroad" class="govuk-link">Change / Remove</p>
+      </div>
+    </div>
+
+{% endif %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-5">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+  </div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-one-third">
+    <p class="govuk-body"><a href="msic-cash-other-abroad" class="govuk-link">Add details</a></p>
+  </div>
+</div>
+
+<!------------------------------- ---------------------------------->
+
+<h3 class="govuk-heading-m">
+  Pension Lump sum (1)
+</h3>
+
+<br><br>
+
+{% if data["msic-cash-lump-sum-detail"] %}
+
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">{{ data["msic-cash-lump-sum-detail"] }}</p>
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        <p class="govuk-body"><a href="msic-cash-lump-sum" class="govuk-link">Change / Remove</p>
+      </div>
+    </div>
+
+{% endif %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-5">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+  </div>
+</div>
+<div class="govuk-grid-row govuk-!-margin-bottom-9">
+  <div class="govuk-grid-column-one-third">
+    <p class="govuk-body"><a href="msic-cash-lump-sum" class="govuk-link">Add details about lump sum</a></p>
+  </div>
+</div>
+
+
+
+
+<!------------------------------- ---------------------------------->
+
+
+  {{ govukButton({
+    href: "msic-all-money-accounts-summary",
+    text: "Continue"
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  <p class="govuk-body">Can't complete this page? <a href="task-list">Save and return later. (Mark as in-progress)</a></p>
+
+{% endblock %}

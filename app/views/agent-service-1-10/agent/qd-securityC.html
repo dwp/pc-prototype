@@ -1,0 +1,103 @@
+{% extends "layout-ur-2022.html" %}
+
+{% block pageTitle %}
+  PC: Name Name
+
+{% endblock %}
+
+{% block header %}
+ {% include "global-nav-a.html" %}
+{% endblock %}
+
+
+{% if data['qd-start'] === 'changes' %}
+  {% set securityRoute = 'changes' %}
+{% else %}
+  {% set securityRoute = 'explain' %}
+{% endif %}
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form action="qd-security-router" method="post" class="form">
+
+
+      {% include "agent-service-1-10/agent/qd-name-nino.html" %}
+
+
+
+    <div class="govuk-!-margin-bottom-8">
+
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+      {% set kbvNotification %}
+        <p class="govuk-notification-banner__heading">
+          Citizen previously failed security</p>
+        <p class="govuk-body govuk-!-font-weight-bold">
+          Do not ask these questions again:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>What is the name of your bank? </li>
+          <li>What is your home telephone number? </li>
+        </ul>
+
+      {% endset %}
+
+      {{ govukNotificationBanner({
+        html: kbvNotification
+      }) }}
+
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">I'm going to go through some security questions with you</h1>
+
+      <h1 class="govuk-heading-m govuk-!-margin-bottom-4">Use searchlight to ask relvant security questions.</h1>
+
+
+
+
+      {{ govukTextarea({
+        name: "security-fail",
+        id: "security-fail",
+        rows: "2",
+        label: {
+          text: "If they failed on any questions, what were they?",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        },
+        hint: {
+          text: ""
+        }
+      }) }}
+
+      {{ govukInsetText({
+        text: "Select security passed if the citizen answers 2/3 security correctly."
+      }) }}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Security passed",
+          href: "qd-summary"
+        }) }}
+
+        {{ govukButton({
+          text: "Failed security",
+          classes: "govuk-button--secondary",
+          href: "qd-security-fail"
+        }) }}
+      </div>
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </form>
+{% endblock %}

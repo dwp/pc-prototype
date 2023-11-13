@@ -1,0 +1,30 @@
+{% extends "layout-covid19.html" %}
+
+
+{% block pageTitle %}
+  Date of claim - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="claimant-details" method="post">
+
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Your claim will start on [SPA date] when you reach your State Pension age</h1>
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
