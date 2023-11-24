@@ -1,0 +1,100 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Which best describes the place where you live? - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="self-employed" method="post" class="form">
+
+      <!--To get to looking jounrey turn this on loop--><form action="employment-check-router" method="post" class="form">
+
+
+      <!------------Legend------------>
+        {% set legendEmployment %}
+        <p class="govuk-hint">For each employment, tell us:</p>
+
+          <ul class="govuk-hint govuk-list govuk-list--bullet">
+            <li>the employer's name</li>
+            <li>the employer's full address including postcode</li>
+            </ul>
+        {% endset %}
+      <!------------Legend------------>
+
+      {% set employmentDetails %}
+        {{ govukTextarea({
+          label: {
+            classes: "govuk-label--s",
+            text: "Employer details"
+          },
+          hint: {
+            html: legendEmployment
+          },
+          id: "employment-check-yes-details",
+          name: "employment-check-yes-details",
+          classes: "govuk-input--width-100",
+          attributes: {
+            maxlength: 200
+          }
+        }) }}
+      {% endset %}
+
+
+      <!------------H1 LEGEND------------>
+        {% set dynamicH1 %}
+        {% if data["single-joint-check"] == "Joint" %}<h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you or your partner have any income from employment?</h2>
+        {% else %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Do you have any income from employment?</h2>{% endif %}
+        {% endset %}
+      <!------------Legend--------------->
+
+      {{ govukRadios({
+        name: "employment-check",
+        fieldset: {
+          legend: {
+            html: dynamicH1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "You do not need to tell us about any pensions from previous employments."
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            checked: data["employment-check"] == "Yes",
+                  conditional: {
+                    html: employmentDetails
+        }
+          },
+          {
+            value: "No",
+            text: "No",
+            checked: data["employment-check"] == "No"
+          }
+        ]
+      }) }}
+
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+
+  </div>
+</div>
+{% endblock %}
