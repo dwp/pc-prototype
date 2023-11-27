@@ -1,0 +1,63 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  claimant-name - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="claim-filter" method="post" class="form">
+
+      <!-- Hidden input to set task to complete on task-list -->
+      <input type="hidden" name="hospitals-complete" value="true"/>
+
+            {% set legendH1 %}
+
+            <!------------H1 LEGEND------------>
+              {% set dynamicH1 %}
+              {% if data["state-pension-status"] == "Yes" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Which bank or building society is your State Pension paid into?</h2>
+              {% elif data["state-pension-status"] == "FirstPayment" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Which bank or building society will your State Pension be paid into?</h2>
+              {% elif data["state-pension-status"] == "NoBank" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">[SKIP THIS?] Which bank or building society did you ask us to pay your State Pension into?</h2>
+
+              {% else %}<h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Which bank or building society is your State Pension paid into?</h2>{% endif %}
+              {% endset %}
+            <!------------Legend--------------->
+
+            {% endset -%}
+
+
+
+
+
+            {{ govukInput({
+              label: {
+                html: dynamicH1
+              },
+
+  hint: {
+    text: "The name of the bank or building society, for example HSBC"
+  },
+              id: "state-pension-payment-account",
+              name: "state-pension-payment-account",
+              classes: "govuk-input--width-20 govuk-!-margin-bottom-0",
+              value: data["state-pension-payment-account"]
+            }) }}
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+    <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
+  </div>
+</div>
+{% endblock %}
