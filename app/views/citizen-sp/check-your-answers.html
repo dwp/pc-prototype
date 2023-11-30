@@ -1,0 +1,1125 @@
+{% extends "layout-assisted-digital.html" %}
+
+{% block pageTitle %}
+  Check your answers: Pension Credit application - Pension Credit
+{% endblock %}
+
+{% block header %}
+  {% include "includes/internal-header.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "includes/js-back-link.html" %}
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- PRINT SCREEN DETAILS -->
+
+
+<style>
+
+  p {
+    color: black;
+  }
+
+
+  #main-content > div > div > form > div:nth-child(2) {display: none} /* PRINT ONLY NOTIFICATION */
+
+  /* This is set to 0 globally for some reason, setting it back for this example */
+  .govuk-summary-list {
+    margin-bottom: 30px !important;
+  }
+
+  @media print {
+
+    #main-content > p > span {display: none}
+    body > div > div {display: none}
+    body > div > div {display: none}
+    #main-content > div > div > form > div:nth-child(2) {display: inline}  /* PRINT ONLY NOTIFICATION */
+
+
+
+    .dont-print,
+    .govuk-header__logo,
+    .govuk-footer,
+    .govuk-summary-list__actions {
+      display: none;
+    }
+    .govuk-header__container {
+      border: 0;
+    }
+
+    /* Use desktop layout for summary list */
+    .govuk-summary-list {
+      display:table;
+      width:100%;
+      table-layout:fixed;
+      margin-bottom:30px
+    }
+    .govuk-summary-list__row {
+      display:table-row
+    }
+    .govuk-summary-list__key,
+    .govuk-summary-list__value {
+      display:table-cell;
+      padding-right:20px;
+      padding-top:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid #b1b4b6
+    }
+    .govuk-summary-list__key {
+      width:30%
+    }
+    .govuk-summary-list__value {
+      width:50%
+    }
+    .govuk-summary-list__value:last-child {
+      width:70%
+    }
+  }
+</style>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+      <form action="declaration" method="post" class="form">
+
+
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">This is only a copy of your answers. It is not proof that you have applied for or been awarded Pension Credit.</p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Printing this document does not submit your application. You must submit your application from the check your answers page.</p>
+
+</div>
+
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [  {
+            key: {
+              text: "Which country do you live in?"
+            },
+            value: {
+              text: data['resides-in-uk']
+            },
+            actions: {
+              items: [
+                {
+                  href: "reside-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "which country you live in"
+                }
+              ]
+            }
+          },
+        {
+          key: {
+            text: "What is your date of birth"
+          },
+          value: {
+            text: data['dob-day'] + ' ' + (data['dob-month'] | getMonth) + ' ' + data['dob-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "over-spa",
+                text: "Change",
+                visuallyHiddenText: "your date of birth"
+              }
+            ]
+          }
+        },
+        {
+            key: {
+              text: "What is your nationality as shown on your passport or travel document?"
+            },
+            value: {
+              text: data['resides-in-uk']
+            },
+            actions: {
+              items: [
+                {
+                  href: "reside-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "your nationality"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have a partner?"
+            },
+            value: {
+              text: data["partner-check-yn"]
+            },
+            actions: {
+              items: [
+                {
+                  href: "",
+                  text: "Change",
+                  visuallyHiddenText: "whether you have a partner"
+                }
+              ]
+            }
+          },
+        {
+          key: {
+            text: "Tell us about your UK State Pension"
+          },
+          value: {
+            text: data['state-pension-check-yn']
+          },
+          actions: {
+            items: [
+            {
+              href: "@ChangeURL",
+              text: "Change",
+              visuallyHiddenText: "whether you have claimed your State Pension"
+
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Which bank or building society is your State Pension paid into?"
+          },
+          value: {
+            text: data['state-pension-check-yn']
+          },
+          actions: {
+            items: [
+            {
+              href: "@ChangeURL",
+              text: "Change",
+              visuallyHiddenText: "whether you have claimed your State Pension"
+
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Have you been outside the UK for a period of more than four weeks since [3 months or SPA]?"
+          },
+          value: {
+            text: data['doc-absence']
+          },
+          actions: {
+            items: [
+              {
+                href: "doc-absence",
+                text: "Change",
+                visuallyHiddenText: "whether you been outside the UK for a period of more than 4 weeks since [3 months or SPA]?"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "How many periods of more than 4 weeks have you spent outside the UK since [calculated EED]?"
+          },
+          value: {
+            text: data['doc-absence-plural']
+          },
+          actions: {
+            items: [
+              {
+                href: "doc-absence-plural",
+                text: "Change",
+                visuallyHiddenText: "how many periods of more than 4 weeks have you spent outside the UK since [calculated EED]?"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Was the period you spent outside the UK connected to medical treatment or the death of a partner or child?"
+          },
+          value: {
+            text: data['doc-absence-medical']
+          },
+          actions: {
+            items: [
+              {
+                href: "doc-absence-medical",
+                text: "Change",
+                visuallyHiddenText: "whether the period you spent outside the UK connected to medical treatment or the death of a partner or child?"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Do you want us to consider backdating your application to [Calculated EED]?"
+          },
+          value: {
+            text: data['doc-draft-date']
+          },
+          actions: {
+            items: [
+              {
+                href: "doc-draft-date",
+                text: "Change",
+                visuallyHiddenText: "whether you want us to consider backdating your application to [Calculated EED]?"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What date do you want us to consider your application from?"
+          },
+          value: {
+            text: data['claim-date-of-claim-day'] + ' ' + (data['claim-date-of-claim-month'] | getMonth) + ' ' + data['claim-date-of-claim-year']
+          },
+          actions: {
+            items: [
+              {
+                href: "XXX",
+                text: "Change",
+                visuallyHiddenText: "the date you want us to consider your application from"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What is your National Insurance number?"
+          },
+          value: {
+            text: data["nino"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "your National Insurance number"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What is your name?"
+          },
+          value: {
+            text: data["full-name"]
+          },
+          actions: {
+            items: [
+              {
+                href: "claimant-details",
+                text: "Change",
+                visuallyHiddenText: "your name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Are you registered blind or severely sight impaired?"
+          },
+          value: {
+            text: data["contact-blind-check"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "whether you are registered blind or severely sight impaired"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Were you registered blind or severely sight impaired on or before 23 January 2023?"
+          },
+          value: {
+            text: data["contact-blind-check"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "whether you registered blind or severely sight impaired on or before 23 January 2023"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "What date were you registered blind or severely sight impaired?"
+          },
+          value: {
+            text: data["contact-blind-check"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "what date you were registered blind or severely sight impaired"
+              }
+            ]
+          }
+        }
+
+
+        ]
+      }) }}
+
+
+
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Time spent in hospital</h2>
+
+
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [  {
+          key: {
+            text: "Have you had any overnight stays in hospital between 23 January 2023 and today?"
+          },
+          value: {
+            text: data["contact-blind-check"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "whether you have you stayed overnight in hopspital between 23 January 2023 and today"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Housing details</h2>
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+          rows: [  {
+
+
+            key: {
+              text: "Do you live permanently in a care home?"
+            },
+            value: {
+              text: data['home-care-home-check']
+            },
+            actions: {
+              items: [
+                {
+                  href: "home-care-home-check",
+                  text: "Change",
+                  visuallyHiddenText: "whether you live permanently in a care home"
+                }
+              ]
+            }
+          },
+
+
+      {
+      key: {
+        text: "Your home address"
+      },
+      value: {
+        html: "Address line one
+        <br>Address line Two
+        <br>Address line Three
+        <br>" + data["postcode"]
+      },
+      actions: {
+        items: [
+          {
+            href: "address-post-code-lookup",
+            text: "Change",
+            visuallyHiddenText: "your home address"
+          }
+        ]
+      }
+      },
+      {
+      key: {
+        text: "Are you responsible for paying the rent or Council Tax for the place where you live?"
+      },
+      value: {
+        text: data["home-responsible-CTR-HB"]
+      },
+      actions: {
+        items: [
+          {
+            href: "address-post-code-lookup",
+            text: "Change",
+            visuallyHiddenText: "whether you are responsible for paying the rent, Council Tax or both for the place where you live"
+          }
+        ]
+      }
+    },
+    {
+    key: {
+      text: "Which best describes the place where you live?"
+    },
+    value: {
+      text: data["home-ownership"]
+    },
+    actions: {
+      items: [
+        {
+          href: "home-ownership",
+          text: "Change",
+          visuallyHiddenText: "which best describes the place where you live"
+        }
+      ]
+    }
+  },
+  {
+  key: {
+    text: "Do you pay any service charges?"
+  },
+  value: {
+    text: data["home-own-service-charges"]
+  },
+  actions: {
+    items: [
+      {
+        href: "home-own-service-charges",
+        text: "Change",
+        visuallyHiddenText: "whether you pay any service charges"
+      }
+    ]
+  }
+},
+    {
+    key: {
+      text: "Do you pay ground rent?"
+    },
+    value: {
+      text: data["home-own-ground-rent"]
+    },
+    actions: {
+      items: [
+        {
+          href: "home-own-ground-rent",
+          text: "Change",
+          visuallyHiddenText: "whether you pay ground rent"
+        }
+      ]
+    }
+  },
+  {
+  key: {
+    text: "Do you have a mortgage or loan secured against your home?"
+  },
+  value: {
+    text: data["home-mortgage"]
+  },
+  actions: {
+    items: [
+      {
+        href: "home-mortgage",
+        text: "Change",
+        visuallyHiddenText: "whether you have a mortgage or loan secured against your home"
+      }
+    ]
+  }
+},
+      {
+      key: {
+        text: "Do you currently get Support for Mortgage Interest (SMI)?"
+      },
+      value: {
+        text: data["home-own-ground-rent"]
+      },
+      actions: {
+        items: [
+          {
+            href: "home-own-ground-rent",
+            text: "Change",
+            visuallyHiddenText: "whether you pay ground rent"
+          }
+        ]
+      }
+    },
+        {
+        key: {
+          text: "Do you want us to send you a form to reapply for Support for Mortgage Interest (SMI)?"
+        },
+        value: {
+          text: data["home-own-ground-rent"]
+        },
+        actions: {
+          items: [
+            {
+              href: "home-own-ground-rent",
+              text: "Change",
+              visuallyHiddenText: "whether you pay ground rent"
+            }
+          ]
+        }
+      },
+      {
+      key: {
+        text: "Do you have any money or income from an equity release scheme?"
+      },
+      value: {
+        text: data["home-mortgage"]
+      },
+      actions: {
+        items: [
+          {
+            href: "home-mortgage",
+            text: "Change",
+            visuallyHiddenText: "whether you have any money or income from an equity release scheme"
+          }
+        ]
+      }
+    }
+
+      ]
+      }) }}
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Other people that live with you</h2>
+
+
+        {{ govukSummaryList({
+          classes: 'govuk-!-margin-bottom-9',
+        rows: [
+        {
+          classes: 'govuk-summary-list',
+          key: {
+            text: "Are you responsible for any children or qualifying young people who live with you?"
+          },
+          value: {
+            text: data['children-check-yn']
+          },
+          actions: {
+            items: [
+              {
+                href: "@ChangeURL",
+                text: "Change",
+                visuallyHiddenText: "whether any children or qualifying young people live with you"
+            }
+          ]
+        }
+      },
+
+      {
+      key: {
+        text: "Does anyone else who is over 18 live with you [and your partner]?"
+      },
+      value: {
+        text: data["non-deps-living-with-you"]
+      },
+      actions: {
+        items: [
+          {
+            href: "non-deps-living-with-you",
+            text: "Change",
+            visuallyHiddenText: "whether anyone else lives with you"
+          }
+        ]
+      }
+    }
+
+      ]
+    }) }}
+
+
+    <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Benefits</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Does anyone get Carer Support Payment or the Carer's Element of Universal Credit for looking after you?"
+          },
+          value: {
+            text: data['benefit-check']
+          },
+          actions: {
+            items: [
+              {
+                href: "benefit-check",
+                text: "Change",
+                visuallyHiddenText: "whether you have applied for any benefits that you are waiting to hear about"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Have you applied for any benefits that you are waiting to hear about?"
+          },
+          value: {
+            text: data['benefit-check']
+          },
+          actions: {
+            items: [
+              {
+                href: "benefit-check",
+                text: "Change",
+                visuallyHiddenText: "whether you have applied for any benefits that you are waiting to hear about"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+  {% if data["benefit-check-details"] %}
+    {{ govukSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      rows: [
+
+      {
+        key: {
+          text: "Which benefits have you applied for?"
+        },
+        value: {
+          text: data['benefit-check-details']
+        },
+        actions: {
+          items: [
+            {
+              href: "benefit-check",
+              text: "Change",
+              visuallyHiddenText: "which benefits you have applied for"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+  {% endif %}
+
+  <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Employment and income</h2>
+
+
+    {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+
+            {
+              key: {
+                text: "Do you have any income from employment?"
+              },
+              value: {
+                text: data['employment-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "employment-check",
+                    text: "Change",
+                    visuallyHiddenText: "whether you have any income from employment"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Have you had any income from self-employment now or in the 3 months before [date of claim]?"
+              },
+              value: {
+                text: data['self-employment-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "employment-check",
+                    text: "Change",
+                    visuallyHiddenText: "whether you have any income from self-employment now or in the 3 months before your claim date"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Have you paid into any non-UK pensions?"
+              },
+              value: {
+                text: data['pension-foreign-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "pension-foreign-check",
+                    text: "Change",
+                    visuallyHiddenText: "@pensions"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Have you paid into any UK personal pensions that you have not taken yet?"
+              },
+              value: {
+                text: data['pension-check']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "pension-check",
+                    text: "Change",
+                    visuallyHiddenText: "@pensions"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Do you receive any other regular income or payments?"
+              },
+              value: {
+                text: data['other-money-yes-details']
+              },
+              actions: {
+                items: [
+                  {
+                    href: "employment-other-money",
+                    text: "Change",
+                    visuallyHiddenText: "whether you receive any other regular income or payments"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+
+              <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Money</h2>
+
+
+                {% set AccountList %}
+
+
+
+                {% endset %}
+
+                {{ govukSummaryList({
+                  classes: 'govuk-!-margin-bottom-9',
+                  rows: [
+
+                  {
+                    key: {
+                      text: "Tell us what accounts or investments you have"
+                    },
+                    value: {
+                      html: AccountList
+                    },
+                    actions: {
+                      items: [
+                        {
+                          href: "money-total",
+                          text: "Change",
+                          visuallyHiddenText: "how much money you had on your claim start date"
+                        }
+                      ]
+                    }
+                  },
+
+
+                {
+                  key: {
+                    text: "Do you own any property or land other than the home you live in?"
+                  },
+                  value: {
+                    text: data['money-second-property-check']
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "money-second-property-check",
+                        text: "Change",
+                        visuallyHiddenText: "whether you own any property or land other than your home"
+                      }
+                    ]
+                  }
+                },
+
+                            {
+                              key: {
+                                text: "Savings that you intend to use to buy or make essential repairs to your main home"
+                              },
+                              value: {
+                                text: ""
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "money-disregards-all",
+                                    text: "Change",
+                                    visuallyHiddenText: "whether you have any savings that you intend to use to buy or make essential repairs to your main home"
+                                  }
+                                ]
+                              }
+                            },
+
+
+                            {
+                              key: {
+                                text: "Payments and payouts you have had"
+                              },
+                              value: {
+                                text: ""
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "money-disregards-all",
+                                    text: "Change",
+                                    visuallyHiddenText: "whether you have had any payments or payouts"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                          }) }}
+
+      <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Applicant's residency in the UK</h2>
+
+
+      {{ govukSummaryList({
+        rows: [
+
+        {
+          key: {
+            text: "Do you have the right to live or work in the UK without any immigration restrictions?"
+          },
+          value: {
+            text: data['hrt-claimant-immigration-restrictions']
+          },
+          actions: {
+            items: [
+              {
+                href: "hrt-claimant-immigration-restrictions",
+                text: "Change",
+                visuallyHiddenText: "whether have the right to live or work in the UK without any immigration restrictions"
+              }
+            ]
+          }
+        },
+
+        {
+          key: {
+            text: "Have you lived permanently in the UK for the last 2 years?"
+          },
+          value: {
+            text: data['hrt-claimant-permanently-in-UK']
+          },
+          actions: {
+            items: [
+              {
+                href: "hrt-claimant-permanently-in-UK",
+                text: "Change",
+                visuallyHiddenText: "whether you have lived permanently in the UK for the last 2 years"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+    <div><h2 class="govuk-heading-xm govuk-!-margin-bottom-3 govuk-!-margin-top-8">Contact details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+        {
+          key: {
+            text: "Which of these best describes you?"
+          },
+          value: {
+            text: data["del-auth-who-made-claim"]
+          },
+          actions: {
+            items: [
+              {
+                href: "",
+                text: "Change",
+                visuallyHiddenText: "which of these best describes you"
+              }
+            ]
+          }
+        },
+
+  {
+    key: {
+      html: "Do you have a contact telephone number?"
+    },
+    value: {
+      text: data["del-auth-contact-number-check"]
+    },
+    actions: {
+      items: [
+        {
+          href: "",
+          text: "Change",
+          visuallyHiddenText: "whether you have a contact telephone number"
+        }
+      ]
+    }
+  },
+
+  {
+    key: {
+      html: "What is your contact telephone number?"
+    },
+    value: {
+      text: data["del-auth-contact-number"]
+    },
+    actions: {
+      items: [
+        {
+          href: "",
+          text: "Change",
+          visuallyHiddenText: "your contact telephone number"
+        }
+      ]
+    }
+  },
+
+
+    {
+        key: {
+          html: "What language should we use when we call you?"
+        },
+        value: {
+          text: data["del-auth-contact-call-language-check"]
+        },
+        actions: {
+          items: [
+            {
+              href: "",
+              text: "Change",
+              visuallyHiddenText: "the anguage we should use when we call you"
+            }
+          ]
+        }
+      },
+
+  {
+    key: {
+      text: "What formats so you need us to use when we contact you by letter or phone?"
+    },
+    value: {
+      text: data["del-auth-contact-formats-check"]
+    },
+    actions: {
+      items: [
+        {
+          href: "",
+          text: "Change",
+          visuallyHiddenText: "what formats so you need us to use when we contact you by letter or phone"
+        }
+      ]
+    }
+  },
+  {
+      key: {
+        html: "What address should we send letters to?"
+      },
+      value: {
+        text: "A different address"
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "Change",
+            visuallyHiddenText: "the address we should send letters to"
+          }
+        ]
+      }
+    },
+      {
+          key: {
+            text: "The address we should send letters to"
+          },
+          value: {
+            html: "Address line one
+            <br>Address line Two
+            <br>Address line Three
+            <br>" + data["address-correspondence-post-code"]
+          },
+          actions: {
+            items: [
+              {
+                href: "address-correspondence-post-code-lookup",
+                text: "Change",
+                visuallyHiddenText: "the address we should send letters to"
+              }
+            ]
+          }
+        },
+      {
+          key: {
+            text: "Should we send an email to confirm you have submitted an application?"
+          },
+          value: {
+            html: data["del-auth-email-confirmation"]
+          },
+          actions: {
+            items: [
+              {
+                href: "del-auth-email-confirmation",
+                text: "Change",
+                visuallyHiddenText: "whether we should send an email confirmation that we have received an application"
+              }
+            ]
+          }
+        }
+      ]
+      }) }}
+
+
+
+
+  </div>
+  </div>
+  <br><br>
+<br>
+    <div class="dont-print">
+  <!-- <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"> -->
+
+    <p class="govuk-body"> If you are happy with the answers you have given, you can either print them out or save them to your computer, tablet or mobile phone.</p>
+    <p class="govuk-body"> If you change anything you will need to print or save a new copy.</p>
+
+<button class="govuk-button govuk-button--secondary" data-module="govuk-button">Print your answer </button>
+      <p class="govuk-body govuk-!-margin-bottom-6"><a href="/citizen-version-2-8-ur/mvp/claim.pdf" download >Save a copy of your answers</a> (PDF, 230KB)</p>
+
+
+  </div>
+<br><br>
+
+{{ govukButton({
+  text: "Continue",
+  classes: "dont-print"
+}) }}
+
+
+</form>
+
+
+
+{% endblock %}
