@@ -36,10 +36,16 @@
 
             <!------------H1 LEGEND------------>
               {% set dynamicH1 %}
-              {% if data["state-pension-status"] == "Yes" %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Which bank or building society is your State Pension paid into?</h2>
-              {% elif data["state-pension-status"] == "NoBank" %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Which bank or building society did you ask us to pay your State Pension into?</h2>
+              {% if data["state-pension-status"] == "Yes" %}  
+                <h2 class="govuk-heading-l">
+                  Which bank or building society is your State Pension paid into?
+                </h2>
+              {% else%}  
+                <h2 class="govuk-heading-l">
+                  Which bank or building society did you ask us to pay your State Pension into?
+                </h2>
 
-              {% else %}<h2 class="govuk-heading-l govuk-!-margin-bottom-2">Which bank or building society is your State Pension paid into?</h2>{% endif %}
+              {% endif %}
               {% endset %}
             <!------------Legend--------------->
 
@@ -72,10 +78,16 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-Why we need to know this          </span>
-        </summary>
+          Why we need to know this          </span>
+                  </summary>
         <div class="govuk-details__text">
-<p>For security, we need you to confirm the bank or building society that [your State Pension is paid into / you asked us to pay your State Pension into] .</p><p> We'll check your answer against our records. If your answer does not match, your application may be delayed.</div>
+          <p>For security, we need you to confirm the bank or building society that 
+            {% if data["state-pension-status"] == "Yes" %} your State Pension is paid into.
+            {% else %} you asked us to pay your State Pension into.
+            {% endif %}
+          </p>
+          <p> We'll check your answer against our records. If your answer does not match, your application may be delayed.</p>
+        </div>
       </details>
 
 
