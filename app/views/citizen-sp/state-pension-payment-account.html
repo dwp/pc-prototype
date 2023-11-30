@@ -18,14 +18,27 @@
 
       <!-- Hidden input to set task to complete on task-list -->
       <input type="hidden" name="hospitals-complete" value="true"/>
-
+  <!--    <div class="govuk-notification-banner" role="region"
+        aria-labelledby="govuk-notification-banner-title"
+        data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            You need to tell us this so we can confirm your identity.
+          </p>
+        </div>
+      </div> -->
             {% set legendH1 %}
 
             <!------------H1 LEGEND------------>
               {% set dynamicH1 %}
-              {% if data["state-pension-status"] == "Yes" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Which bank or building society is your State Pension paid into?</h2>
-              {% elif data["state-pension-status"] == "FirstPayment" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">Which bank or building society will your State Pension be paid into?</h2>
-              {% elif data["state-pension-status"] == "NoBank" %}  <h2 class="govuk-heading-xl govuk-!-margin-bottom-4">[SKIP THIS?] Which bank or building society did you ask us to pay your State Pension into?</h2>
+              {% if data["state-pension-status"] == "Yes" %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Which bank or building society is your State Pension paid into?</h2>
+              {% elif data["state-pension-status"] == "FirstPayment" %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Which bank or building society did you ask us to pay your State Pension into?</h2>
+              {% elif data["state-pension-status"] == "NoBank" %}  <h2 class="govuk-heading-l govuk-!-margin-bottom-4">Which bank or building society did you ask us to pay your State Pension into?</h2>
 
               {% else %}<h2 class="govuk-heading-xl govuk-!-margin-bottom-2">Which bank or building society is your State Pension paid into?</h2>{% endif %}
               {% endset %}
@@ -43,7 +56,7 @@
               },
 
   hint: {
-    text: "The name of the bank or building society, for example HSBC"
+    text: "The name of the bank or building society, for example HSBC or Nationwide"
   },
               id: "state-pension-payment-account",
               name: "state-pension-payment-account",
@@ -56,6 +69,17 @@
       {{ govukButton({
         text: "Continue"
       }) }}
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+Why we need to know this          </span>
+        </summary>
+        <div class="govuk-details__text">
+<p>For security, we need you to confirm the bank or building society that your State Pension is paid into .</p><p> We'll check your answer against our records. If your answer does not match, your application may be delayed.</div>
+      </details>
+
+
     </form>
     <!--<p class="govuk-body govuk-!-padding-top-6"><a href="eject-error-reason">Save claim and exit</a></p>-->
   </div>
