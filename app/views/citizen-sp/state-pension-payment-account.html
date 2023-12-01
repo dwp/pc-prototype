@@ -36,11 +36,11 @@
 
             <!------------H1 LEGEND------------>
               {% set dynamicH1 %}
-              {% if data["state-pension-status"] == "Yes" %}  
+              {% if data["state-pension-status"] == "Yes" %}
                 <h2 class="govuk-heading-l">
                   Which bank or building society is your State Pension paid into?
                 </h2>
-              {% else%}  
+              {% else%}
                 <h2 class="govuk-heading-l">
                   Which bank or building society did you ask us to pay your State Pension into?
                 </h2>
@@ -61,7 +61,7 @@
               },
 
   hint: {
-    text: "The name of the bank or building society, for example HSBC or Nationwide"
+    text: "The name of the bank or building society, for example HSBC or Nationwide."
   },
               id: "state-pension-payment-account",
               name: "state-pension-payment-account",
@@ -81,7 +81,7 @@
           Why we need to know this          </span>
                   </summary>
         <div class="govuk-details__text">
-          <p>For security, we need you to confirm the bank or building society that 
+          <p>For security, we need you to confirm the bank or building society that
             {% if data["state-pension-status"] == "Yes" %} your State Pension is paid into.
             {% else %} you asked us to pay your State Pension into.
             {% endif %}
