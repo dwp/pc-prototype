@@ -1,7 +1,7 @@
 {% extends "layout-g4s.html" %}
 
 {% block pageTitle %}
-  Have you spent any time in hospital recently? - Pension Credit
+  Check benefits - Pension Credit
 {% endblock %}
 
 {% block header %}
@@ -90,6 +90,16 @@
       value: "CA",
       text: "Carer's Allowance, including an underlying entitlement",
       checked: (data["benefit-check"] == "CA")
+    },
+    {
+      value: "B",
+      text: "Pension Age Disability Payment",
+      checked: (data["benefit-check"] == "B")
+    },
+    {
+      value: "B",
+      text: "Scottish Adult Disability Living Allowance care component (middle or highest rate)",
+      checked: (data["benefit-check"] == "B")
     },
     {
       divider: "or"
