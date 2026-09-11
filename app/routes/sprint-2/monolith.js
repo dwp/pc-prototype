@@ -10,7 +10,7 @@ const manyThing = (baseUrl, thingName) => {
   router.post(`${baseUrl}/add-${thingName}`, (req, res) => {
     req.session.data[pluralThing] = req.session.data[pluralThing] || []
     req.session.data[pluralThing].push(req.body)
-    res.redirect(`${baseUrl}/index#${pluralThing}`)
+     res.redirect(url);
   })
 
   router.get(`${baseUrl}/change-${thingName}/:${thingName}`, (req, res) => {
@@ -19,7 +19,7 @@ const manyThing = (baseUrl, thingName) => {
     const thing = req.session.data[pluralThing][thingIndex]
 
     if (!thing) {
-      return res.redirect(`${baseUrl}/index`)
+      return  res.redirect(url);
     }
 
     res.render(`sprint-2/monolith/add-${thingName}.html`, { [thingName]: thing })
@@ -29,7 +29,7 @@ const manyThing = (baseUrl, thingName) => {
     const thingIndex = parseInt(req.params[thingName], 10)
     req.session.data[pluralThing] = req.session.data[pluralThing] || []
     req.session.data[pluralThing][thingIndex] = req.body
-    res.redirect(`${baseUrl}/index#${pluralThing}`)
+     res.redirect(url);
   })
 
   return router

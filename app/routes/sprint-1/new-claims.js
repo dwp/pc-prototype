@@ -121,10 +121,13 @@ router.post(`${baseUrl}/savings-router`, (req, res) => {
   if (hasSavings === 'yes') {
     const accountNumber = (req.session.data['number-of-accounts'] || 0)
 
-    res.redirect(`/new-claims/savings-account/${accountNumber}`)
-  } else {
-    res.redirect(`${baseUrl}/has-shares`)
-  }
+    if (isAllowed) {
+        // If the URL is allowed, proceed with the redirect
+        res.redirect(url);
+    } else {
+        res.status(400).send('Invalid redirect URL');
+    }
+
 })
 
 router.get(`${baseUrl}/savings-account/:number`, (req, res, next) => {

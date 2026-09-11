@@ -279,7 +279,7 @@ app.get(/\.html?$/i, function (req, res) {
   var parts = path.split('.')
   parts.pop()
   path = parts.join('.')
-  res.redirect(path)
+   res.redirect(url);
 })
 
 // Auto render any view that exists
@@ -307,10 +307,7 @@ if (useV6) {
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, function (req, res) {
-  res.redirect(url.format({
-    pathname: '/' + req.params[0],
-    query: req.query
-  })
+   res.redirect(url);
   )
 })
 

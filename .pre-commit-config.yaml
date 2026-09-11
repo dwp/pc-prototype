@@ -78,7 +78,7 @@ repos:
     hooks:
       - id: prettier
         additional_dependencies:
-          - prettier@3.8.4
+          - prettier@3.5.3
           - prettier-plugin-sh@0.17.4
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
@@ -87,7 +87,7 @@ repos:
       - id: check-gitlab-ci
       - id: check-renovate
 
-  - repo: https://gitlab.com/dwp/secure-development/dwp-cli
+  - repo: https://dwp.gitlab-dedicated.com/dwp/secure-development/dwp-cli
     rev: v3.15.3
     hooks:
       - id: check-catalog-info

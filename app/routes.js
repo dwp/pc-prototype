@@ -26,7 +26,7 @@ router.use((req, res, next) => {
 router.post('/session-clear-route', (req, res, next) => {
   const nextPage = req.session.data['session-clear-redirect-url']
   req.session.data = {}
-  res.redirect(nextPage)
+   res.redirect(url);
 })
 
 const sanitse = (number) => String(number).replace(/[^0-9.]/g, '');
@@ -61,7 +61,7 @@ router.post('*', function (req, res, next) {
   console.log(req.body);
 
   if (req.body['next-page']) {
-    res.redirect(req.body['next-page']);
+     res.redirect(url);
   } else {
     next();
   }
